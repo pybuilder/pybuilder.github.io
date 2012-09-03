@@ -1,0 +1,163 @@
+<div class="vt" id="wikimaincol">
+  <p><strong><i>WIP WARNING: This page is work in progress. It neither is complete nor has its contents been
+    verified.</i></strong></p>
+  <ul>
+    <li><a href="#Introduction">Introduction</a></li>
+    <ul>
+      <li><a href="#Building_Python_Projects">Building Python Projects</a></li>
+      <li><a href="#Why_Another_Build_Tool">Why Another Build Tool</a></li>
+      <li><a href="#Concepts">Concepts</a></li>
+    </ul>
+    <li><a href="#Installation">Installation</a></li>
+    <ul>
+      <li><a href="#Pip">Pip</a></li>
+      <li><a href="#Manual_Installation">Manual Installation</a></li>
+    </ul>
+    <li><a href="#Writing_Tasks">Writing Tasks</a></li>
+    <ul>
+      <li><a href="#Project_Attributes">Project Attributes</a></li>
+      <li><a href="#Project_Properties">Project Properties</a></li>
+      <ul>
+        <li><a href="#Setting_properties_programmatically">Setting properties programmatically</a></li>
+        <li><a href="#Setting_properties_on_the_command_line">Setting properties on the command line</a></li>
+      </ul>
+    </ul>
+    <li><a href="#Plugins">Plugins</a></li>
+    <li><a href="#Python_Builds">Python Builds</a></li>
+    <ul>
+      <li><a href="#Building_an_Egg">Building an Egg</a></li>
+      <ul>
+        <li><a href="#Customizing_the_Egg">Customizing the Egg</a></li>
+      </ul>
+    </ul>
+  </ul>
+  <p></p>
+
+  <h1><a name="Introduction"></a>Introduction<a href="#Introduction" class="section_anchor"></a></h1>
+
+  <p>Python Builder is a software build and management tool. Python Builder can be used for a lot of purposes. Most
+    commonly it targets the building and management of software with a strong focus on Python. </p>
+
+  <h2><a name="Building_Python_Projects"></a>Building Python Projects<a href="#Building_Python_Projects"
+                                                                        class="section_anchor"></a></h2>
+
+  <p>Among the capabilities that you can use out of the box when applying Python Builder to your project, you get: </p>
+  <ul>
+    <li>Automatic execution of unit and integration tests on every build</li>
+    <li>Automatic analysis of the code coverage</li>
+    <li>Automatic execution of analysis tools, such as</li>
+    <ul>
+      <li>pylint</li>
+      <li>pychecker</li>
+      <li>snakefood</li>
+      <li>pymetrics</li>
+    </ul>
+    <li>Automatic generation of distutils script (<tt>setup.py</tt>)</li>
+  </ul>
+  <h2><a name="Why_Another_Build_Tool"></a>Why Another Build Tool<a href="#Why_Another_Build_Tool"
+                                                                    class="section_anchor"></a></h2>
+
+  <p>When working on large scale software projects based on Java and Groovy I delved into the build process using tools
+    such as Apache Ant, Apache Maven or Gradle. Although non of these tools is perfect they all provide a powerful and
+    extensible way for build and testing software. </p>
+
+  <p>When focusing on Python I looked for a similar tool and got frustrated by the large number of tools that all match
+    some aspect of the build and test process. Unfortunately, all tools work mostly independent from each other and
+    there was no central point of entry. </p>
+
+  <p>I suddenly found myself writing "build scripts" in Python over and over again using the tools I found out to be
+    usefull. </p>
+
+  <p>Python-Builder was born on the attempt to create a reusable tool that should </p>
+  <ul>
+    <li>Make simple things simple</li>
+    <li>Make hard things as simple as possible</li>
+    <li>Let me use whatever tool I want to integrate</li>
+    <li>Integrate these tools into a common view</li>
+    <li>Let me use Python (which is really great) to write my build files</li>
+  </ul>
+  <h2><a name="Concepts"></a>Concepts<a href="#Concepts" class="section_anchor"></a></h2>
+
+  <p>Python Builder executes build logic that is organized in tasks and actions. </p>
+
+  <p>Tasks are the main building blocks of the build logic. A task is an enclosed piece of build logic to be executed as
+    a single unit. Each task can name a set of other tasks that this task depends on. Python Builder ensures, that a
+    task gets executed only after all of its dependencies have been executed. </p>
+
+  <p>Tasks are plain Python functions. A decorator is used to label a function as a task. Thus, you can structure your
+    code the way you like if you provide a single point of entry to a build step. </p>
+
+  <p>Actions are smaller pieces of build logic then tasks. Actions are bound to the execution of task. Each action names
+    that it needs to be executed <i>before</i> or <i>after</i> a named task. Python Builder will execute the action if
+    and only if the named task is executed, either directly or as a dependency. </p>
+
+  <p>Actions as well as tasks are plain Python functions that are decorated to become an action. </p>
+
+  <p>Both task and action functions can accept parameters. Python Builder supports a set of parameters and knows which
+    one to pass to a function based on the parameter's name. </p>
+
+  <h1><a name="Installation"></a>Installation<a href="#Installation" class="section_anchor"></a></h1>
+
+  <h2><a name="Pip"></a>Pip<a href="#Pip" class="section_anchor"></a></h2>
+
+  <p>If you have pip installed on your machine, you may simply install Python Builder using a command such as: </p>
+  <pre class="prettyprint"><span class="pln">$ sudo pip pybuilder</span></pre>
+  <h2><a name="Manual_Installation"></a>Manual Installation<a href="#Manual_Installation" class="section_anchor"></a>
+  </h2>
+
+  <p>You should download the most recent version of Python Builder from the <a
+      href="https://github.com/pybuilder/pybuilder/downloads" rel="nofollow">downloads page</a>. </p>
+
+  <p>Extract the contents of the tarball to a temporary directory. </p>
+
+  <p>The Python Builder distribution ships with a standard <a href="http://docs.python.org/distutils/index.html"
+                                                              rel="nofollow">distutils</a> <tt>setup.py</tt> script that
+    can be used to perform a local installation. Just type </p>
+  <pre class="prettyprint"><span class="pln">$ python setup</span><span class="pun">.</span><span
+      class="pln">py install</span></pre>
+  <p>Note that you need to have administrative permissions to perform the install to Python's standard directories
+    (Unix/ Linux users may prefix the command with <tt>sudo</tt> if they have the appropriate permissions. </p>
+
+  <h1><a name="Writing_Tasks"></a>Writing Tasks<a href="#Writing_Tasks" class="section_anchor"></a></h1>
+
+  <h2><a name="Project_Attributes"></a>Project Attributes<a href="#Project_Attributes" class="section_anchor"></a></h2>
+
+  <h2><a name="Project_Properties"></a>Project Properties<a href="#Project_Properties" class="section_anchor"></a></h2>
+
+  <h3><a name="Setting_properties_programmatically"></a>Setting properties programmatically<a
+      href="#Setting_properties_programmatically" class="section_anchor"></a></h3>
+
+  <h3><a name="Setting_properties_on_the_command_line"></a>Setting properties on the command line<a
+      href="#Setting_properties_on_the_command_line" class="section_anchor"></a></h3>
+
+  <p>Properties can be set or overridden using command line switches. </p>
+  <pre class="prettyprint"><span class="pln">$ pyb </span><span class="pun">-</span><span class="pln">P spam</span><span
+      class="pun">=</span><span class="str">"spam message"</span></pre>
+  <p>This command sets/ overrides the property with the name <tt>spam</tt> with the value <tt>spam message</tt>. </p>
+
+  <p>Notice that command line switches only allow properties to be set/ overridden using string values. </p>
+
+  <h1><a name="Plugins"></a>Plugins<a href="#Plugins" class="section_anchor"></a></h1>
+
+  <h1><a name="Python_Builds"></a>Python Builds<a href="#Python_Builds" class="section_anchor"></a></h1>
+
+  <h2><a name="Building_an_Egg"></a>Building an Egg<a href="#Building_an_Egg" class="section_anchor"></a></h2>
+
+  <h3><a name="Customizing_the_Egg"></a>Customizing the Egg<a href="#Customizing_the_Egg" class="section_anchor"></a>
+  </h3><h4><a name="Moving_scripts_to_a_nested_directory"></a>Moving scripts to a nested directory<a
+    href="#Moving_scripts_to_a_nested_directory" class="section_anchor"></a></h4>
+
+  <p>By default, executable scripts are located at the egg's root. The <tt>setup.py</tt> contains the bare script names.
+    Sometimes though you may want to move the scripts inside a directory to avoid naming collisions (i.e. with
+    packages). </p>
+
+  <p>The <tt>python.core</tt> and <tt>python.distutils</tt> plugins support the property <tt>dir_dist_scripts</tt> that
+    can name a directory to contain scripts inside the egg. This property is empty by default. Set it to the local name
+    of the directory you want the scripts to be moved to: </p>
+  <pre class="prettyprint"><span class="lit">@init</span><span class="pln"><br></span><span class="kwd">def</span><span
+      class="pln"> initialize </span><span class="pun">(</span><span class="pln">project</span><span
+      class="pun">):</span><span class="pln"><br>&nbsp; &nbsp; project</span><span class="pun">.</span><span
+      class="pln">set_property</span><span class="pun">(</span><span class="str">"dir_dist_scripts"</span><span
+      class="pun">,</span><span class="pln"> </span><span class="str">'scripts'</span><span class="pun">)</span><span
+      class="pln"><br>&nbsp; &nbsp; </span><span class="pun">...</span></pre>
+</div>
