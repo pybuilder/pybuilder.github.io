@@ -1,13 +1,12 @@
 ---
 layout: default
-title: Documentation
+title: Pybuilder Usage Documentation
 ---
 
-# Documentation
-
-This page documents the usage of *pybuilder*.
+# Pybuilder Usage Documentation
 
 **WIP WARNING: This page is work in progress.**
+
 
 ## Introduction
 
@@ -331,7 +330,7 @@ of the directory you want the scripts to be moved to:
     <td>distutils_commands</td>
     <td>list of strings</td>
     <td>sdist, bdist_dump</td>
-    <td>Commands to execute using the generated ```setup.py``` script during ```publish```</td>
+    <td>Commands to execute using the generated <code>setup.py</code> script during <code>publish</code></td>
   </tr>
 
   <tr>
