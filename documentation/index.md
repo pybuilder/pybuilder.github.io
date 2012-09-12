@@ -26,7 +26,7 @@ Among the capabilities that you can use out of the box when applying *pybuilder*
   + pymetrics
   + pep8
   + flake8
-* Automatic generation of distutils script (```setup.py```)
+* Automatic generation of distutils script ```setup.py```
 
 ### Why Another Build Tool
 
@@ -34,13 +34,12 @@ When working on large scale software projects based on Java and Groovy I delved 
 such as Apache Ant, Apache Maven or Gradle. Although non of these tools is perfect they all provide a powerful and
 extensible way for build and testing software.
 
-
 When focusing on Python I looked for a similar tool and got frustrated by the large number of tools that all match
 some aspect of the build and test process. Unfortunately, all tools work mostly independent from each other and
-there was no central point of entry. <br>
+there was no central point of entry.
+
 I suddenly found myself writing "build scripts" in Python over and over again using the tools I found out to be
 usefull.
-
 
 *pybuilder* was born on the attempt to create a reusable tool that should 
 * Make simple things simple
@@ -48,6 +47,7 @@ usefull.
 * Let me use whatever tool I want to integrate
 * Integrate these tools into a common view
 * Let me use Python (which is really great) to write my build files
+
 
 ## Concepts
 
@@ -61,7 +61,7 @@ Tasks are plain Python functions. A decorator is used to label a function as a t
 code the way you like if you provide a single point of entry to a build step.
 
 Actions are smaller pieces of build logic then tasks. Actions are bound to the execution of task. Each action names
-that it needs to be executed <i>before</i> or <i>after</i> a named task. Python Builder will execute the action if
+that it needs to be executed *before* or *after* a named task. Python Builder will execute the action if
 and only if the named task is executed, either directly or as a dependency.
 
 Actions as well as tasks are plain Python functions that are decorated to become an action.
@@ -69,24 +69,28 @@ Actions as well as tasks are plain Python functions that are decorated to become
 Both task and action functions can accept parameters. *pybuilder* supports a set of parameters and knows which
 one to pass to a function based on the parameter's name.
 
+
 ## Installation
 
-### Pip/ Easyinstall
+### Pip and Easy Install
 
-If you have pip or easyinstall installed on your machine, you may simply install *pybuilder* using a command such as: 
+If you have pip or easy_install available on your machine, you may simply install *pybuilder* using a command such as: 
 ```$ sudo pip pybuilder```
+
+Of course you can install pybuilder into a [virtual environment](http://pypi.python.org/pypi/virtualenv).
+
 
 ### Manual Installation
 
-Please download the most recent version of *pybuilder* at
+Please download the most recent version of *pybuilder* from the
 [downloads page](https://github.com/pybuilder/pybuilder/downloads).
 
-
-The *pybuilder* distribution ships with a standard [distutils](http://docs.python.org/distutils/index.html) ```setup.py```script that can
-be used to perform a local installation. Just type ```$ python setup.py install```
+The *pybuilder* distribution ships with a standard [distutils](http://docs.python.org/distutils/index.html) ```setup.py```
+script which can be used to perform a local installation. Just type ```$ python setup.py install```
 
 Note that you need to have administrative permissions to perform the install to Python's standard directories
-(Unix/ Linux users may prefix the command with ```sudo``` if they have the appropriate permissions.
+(Unix/Linux users may prefix the command with ```sudo``` if they have the appropriate permissions.
+
 
 ## Writing Tasks
 
@@ -102,7 +106,9 @@ Writing a task is easy. You just create a function and decorate with the ```@tas
   </code>
 </pre>
 
+
 ### Dependency Injecting
+
 *pybuilder* supports dependency injection for tasks based on parameters. The following parameters can be used to
 receive components:
 <dl>
@@ -139,13 +145,13 @@ This command sets/ overrides the property with the name ```spam``` with the valu
 
 Notice that command line switches only allow properties to be set/ overridden using string values.
 
+
 ## Plugins
 
 ### Running Python Unittests
 
-*pybuilder* ships with a plugin to execute unittests written using the ```unittest``` module during
-the build. Use the ```python.unittest``` plugin to enable unittest support.
-
+*pybuilder* ships with a plugin to execute unittests written using [Python's unittest module](http://docs.python.org/library/unittest.html)
+during the build. Use the ```python.unittest``` plugin to enable unittest support.
 
 The plugin executes all test cases found in modules ending with ```_tests.py``` in the directory
 ```src/unittest/python```.
@@ -173,6 +179,7 @@ The plugin executes all test cases found in modules ending with ```_tests.py``` 
     <td>Suffix used to filter files that should be executed as tests,</td>
   </tr>
 </table>
+
 
 ### Measuring unittest coverage
 
@@ -225,6 +232,7 @@ Use the ```python.coverage``` module to activate coverage.
   </tr>
 </table>
 
+
 ### Running Python Integration Tests
 
 *pybuilder* ships with a plugin to run integration tests written in Python. The plugin is named
@@ -233,6 +241,7 @@ Use the ```python.coverage``` module to activate coverage.
 
 Every module is executed as a Python module. The Python path contains the integration test directory as well as
 the production source directory.
+
 
 #### Properties
 <table class="table table-striped">
@@ -271,12 +280,12 @@ the production source directory.
   </tr>
 </table>
 
+
 ### Building a Python Egg
 
-pybuild ships a plugin that generates and executes setup.py files using with distutils or setuptools (distribute will
+*pybuilder* ships a plugin that generates and executes setup.py files using with distutils or setuptools (distribute will
 be supported in future releases). In order to generate a ```setup.py``` file use the ```python.distutils```
 plugin.
-
 
 The distutils plugin will consider a lot of the project's attributes, i.e.
 * name
@@ -291,8 +300,8 @@ The distutils plugin will consider a lot of the project's attributes, i.e.
 #### Moving scripts to a nested directory
 
 By default, executable scripts are located at the egg's root. The ```setup.py``` contains the bare script names.
-  Sometimes though you may want to move the scripts inside a directory to avoid naming collisions (i.e. with
-  packages). 
+Sometimes though you may want to move the scripts inside a directory to avoid naming collisions (i.e. with
+packages). 
 
 The ```python.core``` and ```python.distutils``` plugins support the property ```dir_dist_scripts``` that
 can name a directory to contain scripts inside the egg. This property is empty by default. Set it to the local name
@@ -303,9 +312,11 @@ of the directory you want the scripts to be moved to:
     @init
     def initialize (project):
         project.set_property("dir_dist_scripts", 'scripts')
+
     ...
   </code>
 </pre>
+
 
 #### Properties
 <table class="table table-striped">
@@ -338,3 +349,4 @@ of the directory you want the scripts to be moved to:
     <td>Use setuptools instead of distutils</td>
   </tr>
 </table>
+
