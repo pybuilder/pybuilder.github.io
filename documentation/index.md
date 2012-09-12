@@ -73,8 +73,8 @@ one to pass to a function based on the parameter's name.
 
 ### Pip and Easy Install
 
-If you have pip or easy_install available on your machine, you may simply install *pybuilder* using a command such as: 
-```$ sudo pip pybuilder```
+If you have [pip](http://pypi.python.org/pypi/pip) or [easy_install](http://packages.python.org/distribute/easy_install.html)
+available on your machine, you may simply install *pybuilder* using a command such as: ```$ sudo pip pybuilder```
 
 Of course you can install pybuilder into a [virtual environment](http://pypi.python.org/pypi/virtualenv).
 
