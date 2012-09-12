@@ -1,20 +1,20 @@
-<h1>Manual</h1>
+<h1>Documentation</h1>
 
 <p>
-  This page documents the usage of pybuilder.
+  This page documents the usage of <em>pybuilder</em>.
 </p>
 
 <p><strong><i>WIP WARNING: This page is work in progress.</i></strong></p>
 <h2>Introduction</h2>
 
 <p>
-  pybuilder is a software build tool. pybuilder can be used for a lot of purposes. Most
+  <em>pybuilder</em> is a software build tool. <em>pybuilder</em> can be used for a lot of purposes. Most
   commonly it targets the "building" and management of software with a strong focus on Python.
 </p>
 
 <h3>Building Python Projects</h3>
 
-<p>Among the capabilities that you can use out of the box when applying pybuilder to your project, you get: </p>
+<p>Among the capabilities that you can use out of the box when applying <em>pybuilder</em> to your project, you get: </p>
 <ul>
   <li>Automatic execution of unit and integration tests on every build</li>
   <li>Automatic analysis of the code coverage</li>
@@ -45,7 +45,7 @@
   usefull.
 </p>
 
-<p>pybuilder was born on the attempt to create a reusable tool that should </p>
+<p><em>pybuilder</em> was born on the attempt to create a reusable tool that should </p>
 <ul>
   <li>Make simple things simple</li>
   <li>Make hard things as simple as possible</li>
@@ -56,10 +56,10 @@
 
 <h2>Concepts</h2>
 
-<p>pybuilder executes build logic that is organized in tasks and actions.</p>
+<p><em>pybuilder</em> executes build logic that is organized in tasks and actions.</p>
 
 <p>Tasks are the main building blocks of the build logic. A task is an enclosed piece of build logic to be executed as
-  a single unit. Each task can name a set of other tasks that this task depends on. pybuilder ensures, that a
+  a single unit. Each task can name a set of other tasks that this task depends on. <em>pybuilder</em> ensures, that a
   task gets executed only after all of its dependencies have been executed.</p>
 
 <p>Tasks are plain Python functions. A decorator is used to label a function as a task. Thus, you can structure your
@@ -71,25 +71,25 @@
 
 <p>Actions as well as tasks are plain Python functions that are decorated to become an action.</p>
 
-<p>Both task and action functions can accept parameters. pybuilder supports a set of parameters and knows which
+<p>Both task and action functions can accept parameters. <em>pybuilder</em> supports a set of parameters and knows which
   one to pass to a function based on the parameter's name.</p>
 
 <h2>Installation</h2>
 
 <h3>Pip/ Easyinstall</h3>
 
-<p>If you have pip or easyinstall installed on your machine, you may simply install pybuilder using a command such
+<p>If you have pip or easyinstall installed on your machine, you may simply install <em>pybuilder</em> using a command such
   as: </p>
 <pre>$ sudo pip pybuilder</pre>
 
 <h3>Manual Installation</h3>
 
 <p>
-  You should download the most recent version of pybuilder from the
+  You should download the most recent version of <em>pybuilder</em> from the
   <a href="https://github.com/pybuilder/pybuilder/downloads">downloads page</a>.
 </p>
 
-<p>The pybuilder distribution ships with a standard <a href="http://docs.python.org/distutils/index.html"
+<p>The <em>pybuilder</em> distribution ships with a standard <a href="http://docs.python.org/distutils/index.html"
                                                        rel="nofollow">distutils</a> <code>setup.py</code>script that can
   be used to perform a local installation. Just type
 </p>
@@ -111,7 +111,7 @@
 </pre>
 
 <h3>Dependency Injecting</h3>
-<p>pybuilder supports dependency injection for tasks based on parameters. The following parameters can be used to
+<p><em>pybuilder</em> supports dependency injection for tasks based on parameters. The following parameters can be used to
 receive components:</p>
 <dl>
   <dt>logger</dt>
@@ -143,10 +143,160 @@ receive components:</p>
 <p>Notice that command line switches only allow properties to be set/ overridden using string values.</p>
 
 <h2>Plugins</h2>
-<h3>Python Plugins</h3>
-<h4>Building an Egg</h4>    
 
-<h5>Moving scripts to a nested directory</h5>
+<h3>Running Python Unittests</h3>
+<p>
+  <em>pybuilder</em> ships with a plugin to execute unittests written using the <code>unittest</code> module during
+  the build. Use the <code>python.unittest</code> plugin to enable unittest support.
+</p>
+
+<p>
+  The plugin executes all test cases found in modules ending with <code>_tests.py</code> in the directory
+  <code>src/unittest/python</code>.
+</p>
+
+<h4>Properties</h4>
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>dir_source_unittest_python</td>
+    <td>string</td>
+    <td>src/unittest/python</td>
+    <td>Directory where unittest modules are located</td>
+  </tr>
+
+  <tr>
+    <td>unittest_file_suffix</td>
+    <td>string</td>
+    <td>_tests.py</td>
+    <td>Suffix used to filter files that should be executed as tests,</td>
+  </tr>
+</table>
+
+<h3>Measuring unittest coverage</h3>
+<p>
+  <em>pybuilder</em> adds support to measure the coverage of your unittest using the <code>coverage</code> module.
+  Use the <code>python.coverage</code> module to activate coverage.
+</p>
+
+<h4>Properties</h4>
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>coverage_threshold_warn</td>
+    <td>integer</td>
+    <td>70</td>
+    <td>Warn if the overall coverage drops below this threshold.</td>
+  </tr>
+
+  <tr>
+    <td>coverage_break_build</td>
+    <td>bool</td>
+    <td>True</td>
+    <td>Break the build (i.e. fail it) if the coverage is below the given threshold.</td>
+  </tr>
+
+  <tr>
+    <td>coverage_reload_modules</td>
+    <td>bool</td>
+    <td>True</td>
+    <td>Reload modules during coverage to also count definition lines.</td>
+  </tr>
+
+  <tr>
+    <td>coverage_fork</td>
+    <td>bool</td>
+    <td>False</td>
+    <td>Run coverage in a different process.</td>
+  </tr>
+
+  <tr>
+    <td>coverage_exceptions</td>
+    <td>list of strings</td>
+    <td>empty</td>
+    <td>List of package names to exclude from coverage analyzation.</td>
+  </tr>
+</table>
+
+<h3>Running Python Integration Tests</h3>
+<p>
+  <em>pybuilder</em> ships with a plugin to run integration tests written in Python. The plugin is named
+  <code>python.integrationtest</code>. It executes all python modules named <code>*_tests.py</code> in the
+  <code>src/integrationtest/python</code> directory.
+</p>
+<p>
+  Every module is executed as a Python module. The Python path contains the integration test directory as well as
+  the production source directory.
+</p>
+<h4>Properties</h4>
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>dir_source_integrationtest_python</td>
+    <td>string</td>
+    <td>src/integrationtest/python</td>
+    <td>Directory where integration test modules are located</td>
+  </tr>
+
+  <tr>
+    <td>integrationtest_file_suffix</td>
+    <td>string</td>
+    <td>_tests.py</td>
+    <td>Suffix used to filter files that should be executed as tests,</td>
+  </tr>
+
+  <tr>
+    <td>integrationtest_additional_environment</td>
+    <td>map</td>
+    <td>empty</td>
+    <td>Map containing additional environment variables used when executing the integration tests.</td>
+  </tr>
+
+  <tr>
+    <td>integrationtest_inherit_environment</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Inherit the current environment to integration tests.</td>
+  </tr>
+</table>
+
+<h3>Building a Python Egg</h3>
+<p>
+  pybuild ships a plugin that generates and executes setup.py files using with distutils or setuptools (distribute will
+  be supported in future releases). In order to generate a <code>setup.py</code> file use the <code>python.distutils</code>
+  plugin.
+</p>
+
+<p>
+  The distutils plugin will consider a lot of the project's attributes, i.e.
+</p>
+<ul>
+  <li>name</li>
+  <li>version</li>
+  <li>summary</li>
+  <li>description</li>
+  <li>author</li>
+  <li>license</li>
+  <li>url</li>
+</ul>
+
+<h4>Moving scripts to a nested directory</h4>
 
 <p>By default, executable scripts are located at the egg's root. The <code>setup.py</code> contains the bare script names.
   Sometimes though you may want to move the scripts inside a directory to avoid naming collisions (i.e. with
@@ -161,3 +311,35 @@ def initialize (project):
     project.set_property("dir_dist_scripts", 'scripts')
     ...
 </pre>
+
+<h4>Properties</h4>
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>distutils_commands</td>
+    <td>list of strings</td>
+    <td>sdist, bdist_dump</td>
+    <td>Commands to execute using the generated <code>setup.py</code> script during <code>publish</code></td>
+  </tr>
+
+  <tr>
+    <td>distutils_classifiers</td>
+    <td>list of strings</td>
+    <td>Development Status :: 3 - Alpha<br>
+        Programming Language :: Python</td>
+    <td>Classifiers describing the project; see <a href="http://pypi.python.org/pypi?%3Aaction=list_classifiers">http://pypi.python.org/pypi?%3Aaction=list_classifiers</a></td>
+  </tr>
+
+  <tr>
+    <td>distutils_use_setuptools</td>
+    <td>boolean</td>
+    <td>True</td>
+    <td>Use setuptools instead of distutils</td>
+  </tr>
+</table>
