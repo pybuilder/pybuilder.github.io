@@ -1,72 +1,90 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="pybuilder">
-<head>
-  <meta charset="utf-8">
-  <title>pybuilder - an extensible, easy to use continuous build tool for Python</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="pybuilder is an extendible, easy to use continuous build tool for Python.">
-  <meta name="author" content="pybuilder community">
-  <meta name="keywords" content="python, continuous integration, build tool, automation">
+---
+layout: default
+title: pybuilder - an extensible, easy to use continuous build tool for Python 
+---
 
-  <link href="css/bootstrap.css" rel="stylesheet">
-  <style type="text/css">
-    body {
-      padding-top: 60px;
-      padding-bottom: 40px;
-    }
-  </style>
-  <link href="css/bootstrap-responsive.css" rel="stylesheet">
-</head>
+<div class="hero-unit">
+  <h1>pybuilder, hooray!</h1>
 
-<body>
+  <p>
+    An extensible, easy to use continuous build tool for Python.
+    pybuilder is a continuous build tool for multiple languages.
+    It primarily targets Python projects but due to its extendible
+    nature it can be used for other languages as well.
+    pybuilder features a powerful yet easy to use plugin mechanism which
+    allows programmers to extend the tool in an unlimited way.
+  </p>
 
-<div class="navbar navbar-inverse navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-      <a class="brand" href="#">PyBuilder</a>
+  <p><a href="https://github.com/pybuilder/pybuilder" class="btn btn-primary btn-large">pybuilder at
+    github &raquo;</a></p>
+</div>
 
-      <div class="nav-collapse collapse">
-        <ul class="nav">
-          <li><a href="https://github.com/pybuilder/pybuilder/downloads">Download</a></li>
-          <li><a href="#documentation">Documentation</a></li>
-          <li><a href="#releasenotes">Releasenotes</a></li>
-        </ul>
-      </div>
-    </div>
+<div class="row">
+  <div class="span4">
+    <h2>Installation</h2>
+
+    <p>Using pip Pybuilder is easy to install:</p>
+    <code>$ pip install pybuilder</code>
+  </div>
+
+  <div class="span4">
+    <h2>Supports</h2>
+
+    <p>
+      pybuilder supports a lot of tools typically used when building a Python application, such as unittest, coverage,
+      pychecker, pylint and setuptools.
+    </p>
+  </div>
+
+  <div class="span4">
+    <h2>Runs on Python 3.2</h2>
+
+    <p>pybuilder runs on Python 2.6 to 3.2. Every checkin is tested on versions 2.6, 2.7 and 3.2 on
+      <a href="http://travis-ci.org/#!/pybuilder/pybuilder"><img
+          src="https://secure.travis-ci.org/pybuilder/pybuilder.png?branch=master"/></a></p>
   </div>
 </div>
 
-<div class="container">
-  <div ng-view></div>
-</div>
+<div class="row">
+  <div class="span8">
+    <h2>Get started</h2>
 
-<footer style="padding-left: 2em;">
-  <hr>
-  <div class="container">
-    <div class="offset1 span3">
-      &copy; pybuilder Team 2011-2012
-    </div>
+    <p>To get started with a simple Python project that has unittests create a file <code>build.py</code> with the
+      following content:</p>
 
-    <div class="span3">
-      <a href="https://github.com/pybuilder/pybuilder">Sourcecode on github</a><br>
-      <a href="http://pypi.python.org/pypi/pybuilder/">Pypi</a><br>
-      <a href="http://code.google.com/p/python-builder">Old Google Code pages</a><br>
+      <pre>
+from pythonbuilder.core import use_plugin
+
+use_plugin("python.core")
+use_plugin("python.unittest")
+use_plugin("python.coverage")
+use_plugin("python.distutils")
+
+default_task = "publish"</pre>
+
+    <p>Create a directory <code>src/main/python</code> and put all your Python code there. Create a directory
+      <code>src/unittest/python</code> and put all your unittest modules there, each named <code>*_tests.py</code>.</p>
+
+    <p>In the root directory, run <code>pyb</code>:</p>
+    <pre>$ pyb</pre>
+
+    <p>Try it yourself with the full source: <a
+        href="https://github.com/pybuilder/pybuilder/tree/master/samples/simple-python-app" class="btn" href="#">View
+      example &raquo;</a></p>
+  </div>
+
+  <div class="span4">
+    <div class="well sidebar-nav">
+      <ul class="nav nav-list">
+        <li class="nav-header">Usefull Links</li>
+        <li><a href="https://github.com/pybuilder/pybuilder/downloads">Downloads</a></li>
+        <li><a href="#/documentation">Documentation</a></li>
+        <li><a href="#/releasenotes">Release Notes</a></li>
+        <li><a href="https://github.com/pybuilder/pybuilder">Source Code</a></li>
+        <li class="nav-header"></li>
+        <li><a href="http://pypi.python.org/pypi/pybuilder/">Pypi</a></li>
+        <li><a href="http://code.google.com/p/python-builder">Old (and outdated) Google Code Page</a></li>
+      </ul>
     </div>
   </div>
-</footer>
-
-<a href="https://github.com/pybuilder/pybuilder"><img style="z-index: 99999; position: fixed; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
-
-<script src="js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
-
-<script src="js/application.js"></script>
-
-</body>
-</html>
-
+</div>
