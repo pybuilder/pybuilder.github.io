@@ -16,7 +16,7 @@ commonly it targets the "building" and management of software with a strong focu
 
 ### Building Python Projects
 
-Among the capabilities that you can use out of the box when applying *pybuilder* to your project, you get: 
+Among the capabilities which can be used out of the box when applying *pybuilder* to your project, you get: 
 * Automatic execution of unit and integration tests on every build
 * Automatic analysis of the code coverage
 * Automatic execution of analysis tools, such as
