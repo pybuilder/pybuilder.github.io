@@ -78,7 +78,7 @@ If you have pip or easyinstall installed on your machine, you may simply install
 
 ### Manual Installation
 
-You should download the most recent version of *pybuilder* from the
+Please download the most recent version of *pybuilder* at
 [downloads page](https://github.com/pybuilder/pybuilder/downloads).
 
 
