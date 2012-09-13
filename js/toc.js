@@ -1,4 +1,4 @@
-function makeTableOfContents(elementToStart, container, start, depth) {
+function makeTableOfContents(elementToStart, container, start, depth, callback) {
     if (!start) {
         start = 2;
     }
@@ -36,7 +36,11 @@ function makeTableOfContents(elementToStart, container, start, depth) {
         var label = element.text();
         var id = element.attr("id");
         var li = jQuery("<li>");
-        jQuery("<a>").appendTo(li).attr("href", "#" + id).text(label);
+        var a = jQuery("<a>").appendTo(li).attr("href", "#" + id).text(label);
+
+        if (callback) {
+            callback(a);
+        }
 
         li.appendTo(currentList)
     });

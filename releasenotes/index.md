@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: documentation
 title: pybuilder - an extensible, easy to use continuous build tool for Python
 ---
 

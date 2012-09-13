@@ -13,10 +13,9 @@
 
 <div class="container">
   <div class="row">
-    <div class="span3 bs-docs-sidebar" id="toc">
-      <h2>Navigation</h2>
-    </div>
     <div class="span9" id="content">{{ content }}</div>
+    <div class="span3 bs-docs-sidebar" id="toc">
+    </div>
   </div>
 </div>
 
@@ -24,7 +23,7 @@
 <script src="/js/toc.js"></script>
 <script>
   jQuery(document).ready(function () {
-    makeTableOfContents("#content", "#toc", 2, 3); //.addClass("nav nav-list bs-docs-sidenav affix");
+    makeTableOfContents("#content", "#toc", 2, 3).addClass("nav nav-list affix");
   });
 </script>
 </body>
