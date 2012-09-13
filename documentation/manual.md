@@ -74,13 +74,11 @@ one to pass to a function based on the parameter's name.
 Writing a task is easy. You just create a function and decorate with the ```@task``` decorator:
 
 <pre>
-  <code>
-    from pythonbuilder.core import task
+from pythonbuilder.core import task
 
-    @task
-    def say_hello ():
-        print "Hello, pybuilder"
-  </code>
+@task
+def say_hello ():
+    print "Hello, pybuilder"
 </pre>
 
 
@@ -99,13 +97,11 @@ receive components:
 Thus we can rewrite the task above to use the logger:
 
 <pre>
-  <code>
-    from pythonbuilder.core import task
-    @task
+from pythonbuilder.core import task
+@task
 
-    def say_hello (logger):
-       logger.info("Hello, pybuilder")
-  </code>
+def say_hello (logger):
+   logger.info("Hello, pybuilder")
 </pre>
 
 
@@ -116,7 +112,8 @@ Thus we can rewrite the task above to use the logger:
 #### Setting Properties from the command line
 
 Properties can be set or overridden using command line switches. 
-```$ pyb -P spam="spam message"```
+
+<pre>$ pyb -P spam="spam message"</pre>
 
 This command sets/ overrides the property with the name ```spam``` with the value ```spam message```.
 

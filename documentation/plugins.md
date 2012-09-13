@@ -169,13 +169,11 @@ can name a directory to contain scripts inside the egg. This property is empty b
 of the directory you want the scripts to be moved to:
 
 <pre>
-  <code>
-    @init
-    def initialize (project):
-        project.set_property("dir_dist_scripts", 'scripts')
+@init
+def initialize (project):
+    project.set_property("dir_dist_scripts", 'scripts')
 
-    ...
-  </code>
+...
 </pre>
 
 
