@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="pybuilder">
+<head>
+  <meta charset="utf-8">
+  <title>{{ page.title }}</title>
+
+  {% include layout/metaAndStyles.html %}
+</head>
+
+<body>
+
+{% include layout/header.html %}
+
+<div class="container">
+  <div class="row">
+    <div class="span3 bs-docs-sidebar" id="toc">
+      <h2>Navigation</h2>
+    </div>
+    <div class="span9" id="content">{{ content }}</div>
+  </div>
+</div>
+
+{% include layout/footer.html %}
+<script src="/js/toc.js"></script>
+<script>
+  jQuery(document).ready(function () {
+    makeTableOfContents("#content", "#toc", 2, 3); //.addClass("nav nav-list bs-docs-sidenav affix");
+  });
+</script>
+</body>
+</html>
+

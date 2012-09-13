@@ -1,151 +1,13 @@
 ---
-layout: default
+layout: documentation
 title: Pybuilder Usage Documentation
 ---
 
-# Pybuilder Usage Documentation
+# Plugins
 
-**WIP WARNING: This page is work in progress.**
+This page documents the plugins that ship with the pybuilder distribution.
 
-
-## Introduction
-
-*pybuilder* is a software build tool. *pybuilder* can be used for a lot of purposes. Most
-commonly it targets the "building" and management of software with a strong focus on Python.
-
-
-### Building Python Projects
-
-Among the capabilities which can be used out of the box when applying *pybuilder* to your project, you get: 
-* Automatic execution of unit and integration tests on every build
-* Automatic analysis of the code coverage
-* Automatic execution of analysis tools, such as
-  + pylint
-  + pychecker
-  + pymetrics
-  + pep8
-  + flake8
-* Automatic generation of distutils script ```setup.py```
-
-### Why Another Build Tool
-
-When working on large scale software projects based on Java and Groovy I delved into the build process using tools
-such as Apache Ant, Apache Maven or Gradle. Although non of these tools is perfect they all provide a powerful and
-extensible way for build and testing software.
-
-When focusing on Python I looked for a similar tool and got frustrated by the large number of tools that all match
-some aspect of the build and test process. Unfortunately, all tools work mostly independent from each other and
-there was no central point of entry.
-
-I suddenly found myself writing "build scripts" in Python over and over again using the tools I found out to be
-usefull.
-
-*pybuilder* was born on the attempt to create a reusable tool that should 
-* Make simple things simple
-* Make hard things as simple as possible
-* Let me use whatever tool I want to integrate
-* Integrate these tools into a common view
-* Let me use Python (which is really great) to write my build files
-
-
-## Concepts
-
-*pybuilder* executes build logic that is organized in tasks and actions.
-
-Tasks are the main building blocks of the build logic. A task is an enclosed piece of build logic to be executed as
-a single unit. Each task can name a set of other tasks that this task depends on. *pybuilder* ensures, that a
-task gets executed only after all of its dependencies have been executed.
-
-Tasks are plain Python functions. A decorator is used to label a function as a task. Thus, you can structure your
-code the way you like if you provide a single point of entry to a build step.
-
-Actions are smaller pieces of build logic then tasks. Actions are bound to the execution of task. Each action names
-that it needs to be executed *before* or *after* a named task. Python Builder will execute the action if
-and only if the named task is executed, either directly or as a dependency.
-
-Actions as well as tasks are plain Python functions that are decorated to become an action.
-
-Both task and action functions can accept parameters. *pybuilder* supports a set of parameters and knows which
-one to pass to a function based on the parameter's name.
-
-
-## Installation
-
-### Pip and Easy Install
-
-If you have [pip](http://pypi.python.org/pypi/pip) or [easy_install](http://packages.python.org/distribute/easy_install.html)
-available on your machine, you may simply install *pybuilder* using a command such as: ```$ sudo pip pybuilder```
-
-Of course you can install pybuilder into a [virtual environment](http://pypi.python.org/pypi/virtualenv).
-
-
-### Manual Installation
-
-Please download the most recent version of *pybuilder* from the
-[downloads page](https://github.com/pybuilder/pybuilder/downloads).
-
-The *pybuilder* distribution ships with a standard [distutils](http://docs.python.org/distutils/index.html) ```setup.py```
-script which can be used to perform a local installation. Just type ```$ python setup.py install```
-
-Note that you need to have administrative permissions to perform the install to Python's standard directories
-(Unix/Linux users may prefix the command with ```sudo``` if they have the appropriate permissions.
-
-
-## Writing Tasks
-
-Writing a task is easy. You just create a function and decorate with the ```@task``` decorator:
-
-<pre>
-  <code>
-    from pythonbuilder.core import task
-
-    @task
-    def say_hello ():
-        print "Hello, pybuilder"
-  </code>
-</pre>
-
-
-### Dependency Injecting
-
-*pybuilder* supports dependency injection for tasks based on parameters. The following parameters can be used to
-receive components:
-<dl>
-  <dt>logger</dt>
-  <dd>A logger instance which can be used to issue messages to the user.</dd>
-  <dt>project</dt>
-  <dd>An instance of the project that is currently being built.</dd>
-</dl>
-
-
-Thus we can rewrite the task above to use the logger:
-
-<pre>
-  <code>
-    from pythonbuilder.core import task
-    @task
-
-    def say_hello (logger):
-       logger.info("Hello, pybuilder")
-  </code>
-</pre>
-
-
-### Project Attributes
-### Project Properties
-
-#### Setting Properties from tasks
-#### Setting Properties from the command line
-
-Properties can be set or overridden using command line switches. 
-```$ pyb -P spam="spam message"```
-
-This command sets/ overrides the property with the name ```spam``` with the value ```spam message```.
-
-Notice that command line switches only allow properties to be set/ overridden using string values.
-
-
-## Plugins
+## Python
 
 ### Running Python Unittests
 
@@ -300,7 +162,7 @@ The distutils plugin will consider a lot of the project's attributes, i.e.
 
 By default, executable scripts are located at the egg's root. The ```setup.py``` contains the bare script names.
 Sometimes though you may want to move the scripts inside a directory to avoid naming collisions (i.e. with
-packages). 
+packages).
 
 The ```python.core``` and ```python.distutils``` plugins support the property ```dir_dist_scripts``` that
 can name a directory to contain scripts inside the egg. This property is empty by default. Set it to the local name
