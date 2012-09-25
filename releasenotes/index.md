@@ -5,6 +5,24 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+
+## Version 0.8.3
+
+Added `pyfix_unittest` plugin that executes unittests written using [pyfix](https://github.com/pyclectic/pyfix).
+
+## Version 0.8.2
+
+Bug fix: Fixed version "operator" when handling dependencies in distutils.
+
+## Version 0.8.1
+
+Bug fix: Reading default tasks after initializers have been executed.
+
+## Version 0.8.0
+
+Initial release of environments.
+
+
 ## Version 0.7.6
 
 Added two properties that allow the customization of the environment used for integration tests.
