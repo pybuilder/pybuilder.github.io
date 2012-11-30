@@ -73,13 +73,13 @@ one to pass to a function based on the parameter's name.
 
 Writing a task is easy. You just create a function and decorate with the ```@task``` decorator:
 
-```python
+<pre>
 from pythonbuilder.core import task
 
 @task
 def say_hello ():
     print "Hello, pybuilder"
-```
+</pre>
 
 
 ### Dependency Injecting
@@ -96,13 +96,13 @@ receive components:
 
 Thus we can rewrite the task above to use the logger:
 
-```python
+<pre>
 from pythonbuilder.core import task
 
 @task
 def say_hello (logger):
    logger.info("Hello, pybuilder")
-```
+</pre>
 
 
 ### Project Attributes
