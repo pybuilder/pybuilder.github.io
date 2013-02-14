@@ -5,6 +5,10 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.9.2
+
+* Verbose output for report generating plugins. Pull request by [Vanuan](https://github.com/Vanuan).
+
 ## Version 0.9.1
 
 * Added several new options for the `install_dependencies` plugin to customize the `pip` behaviour.
