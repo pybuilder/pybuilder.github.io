@@ -5,6 +5,34 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.9.8
+
+* option "-t" list of tasks: improved layout
+* django plugin: task djang_run_server is now ready for django 1.5
+* django plugin bug fix: import django only when executing task
+
+## Version 0.9.7
+
+* the project itself now has a property "verbose". It's possible to set the project verbose by default via: project.set_property("verbose", True)
+* install_dependencies plugin has verbose output now
+
+## Version 0.9.6
+
+* integrationtest plugin: prints output and error files if verbose option enabled
+
+## Version 0.9.5
+
+* pep8 and flake8 define their own dependencies
+
+## Version 0.9.4
+
+* pybuilder.VERSION is now pybuilder.__version__
+
+## Version 0.9.3
+
+* created -v/--verbose option for "pyb"
+* flake8 plugin offers verbose option
+
 ## Version 0.9.2
 
 * Verbose output for report generating plugins. Pull request by [Vanuan](https://github.com/Vanuan).
