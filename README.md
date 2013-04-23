@@ -1,6 +1,4 @@
-# Website of pybuilder
-
-Please visit [pybuilder.github.com](http://pybuilder.github.com)
+# Please visit [pybuilder.github.io](http://pybuilder.github.io)
 
 
 **Install [jekyll](https://github.com/mojombo/jekyll)**
