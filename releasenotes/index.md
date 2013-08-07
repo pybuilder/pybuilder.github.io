@@ -26,7 +26,7 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 ## Version 0.9.4
 
-* pybuilder.VERSION is now pybuilder.__version__
+* `pybuilder.VERSION` is now `pybuilder.__version__`
 
 ## Version 0.9.3
 
