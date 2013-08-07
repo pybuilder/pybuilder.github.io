@@ -11,7 +11,7 @@ sudo gem install jekyll
 
 **Start local server**
 ```bash
-jekyll --server --auto
+jekyll serve --watch --trace
 ```
 
 Browse to [localhost:4000](http://localhost:4000)
