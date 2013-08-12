@@ -13,14 +13,27 @@ using a command such as:
 
 <pre>$ pip install pybuilder</pre>
 
-## Manual Installation
+## Building from source
 
-Please download the most recent version of *pybuilder* from the
-[downloads page](https://github.com/pybuilder/pybuilder/downloads).
+Please checkout the most recent version of *pybuilder* first :
 
-The *pybuilder* distribution ships with a standard [distutils](http://docs.python.org/distutils/index.html) ```setup.py```
-script which can be used to perform a local installation. Just type
+<pre>
+git clone https://github.com/pybuilder/pybuilder
+cd pybuilder
+</pre>
 
+Now to the bootstrapping part : install the dependencies and build pybuilder... using pybuilder!
+
+<pre>
+./bootstrap install_dependencies
+./bootstrap
+</pre>
+
+Congratulations, you just built a binary distribution!
+
+You can now head to ```target/dist/pybuilder-$VERSION```
+and use the [distutils](http://docs.python.org/distutils/index.html) ```setup.py``` installation script.
+Just type
 <pre>$ python setup.py install</pre>
 
 Note that you need to have administrative permissions to perform the install to Python's standard directories
