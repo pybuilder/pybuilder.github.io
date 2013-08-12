@@ -244,7 +244,7 @@ Again ```target``` as well as ```reports``` are configurable but we won't change
 
 ## Measuring Test Coverage
 
-When writing tests, it is important to know which parts if of the code are covered by automatic tests and which don't.
+When writing tests, it is important to know which parts if of the code are covered by automatic tests and which aren't.
 For Python, there exists a bunch of tools to calculate the coverage. One of these tools that is integrated with
 *pybuilder* is [coverage](http://nedbatchelder.com/code/coverage/). Python-Coverage measures the line coverage
 (as opposed to branch coverage).
