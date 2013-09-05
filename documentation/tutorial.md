@@ -10,8 +10,15 @@ hello world Python program.
 
 ## Setting up the Stage
 
-*pybuilder* is configured (or programmed) using a Python file that is named ```build.py```. To start, create an empty 
+*pybuilder* is configured (or programmed) using a Python file that is named ```build.py```. To start, create an empty
 directory ```helloworld``` as well as an empty file ```build.py```.
+We recommend installing the pybuilder in a virtual environment :
+
+<pre>
+$ virtualenv venv
+$ source venv/bin/activate
+$ pip install pybuilder
+</pre>
 
 Run ```pyb``` in this directory. This is what you should get:
 
@@ -50,7 +57,7 @@ def helloworld (out):
 Now we need to tell pyb that we want to build a Python project. Fortunately, *pybuilder* comes with a first class Python support, so telling it to build a Python project is dead easy. Modify your ```build.py``` as follows:
 
 <pre>
-from pythonbuilder.core import use_plugin
+from pybuilder.core import use_plugin
 
 use_plugin("python.core")
 
@@ -83,8 +90,52 @@ BUILD SUCCESSFUL
 </pre>
 
 Ok, now everything seems to work, but that doesn't really help us. That's ok, because this was just the foundation we are going to extend.
+Usually python project will want to deliver a runnable entry-point file - we'll see how to do that in the next section.
 
-*TODO: Add a script to src/main/scripts*
+## Adding a runnable script
+
+Adding scripts is as simple as writing them and putting them in the directory ```src/main/scripts```.
+Note that this path is configurable, but let us stick with the conventions here.
+
+We add a file ```src/main/scripts/hello-pybuilder``` with these contents :
+
+<pre>
+#!/usr/bin/env python
+import sys
+
+sys.stdout.write('Hello from my script!\n')
+</pre>
+
+
+Now we can run the pybuilder again :
+
+<pre>
+$ pyb
+PYBUILDER Version 0.9.8
+Build started at 2013-08-12 08:54:09
+------------------------------------------------------------
+
+[INFO]  Building helloworld version 1.0-SNAPSHOT
+[INFO]  Executing build in /home/alex/workspaces/python/python-builder/samples/helloworld
+[INFO]  Going to execute task publish
+[INFO]  Building distribution in /home/alex/workspaces/python/python-builder/samples/helloworld/target/dist/helloworld-1.0-SNAPSHOT
+[INFO]  Copying scripts to /home/alex/workspaces/python/python-builder/samples/helloworld/target/dist/helloworld-1.0-SNAPSHOT
+
+------------------------------------------------------------
+BUILD SUCCESSFUL
+------------------------------------------------------------
+Build Summary
+             Project: helloworld
+             Version: 1.0-SNAPSHOT
+      Base directory: /home/alex/workspaces/python/python-builder/samples/helloworld
+        Environments:
+               Tasks: prepare [0 ms] compile_sources [0 ms] run_unit_tests [0 ms] package [0 ms] run_integration_tests [0 ms] verify [0 ms] publish [0 ms]
+Build finished at 2013-08-12 08:54:09
+Build took 0 seconds (2 ms)
+</pre>
+
+As you can see, the script was picked up. We didn't need to fill a list with all the scripts,
+putting the file in the right place was enough.
 
 In the next section, we will start writing tests and integrate their execution into our build.
 
@@ -112,7 +163,7 @@ Notice that there is no black magic in the test sources. It's just a simple
 [unittest TestCase](http://docs.python.org/library/unittest.html#unittest.TestCase) using
 [mockito](http://code.google.com/p/mockito-python/) to stub the call to ```sys.stdout.write```.
 
-Concercing the filename it is important to notice that
+Concerning the filename it is important to notice that
  * The file must be located under ```src/unittest/python```. This is the default and may be altered but as with the main sources, we stick to the defaults.
  * The file must end with ```_tests.py```. This tells python builder to consider this file when discovering test cases. Again, this can be altered, although we don't do this.
 
@@ -123,7 +174,7 @@ Now it's time to tell pyb to
 Again, it's dead easy. Modify your ```build.py``` as follows:
 
 <pre>
-from pythonbuilder.core import use_plugin
+from pybuilder.core import use_plugin
 
 use_plugin("python.core")
 use_plugin("python.unittest")
@@ -193,7 +244,7 @@ Again ```target``` as well as ```reports``` are configurable but we won't change
 
 ## Measuring Test Coverage
 
-When writing tests, it is important to know which parts if of the code are covered by automatic tests and which don't.
+When writing tests, it is important to know which parts if of the code are covered by automatic tests and which aren't.
 For Python, there exists a bunch of tools to calculate the coverage. One of these tools that is integrated with
 *pybuilder* is [coverage](http://nedbatchelder.com/code/coverage/). Python-Coverage measures the line coverage
 (as opposed to branch coverage).
@@ -203,7 +254,7 @@ To execute python coverage during the execution of unit tests and analyze the re
 Modify your ```build.py``` again:
 
 <pre>
-from pythonbuilder.core import use_plugin
+from pybuilder.core import use_plugin
 
 use_plugin("python.core")
 use_plugin("python.unittest")
@@ -264,7 +315,7 @@ accordingly.
 Modify your ```build.py``` to use the plugin:
 
 <pre>
-from pythonbuilder.core import use_plugin
+from pybuilder.core import use_plugin
 
 use_plugin("python.core")
 use_plugin("python.unittest")
