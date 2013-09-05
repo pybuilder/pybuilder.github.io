@@ -9,6 +9,47 @@ This page documents the plugins that ship with the pybuilder distribution.
 
 ## Python
 
+### Python core
+The python core plugin deals with sources and distributions. It copies the sources
+into the distribution directory.
+
+#### Properties
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>dir_source_main_python</td>
+    <td>string</td>
+    <td>src/main/python</td>
+    <td>Directory where python modules are located.</td>
+  </tr>
+
+  <tr>
+    <td>dir_source_main_scripts</td>
+    <td>string</td>
+    <td>src/main/scripts</td>
+    <td>Directory where runnable scripts are located.</td>
+  </tr>
+
+  <tr>
+    <td>dir_dist</td>
+    <td>string</td>
+    <td>$dir_target/dist/$name-$version</td>
+    <td>Directory where distributions are built.</td>
+  </tr>
+
+  <tr>
+    <td>dir_dist_scripts</td>
+    <td>string</td>
+    <td>None <em>(results in $dir_dist)</em></td>
+    <td>Directory where scripts are copied to <em>(relative to distribution directory)</em>.</td>
+  </tr>
+</table>
+
 ### Running Python Unittests
 
 *pybuilder* ships with a plugin to execute unittests written using [Python's unittest module](http://docs.python.org/library/unittest.html)
@@ -30,14 +71,14 @@ The plugin executes all test cases found in modules ending with ```_tests.py``` 
     <td>dir_source_unittest_python</td>
     <td>string</td>
     <td>src/unittest/python</td>
-    <td>Directory where unittest modules are located</td>
+    <td>Directory where unittest modules are located.</td>
   </tr>
 
   <tr>
     <td>unittest_file_suffix</td>
     <td>string</td>
     <td>_tests.py</td>
-    <td>Suffix used to filter files that should be executed as tests,</td>
+    <td>Suffix used to filter files that should be executed as tests.</td>
   </tr>
 </table>
 
