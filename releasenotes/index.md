@@ -5,6 +5,23 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.9.11
+
+* The integrationtest plugin can now run test in parallel.
+  This behaviour can be enabled with `project.set_property("integrationtest_parallel", True)`.
+
+  The degree of parallelization defaults to four times the amount of cores but may be
+  overridden with `project.set_property("integrationtest_workers", 42)`.
+
+## Version 0.9.10
+
+* It can no longer occur that the `ronn_manpage` plugin fails due to the reports directory not existing.
+
+## Version 0.9.9
+
+* New plugin ronn_manpage to generate manpages from markdown sources
+* The -t option no longer causes an error on python3
+
 ## Version 0.9.8
 
 * option "-t" list of tasks: improved layout

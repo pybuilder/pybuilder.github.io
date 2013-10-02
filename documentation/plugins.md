@@ -180,6 +180,20 @@ the production source directory.
     <td>False</td>
     <td>Inherit the current environment to integration tests.</td>
   </tr>
+
+  <tr>
+    <td>integrationtest_parallel</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Run integration tests in parallel.</td>
+  </tr>
+
+  <tr>
+    <td>integrationtest_workers</td>
+    <td>integer</td>
+    <td>cpu count * 4</td>
+    <td>The amount of workers to use for integration test parallelization</td>
+  </tr>
 </table>
 
 
