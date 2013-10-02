@@ -196,6 +196,77 @@ the production source directory.
   </tr>
 </table>
 
+### Executing shell commands
+*pybuilder* ships with a plugin that allows you to incorporate arbitrary shell
+commands in the build process.
+
+This plugin can be activated using `use_plugin("exec")` and is configured through
+the project properties.
+
+#### Adding a shell command to the build process
+Adding commands is done by setting properties and is discrete towards the
+project lifecycles, thus you may have only one shell command for the analyze
+lifecycle for example.
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>run_unit_tests_command</td>
+    <td>string</td>
+    <td>Run a shell command during run_unit_tests</td>
+  </tr>
+  <tr>
+    <td>run_integration_tests_command</td>
+    <td>string</td>
+    <td>Run a shell command during run_integration_tests</td>
+  </tr>
+  <tr>
+    <td>analyze_command</td>
+    <td>string</td>
+    <td>Run a shell command during analyze</td>
+  </tr>
+  <tr>
+    <td>package_command</td>
+    <td>string</td>
+    <td>Run a shell command during package</td>
+  </tr>
+  <tr>
+    <td>publish_command</td>
+    <td>string</td>
+    <td>Run a shell command during publish</td>
+  </tr>
+</table>
+
+The output of the plugin can also be customized by using the properties
+`$PHASE_propagate_stdout` and `$PHASE_propagate_stderr`.
+
+
+See the properties for the phase `run_unit_tests` for example :
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>run_unit_tests_propagate_stdout</td>
+    <td>string</td>
+    <td>False</td>
+    <td>Propagate the stdout of the command to the pybuilder output</td>
+  </tr>
+  <tr>
+    <td>run_unit_tests_propagate_stderr</td>
+    <td>string</td>
+    <td>False</td>
+    <td>Propagate the stdout of the command to the pybuilder output</td>
+  </tr>
+</table>
 
 ### Building a Python Egg
 
