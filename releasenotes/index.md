@@ -5,6 +5,12 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.9.12
+
+* The property `integrationtest_workers` was removed.
+  Instead, you may now set `integrationtest_cpu_scaling_factor` to an integer n,
+  which will use `n * cpu_count` workers to run the integration tests.
+
 ## Version 0.9.11
 
 * The integrationtest plugin can now run test in parallel.

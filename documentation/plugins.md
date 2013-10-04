@@ -189,12 +189,20 @@ the production source directory.
   </tr>
 
   <tr>
-    <td>integrationtest_workers</td>
+    <td>integrationtest_cpu_scaling_factor</td>
     <td>integer</td>
-    <td>cpu count * 4</td>
-    <td>The amount of workers to use for integration test parallelization</td>
+    <td>4</td>
+    <td>The amount of workers to use per cpu for integration test parallelization</td>
   </tr>
 </table>
+
+<div class="alert alert-block">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <h4>Travis CI warning</h4>
+If you use pybuilder with <a href="http://travis-ci.org">Travis CI</a> and run integration
+tests in parallel, you will need a workaround due to a travis issue with POSIX semaphores.
+Please refer to <a href="https://github.com/travis-ci/travis-cookbooks/issues/155">the related travis issue</a>.
+</div>
 
 ### Executing shell commands
 *pybuilder* ships with a plugin that allows you to incorporate arbitrary shell
