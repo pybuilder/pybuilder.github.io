@@ -5,6 +5,16 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.9.13
+
+* Fixed a compatibility issue on windows
+* It is now possible to use external plugins.
+  An external plugin should be an importable python package that exposes its tasks
+  in the top-level (e.G. in `__init__.py`).
+  The plugin can be used through the `use_plugin` directive without further ado
+  but must currently be bootstrapped manually.
+
+
 ## Version 0.9.12
 
 * The property `integrationtest_workers` was removed.
