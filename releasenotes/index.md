@@ -5,6 +5,11 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.9.14
+
+* The flake8 plugin now requires `prepare` to run first and thus no longer
+  results in errors after `clean`.
+
 ## Version 0.9.13
 
 * Fixed a compatibility issue on windows
