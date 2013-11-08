@@ -134,6 +134,52 @@ Use the ```python.coverage``` module to activate coverage.
   </tr>
 </table>
 
+### Linting python sources
+
+*pybuilder* can lint your files and verify (or enforce) compliance with
+PEP8 and PyFlakes through the flake8 module.
+Use the ```python.flake8``` module to activate linting.
+
+
+#### Properties
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>flake8_break_build</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Break the build if warnings are found</td>
+  </tr>
+
+  <tr>
+    <td>flake8_include_test_sources <span class="label label-info">pybuilder>=0.9.15</span></td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Also run flake8 on integrationtest and unittest sources</td>
+  </tr>
+
+  <tr>
+    <td>flake8_max_line_length</td>
+    <td>integer</td>
+    <td>120</td>
+    <td>Maximum allowed line length</td>
+  </tr>
+
+  <tr>
+    <td>flake8_exclude_patterns</td>
+    <td>string</td>
+    <td>None</td>
+    <td>Comma separated list of warnings to exclude.<br/>
+        Example: <code>"F403,W404,W801"</code></td>
+  </tr>
+
+</table>
 
 ### Running Python Integration Tests
 
