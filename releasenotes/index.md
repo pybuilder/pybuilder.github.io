@@ -5,6 +5,12 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.9.15
+
+* The flake8 plugin is now able to also lint test sources.
+  This behaviour is disabled by default but may be enabled by setting the
+  property `flake8_include_test_sources` to True.
+
 ## Version 0.9.14
 
 * The flake8 plugin now requires `prepare` to run first and thus no longer
