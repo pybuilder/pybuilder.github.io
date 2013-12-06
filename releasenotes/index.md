@@ -5,6 +5,10 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.9.16
+* The flake8 plugin no longer causes build errors when used on a project without unittests or integrationtests
+  in conjunction with the property `flake8_include_test_sources`.
+
 ## Version 0.9.15
 
 * The flake8 plugin is now able to also lint test sources.
