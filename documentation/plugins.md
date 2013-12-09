@@ -82,6 +82,80 @@ The plugin executes all test cases found in modules ending with ```_tests.py``` 
   </tr>
 </table>
 
+### Installing build and runtime dependencies
+
+*pybuilder* manages build and runtime dependencies for you.
+Use the ```python.install_dependencies``` module to activate dependency management.
+This will make three tasks available.
+
+#### Tasks
+<table class="table table-striped">
+  <tr>
+    <th>Task</th>
+    <th>Effect</th>
+  </tr>
+
+  <tr>
+    <td>install_build_dependencies</td>
+    <td>Installs build dependencies only</td>
+  </tr>
+
+  <tr>
+    <td>install_runtime_dependencies</td>
+    <td>Installs runtime dependencies only</td>
+  </tr>
+
+  <tr>
+    <td>install_dependencies</td>
+    <td>Installs all dependencies (build and runtime)</td>
+  </tr>
+</table>
+
+
+#### Properties
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>dir_install_logs</td>
+    <td>string</td>
+    <td>$dir_logs/install_dependencies</td>
+    <td>Where installation logs should be saved.</td>
+  </tr>
+
+  <tr>
+    <td>install_dependencies_index_url</td>
+    <td>string</td>
+    <td>None</td>
+    <td>Index URL to use with pip (None means use the pip default).</td>
+  </tr>
+
+  <tr>
+    <td>install_dependencies_extra_index_url</td>
+    <td>string</td>
+    <td>None</td>
+    <td>Extra index url to use with pip.</td>
+  </tr>
+
+  <tr>
+    <td>install_dependencies_use_mirrors</td>
+    <td>boolean</td>
+    <td>True</td>
+    <td>Enables the use of PyPI mirros for pip operations.</td>
+  </tr>
+
+  <tr>
+    <td>install_dependencies_upgrade</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>If dependencies are already available, try to upgrade them instead.</td>
+  </tr>
+</table>
 
 ### Measuring unittest coverage
 
