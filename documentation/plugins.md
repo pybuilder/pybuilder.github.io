@@ -7,48 +7,7 @@ title: Pybuilder Usage Documentation
 
 This page documents the plugins that ship with the pybuilder distribution.
 
-## Python
-
-### Python core
-The python core plugin deals with sources and distributions. It copies the sources
-into the distribution directory.
-
-#### Python core properties
-<table class="table table-striped">
-  <tr>
-    <th>Name</th>
-    <th>Type</th>
-    <th>Default Value</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td>dir_source_main_python</td>
-    <td>string</td>
-    <td>src/main/python</td>
-    <td>Directory where python modules are located.</td>
-  </tr>
-
-  <tr>
-    <td>dir_source_main_scripts</td>
-    <td>string</td>
-    <td>src/main/scripts</td>
-    <td>Directory where runnable scripts are located.</td>
-  </tr>
-
-  <tr>
-    <td>dir_dist</td>
-    <td>string</td>
-    <td>$dir_target/dist/$name-$version</td>
-    <td>Directory where distributions are built.</td>
-  </tr>
-
-  <tr>
-    <td>dir_dist_scripts</td>
-    <td>string</td>
-    <td>None <em>(results in $dir_dist)</em></td>
-    <td>Directory where scripts are copied to <em>(relative to distribution directory)</em>.</td>
-  </tr>
-</table>
+## QA plugins
 
 ### Running Python Unittests
 
@@ -79,80 +38,6 @@ The plugin executes all test cases found in modules ending with ```_tests.py``` 
     <td>string</td>
     <td>_tests.py</td>
     <td>Suffix used to filter files that should be executed as tests.</td>
-  </tr>
-</table>
-
-### Installing build and runtime dependencies
-
-*pybuilder* manages build and runtime dependencies for you.
-Use the ```python.install_dependencies``` module to activate dependency management.
-This will make the following tasks available :
-
-<table class="table table-striped">
-  <tr>
-    <th>Task</th>
-    <th>Effect</th>
-  </tr>
-
-  <tr>
-    <td>install_build_dependencies</td>
-    <td>Installs build dependencies only</td>
-  </tr>
-
-  <tr>
-    <td>install_runtime_dependencies</td>
-    <td>Installs runtime dependencies only</td>
-  </tr>
-
-  <tr>
-    <td>install_dependencies</td>
-    <td>Installs all dependencies (build and runtime)</td>
-  </tr>
-</table>
-
-
-#### Install dependencies properties
-<table class="table table-striped">
-  <tr>
-    <th>Name</th>
-    <th>Type</th>
-    <th>Default Value</th>
-    <th>Description</th>
-  </tr>
-
-  <tr>
-    <td>dir_install_logs</td>
-    <td>string</td>
-    <td>$dir_logs/install_dependencies</td>
-    <td>Where installation logs should be saved.</td>
-  </tr>
-
-  <tr>
-    <td>install_dependencies_index_url</td>
-    <td>string</td>
-    <td>None</td>
-    <td>Index URL to use with pip (None means use the pip default).</td>
-  </tr>
-
-  <tr>
-    <td>install_dependencies_extra_index_url</td>
-    <td>string</td>
-    <td>None</td>
-    <td>Extra index url to use with pip.</td>
-  </tr>
-
-  <tr>
-    <td>install_dependencies_use_mirrors</td>
-    <td>boolean</td>
-    <td>True</td>
-    <td>Enables the use of PyPI mirros for pip operations.</td>
-  </tr>
-
-  <tr>
-    <td>install_dependencies_upgrade</td>
-    <td>boolean</td>
-    <td>False</td>
-    <td>If dependencies are already available, try to upgrade them instead.</td>
   </tr>
 </table>
 
@@ -388,75 +273,119 @@ tests in parallel, you will need a workaround due to a travis issue with POSIX s
 Please refer to <a href="https://github.com/travis-ci/travis-cookbooks/issues/155">the related travis issue</a>.
 </div>
 
-### Executing shell commands
-*pybuilder* ships with a plugin that allows you to incorporate arbitrary shell
-commands in the build process.
+## Python development / deployment
 
-This plugin can be activated using `use_plugin("exec")` and is configured through
-the project properties.
+### Python core
+The python core plugin deals with sources and distributions. It copies the sources
+into the distribution directory.
 
-#### Adding a shell command to the build process
-Adding commands is done by setting properties and is discrete towards the
-project lifecycles, thus you may have only one shell command for the analyze
-lifecycle for example.
-
+#### Python core properties
 <table class="table table-striped">
   <tr>
     <th>Name</th>
     <th>Type</th>
+    <th>Default Value</th>
     <th>Description</th>
+  </tr>
+  <tr>
+    <td>dir_source_main_python</td>
+    <td>string</td>
+    <td>src/main/python</td>
+    <td>Directory where python modules are located.</td>
   </tr>
 
   <tr>
-    <td>run_unit_tests_command</td>
+    <td>dir_source_main_scripts</td>
     <td>string</td>
-    <td>Run a shell command during run_unit_tests</td>
+    <td>src/main/scripts</td>
+    <td>Directory where runnable scripts are located.</td>
   </tr>
+
   <tr>
-    <td>run_integration_tests_command</td>
+    <td>dir_dist</td>
     <td>string</td>
-    <td>Run a shell command during run_integration_tests</td>
+    <td>$dir_target/dist/$name-$version</td>
+    <td>Directory where distributions are built.</td>
   </tr>
+
   <tr>
-    <td>analyze_command</td>
+    <td>dir_dist_scripts</td>
     <td>string</td>
-    <td>Run a shell command during analyze</td>
-  </tr>
-  <tr>
-    <td>package_command</td>
-    <td>string</td>
-    <td>Run a shell command during package</td>
-  </tr>
-  <tr>
-    <td>publish_command</td>
-    <td>string</td>
-    <td>Run a shell command during publish</td>
+    <td>None <em>(results in $dir_dist)</em></td>
+    <td>Directory where scripts are copied to <em>(relative to distribution directory)</em>.</td>
   </tr>
 </table>
 
-The output of the plugin can also be customized by using the properties
-`$PHASE_propagate_stdout` and `$PHASE_propagate_stderr`.
+### Installing build and runtime dependencies
 
+*pybuilder* manages build and runtime dependencies for you.
+Use the ```python.install_dependencies``` module to activate dependency management.
+This will make the following tasks available :
 
-See the properties for the phase `run_unit_tests` for example :
+<table class="table table-striped">
+  <tr>
+    <th>Task</th>
+    <th>Effect</th>
+  </tr>
+
+  <tr>
+    <td>install_build_dependencies</td>
+    <td>Installs build dependencies only</td>
+  </tr>
+
+  <tr>
+    <td>install_runtime_dependencies</td>
+    <td>Installs runtime dependencies only</td>
+  </tr>
+
+  <tr>
+    <td>install_dependencies</td>
+    <td>Installs all dependencies (build and runtime)</td>
+  </tr>
+</table>
+
+#### Install dependencies configuration
 <table class="table table-striped">
   <tr>
     <th>Name</th>
     <th>Type</th>
-    <th>Default</th>
+    <th>Default Value</th>
     <th>Description</th>
   </tr>
+
   <tr>
-    <td>run_unit_tests_propagate_stdout</td>
+    <td>dir_install_logs</td>
     <td>string</td>
-    <td>False</td>
-    <td>Propagate the stdout of the command to the pybuilder output</td>
+    <td>$dir_logs/install_dependencies</td>
+    <td>Where installation logs should be saved.</td>
   </tr>
+
   <tr>
-    <td>run_unit_tests_propagate_stderr</td>
+    <td>install_dependencies_index_url</td>
     <td>string</td>
+    <td>None</td>
+    <td>Index URL to use with pip (None means use the pip default).</td>
+  </tr>
+
+  <tr>
+    <td>install_dependencies_extra_index_url</td>
+    <td>string</td>
+    <td>None</td>
+    <td>Extra index url to use with pip.</td>
+  </tr>
+
+  <tr>
+    <td>install_dependencies_use_mirrors</td>
+    <td>boolean</td>
+    <td>True</td>
+    <td>Enables the use of PyPI mirros for pip operations.</td>
+  </tr>
+
+  <tr>
+    <td>install_dependencies_upgrade</td>
+    <td>boolean</td>
     <td>False</td>
-    <td>Propagate the stdout of the command to the pybuilder output</td>
+    <td>If dependencies are already available, try to upgrade them instead.</td>
   </tr>
 </table>
 
@@ -552,6 +481,80 @@ def initialize (project):
     <td>boolean</td>
     <td>True</td>
     <td>Use setuptools instead of distutils</td>
+  </tr>
+</table>
+
+## Generic build plugins
+
+### Executing shell commands
+*pybuilder* ships with a plugin that allows you to incorporate arbitrary shell
+commands in the build process.
+
+This plugin can be activated using `use_plugin("exec")` and is configured through
+the project properties.
+
+#### Adding a shell command to the build process
+Adding commands is done by setting properties and is discrete towards the
+project lifecycles, thus you may have only one shell command for the analyze
+lifecycle for example.
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>run_unit_tests_command</td>
+    <td>string</td>
+    <td>Run a shell command during run_unit_tests</td>
+  </tr>
+  <tr>
+    <td>run_integration_tests_command</td>
+    <td>string</td>
+    <td>Run a shell command during run_integration_tests</td>
+  </tr>
+  <tr>
+    <td>analyze_command</td>
+    <td>string</td>
+    <td>Run a shell command during analyze</td>
+  </tr>
+  <tr>
+    <td>package_command</td>
+    <td>string</td>
+    <td>Run a shell command during package</td>
+  </tr>
+  <tr>
+    <td>publish_command</td>
+    <td>string</td>
+    <td>Run a shell command during publish</td>
+  </tr>
+</table>
+
+The output of the plugin can also be customized by using the properties
+`$PHASE_propagate_stdout` and `$PHASE_propagate_stderr`.
+
+
+See the properties for the phase `run_unit_tests` for example :
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>run_unit_tests_propagate_stdout</td>
+    <td>string</td>
+    <td>False</td>
+    <td>Propagate the stdout of the command to the pybuilder output</td>
+  </tr>
+  <tr>
+    <td>run_unit_tests_propagate_stderr</td>
+    <td>string</td>
+    <td>False</td>
+    <td>Propagate the stdout of the command to the pybuilder output</td>
   </tr>
 </table>
 
