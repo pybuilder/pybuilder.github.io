@@ -86,9 +86,8 @@ The plugin executes all test cases found in modules ending with ```_tests.py``` 
 
 *pybuilder* manages build and runtime dependencies for you.
 Use the ```python.install_dependencies``` module to activate dependency management.
-This will make three tasks available.
+This will make the following tasks available :
 
-#### Tasks
 <table class="table table-striped">
   <tr>
     <th>Task</th>
@@ -463,3 +462,9 @@ def initialize (project):
   </tr>
 </table>
 
+## IDE integration
+
+### Generating project files for Eclipse PyDev
+
+If the plugin `python.pydev` is used, pybuilder provides the task `pydev_generate`.
+This task can be used to generate PyDev project files in the project root directory. The project can then be imported easily.
