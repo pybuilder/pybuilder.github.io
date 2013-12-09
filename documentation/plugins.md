@@ -484,6 +484,78 @@ def initialize (project):
   </tr>
 </table>
 
+### Copying resources into a distribution
+
+In some cases you want to include non-source files in a distribution. An example is adding a `setup.cfg` to your project. It is not a source file, but it needs to be in the distribution to work (beneath the `setup.py` file).
+The `copy_resources` plugin will do this for you at build-time.
+
+#### Copy resources configuration
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>copy_resources_target</td>
+    <td>string</td>
+    <td>$dir_target</td>
+    <td>Where resources should be copied to.</td>
+  </tr>
+
+  <tr>
+    <td>copy_resources_glob</td>
+    <td>list of strings</td>
+    <td>[]</td>
+    <td>A list of globs matching files that should be copied to <code>$copy_resources_target</code>.</td>
+  </tr>
+</table>
+
+### Replacing placeholders with actual values at build-time
+
+With the `filter_resources` plugin, it is possible to replace placeholder values of type `${version}` with actual values at build-time.
+The actual values are attributes of the `project` object, so `${version}` will be replaced with the value of `project.version`.
+In order to make resource filtering explicit, all files that go through filtering need to be specified with a glob.
+
+#### Filter resources configuration
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>filter_resources_target</td>
+    <td>string</td>
+    <td>$dir_target</td>
+    <td>Toplevel directory containing the resources to be filtered.</td>
+  </tr>
+
+  <tr>
+    <td>filter_resources_glob</td>
+    <td>list of strings</td>
+    <td>[]</td>
+    <td>A list of globs matching files that should be filtered.</td>
+  </tr>
+</table>
+
+#### Filter resources example
+
+A common use case is keeping a `__version__` attribute in your main module. 
+But you don't want to specify the version both in `build.py` and in `__init__.py` because `build.py` should be the single point of truth.
+
+So just use `__version__ = '${version}'` in `__init__.py`.
+
+We can tell the plugin to filter this file by adding `['**/YOUR-PACKAGE-NAME/__init__.py']` to the `filter_resources_glob`.
+The correct version will be patched in at run-time since the version is defined in `project.version`.
+For filtering other attributes like `${myattribute}`, just add a `project.myattribute = "foobar"` in `build.py`'s initializer.
+
 ## Generic build plugins
 
 ### Executing shell commands
