@@ -395,6 +395,34 @@ See the properties for the phase `run_unit_tests` for example :
   </tr>
 </table>
 
+### Creating a source distribution
+
+*pybuilder* can build a source distribution of your code with the plugin `source_distribution`. Activating this plugin will expose a task, `create_source_distribution`.
+
+#### Source distribution configuration
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>dir_source_dist</td>
+    <td>string</td>
+    <td>$dir_target/dist/$(project.name)-$(project.version)-src</td>
+    <td>Where the source distribution should be created.</td>
+  </tr>
+  <tr>
+    <td>source_dist_ignore_patterns</td>
+    <td>list of strings</td>
+    <td>["*.pyc", ".hg*", ".svn", ".CVS"]</td>
+    <td>Patterns to ignore when copying sources for the source distribution.</td>
+  </tr>
+</table>
+
 ### Building a Python Egg
 
 *pybuilder* ships a plugin that generates and executes setup.py files using with distutils or setuptools (distribute will
