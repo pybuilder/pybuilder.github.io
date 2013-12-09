@@ -209,12 +209,15 @@ Use the ```python.coverage``` module to activate coverage.
 
 ### Linting python sources
 
+#### Flake8 plugin
+
 *pybuilder* can lint your files and verify (or enforce) compliance with
 PEP8 and PyFlakes through the flake8 module.
 Use the ```python.flake8``` module to activate linting.
 
 
-#### Flake8 properties
+##### Flake8 properties
+
 <table class="table table-striped">
   <tr>
     <th>Name</th>
@@ -253,6 +256,41 @@ Use the ```python.flake8``` module to activate linting.
   </tr>
 
 </table>
+
+#### Pep8 plugin
+
+Using the plugin `python.pep8` will let pep8 run on python sources.
+There is no configuration possible currently, consider using the flake8 plugin instead.
+
+#### Pychecker plugin
+
+Using the plugin `python.pychecker` will let pychecker run on python source modules.
+
+##### Pychecker configuration
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>pychecker_break_build</td>
+    <td>boolean</td>
+    <td>True</td>
+    <td>Break the build if warnings are found.</td>
+  </tr>
+
+  <tr>
+    <td>pychecker_break_build_threshold</td>
+    <td>integer</td>
+    <td>0</td>
+    <td>Threshold to break the build. A threshold of `n` means: "break the build if more than `x` warnings are found".</td>
+  </tr>
+</table>
+
 
 ### Running Python Integration Tests
 
