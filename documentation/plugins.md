@@ -216,7 +216,7 @@ PEP8 and PyFlakes through the flake8 module.
 Use the ```python.flake8``` module to activate linting.
 
 
-##### Flake8 properties
+##### Flake8 configuration
 
 <table class="table table-striped">
   <tr>
@@ -257,11 +257,6 @@ Use the ```python.flake8``` module to activate linting.
 
 </table>
 
-#### Pep8 plugin
-
-Using the plugin `python.pep8` will let pep8 run on python sources.
-There is no configuration possible currently, consider using the flake8 plugin instead.
-
 #### Pychecker plugin
 
 Using the plugin `python.pychecker` will let pychecker run on python source modules.
@@ -290,6 +285,38 @@ Using the plugin `python.pychecker` will let pychecker run on python source modu
     <td>Threshold to break the build. A threshold of `n` means: "break the build if more than `x` warnings are found".</td>
   </tr>
 </table>
+
+#### Pylint plugin
+
+Using the plugin `python.pylint` will let pylint run on python source modules.
+
+##### Pylint configuration
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>pylint_options</td>
+    <td>list of strings</td>
+    <td>`["--max-line-length=100", "--no-docstring-rgx=.*"]`</td>
+    <td>Options to be passed to pylint</td>
+  </tr>
+</table>
+
+#### Pep8 plugin
+
+Using the plugin `python.pep8` will let pep8 run on python sources.
+There is no configuration possible currently, consider using the flake8 plugin instead.
+
+#### Pymetrics plugin
+
+Using the plugin `python.pymetrics` will let pymetrics run on all python source files.
+There is no configuration possible currently, consider using the flake8 plugin instead.
 
 
 ### Running Python Integration Tests
