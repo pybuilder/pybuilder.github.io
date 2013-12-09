@@ -13,7 +13,7 @@ This page documents the plugins that ship with the pybuilder distribution.
 The python core plugin deals with sources and distributions. It copies the sources
 into the distribution directory.
 
-#### Properties
+#### Python core properties
 <table class="table table-striped">
   <tr>
     <th>Name</th>
@@ -59,7 +59,7 @@ The plugin executes all test cases found in modules ending with ```_tests.py``` 
 ```src/unittest/python```.
 
 
-#### Properties
+#### Python unittest properties
 <table class="table table-striped">
   <tr>
     <th>Name</th>
@@ -111,7 +111,7 @@ This will make the following tasks available :
 </table>
 
 
-#### Properties
+#### Install dependencies properties
 <table class="table table-striped">
   <tr>
     <th>Name</th>
@@ -162,7 +162,7 @@ This will make the following tasks available :
 Use the ```python.coverage``` module to activate coverage.
 
 
-#### Properties
+#### Coverage properties
 <table class="table table-striped">
   <tr>
     <th>Name</th>
@@ -214,7 +214,7 @@ PEP8 and PyFlakes through the flake8 module.
 Use the ```python.flake8``` module to activate linting.
 
 
-#### Properties
+#### Flake8 properties
 <table class="table table-striped">
   <tr>
     <th>Name</th>
@@ -264,7 +264,7 @@ Every module is executed as a Python module. The Python path contains the integr
 the production source directory.
 
 
-#### Properties
+#### Integration test properties
 <table class="table table-striped">
   <tr>
     <th>Name</th>
@@ -430,7 +430,7 @@ def initialize (project):
 </pre>
 
 
-#### Properties
+#### Distutils properties
 <table class="table table-striped">
   <tr>
     <th>Name</th>
