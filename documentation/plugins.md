@@ -274,7 +274,7 @@ tests in parallel, you will need a workaround due to a travis issue with POSIX s
 Please refer to <a href="https://github.com/travis-ci/travis-cookbooks/issues/155">the related travis issue</a>.
 </div>
 
-## Python development / deployment
+## Python deployment
 
 ### Python core
 The python core plugin deals with sources and distributions. It copies the sources
@@ -317,7 +317,7 @@ into the distribution directory.
   </tr>
 </table>
 
-### Installing build and runtime dependencies
+### Installing dependencies
 
 *pybuilder* manages build and runtime dependencies for you.
 Use the ```python.install_dependencies``` module to activate dependency management.
@@ -515,7 +515,7 @@ The `copy_resources` plugin will do this for you at build-time.
   </tr>
 </table>
 
-### Replacing placeholders with actual values at build-time
+### Filtering files
 
 With the `filter_resources` plugin, it is possible to replace placeholder values of type `${version}` with actual values at build-time.
 The actual values are attributes of the `project` object, so `${version}` will be replaced with the value of `project.version`.
