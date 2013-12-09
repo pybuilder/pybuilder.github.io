@@ -265,8 +265,9 @@ the production source directory.
   </tr>
 </table>
 
-<div class="alert alert-block">
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
+
+<div class="alert alert-warning alert-dismissable">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
   <h4>Travis CI warning</h4>
 If you use pybuilder with <a href="http://travis-ci.org">Travis CI</a> and run integration
 tests in parallel, you will need a workaround due to a travis issue with POSIX semaphores.
