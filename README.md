@@ -4,6 +4,12 @@
 **Install [jekyll](https://github.com/mojombo/jekyll)**
 
 ```bash
+sudo apt-get install jekyll
+```
+
+or
+
+```bash
 sudo gem install jekyll
 ```
 
@@ -11,7 +17,7 @@ sudo gem install jekyll
 
 **Start local server**
 ```bash
-jekyll serve --watch --trace
+jekyll --server 4000
 ```
 
 Browse to [localhost:4000](http://localhost:4000)
