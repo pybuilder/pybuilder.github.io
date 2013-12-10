@@ -39,7 +39,7 @@ BUILD FAILED - No default task given.
 ## Adding Python Source Files
 
 The next step is to add a Python module that contains our sources.
-Python Builder separates source files and expects them in different directories based on their meaning. The default
+PyBuilder separates source files and expects them in different directories based on their meaning. The default
 location for main python sources is
 
 ```src/main/python```
@@ -165,7 +165,7 @@ Notice that there is no black magic in the test sources. It's just a simple
 
 Concerning the filename it is important to notice that
  * The file must be located under ```src/unittest/python```. This is the default and may be altered but as with the main sources, we stick to the defaults.
- * The file must end with ```_tests.py```. This tells python builder to consider this file when discovering test cases. Again, this can be altered, although we don't do this.
+ * The file must end with ```_tests.py```. This tells PyBuilder to consider this file when discovering test cases. Again, this can be altered, although we don't do this.
 
 Now it's time to tell pyb to
  * execute the tests on each build
@@ -210,7 +210,7 @@ BUILD SUCCESSFUL
 	Build took 0 seconds (14 ms)
 </pre>
 
-Python Builder executed the test case. Now let's see what happens, when we force the test to fail.
+PyBuilder executed the test case. Now let's see what happens, when we force the test to fail.
 
 Modify the test case to verify the call to ```sys.stdout``` for a string that is never written and run pyb again.
 
@@ -236,7 +236,7 @@ BUILD FAILED - There were test errors.
 
 The build failed because there were test errors. How do we get to know which test failed and why?
 
-Python Builder writes reports along each build to capture all the output produced by all the tools it uses, including the unittest framework.
+PyBuilder writes reports along each build to capture all the output produced by all the tools it uses, including the unittest framework.
 
 Have a look at the file ```target/reports/unittest```. It contains all the output written during the execution of the tests.
 
@@ -293,7 +293,7 @@ BUILD SUCCESSFUL
 	Build took 0 seconds (149 ms)
 </pre>
 
-Notice the last INFO message. As with the unittest, Python Builder writes a detailed report to
+Notice the last INFO message. As with the unittest, PyBuilder writes a detailed report to
 ```target/reports/coverage```. In case your coverage does not equal 100% you can find a list of source lines not
 covered in this file.
 
@@ -390,8 +390,8 @@ sources but in a Python-typical directory layout. You can also find the ```setup
 
 ## Recap
 
-In this tutorial we saw how Python Builder can be used to "build" a typical Python project. Building in an interpreted
-language is more a step of packaging the sources rather than compiling them. Additionally, we saw how Python Builder
+In this tutorial we saw how PyBuilder can be used to "build" a typical Python project. Building in an interpreted
+language is more a step of packaging the sources rather than compiling them. Additionally, we saw how PyBuilder
 can help you ensuring that all the automatic tests are executed and that the test coverage matches you standards.
 
 We saw a few plugins in action. *pybuilder* provides more of them.

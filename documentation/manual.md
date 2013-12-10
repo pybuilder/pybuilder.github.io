@@ -60,7 +60,7 @@ Tasks are plain Python functions. A decorator is used to label a function as a t
 code the way you like if you provide a single point of entry to a build step.
 
 Actions are smaller pieces of build logic then tasks. Actions are bound to the execution of task. Each action names
-that it needs to be executed *before* or *after* a named task. Python Builder will execute the action if
+that it needs to be executed *before* or *after* a named task. PyBuilder will execute the action if
 and only if the named task is executed, either directly or as a dependency.
 
 Actions as well as tasks are plain Python functions that are decorated to become an action.
