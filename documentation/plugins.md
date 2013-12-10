@@ -39,6 +39,15 @@ The plugin executes all test cases found in modules ending with ```_tests.py``` 
     <td>_tests.py</td>
     <td>Suffix used to filter files that should be executed as tests.</td>
   </tr>
+
+  <tr>
+    <td>unittest_test_method_prefix</td>
+    <td>string</td>
+    <td>None</td>
+    <td>This allows you to define how the module unittest identifies tests.
+        The plugin sets defaultTestLoader.testMethodPrefix to the given value.
+        When set to None the plugin will not set the value at all.</td>
+  </tr>
 </table>
 
 ### Measuring unittest coverage
