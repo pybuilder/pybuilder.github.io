@@ -1,9 +1,9 @@
 ---
 layout: documentation
-title: Pybuilder Usage Documentation
+title: PyBuilder Usage Documentation
 ---
 
-# Pybuilder Usage Documentation
+# PyBuilder Usage Documentation
 
 **WIP WARNING: This page is work in progress.**
 
@@ -77,7 +77,7 @@ Writing a task is easy. You just create a function and decorate with the ```@tas
 
 @task
 def say_hello ():
-    print "Hello, pybuilder"
+    print "Hello, PyBuilder"
 </code></pre>
 
 
@@ -99,7 +99,7 @@ Thus we can rewrite the task above to use the logger:
 
 @task
 def say_hello (logger):
-   logger.info("Hello, pybuilder")
+   logger.info("Hello, PyBuilder")
 </code></pre>
 
 

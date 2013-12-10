@@ -1,11 +1,11 @@
 ---
 layout: documentation
-title: Pybuilder Usage Documentation
+title: PyBuilder Usage Documentation
 ---
 
 # Plugins
 
-This page documents the plugins that ship with the pybuilder distribution.
+This page documents the plugins that ship with the PyBuilder distribution.
 
 ## QA plugins
 
@@ -269,7 +269,7 @@ the production source directory.
 <div class="alert alert-warning alert-dismissable">
   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
   <h4>Travis CI warning</h4>
-If you use pybuilder with <a href="http://travis-ci.org">Travis CI</a> and run integration
+If you use PyBuilder with <a href="http://travis-ci.org">Travis CI</a> and run integration
 tests in parallel, you will need a workaround due to a travis issue with POSIX semaphores.
 Please refer to <a href="https://github.com/travis-ci/travis-cookbooks/issues/155">the related travis issue</a>.
 </div>
@@ -620,13 +620,13 @@ See the properties for the phase `run_unit_tests` for example :
     <td>run_unit_tests_propagate_stdout</td>
     <td>string</td>
     <td>False</td>
-    <td>Propagate the stdout of the command to the pybuilder output</td>
+    <td>Propagate the stdout of the command to the PyBuilder output</td>
   </tr>
   <tr>
     <td>run_unit_tests_propagate_stderr</td>
     <td>string</td>
     <td>False</td>
-    <td>Propagate the stdout of the command to the pybuilder output</td>
+    <td>Propagate the stdout of the command to the PyBuilder output</td>
   </tr>
 </table>
 
@@ -634,5 +634,5 @@ See the properties for the phase `run_unit_tests` for example :
 
 ### Project files for Eclipse PyDev
 
-If the plugin `python.pydev` is used, pybuilder provides the task `pydev_generate`.
+If the plugin `python.pydev` is used, PyBuilder provides the task `pydev_generate`.
 This task can be used to generate PyDev project files in the project root directory. The project can then be imported easily.

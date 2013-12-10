@@ -1,6 +1,6 @@
 ---
 layout: documentation
-title: Pybuilder Tutorial
+title: PyBuilder Tutorial
 ---
 
 # Tutorial
@@ -12,7 +12,7 @@ hello world Python program.
 
 *PyBuilder* is configured (or programmed) using a Python file that is named ```build.py```. To start, create an empty
 directory ```helloworld``` as well as an empty file ```build.py```.
-We recommend installing the pybuilder in a virtual environment :
+We recommend installing the PyBuilder in a virtual environment :
 
 <pre>
 $ virtualenv venv
@@ -104,7 +104,7 @@ sys.stdout.write('Hello from my script!\n')
 </code></pre>
 
 
-Now we can run the pybuilder again :
+Now we can run the PyBuilder again :
 
 <pre>
 $ pyb
