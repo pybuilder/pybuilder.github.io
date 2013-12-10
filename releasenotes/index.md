@@ -5,6 +5,9 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.9.17
+* Allows the user to define a project variable "unittest_test_method_prefix" as a prefix for the unit test method names.
+
 ## Version 0.9.16
 * The flake8 plugin no longer causes build errors when used on a project without unittests or integrationtests
   in conjunction with the property `flake8_include_test_sources`.
