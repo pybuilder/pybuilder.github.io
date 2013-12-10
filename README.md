@@ -1,10 +1,13 @@
 # PyBuilder Documentation
 
 This project contains the documentation of [PyBuilder](https://github.com/pybuilder/pybuilder).
+
 Please visit [pybuilder.github.io](http://pybuilder.github.io).
 
 
-**Install [jekyll](https://github.com/mojombo/jekyll)**
+## Contributing
+
+Install [jekyll](https://github.com/mojombo/jekyll)
 
 ```bash
 sudo apt-get install jekyll
