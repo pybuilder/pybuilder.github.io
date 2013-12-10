@@ -15,3 +15,7 @@ footer {
 footer div.container div.row a {
     padding: 20px;
 }
+
+.tocify {
+    background-color: white;
+}
