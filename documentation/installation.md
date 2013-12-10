@@ -7,22 +7,28 @@ title: Installing Pybuilder
 
 ## Pip and Easy Install
 
-We recommend installing *pybuilder* into a [virtual environment](http://pypi.python.org/pypi/virtualenv) using
+We recommend installing *PyBuilder* into a [virtual environment](http://pypi.python.org/pypi/virtualenv) using
 [pip](http://pypi.python.org/pypi/pip) or [easy_install](http://packages.python.org/distribute/easy_install.html)
 using a command such as:
 
 <pre>$ pip install pybuilder</pre>
 
+<div class="alert alert-warning">
+At first it might be tempting to install PyBuilder system-wide with <code>sudo pip install pybuilder</code>,
+but if you work with <em>virtualenvs</em> then PyBuilder will see your system python (due to being installed there)
+instead of the virtualenv python.
+</div>
+
 ## Building from source
 
-Please checkout the most recent version of *pybuilder* first :
+Please checkout the most recent version of *PyBuilder* first :
 
 <pre>
 git clone https://github.com/pybuilder/pybuilder
 cd pybuilder
 </pre>
 
-Now to the bootstrapping part : install the dependencies and build pybuilder... using pybuilder!
+Now to the bootstrapping part : install the dependencies and build PyBuilder... using PyBuilder!
 
 <pre>
 ./bootstrap install_dependencies
@@ -35,6 +41,3 @@ You can now head to ```target/dist/pybuilder-$VERSION```
 and use the [distutils](http://docs.python.org/distutils/index.html) ```setup.py``` installation script.
 Just type
 <pre>$ python setup.py install</pre>
-
-Note that you need to have administrative permissions to perform the install to Python's standard directories
-(Unix/Linux users may prefix the command with ```sudo``` if they have the appropriate permissions.
