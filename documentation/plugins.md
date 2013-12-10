@@ -548,7 +548,7 @@ In order to make resource filtering explicit, all files that go through filterin
 
 #### Filter resources example
 
-A common use case is keeping a `__version__` attribute in your main module. 
+A common use case is keeping a `__version__` attribute in your main module.
 But you don't want to specify the version both in `build.py` and in `__init__.py` because `build.py` should be the single point of truth.
 
 So just use `__version__ = '${version}'` in `__init__.py`.
@@ -633,7 +633,7 @@ See the properties for the phase `run_unit_tests` for example :
 
 ## IDE integration
 
-### Generating project files for Eclipse PyDev
+### Project files for Eclipse PyDev
 
 If the plugin `python.pydev` is used, pybuilder provides the task `pydev_generate`.
 This task can be used to generate PyDev project files in the project root directory. The project can then be imported easily.
