@@ -2,3 +2,16 @@ body {
     padding-top: 70px;
     padding-bottom: 30px;
 }
+
+.publish-date {
+    color: gray;
+}
+
+footer {
+    padding-left: 2em;
+    text-align: center
+}
+
+footer div.container div.row a {
+    padding: 20px;
+}
