@@ -11,7 +11,7 @@ This page documents the plugins that ship with the pybuilder distribution.
 
 ### Running Python Unittests
 
-*pybuilder* ships with a plugin to execute unittests written using [Python's unittest module](http://docs.python.org/library/unittest.html)
+*PyBuilder* ships with a plugin to execute unittests written using [Python's unittest module](http://docs.python.org/library/unittest.html)
 during the build. Use the ```python.unittest``` plugin to enable unittest support.
 
 The plugin executes all test cases found in modules ending with ```_tests.py``` in the directory
@@ -43,7 +43,7 @@ The plugin executes all test cases found in modules ending with ```_tests.py``` 
 
 ### Measuring unittest coverage
 
-*pybuilder* adds support to measure the coverage of your unittest using the ```coverage``` module.
+*PyBuilder* adds support to measure the coverage of your unittest using the ```coverage``` module.
 Use the ```python.coverage``` module to activate coverage.
 
 
@@ -96,7 +96,7 @@ Use the ```python.coverage``` module to activate coverage.
 
 #### Flake8 plugin
 
-*pybuilder* can lint your files and verify (or enforce) compliance with
+*PyBuilder* can lint your files and verify (or enforce) compliance with
 PEP8 and PyFlakes through the flake8 module.
 Use the ```python.flake8``` module to activate linting.
 
@@ -206,7 +206,7 @@ There is no configuration possible currently, consider using the flake8 plugin i
 
 ### Running Python Integration Tests
 
-*pybuilder* ships with a plugin to run integration tests written in Python. The plugin is named
+*PyBuilder* ships with a plugin to run integration tests written in Python. The plugin is named
 ```python.integrationtest```. It executes all python modules named ```*_tests.py``` in the
 ```src/integrationtest/python``` directory.
 
@@ -319,7 +319,7 @@ into the distribution directory.
 
 ### Installing dependencies
 
-*pybuilder* manages build and runtime dependencies for you.
+*PyBuilder* manages build and runtime dependencies for you.
 Use the ```python.install_dependencies``` module to activate dependency management.
 This will make the following tasks available :
 
@@ -392,7 +392,7 @@ This will make the following tasks available :
 
 ### Creating a source distribution
 
-*pybuilder* can build a source distribution of your code with the plugin `source_distribution`. Activating this plugin will expose a task, `create_source_distribution`.
+*PyBuilder* can build a source distribution of your code with the plugin `source_distribution`. Activating this plugin will expose a task, `create_source_distribution`.
 
 #### Source distribution configuration
 
@@ -420,7 +420,7 @@ This will make the following tasks available :
 
 ### Building a Python Egg
 
-*pybuilder* ships a plugin that generates and executes setup.py files using with distutils or setuptools (distribute will
+*PyBuilder* ships a plugin that generates and executes setup.py files using with distutils or setuptools (distribute will
 be supported in future releases). In order to generate a ```setup.py``` file use the ```python.distutils```
 plugin.
 
@@ -559,7 +559,7 @@ For filtering other attributes like `${myattribute}`, just add a `project.myattr
 ## Generic build plugins
 
 ### Executing shell commands
-*pybuilder* ships with a plugin that allows you to incorporate arbitrary shell
+*PyBuilder* ships with a plugin that allows you to incorporate arbitrary shell
 commands in the build process.
 
 This plugin can be activated using `use_plugin("exec")` and is configured through

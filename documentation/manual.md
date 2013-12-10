@@ -10,13 +10,13 @@ title: Pybuilder Usage Documentation
 
 ## Introduction
 
-*pybuilder* is a software build tool. *pybuilder* can be used for a lot of purposes. Most
+*PyBuilder* is a software build tool. *PyBuilder* can be used for a lot of purposes. Most
 commonly it targets the "building" and management of software with a strong focus on Python.
 
 
 ### Building Python Projects
 
-Among the capabilities which can be used out of the box when applying *pybuilder* to your project, you get:
+Among the capabilities which can be used out of the box when applying *PyBuilder* to your project, you get:
 * Automatic execution of unit and integration tests on every build
 * Automatic analysis of the code coverage
 * Automatic execution of analysis tools, such as
@@ -40,7 +40,7 @@ there was no central point of entry.
 I suddenly found myself writing "build scripts" in Python over and over again using the tools I found out to be
 usefull.
 
-*pybuilder* was born on the attempt to create a reusable tool that should
+*PyBuilder* was born on the attempt to create a reusable tool that should
 * Make simple things simple
 * Make hard things as simple as possible
 * Let me use whatever tool I want to integrate
@@ -50,10 +50,10 @@ usefull.
 
 ## Concepts
 
-*pybuilder* executes build logic that is organized in tasks and actions.
+*PyBuilder* executes build logic that is organized in tasks and actions.
 
 Tasks are the main building blocks of the build logic. A task is an enclosed piece of build logic to be executed as
-a single unit. Each task can name a set of other tasks that this task depends on. *pybuilder* ensures, that a
+a single unit. Each task can name a set of other tasks that this task depends on. *PyBuilder* ensures, that a
 task gets executed only after all of its dependencies have been executed.
 
 Tasks are plain Python functions. A decorator is used to label a function as a task. Thus, you can structure your
@@ -65,7 +65,7 @@ and only if the named task is executed, either directly or as a dependency.
 
 Actions as well as tasks are plain Python functions that are decorated to become an action.
 
-Both task and action functions can accept parameters. *pybuilder* supports a set of parameters and knows which
+Both task and action functions can accept parameters. *PyBuilder* supports a set of parameters and knows which
 one to pass to a function based on the parameter's name.
 
 
@@ -83,7 +83,7 @@ def say_hello ():
 
 ### Dependency Injecting
 
-*pybuilder* supports dependency injection for tasks based on parameters. The following parameters can be used to
+*PyBuilder* supports dependency injection for tasks based on parameters. The following parameters can be used to
 receive components:
 <dl>
   <dt>logger</dt>

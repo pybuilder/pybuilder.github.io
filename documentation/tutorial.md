@@ -10,7 +10,7 @@ hello world Python program.
 
 ## Setting up the Stage
 
-*pybuilder* is configured (or programmed) using a Python file that is named ```build.py```. To start, create an empty
+*PyBuilder* is configured (or programmed) using a Python file that is named ```build.py```. To start, create an empty
 directory ```helloworld``` as well as an empty file ```build.py```.
 We recommend installing the pybuilder in a virtual environment :
 
@@ -53,7 +53,7 @@ def helloworld (out):
     out.write("Hello world of Python\n")
 </code></pre>
 
-Now we need to tell pyb that we want to build a Python project. Fortunately, *pybuilder* comes with a first class Python support, so telling it to build a Python project is dead easy. Modify your ```build.py``` as follows:
+Now we need to tell pyb that we want to build a Python project. Fortunately, *PyBuilder* comes with a first class Python support, so telling it to build a Python project is dead easy. Modify your ```build.py``` as follows:
 
 <pre><code>from pybuilder.core import use_plugin
 
@@ -241,7 +241,7 @@ Again ```target``` as well as ```reports``` are configurable but we won't change
 
 When writing tests, it is important to know which parts if of the code are covered by automatic tests and which aren't.
 For Python, there exists a bunch of tools to calculate the coverage. One of these tools that is integrated with
-*pybuilder* is [coverage](http://nedbatchelder.com/code/coverage/). Python-Coverage measures the line coverage
+*PyBuilder* is [coverage](http://nedbatchelder.com/code/coverage/). Python-Coverage measures the line coverage
 (as opposed to branch coverage).
 
 To execute python coverage during the execution of unit tests and analyze the results, all you need to do is use a plugin.
@@ -302,8 +302,8 @@ their computers. In the Python world, one standard way to do this is using
 
 Using distutils basically means providing a ```setup.py``` that can be used to install the software.
 
-*pybuilder* comes with a plugin, that can generate the ```setup.py``` script so you don't need to write it your own.
-*pybuilde* automatically discovers your modules, packages and scripts and writes configuration for the setup script
+*PyBuilder* comes with a plugin, that can generate the ```setup.py``` script so you don't need to write it your own.
+*PyBuilder* automatically discovers your modules, packages and scripts and writes configuration for the setup script
 accordingly.
 
 Modify your ```build.py``` to use the plugin:
@@ -387,5 +387,5 @@ In this tutorial we saw how PyBuilder can be used to "build" a typical Python pr
 language is more a step of packaging the sources rather than compiling them. Additionally, we saw how PyBuilder
 can help you ensuring that all the automatic tests are executed and that the test coverage matches you standards.
 
-We saw a few plugins in action. *pybuilder* provides more of them.
+We saw a few plugins in action. *PyBuilder* provides more of them.
 See the [documentation of plugins](/documentation/plugins.html) for available plugins.

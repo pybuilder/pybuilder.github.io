@@ -1,6 +1,6 @@
 ---
 layout: documentation
-title: Installing Pybuilder
+title: Installing PyBuilder
 ---
 
 # Installation
