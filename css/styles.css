@@ -30,3 +30,8 @@ footer div.container div.row a {
     background: linear-gradient(to bottom, rgba(247,251,252,1) 0%,rgba(217,237,242,1) 40%,rgba(173,217,228,1) 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7fbfc', endColorstr='#add9e4',GradientType=0 ); /* IE6-9 */
 }
+
+div.hero h1 {
+    font-family: 'Pirata One', cursive;
+    font-size: 5em;
+}
