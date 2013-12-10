@@ -16,3 +16,11 @@
 <script src="/js/jquery-ui-1.10.3.custom.min.js"></script>
 <script src="/js/jquery.tocify.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
+<script src="/js/highlight.pack.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+  });
+</script>
+

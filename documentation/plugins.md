@@ -444,13 +444,12 @@ The ```python.core``` and ```python.distutils``` plugins support the property ``
 can name a directory to contain scripts inside the egg. This property is empty by default. Set it to the local name
 of the directory you want the scripts to be moved to:
 
-<pre>
-@init
+<pre><code>@init
 def initialize (project):
     project.set_property("dir_dist_scripts", 'scripts')
 
 ...
-</pre>
+</code></pre>
 
 
 #### Distutils properties

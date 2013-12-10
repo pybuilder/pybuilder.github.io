@@ -47,22 +47,20 @@ location for main python sources is
 This is a convention borrowed from Apache Maven. You can alter this location but in this tutorial we stick to the
 defaults. Create the directory and in there, create a file ```helloworld.py``` with the following sample code:
 
-<pre>
-import sys
+<pre><code>import sys
 
 def helloworld (out):
     out.write("Hello world of Python\n")
-</pre>
+</code></pre>
 
 Now we need to tell pyb that we want to build a Python project. Fortunately, *pybuilder* comes with a first class Python support, so telling it to build a Python project is dead easy. Modify your ```build.py``` as follows:
 
-<pre>
-from pybuilder.core import use_plugin
+<pre><code>from pybuilder.core import use_plugin
 
 use_plugin("python.core")
 
 default_task = "publish"
-</pre>
+</code></pre>
 
 Now, if you run ```pyb``` again, here is what you get:
 
@@ -99,12 +97,11 @@ Note that this path is configurable, but let us stick with the conventions here.
 
 We add a file ```src/main/scripts/hello-pybuilder``` with these contents :
 
-<pre>
-#!/usr/bin/env python
+<pre><code>#!/usr/bin/env python
 import sys
 
 sys.stdout.write('Hello from my script!\n')
-</pre>
+</code></pre>
 
 
 Now we can run the pybuilder again :
@@ -144,8 +141,7 @@ As a next step, we want to add a unit test for our helloworld function.
 
 We add a file ```src/unittest/python/helloworld_tests.py``` with the following content
 
-<pre>
-from mockito import mock, verify
+<pre><code>from mockito import mock, verify
 import unittest
 
 from helloworld import helloworld
@@ -157,7 +153,7 @@ class HelloWorldTest (unittest.TestCase):
         helloworld(out)
 
         verify(out).write("Hello world of Python\n")
-</pre>
+</code></pre>
 
 Notice that there is no black magic in the test sources. It's just a simple
 [unittest TestCase](http://docs.python.org/library/unittest.html#unittest.TestCase) using
@@ -173,14 +169,13 @@ Now it's time to tell pyb to
 
 Again, it's dead easy. Modify your ```build.py``` as follows:
 
-<pre>
-from pybuilder.core import use_plugin
+<pre><code>from pybuilder.core import use_plugin
 
 use_plugin("python.core")
 use_plugin("python.unittest")
 
 default_task = "publish"
-</pre>
+</code></pre>
 
 and run pyb again:
 
@@ -253,15 +248,14 @@ To execute python coverage during the execution of unit tests and analyze the re
 
 Modify your ```build.py``` again:
 
-<pre>
-from pybuilder.core import use_plugin
+<pre><code>from pybuilder.core import use_plugin
 
 use_plugin("python.core")
 use_plugin("python.unittest")
 use_plugin("python.coverage")
 
 default_task = "publish"
-</pre>
+</code></pre>
 
 Now run pyb again:
 
@@ -314,8 +308,7 @@ accordingly.
 
 Modify your ```build.py``` to use the plugin:
 
-<pre>
-from pybuilder.core import use_plugin
+<pre><code>from pybuilder.core import use_plugin
 
 use_plugin("python.core")
 use_plugin("python.unittest")
@@ -323,7 +316,7 @@ use_plugin("python.coverage")
 use_plugin("python.distutils")
 
 default_task = "publish"
-</pre>
+</code></pre>
 
 Now run pyb again:
 

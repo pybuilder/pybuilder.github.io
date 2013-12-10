@@ -16,7 +16,7 @@ commonly it targets the "building" and management of software with a strong focu
 
 ### Building Python Projects
 
-Among the capabilities which can be used out of the box when applying *pybuilder* to your project, you get: 
+Among the capabilities which can be used out of the box when applying *pybuilder* to your project, you get:
 * Automatic execution of unit and integration tests on every build
 * Automatic analysis of the code coverage
 * Automatic execution of analysis tools, such as
@@ -40,7 +40,7 @@ there was no central point of entry.
 I suddenly found myself writing "build scripts" in Python over and over again using the tools I found out to be
 usefull.
 
-*pybuilder* was born on the attempt to create a reusable tool that should 
+*pybuilder* was born on the attempt to create a reusable tool that should
 * Make simple things simple
 * Make hard things as simple as possible
 * Let me use whatever tool I want to integrate
@@ -73,13 +73,12 @@ one to pass to a function based on the parameter's name.
 
 Writing a task is easy. You just create a function and decorate with the ```@task``` decorator:
 
-<pre>
-from pythonbuilder.core import task
+<pre><code>from pythonbuilder.core import task
 
 @task
 def say_hello ():
     print "Hello, pybuilder"
-</pre>
+</code></pre>
 
 
 ### Dependency Injecting
@@ -96,13 +95,12 @@ receive components:
 
 Thus we can rewrite the task above to use the logger:
 
-<pre>
-from pythonbuilder.core import task
+<pre><code>from pythonbuilder.core import task
 
 @task
 def say_hello (logger):
    logger.info("Hello, pybuilder")
-</pre>
+</code></pre>
 
 
 ### Project Attributes
@@ -111,7 +109,7 @@ def say_hello (logger):
 #### Setting Properties from tasks
 #### Setting Properties from the command line
 
-Properties can be set or overridden using command line switches. 
+Properties can be set or overridden using command line switches.
 
 <pre>$ pyb -P spam="spam message"</pre>
 
