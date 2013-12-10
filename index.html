@@ -2,85 +2,84 @@
 layout: default
 title: PyBuilder an easy to use continuous build tool for Python
 ---
-<div class="container">
-  <div class="jumbotron">
-    <h1>PyBuilder</h1>
-    <h2>An easy to use continuous build tool for Python.</h2>
+<div class="jumbotron">
+  <h1>PyBuilder</h1>
+  <h2>An easy to use continuous build tool for Python.</h2>
+  <p>
+    <em>PyBuilder</em> is primarily targetted to Python projects but due to its extensible
+    nature it can be used for other languages as well.
+    <em>PyBuilder</em> features a powerful yet easy to use plugin mechanism which
+    allows programmers to extend the tool in an unlimited way.
+  </p>
+  <p>
+    <a href="https://github.com/pybuilder/pybuilder" class="btn btn-primary btn-lg">
+      100% <strong>Open Source</strong>
+      &raquo;
+    </a>
+  </p>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <h2><span class="glyphicon glyphicon-book"></span> Read the tutorial</h2>
     <p>
-      <em>PyBuilder</em> is primarily targetted to Python projects but due to its extensible
-      nature it can be used for other languages as well.
-      <em>PyBuilder</em> features a powerful yet easy to use plugin mechanism which
-      allows programmers to extend the tool in an unlimited way.
+      The tutorial shows you how to get started using
+      <em>PyBuilder</em>
+      for your Python project including unittests, coverage and distutils.
     </p>
+
+    <a class="btn btn-primary btn-small" href="/documentation/tutorial.html">Tutorial &raquo;</a>
+  </div>
+
+  <div class="col-md-4">
+    <h2><span class="glyphicon glyphicon-cloud-download"></span> Installation</h2>
+
     <p>
-      <a href="https://github.com/pybuilder/pybuilder" class="btn btn-primary btn-lg">
-        100% <strong>Open Source</strong>
-        &raquo;
+      Using pip
+      <em>PyBuilder</em>
+      is easy to install:
+    </p>
+    <code>$ pip install pybuilder</code>
+    <p>
+    If you use <em>virtualenv</em> we recommend installing pybuilder inside it
+    so that it does not see your system packages.
+    </p>
+  </div>
+
+  <div class="col-md-4">
+    <h2><span class="glyphicon glyphicon-check"></span> Compatibility</h2>
+
+    <p>
+      <em>PyBuilder</em>
+      supports a lot of tools typically used when building a Python application, such as unittest, coverage,
+    pychecker, pylint and setuptools.
+    </p>
+
+    <hr />
+    <h3>Runs on python 2.6 - 3.3</h3>
+
+    <p>
+      <em>PyBuilder</em>
+      runs on Python <strong>2.6 to 3.3 and PyPy</strong>. Every checkin is tested on versions 2.6, 2.7, 3.2, 3.3 and PyPy on
+      <a href="http://travis-ci.org/#!/pybuilder/pybuilder">
+        <img src="https://secure.travis-ci.org/pybuilder/pybuilder.png?branch=master"/>
       </a>
     </p>
   </div>
+</div>
 
-  <div class="row">
-    <div class="col-md-4">
-      <h2><span class="glyphicon glyphicon-book"></span> Read the tutorial</h2>
-      <p>
-        The tutorial shows you how to get started using
-        <em>PyBuilder</em>
-        for your Python project including unittests, coverage and distutils.
-      </p>
+<div class="row">
+  <div class="col-md-12">
+    <h2><span class="glyphicon glyphicon-play"></span> Get started</h2>
 
-      <a class="btn btn-primary btn-small" href="/documentation/tutorial.html">Tutorial &raquo;</a>
-    </div>
+    <p>
+      To get started with a simple Python project that has unittests create a file
+      <code>build.py</code>
+      with the
+    following content:
+    </p>
 
-    <div class="col-md-4">
-      <h2><span class="glyphicon glyphicon-cloud-download"></span> Installation</h2>
-
-      <p>
-        Using pip
-        <em>PyBuilder</em>
-        is easy to install:
-      </p>
-      <code>$ pip install pybuilder</code>
-      <p>
-      If you use <em>virtualenv</em> we recommend installing pybuilder inside it
-      so that it does not see your system packages.
-      </p>
-    </div>
-
-    <div class="col-md-4">
-      <h2><span class="glyphicon glyphicon-check"></span> Compatibility</h2>
-
-      <p>
-        <em>PyBuilder</em>
-        supports a lot of tools typically used when building a Python application, such as unittest, coverage,
-      pychecker, pylint and setuptools.
-      </p>
-
-      <hr />
-      <h3>Runs on python 2.6 - 3.3</h3>
-
-      <p>
-        <em>PyBuilder</em>
-        runs on Python <strong>2.6 to 3.3 and PyPy</strong>. Every checkin is tested on versions 2.6, 2.7, 3.2, 3.3 and PyPy on
-        <a href="http://travis-ci.org/#!/pybuilder/pybuilder">
-          <img src="https://secure.travis-ci.org/pybuilder/pybuilder.png?branch=master"/>
-        </a>
-      </p>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-12">
-      <h2><span class="glyphicon glyphicon-play"></span> Get started</h2>
-
-      <p>
-        To get started with a simple Python project that has unittests create a file
-        <code>build.py</code>
-        with the
-      following content:
-      </p>
-
-      <pre>
+    <pre>
 from pybuilder.core import use_plugin
 
 use_plugin("python.core")
@@ -90,56 +89,55 @@ use_plugin("python.distutils")
 
 default_task = "publish"</pre>
 
-      <p>
-        Create a directory
-        <code>src/main/python</code>
-        and put all your Python code there. Create a directory
-        <code>src/unittest/python</code>
-        and put all your unittest modules there, each named
-        <code>*_tests.py</code>
-        .
-      </p>
+    <p>
+      Create a directory
+      <code>src/main/python</code>
+      and put all your Python code there. Create a directory
+      <code>src/unittest/python</code>
+      and put all your unittest modules there, each named
+      <code>*_tests.py</code>
+      .
+    </p>
 
-      <p>
-        In the root directory, run
-        <code>pyb</code>
-        :
-      </p>
-      <pre>$ pyb</pre>
+    <p>
+      In the root directory, run
+      <code>pyb</code>
+      :
+    </p>
+    <pre>$ pyb</pre>
 
-      <p>
-        <a class="btn btn-primary btn-small"
-        href="https://github.com/pybuilder/pybuilder/tree/master/samples/simple-python-app" class="btn" href="#">Try it yourself &raquo;</a>
-      </p>
-    </div>
+    <p>
+      <a class="btn btn-primary btn-small"
+      href="https://github.com/pybuilder/pybuilder/tree/master/samples/simple-python-app" class="btn" href="#">Try it yourself &raquo;</a>
+    </p>
   </div>
+</div>
 
-  <hr>
+<hr>
 
-  <div class="row">
-    <div class="col-md-4">
-      <iframe src="http://ghbtns.com/github-btn.html?user=pybuilder&repo=pybuilder&type=fork&size=large&count=true"
+<div class="row">
+  <div class="col-md-4">
+    <iframe src="http://ghbtns.com/github-btn.html?user=pybuilder&repo=pybuilder&type=fork&size=large&count=true"
             allowtransparency="true"
             frameborder="0"
             scrolling="0"
             width="200"
             height="30"></iframe>
-    </div>
-    <div class="col-md-4">
-      <iframe src="http://ghbtns.com/github-btn.html?user=pybuilder&repo=pybuilder&type=watch&size=large&count=true"
+  </div>
+  <div class="col-md-4">
+    <iframe src="http://ghbtns.com/github-btn.html?user=pybuilder&repo=pybuilder&type=watch&size=large&count=true"
             allowtransparency="true"
             frameborder="0"
             scrolling="0"
             width="200"
             height="30"></iframe>
-    </div>
-    <div class="col-md-4">
-      <iframe src="http://ghbtns.com/github-btn.html?user=pybuilder&repo=pybuilder&type=follow&size=large&count=true"
+  </div>
+  <div class="col-md-4">
+    <iframe src="http://ghbtns.com/github-btn.html?user=pybuilder&repo=pybuilder&type=follow&size=large&count=true"
             allowtransparency="true"
             frameborder="0"
             scrolling="0"
             width="200"
             height="30"></iframe>
-    </div>
   </div>
 </div>
