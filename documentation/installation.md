@@ -8,8 +8,7 @@ title: Installing PyBuilder
 ## Pip and Easy Install
 
 We recommend installing *PyBuilder* into a [virtual environment](http://pypi.python.org/pypi/virtualenv) using
-[pip](http://pypi.python.org/pypi/pip) or [easy_install](http://packages.python.org/distribute/easy_install.html)
-using a command such as:
+[pip](http://pypi.python.org/pypi/pip) using a command such as:
 
 <pre>$ pip install pybuilder</pre>
 
