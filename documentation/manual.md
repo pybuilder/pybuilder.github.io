@@ -132,7 +132,7 @@ A complete reference of the available properties is included in the [plugin refe
 
 #### Setting Properties from tasks
 Tasks should always bring a sane default for mandatory properties. Setting properties is done from an _initializer_, just like in `build.py`.
-Note that setting project properties from within a task function is possible but will override user-specified properties.
+Note that setting project properties from within a task function is possible but will override user-specified properties because initializers run before tasks are executed.
 Thus, as a general rule, functions decorated with `task` should only read project properties using <code>project.get_property</code>.
 
 #### Setting Properties from the command line
