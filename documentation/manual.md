@@ -52,18 +52,16 @@ Tasks are the main building blocks of the build logic. A task is an enclosed pie
 a single unit. Each task can name a set of other tasks that it depends on. *PyBuilder* ensures that a
 task gets executed only after all of its dependencies have been executed.
 
-Tasks are plain Python functions. A decorator is used to create a task out of such a function. Thus, you can structure your
-code the way you like if you provide a single point of entry to a build step.
 
 Actions are smaller pieces of build logic than tasks. They are bound to the execution of task. Each action states
 that it needs to be executed *before* or *after* a named task. PyBuilder will execute the action if
 and only if the named task is executed, either directly or through another tasks' dependencies.
 
 Actions as well as tasks are decorated plain Python functions.
+Thus, you can structure your code the way you like if you provide a single point of entry to a build step.
 
-Both task and action functions can accept parameters through dependency injection. *PyBuilder* supports a set of parameters and knows which
-one to pass to a function based on the parameter's name.
-
+Both task and action functions can request parameters known to *PyBuilder* through dependency injection
+by parameter name.
 
 ## Writing Tasks
 
