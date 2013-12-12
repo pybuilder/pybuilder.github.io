@@ -65,7 +65,7 @@ by parameter name.
 
 ## Writing Tasks
 
-Writing a task is easy. You just create a function and decorate with the ```@task``` decorator:
+Writing a task is easy. You just create a function and decorate with the ```@task``` decorator, and add it to your `build.py`:
 
 <pre><code>from pybuilder.core import task
 
@@ -74,10 +74,11 @@ def say_hello ():
     print "Hello, PyBuilder"
 </code></pre>
 
+There is now a new task named `say_hello` available to you. You can verify this by running `pyb -t`.
 
 ### Dependency Injection
 
-*PyBuilder* supports dependency injection for tasks based on parameters. The following parameters can be used to
+*PyBuilder* supports dependency injection for tasks based on parameter names. The following parameters can be used to
 receive components:
 <dl>
   <dt>logger</dt>
@@ -96,11 +97,44 @@ def say_hello (logger):
    logger.info("Hello, PyBuilder")
 </code></pre>
 
+## Project-specific configuration
+### Initializers
+The configuration of a project is done by mutating the `project` object. You can access this object from within `build.py` by
+writing an initializer.
+An initializer is a plain python function that is decorated to become an initializer :
+
+<pre><code>
+from pybuilder.core import init
+@init
+def initialize(project):
+    pass
+</code></pre>
 
 ### Project Attributes
+
 ### Project Properties
+Project properties are used to configure plugins.
+Plugins that rely on properties usually ship with a default value, that you can override.
+This is conform to the idea of _convention over configuration_.
+
+For instance the `unittest` plugin ships with a default property `unittest_file_suffix` set to `"_tests.py"`.
+If the default value does not suit you you can override it by setting the property to something else.
+
+This is done by using the `set_property` method of the `project` object. You should do this from within an initializer like so:
+
+<pre><code>
+@init
+def initialize(project):
+     project.set_property('unittest_file_suffix', '_unittest.py')
+</code></pre>
+
+A complete reference of the available properties is included in the [plugin reference](/documentation/plugins.html)
 
 #### Setting Properties from tasks
+Tasks should always bring a sane default for mandatory properties. Setting properties is done from an _initializer_, just like in `build.py`.
+Note that setting project properties from within a task function is possible but will override user-specified properties.
+Thus, as a general rule, functions decorated with `task` should only read project properties using <code>project.get_property</code>.
+
 #### Setting Properties from the command line
 
 Properties can be set or overridden using command line switches.
