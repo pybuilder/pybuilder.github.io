@@ -143,4 +143,4 @@ Properties can be set or overridden using command line switches.
 
 This command sets/ overrides the property with the name ```spam``` with the value ```spam message```.
 
-Notice that command line switches only allow properties to be set/ overridden using string values.
+Note that command line switches only allow properties to be set/ overridden using string values.
