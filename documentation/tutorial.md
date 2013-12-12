@@ -12,7 +12,7 @@ hello world program in python.
 
 *PyBuilder* is configured (or programmed) using a Python file that is named ```build.py```. To start, create an empty
 directory ```helloworld``` as well as an empty file ```build.py```.
-We recommend installing the PyBuilder in a virtual environment :
+We recommend installing PyBuilder in a virtual environment :
 
 <pre>
 <code>
