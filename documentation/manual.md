@@ -111,6 +111,20 @@ def initialize(project):
 </code></pre>
 
 ### Project Attributes
+Project attributes are values that describe a project. Unlike the properties below, they are not used
+to configure plugins but rather to describe the project. Each project has several default attributes
+like `version` and `license`. These can be set from within an initializer :
+
+<pre><code>
+@init
+def initialize(project):
+    project.version = "0.1.14"
+</code></pre>
+
+A project's attributes affect the build in a variety of ways. For instance the `license` attribute
+is used when generating a setuptools script to correctly fill the metadata fields.
+A notable use case for project attributes is replacing placeholder values in source files
+at build-time with the [filter_resources plugin](/documentation/plugins.html#Filteringfiles).
 
 ### Project Properties
 Project properties are used to configure plugins.
