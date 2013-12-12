@@ -8,31 +8,29 @@ title: PyBuilder Usage Documentation
 
 ## Introduction
 
-*PyBuilder* is a software build tool. *PyBuilder* can be used for a lot of purposes. Most
-commonly it targets the "building" and management of software with a strong focus on Python.
+*PyBuilder* is a multi-purpose software build tool. Most
+commonly it targets the building and management of software with a strong focus on Python.
 
 
 ### Building Python Projects
 
-Among the capabilities which can be used out of the box when applying *PyBuilder* to your project, you get:
+Some of the capabilities provided by *PyBuilder* out-of-the box are: 
 * Automatic execution of unit and integration tests on every build
 * Automatic analysis of the code coverage
-* Automatic execution of analysis tools, such as
-  + pylint
-  + pychecker
-  + pymetrics
-  + pep8
-  + flake8
+* Automatic execution and result interpretation of analysis tools, such as flake8
 * Automatic generation of distutils script ```setup.py```
+
+The general idea is that everything you do in your _continuous integration_ chain, you also do locally
+before checking in your work.
 
 ### Why Another Build Tool
 
 When working on large scale software projects based on Java and Groovy I delved into the build process using tools
-such as Apache Ant, Apache Maven or Gradle. Although none of these tools is perfect they all provide a powerful and
+such as *Apache Ant*, *Apache Maven* or *Gradle*. Although none of these tools is perfect they all provide a powerful and
 extensible way for building and testing software.
 
 When focusing on Python I looked for a similar tool and got frustrated by the large number of tools that all match
-some aspect of the build and test process. Unfortunately, all tools work mostly independent from each other and
+some aspect of the build and test process. Unfortunately, many of those tools were not suitable for composition and
 there was no central point of entry.
 
 I suddenly found myself writing "build scripts" in Python over and over again using the tools I found out to be
@@ -48,7 +46,7 @@ useful.
 
 ## Concepts
 
-*PyBuilder* executes build logic that is organized in tasks and actions.
+*PyBuilder* executes build logic that is organized into tasks and actions.
 
 Tasks are the main building blocks of the build logic. A task is an enclosed piece of build logic to be executed as
 a single unit. Each task can name a set of other tasks that this task depends on. *PyBuilder* ensures, that a
