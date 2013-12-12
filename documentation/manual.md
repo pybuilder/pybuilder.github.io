@@ -49,7 +49,7 @@ useful.
 *PyBuilder* executes build logic that is organized into tasks and actions.
 
 Tasks are the main building blocks of the build logic. A task is an enclosed piece of build logic to be executed as
-a single unit. Each task can name a set of other tasks that this task depends on. *PyBuilder* ensures, that a
+a single unit. Each task can name a set of other tasks that it depends on. *PyBuilder* ensures that a
 task gets executed only after all of its dependencies have been executed.
 
 Tasks are plain Python functions. A decorator is used to label a function as a task. Thus, you can structure your
