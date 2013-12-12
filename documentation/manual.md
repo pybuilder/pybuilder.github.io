@@ -5,8 +5,6 @@ title: PyBuilder Usage Documentation
 
 # PyBuilder Usage Documentation
 
-**WIP WARNING: This page is work in progress.**
-
 
 ## Introduction
 
