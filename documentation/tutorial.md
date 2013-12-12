@@ -5,19 +5,21 @@ title: PyBuilder Tutorial
 
 # Tutorial
 
-This tutorial shows you how to use python-builder to build a
-hello world Python program.
+This tutorial shows you how to use *PyBuilder* to build a
+hello world program in python.
 
-## Setting up the Stage
+## Setting up the stage
 
 *PyBuilder* is configured (or programmed) using a Python file that is named ```build.py```. To start, create an empty
 directory ```helloworld``` as well as an empty file ```build.py```.
 We recommend installing the PyBuilder in a virtual environment :
 
 <pre>
-$ virtualenv venv
-$ source venv/bin/activate
-$ pip install pybuilder
+<code>
+virtualenv venv
+source venv/bin/activate
+pip install pybuilder
+</code>
 </pre>
 
 Run ```pyb``` in this directory. This is what you should get:
