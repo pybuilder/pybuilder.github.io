@@ -5,7 +5,6 @@ title: PyBuilder Usage Documentation
 
 # PyBuilder Usage Documentation
 
-
 ## Introduction
 
 *PyBuilder* is a multi-purpose software build tool. Most
@@ -101,7 +100,7 @@ def say_hello (logger):
 ### Initializers
 The configuration of a project is done by mutating the `project` object. You can access this object from within `build.py` by
 writing an initializer.
-An initializer is a plain python function that is decorated to become an initializer :
+An initializer is a plain python function that is decorated to become an initializer:
 
 <pre><code>
 from pybuilder.core import init
@@ -113,7 +112,7 @@ def initialize(project):
 ### Project Attributes
 Project attributes are values that describe a project. Unlike the properties below, they are not used
 to configure plugins but rather to describe the project. Each project has several default attributes
-like `version` and `license`. These can be set from within an initializer :
+like `version` and `license`. These can be set from within an initializer:
 
 <pre><code>@init
 def initialize(project):
