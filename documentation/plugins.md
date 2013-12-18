@@ -330,7 +330,7 @@ into the distribution directory.
 
 *PyBuilder* manages build and runtime dependencies for you.
 Use the ```python.install_dependencies``` module to activate dependency management.
-This will make the following tasks available :
+This will make the following tasks available:
 
 <table class="table table-striped">
   <tr>
@@ -617,7 +617,7 @@ The output of the plugin can also be customized by using the properties
 `$PHASE_propagate_stdout` and `$PHASE_propagate_stderr`.
 
 
-See the properties for the phase `run_unit_tests` for example :
+See the properties for the phase `run_unit_tests` for example:
 <table class="table table-striped">
   <tr>
     <th>Name</th>
