@@ -79,6 +79,7 @@ There is now a new task named `say_hello` available to you. You can verify this 
 
 *PyBuilder* supports dependency injection for tasks based on parameter names. The following parameters can be used to
 receive components:
+
 <dl>
   <dt>logger</dt>
   <dd>A logger instance which can be used to issue messages to the user.</dd>
