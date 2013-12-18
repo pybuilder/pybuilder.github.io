@@ -14,7 +14,7 @@ commonly it targets the building and management of software with a strong focus 
 
 ### Building Python Projects
 
-Some of the capabilities provided by *PyBuilder* out-of-the box are: 
+Some of the capabilities provided by *PyBuilder* out-of-the box are:
 * Automatic execution of unit and integration tests on every build
 * Automatic analysis of the code coverage
 * Automatic execution and result interpretation of analysis tools, such as flake8
@@ -115,8 +115,7 @@ Project attributes are values that describe a project. Unlike the properties bel
 to configure plugins but rather to describe the project. Each project has several default attributes
 like `version` and `license`. These can be set from within an initializer :
 
-<pre><code>
-@init
+<pre><code>@init
 def initialize(project):
     project.version = "0.1.14"
 </code></pre>
@@ -136,8 +135,7 @@ If the default value does not suit you you can override it by setting the proper
 
 This is done by using the `set_property` method of the `project` object. You should do this from within an initializer like so:
 
-<pre><code>
-@init
+<pre><code>@init
 def initialize(project):
      project.set_property('unittest_file_suffix', '_unittest.py')
 </code></pre>
