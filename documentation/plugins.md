@@ -618,6 +618,7 @@ The output of the plugin can also be customized by using the properties
 
 
 See the properties for the phase `run_unit_tests` for example:
+
 <table class="table table-striped">
   <tr>
     <th>Name</th>
