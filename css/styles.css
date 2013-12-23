@@ -36,3 +36,7 @@ div.hero h1 {
     font-size: 5em;
     text-shadow: 1px 1px 1px white;
 }
+
+div.hero h1 small{
+    font-size: 30%;
+}
