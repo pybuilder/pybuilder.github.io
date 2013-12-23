@@ -1,4 +1,4 @@
-_PyBuilder_ is a software build tool written in 100% pure Python and mainly
+_PyBuilder_ is a software build tool written in pure Python and mainly
 targets Python applications.
 
 It is based on the concept of dependency based programming but also comes
