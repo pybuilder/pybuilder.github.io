@@ -56,6 +56,7 @@
     margin: 0px;
 }
 
+/* Highlight current active content element in the toc */
  .tocify-header .active > a, .tocify-header .active > a:hover{
     color: #ffffff;
     background-color: #0088cc;
