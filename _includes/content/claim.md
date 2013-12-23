@@ -1,4 +1,6 @@
-_PyBuilder_ is primarily targeted at Python projects but due to its extensible
-nature it can be used for other languages as well. _PyBuilder_
-features a powerful yet easy to use plugin mechanism which
-allows programmers to extend the tool in an unlimited way.
+_PyBuilder_ is a software build tool written in 100% pure Python and mainly
+targets Python applications.
+
+It is based on the concept of dependency based programming but also comes
+along with powerful plugin mechanism that allows the construction of build life
+cycles similar to those known from other famous build tools like _Apache Maven_.
