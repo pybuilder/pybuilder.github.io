@@ -158,6 +158,10 @@ Notice that there is no black magic in the test sources. It's just a simple
 [unittest TestCase](http://docs.python.org/library/unittest.html#unittest.TestCase) using
 [mockito](http://code.google.com/p/mockito-python/) to stub the call to ```sys.stdout.write```.
 
+Concerning the filename it is important to notice that
+ * The file must be located under ```src/unittest/python```. This is the default and may be altered but as with the main sources, we stick to the defaults.
+ * The file must end with ```_tests.py```. This tells *PyBuilder* to consider this file when discovering test cases. Again, this can be altered, although we don't do this.
+
 Since `mockito` is not part of the Python standard libraries, we have to tell *PyBuilder* that our build
 process for our project from now on depends on mockito. Therefore we adapt `build.py`:
 
@@ -200,11 +204,7 @@ Build finished at 2013-12-27 00:08:07
 Build took 19 seconds (19970 ms)
 </pre>
 
-As you can see mockito has been installed. Now let's execute the our unittest.
-
-Concerning the filename it is important to notice that
- * The file must be located under ```src/unittest/python```. This is the default and may be altered but as with the main sources, we stick to the defaults.
- * The file must end with ```_tests.py```. This tells *PyBuilder* to consider this file when discovering test cases. Again, this can be altered, although we don't do this.
+As you can see mockito has been installed. Now let's execute our unittest.
 
 Now it's time to tell *PyBuilder* to
  * execute the tests on each build
