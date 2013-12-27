@@ -14,13 +14,18 @@ Committer is a unified command line interface for git, mercurial and subversion.
 
 See [build.py](https://github.com/aelgru/committer/blob/master/build.py)
 
+
 ## [yadtshell](https://github.com/yadt/yadtshell)
 
-YADT - an Augmented Deployment Tool - The Shell Part
-- regards the dependencies between services, over different hosts
-- updates artefacts in a safe manner
-- issues multiple commands in parallel on several hosts
+[YADT - an Augmented Deployment Tool - The Shell Part](http://www.yadt-project.org/)
 
-for more documentation, visit [www.yadt-project.org](http://www.yadt-project.org/)
-
+This project uses a [custom task](/documentation/manual.html#WritingTasks) to generate manpages and several *PyBuilder* features to deliver them.
 See [build.py](https://github.com/yadt/yadtshell/blob/master/build.py)
+
+
+## [livestatus-service](https://github.com/ImmobilienScout24/livestatus_service)
+
+livestatus-service exposes MK livestatus to the network over HTTP.
+This project leverages several *PyBuilder* features to deliver apache configuration files, include html templates, and keep the configuration DRY.
+
+See [build.py](https://github.com/ImmobilienScout24/livestatus_service/blob/master/build.py).
