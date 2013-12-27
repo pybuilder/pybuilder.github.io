@@ -5,6 +5,9 @@ title: Projects using PyBuilder
 
 # Projects using PyBuilder
 
+Of course *PyBuilder* is built using *PyBuilder*.
+See [build.py](https://github.com/pybuilder/pybuilder/blob/master/build.py)
+
 ## [committer](https://github.com/aelgru/committer)
 
 Committer is a unified command line interface for git, mercurial and subversion.
