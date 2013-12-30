@@ -646,3 +646,7 @@ See the properties for the phase `run_unit_tests` for example:
 
 If the plugin `python.pydev` is used, PyBuilder provides the task `pydev_generate`.
 This task can be used to generate PyDev project files in the project root directory. The project can then be imported easily.
+
+### Project files for Jetbrains PyCharm <small><span class="label label-info">pybuilder>0.9.17 (unreleased)</span></small>
+If the plugin `python.pycharm` is used, PyBuilder provides the task `pycharm_generate`.
+This task can be used to generate a PyCharm project files in the project root directory. The project can then be imported easily through the `Open...` command.
