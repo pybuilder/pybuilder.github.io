@@ -153,7 +153,7 @@ def mytask(project, logger):
     logger.info("The property for my plugin is {0}".format(my_property))
 ```
 Properties can be of any type (usually strings, integers, booleans or lists).
-If a property is mandatory and there is no default, then `project.get_mandatory_property` is more suitable since it also raises an error in case the property is unset.
+If a property is mandatory and there is no default, then `project.get_mandatory_property` is more suitable since it also raises an error in case the property is unset. See [the project API](/documentation/api/core.m.html#pybuilder.core.Project) for even more possibilities!
 
 #### Requiring external libraries
 If the plugin requires external libraries installable through pip, the project object can be used to add this as a dependency :
