@@ -190,8 +190,8 @@ There are three ways to get a task to run :
 This is the most common approach. The user will use `pyb my_task` which will run the task.
 
 #### Indirect invocation through a dependency
-When there is a dependency chain between tasks, for example *foo* requires *bar* to run first.
-If the user executes `pyb foo` then this will run *bar* and *foo* in that order.
+When there is a dependency chain between tasks, for example if *foo* requires *bar* to run first.
+If the user executes `pyb foo` this will run *bar* and *foo* in that order.
 
 #### Indirect invocation through naming
 As we saw before, tasks are identified by their name. When there are multiple tasks with the same name, then all those tasks will run.
