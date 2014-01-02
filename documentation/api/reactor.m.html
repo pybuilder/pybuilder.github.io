@@ -1,0 +1,2267 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>		<html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>		<html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+
+      <title>pybuilder.reactor API documentation</title>
+      <meta name="description" content="">
+
+  
+  <style type="text/css">
+  
+/*! normalize.css v1.1.1 | MIT License | git.io/normalize */
+
+/* ==========================================================================
+   HTML5 display definitions
+   ========================================================================== */
+
+/**
+ * Correct `block` display not defined in IE 6/7/8/9 and Firefox 3.
+ */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+    display: block;
+}
+
+/**
+ * Correct `inline-block` display not defined in IE 6/7/8/9 and Firefox 3.
+ */
+
+audio,
+canvas,
+video {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+
+audio:not([controls]) {
+    display: none;
+    height: 0;
+}
+
+/**
+ * Address styling not present in IE 7/8/9, Firefox 3, and Safari 4.
+ * Known issue: no IE 6 support.
+ */
+
+[hidden] {
+    display: none;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+/**
+ * 1. Prevent system color scheme's background color being used in Firefox, IE,
+ *    and Opera.
+ * 2. Prevent system color scheme's text color being used in Firefox, IE, and
+ *    Opera.
+ * 3. Correct text resizing oddly in IE 6/7 when body `font-size` is set using
+ *    `em` units.
+ * 4. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+
+html {
+    background: #fff; /* 1 */
+    color: #000; /* 2 */
+    font-size: 100%; /* 3 */
+    -webkit-text-size-adjust: 100%; /* 4 */
+    -ms-text-size-adjust: 100%; /* 4 */
+}
+
+/**
+ * Address `font-family` inconsistency between `textarea` and other form
+ * elements.
+ */
+
+html,
+button,
+input,
+select,
+textarea {
+    font-family: sans-serif;
+}
+
+/**
+ * Address margins handled incorrectly in IE 6/7.
+ */
+
+body {
+    margin: 0;
+}
+
+/* ==========================================================================
+   Links
+   ========================================================================== */
+
+/**
+ * Address `outline` inconsistency between Chrome and other browsers.
+ */
+
+a:focus {
+    outline: thin dotted;
+}
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+
+a:active,
+a:hover {
+    outline: 0;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+/**
+ * Address font sizes and margins set differently in IE 6/7.
+ * Address font sizes within `section` and `article` in Firefox 4+, Safari 5,
+ * and Chrome.
+ */
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin: 0.83em 0;
+}
+
+h3 {
+    font-size: 1.17em;
+    margin: 1em 0;
+}
+
+h4 {
+    font-size: 1em;
+    margin: 1.33em 0;
+}
+
+h5 {
+    font-size: 0.83em;
+    margin: 1.67em 0;
+}
+
+h6 {
+    font-size: 0.67em;
+    margin: 2.33em 0;
+}
+
+/**
+ * Address styling not present in IE 7/8/9, Safari 5, and Chrome.
+ */
+
+abbr[title] {
+    border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 3+, Safari 4/5, and Chrome.
+ */
+
+b,
+strong {
+    font-weight: bold;
+}
+
+blockquote {
+    margin: 1em 40px;
+}
+
+/**
+ * Address styling not present in Safari 5 and Chrome.
+ */
+
+dfn {
+    font-style: italic;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ * Known issue: no IE 6/7 normalization.
+ */
+
+hr {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0;
+}
+
+/**
+ * Address styling not present in IE 6/7/8/9.
+ */
+
+mark {
+    background: #ff0;
+    color: #000;
+}
+
+/**
+ * Address margins set differently in IE 6/7.
+ */
+
+p,
+pre {
+    margin: 1em 0;
+}
+
+/**
+ * Correct font family set oddly in IE 6, Safari 4/5, and Chrome.
+ */
+
+code,
+kbd,
+pre,
+samp {
+    font-family: monospace, serif;
+    _font-family: 'courier new', monospace;
+    font-size: 1em;
+}
+
+/**
+ * Improve readability of pre-formatted text in all browsers.
+ */
+
+pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/**
+ * Address CSS quotes not supported in IE 6/7.
+ */
+
+q {
+    quotes: none;
+}
+
+/**
+ * Address `quotes` property not supported in Safari 4.
+ */
+
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+
+small {
+    font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+/* ==========================================================================
+   Lists
+   ========================================================================== */
+
+/**
+ * Address margins set differently in IE 6/7.
+ */
+
+dl,
+menu,
+ol,
+ul {
+    margin: 1em 0;
+}
+
+dd {
+    margin: 0 0 0 40px;
+}
+
+/**
+ * Address paddings set differently in IE 6/7.
+ */
+
+menu,
+ol,
+ul {
+    padding: 0 0 0 40px;
+}
+
+/**
+ * Correct list images handled incorrectly in IE 7.
+ */
+
+nav ul,
+nav ol {
+    list-style: none;
+    list-style-image: none;
+}
+
+/* ==========================================================================
+   Embedded content
+   ========================================================================== */
+
+/**
+ * 1. Remove border when inside `a` element in IE 6/7/8/9 and Firefox 3.
+ * 2. Improve image quality when scaled in IE 7.
+ */
+
+img {
+    border: 0; /* 1 */
+    -ms-interpolation-mode: bicubic; /* 2 */
+}
+
+/**
+ * Correct overflow displayed oddly in IE 9.
+ */
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   Figures
+   ========================================================================== */
+
+/**
+ * Address margin not present in IE 6/7/8/9, Safari 5, and Opera 11.
+ */
+
+figure {
+    margin: 0;
+}
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+
+/**
+ * Correct margin displayed oddly in IE 6/7.
+ */
+
+form {
+    margin: 0;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+
+fieldset {
+    border: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct color not being inherited in IE 6/7/8/9.
+ * 2. Correct text not wrapping in Firefox 3.
+ * 3. Correct alignment displayed oddly in IE 6/7.
+ */
+
+legend {
+    border: 0; /* 1 */
+    padding: 0;
+    white-space: normal; /* 2 */
+    *margin-left: -7px; /* 3 */
+}
+
+/**
+ * 1. Correct font size not being inherited in all browsers.
+ * 2. Address margins set differently in IE 6/7, Firefox 3+, Safari 5,
+ *    and Chrome.
+ * 3. Improve appearance and consistency in all browsers.
+ */
+
+button,
+input,
+select,
+textarea {
+    font-size: 100%; /* 1 */
+    margin: 0; /* 2 */
+    vertical-align: baseline; /* 3 */
+    *vertical-align: middle; /* 3 */
+}
+
+/**
+ * Address Firefox 3+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+
+button,
+input {
+    line-height: normal;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Chrome, Safari 5+, and IE 6+.
+ * Correct `select` style inheritance in Firefox 4+ and Opera.
+ */
+
+button,
+select {
+    text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ * 4. Remove inner spacing in IE 7 without affecting normal text inputs.
+ *    Known issue: inner spacing remains in IE 6.
+ */
+
+button,
+html input[type="button"], /* 1 */
+input[type="reset"],
+input[type="submit"] {
+    -webkit-appearance: button; /* 2 */
+    cursor: pointer; /* 3 */
+    *overflow: visible;  /* 4 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+
+button[disabled],
+html input[disabled] {
+    cursor: default;
+}
+
+/**
+ * 1. Address box sizing set to content-box in IE 8/9.
+ * 2. Remove excess padding in IE 8/9.
+ * 3. Remove excess padding in IE 7.
+ *    Known issue: excess padding remains in IE 6.
+ */
+
+input[type="checkbox"],
+input[type="radio"] {
+    box-sizing: border-box; /* 1 */
+    padding: 0; /* 2 */
+    *height: 13px; /* 3 */
+    *width: 13px; /* 3 */
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
+ *    (include `-moz` to future-proof).
+ */
+
+input[type="search"] {
+    -webkit-appearance: textfield; /* 1 */
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box; /* 2 */
+    box-sizing: content-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari 5 and Chrome
+ * on OS X.
+ */
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+/**
+ * Remove inner padding and border in Firefox 3+.
+ */
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+/**
+ * 1. Remove default vertical scrollbar in IE 6/7/8/9.
+ * 2. Improve readability and alignment in all browsers.
+ */
+
+textarea {
+    overflow: auto; /* 1 */
+    vertical-align: top; /* 2 */
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+
+/**
+ * Remove most spacing between table cells.
+ */
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+  </style>
+
+  <style type="text/css">
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #ddd;
+    height: 100%;
+  }
+
+  #container {
+    width: 840px;
+    background-color: #fdfdfd;
+    color: #111;
+    margin: 0 auto;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    padding: 10px 25px;
+    min-height: 100%;
+  }
+
+  #nav {
+    font-size: 130%;
+    margin: 0 0 15px 0;
+  }
+
+  #top {
+    display: block;
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    font-size: 140%;
+  }
+
+  h1 {
+    margin: 0 0 10px 0;
+  }
+
+  h2 {
+    margin: 25px 0 10px 0;
+  }
+
+  h3 {
+    margin: 25px 0 10px 0;
+  }
+
+  h4 {
+    margin: 0;
+    font-size: 105%;
+  }
+
+  a {
+    color: #058;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #e08524;
+  }
+
+  p {
+    line-height: 1.35em;
+  }
+
+  pre, code, .mono, .name {
+    font-family: "Ubuntu Mono", "Cousine", "DejaVu Sans Mono", monospace;
+  }
+
+  .ident {
+    color: #900;
+  }
+
+  code {
+    background: #e8e8e8;
+  } 
+
+  pre {
+    background: #e8e8e8;
+    padding: 6px;
+    margin: 0 30px;
+  }
+
+  .codehilite {
+    margin: 0 30px 10px 30px;
+  }
+
+    .codehilite pre {
+      margin: 0;
+    }
+
+  table#module-list {
+    font-size: 110%;
+  }
+
+    table#module-list tr td:first-child {
+      padding-right: 10px;
+      white-space: nowrap;
+    }
+
+    table#module-list td {
+      vertical-align: top;
+      padding-bottom: 8px;
+    }
+
+      table#module-list td p {
+        margin: 0 0 7px 0;
+      }
+
+  .def {
+    display: table;
+  }
+
+    .def p {
+      display: table-cell;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .def p:first-child {
+      white-space: nowrap;
+    }
+
+    .def p:last-child {
+      width: 100%;
+    }
+
+  ul#index {
+    padding: 0;
+    margin: 0;
+  }
+
+    ul#index .class_name {
+      /* font-size: 110%; */
+      font-weight: bold;
+    }
+
+    ul#index li {
+      margin-bottom: 18px;
+    }
+
+      ul#index ul li {
+        margin-bottom: 8px;
+      }
+
+    ul#index, ul#index ul {
+      list-style-type: none;
+    }
+
+    ul#index ul {
+      margin: 0 0 10px 20px;
+      padding: 0;
+    }
+
+  .column_list {
+    width: 100%;
+    display: inline-block;
+    margin-left: 20px;
+  }
+
+  .column_list:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    height: 0;
+    content: " ";
+    clear: both;
+  }
+
+    .column_list ul {
+      float: left;
+      text-align: left;
+      width: 32%;
+      margin: 0 !important;
+    }
+
+  .item {
+    margin: 0 0 25px 0;
+  }
+
+    .item .class {
+      margin: 0 0 25px 30px;
+    }
+
+      .item .class ul.class_list {
+        margin: 0 0 20px 0;
+      }
+
+    .item .name {
+      background: #e8e8e8;
+      padding: 4px;
+      margin: 0 0 8px 0;
+      font-size: 110%;
+      font-weight: bold;
+    }
+
+    .item .empty_desc {
+      margin: 0 0 5px 0;
+      padding: 0;
+    }
+
+    .item .inheritance {
+      margin: 3px 0 10px 0;
+      padding: 0 8px;
+    }
+
+    .item .inherited {
+      color: #666;
+    }
+
+    .item .desc {
+      padding: 0 8px;
+      margin: 0;
+    }
+
+      .item .desc p {
+        margin: 0 0 10px 0;
+      }
+
+    .source_cont {
+      margin: 10px 8px 0 8px;
+      padding: 0;
+    }
+
+    .source_link {
+      font-weight: bold;
+    }
+
+    .source {
+      display: none;
+      max-height: 600px;
+      overflow-y: scroll;
+      margin-bottom: 15px;
+    }
+
+      .source .codehilite {
+        margin: 0;
+      }
+
+  .desc h1, .desc h2, .desc h3 {
+    font-size: 100% !important;
+  }
+
+  /*****************************/
+
+  </style>
+
+    <style type="text/css">
+    .codehilite .hll { background-color: #ffffcc }
+.codehilite  { background: #f8f8f8; }
+.codehilite .c { color: #408080; font-style: italic } /* Comment */
+.codehilite .err { border: 1px solid #FF0000 } /* Error */
+.codehilite .k { color: #008000; font-weight: bold } /* Keyword */
+.codehilite .o { color: #666666 } /* Operator */
+.codehilite .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.codehilite .cp { color: #BC7A00 } /* Comment.Preproc */
+.codehilite .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.codehilite .cs { color: #408080; font-style: italic } /* Comment.Special */
+.codehilite .gd { color: #A00000 } /* Generic.Deleted */
+.codehilite .ge { font-style: italic } /* Generic.Emph */
+.codehilite .gr { color: #FF0000 } /* Generic.Error */
+.codehilite .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.codehilite .gi { color: #00A000 } /* Generic.Inserted */
+.codehilite .go { color: #888888 } /* Generic.Output */
+.codehilite .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.codehilite .gs { font-weight: bold } /* Generic.Strong */
+.codehilite .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.codehilite .gt { color: #0044DD } /* Generic.Traceback */
+.codehilite .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.codehilite .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.codehilite .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.codehilite .kp { color: #008000 } /* Keyword.Pseudo */
+.codehilite .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.codehilite .kt { color: #B00040 } /* Keyword.Type */
+.codehilite .m { color: #666666 } /* Literal.Number */
+.codehilite .s { color: #BA2121 } /* Literal.String */
+.codehilite .na { color: #7D9029 } /* Name.Attribute */
+.codehilite .nb { color: #008000 } /* Name.Builtin */
+.codehilite .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.codehilite .no { color: #880000 } /* Name.Constant */
+.codehilite .nd { color: #AA22FF } /* Name.Decorator */
+.codehilite .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.codehilite .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.codehilite .nf { color: #0000FF } /* Name.Function */
+.codehilite .nl { color: #A0A000 } /* Name.Label */
+.codehilite .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.codehilite .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.codehilite .nv { color: #19177C } /* Name.Variable */
+.codehilite .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.codehilite .w { color: #bbbbbb } /* Text.Whitespace */
+.codehilite .mf { color: #666666 } /* Literal.Number.Float */
+.codehilite .mh { color: #666666 } /* Literal.Number.Hex */
+.codehilite .mi { color: #666666 } /* Literal.Number.Integer */
+.codehilite .mo { color: #666666 } /* Literal.Number.Oct */
+.codehilite .sb { color: #BA2121 } /* Literal.String.Backtick */
+.codehilite .sc { color: #BA2121 } /* Literal.String.Char */
+.codehilite .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.codehilite .s2 { color: #BA2121 } /* Literal.String.Double */
+.codehilite .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.codehilite .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.codehilite .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.codehilite .sx { color: #008000 } /* Literal.String.Other */
+.codehilite .sr { color: #BB6688 } /* Literal.String.Regex */
+.codehilite .s1 { color: #BA2121 } /* Literal.String.Single */
+.codehilite .ss { color: #19177C } /* Literal.String.Symbol */
+.codehilite .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.codehilite .vc { color: #19177C } /* Name.Variable.Class */
+.codehilite .vg { color: #19177C } /* Name.Variable.Global */
+.codehilite .vi { color: #19177C } /* Name.Variable.Instance */
+.codehilite .il { color: #666666 } /* Literal.Number.Integer.Long */
+    </style>
+
+  <style type="text/css">
+  
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
+
+  </style>
+
+  <script type="text/javascript">
+    function toggle(id, $link) {
+      $node = document.getElementById(id);
+      if (!$node)
+        return;
+      if (!$node.style.display || $node.style.display == 'none') {
+        $node.style.display = 'block';
+        $link.innerHTML = 'Hide source.';
+      } else {
+        $node.style.display = 'none';
+        $link.innerHTML = 'Show source.';
+      }
+    }
+  </script>
+</head>
+<body>
+<a href="#" id="top">Top</a>
+
+<div id="container">
+
+    
+  
+
+  
+
+
+  <h1>Module pybuilder.reactor</h1>
+  
+  
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor', this);">Show source.</a></p>
+    <div id="source-pybuilder.reactor" class="source">
+      <div class="codehilite"><pre><span class="c">#  This file is part of PyBuilder</span>
+<span class="c">#</span>
+<span class="c">#  Copyright 2011-2013 PyBuilder Team</span>
+<span class="c">#</span>
+<span class="c">#  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c">#  you may not use this file except in compliance with the License.</span>
+<span class="c">#  You may obtain a copy of the License at</span>
+<span class="c">#</span>
+<span class="c">#      http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c">#</span>
+<span class="c">#  Unless required by applicable law or agreed to in writing, software</span>
+<span class="c">#  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c">#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c">#  See the License for the specific language governing permissions and</span>
+<span class="c">#  limitations under the License.</span>
+
+<span class="kn">import</span> <span class="nn">imp</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+
+<span class="kn">from</span> <span class="nn">pybuilder.core</span> <span class="kn">import</span> <span class="p">(</span><span class="n">TASK_ATTRIBUTE</span><span class="p">,</span> <span class="n">DEPENDS_ATTRIBUTE</span><span class="p">,</span>
+                            <span class="n">DESCRIPTION_ATTRIBUTE</span><span class="p">,</span> <span class="n">AFTER_ATTRIBUTE</span><span class="p">,</span>
+                            <span class="n">BEFORE_ATTRIBUTE</span><span class="p">,</span> <span class="n">INITIALIZER_ATTRIBUTE</span><span class="p">,</span>
+                            <span class="n">ACTION_ATTRIBUTE</span><span class="p">,</span> <span class="n">ONLY_ONCE_ATTRIBUTE</span><span class="p">,</span>
+                            <span class="n">Project</span><span class="p">,</span> <span class="n">NAME_ATTRIBUTE</span><span class="p">,</span> <span class="n">ENVIRONMENTS_ATTRIBUTE</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">pybuilder.errors</span> <span class="kn">import</span> <span class="n">PythonbuilderException</span><span class="p">,</span> <span class="n">ProjectValidationFailedException</span>
+<span class="kn">from</span> <span class="nn">pybuilder.pluginloader</span> <span class="kn">import</span> <span class="p">(</span><span class="n">BuiltinPluginLoader</span><span class="p">,</span>
+                                    <span class="n">DispatchingPluginLoader</span><span class="p">,</span>
+                                    <span class="n">ThirdPartyPluginLoader</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">pybuilder.utils</span> <span class="kn">import</span> <span class="n">as_list</span>
+<span class="kn">from</span> <span class="nn">pybuilder.execution</span> <span class="kn">import</span> <span class="n">Action</span><span class="p">,</span> <span class="n">Initializer</span><span class="p">,</span> <span class="n">Task</span>
+
+
+<span class="k">class</span> <span class="nc">BuildSummary</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">task_execution_summaries</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">project</span> <span class="o">=</span> <span class="n">project</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">task_summaries</span> <span class="o">=</span> <span class="n">task_execution_summaries</span>
+
+
+<span class="k">class</span> <span class="nc">Reactor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">_current_instance</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">current_instance</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">Reactor</span><span class="o">.</span><span class="n">_current_instance</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">execution_manager</span><span class="p">,</span> <span class="n">plugin_loader</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span> <span class="o">=</span> <span class="n">execution_manager</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">plugin_loader</span><span class="p">:</span>
+            <span class="n">builtin_plugin_loader</span> <span class="o">=</span> <span class="n">BuiltinPluginLoader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+            <span class="n">thirdparty_plugin_loader</span> <span class="o">=</span> <span class="n">ThirdPartyPluginLoader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plugin_loader</span> <span class="o">=</span> <span class="n">DispatchingPluginLoader</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="n">builtin_plugin_loader</span><span class="p">,</span> <span class="n">thirdparty_plugin_loader</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plugin_loader</span> <span class="o">=</span> <span class="n">plugin_loader</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">project</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="k">def</span> <span class="nf">require_plugin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plugin</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">plugin</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">import_plugin</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
+                <span class="k">raise</span>
+
+    <span class="k">def</span> <span class="nf">get_plugins</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span>
+
+    <span class="k">def</span> <span class="nf">get_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">tasks</span>
+
+    <span class="k">def</span> <span class="nf">validate_project</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">validation_messages</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">validation_messages</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ProjectValidationFailedException</span><span class="p">(</span><span class="n">validation_messages</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">prepare_build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                      <span class="n">property_overrides</span><span class="o">=</span><span class="p">{},</span>
+                      <span class="n">project_directory</span><span class="o">=</span><span class="s">&quot;.&quot;</span><span class="p">,</span>
+                      <span class="n">project_descriptor</span><span class="o">=</span><span class="s">&quot;build.py&quot;</span><span class="p">):</span>
+        <span class="n">Reactor</span><span class="o">.</span><span class="n">_current_instance</span> <span class="o">=</span> <span class="bp">self</span>
+
+        <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">verify_project_directory</span><span class="p">(</span>
+            <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Loading project module from </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">project</span> <span class="o">=</span> <span class="n">Project</span><span class="p">(</span><span class="n">basedir</span><span class="o">=</span><span class="n">project_directory</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">project_module</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_project_module</span><span class="p">(</span><span class="n">project_descriptor</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">apply_project_attributes</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">override_properties</span><span class="p">(</span><span class="n">property_overrides</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Have loaded plugins </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">collect_tasks_and_actions_and_initializers</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project_module</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">resolve_dependencies</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tasks</span><span class="o">=</span><span class="p">[],</span> <span class="n">environments</span><span class="o">=</span><span class="p">[]):</span>
+        <span class="n">Reactor</span><span class="o">.</span><span class="n">_current_instance</span> <span class="o">=</span> <span class="bp">self</span>
+
+        <span class="k">if</span> <span class="n">environments</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s">&quot;Activated environments: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">environments</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">execute_initializers</span><span class="p">(</span>
+            <span class="n">environments</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_project_properties</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">validate_project</span><span class="p">()</span>
+
+        <span class="n">tasks</span> <span class="o">=</span> <span class="n">as_list</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">tasks</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">default_task</span><span class="p">:</span>
+                <span class="n">tasks</span> <span class="o">+=</span> <span class="n">as_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">default_task</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">PythonbuilderException</span><span class="p">(</span><span class="s">&quot;No default task given.&quot;</span><span class="p">)</span>
+
+        <span class="n">execution_plan</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">build_execution_plan</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Execution plan is </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">execution_plan</span><span class="p">]))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="s">&quot;Building </span><span class="si">%s</span><span class="s"> version </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Executing build in </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">basedir</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Going to execute task </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">tasks</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">list_of_tasks</span> <span class="o">=</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Going to execute tasks: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">list_of_tasks</span><span class="p">)</span>
+
+        <span class="n">task_execution_summaries</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">execute_execution_plan</span><span class="p">(</span>
+            <span class="n">execution_plan</span><span class="p">,</span>
+            <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span>
+            <span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span>
+            <span class="n">reactor</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">BuildSummary</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span> <span class="n">task_execution_summaries</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">execute_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_name</span><span class="p">):</span>
+        <span class="n">execution_plan</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">build_execution_plan</span><span class="p">(</span><span class="n">task_name</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">execute_execution_plan</span><span class="p">(</span><span class="n">execution_plan</span><span class="p">,</span>
+                                                      <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span>
+                                                      <span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span>
+                                                      <span class="n">reactor</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">override_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">property_overrides</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">property_override</span> <span class="ow">in</span> <span class="n">property_overrides</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span>
+                <span class="n">property_override</span><span class="p">,</span> <span class="n">property_overrides</span><span class="p">[</span><span class="n">property_override</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">log_project_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">formatted</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">properties</span><span class="p">):</span>
+            <span class="n">formatted</span> <span class="o">+=</span> <span class="s">&quot;</span><span class="se">\n</span><span class="si">%40s</span><span class="s"> : </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Project properties: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">formatted</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">import_plugin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plugin</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Loading plugin &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span> <span class="n">plugin</span><span class="p">)</span>
+        <span class="n">plugin_module</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">plugin_loader</span><span class="o">.</span><span class="n">load_plugin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span> <span class="n">plugin</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">collect_tasks_and_actions_and_initializers</span><span class="p">(</span><span class="n">plugin_module</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">collect_tasks_and_actions_and_initializers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_module</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">project_module</span><span class="p">):</span>
+            <span class="n">candidate</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">project_module</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">NAME_ATTRIBUTE</span><span class="p">):</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">NAME_ATTRIBUTE</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="s">&quot;__name__&quot;</span><span class="p">):</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="n">candidate</span><span class="o">.</span><span class="n">__name__</span>
+            <span class="n">description</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">DESCRIPTION_ATTRIBUTE</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span>
+                <span class="n">candidate</span><span class="p">,</span> <span class="n">DESCRIPTION_ATTRIBUTE</span><span class="p">)</span> <span class="k">else</span> <span class="s">&quot;&quot;</span>
+
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">TASK_ATTRIBUTE</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">TASK_ATTRIBUTE</span><span class="p">):</span>
+                <span class="n">dependencies</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">DEPENDS_ATTRIBUTE</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span>
+                    <span class="n">candidate</span><span class="p">,</span> <span class="n">DEPENDS_ATTRIBUTE</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Found task </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">register_task</span><span class="p">(</span>
+                    <span class="n">Task</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">dependencies</span><span class="p">,</span> <span class="n">description</span><span class="p">))</span>
+
+            <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ACTION_ATTRIBUTE</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ACTION_ATTRIBUTE</span><span class="p">):</span>
+                <span class="n">before</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">BEFORE_ATTRIBUTE</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span>
+                    <span class="n">candidate</span><span class="p">,</span> <span class="n">BEFORE_ATTRIBUTE</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span>
+                <span class="n">after</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">AFTER_ATTRIBUTE</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span>
+                    <span class="n">candidate</span><span class="p">,</span> <span class="n">AFTER_ATTRIBUTE</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span>
+
+                <span class="n">only_once</span> <span class="o">=</span> <span class="bp">False</span>
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ONLY_ONCE_ATTRIBUTE</span><span class="p">):</span>
+                    <span class="n">only_once</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ONLY_ONCE_ATTRIBUTE</span><span class="p">)</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Found action </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">register_action</span><span class="p">(</span>
+                    <span class="n">Action</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">before</span><span class="p">,</span> <span class="n">after</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">only_once</span><span class="p">))</span>
+
+            <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">INITIALIZER_ATTRIBUTE</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">INITIALIZER_ATTRIBUTE</span><span class="p">):</span>
+                <span class="n">environments</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ENVIRONMENTS_ATTRIBUTE</span><span class="p">):</span>
+                    <span class="n">environments</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ENVIRONMENTS_ATTRIBUTE</span><span class="p">)</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">register_initializer</span><span class="p">(</span>
+                    <span class="n">Initializer</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">environments</span><span class="p">,</span> <span class="n">description</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">apply_project_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;version&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;default_task&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;summary&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;home_page&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;description&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;authors&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;license&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;url&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">propagate_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">property</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project_module</span><span class="p">,</span> <span class="nb">property</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project_module</span><span class="p">,</span> <span class="nb">property</span><span class="p">)</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span> <span class="nb">property</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">load_project_module</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">imp</span><span class="o">.</span><span class="n">load_source</span><span class="p">(</span><span class="s">&quot;build&quot;</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">PythonbuilderException</span><span class="p">(</span>
+                <span class="s">&quot;Error importing project descriptor </span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">project_descriptor</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">verify_project_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">):</span>
+        <span class="n">project_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">project_directory</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">project_directory</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">PythonbuilderException</span><span class="p">(</span>
+                <span class="s">&quot;Project directory does not exist: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">project_directory</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">project_directory</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">PythonbuilderException</span><span class="p">(</span>
+                <span class="s">&quot;Project directory is not a directory: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">project_directory</span><span class="p">)</span>
+
+        <span class="n">project_descriptor_full_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">project_descriptor_full_path</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">PythonbuilderException</span><span class="p">(</span>
+                <span class="s">&quot;Project directory does not contain descriptor file: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span>
+                <span class="n">project_descriptor_full_path</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">project_descriptor_full_path</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">PythonbuilderException</span><span class="p">(</span>
+                <span class="s">&quot;Project descriptor is not a file: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">project_descriptor_full_path</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor_full_path</span>
+</pre></div>
+
+    </div>
+
+  <hr>
+
+  <h2>Index</h2>
+
+  <ul id="index">
+    <li><h4><a href="#header-variables">Module variables</a></h4>
+      
+  
+  <div class="column_list">
+      <ul>
+          <li class="mono"><a href="#pybuilder.reactor.ACTION_ATTRIBUTE">ACTION_ATTRIBUTE</a></li>
+          <li class="mono"><a href="#pybuilder.reactor.AFTER_ATTRIBUTE">AFTER_ATTRIBUTE</a></li>
+          <li class="mono"><a href="#pybuilder.reactor.BEFORE_ATTRIBUTE">BEFORE_ATTRIBUTE</a></li>
+          <li class="mono"><a href="#pybuilder.reactor.DEPENDS_ATTRIBUTE">DEPENDS_ATTRIBUTE</a></li>
+      </ul>
+      <ul>
+          <li class="mono"><a href="#pybuilder.reactor.DESCRIPTION_ATTRIBUTE">DESCRIPTION_ATTRIBUTE</a></li>
+          <li class="mono"><a href="#pybuilder.reactor.ENVIRONMENTS_ATTRIBUTE">ENVIRONMENTS_ATTRIBUTE</a></li>
+          <li class="mono"><a href="#pybuilder.reactor.INITIALIZER_ATTRIBUTE">INITIALIZER_ATTRIBUTE</a></li>
+      </ul>
+      <ul>
+          <li class="mono"><a href="#pybuilder.reactor.NAME_ATTRIBUTE">NAME_ATTRIBUTE</a></li>
+          <li class="mono"><a href="#pybuilder.reactor.ONLY_ONCE_ATTRIBUTE">ONLY_ONCE_ATTRIBUTE</a></li>
+          <li class="mono"><a href="#pybuilder.reactor.TASK_ATTRIBUTE">TASK_ATTRIBUTE</a></li>
+      </ul>
+  </div>
+
+    </li>
+
+
+    <li><h4><a href="#header-classes">Classes</a></h4>
+      <ul>
+          <li class="mono">
+            <span class="class_name"><a href="#pybuilder.reactor.BuildSummary">BuildSummary</a></span>
+            
+              
+  
+  <div class="column_list">
+      <ul>
+          <li class="mono"><a href="#pybuilder.reactor.BuildSummary.__init__">__init__</a></li>
+      </ul>
+      <ul>
+      </ul>
+      <ul>
+      </ul>
+  </div>
+
+          </li>
+          <li class="mono">
+            <span class="class_name"><a href="#pybuilder.reactor.Reactor">Reactor</a></span>
+            
+              
+  
+  <div class="column_list">
+      <ul>
+          <li class="mono"><a href="#pybuilder.reactor.Reactor.current_instance">current_instance</a></li>
+          <li class="mono"><a href="#pybuilder.reactor.Reactor.__init__">__init__</a></li>
+          <li class="mono"><a href="#pybuilder.reactor.Reactor.apply_project_attributes">apply_project_attributes</a></li>
+          <li class="mono"><a href="#pybuilder.reactor.Reactor.build">build</a></li>
+          <li class="mono"><a href="#pybuilder.reactor.Reactor.collect_tasks_and_actions_and_initializers">collect_tasks_and_actions_and_initializers</a></li>
+          <li class="mono"><a href="#pybuilder.reactor.Reactor.execute_task">execute_task</a></li>
+      </ul>
+      <ul>
+          <li class="mono"><a href="#pybuilder.reactor.Reactor.get_plugins">get_plugins</a></li>
+          <li class="mono"><a href="#pybuilder.reactor.Reactor.get_tasks">get_tasks</a></li>
+          <li class="mono"><a href="#pybuilder.reactor.Reactor.import_plugin">import_plugin</a></li>
+          <li class="mono"><a href="#pybuilder.reactor.Reactor.load_project_module">load_project_module</a></li>
+          <li class="mono"><a href="#pybuilder.reactor.Reactor.log_project_properties">log_project_properties</a></li>
+          <li class="mono"><a href="#pybuilder.reactor.Reactor.override_properties">override_properties</a></li>
+      </ul>
+      <ul>
+          <li class="mono"><a href="#pybuilder.reactor.Reactor.prepare_build">prepare_build</a></li>
+          <li class="mono"><a href="#pybuilder.reactor.Reactor.propagate_property">propagate_property</a></li>
+          <li class="mono"><a href="#pybuilder.reactor.Reactor.require_plugin">require_plugin</a></li>
+          <li class="mono"><a href="#pybuilder.reactor.Reactor.validate_project">validate_project</a></li>
+          <li class="mono"><a href="#pybuilder.reactor.Reactor.verify_project_directory">verify_project_directory</a></li>
+      </ul>
+  </div>
+
+          </li>
+      </ul>
+    </li>
+
+  </ul>
+
+  <h2 id="header-variables">Module variables</h2>
+      <div class="item">
+        <p id="pybuilder.reactor.ACTION_ATTRIBUTE" class="name">var <span class="ident">ACTION_ATTRIBUTE</span></p>
+        
+  
+    <div class="source_cont">
+</div>
+
+      </div>
+      <div class="item">
+        <p id="pybuilder.reactor.AFTER_ATTRIBUTE" class="name">var <span class="ident">AFTER_ATTRIBUTE</span></p>
+        
+  
+    <div class="source_cont">
+</div>
+
+      </div>
+      <div class="item">
+        <p id="pybuilder.reactor.BEFORE_ATTRIBUTE" class="name">var <span class="ident">BEFORE_ATTRIBUTE</span></p>
+        
+  
+    <div class="source_cont">
+</div>
+
+      </div>
+      <div class="item">
+        <p id="pybuilder.reactor.DEPENDS_ATTRIBUTE" class="name">var <span class="ident">DEPENDS_ATTRIBUTE</span></p>
+        
+  
+    <div class="source_cont">
+</div>
+
+      </div>
+      <div class="item">
+        <p id="pybuilder.reactor.DESCRIPTION_ATTRIBUTE" class="name">var <span class="ident">DESCRIPTION_ATTRIBUTE</span></p>
+        
+  
+    <div class="source_cont">
+</div>
+
+      </div>
+      <div class="item">
+        <p id="pybuilder.reactor.ENVIRONMENTS_ATTRIBUTE" class="name">var <span class="ident">ENVIRONMENTS_ATTRIBUTE</span></p>
+        
+  
+    <div class="source_cont">
+</div>
+
+      </div>
+      <div class="item">
+        <p id="pybuilder.reactor.INITIALIZER_ATTRIBUTE" class="name">var <span class="ident">INITIALIZER_ATTRIBUTE</span></p>
+        
+  
+    <div class="source_cont">
+</div>
+
+      </div>
+      <div class="item">
+        <p id="pybuilder.reactor.NAME_ATTRIBUTE" class="name">var <span class="ident">NAME_ATTRIBUTE</span></p>
+        
+  
+    <div class="source_cont">
+</div>
+
+      </div>
+      <div class="item">
+        <p id="pybuilder.reactor.ONLY_ONCE_ATTRIBUTE" class="name">var <span class="ident">ONLY_ONCE_ATTRIBUTE</span></p>
+        
+  
+    <div class="source_cont">
+</div>
+
+      </div>
+      <div class="item">
+        <p id="pybuilder.reactor.TASK_ATTRIBUTE" class="name">var <span class="ident">TASK_ATTRIBUTE</span></p>
+        
+  
+    <div class="source_cont">
+</div>
+
+      </div>
+
+
+  <h2 id="header-classes">Classes</h2>
+      
+      <div class="item">
+        <p id="pybuilder.reactor.BuildSummary" class="name">class <span class="ident">BuildSummary</span></p>
+        
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.BuildSummary', this);">Show source.</a></p>
+    <div id="source-pybuilder.reactor.BuildSummary" class="source">
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">BuildSummary</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">task_execution_summaries</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">project</span> <span class="o">=</span> <span class="n">project</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">task_summaries</span> <span class="o">=</span> <span class="n">task_execution_summaries</span>
+</pre></div>
+
+    </div>
+</div>
+
+
+        <div class="class">
+              <h4>Ancestors (in MRO)</h4>
+              <ul class="class_list">
+                <li><a href="#pybuilder.reactor.BuildSummary">BuildSummary</a></li>
+                <li>__builtin__.object</li>
+              </ul>
+              <h4>Instance variables</h4>
+                  <div class="item">
+                    <p id="pybuilder.reactor.BuildSummary.project" class="name">var <span class="ident">project</span></p>
+                    
+
+                    
+  
+    <div class="source_cont">
+</div>
+
+                  </div>
+                  <div class="item">
+                    <p id="pybuilder.reactor.BuildSummary.task_summaries" class="name">var <span class="ident">task_summaries</span></p>
+                    
+
+                    
+  
+    <div class="source_cont">
+</div>
+
+                  </div>
+              <h4>Methods</h4>
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.reactor.BuildSummary.__init__">
+        <p>def <span class="ident">__init__</span>(</p><p>self, project, task_execution_summaries)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.BuildSummary.__init__', this);">Show source.</a></p>
+    <div id="source-pybuilder.reactor.BuildSummary.__init__" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">task_execution_summaries</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">project</span> <span class="o">=</span> <span class="n">project</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">task_summaries</span> <span class="o">=</span> <span class="n">task_execution_summaries</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+        </div>
+      </div>
+      
+      <div class="item">
+        <p id="pybuilder.reactor.Reactor" class="name">class <span class="ident">Reactor</span></p>
+        
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor', this);">Show source.</a></p>
+    <div id="source-pybuilder.reactor.Reactor" class="source">
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">Reactor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">_current_instance</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">current_instance</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">Reactor</span><span class="o">.</span><span class="n">_current_instance</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">execution_manager</span><span class="p">,</span> <span class="n">plugin_loader</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span> <span class="o">=</span> <span class="n">execution_manager</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">plugin_loader</span><span class="p">:</span>
+            <span class="n">builtin_plugin_loader</span> <span class="o">=</span> <span class="n">BuiltinPluginLoader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+            <span class="n">thirdparty_plugin_loader</span> <span class="o">=</span> <span class="n">ThirdPartyPluginLoader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plugin_loader</span> <span class="o">=</span> <span class="n">DispatchingPluginLoader</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="n">builtin_plugin_loader</span><span class="p">,</span> <span class="n">thirdparty_plugin_loader</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plugin_loader</span> <span class="o">=</span> <span class="n">plugin_loader</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">project</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="k">def</span> <span class="nf">require_plugin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plugin</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">plugin</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">import_plugin</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
+                <span class="k">raise</span>
+
+    <span class="k">def</span> <span class="nf">get_plugins</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span>
+
+    <span class="k">def</span> <span class="nf">get_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">tasks</span>
+
+    <span class="k">def</span> <span class="nf">validate_project</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">validation_messages</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">validation_messages</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ProjectValidationFailedException</span><span class="p">(</span><span class="n">validation_messages</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">prepare_build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                      <span class="n">property_overrides</span><span class="o">=</span><span class="p">{},</span>
+                      <span class="n">project_directory</span><span class="o">=</span><span class="s">&quot;.&quot;</span><span class="p">,</span>
+                      <span class="n">project_descriptor</span><span class="o">=</span><span class="s">&quot;build.py&quot;</span><span class="p">):</span>
+        <span class="n">Reactor</span><span class="o">.</span><span class="n">_current_instance</span> <span class="o">=</span> <span class="bp">self</span>
+
+        <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">verify_project_directory</span><span class="p">(</span>
+            <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Loading project module from </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">project</span> <span class="o">=</span> <span class="n">Project</span><span class="p">(</span><span class="n">basedir</span><span class="o">=</span><span class="n">project_directory</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">project_module</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_project_module</span><span class="p">(</span><span class="n">project_descriptor</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">apply_project_attributes</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">override_properties</span><span class="p">(</span><span class="n">property_overrides</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Have loaded plugins </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">collect_tasks_and_actions_and_initializers</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project_module</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">resolve_dependencies</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tasks</span><span class="o">=</span><span class="p">[],</span> <span class="n">environments</span><span class="o">=</span><span class="p">[]):</span>
+        <span class="n">Reactor</span><span class="o">.</span><span class="n">_current_instance</span> <span class="o">=</span> <span class="bp">self</span>
+
+        <span class="k">if</span> <span class="n">environments</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s">&quot;Activated environments: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">environments</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">execute_initializers</span><span class="p">(</span>
+            <span class="n">environments</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_project_properties</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">validate_project</span><span class="p">()</span>
+
+        <span class="n">tasks</span> <span class="o">=</span> <span class="n">as_list</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">tasks</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">default_task</span><span class="p">:</span>
+                <span class="n">tasks</span> <span class="o">+=</span> <span class="n">as_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">default_task</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">PythonbuilderException</span><span class="p">(</span><span class="s">&quot;No default task given.&quot;</span><span class="p">)</span>
+
+        <span class="n">execution_plan</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">build_execution_plan</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Execution plan is </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">execution_plan</span><span class="p">]))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="s">&quot;Building </span><span class="si">%s</span><span class="s"> version </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Executing build in </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">basedir</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Going to execute task </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">tasks</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">list_of_tasks</span> <span class="o">=</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Going to execute tasks: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">list_of_tasks</span><span class="p">)</span>
+
+        <span class="n">task_execution_summaries</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">execute_execution_plan</span><span class="p">(</span>
+            <span class="n">execution_plan</span><span class="p">,</span>
+            <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span>
+            <span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span>
+            <span class="n">reactor</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">BuildSummary</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span> <span class="n">task_execution_summaries</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">execute_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_name</span><span class="p">):</span>
+        <span class="n">execution_plan</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">build_execution_plan</span><span class="p">(</span><span class="n">task_name</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">execute_execution_plan</span><span class="p">(</span><span class="n">execution_plan</span><span class="p">,</span>
+                                                      <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span>
+                                                      <span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span>
+                                                      <span class="n">reactor</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">override_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">property_overrides</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">property_override</span> <span class="ow">in</span> <span class="n">property_overrides</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span>
+                <span class="n">property_override</span><span class="p">,</span> <span class="n">property_overrides</span><span class="p">[</span><span class="n">property_override</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">log_project_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">formatted</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">properties</span><span class="p">):</span>
+            <span class="n">formatted</span> <span class="o">+=</span> <span class="s">&quot;</span><span class="se">\n</span><span class="si">%40s</span><span class="s"> : </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Project properties: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">formatted</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">import_plugin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plugin</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Loading plugin &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span> <span class="n">plugin</span><span class="p">)</span>
+        <span class="n">plugin_module</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">plugin_loader</span><span class="o">.</span><span class="n">load_plugin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span> <span class="n">plugin</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">collect_tasks_and_actions_and_initializers</span><span class="p">(</span><span class="n">plugin_module</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">collect_tasks_and_actions_and_initializers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_module</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">project_module</span><span class="p">):</span>
+            <span class="n">candidate</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">project_module</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">NAME_ATTRIBUTE</span><span class="p">):</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">NAME_ATTRIBUTE</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="s">&quot;__name__&quot;</span><span class="p">):</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="n">candidate</span><span class="o">.</span><span class="n">__name__</span>
+            <span class="n">description</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">DESCRIPTION_ATTRIBUTE</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span>
+                <span class="n">candidate</span><span class="p">,</span> <span class="n">DESCRIPTION_ATTRIBUTE</span><span class="p">)</span> <span class="k">else</span> <span class="s">&quot;&quot;</span>
+
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">TASK_ATTRIBUTE</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">TASK_ATTRIBUTE</span><span class="p">):</span>
+                <span class="n">dependencies</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">DEPENDS_ATTRIBUTE</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span>
+                    <span class="n">candidate</span><span class="p">,</span> <span class="n">DEPENDS_ATTRIBUTE</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Found task </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">register_task</span><span class="p">(</span>
+                    <span class="n">Task</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">dependencies</span><span class="p">,</span> <span class="n">description</span><span class="p">))</span>
+
+            <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ACTION_ATTRIBUTE</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ACTION_ATTRIBUTE</span><span class="p">):</span>
+                <span class="n">before</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">BEFORE_ATTRIBUTE</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span>
+                    <span class="n">candidate</span><span class="p">,</span> <span class="n">BEFORE_ATTRIBUTE</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span>
+                <span class="n">after</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">AFTER_ATTRIBUTE</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span>
+                    <span class="n">candidate</span><span class="p">,</span> <span class="n">AFTER_ATTRIBUTE</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span>
+
+                <span class="n">only_once</span> <span class="o">=</span> <span class="bp">False</span>
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ONLY_ONCE_ATTRIBUTE</span><span class="p">):</span>
+                    <span class="n">only_once</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ONLY_ONCE_ATTRIBUTE</span><span class="p">)</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Found action </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">register_action</span><span class="p">(</span>
+                    <span class="n">Action</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">before</span><span class="p">,</span> <span class="n">after</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">only_once</span><span class="p">))</span>
+
+            <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">INITIALIZER_ATTRIBUTE</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">INITIALIZER_ATTRIBUTE</span><span class="p">):</span>
+                <span class="n">environments</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ENVIRONMENTS_ATTRIBUTE</span><span class="p">):</span>
+                    <span class="n">environments</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ENVIRONMENTS_ATTRIBUTE</span><span class="p">)</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">register_initializer</span><span class="p">(</span>
+                    <span class="n">Initializer</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">environments</span><span class="p">,</span> <span class="n">description</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">apply_project_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;version&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;default_task&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;summary&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;home_page&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;description&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;authors&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;license&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;url&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">propagate_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">property</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project_module</span><span class="p">,</span> <span class="nb">property</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project_module</span><span class="p">,</span> <span class="nb">property</span><span class="p">)</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span> <span class="nb">property</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">load_project_module</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">imp</span><span class="o">.</span><span class="n">load_source</span><span class="p">(</span><span class="s">&quot;build&quot;</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">PythonbuilderException</span><span class="p">(</span>
+                <span class="s">&quot;Error importing project descriptor </span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">project_descriptor</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">verify_project_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">):</span>
+        <span class="n">project_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">project_directory</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">project_directory</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">PythonbuilderException</span><span class="p">(</span>
+                <span class="s">&quot;Project directory does not exist: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">project_directory</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">project_directory</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">PythonbuilderException</span><span class="p">(</span>
+                <span class="s">&quot;Project directory is not a directory: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">project_directory</span><span class="p">)</span>
+
+        <span class="n">project_descriptor_full_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">project_descriptor_full_path</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">PythonbuilderException</span><span class="p">(</span>
+                <span class="s">&quot;Project directory does not contain descriptor file: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span>
+                <span class="n">project_descriptor_full_path</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">project_descriptor_full_path</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">PythonbuilderException</span><span class="p">(</span>
+                <span class="s">&quot;Project descriptor is not a file: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">project_descriptor_full_path</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor_full_path</span>
+</pre></div>
+
+    </div>
+</div>
+
+
+        <div class="class">
+              <h4>Ancestors (in MRO)</h4>
+              <ul class="class_list">
+                <li><a href="#pybuilder.reactor.Reactor">Reactor</a></li>
+                <li>__builtin__.object</li>
+              </ul>
+              <h4>Static methods</h4>
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.reactor.Reactor.current_instance">
+        <p>def <span class="ident">current_instance</span>(</p><p>)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.current_instance', this);">Show source.</a></p>
+    <div id="source-pybuilder.reactor.Reactor.current_instance" class="source">
+      <div class="codehilite"><pre><span class="nd">@staticmethod</span>
+<span class="k">def</span> <span class="nf">current_instance</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">Reactor</span><span class="o">.</span><span class="n">_current_instance</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+              <h4>Instance variables</h4>
+                  <div class="item">
+                    <p id="pybuilder.reactor.Reactor.execution_manager" class="name">var <span class="ident">execution_manager</span></p>
+                    
+
+                    
+  
+    <div class="source_cont">
+</div>
+
+                  </div>
+                  <div class="item">
+                    <p id="pybuilder.reactor.Reactor.logger" class="name">var <span class="ident">logger</span></p>
+                    
+
+                    
+  
+    <div class="source_cont">
+</div>
+
+                  </div>
+                  <div class="item">
+                    <p id="pybuilder.reactor.Reactor.project" class="name">var <span class="ident">project</span></p>
+                    
+
+                    
+  
+    <div class="source_cont">
+</div>
+
+                  </div>
+              <h4>Methods</h4>
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.reactor.Reactor.__init__">
+        <p>def <span class="ident">__init__</span>(</p><p>self, logger, execution_manager, plugin_loader=None)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.__init__', this);">Show source.</a></p>
+    <div id="source-pybuilder.reactor.Reactor.__init__" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">execution_manager</span><span class="p">,</span> <span class="n">plugin_loader</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span> <span class="o">=</span> <span class="n">execution_manager</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">plugin_loader</span><span class="p">:</span>
+        <span class="n">builtin_plugin_loader</span> <span class="o">=</span> <span class="n">BuiltinPluginLoader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+        <span class="n">thirdparty_plugin_loader</span> <span class="o">=</span> <span class="n">ThirdPartyPluginLoader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plugin_loader</span> <span class="o">=</span> <span class="n">DispatchingPluginLoader</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="n">builtin_plugin_loader</span><span class="p">,</span> <span class="n">thirdparty_plugin_loader</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plugin_loader</span> <span class="o">=</span> <span class="n">plugin_loader</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">project</span> <span class="o">=</span> <span class="bp">None</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.reactor.Reactor.apply_project_attributes">
+        <p>def <span class="ident">apply_project_attributes</span>(</p><p>self)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.apply_project_attributes', this);">Show source.</a></p>
+    <div id="source-pybuilder.reactor.Reactor.apply_project_attributes" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">apply_project_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;version&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;default_task&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;summary&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;home_page&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;description&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;authors&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;license&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;url&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.reactor.Reactor.build">
+        <p>def <span class="ident">build</span>(</p><p>self, tasks=[], environments=[])</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.build', this);">Show source.</a></p>
+    <div id="source-pybuilder.reactor.Reactor.build" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tasks</span><span class="o">=</span><span class="p">[],</span> <span class="n">environments</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="n">Reactor</span><span class="o">.</span><span class="n">_current_instance</span> <span class="o">=</span> <span class="bp">self</span>
+    <span class="k">if</span> <span class="n">environments</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="s">&quot;Activated environments: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">environments</span><span class="p">))</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">execute_initializers</span><span class="p">(</span>
+        <span class="n">environments</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">log_project_properties</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">validate_project</span><span class="p">()</span>
+    <span class="n">tasks</span> <span class="o">=</span> <span class="n">as_list</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">tasks</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">default_task</span><span class="p">:</span>
+            <span class="n">tasks</span> <span class="o">+=</span> <span class="n">as_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">default_task</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">PythonbuilderException</span><span class="p">(</span><span class="s">&quot;No default task given.&quot;</span><span class="p">)</span>
+    <span class="n">execution_plan</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">build_execution_plan</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Execution plan is </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">execution_plan</span><span class="p">]))</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+        <span class="s">&quot;Building </span><span class="si">%s</span><span class="s"> version </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Executing build in </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">basedir</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Going to execute task </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">tasks</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">list_of_tasks</span> <span class="o">=</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Going to execute tasks: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">list_of_tasks</span><span class="p">)</span>
+    <span class="n">task_execution_summaries</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">execute_execution_plan</span><span class="p">(</span>
+        <span class="n">execution_plan</span><span class="p">,</span>
+        <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span>
+        <span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span>
+        <span class="n">reactor</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">BuildSummary</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span> <span class="n">task_execution_summaries</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.reactor.Reactor.collect_tasks_and_actions_and_initializers">
+        <p>def <span class="ident">collect_tasks_and_actions_and_initializers</span>(</p><p>self, project_module)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.collect_tasks_and_actions_and_initializers', this);">Show source.</a></p>
+    <div id="source-pybuilder.reactor.Reactor.collect_tasks_and_actions_and_initializers" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">collect_tasks_and_actions_and_initializers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_module</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">project_module</span><span class="p">):</span>
+        <span class="n">candidate</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">project_module</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">NAME_ATTRIBUTE</span><span class="p">):</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">NAME_ATTRIBUTE</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="s">&quot;__name__&quot;</span><span class="p">):</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">candidate</span><span class="o">.</span><span class="n">__name__</span>
+        <span class="n">description</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">DESCRIPTION_ATTRIBUTE</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span>
+            <span class="n">candidate</span><span class="p">,</span> <span class="n">DESCRIPTION_ATTRIBUTE</span><span class="p">)</span> <span class="k">else</span> <span class="s">&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">TASK_ATTRIBUTE</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">TASK_ATTRIBUTE</span><span class="p">):</span>
+            <span class="n">dependencies</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">DEPENDS_ATTRIBUTE</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span>
+                <span class="n">candidate</span><span class="p">,</span> <span class="n">DEPENDS_ATTRIBUTE</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Found task </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">register_task</span><span class="p">(</span>
+                <span class="n">Task</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">dependencies</span><span class="p">,</span> <span class="n">description</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ACTION_ATTRIBUTE</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ACTION_ATTRIBUTE</span><span class="p">):</span>
+            <span class="n">before</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">BEFORE_ATTRIBUTE</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span>
+                <span class="n">candidate</span><span class="p">,</span> <span class="n">BEFORE_ATTRIBUTE</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span>
+            <span class="n">after</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">AFTER_ATTRIBUTE</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span>
+                <span class="n">candidate</span><span class="p">,</span> <span class="n">AFTER_ATTRIBUTE</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span>
+            <span class="n">only_once</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ONLY_ONCE_ATTRIBUTE</span><span class="p">):</span>
+                <span class="n">only_once</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ONLY_ONCE_ATTRIBUTE</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Found action </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">register_action</span><span class="p">(</span>
+                <span class="n">Action</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">before</span><span class="p">,</span> <span class="n">after</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">only_once</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">INITIALIZER_ATTRIBUTE</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">INITIALIZER_ATTRIBUTE</span><span class="p">):</span>
+            <span class="n">environments</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ENVIRONMENTS_ATTRIBUTE</span><span class="p">):</span>
+                <span class="n">environments</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ENVIRONMENTS_ATTRIBUTE</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">register_initializer</span><span class="p">(</span>
+                <span class="n">Initializer</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">environments</span><span class="p">,</span> <span class="n">description</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.reactor.Reactor.execute_task">
+        <p>def <span class="ident">execute_task</span>(</p><p>self, task_name)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.execute_task', this);">Show source.</a></p>
+    <div id="source-pybuilder.reactor.Reactor.execute_task" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">execute_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_name</span><span class="p">):</span>
+    <span class="n">execution_plan</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">build_execution_plan</span><span class="p">(</span><span class="n">task_name</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">execute_execution_plan</span><span class="p">(</span><span class="n">execution_plan</span><span class="p">,</span>
+                                                  <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span>
+                                                  <span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span>
+                                                  <span class="n">reactor</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.reactor.Reactor.get_plugins">
+        <p>def <span class="ident">get_plugins</span>(</p><p>self)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.get_plugins', this);">Show source.</a></p>
+    <div id="source-pybuilder.reactor.Reactor.get_plugins" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">get_plugins</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.reactor.Reactor.get_tasks">
+        <p>def <span class="ident">get_tasks</span>(</p><p>self)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.get_tasks', this);">Show source.</a></p>
+    <div id="source-pybuilder.reactor.Reactor.get_tasks" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">get_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">tasks</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.reactor.Reactor.import_plugin">
+        <p>def <span class="ident">import_plugin</span>(</p><p>self, plugin)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.import_plugin', this);">Show source.</a></p>
+    <div id="source-pybuilder.reactor.Reactor.import_plugin" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">import_plugin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plugin</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Loading plugin &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span> <span class="n">plugin</span><span class="p">)</span>
+    <span class="n">plugin_module</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">plugin_loader</span><span class="o">.</span><span class="n">load_plugin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span> <span class="n">plugin</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">collect_tasks_and_actions_and_initializers</span><span class="p">(</span><span class="n">plugin_module</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.reactor.Reactor.load_project_module">
+        <p>def <span class="ident">load_project_module</span>(</p><p>self, project_descriptor)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.load_project_module', this);">Show source.</a></p>
+    <div id="source-pybuilder.reactor.Reactor.load_project_module" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">load_project_module</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">imp</span><span class="o">.</span><span class="n">load_source</span><span class="p">(</span><span class="s">&quot;build&quot;</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">PythonbuilderException</span><span class="p">(</span>
+            <span class="s">&quot;Error importing project descriptor </span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">project_descriptor</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.reactor.Reactor.log_project_properties">
+        <p>def <span class="ident">log_project_properties</span>(</p><p>self)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.log_project_properties', this);">Show source.</a></p>
+    <div id="source-pybuilder.reactor.Reactor.log_project_properties" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">log_project_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">formatted</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">properties</span><span class="p">):</span>
+        <span class="n">formatted</span> <span class="o">+=</span> <span class="s">&quot;</span><span class="se">\n</span><span class="si">%40s</span><span class="s"> : </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Project properties: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">formatted</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.reactor.Reactor.override_properties">
+        <p>def <span class="ident">override_properties</span>(</p><p>self, property_overrides)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.override_properties', this);">Show source.</a></p>
+    <div id="source-pybuilder.reactor.Reactor.override_properties" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">override_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">property_overrides</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">property_override</span> <span class="ow">in</span> <span class="n">property_overrides</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span>
+            <span class="n">property_override</span><span class="p">,</span> <span class="n">property_overrides</span><span class="p">[</span><span class="n">property_override</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.reactor.Reactor.prepare_build">
+        <p>def <span class="ident">prepare_build</span>(</p><p>self, property_overrides={}, project_directory='.', project_descriptor='build.py')</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.prepare_build', this);">Show source.</a></p>
+    <div id="source-pybuilder.reactor.Reactor.prepare_build" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">prepare_build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                  <span class="n">property_overrides</span><span class="o">=</span><span class="p">{},</span>
+                  <span class="n">project_directory</span><span class="o">=</span><span class="s">&quot;.&quot;</span><span class="p">,</span>
+                  <span class="n">project_descriptor</span><span class="o">=</span><span class="s">&quot;build.py&quot;</span><span class="p">):</span>
+    <span class="n">Reactor</span><span class="o">.</span><span class="n">_current_instance</span> <span class="o">=</span> <span class="bp">self</span>
+    <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">verify_project_directory</span><span class="p">(</span>
+        <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Loading project module from </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">project</span> <span class="o">=</span> <span class="n">Project</span><span class="p">(</span><span class="n">basedir</span><span class="o">=</span><span class="n">project_directory</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">project_module</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_project_module</span><span class="p">(</span><span class="n">project_descriptor</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">apply_project_attributes</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">override_properties</span><span class="p">(</span><span class="n">property_overrides</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Have loaded plugins </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="p">))</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">collect_tasks_and_actions_and_initializers</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project_module</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">resolve_dependencies</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.reactor.Reactor.propagate_property">
+        <p>def <span class="ident">propagate_property</span>(</p><p>self, property)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.propagate_property', this);">Show source.</a></p>
+    <div id="source-pybuilder.reactor.Reactor.propagate_property" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">propagate_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">property</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project_module</span><span class="p">,</span> <span class="nb">property</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project_module</span><span class="p">,</span> <span class="nb">property</span><span class="p">)</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span> <span class="nb">property</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.reactor.Reactor.require_plugin">
+        <p>def <span class="ident">require_plugin</span>(</p><p>self, plugin)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.require_plugin', this);">Show source.</a></p>
+    <div id="source-pybuilder.reactor.Reactor.require_plugin" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">require_plugin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plugin</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">plugin</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">import_plugin</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
+            <span class="k">raise</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.reactor.Reactor.validate_project">
+        <p>def <span class="ident">validate_project</span>(</p><p>self)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.validate_project', this);">Show source.</a></p>
+    <div id="source-pybuilder.reactor.Reactor.validate_project" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">validate_project</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">validation_messages</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">validation_messages</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">ProjectValidationFailedException</span><span class="p">(</span><span class="n">validation_messages</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.reactor.Reactor.verify_project_directory">
+        <p>def <span class="ident">verify_project_directory</span>(</p><p>self, project_directory, project_descriptor)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.verify_project_directory', this);">Show source.</a></p>
+    <div id="source-pybuilder.reactor.Reactor.verify_project_directory" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">verify_project_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">):</span>
+    <span class="n">project_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">project_directory</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">project_directory</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">PythonbuilderException</span><span class="p">(</span>
+            <span class="s">&quot;Project directory does not exist: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">project_directory</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">project_directory</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">PythonbuilderException</span><span class="p">(</span>
+            <span class="s">&quot;Project directory is not a directory: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">project_directory</span><span class="p">)</span>
+    <span class="n">project_descriptor_full_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">project_descriptor_full_path</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">PythonbuilderException</span><span class="p">(</span>
+            <span class="s">&quot;Project directory does not contain descriptor file: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span>
+            <span class="n">project_descriptor_full_path</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">project_descriptor_full_path</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">PythonbuilderException</span><span class="p">(</span>
+            <span class="s">&quot;Project descriptor is not a file: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">project_descriptor_full_path</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor_full_path</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+        </div>
+      </div>
+
+
+
+<hr>
+<p style="text-align: right;">
+  Documentation generated by
+  <code><a href="https://github.com/BurntSushi/pdoc">pdoc</a></code>
+  0.1.8.
+
+  pdoc is in the public domain with the
+  <a href="http://unlicense.org">UNLICENSE</a>.
+</p>
+</div>
+</body>
+</html>
