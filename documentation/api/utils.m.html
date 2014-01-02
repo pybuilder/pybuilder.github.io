@@ -7,7 +7,8 @@
 	<meta charset="utf-8">
 
       <title>pybuilder.utils API documentation</title>
-      <meta name="description" content="">
+      <meta name="description" content="The PyBuilder utils module.
+Provides generic utilities that can be used by plugins.">
 
   
   <style type="text/css">
@@ -978,25 +979,30 @@ table {
 
 
   <h1>Module pybuilder.utils</h1>
-  
+  <p>The PyBuilder utils module.
+Provides generic utilities that can be used by plugins.</p>
   
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.utils', this);">Show source.</a></p>
     <div id="source-pybuilder.utils" class="source">
-      <div class="codehilite"><pre><span class="c">#   This file is part of PyBuilder</span>
+      <div class="codehilite"><pre><span class="c">#  This file is part of PyBuilder</span>
 <span class="c">#</span>
-<span class="c">#   Copyright 2011-2014 PyBuilder Team</span>
+<span class="c">#  Copyright 2011-2014 PyBuilder Team</span>
 <span class="c">#</span>
-<span class="c">#   Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
-<span class="c">#   you may not use this file except in compliance with the License.</span>
-<span class="c">#   You may obtain a copy of the License at</span>
+<span class="c">#  Licensed under the Apache License, Version 2.0(the &quot;License&quot;);</span>
+<span class="c">#  you may not use this file except in compliance with the License.</span>
+<span class="c">#  You may obtain a copy of the License at</span>
 <span class="c">#</span>
 <span class="c">#      http://www.apache.org/licenses/LICENSE-2.0</span>
 <span class="c">#</span>
-<span class="c">#   Unless required by applicable law or agreed to in writing, software</span>
-<span class="c">#   distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
-<span class="c">#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
-<span class="c">#   See the License for the specific language governing permissions and</span>
-<span class="c">#   limitations under the License.</span>
+<span class="c">#  Unless required by applicable law or agreed to in writing, software</span>
+<span class="c">#  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c">#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c">#  See the License for the specific language governing permissions and</span>
+<span class="c">#  limitations under the License.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The PyBuilder utils module.</span>
+<span class="sd">    Provides generic utilities that can be used by plugins.</span>
+<span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -1005,7 +1011,7 @@ table {
 <span class="kn">import</span> <span class="nn">tempfile</span>
 <span class="kn">import</span> <span class="nn">time</span>
 
-<span class="kn">from</span> <span class="nn">pybuilder.errors</span> <span class="kn">import</span> <span class="n">MissingPrerequisiteException</span><span class="p">,</span> <span class="n">PythonbuilderException</span>
+<span class="kn">from</span> <span class="nn">pybuilder.errors</span> <span class="kn">import</span> <span class="n">MissingPrerequisiteException</span><span class="p">,</span> <span class="n">PybuilderException</span>
 
 
 <span class="k">def</span> <span class="nf">render_report</span><span class="p">(</span><span class="n">report_dict</span><span class="p">):</span>
@@ -1140,7 +1146,7 @@ table {
 
     <span class="k">def</span> <span class="nf">get_millis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_time</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">PythonbuilderException</span><span class="p">(</span><span class="s">&quot;Timer is running.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">PybuilderException</span><span class="p">(</span><span class="s">&quot;Timer is running.&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">int</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">end_time</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
 
 
@@ -1175,14 +1181,14 @@ table {
 <span class="k">def</span> <span class="nf">mkdir</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Tries to create the directory denoted by the given name. If it exists and is a directory, nothing will be created</span>
-<span class="sd">    and no error is raised. If it exists as a file a PythonbuilderException is raised. Otherwise the directory incl.</span>
+<span class="sd">    and no error is raised. If it exists as a file a PybuilderException is raised. Otherwise the directory incl.</span>
 <span class="sd">    all parents is created.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
             <span class="n">message</span> <span class="o">=</span> <span class="s">&quot;Unable to created directory &#39;</span><span class="si">%s</span><span class="s">&#39;: A file with that name already exists&quot;</span>
-            <span class="k">raise</span> <span class="n">PythonbuilderException</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">directory</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">PybuilderException</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">directory</span><span class="p">)</span>
         <span class="k">return</span>
     <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
 </pre></div>
@@ -1523,7 +1529,7 @@ are added to the resulting list.</p>
       
   
       <div class="desc"><p>Tries to create the directory denoted by the given name. If it exists and is a directory, nothing will be created
-and no error is raised. If it exists as a file a PythonbuilderException is raised. Otherwise the directory incl.
+and no error is raised. If it exists as a file a PybuilderException is raised. Otherwise the directory incl.
 all parents is created.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.utils.mkdir', this);">Show source.</a></p>
@@ -1531,14 +1537,14 @@ all parents is created.</p></div>
       <div class="codehilite"><pre><span class="k">def</span> <span class="nf">mkdir</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Tries to create the directory denoted by the given name. If it exists and is a directory, nothing will be created</span>
-<span class="sd">    and no error is raised. If it exists as a file a PythonbuilderException is raised. Otherwise the directory incl.</span>
+<span class="sd">    and no error is raised. If it exists as a file a PybuilderException is raised. Otherwise the directory incl.</span>
 <span class="sd">    all parents is created.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
             <span class="n">message</span> <span class="o">=</span> <span class="s">&quot;Unable to created directory &#39;</span><span class="si">%s</span><span class="s">&#39;: A file with that name already exists&quot;</span>
-            <span class="k">raise</span> <span class="n">PythonbuilderException</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">directory</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">PybuilderException</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">directory</span><span class="p">)</span>
         <span class="k">return</span>
     <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
 </pre></div>
@@ -1812,7 +1818,7 @@ all parents is created.</p></div>
 
     <span class="k">def</span> <span class="nf">get_millis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_time</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">PythonbuilderException</span><span class="p">(</span><span class="s">&quot;Timer is running.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">PybuilderException</span><span class="p">(</span><span class="s">&quot;Timer is running.&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">int</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">end_time</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
 </pre></div>
 
@@ -1907,7 +1913,7 @@ all parents is created.</p></div>
     <div id="source-pybuilder.utils.Timer.get_millis" class="source">
       <div class="codehilite"><pre><span class="k">def</span> <span class="nf">get_millis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_time</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">PythonbuilderException</span><span class="p">(</span><span class="s">&quot;Timer is running.&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">PybuilderException</span><span class="p">(</span><span class="s">&quot;Timer is running.&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">int</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">end_time</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
 </pre></div>
 

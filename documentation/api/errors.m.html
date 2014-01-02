@@ -7,7 +7,8 @@
 	<meta charset="utf-8">
 
       <title>pybuilder.errors API documentation</title>
-      <meta name="description" content="">
+      <meta name="description" content="The PyBuilder error module.
+Defines all possible errors that can arise during the execution of PyBui...">
 
   
   <style type="text/css">
@@ -978,7 +979,8 @@ table {
 
 
   <h1>Module pybuilder.errors</h1>
-  
+  <p>The PyBuilder error module.
+Defines all possible errors that can arise during the execution of PyBuilder.</p>
   
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.errors', this);">Show source.</a></p>
     <div id="source-pybuilder.errors" class="source">
@@ -997,9 +999,14 @@ table {
 <span class="c">#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
 <span class="c">#  See the License for the specific language governing permissions and</span>
 <span class="c">#  limitations under the License.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The PyBuilder error module.</span>
+<span class="sd">    Defines all possible errors that can arise during the execution of PyBuilder.</span>
+<span class="sd">&quot;&quot;&quot;</span>
 
 
-<span class="k">class</span> <span class="nc">PythonbuilderException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">PybuilderException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_message</span> <span class="o">=</span> <span class="n">message</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_arguments</span> <span class="o">=</span> <span class="n">arguments</span>
@@ -1012,66 +1019,87 @@ table {
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">message</span>
 
 
-<span class="k">class</span> <span class="nc">InvalidNameException</span><span class="p">(</span><span class="n">PythonbuilderException</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">InvalidNameException</span><span class="p">(</span><span class="n">PybuilderException</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">InvalidNameException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Invalid name: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">NoSuchTaskException</span><span class="p">(</span><span class="n">PythonbuilderException</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">NoSuchTaskException</span><span class="p">(</span><span class="n">PybuilderException</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">NoSuchTaskException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;No such task </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">CircularTaskDependencyException</span><span class="p">(</span><span class="n">PythonbuilderException</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">CircularTaskDependencyException</span><span class="p">(</span><span class="n">PybuilderException</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">second</span><span class="p">:</span>
-            <span class="nb">super</span><span class="p">(</span><span class="n">CircularTaskDependencyException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Circular task dependency detected between </span><span class="si">%s</span><span class="s"> and </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span>
-                                                                  <span class="n">first</span><span class="p">,</span>
-                                                                  <span class="n">second</span><span class="p">)</span>
+            <span class="nb">super</span><span class="p">(</span>
+                <span class="n">CircularTaskDependencyException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Circular task dependency detected between </span><span class="si">%s</span><span class="s"> and </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span>
+                                                                <span class="n">first</span><span class="p">,</span>
+                                                                <span class="n">second</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">first</span> <span class="o">=</span> <span class="n">first</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">second</span> <span class="o">=</span> <span class="n">second</span>
 
 
-<span class="k">class</span> <span class="nc">MissingPrerequisiteException</span><span class="p">(</span><span class="n">PythonbuilderException</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">MissingPrerequisiteException</span><span class="p">(</span><span class="n">PybuilderException</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prerequisite</span><span class="p">,</span> <span class="n">caller</span><span class="o">=</span><span class="s">&quot;n/a&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">MissingPrerequisiteException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Missing prerequisite </span><span class="si">%s</span><span class="s"> required by </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span>
-                                                           <span class="n">prerequisite</span><span class="p">,</span> <span class="n">caller</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span>
+            <span class="n">MissingPrerequisiteException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Missing prerequisite </span><span class="si">%s</span><span class="s"> required by </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span>
+                                                         <span class="n">prerequisite</span><span class="p">,</span> <span class="n">caller</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">MissingTaskDependencyException</span><span class="p">(</span><span class="n">PythonbuilderException</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">MissingTaskDependencyException</span><span class="p">(</span><span class="n">PybuilderException</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">dependency</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">MissingTaskDependencyException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Missing task &#39;</span><span class="si">%s</span><span class="s">&#39; required for task &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span>
+        <span class="nb">super</span><span class="p">(</span>
+            <span class="n">MissingTaskDependencyException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Missing task &#39;</span><span class="si">%s</span><span class="s">&#39; required for task &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span>
+                                                           <span class="n">dependency</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">MissingActionDependencyException</span><span class="p">(</span><span class="n">PybuilderException</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">dependency</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span>
+            <span class="n">MissingActionDependencyException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Missing task &#39;</span><span class="si">%s</span><span class="s">&#39; required for action &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span>
                                                              <span class="n">dependency</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">MissingActionDependencyException</span><span class="p">(</span><span class="n">PythonbuilderException</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">dependency</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">MissingActionDependencyException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Missing task &#39;</span><span class="si">%s</span><span class="s">&#39; required for action &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span>
-                                                               <span class="n">dependency</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">MissingPluginException</span><span class="p">(</span><span class="n">PybuilderException</span><span class="p">):</span>
 
-
-<span class="k">class</span> <span class="nc">MissingPluginException</span><span class="p">(</span><span class="n">PythonbuilderException</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plugin</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">MissingPluginException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Missing plugin &#39;</span><span class="si">%s</span><span class="s">&#39;: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">plugin</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MissingPluginException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span>
+            <span class="s">&quot;Missing plugin &#39;</span><span class="si">%s</span><span class="s">&#39;: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">plugin</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">BuildFailedException</span><span class="p">(</span><span class="n">PythonbuilderException</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">BuildFailedException</span><span class="p">(</span><span class="n">PybuilderException</span><span class="p">):</span>
     <span class="k">pass</span>
 
 
-<span class="k">class</span> <span class="nc">MissingPropertyException</span><span class="p">(</span><span class="n">PythonbuilderException</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">MissingPropertyException</span><span class="p">(</span><span class="n">PybuilderException</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">property</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">MissingPropertyException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;No such property: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="nb">property</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MissingPropertyException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span>
+            <span class="s">&quot;No such property: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="nb">property</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">ProjectValidationFailedException</span><span class="p">(</span><span class="n">BuildFailedException</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">validation_messages</span><span class="p">):</span>
-        <span class="n">BuildFailedException</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&quot;Project validation failed: &quot;</span> <span class="o">+</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">validation_messages</span><span class="p">))</span>
+        <span class="n">BuildFailedException</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="s">&quot;Project validation failed: &quot;</span> <span class="o">+</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">validation_messages</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">validation_messages</span> <span class="o">=</span> <span class="n">validation_messages</span>
 
 
-<span class="k">class</span> <span class="nc">InternalException</span><span class="p">(</span><span class="n">PythonbuilderException</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">InternalException</span><span class="p">(</span><span class="n">PybuilderException</span><span class="p">):</span>
     <span class="k">pass</span>
+
+
+<span class="k">class</span> <span class="nc">DependenciesNotResolvedException</span><span class="p">(</span><span class="n">InternalException</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">DependenciesNotResolvedException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Dependencies have not been resolved.&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1109,6 +1137,22 @@ table {
   <div class="column_list">
       <ul>
           <li class="mono"><a href="#pybuilder.errors.CircularTaskDependencyException.__init__">__init__</a></li>
+      </ul>
+      <ul>
+      </ul>
+      <ul>
+      </ul>
+  </div>
+
+          </li>
+          <li class="mono">
+            <span class="class_name"><a href="#pybuilder.errors.DependenciesNotResolvedException">DependenciesNotResolvedException</a></span>
+            
+              
+  
+  <div class="column_list">
+      <ul>
+          <li class="mono"><a href="#pybuilder.errors.DependenciesNotResolvedException.__init__">__init__</a></li>
       </ul>
       <ul>
       </ul>
@@ -1262,13 +1306,13 @@ table {
 
           </li>
           <li class="mono">
-            <span class="class_name"><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></span>
+            <span class="class_name"><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></span>
             
               
   
   <div class="column_list">
       <ul>
-          <li class="mono"><a href="#pybuilder.errors.PythonbuilderException.__init__">__init__</a></li>
+          <li class="mono"><a href="#pybuilder.errors.PybuilderException.__init__">__init__</a></li>
       </ul>
       <ul>
       </ul>
@@ -1293,7 +1337,7 @@ table {
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.errors.BuildFailedException', this);">Show source.</a></p>
     <div id="source-pybuilder.errors.BuildFailedException" class="source">
-      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">BuildFailedException</span><span class="p">(</span><span class="n">PythonbuilderException</span><span class="p">):</span>
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">BuildFailedException</span><span class="p">(</span><span class="n">PybuilderException</span><span class="p">):</span>
     <span class="k">pass</span>
 </pre></div>
 
@@ -1305,7 +1349,7 @@ table {
               <h4>Ancestors (in MRO)</h4>
               <ul class="class_list">
                 <li><a href="#pybuilder.errors.BuildFailedException">BuildFailedException</a></li>
-                <li><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></li>
+                <li><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></li>
                 <li>exceptions.Exception</li>
                 <li>exceptions.BaseException</li>
                 <li>__builtin__.object</li>
@@ -1316,7 +1360,7 @@ table {
                     
       <p class="inheritance">
          <strong>Inheritance:</strong>
-           <code><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></code>.<code><a href="#pybuilder.errors.PythonbuilderException.args">args</a></code>
+           <code><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></code>.<code><a href="#pybuilder.errors.PybuilderException.args">args</a></code>
       </p>
 
                     
@@ -1331,7 +1375,7 @@ table {
                     
       <p class="inheritance">
          <strong>Inheritance:</strong>
-           <code><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></code>.<code><a href="#pybuilder.errors.PythonbuilderException.message">message</a></code>
+           <code><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></code>.<code><a href="#pybuilder.errors.PybuilderException.message">message</a></code>
       </p>
 
                     
@@ -1349,7 +1393,7 @@ table {
       
       <p class="inheritance">
          <strong>Inheritance:</strong>
-           <code><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></code>.<code><a href="#pybuilder.errors.PythonbuilderException.__init__">__init__</a></code>
+           <code><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></code>.<code><a href="#pybuilder.errors.PybuilderException.__init__">__init__</a></code>
       </p>
 
       
@@ -1377,12 +1421,14 @@ table {
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.errors.CircularTaskDependencyException', this);">Show source.</a></p>
     <div id="source-pybuilder.errors.CircularTaskDependencyException" class="source">
-      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">CircularTaskDependencyException</span><span class="p">(</span><span class="n">PythonbuilderException</span><span class="p">):</span>
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">CircularTaskDependencyException</span><span class="p">(</span><span class="n">PybuilderException</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">second</span><span class="p">:</span>
-            <span class="nb">super</span><span class="p">(</span><span class="n">CircularTaskDependencyException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Circular task dependency detected between </span><span class="si">%s</span><span class="s"> and </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span>
-                                                                  <span class="n">first</span><span class="p">,</span>
-                                                                  <span class="n">second</span><span class="p">)</span>
+            <span class="nb">super</span><span class="p">(</span>
+                <span class="n">CircularTaskDependencyException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Circular task dependency detected between </span><span class="si">%s</span><span class="s"> and </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span>
+                                                                <span class="n">first</span><span class="p">,</span>
+                                                                <span class="n">second</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">first</span> <span class="o">=</span> <span class="n">first</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">second</span> <span class="o">=</span> <span class="n">second</span>
 </pre></div>
@@ -1395,7 +1441,7 @@ table {
               <h4>Ancestors (in MRO)</h4>
               <ul class="class_list">
                 <li><a href="#pybuilder.errors.CircularTaskDependencyException">CircularTaskDependencyException</a></li>
-                <li><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></li>
+                <li><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></li>
                 <li>exceptions.Exception</li>
                 <li>exceptions.BaseException</li>
                 <li>__builtin__.object</li>
@@ -1406,7 +1452,7 @@ table {
                     
       <p class="inheritance">
          <strong>Inheritance:</strong>
-           <code><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></code>.<code><a href="#pybuilder.errors.PythonbuilderException.args">args</a></code>
+           <code><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></code>.<code><a href="#pybuilder.errors.PybuilderException.args">args</a></code>
       </p>
 
                     
@@ -1431,7 +1477,7 @@ table {
                     
       <p class="inheritance">
          <strong>Inheritance:</strong>
-           <code><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></code>.<code><a href="#pybuilder.errors.PythonbuilderException.message">message</a></code>
+           <code><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></code>.<code><a href="#pybuilder.errors.PybuilderException.message">message</a></code>
       </p>
 
                     
@@ -1459,7 +1505,7 @@ table {
       
       <p class="inheritance">
          <strong>Inheritance:</strong>
-           <code><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></code>.<code><a href="#pybuilder.errors.PythonbuilderException.__init__">__init__</a></code>
+           <code><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></code>.<code><a href="#pybuilder.errors.PybuilderException.__init__">__init__</a></code>
       </p>
 
       
@@ -1469,11 +1515,97 @@ table {
     <div id="source-pybuilder.errors.CircularTaskDependencyException.__init__" class="source">
       <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">second</span><span class="p">:</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">CircularTaskDependencyException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Circular task dependency detected between </span><span class="si">%s</span><span class="s"> and </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span>
-                                                              <span class="n">first</span><span class="p">,</span>
-                                                              <span class="n">second</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span>
+            <span class="n">CircularTaskDependencyException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Circular task dependency detected between </span><span class="si">%s</span><span class="s"> and </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span>
+                                                            <span class="n">first</span><span class="p">,</span>
+                                                            <span class="n">second</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">first</span> <span class="o">=</span> <span class="n">first</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">second</span> <span class="o">=</span> <span class="n">second</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+        </div>
+      </div>
+      
+      <div class="item">
+        <p id="pybuilder.errors.DependenciesNotResolvedException" class="name">class <span class="ident">DependenciesNotResolvedException</span></p>
+        
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.errors.DependenciesNotResolvedException', this);">Show source.</a></p>
+    <div id="source-pybuilder.errors.DependenciesNotResolvedException" class="source">
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">DependenciesNotResolvedException</span><span class="p">(</span><span class="n">InternalException</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">DependenciesNotResolvedException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Dependencies have not been resolved.&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+
+        <div class="class">
+              <h4>Ancestors (in MRO)</h4>
+              <ul class="class_list">
+                <li><a href="#pybuilder.errors.DependenciesNotResolvedException">DependenciesNotResolvedException</a></li>
+                <li><a href="#pybuilder.errors.InternalException">InternalException</a></li>
+                <li><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></li>
+                <li>exceptions.Exception</li>
+                <li>exceptions.BaseException</li>
+                <li>__builtin__.object</li>
+              </ul>
+              <h4>Class variables</h4>
+                  <div class="item">
+                    <p id="pybuilder.errors.DependenciesNotResolvedException.args" class="name">var <span class="ident">args</span></p>
+                    
+      <p class="inheritance">
+         <strong>Inheritance:</strong>
+           <code><a href="#pybuilder.errors.InternalException">InternalException</a></code>.<code><a href="#pybuilder.errors.InternalException.args">args</a></code>
+      </p>
+
+                    
+  
+    <div class="source_cont">
+</div>
+
+                  </div>
+              <h4>Instance variables</h4>
+                  <div class="item">
+                    <p id="pybuilder.errors.DependenciesNotResolvedException.message" class="name">var <span class="ident">message</span></p>
+                    
+      <p class="inheritance">
+         <strong>Inheritance:</strong>
+           <code><a href="#pybuilder.errors.InternalException">InternalException</a></code>.<code><a href="#pybuilder.errors.InternalException.message">message</a></code>
+      </p>
+
+                    
+  
+    <div class="source_cont">
+</div>
+
+                  </div>
+              <h4>Methods</h4>
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.errors.DependenciesNotResolvedException.__init__">
+        <p>def <span class="ident">__init__</span>(</p><p>self)</p>
+      </div>
+      
+      <p class="inheritance">
+         <strong>Inheritance:</strong>
+           <code><a href="#pybuilder.errors.InternalException">InternalException</a></code>.<code><a href="#pybuilder.errors.InternalException.__init__">__init__</a></code>
+      </p>
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.errors.DependenciesNotResolvedException.__init__', this);">Show source.</a></p>
+    <div id="source-pybuilder.errors.DependenciesNotResolvedException.__init__" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">DependenciesNotResolvedException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Dependencies have not been resolved.&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1491,7 +1623,7 @@ table {
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.errors.InternalException', this);">Show source.</a></p>
     <div id="source-pybuilder.errors.InternalException" class="source">
-      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">InternalException</span><span class="p">(</span><span class="n">PythonbuilderException</span><span class="p">):</span>
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">InternalException</span><span class="p">(</span><span class="n">PybuilderException</span><span class="p">):</span>
     <span class="k">pass</span>
 </pre></div>
 
@@ -1503,7 +1635,7 @@ table {
               <h4>Ancestors (in MRO)</h4>
               <ul class="class_list">
                 <li><a href="#pybuilder.errors.InternalException">InternalException</a></li>
-                <li><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></li>
+                <li><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></li>
                 <li>exceptions.Exception</li>
                 <li>exceptions.BaseException</li>
                 <li>__builtin__.object</li>
@@ -1514,7 +1646,7 @@ table {
                     
       <p class="inheritance">
          <strong>Inheritance:</strong>
-           <code><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></code>.<code><a href="#pybuilder.errors.PythonbuilderException.args">args</a></code>
+           <code><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></code>.<code><a href="#pybuilder.errors.PybuilderException.args">args</a></code>
       </p>
 
                     
@@ -1529,7 +1661,7 @@ table {
                     
       <p class="inheritance">
          <strong>Inheritance:</strong>
-           <code><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></code>.<code><a href="#pybuilder.errors.PythonbuilderException.message">message</a></code>
+           <code><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></code>.<code><a href="#pybuilder.errors.PybuilderException.message">message</a></code>
       </p>
 
                     
@@ -1547,7 +1679,7 @@ table {
       
       <p class="inheritance">
          <strong>Inheritance:</strong>
-           <code><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></code>.<code><a href="#pybuilder.errors.PythonbuilderException.__init__">__init__</a></code>
+           <code><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></code>.<code><a href="#pybuilder.errors.PybuilderException.__init__">__init__</a></code>
       </p>
 
       
@@ -1575,7 +1707,8 @@ table {
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.errors.InvalidNameException', this);">Show source.</a></p>
     <div id="source-pybuilder.errors.InvalidNameException" class="source">
-      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">InvalidNameException</span><span class="p">(</span><span class="n">PythonbuilderException</span><span class="p">):</span>
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">InvalidNameException</span><span class="p">(</span><span class="n">PybuilderException</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">InvalidNameException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Invalid name: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
 </pre></div>
@@ -1588,7 +1721,7 @@ table {
               <h4>Ancestors (in MRO)</h4>
               <ul class="class_list">
                 <li><a href="#pybuilder.errors.InvalidNameException">InvalidNameException</a></li>
-                <li><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></li>
+                <li><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></li>
                 <li>exceptions.Exception</li>
                 <li>exceptions.BaseException</li>
                 <li>__builtin__.object</li>
@@ -1599,7 +1732,7 @@ table {
                     
       <p class="inheritance">
          <strong>Inheritance:</strong>
-           <code><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></code>.<code><a href="#pybuilder.errors.PythonbuilderException.args">args</a></code>
+           <code><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></code>.<code><a href="#pybuilder.errors.PybuilderException.args">args</a></code>
       </p>
 
                     
@@ -1614,7 +1747,7 @@ table {
                     
       <p class="inheritance">
          <strong>Inheritance:</strong>
-           <code><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></code>.<code><a href="#pybuilder.errors.PythonbuilderException.message">message</a></code>
+           <code><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></code>.<code><a href="#pybuilder.errors.PybuilderException.message">message</a></code>
       </p>
 
                     
@@ -1632,7 +1765,7 @@ table {
       
       <p class="inheritance">
          <strong>Inheritance:</strong>
-           <code><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></code>.<code><a href="#pybuilder.errors.PythonbuilderException.__init__">__init__</a></code>
+           <code><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></code>.<code><a href="#pybuilder.errors.PybuilderException.__init__">__init__</a></code>
       </p>
 
       
@@ -1659,10 +1792,12 @@ table {
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.errors.MissingActionDependencyException', this);">Show source.</a></p>
     <div id="source-pybuilder.errors.MissingActionDependencyException" class="source">
-      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">MissingActionDependencyException</span><span class="p">(</span><span class="n">PythonbuilderException</span><span class="p">):</span>
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">MissingActionDependencyException</span><span class="p">(</span><span class="n">PybuilderException</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">dependency</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">MissingActionDependencyException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Missing task &#39;</span><span class="si">%s</span><span class="s">&#39; required for action &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span>
-                                                               <span class="n">dependency</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span>
+            <span class="n">MissingActionDependencyException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Missing task &#39;</span><span class="si">%s</span><span class="s">&#39; required for action &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span>
+                                                             <span class="n">dependency</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1673,7 +1808,7 @@ table {
               <h4>Ancestors (in MRO)</h4>
               <ul class="class_list">
                 <li><a href="#pybuilder.errors.MissingActionDependencyException">MissingActionDependencyException</a></li>
-                <li><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></li>
+                <li><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></li>
                 <li>exceptions.Exception</li>
                 <li>exceptions.BaseException</li>
                 <li>__builtin__.object</li>
@@ -1684,7 +1819,7 @@ table {
                     
       <p class="inheritance">
          <strong>Inheritance:</strong>
-           <code><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></code>.<code><a href="#pybuilder.errors.PythonbuilderException.args">args</a></code>
+           <code><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></code>.<code><a href="#pybuilder.errors.PybuilderException.args">args</a></code>
       </p>
 
                     
@@ -1699,7 +1834,7 @@ table {
                     
       <p class="inheritance">
          <strong>Inheritance:</strong>
-           <code><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></code>.<code><a href="#pybuilder.errors.PythonbuilderException.message">message</a></code>
+           <code><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></code>.<code><a href="#pybuilder.errors.PybuilderException.message">message</a></code>
       </p>
 
                     
@@ -1717,7 +1852,7 @@ table {
       
       <p class="inheritance">
          <strong>Inheritance:</strong>
-           <code><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></code>.<code><a href="#pybuilder.errors.PythonbuilderException.__init__">__init__</a></code>
+           <code><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></code>.<code><a href="#pybuilder.errors.PybuilderException.__init__">__init__</a></code>
       </p>
 
       
@@ -1726,8 +1861,9 @@ table {
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.errors.MissingActionDependencyException.__init__', this);">Show source.</a></p>
     <div id="source-pybuilder.errors.MissingActionDependencyException.__init__" class="source">
       <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">dependency</span><span class="p">):</span>
-    <span class="nb">super</span><span class="p">(</span><span class="n">MissingActionDependencyException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Missing task &#39;</span><span class="si">%s</span><span class="s">&#39; required for action &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span>
-                                                           <span class="n">dependency</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
+    <span class="nb">super</span><span class="p">(</span>
+        <span class="n">MissingActionDependencyException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Missing task &#39;</span><span class="si">%s</span><span class="s">&#39; required for action &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span>
+                                                         <span class="n">dependency</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1745,9 +1881,11 @@ table {
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.errors.MissingPluginException', this);">Show source.</a></p>
     <div id="source-pybuilder.errors.MissingPluginException" class="source">
-      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">MissingPluginException</span><span class="p">(</span><span class="n">PythonbuilderException</span><span class="p">):</span>
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">MissingPluginException</span><span class="p">(</span><span class="n">PybuilderException</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plugin</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">MissingPluginException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Missing plugin &#39;</span><span class="si">%s</span><span class="s">&#39;: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">plugin</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MissingPluginException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span>
+            <span class="s">&quot;Missing plugin &#39;</span><span class="si">%s</span><span class="s">&#39;: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">plugin</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1758,7 +1896,7 @@ table {
               <h4>Ancestors (in MRO)</h4>
               <ul class="class_list">
                 <li><a href="#pybuilder.errors.MissingPluginException">MissingPluginException</a></li>
-                <li><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></li>
+                <li><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></li>
                 <li>exceptions.Exception</li>
                 <li>exceptions.BaseException</li>
                 <li>__builtin__.object</li>
@@ -1769,7 +1907,7 @@ table {
                     
       <p class="inheritance">
          <strong>Inheritance:</strong>
-           <code><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></code>.<code><a href="#pybuilder.errors.PythonbuilderException.args">args</a></code>
+           <code><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></code>.<code><a href="#pybuilder.errors.PybuilderException.args">args</a></code>
       </p>
 
                     
@@ -1784,7 +1922,7 @@ table {
                     
       <p class="inheritance">
          <strong>Inheritance:</strong>
-           <code><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></code>.<code><a href="#pybuilder.errors.PythonbuilderException.message">message</a></code>
+           <code><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></code>.<code><a href="#pybuilder.errors.PybuilderException.message">message</a></code>
       </p>
 
                     
@@ -1802,7 +1940,7 @@ table {
       
       <p class="inheritance">
          <strong>Inheritance:</strong>
-           <code><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></code>.<code><a href="#pybuilder.errors.PythonbuilderException.__init__">__init__</a></code>
+           <code><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></code>.<code><a href="#pybuilder.errors.PybuilderException.__init__">__init__</a></code>
       </p>
 
       
@@ -1811,7 +1949,8 @@ table {
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.errors.MissingPluginException.__init__', this);">Show source.</a></p>
     <div id="source-pybuilder.errors.MissingPluginException.__init__" class="source">
       <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plugin</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">):</span>
-    <span class="nb">super</span><span class="p">(</span><span class="n">MissingPluginException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Missing plugin &#39;</span><span class="si">%s</span><span class="s">&#39;: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">plugin</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">MissingPluginException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span>
+        <span class="s">&quot;Missing plugin &#39;</span><span class="si">%s</span><span class="s">&#39;: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">plugin</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1829,10 +1968,12 @@ table {
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.errors.MissingPrerequisiteException', this);">Show source.</a></p>
     <div id="source-pybuilder.errors.MissingPrerequisiteException" class="source">
-      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">MissingPrerequisiteException</span><span class="p">(</span><span class="n">PythonbuilderException</span><span class="p">):</span>
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">MissingPrerequisiteException</span><span class="p">(</span><span class="n">PybuilderException</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prerequisite</span><span class="p">,</span> <span class="n">caller</span><span class="o">=</span><span class="s">&quot;n/a&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">MissingPrerequisiteException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Missing prerequisite </span><span class="si">%s</span><span class="s"> required by </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span>
-                                                           <span class="n">prerequisite</span><span class="p">,</span> <span class="n">caller</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span>
+            <span class="n">MissingPrerequisiteException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Missing prerequisite </span><span class="si">%s</span><span class="s"> required by </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span>
+                                                         <span class="n">prerequisite</span><span class="p">,</span> <span class="n">caller</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1843,7 +1984,7 @@ table {
               <h4>Ancestors (in MRO)</h4>
               <ul class="class_list">
                 <li><a href="#pybuilder.errors.MissingPrerequisiteException">MissingPrerequisiteException</a></li>
-                <li><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></li>
+                <li><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></li>
                 <li>exceptions.Exception</li>
                 <li>exceptions.BaseException</li>
                 <li>__builtin__.object</li>
@@ -1854,7 +1995,7 @@ table {
                     
       <p class="inheritance">
          <strong>Inheritance:</strong>
-           <code><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></code>.<code><a href="#pybuilder.errors.PythonbuilderException.args">args</a></code>
+           <code><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></code>.<code><a href="#pybuilder.errors.PybuilderException.args">args</a></code>
       </p>
 
                     
@@ -1869,7 +2010,7 @@ table {
                     
       <p class="inheritance">
          <strong>Inheritance:</strong>
-           <code><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></code>.<code><a href="#pybuilder.errors.PythonbuilderException.message">message</a></code>
+           <code><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></code>.<code><a href="#pybuilder.errors.PybuilderException.message">message</a></code>
       </p>
 
                     
@@ -1887,7 +2028,7 @@ table {
       
       <p class="inheritance">
          <strong>Inheritance:</strong>
-           <code><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></code>.<code><a href="#pybuilder.errors.PythonbuilderException.__init__">__init__</a></code>
+           <code><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></code>.<code><a href="#pybuilder.errors.PybuilderException.__init__">__init__</a></code>
       </p>
 
       
@@ -1896,8 +2037,9 @@ table {
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.errors.MissingPrerequisiteException.__init__', this);">Show source.</a></p>
     <div id="source-pybuilder.errors.MissingPrerequisiteException.__init__" class="source">
       <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prerequisite</span><span class="p">,</span> <span class="n">caller</span><span class="o">=</span><span class="s">&quot;n/a&quot;</span><span class="p">):</span>
-    <span class="nb">super</span><span class="p">(</span><span class="n">MissingPrerequisiteException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Missing prerequisite </span><span class="si">%s</span><span class="s"> required by </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span>
-                                                       <span class="n">prerequisite</span><span class="p">,</span> <span class="n">caller</span><span class="p">)</span>
+    <span class="nb">super</span><span class="p">(</span>
+        <span class="n">MissingPrerequisiteException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Missing prerequisite </span><span class="si">%s</span><span class="s"> required by </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span>
+                                                     <span class="n">prerequisite</span><span class="p">,</span> <span class="n">caller</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1915,9 +2057,11 @@ table {
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.errors.MissingPropertyException', this);">Show source.</a></p>
     <div id="source-pybuilder.errors.MissingPropertyException" class="source">
-      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">MissingPropertyException</span><span class="p">(</span><span class="n">PythonbuilderException</span><span class="p">):</span>
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">MissingPropertyException</span><span class="p">(</span><span class="n">PybuilderException</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">property</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">MissingPropertyException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;No such property: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="nb">property</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MissingPropertyException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span>
+            <span class="s">&quot;No such property: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="nb">property</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1928,7 +2072,7 @@ table {
               <h4>Ancestors (in MRO)</h4>
               <ul class="class_list">
                 <li><a href="#pybuilder.errors.MissingPropertyException">MissingPropertyException</a></li>
-                <li><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></li>
+                <li><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></li>
                 <li>exceptions.Exception</li>
                 <li>exceptions.BaseException</li>
                 <li>__builtin__.object</li>
@@ -1939,7 +2083,7 @@ table {
                     
       <p class="inheritance">
          <strong>Inheritance:</strong>
-           <code><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></code>.<code><a href="#pybuilder.errors.PythonbuilderException.args">args</a></code>
+           <code><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></code>.<code><a href="#pybuilder.errors.PybuilderException.args">args</a></code>
       </p>
 
                     
@@ -1954,7 +2098,7 @@ table {
                     
       <p class="inheritance">
          <strong>Inheritance:</strong>
-           <code><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></code>.<code><a href="#pybuilder.errors.PythonbuilderException.message">message</a></code>
+           <code><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></code>.<code><a href="#pybuilder.errors.PybuilderException.message">message</a></code>
       </p>
 
                     
@@ -1972,7 +2116,7 @@ table {
       
       <p class="inheritance">
          <strong>Inheritance:</strong>
-           <code><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></code>.<code><a href="#pybuilder.errors.PythonbuilderException.__init__">__init__</a></code>
+           <code><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></code>.<code><a href="#pybuilder.errors.PybuilderException.__init__">__init__</a></code>
       </p>
 
       
@@ -1981,7 +2125,8 @@ table {
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.errors.MissingPropertyException.__init__', this);">Show source.</a></p>
     <div id="source-pybuilder.errors.MissingPropertyException.__init__" class="source">
       <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">property</span><span class="p">):</span>
-    <span class="nb">super</span><span class="p">(</span><span class="n">MissingPropertyException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;No such property: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="nb">property</span><span class="p">)</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">MissingPropertyException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span>
+        <span class="s">&quot;No such property: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="nb">property</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1999,10 +2144,12 @@ table {
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.errors.MissingTaskDependencyException', this);">Show source.</a></p>
     <div id="source-pybuilder.errors.MissingTaskDependencyException" class="source">
-      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">MissingTaskDependencyException</span><span class="p">(</span><span class="n">PythonbuilderException</span><span class="p">):</span>
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">MissingTaskDependencyException</span><span class="p">(</span><span class="n">PybuilderException</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">dependency</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">MissingTaskDependencyException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Missing task &#39;</span><span class="si">%s</span><span class="s">&#39; required for task &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span>
-                                                             <span class="n">dependency</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span>
+            <span class="n">MissingTaskDependencyException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Missing task &#39;</span><span class="si">%s</span><span class="s">&#39; required for task &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span>
+                                                           <span class="n">dependency</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2013,7 +2160,7 @@ table {
               <h4>Ancestors (in MRO)</h4>
               <ul class="class_list">
                 <li><a href="#pybuilder.errors.MissingTaskDependencyException">MissingTaskDependencyException</a></li>
-                <li><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></li>
+                <li><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></li>
                 <li>exceptions.Exception</li>
                 <li>exceptions.BaseException</li>
                 <li>__builtin__.object</li>
@@ -2024,7 +2171,7 @@ table {
                     
       <p class="inheritance">
          <strong>Inheritance:</strong>
-           <code><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></code>.<code><a href="#pybuilder.errors.PythonbuilderException.args">args</a></code>
+           <code><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></code>.<code><a href="#pybuilder.errors.PybuilderException.args">args</a></code>
       </p>
 
                     
@@ -2039,7 +2186,7 @@ table {
                     
       <p class="inheritance">
          <strong>Inheritance:</strong>
-           <code><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></code>.<code><a href="#pybuilder.errors.PythonbuilderException.message">message</a></code>
+           <code><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></code>.<code><a href="#pybuilder.errors.PybuilderException.message">message</a></code>
       </p>
 
                     
@@ -2057,7 +2204,7 @@ table {
       
       <p class="inheritance">
          <strong>Inheritance:</strong>
-           <code><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></code>.<code><a href="#pybuilder.errors.PythonbuilderException.__init__">__init__</a></code>
+           <code><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></code>.<code><a href="#pybuilder.errors.PybuilderException.__init__">__init__</a></code>
       </p>
 
       
@@ -2066,8 +2213,9 @@ table {
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.errors.MissingTaskDependencyException.__init__', this);">Show source.</a></p>
     <div id="source-pybuilder.errors.MissingTaskDependencyException.__init__" class="source">
       <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">dependency</span><span class="p">):</span>
-    <span class="nb">super</span><span class="p">(</span><span class="n">MissingTaskDependencyException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Missing task &#39;</span><span class="si">%s</span><span class="s">&#39; required for task &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span>
-                                                         <span class="n">dependency</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
+    <span class="nb">super</span><span class="p">(</span>
+        <span class="n">MissingTaskDependencyException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;Missing task &#39;</span><span class="si">%s</span><span class="s">&#39; required for task &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span>
+                                                       <span class="n">dependency</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2085,7 +2233,8 @@ table {
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.errors.NoSuchTaskException', this);">Show source.</a></p>
     <div id="source-pybuilder.errors.NoSuchTaskException" class="source">
-      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">NoSuchTaskException</span><span class="p">(</span><span class="n">PythonbuilderException</span><span class="p">):</span>
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">NoSuchTaskException</span><span class="p">(</span><span class="n">PybuilderException</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">NoSuchTaskException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&quot;No such task </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
 </pre></div>
@@ -2098,7 +2247,7 @@ table {
               <h4>Ancestors (in MRO)</h4>
               <ul class="class_list">
                 <li><a href="#pybuilder.errors.NoSuchTaskException">NoSuchTaskException</a></li>
-                <li><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></li>
+                <li><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></li>
                 <li>exceptions.Exception</li>
                 <li>exceptions.BaseException</li>
                 <li>__builtin__.object</li>
@@ -2109,7 +2258,7 @@ table {
                     
       <p class="inheritance">
          <strong>Inheritance:</strong>
-           <code><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></code>.<code><a href="#pybuilder.errors.PythonbuilderException.args">args</a></code>
+           <code><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></code>.<code><a href="#pybuilder.errors.PybuilderException.args">args</a></code>
       </p>
 
                     
@@ -2124,7 +2273,7 @@ table {
                     
       <p class="inheritance">
          <strong>Inheritance:</strong>
-           <code><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></code>.<code><a href="#pybuilder.errors.PythonbuilderException.message">message</a></code>
+           <code><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></code>.<code><a href="#pybuilder.errors.PybuilderException.message">message</a></code>
       </p>
 
                     
@@ -2142,7 +2291,7 @@ table {
       
       <p class="inheritance">
          <strong>Inheritance:</strong>
-           <code><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></code>.<code><a href="#pybuilder.errors.PythonbuilderException.__init__">__init__</a></code>
+           <code><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></code>.<code><a href="#pybuilder.errors.PybuilderException.__init__">__init__</a></code>
       </p>
 
       
@@ -2170,8 +2319,10 @@ table {
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.errors.ProjectValidationFailedException', this);">Show source.</a></p>
     <div id="source-pybuilder.errors.ProjectValidationFailedException" class="source">
       <div class="codehilite"><pre><span class="k">class</span> <span class="nc">ProjectValidationFailedException</span><span class="p">(</span><span class="n">BuildFailedException</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">validation_messages</span><span class="p">):</span>
-        <span class="n">BuildFailedException</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&quot;Project validation failed: &quot;</span> <span class="o">+</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">validation_messages</span><span class="p">))</span>
+        <span class="n">BuildFailedException</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="s">&quot;Project validation failed: &quot;</span> <span class="o">+</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">validation_messages</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">validation_messages</span> <span class="o">=</span> <span class="n">validation_messages</span>
 </pre></div>
 
@@ -2184,7 +2335,7 @@ table {
               <ul class="class_list">
                 <li><a href="#pybuilder.errors.ProjectValidationFailedException">ProjectValidationFailedException</a></li>
                 <li><a href="#pybuilder.errors.BuildFailedException">BuildFailedException</a></li>
-                <li><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></li>
+                <li><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></li>
                 <li>exceptions.Exception</li>
                 <li>exceptions.BaseException</li>
                 <li>__builtin__.object</li>
@@ -2247,7 +2398,8 @@ table {
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.errors.ProjectValidationFailedException.__init__', this);">Show source.</a></p>
     <div id="source-pybuilder.errors.ProjectValidationFailedException.__init__" class="source">
       <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">validation_messages</span><span class="p">):</span>
-    <span class="n">BuildFailedException</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&quot;Project validation failed: &quot;</span> <span class="o">+</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">validation_messages</span><span class="p">))</span>
+    <span class="n">BuildFailedException</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="s">&quot;Project validation failed: &quot;</span> <span class="o">+</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">validation_messages</span><span class="p">))</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">validation_messages</span> <span class="o">=</span> <span class="n">validation_messages</span>
 </pre></div>
 
@@ -2260,13 +2412,14 @@ table {
       </div>
       
       <div class="item">
-        <p id="pybuilder.errors.PythonbuilderException" class="name">class <span class="ident">PythonbuilderException</span></p>
+        <p id="pybuilder.errors.PybuilderException" class="name">class <span class="ident">PybuilderException</span></p>
         
   
     <div class="source_cont">
-    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.errors.PythonbuilderException', this);">Show source.</a></p>
-    <div id="source-pybuilder.errors.PythonbuilderException" class="source">
-      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">PythonbuilderException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.errors.PybuilderException', this);">Show source.</a></p>
+    <div id="source-pybuilder.errors.PybuilderException" class="source">
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">PybuilderException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_message</span> <span class="o">=</span> <span class="n">message</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_arguments</span> <span class="o">=</span> <span class="n">arguments</span>
@@ -2286,14 +2439,14 @@ table {
         <div class="class">
               <h4>Ancestors (in MRO)</h4>
               <ul class="class_list">
-                <li><a href="#pybuilder.errors.PythonbuilderException">PythonbuilderException</a></li>
+                <li><a href="#pybuilder.errors.PybuilderException">PybuilderException</a></li>
                 <li>exceptions.Exception</li>
                 <li>exceptions.BaseException</li>
                 <li>__builtin__.object</li>
               </ul>
               <h4>Class variables</h4>
                   <div class="item">
-                    <p id="pybuilder.errors.PythonbuilderException.args" class="name">var <span class="ident">args</span></p>
+                    <p id="pybuilder.errors.PybuilderException.args" class="name">var <span class="ident">args</span></p>
                     
 
                     
@@ -2304,7 +2457,7 @@ table {
                   </div>
               <h4>Instance variables</h4>
                   <div class="item">
-                    <p id="pybuilder.errors.PythonbuilderException.message" class="name">var <span class="ident">message</span></p>
+                    <p id="pybuilder.errors.PybuilderException.message" class="name">var <span class="ident">message</span></p>
                     
 
                     
@@ -2316,7 +2469,7 @@ table {
               <h4>Methods</h4>
                   
     <div class="item">
-      <div class="name def" id="pybuilder.errors.PythonbuilderException.__init__">
+      <div class="name def" id="pybuilder.errors.PybuilderException.__init__">
         <p>def <span class="ident">__init__</span>(</p><p>self, message, *arguments)</p>
       </div>
       
@@ -2324,8 +2477,8 @@ table {
       
   
     <div class="source_cont">
-    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.errors.PythonbuilderException.__init__', this);">Show source.</a></p>
-    <div id="source-pybuilder.errors.PythonbuilderException.__init__" class="source">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.errors.PybuilderException.__init__', this);">Show source.</a></p>
+    <div id="source-pybuilder.errors.PybuilderException.__init__" class="source">
       <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_message</span> <span class="o">=</span> <span class="n">message</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_arguments</span> <span class="o">=</span> <span class="n">arguments</span>

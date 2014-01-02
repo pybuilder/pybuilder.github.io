@@ -1002,7 +1002,7 @@ table {
 <span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="kn">from</span> <span class="nn">pybuilder.core</span> <span class="kn">import</span> <span class="n">use_plugin</span><span class="p">,</span> <span class="n">task</span>
-<span class="kn">from</span> <span class="nn">pybuilder.errors</span> <span class="kn">import</span> <span class="n">PythonbuilderException</span>
+<span class="kn">from</span> <span class="nn">pybuilder.errors</span> <span class="kn">import</span> <span class="n">PybuilderException</span>
 
 <span class="n">use_plugin</span><span class="p">(</span><span class="s">&quot;python.core&quot;</span><span class="p">)</span>
 
@@ -1018,7 +1018,7 @@ table {
     <span class="k">try</span><span class="p">:</span>
         <span class="nb">__import__</span><span class="p">(</span><span class="n">settings_module_name</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">PythonbuilderException</span><span class="p">(</span><span class="s">&quot;Error when importing settings module: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="n">PybuilderException</span><span class="p">(</span><span class="s">&quot;Error when importing settings module: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
 
     <span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">VERSION</span> <span class="k">as</span> <span class="n">DJANGO_VERSION</span>
     <span class="k">if</span> <span class="n">DJANGO_VERSION</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
@@ -1081,7 +1081,7 @@ table {
     <span class="k">try</span><span class="p">:</span>
         <span class="nb">__import__</span><span class="p">(</span><span class="n">settings_module_name</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">PythonbuilderException</span><span class="p">(</span><span class="s">&quot;Error when importing settings module: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="n">PybuilderException</span><span class="p">(</span><span class="s">&quot;Error when importing settings module: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
 
     <span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">VERSION</span> <span class="k">as</span> <span class="n">DJANGO_VERSION</span>
     <span class="k">if</span> <span class="n">DJANGO_VERSION</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>

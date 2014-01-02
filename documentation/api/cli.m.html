@@ -7,7 +7,8 @@
 	<meta charset="utf-8">
 
       <title>pybuilder.cli API documentation</title>
-      <meta name="description" content="">
+      <meta name="description" content="The PyBuilder cli module.
+Contains the PyBuilder command-line entrypoint.">
 
   
   <style type="text/css">
@@ -978,7 +979,8 @@ table {
 
 
   <h1>Module pybuilder.cli</h1>
-  
+  <p>The PyBuilder cli module.
+Contains the PyBuilder command-line entrypoint.</p>
   
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.cli', this);">Show source.</a></p>
     <div id="source-pybuilder.cli" class="source">
@@ -997,6 +999,10 @@ table {
 <span class="c">#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
 <span class="c">#  See the License for the specific language governing permissions and</span>
 <span class="c">#  limitations under the License.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The PyBuilder cli module.</span>
+<span class="sd">    Contains the PyBuilder command-line entrypoint.</span>
+<span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">import</span> <span class="nn">optparse</span>
@@ -1006,7 +1012,7 @@ table {
 
 <span class="kn">from</span> <span class="nn">pybuilder</span> <span class="kn">import</span> <span class="n">__version__</span>
 <span class="kn">from</span> <span class="nn">pybuilder.core</span> <span class="kn">import</span> <span class="n">Logger</span>
-<span class="kn">from</span> <span class="nn">pybuilder.errors</span> <span class="kn">import</span> <span class="n">PythonbuilderException</span>
+<span class="kn">from</span> <span class="nn">pybuilder.errors</span> <span class="kn">import</span> <span class="n">PybuilderException</span>
 <span class="kn">from</span> <span class="nn">pybuilder.execution</span> <span class="kn">import</span> <span class="n">ExecutionManager</span>
 <span class="kn">from</span> <span class="nn">pybuilder.reactor</span> <span class="kn">import</span> <span class="n">Reactor</span>
 <span class="kn">from</span> <span class="nn">pybuilder.terminal</span> <span class="kn">import</span> <span class="p">(</span><span class="n">BOLD</span><span class="p">,</span> <span class="n">BROWN</span><span class="p">,</span> <span class="n">RED</span><span class="p">,</span> <span class="n">GREEN</span><span class="p">,</span> <span class="n">bold</span><span class="p">,</span> <span class="n">styled_text</span><span class="p">,</span>
@@ -1017,7 +1023,7 @@ table {
 <span class="n">PROPERTY_OVERRIDE_PATTERN</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s">r&#39;^[a-zA-Z0-9_]+=.*&#39;</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">CommandLineUsageException</span><span class="p">(</span><span class="n">PythonbuilderException</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">CommandLineUsageException</span><span class="p">(</span><span class="n">PybuilderException</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">usage</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">CommandLineUsageException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
@@ -1297,7 +1303,7 @@ table {
                 <span class="n">environments</span><span class="o">=</span><span class="n">options</span><span class="o">.</span><span class="n">environments</span><span class="p">,</span> <span class="n">tasks</span><span class="o">=</span><span class="n">arguments</span><span class="p">)</span>
 
         <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">PythonbuilderException</span><span class="p">(</span><span class="s">&quot;Build aborted&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">PybuilderException</span><span class="p">(</span><span class="s">&quot;Build aborted&quot;</span><span class="p">)</span>
 
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="n">failure_message</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
@@ -1619,7 +1625,7 @@ table {
                 <span class="n">environments</span><span class="o">=</span><span class="n">options</span><span class="o">.</span><span class="n">environments</span><span class="p">,</span> <span class="n">tasks</span><span class="o">=</span><span class="n">arguments</span><span class="p">)</span>
 
         <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">PythonbuilderException</span><span class="p">(</span><span class="s">&quot;Build aborted&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">PybuilderException</span><span class="p">(</span><span class="s">&quot;Build aborted&quot;</span><span class="p">)</span>
 
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="n">failure_message</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
@@ -2216,7 +2222,7 @@ table {
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.cli.CommandLineUsageException', this);">Show source.</a></p>
     <div id="source-pybuilder.cli.CommandLineUsageException" class="source">
-      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">CommandLineUsageException</span><span class="p">(</span><span class="n">PythonbuilderException</span><span class="p">):</span>
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">CommandLineUsageException</span><span class="p">(</span><span class="n">PybuilderException</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">usage</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">CommandLineUsageException</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
@@ -2231,7 +2237,7 @@ table {
               <h4>Ancestors (in MRO)</h4>
               <ul class="class_list">
                 <li><a href="#pybuilder.cli.CommandLineUsageException">CommandLineUsageException</a></li>
-                <li>pybuilder.errors.PythonbuilderException</li>
+                <li>pybuilder.errors.PybuilderException</li>
                 <li>exceptions.Exception</li>
                 <li>exceptions.BaseException</li>
                 <li>__builtin__.object</li>
