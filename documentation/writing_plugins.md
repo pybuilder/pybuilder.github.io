@@ -48,7 +48,7 @@ Tasks found for project "test":
 ```
 
 ### Descriptions
-As you can see above, our task has no description currently. We can changed that by adding one through the description decorator :
+As you can see above, our task has no description currently. We can change that by adding one through the description decorator :
 
 ```
 from __future__ import print_function
