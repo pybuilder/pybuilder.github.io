@@ -126,14 +126,17 @@ A notable use case for project attributes is replacing placeholder values in sou
 at build-time with the [filter_resources plugin](/documentation/plugins.html#Filteringfiles).
 
 ### Project Properties
+A property is identified by a key (the *name* of the property, which is a string) and have a value.
+The type of a property value can be any valid python type.
+
 Project properties are used to configure plugins.
-Plugins that rely on properties usually ship with a default value, that you can override.
+Plugins that rely on properties usually set a default value, that you can override.
 This is conform to the idea of _convention over configuration_.
 
 For instance the `unittest` plugin ships with a default property `unittest_file_suffix` set to `"_tests.py"`.
 If the default value does not suit you you can override it by setting the property to something else.
 
-This is done by using the `set_property` method of the `project` object. You should do this from within an initializer like so:
+This is done by using the `set_property` method of the [`project` object](/documentation/api/core.m.html#pybuilder.core.Project). You should do this from within an initializer like so:
 
 <pre><code>@init
 def initialize(project):
