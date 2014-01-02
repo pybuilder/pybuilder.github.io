@@ -198,3 +198,6 @@ As we saw before, tasks are identified by their name. When there are more than o
 
 For example the [*core plugin*](https://github.com/pybuilder/pybuilder/blob/master/src/main/python/pybuilder/plugins/core_plugin.py) defines many generic tasks like `verify` and `package` that are actually empty.
 Plugins that want to run during verification can then simply use `verify` as a task name.
+
+## Examples
+See the plugins that ship with *PyBuilder*. A very nice example is the [flake8 plugin](https://github.com/pybuilder/pybuilder/blob/master/src/main/python/pybuilder/plugins/python/flake8_plugin.py).
