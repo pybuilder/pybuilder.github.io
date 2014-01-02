@@ -126,7 +126,7 @@ A plugin can be broken down in essentially two parts :
  * Tasks the plugin provides
 
 ### Initialization
-The initialization of a plugin involves setting default configuration and ensuring that the plugin can run. 
+The initialization of a plugin involves setting default configuration. 
 It is done from within an [*initializer*](/documentation/manual.html#Initializers)
 
 #### Setting defaults
