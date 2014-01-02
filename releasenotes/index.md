@@ -5,10 +5,9 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
-<!---## Version 0.9.17 (?)
+## Version 0.9.18
 * Added a new plugin, `python.pycharm`, [which can generate PyCharm project files](/documentation/plugins.html#ProjectfilesforJetbrainsPyCharm).
 * Added a new plugin, `python.pytddmon`, [which can be used to monitor unit tests](http://pybuilder.github.io/documentation/plugins.html#Visualfeedbackfortests)
--->
 
 ## Version 0.9.17
 * Allows the user to define a project variable "unittest_test_method_prefix" as a prefix for the unit test method names.
