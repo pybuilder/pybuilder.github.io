@@ -194,9 +194,9 @@ When there is a dependency chain between tasks, for example if *foo* requires *b
 If the user executes `pyb foo` this will run *bar* and *foo* in that order.
 
 #### Indirect invocation through naming
-As we saw before, tasks are identified by their name. When there are multiple tasks with the same name, then all those tasks will run.
+As we saw before, tasks are identified by their name. When there are multiple tasks with the same name, then all of those tasks will run.
 
-For example the [*core plugin*](https://github.com/pybuilder/pybuilder/blob/master/src/main/python/pybuilder/plugins/core_plugin.py) defines many generic tasks like `verify` and `package` that are actually empty.
+For instance the [*core plugin*](https://github.com/pybuilder/pybuilder/blob/master/src/main/python/pybuilder/plugins/core_plugin.py) defines many generic tasks like `verify` and `package` that are actually empty.
 Plugins that want to run during verification can then simply use `verify` as a task name.
 
 ## Examples
