@@ -126,7 +126,7 @@ A notable use case for project attributes is replacing placeholder values in sou
 at build-time with the [filter_resources plugin](/documentation/plugins.html#Filteringfiles).
 
 ### Project Properties
-A property is identified by a key (the *name* of the property, which is a string) and have a value.
+A property is identified by a key (the *name* of the property, which is a string) and has a value.
 The type of a property value can be any valid python type.
 
 Project properties are used to configure plugins.
