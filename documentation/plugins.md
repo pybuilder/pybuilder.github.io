@@ -128,7 +128,7 @@ Use the ```python.flake8``` module to activate linting.
   </tr>
 
   <tr>
-    <td>flake8_include_test_sources <span class="label label-info">pybuilder>=0.9.15</span></td>
+    <td>flake8_include_test_sources</td>
     <td>boolean</td>
     <td>False</td>
     <td>Also run flake8 on integrationtest and unittest sources</td>
@@ -648,13 +648,11 @@ If the plugin `python.pydev` is used, PyBuilder provides the task `pydev_generat
 This task can be used to generate PyDev project files in the project root directory. The project can then be imported easily.
 
 ### Project files for Jetbrains PyCharm
-<span class="badge">(unreleased)</span>
 If the plugin `python.pycharm` is used, PyBuilder provides the task `pycharm_generate`.
 This task can be used to generate a PyCharm project files in the project root directory. The project can then be imported easily through the `Open...` command.
 
 ## Developer tools
 
 ### Visual feedback for tests
-<span class="badge">(unreleased)</span>
 The `python.pytddmon` plugin provides the task `pytddmon` which will start a graphical application that gives real-time feedback about passing or failing unit tests.
 Please [see the pytddmon page](http://pytddmon.org/) for more information about pytddmon.
