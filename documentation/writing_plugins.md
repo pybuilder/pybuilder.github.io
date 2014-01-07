@@ -178,6 +178,36 @@ def my_plugin_task():
     assert_can_execute(["committer", "--version"], prerequisite="committer by @aelgru", caller="my_plugin")
 ```
 
+### Compliance with the verbose flag
+*PyBuilder* is designed to focus on the big picture of the build process.
+There is a `verbose` flag though. When it is present, your plugin should
+provide information about errors using the logger.
+
+For most plugins using the helper function `execute_tool_on_source_files` from `pybuilder.plugins.python.python_plugin_helper` will suffice. Tt will display the output of the tool, provided the property `$name_verbose_output` is set to true. The `$name` is simply the name argument passed to the function. You can set this property in your task based on the verbose property of the project :
+
+```
+from pybuilder.core import task, description, use_plugin, depends
+from pybuilder.plugins.python.python_plugin_helper import execute_tool_on_source_files
+
+use_plugin("python.core")
+
+@task
+@depends("prepare")
+@description("a task that complies with the verbose flag")
+def my_verbose_compliant_task(project, logger):
+    # is true if user set verbose in build.py or from command line
+    verbose_flag = project.get_property("verbose")
+    project.set_property("my_plugin_verbose_output", verbose_flag)
+
+    # verbose output if "my_plugin_verbose_output" is True
+    execute_tool_on_source_files(project=project,
+                                 name="my_plugin",
+                                 command_and_arguments=["/usr/bin/file",
+                                                        "-bi"],
+                                 logger=logger)
+```
+
+
 ### Tasks
 The tasks section of a plugin is the declaration of one or possibly more tasks. When a plugin is activated, its tasks are made available.
 There are three ways to get a task to run :
