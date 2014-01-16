@@ -5,6 +5,12 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.9.20
+* The pytddmon plugin now disables the color pulse for more focus.
+* Added a command, `pyb --start-project`, to create a python project skeleton.
+* The `flake8` plugin now complies with the project `verbose` property.
+* Increased severity of the `pythonbuilder` module deprecation warning.
+
 ## Version 0.9.18
 * Added a new plugin, `python.pycharm`, [which can generate PyCharm project files](/documentation/plugins.html#ProjectfilesforJetbrainsPyCharm).
 * Added a new plugin, `python.pytddmon`, [which can be used to monitor unit tests](http://pybuilder.github.io/documentation/plugins.html#Visualfeedbackfortests)
