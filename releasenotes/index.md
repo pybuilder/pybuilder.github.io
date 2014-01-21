@@ -5,6 +5,10 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.9.21
+* The unittest plugin is now able to provide useful error messages
+  when unit tests have import errors.
+
 ## Version 0.9.20
 * The pytddmon plugin now disables the color pulse for more focus.
 * Added a command, `pyb --start-project`, to create a python project skeleton.
