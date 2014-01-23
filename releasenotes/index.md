@@ -5,6 +5,9 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.9.24
+* Integration test progress bar now works on Mac OS.
+
 ## Version 0.9.23
 * Improved error messages when `integrationtest_additional_environment` is not a map.
 * Improved resilience of the integration test plugin when running tests in parallel and there are errors in the plugin code itself.
