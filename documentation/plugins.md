@@ -282,6 +282,11 @@ If you use PyBuilder with <a href="http://travis-ci.org">Travis CI</a> and run i
 tests in parallel, you will need a workaround due to a travis issue with POSIX semaphores.
 Please refer to <a href="https://github.com/travis-ci/travis-cookbooks/issues/155">the related travis issue</a>.
 </div>
+<div class="alert alert-warning alert-dismissable">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <h4>Python 3.2 warning</h4>
+We have experienced strange problems (EOFErrors) on python 3.2. This seems to be due to a bug with pickling randomly raising EOFError. We recomment updating to python 3.3 or 3.4, where it works fine.
+</div>
 
 ## Python deployment
 
