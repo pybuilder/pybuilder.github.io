@@ -5,6 +5,9 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.9.25
+* There is now a pacman in your integration tests!
+
 ## Version 0.9.24
 * Integration test progress bar now works on Mac OS.
 
