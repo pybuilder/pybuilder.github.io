@@ -5,6 +5,9 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.9.22
+* The [integrationtest plugin](/documentation/plugins.html#RunningPythonIntegrationTests) now displays a progress bar when tests are run in parallel. The bar indicates the amount of tests that are finished, running, and not started yet. In an automated CI build environment without TTY (Jenkins, Teamcity, …) text based output is used to avoid cluttering the logs with carriage returns.
+
 ## Version 0.9.21
 * The unittest plugin is now able to provide useful error messages
   when unit tests have import errors.
