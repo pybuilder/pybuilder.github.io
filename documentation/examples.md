@@ -46,3 +46,11 @@ See [build.py](https://github.com/pyclectic/pyfix/blob/master/build.py)
 This project uses a [custom task](/documentation/manual.html#WritingTasks) to generate manpages and several *PyBuilder* features to deliver them.
 See [build.py](https://github.com/yadt/yadtshell/blob/master/build.py)
 
+
+# Example Applications
+
+## [Flask Example](https://github.com/pyclectic/flask-example)
+
+This is a simple flask example application which demonstrates usage pyclectic frameworks: unit and integration tests using pyfix and pyassert.
+
+See [build.py](https://github.com/pyclectic/flask-example/blob/master/build.py)
