@@ -14,6 +14,30 @@ Committer is a unified command line interface for git, mercurial and subversion.
 
 See [build.py](https://github.com/aelgru/committer/blob/master/build.py)
 
+## [fluentmock](https://github.com/aelgru/fluentmock)
+
+Fluent interface for Python's mock.
+
+See [build.py](https://github.com/aelgru/fluentmock/blob/master/build.py)
+
+## [livestatus-service](https://github.com/ImmobilienScout24/livestatus_service)
+
+livestatus-service exposes MK livestatus to the network over HTTP.
+This project leverages several *PyBuilder* features to deliver apache configuration files, include html templates, and keep the configuration DRY.
+
+See [build.py](https://github.com/ImmobilienScout24/livestatus_service/blob/master/build.py).
+
+## [pyassert](https://github.com/pyclectic/pyassert)
+
+Readable assertions framework for Python
+
+See [build.py](https://github.com/pyclectic/pyassert/blob/master/build.py)
+
+## [pyfix](https://github.com/pyclectic/pyfix)
+
+A framework for writing automated tests focussing on fixtures (non xUnit based)
+
+See [build.py](https://github.com/pyclectic/pyfix/blob/master/build.py)
 
 ## [yadtshell](https://github.com/yadt/yadtshell)
 
@@ -23,9 +47,10 @@ This project uses a [custom task](/documentation/manual.html#WritingTasks) to ge
 See [build.py](https://github.com/yadt/yadtshell/blob/master/build.py)
 
 
-## [livestatus-service](https://github.com/ImmobilienScout24/livestatus_service)
+# Example Applications
 
-livestatus-service exposes MK livestatus to the network over HTTP.
-This project leverages several *PyBuilder* features to deliver apache configuration files, include html templates, and keep the configuration DRY.
+## [Flask Example](https://github.com/pyclectic/flask-example)
 
-See [build.py](https://github.com/ImmobilienScout24/livestatus_service/blob/master/build.py).
+This is a simple flask example application which demonstrates usage pyclectic frameworks: unit and integration tests using pyfix and pyassert.
+
+See [build.py](https://github.com/pyclectic/flask-example/blob/master/build.py)
