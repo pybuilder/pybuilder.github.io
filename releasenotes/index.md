@@ -5,6 +5,11 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.0
+* Better reporting when unittests fail. Thanks [@esc](https://github.com/esc)!
+* The parallel integration test progress bar now uses backspaces instead of carriage returns. This improves the experience on small width terminals.
+* The deprecated module `pythonbuilder` has now been removed. Please replace `pythonbuilder` with `pybuilder` in your imports if that is not already the case.
+
 ## Version 0.9.25
 * There is now a pacman in your integration tests!
 
