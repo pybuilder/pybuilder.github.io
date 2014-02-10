@@ -11,8 +11,4 @@ This script behaves exactly as the PyBuilder program `pyb`.
 You can use the `install_dependencies` task with `./bootstrap install_dependencies` to pull in all the required runtime and build dependencies.
 Afterwards, running `./bootstrap` will do a full build including all tests, linting and packaging.
 
-The following screencast shows how to get the sources and run a full build from scratch. Please note that you need [virtualenv](http://www.virtualenv.org/en/latest/) installed.
-
-
-<script src="https://asciinema.org/a/7528.js" id="asciicast-7528">
-</script>
+[The following screencast](https://asciinema.org/a/7528) shows how to get the sources and run a full build from scratch. Please note that you need [virtualenv](http://www.virtualenv.org/en/latest/) installed.
