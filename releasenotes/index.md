@@ -5,6 +5,9 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.2
+* Fixed a bug leading to the creation of strange files when dependencies with a version greater than x (`foo>=1.0`) were specified.
+
 ## Version 0.10.1
 * Source and test directories are now correctly handed to the unittest's PYTHONPATH, thus it is no longer a pain to test a package which is also locally installed.
 
