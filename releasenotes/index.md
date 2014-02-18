@@ -5,6 +5,10 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.3
+* The unittest, pyfix and integrationtest plugins now find modules (or files, for the integrationtest plugin) using globs.
+Kudos to [markmevans](https://github.com/markmevans) for this feature!
+
 ## Version 0.10.2
 * Fixed a bug leading to the creation of strange files when dependencies with a version greater than x (`foo>=1.0`) were specified.
 
