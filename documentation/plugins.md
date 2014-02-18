@@ -34,10 +34,10 @@ The plugin executes all test cases found in modules ending with ```_tests.py``` 
   </tr>
 
   <tr>
-    <td>unittest_file_suffix</td>
+    <td>unittest_module_glob</td>
     <td>string</td>
-    <td>_tests.py</td>
-    <td>Suffix used to filter files that should be executed as tests.</td>
+    <td>*_tests</td>
+    <td>Pattern used to filter Python modules that should be imported by the unittest runner.</td>
   </tr>
 
   <tr>
@@ -47,6 +47,17 @@ The plugin executes all test cases found in modules ending with ```_tests.py``` 
     <td>This allows you to define how the module unittest identifies tests.
         The plugin sets defaultTestLoader.testMethodPrefix to the given value.
         When set to None the plugin will not set the value at all.</td>
+  </tr>
+
+  <tr>
+    <td>unittest_file_suffix</td>
+    <td>string</td>
+    <td>None</td>
+    <td>Suffix used to filter files that should be executed as tests.<br>
+        <b>Deprecated:</b> This exists for backwards compatibility with existing
+        build.py files.  If it is set to a non-None value, it will override
+        unittest_module_glob with an appropriate glob pattern by prefixing the
+        value with an asterisk (*) and removing the ".py" extension.</td>
   </tr>
 </table>
 
@@ -239,10 +250,10 @@ the production source directory.
   </tr>
 
   <tr>
-    <td>integrationtest_file_suffix</td>
+    <td>integrationtest_file_glob</td>
     <td>string</td>
-    <td>_tests.py</td>
-    <td>Suffix used to filter files that should be executed as tests,</td>
+    <td>*_tests.py</td>
+    <td>Pattern used to filter files that should be executed as tests.</td>
   </tr>
 
   <tr>
@@ -271,6 +282,17 @@ the production source directory.
     <td>integer</td>
     <td>4</td>
     <td>The amount of workers to use per cpu for integration test parallelization</td>
+  </tr>
+
+  <tr>
+    <td>integrationtest_file_suffix</td>
+    <td>string</td>
+    <td>None</td>
+    <td>Suffix used to filter files that should be executed as tests.<br>
+        <b>Deprecated:</b> This exists for backwards compatibility with existing
+        build.py files.  If it is set to a non-None value, it will override
+        integrationtest_file_glob with an appropriate glob pattern by prefixing the
+        value with an asterisk (*).</td>
   </tr>
 </table>
 
