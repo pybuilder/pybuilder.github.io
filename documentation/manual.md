@@ -133,14 +133,14 @@ Project properties are used to configure plugins.
 Plugins that rely on properties usually set a default value, that you can override.
 This is conform to the idea of _convention over configuration_.
 
-For instance the `unittest` plugin ships with a default property `unittest_file_suffix` set to `"_tests.py"`.
+For instance the `unittest` plugin ships with a default property `unittest_module_glob` set to `"*_tests"`.
 If the default value does not suit you you can override it by setting the property to something else.
 
 This is done by using the `set_property` method of the [`project` object](/documentation/api/core.m.html#pybuilder.core.Project). You should do this from within an initializer like so:
 
 <pre><code>@init
 def initialize(project):
-     project.set_property('unittest_file_suffix', '_unittest.py')
+     project.set_property('unittest_module_glob', '*_unittest')
 </code></pre>
 
 A complete reference of the available properties is included in the [plugin reference](/documentation/plugins.html)
