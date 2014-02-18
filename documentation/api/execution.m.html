@@ -795,6 +795,70 @@ table {
 
   </style>
 
+    <style type="text/css">
+    .codehilite .hll { background-color: #ffffcc }
+.codehilite  { background: #f8f8f8; }
+.codehilite .c { color: #408080; font-style: italic } /* Comment */
+.codehilite .err { border: 1px solid #FF0000 } /* Error */
+.codehilite .k { color: #008000; font-weight: bold } /* Keyword */
+.codehilite .o { color: #666666 } /* Operator */
+.codehilite .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.codehilite .cp { color: #BC7A00 } /* Comment.Preproc */
+.codehilite .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.codehilite .cs { color: #408080; font-style: italic } /* Comment.Special */
+.codehilite .gd { color: #A00000 } /* Generic.Deleted */
+.codehilite .ge { font-style: italic } /* Generic.Emph */
+.codehilite .gr { color: #FF0000 } /* Generic.Error */
+.codehilite .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.codehilite .gi { color: #00A000 } /* Generic.Inserted */
+.codehilite .go { color: #888888 } /* Generic.Output */
+.codehilite .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.codehilite .gs { font-weight: bold } /* Generic.Strong */
+.codehilite .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.codehilite .gt { color: #0044DD } /* Generic.Traceback */
+.codehilite .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.codehilite .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.codehilite .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.codehilite .kp { color: #008000 } /* Keyword.Pseudo */
+.codehilite .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.codehilite .kt { color: #B00040 } /* Keyword.Type */
+.codehilite .m { color: #666666 } /* Literal.Number */
+.codehilite .s { color: #BA2121 } /* Literal.String */
+.codehilite .na { color: #7D9029 } /* Name.Attribute */
+.codehilite .nb { color: #008000 } /* Name.Builtin */
+.codehilite .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.codehilite .no { color: #880000 } /* Name.Constant */
+.codehilite .nd { color: #AA22FF } /* Name.Decorator */
+.codehilite .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.codehilite .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.codehilite .nf { color: #0000FF } /* Name.Function */
+.codehilite .nl { color: #A0A000 } /* Name.Label */
+.codehilite .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.codehilite .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.codehilite .nv { color: #19177C } /* Name.Variable */
+.codehilite .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.codehilite .w { color: #bbbbbb } /* Text.Whitespace */
+.codehilite .mf { color: #666666 } /* Literal.Number.Float */
+.codehilite .mh { color: #666666 } /* Literal.Number.Hex */
+.codehilite .mi { color: #666666 } /* Literal.Number.Integer */
+.codehilite .mo { color: #666666 } /* Literal.Number.Oct */
+.codehilite .sb { color: #BA2121 } /* Literal.String.Backtick */
+.codehilite .sc { color: #BA2121 } /* Literal.String.Char */
+.codehilite .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.codehilite .s2 { color: #BA2121 } /* Literal.String.Double */
+.codehilite .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.codehilite .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.codehilite .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.codehilite .sx { color: #008000 } /* Literal.String.Other */
+.codehilite .sr { color: #BB6688 } /* Literal.String.Regex */
+.codehilite .s1 { color: #BA2121 } /* Literal.String.Single */
+.codehilite .ss { color: #19177C } /* Literal.String.Symbol */
+.codehilite .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.codehilite .vc { color: #19177C } /* Name.Variable.Class */
+.codehilite .vg { color: #19177C } /* Name.Variable.Global */
+.codehilite .vi { color: #19177C } /* Name.Variable.Instance */
+.codehilite .il { color: #666666 } /* Literal.Number.Integer.Long */
+    </style>
 
   <style type="text/css">
   
@@ -923,306 +987,307 @@ order regarding dependencies.</p>
   
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution', this);">Show source.</a></p>
     <div id="source-pybuilder.execution" class="source">
-      <pre><code>#  This file is part of PyBuilder
-#
-#  Copyright 2011-2014 PyBuilder Team
-#
-#  Licensed under the Apache License, Version 2.0 (the "License");
-#  you may not use this file except in compliance with the License.
-#  You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-#  Unless required by applicable law or agreed to in writing, software
-#  distributed under the License is distributed on an "AS IS" BASIS,
-#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-#  See the License for the specific language governing permissions and
-#  limitations under the License.
-"""
-    The PyBuilder execution module.
-    Deals with the execution of a PyBuilder process by
-    running tasks, actions and initializers in the correct
-    order regarding dependencies.
-"""
-
-import inspect
-import re
-import types
-
-from pybuilder.errors import (CircularTaskDependencyException,
-                              DependenciesNotResolvedException,
-                              InvalidNameException,
-                              MissingTaskDependencyException,
-                              MissingActionDependencyException,
-                              NoSuchTaskException)
-from pybuilder.utils import as_list, Timer
-
-
-def as_task_name_list(mixed):
-    result = []
-    for d in as_list(mixed):
-        if isinstance(d, types.FunctionType):
-            result.append(d.__name__)
-        else:
-            result.append(str(d))
-    return result
-
-
-class Executable(object):
-    NAME_PATTERN = re.compile(r"^[a-zA-Z_][a-zA-Z0-9_]+$")
-
-    def __init__(self, name, callable, description=""):
-        if not Executable.NAME_PATTERN.match(name):
-            raise InvalidNameException(name)
-
-        self._name = name
-        self.description = description
-        self.callable = callable
-        if hasattr(callable, "__module__"):
-            self.source = callable.__module__
-        else:
-            self.source = "n/a"
-
-        if isinstance(self.callable, types.FunctionType):
-            self.parameters = inspect.getargspec(self.callable).args
-        else:
-            raise TypeError("Don't know how to handle callable %s" % callable)
-
-    @property
-    def name(self):
-        return self._name
-
-    def execute(self, argument_dict):
-        arguments = []
-        for parameter in self.parameters:
-            if parameter not in argument_dict:
-                raise ValueError("Invalid parameter '%s' for %s %s" % (parameter, self.__class__.__name__, self.name))
-            arguments.append(argument_dict[parameter])
-
-        self.callable(*arguments)
-
-
-class Action(Executable):
-    def __init__(self, name, callable, before=None, after=None, description="", only_once=False):
-        super(Action, self).__init__(name, callable, description)
-        self.execute_before = as_task_name_list(before)
-        self.execute_after = as_task_name_list(after)
-        self.only_once = only_once
-
-
-class Task(object):
-    def __init__(self, name, callable, dependencies=None, description=""):
-        self.name = name
-        self.executables = [Executable(name, callable, description)]
-        self.dependencies = as_task_name_list(dependencies)
-        self.description = [description]
-
-    def __eq__(self, other):
-        if isinstance(other, Task):
-            return self.name == other.name
-        return False
-
-    def __ne__(self, other):
-        return not self.__eq__(other)
-
-    def __lt__(self, other):
-        if isinstance(other, Task):
-            return self.name < other.name
-        return self.name < other
+      <div class="codehilite"><pre><span class="c">#  This file is part of PyBuilder</span>
+<span class="c">#</span>
+<span class="c">#  Copyright 2011-2014 PyBuilder Team</span>
+<span class="c">#</span>
+<span class="c">#  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c">#  you may not use this file except in compliance with the License.</span>
+<span class="c">#  You may obtain a copy of the License at</span>
+<span class="c">#</span>
+<span class="c">#      http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c">#</span>
+<span class="c">#  Unless required by applicable law or agreed to in writing, software</span>
+<span class="c">#  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c">#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c">#  See the License for the specific language governing permissions and</span>
+<span class="c">#  limitations under the License.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The PyBuilder execution module.</span>
+<span class="sd">    Deals with the execution of a PyBuilder process by</span>
+<span class="sd">    running tasks, actions and initializers in the correct</span>
+<span class="sd">    order regarding dependencies.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">inspect</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">types</span>
+
+<span class="kn">from</span> <span class="nn">pybuilder.errors</span> <span class="kn">import</span> <span class="p">(</span><span class="n">CircularTaskDependencyException</span><span class="p">,</span>
+                              <span class="n">DependenciesNotResolvedException</span><span class="p">,</span>
+                              <span class="n">InvalidNameException</span><span class="p">,</span>
+                              <span class="n">MissingTaskDependencyException</span><span class="p">,</span>
+                              <span class="n">MissingActionDependencyException</span><span class="p">,</span>
+                              <span class="n">NoSuchTaskException</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">pybuilder.utils</span> <span class="kn">import</span> <span class="n">as_list</span><span class="p">,</span> <span class="n">Timer</span>
+
+
+<span class="k">def</span> <span class="nf">as_task_name_list</span><span class="p">(</span><span class="n">mixed</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">as_list</span><span class="p">(</span><span class="n">mixed</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">types</span><span class="o">.</span><span class="n">FunctionType</span><span class="p">):</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="k">class</span> <span class="nc">Executable</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">NAME_PATTERN</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s">r&quot;^[a-zA-Z_][a-zA-Z0-9_]+$&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">callable</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">Executable</span><span class="o">.</span><span class="n">NAME_PATTERN</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">InvalidNameException</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">description</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">callable</span> <span class="o">=</span> <span class="nb">callable</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="nb">callable</span><span class="p">,</span> <span class="s">&quot;__module__&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="nb">callable</span><span class="o">.</span><span class="n">__module__</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="s">&quot;n/a&quot;</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">callable</span><span class="p">,</span> <span class="n">types</span><span class="o">.</span><span class="n">FunctionType</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getargspec</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">callable</span><span class="p">)</span><span class="o">.</span><span class="n">args</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s">&quot;Don&#39;t know how to handle callable </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="nb">callable</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
+
+    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument_dict</span><span class="p">):</span>
+        <span class="n">arguments</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">parameter</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">argument_dict</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Invalid parameter &#39;</span><span class="si">%s</span><span class="s">&#39; for </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">parameter</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+            <span class="n">arguments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">argument_dict</span><span class="p">[</span><span class="n">parameter</span><span class="p">])</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">callable</span><span class="p">(</span><span class="o">*</span><span class="n">arguments</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Action</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">callable</span><span class="p">,</span> <span class="n">before</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">after</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">only_once</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Action</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">callable</span><span class="p">,</span> <span class="n">description</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">execute_before</span> <span class="o">=</span> <span class="n">as_task_name_list</span><span class="p">(</span><span class="n">before</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">execute_after</span> <span class="o">=</span> <span class="n">as_task_name_list</span><span class="p">(</span><span class="n">after</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">only_once</span> <span class="o">=</span> <span class="n">only_once</span>
+
+
+<span class="k">class</span> <span class="nc">Task</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">callable</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">executables</span> <span class="o">=</span> <span class="p">[</span><span class="n">Executable</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">callable</span><span class="p">,</span> <span class="n">description</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dependencies</span> <span class="o">=</span> <span class="n">as_task_name_list</span><span class="p">(</span><span class="n">dependencies</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="p">[</span><span class="n">description</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Task</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">return</span> <span class="bp">False</span>
+
+    <span class="k">def</span> <span class="nf">__ne__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__eq__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Task</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">&lt;</span> <span class="n">other</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">&lt;</span> <span class="n">other</span>
 
-    def extend(self, task):
-        self.executables += task.executables
-        self.dependencies += task.dependencies
-        self.description += task.description
+    <span class="k">def</span> <span class="nf">extend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">executables</span> <span class="o">+=</span> <span class="n">task</span><span class="o">.</span><span class="n">executables</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dependencies</span> <span class="o">+=</span> <span class="n">task</span><span class="o">.</span><span class="n">dependencies</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">+=</span> <span class="n">task</span><span class="o">.</span><span class="n">description</span>
 
-    def execute(self, logger, argument_dict):
-        for executable in self.executables:
-            logger.debug("Executing subtask from %s", executable.source)
-            executable.execute(argument_dict)
+    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">argument_dict</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">executable</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">executables</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Executing subtask from </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">executable</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+            <span class="n">executable</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">argument_dict</span><span class="p">)</span>
 
 
-class Initializer(Executable):
-    def __init__(self, name, callable, environments=None, description=""):
-        super(Initializer, self).__init__(name, callable, description)
-        self.environments = environments
+<span class="k">class</span> <span class="nc">Initializer</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">callable</span><span class="p">,</span> <span class="n">environments</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Initializer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">callable</span><span class="p">,</span> <span class="n">description</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">environments</span> <span class="o">=</span> <span class="n">environments</span>
 
-    def is_applicable(self, environments=None):
-        if not self.environments:
-            return True
-        for environment in as_list(environments):
-            if environment in self.environments:
-                return True
-
+    <span class="k">def</span> <span class="nf">is_applicable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environments</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">environments</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">for</span> <span class="n">environment</span> <span class="ow">in</span> <span class="n">as_list</span><span class="p">(</span><span class="n">environments</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">environment</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">environments</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">True</span>
+
 
-class TaskExecutionSummary(object):
-    def __init__(self, task, number_of_actions, execution_time):
-        self.task = task
-        self.number_of_actions = number_of_actions
-        self.execution_time = execution_time
+<span class="k">class</span> <span class="nc">TaskExecutionSummary</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">number_of_actions</span><span class="p">,</span> <span class="n">execution_time</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">task</span> <span class="o">=</span> <span class="n">task</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">number_of_actions</span> <span class="o">=</span> <span class="n">number_of_actions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">execution_time</span> <span class="o">=</span> <span class="n">execution_time</span>
 
 
-class ExecutionManager(object):
-    def __init__(self, logger):
-        self.logger = logger
+<span class="k">class</span> <span class="nc">ExecutionManager</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
 
-        self._tasks = {}
-        self._task_dependencies = {}
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_task_dependencies</span> <span class="o">=</span> <span class="p">{}</span>
 
-        self._actions = {}
-        self._execute_before = {}
-        self._execute_after = {}
+        <span class="bp">self</span><span class="o">.</span><span class="n">_actions</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_execute_before</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_execute_after</span> <span class="o">=</span> <span class="p">{}</span>
 
-        self._initializers = []
+        <span class="bp">self</span><span class="o">.</span><span class="n">_initializers</span> <span class="o">=</span> <span class="p">[]</span>
 
-        self._dependencies_resolved = False
-        self._actions_executed = []
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dependencies_resolved</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_actions_executed</span> <span class="o">=</span> <span class="p">[]</span>
 
-    @property
-    def initializers(self):
-        return self._initializers
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">initializers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initializers</span>
 
-    @property
-    def tasks(self):
-        return list(self._tasks.values())
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 
-    @property
-    def task_names(self):
-        return sorted(self._tasks.keys())
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">task_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 
-    def register_initializer(self, initializer):
-        self.logger.debug("Registering initializer '%s'", initializer.name)
-        self._initializers.append(initializer)
+    <span class="k">def</span> <span class="nf">register_initializer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">initializer</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Registering initializer &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span> <span class="n">initializer</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_initializers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">initializer</span><span class="p">)</span>
 
-    def register_action(self, action):
-        self.logger.debug("Registering action '%s'", action.name)
-        self._actions[action.name] = action
+    <span class="k">def</span> <span class="nf">register_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Registering action &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_actions</span><span class="p">[</span><span class="n">action</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">action</span>
 
-    def register_task(self, *tasks):
-        for task in tasks:
-            self.logger.debug("Registering task '%s'", task.name)
-            if task.name in self._tasks:
-                self._tasks[task.name].extend(task)
-            else:
-                self._tasks[task.name] = task
+    <span class="k">def</span> <span class="nf">register_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">tasks</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Registering task &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">task</span>
 
-    def execute_initializers(self, environments=None, **keywordArguments):
-        for initializer in self._initializers:
-            if not initializer.is_applicable(environments):
-                message = "Not going to execute initializer '%s' from '%s' as environments do not match."
-                self.logger.debug(message, initializer.name, initializer.source)
+    <span class="k">def</span> <span class="nf">execute_initializers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environments</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">keywordArguments</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">initializer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initializers</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">initializer</span><span class="o">.</span><span class="n">is_applicable</span><span class="p">(</span><span class="n">environments</span><span class="p">):</span>
+                <span class="n">message</span> <span class="o">=</span> <span class="s">&quot;Not going to execute initializer &#39;</span><span class="si">%s</span><span class="s">&#39; from &#39;</span><span class="si">%s</span><span class="s">&#39; as environments do not match.&quot;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">initializer</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">initializer</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
 
-            else:
-                self.logger.debug("Executing initializer '%s' from '%s'",
-                                  initializer.name, initializer.source)
-                initializer.execute(keywordArguments)
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Executing initializer &#39;</span><span class="si">%s</span><span class="s">&#39; from &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span>
+                                  <span class="n">initializer</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">initializer</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+                <span class="n">initializer</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">keywordArguments</span><span class="p">)</span>
 
-    def assert_dependencies_resolved(self):
-        if not self._dependencies_resolved:
-            raise DependenciesNotResolvedException()
+    <span class="k">def</span> <span class="nf">assert_dependencies_resolved</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dependencies_resolved</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">DependenciesNotResolvedException</span><span class="p">()</span>
 
-    def execute_task(self, task, **keywordArguments):
-        self.assert_dependencies_resolved()
+    <span class="k">def</span> <span class="nf">execute_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="o">**</span><span class="n">keywordArguments</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assert_dependencies_resolved</span><span class="p">()</span>
 
-        self.logger.debug("Executing task '%s'",
-                          task.name)
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Executing task &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span>
+                          <span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
-        timer = Timer.start()
-        number_of_actions = 0
+        <span class="n">timer</span> <span class="o">=</span> <span class="n">Timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="n">number_of_actions</span> <span class="o">=</span> <span class="mi">0</span>
 
-        for action in self._execute_before[task.name]:
-            if self.execute_action(action, keywordArguments):
-                number_of_actions += 1
+        <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute_before</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute_action</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">keywordArguments</span><span class="p">):</span>
+                <span class="n">number_of_actions</span> <span class="o">+=</span> <span class="mi">1</span>
 
-        task.execute(self.logger, keywordArguments)
+        <span class="n">task</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="n">keywordArguments</span><span class="p">)</span>
 
-        for action in self._execute_after[task.name]:
-            if self.execute_action(action, keywordArguments):
-                number_of_actions += 1
+        <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute_after</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute_action</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">keywordArguments</span><span class="p">):</span>
+                <span class="n">number_of_actions</span> <span class="o">+=</span> <span class="mi">1</span>
 
-        timer.stop()
-        return TaskExecutionSummary(task.name, number_of_actions, timer.get_millis())
+        <span class="n">timer</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">TaskExecutionSummary</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">number_of_actions</span><span class="p">,</span> <span class="n">timer</span><span class="o">.</span><span class="n">get_millis</span><span class="p">())</span>
 
-    def execute_action(self, action, arguments):
-        if action.only_once and action in self._actions_executed:
-            message = "Action %s has been executed before and is marked as only_once, so will not be executed again"
-            self.logger.debug(message, action.name)
-            return False
+    <span class="k">def</span> <span class="nf">execute_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">arguments</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">action</span><span class="o">.</span><span class="n">only_once</span> <span class="ow">and</span> <span class="n">action</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_actions_executed</span><span class="p">:</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="s">&quot;Action </span><span class="si">%s</span><span class="s"> has been executed before and is marked as only_once, so will not be executed again&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">action</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">False</span>
 
-        self.logger.debug("Executing action '%s' from '%s' before task", action.name, action.source)
-        action.execute(arguments)
-        self._actions_executed.append(action)
-        return True
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Executing action &#39;</span><span class="si">%s</span><span class="s">&#39; from &#39;</span><span class="si">%s</span><span class="s">&#39; before task&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">action</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+        <span class="n">action</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_actions_executed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">True</span>
 
-    def execute_execution_plan(self, execution_plan, **keywordArguments):
-        self.assert_dependencies_resolved()
+    <span class="k">def</span> <span class="nf">execute_execution_plan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">execution_plan</span><span class="p">,</span> <span class="o">**</span><span class="n">keywordArguments</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assert_dependencies_resolved</span><span class="p">()</span>
 
-        summaries = []
+        <span class="n">summaries</span> <span class="o">=</span> <span class="p">[]</span>
 
-        for task in execution_plan:
-            summaries.append(self.execute_task(task, **keywordArguments))
+        <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">execution_plan</span><span class="p">:</span>
+            <span class="n">summaries</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">execute_task</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="o">**</span><span class="n">keywordArguments</span><span class="p">))</span>
 
-        return summaries
+        <span class="k">return</span> <span class="n">summaries</span>
 
-    def get_task(self, name):
-        return self._tasks[name]
+    <span class="k">def</span> <span class="nf">get_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
 
-    def has_task(self, name):
-        return name in self._tasks
+    <span class="k">def</span> <span class="nf">has_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span>
 
-    def build_execution_plan(self, task_names):
-        self.assert_dependencies_resolved()
+    <span class="k">def</span> <span class="nf">build_execution_plan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_names</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assert_dependencies_resolved</span><span class="p">()</span>
 
-        execution_plan = []
-        for name in as_list(task_names):
-            self.enqueue_task(execution_plan, name)
-        return execution_plan
+        <span class="n">execution_plan</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">as_list</span><span class="p">(</span><span class="n">task_names</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">enqueue_task</span><span class="p">(</span><span class="n">execution_plan</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">execution_plan</span>
 
-    def enqueue_task(self, execution_plan, task_name, circular_check=None):
-        if not self.has_task(task_name):
-            raise NoSuchTaskException(task_name)
+    <span class="k">def</span> <span class="nf">enqueue_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">execution_plan</span><span class="p">,</span> <span class="n">task_name</span><span class="p">,</span> <span class="n">circular_check</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_task</span><span class="p">(</span><span class="n">task_name</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">NoSuchTaskException</span><span class="p">(</span><span class="n">task_name</span><span class="p">)</span>
 
-        task = self.get_task(task_name)
+        <span class="n">task</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_task</span><span class="p">(</span><span class="n">task_name</span><span class="p">)</span>
 
-        if task == circular_check:
-            raise CircularTaskDependencyException(task.name)
+        <span class="k">if</span> <span class="n">task</span> <span class="o">==</span> <span class="n">circular_check</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">CircularTaskDependencyException</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
-        if task in execution_plan:
-            return
+        <span class="k">if</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">execution_plan</span><span class="p">:</span>
+            <span class="k">return</span>
 
-        try:
-            for dependency in self._task_dependencies[task.name]:
-                self.enqueue_task(execution_plan, dependency.name,
-                                  circular_check=circular_check if circular_check else task)
-        except CircularTaskDependencyException as e:
-            if e.second:
-                raise
-            raise CircularTaskDependencyException(e.first, task.name)
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">dependency</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task_dependencies</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">enqueue_task</span><span class="p">(</span><span class="n">execution_plan</span><span class="p">,</span> <span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                                  <span class="n">circular_check</span><span class="o">=</span><span class="n">circular_check</span> <span class="k">if</span> <span class="n">circular_check</span> <span class="k">else</span> <span class="n">task</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">CircularTaskDependencyException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">second</span><span class="p">:</span>
+                <span class="k">raise</span>
+            <span class="k">raise</span> <span class="n">CircularTaskDependencyException</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">first</span><span class="p">,</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
-        execution_plan.append(task)
+        <span class="n">execution_plan</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
 
-    def resolve_dependencies(self):
-        for task in self._tasks.values():
-            self._execute_before[task.name] = []
-            self._execute_after[task.name] = []
-            self._task_dependencies[task.name] = []
-            for d in task.dependencies:
-                if not self.has_task(d):
-                    raise MissingTaskDependencyException(task.name, d)
-                self._task_dependencies[task.name].append(self.get_task(d))
+    <span class="k">def</span> <span class="nf">resolve_dependencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_execute_before</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_execute_after</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_task_dependencies</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">task</span><span class="o">.</span><span class="n">dependencies</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_task</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="n">MissingTaskDependencyException</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_task_dependencies</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_task</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
 
-        for action in self._actions.values():
-            for task in action.execute_before:
-                if not self.has_task(task):
-                    raise MissingActionDependencyException(action.name, task)
-                self._execute_before[task].append(action)
+        <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_actions</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">action</span><span class="o">.</span><span class="n">execute_before</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_task</span><span class="p">(</span><span class="n">task</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="n">MissingActionDependencyException</span><span class="p">(</span><span class="n">action</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">task</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_execute_before</span><span class="p">[</span><span class="n">task</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
 
-            for task in action.execute_after:
-                if not self.has_task(task):
-                    raise MissingActionDependencyException(action.name, task)
-                self._execute_after[task].append(action)
+            <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">action</span><span class="o">.</span><span class="n">execute_after</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_task</span><span class="p">(</span><span class="n">task</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="n">MissingActionDependencyException</span><span class="p">(</span><span class="n">action</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">task</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_execute_after</span><span class="p">[</span><span class="n">task</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
 
-        self._dependencies_resolved = True
-</code></pre>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dependencies_resolved</span> <span class="o">=</span> <span class="bp">True</span>
+</pre></div>
+
     </div>
 
   <hr>
@@ -1382,15 +1447,16 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.as_task_name_list', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.as_task_name_list" class="source">
-      <pre><code>def as_task_name_list(mixed):
-    result = []
-    for d in as_list(mixed):
-        if isinstance(d, types.FunctionType):
-            result.append(d.__name__)
-        else:
-            result.append(str(d))
-    return result
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">as_task_name_list</span><span class="p">(</span><span class="n">mixed</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">as_list</span><span class="p">(</span><span class="n">mixed</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">types</span><span class="o">.</span><span class="n">FunctionType</span><span class="p">):</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1406,13 +1472,14 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.Action', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.Action" class="source">
-      <pre><code>class Action(Executable):
-    def __init__(self, name, callable, before=None, after=None, description="", only_once=False):
-        super(Action, self).__init__(name, callable, description)
-        self.execute_before = as_task_name_list(before)
-        self.execute_after = as_task_name_list(after)
-        self.only_once = only_once
-</code></pre>
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">Action</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">callable</span><span class="p">,</span> <span class="n">before</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">after</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">only_once</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Action</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">callable</span><span class="p">,</span> <span class="n">description</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">execute_before</span> <span class="o">=</span> <span class="n">as_task_name_list</span><span class="p">(</span><span class="n">before</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">execute_after</span> <span class="o">=</span> <span class="n">as_task_name_list</span><span class="p">(</span><span class="n">after</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">only_once</span> <span class="o">=</span> <span class="n">only_once</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1529,12 +1596,13 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.Action.__init__', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.Action.__init__" class="source">
-      <pre><code>def __init__(self, name, callable, before=None, after=None, description="", only_once=False):
-    super(Action, self).__init__(name, callable, description)
-    self.execute_before = as_task_name_list(before)
-    self.execute_after = as_task_name_list(after)
-    self.only_once = only_once
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">callable</span><span class="p">,</span> <span class="n">before</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">after</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">only_once</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">Action</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">callable</span><span class="p">,</span> <span class="n">description</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">execute_before</span> <span class="o">=</span> <span class="n">as_task_name_list</span><span class="p">(</span><span class="n">before</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">execute_after</span> <span class="o">=</span> <span class="n">as_task_name_list</span><span class="p">(</span><span class="n">after</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">only_once</span> <span class="o">=</span> <span class="n">only_once</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1556,14 +1624,15 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.Action.execute', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.Action.execute" class="source">
-      <pre><code>def execute(self, argument_dict):
-    arguments = []
-    for parameter in self.parameters:
-        if parameter not in argument_dict:
-            raise ValueError("Invalid parameter '%s' for %s %s" % (parameter, self.__class__.__name__, self.name))
-        arguments.append(argument_dict[parameter])
-    self.callable(*arguments)
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument_dict</span><span class="p">):</span>
+    <span class="n">arguments</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">parameter</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">argument_dict</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Invalid parameter &#39;</span><span class="si">%s</span><span class="s">&#39; for </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">parameter</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+        <span class="n">arguments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">argument_dict</span><span class="p">[</span><span class="n">parameter</span><span class="p">])</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">callable</span><span class="p">(</span><span class="o">*</span><span class="n">arguments</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1579,39 +1648,40 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.Executable', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.Executable" class="source">
-      <pre><code>class Executable(object):
-    NAME_PATTERN = re.compile(r"^[a-zA-Z_][a-zA-Z0-9_]+$")
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">Executable</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">NAME_PATTERN</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s">r&quot;^[a-zA-Z_][a-zA-Z0-9_]+$&quot;</span><span class="p">)</span>
 
-    def __init__(self, name, callable, description=""):
-        if not Executable.NAME_PATTERN.match(name):
-            raise InvalidNameException(name)
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">callable</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">Executable</span><span class="o">.</span><span class="n">NAME_PATTERN</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">InvalidNameException</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 
-        self._name = name
-        self.description = description
-        self.callable = callable
-        if hasattr(callable, "__module__"):
-            self.source = callable.__module__
-        else:
-            self.source = "n/a"
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">description</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">callable</span> <span class="o">=</span> <span class="nb">callable</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="nb">callable</span><span class="p">,</span> <span class="s">&quot;__module__&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="nb">callable</span><span class="o">.</span><span class="n">__module__</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="s">&quot;n/a&quot;</span>
 
-        if isinstance(self.callable, types.FunctionType):
-            self.parameters = inspect.getargspec(self.callable).args
-        else:
-            raise TypeError("Don't know how to handle callable %s" % callable)
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">callable</span><span class="p">,</span> <span class="n">types</span><span class="o">.</span><span class="n">FunctionType</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getargspec</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">callable</span><span class="p">)</span><span class="o">.</span><span class="n">args</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s">&quot;Don&#39;t know how to handle callable </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="nb">callable</span><span class="p">)</span>
 
-    @property
-    def name(self):
-        return self._name
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
 
-    def execute(self, argument_dict):
-        arguments = []
-        for parameter in self.parameters:
-            if parameter not in argument_dict:
-                raise ValueError("Invalid parameter '%s' for %s %s" % (parameter, self.__class__.__name__, self.name))
-            arguments.append(argument_dict[parameter])
+    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument_dict</span><span class="p">):</span>
+        <span class="n">arguments</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">parameter</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">argument_dict</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Invalid parameter &#39;</span><span class="si">%s</span><span class="s">&#39; for </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">parameter</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+            <span class="n">arguments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">argument_dict</span><span class="p">[</span><span class="n">parameter</span><span class="p">])</span>
 
-        self.callable(*arguments)
-</code></pre>
+        <span class="bp">self</span><span class="o">.</span><span class="n">callable</span><span class="p">(</span><span class="o">*</span><span class="n">arguments</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1677,21 +1747,22 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.Executable.__init__', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.Executable.__init__" class="source">
-      <pre><code>def __init__(self, name, callable, description=""):
-    if not Executable.NAME_PATTERN.match(name):
-        raise InvalidNameException(name)
-    self._name = name
-    self.description = description
-    self.callable = callable
-    if hasattr(callable, "__module__"):
-        self.source = callable.__module__
-    else:
-        self.source = "n/a"
-    if isinstance(self.callable, types.FunctionType):
-        self.parameters = inspect.getargspec(self.callable).args
-    else:
-        raise TypeError("Don't know how to handle callable %s" % callable)
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">callable</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">Executable</span><span class="o">.</span><span class="n">NAME_PATTERN</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">InvalidNameException</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">description</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">callable</span> <span class="o">=</span> <span class="nb">callable</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="nb">callable</span><span class="p">,</span> <span class="s">&quot;__module__&quot;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="nb">callable</span><span class="o">.</span><span class="n">__module__</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="s">&quot;n/a&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">callable</span><span class="p">,</span> <span class="n">types</span><span class="o">.</span><span class="n">FunctionType</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getargspec</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">callable</span><span class="p">)</span><span class="o">.</span><span class="n">args</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s">&quot;Don&#39;t know how to handle callable </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="nb">callable</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1709,14 +1780,15 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.Executable.execute', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.Executable.execute" class="source">
-      <pre><code>def execute(self, argument_dict):
-    arguments = []
-    for parameter in self.parameters:
-        if parameter not in argument_dict:
-            raise ValueError("Invalid parameter '%s' for %s %s" % (parameter, self.__class__.__name__, self.name))
-        arguments.append(argument_dict[parameter])
-    self.callable(*arguments)
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument_dict</span><span class="p">):</span>
+    <span class="n">arguments</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">parameter</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">argument_dict</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Invalid parameter &#39;</span><span class="si">%s</span><span class="s">&#39; for </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">parameter</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+        <span class="n">arguments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">argument_dict</span><span class="p">[</span><span class="n">parameter</span><span class="p">])</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">callable</span><span class="p">(</span><span class="o">*</span><span class="n">arguments</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1732,168 +1804,169 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.ExecutionManager', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.ExecutionManager" class="source">
-      <pre><code>class ExecutionManager(object):
-    def __init__(self, logger):
-        self.logger = logger
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">ExecutionManager</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
 
-        self._tasks = {}
-        self._task_dependencies = {}
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_task_dependencies</span> <span class="o">=</span> <span class="p">{}</span>
 
-        self._actions = {}
-        self._execute_before = {}
-        self._execute_after = {}
+        <span class="bp">self</span><span class="o">.</span><span class="n">_actions</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_execute_before</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_execute_after</span> <span class="o">=</span> <span class="p">{}</span>
 
-        self._initializers = []
+        <span class="bp">self</span><span class="o">.</span><span class="n">_initializers</span> <span class="o">=</span> <span class="p">[]</span>
 
-        self._dependencies_resolved = False
-        self._actions_executed = []
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dependencies_resolved</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_actions_executed</span> <span class="o">=</span> <span class="p">[]</span>
 
-    @property
-    def initializers(self):
-        return self._initializers
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">initializers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initializers</span>
 
-    @property
-    def tasks(self):
-        return list(self._tasks.values())
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 
-    @property
-    def task_names(self):
-        return sorted(self._tasks.keys())
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">task_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 
-    def register_initializer(self, initializer):
-        self.logger.debug("Registering initializer '%s'", initializer.name)
-        self._initializers.append(initializer)
+    <span class="k">def</span> <span class="nf">register_initializer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">initializer</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Registering initializer &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span> <span class="n">initializer</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_initializers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">initializer</span><span class="p">)</span>
 
-    def register_action(self, action):
-        self.logger.debug("Registering action '%s'", action.name)
-        self._actions[action.name] = action
+    <span class="k">def</span> <span class="nf">register_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Registering action &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_actions</span><span class="p">[</span><span class="n">action</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">action</span>
 
-    def register_task(self, *tasks):
-        for task in tasks:
-            self.logger.debug("Registering task '%s'", task.name)
-            if task.name in self._tasks:
-                self._tasks[task.name].extend(task)
-            else:
-                self._tasks[task.name] = task
+    <span class="k">def</span> <span class="nf">register_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">tasks</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Registering task &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">task</span>
 
-    def execute_initializers(self, environments=None, **keywordArguments):
-        for initializer in self._initializers:
-            if not initializer.is_applicable(environments):
-                message = "Not going to execute initializer '%s' from '%s' as environments do not match."
-                self.logger.debug(message, initializer.name, initializer.source)
+    <span class="k">def</span> <span class="nf">execute_initializers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environments</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">keywordArguments</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">initializer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initializers</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">initializer</span><span class="o">.</span><span class="n">is_applicable</span><span class="p">(</span><span class="n">environments</span><span class="p">):</span>
+                <span class="n">message</span> <span class="o">=</span> <span class="s">&quot;Not going to execute initializer &#39;</span><span class="si">%s</span><span class="s">&#39; from &#39;</span><span class="si">%s</span><span class="s">&#39; as environments do not match.&quot;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">initializer</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">initializer</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
 
-            else:
-                self.logger.debug("Executing initializer '%s' from '%s'",
-                                  initializer.name, initializer.source)
-                initializer.execute(keywordArguments)
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Executing initializer &#39;</span><span class="si">%s</span><span class="s">&#39; from &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span>
+                                  <span class="n">initializer</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">initializer</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+                <span class="n">initializer</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">keywordArguments</span><span class="p">)</span>
 
-    def assert_dependencies_resolved(self):
-        if not self._dependencies_resolved:
-            raise DependenciesNotResolvedException()
+    <span class="k">def</span> <span class="nf">assert_dependencies_resolved</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dependencies_resolved</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">DependenciesNotResolvedException</span><span class="p">()</span>
 
-    def execute_task(self, task, **keywordArguments):
-        self.assert_dependencies_resolved()
+    <span class="k">def</span> <span class="nf">execute_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="o">**</span><span class="n">keywordArguments</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assert_dependencies_resolved</span><span class="p">()</span>
 
-        self.logger.debug("Executing task '%s'",
-                          task.name)
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Executing task &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span>
+                          <span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
-        timer = Timer.start()
-        number_of_actions = 0
+        <span class="n">timer</span> <span class="o">=</span> <span class="n">Timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="n">number_of_actions</span> <span class="o">=</span> <span class="mi">0</span>
 
-        for action in self._execute_before[task.name]:
-            if self.execute_action(action, keywordArguments):
-                number_of_actions += 1
+        <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute_before</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute_action</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">keywordArguments</span><span class="p">):</span>
+                <span class="n">number_of_actions</span> <span class="o">+=</span> <span class="mi">1</span>
 
-        task.execute(self.logger, keywordArguments)
+        <span class="n">task</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="n">keywordArguments</span><span class="p">)</span>
 
-        for action in self._execute_after[task.name]:
-            if self.execute_action(action, keywordArguments):
-                number_of_actions += 1
+        <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute_after</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute_action</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">keywordArguments</span><span class="p">):</span>
+                <span class="n">number_of_actions</span> <span class="o">+=</span> <span class="mi">1</span>
 
-        timer.stop()
-        return TaskExecutionSummary(task.name, number_of_actions, timer.get_millis())
+        <span class="n">timer</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">TaskExecutionSummary</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">number_of_actions</span><span class="p">,</span> <span class="n">timer</span><span class="o">.</span><span class="n">get_millis</span><span class="p">())</span>
 
-    def execute_action(self, action, arguments):
-        if action.only_once and action in self._actions_executed:
-            message = "Action %s has been executed before and is marked as only_once, so will not be executed again"
-            self.logger.debug(message, action.name)
-            return False
+    <span class="k">def</span> <span class="nf">execute_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">arguments</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">action</span><span class="o">.</span><span class="n">only_once</span> <span class="ow">and</span> <span class="n">action</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_actions_executed</span><span class="p">:</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="s">&quot;Action </span><span class="si">%s</span><span class="s"> has been executed before and is marked as only_once, so will not be executed again&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">action</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">False</span>
 
-        self.logger.debug("Executing action '%s' from '%s' before task", action.name, action.source)
-        action.execute(arguments)
-        self._actions_executed.append(action)
-        return True
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Executing action &#39;</span><span class="si">%s</span><span class="s">&#39; from &#39;</span><span class="si">%s</span><span class="s">&#39; before task&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">action</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+        <span class="n">action</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_actions_executed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">True</span>
 
-    def execute_execution_plan(self, execution_plan, **keywordArguments):
-        self.assert_dependencies_resolved()
+    <span class="k">def</span> <span class="nf">execute_execution_plan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">execution_plan</span><span class="p">,</span> <span class="o">**</span><span class="n">keywordArguments</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assert_dependencies_resolved</span><span class="p">()</span>
 
-        summaries = []
+        <span class="n">summaries</span> <span class="o">=</span> <span class="p">[]</span>
 
-        for task in execution_plan:
-            summaries.append(self.execute_task(task, **keywordArguments))
+        <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">execution_plan</span><span class="p">:</span>
+            <span class="n">summaries</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">execute_task</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="o">**</span><span class="n">keywordArguments</span><span class="p">))</span>
 
-        return summaries
+        <span class="k">return</span> <span class="n">summaries</span>
 
-    def get_task(self, name):
-        return self._tasks[name]
+    <span class="k">def</span> <span class="nf">get_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
 
-    def has_task(self, name):
-        return name in self._tasks
+    <span class="k">def</span> <span class="nf">has_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span>
 
-    def build_execution_plan(self, task_names):
-        self.assert_dependencies_resolved()
+    <span class="k">def</span> <span class="nf">build_execution_plan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_names</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assert_dependencies_resolved</span><span class="p">()</span>
 
-        execution_plan = []
-        for name in as_list(task_names):
-            self.enqueue_task(execution_plan, name)
-        return execution_plan
+        <span class="n">execution_plan</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">as_list</span><span class="p">(</span><span class="n">task_names</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">enqueue_task</span><span class="p">(</span><span class="n">execution_plan</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">execution_plan</span>
 
-    def enqueue_task(self, execution_plan, task_name, circular_check=None):
-        if not self.has_task(task_name):
-            raise NoSuchTaskException(task_name)
+    <span class="k">def</span> <span class="nf">enqueue_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">execution_plan</span><span class="p">,</span> <span class="n">task_name</span><span class="p">,</span> <span class="n">circular_check</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_task</span><span class="p">(</span><span class="n">task_name</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">NoSuchTaskException</span><span class="p">(</span><span class="n">task_name</span><span class="p">)</span>
 
-        task = self.get_task(task_name)
+        <span class="n">task</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_task</span><span class="p">(</span><span class="n">task_name</span><span class="p">)</span>
 
-        if task == circular_check:
-            raise CircularTaskDependencyException(task.name)
+        <span class="k">if</span> <span class="n">task</span> <span class="o">==</span> <span class="n">circular_check</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">CircularTaskDependencyException</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
-        if task in execution_plan:
-            return
+        <span class="k">if</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">execution_plan</span><span class="p">:</span>
+            <span class="k">return</span>
 
-        try:
-            for dependency in self._task_dependencies[task.name]:
-                self.enqueue_task(execution_plan, dependency.name,
-                                  circular_check=circular_check if circular_check else task)
-        except CircularTaskDependencyException as e:
-            if e.second:
-                raise
-            raise CircularTaskDependencyException(e.first, task.name)
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">dependency</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task_dependencies</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">enqueue_task</span><span class="p">(</span><span class="n">execution_plan</span><span class="p">,</span> <span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                                  <span class="n">circular_check</span><span class="o">=</span><span class="n">circular_check</span> <span class="k">if</span> <span class="n">circular_check</span> <span class="k">else</span> <span class="n">task</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">CircularTaskDependencyException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">second</span><span class="p">:</span>
+                <span class="k">raise</span>
+            <span class="k">raise</span> <span class="n">CircularTaskDependencyException</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">first</span><span class="p">,</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
-        execution_plan.append(task)
+        <span class="n">execution_plan</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
 
-    def resolve_dependencies(self):
-        for task in self._tasks.values():
-            self._execute_before[task.name] = []
-            self._execute_after[task.name] = []
-            self._task_dependencies[task.name] = []
-            for d in task.dependencies:
-                if not self.has_task(d):
-                    raise MissingTaskDependencyException(task.name, d)
-                self._task_dependencies[task.name].append(self.get_task(d))
+    <span class="k">def</span> <span class="nf">resolve_dependencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_execute_before</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_execute_after</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_task_dependencies</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">task</span><span class="o">.</span><span class="n">dependencies</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_task</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="n">MissingTaskDependencyException</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_task_dependencies</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_task</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
 
-        for action in self._actions.values():
-            for task in action.execute_before:
-                if not self.has_task(task):
-                    raise MissingActionDependencyException(action.name, task)
-                self._execute_before[task].append(action)
+        <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_actions</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">action</span><span class="o">.</span><span class="n">execute_before</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_task</span><span class="p">(</span><span class="n">task</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="n">MissingActionDependencyException</span><span class="p">(</span><span class="n">action</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">task</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_execute_before</span><span class="p">[</span><span class="n">task</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
 
-            for task in action.execute_after:
-                if not self.has_task(task):
-                    raise MissingActionDependencyException(action.name, task)
-                self._execute_after[task].append(action)
+            <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">action</span><span class="o">.</span><span class="n">execute_after</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_task</span><span class="p">(</span><span class="n">task</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="n">MissingActionDependencyException</span><span class="p">(</span><span class="n">action</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">task</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_execute_after</span><span class="p">[</span><span class="n">task</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
 
-        self._dependencies_resolved = True
-</code></pre>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dependencies_resolved</span> <span class="o">=</span> <span class="bp">True</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1958,17 +2031,18 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.ExecutionManager.__init__', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.ExecutionManager.__init__" class="source">
-      <pre><code>def __init__(self, logger):
-    self.logger = logger
-    self._tasks = {}
-    self._task_dependencies = {}
-    self._actions = {}
-    self._execute_before = {}
-    self._execute_after = {}
-    self._initializers = []
-    self._dependencies_resolved = False
-    self._actions_executed = []
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_task_dependencies</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_actions</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_execute_before</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_execute_after</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_initializers</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_dependencies_resolved</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_actions_executed</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1986,10 +2060,11 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.ExecutionManager.assert_dependencies_resolved', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.ExecutionManager.assert_dependencies_resolved" class="source">
-      <pre><code>def assert_dependencies_resolved(self):
-    if not self._dependencies_resolved:
-        raise DependenciesNotResolvedException()
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">assert_dependencies_resolved</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dependencies_resolved</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">DependenciesNotResolvedException</span><span class="p">()</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2007,13 +2082,14 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.ExecutionManager.build_execution_plan', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.ExecutionManager.build_execution_plan" class="source">
-      <pre><code>def build_execution_plan(self, task_names):
-    self.assert_dependencies_resolved()
-    execution_plan = []
-    for name in as_list(task_names):
-        self.enqueue_task(execution_plan, name)
-    return execution_plan
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">build_execution_plan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_names</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assert_dependencies_resolved</span><span class="p">()</span>
+    <span class="n">execution_plan</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">as_list</span><span class="p">(</span><span class="n">task_names</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enqueue_task</span><span class="p">(</span><span class="n">execution_plan</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">execution_plan</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2031,24 +2107,25 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.ExecutionManager.enqueue_task', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.ExecutionManager.enqueue_task" class="source">
-      <pre><code>def enqueue_task(self, execution_plan, task_name, circular_check=None):
-    if not self.has_task(task_name):
-        raise NoSuchTaskException(task_name)
-    task = self.get_task(task_name)
-    if task == circular_check:
-        raise CircularTaskDependencyException(task.name)
-    if task in execution_plan:
-        return
-    try:
-        for dependency in self._task_dependencies[task.name]:
-            self.enqueue_task(execution_plan, dependency.name,
-                              circular_check=circular_check if circular_check else task)
-    except CircularTaskDependencyException as e:
-        if e.second:
-            raise
-        raise CircularTaskDependencyException(e.first, task.name)
-    execution_plan.append(task)
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">enqueue_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">execution_plan</span><span class="p">,</span> <span class="n">task_name</span><span class="p">,</span> <span class="n">circular_check</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_task</span><span class="p">(</span><span class="n">task_name</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">NoSuchTaskException</span><span class="p">(</span><span class="n">task_name</span><span class="p">)</span>
+    <span class="n">task</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_task</span><span class="p">(</span><span class="n">task_name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">task</span> <span class="o">==</span> <span class="n">circular_check</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">CircularTaskDependencyException</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">execution_plan</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">dependency</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task_dependencies</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">enqueue_task</span><span class="p">(</span><span class="n">execution_plan</span><span class="p">,</span> <span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                              <span class="n">circular_check</span><span class="o">=</span><span class="n">circular_check</span> <span class="k">if</span> <span class="n">circular_check</span> <span class="k">else</span> <span class="n">task</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">CircularTaskDependencyException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">second</span><span class="p">:</span>
+            <span class="k">raise</span>
+        <span class="k">raise</span> <span class="n">CircularTaskDependencyException</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">first</span><span class="p">,</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">execution_plan</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2066,16 +2143,17 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.ExecutionManager.execute_action', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.ExecutionManager.execute_action" class="source">
-      <pre><code>def execute_action(self, action, arguments):
-    if action.only_once and action in self._actions_executed:
-        message = "Action %s has been executed before and is marked as only_once, so will not be executed again"
-        self.logger.debug(message, action.name)
-        return False
-    self.logger.debug("Executing action '%s' from '%s' before task", action.name, action.source)
-    action.execute(arguments)
-    self._actions_executed.append(action)
-    return True
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">execute_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">arguments</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">action</span><span class="o">.</span><span class="n">only_once</span> <span class="ow">and</span> <span class="n">action</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_actions_executed</span><span class="p">:</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="s">&quot;Action </span><span class="si">%s</span><span class="s"> has been executed before and is marked as only_once, so will not be executed again&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">action</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Executing action &#39;</span><span class="si">%s</span><span class="s">&#39; from &#39;</span><span class="si">%s</span><span class="s">&#39; before task&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">action</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+    <span class="n">action</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_actions_executed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2093,13 +2171,14 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.ExecutionManager.execute_execution_plan', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.ExecutionManager.execute_execution_plan" class="source">
-      <pre><code>def execute_execution_plan(self, execution_plan, **keywordArguments):
-    self.assert_dependencies_resolved()
-    summaries = []
-    for task in execution_plan:
-        summaries.append(self.execute_task(task, **keywordArguments))
-    return summaries
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">execute_execution_plan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">execution_plan</span><span class="p">,</span> <span class="o">**</span><span class="n">keywordArguments</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assert_dependencies_resolved</span><span class="p">()</span>
+    <span class="n">summaries</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">execution_plan</span><span class="p">:</span>
+        <span class="n">summaries</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">execute_task</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="o">**</span><span class="n">keywordArguments</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">summaries</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2117,16 +2196,17 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.ExecutionManager.execute_initializers', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.ExecutionManager.execute_initializers" class="source">
-      <pre><code>def execute_initializers(self, environments=None, **keywordArguments):
-    for initializer in self._initializers:
-        if not initializer.is_applicable(environments):
-            message = "Not going to execute initializer '%s' from '%s' as environments do not match."
-            self.logger.debug(message, initializer.name, initializer.source)
-        else:
-            self.logger.debug("Executing initializer '%s' from '%s'",
-                              initializer.name, initializer.source)
-            initializer.execute(keywordArguments)
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">execute_initializers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environments</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">keywordArguments</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">initializer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initializers</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">initializer</span><span class="o">.</span><span class="n">is_applicable</span><span class="p">(</span><span class="n">environments</span><span class="p">):</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="s">&quot;Not going to execute initializer &#39;</span><span class="si">%s</span><span class="s">&#39; from &#39;</span><span class="si">%s</span><span class="s">&#39; as environments do not match.&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">initializer</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">initializer</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Executing initializer &#39;</span><span class="si">%s</span><span class="s">&#39; from &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span>
+                              <span class="n">initializer</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">initializer</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+            <span class="n">initializer</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">keywordArguments</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2144,22 +2224,23 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.ExecutionManager.execute_task', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.ExecutionManager.execute_task" class="source">
-      <pre><code>def execute_task(self, task, **keywordArguments):
-    self.assert_dependencies_resolved()
-    self.logger.debug("Executing task '%s'",
-                      task.name)
-    timer = Timer.start()
-    number_of_actions = 0
-    for action in self._execute_before[task.name]:
-        if self.execute_action(action, keywordArguments):
-            number_of_actions += 1
-    task.execute(self.logger, keywordArguments)
-    for action in self._execute_after[task.name]:
-        if self.execute_action(action, keywordArguments):
-            number_of_actions += 1
-    timer.stop()
-    return TaskExecutionSummary(task.name, number_of_actions, timer.get_millis())
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">execute_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="o">**</span><span class="n">keywordArguments</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assert_dependencies_resolved</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Executing task &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span>
+                      <span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">timer</span> <span class="o">=</span> <span class="n">Timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">number_of_actions</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute_before</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute_action</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">keywordArguments</span><span class="p">):</span>
+            <span class="n">number_of_actions</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">task</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="n">keywordArguments</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute_after</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute_action</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">keywordArguments</span><span class="p">):</span>
+            <span class="n">number_of_actions</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">timer</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">TaskExecutionSummary</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">number_of_actions</span><span class="p">,</span> <span class="n">timer</span><span class="o">.</span><span class="n">get_millis</span><span class="p">())</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2177,9 +2258,10 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.ExecutionManager.get_task', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.ExecutionManager.get_task" class="source">
-      <pre><code>def get_task(self, name):
-    return self._tasks[name]
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">get_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2197,9 +2279,10 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.ExecutionManager.has_task', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.ExecutionManager.has_task" class="source">
-      <pre><code>def has_task(self, name):
-    return name in self._tasks
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">has_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2217,10 +2300,11 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.ExecutionManager.register_action', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.ExecutionManager.register_action" class="source">
-      <pre><code>def register_action(self, action):
-    self.logger.debug("Registering action '%s'", action.name)
-    self._actions[action.name] = action
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">register_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Registering action &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_actions</span><span class="p">[</span><span class="n">action</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">action</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2238,10 +2322,11 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.ExecutionManager.register_initializer', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.ExecutionManager.register_initializer" class="source">
-      <pre><code>def register_initializer(self, initializer):
-    self.logger.debug("Registering initializer '%s'", initializer.name)
-    self._initializers.append(initializer)
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">register_initializer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">initializer</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Registering initializer &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span> <span class="n">initializer</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_initializers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">initializer</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2259,14 +2344,15 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.ExecutionManager.register_task', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.ExecutionManager.register_task" class="source">
-      <pre><code>def register_task(self, *tasks):
-    for task in tasks:
-        self.logger.debug("Registering task '%s'", task.name)
-        if task.name in self._tasks:
-            self._tasks[task.name].extend(task)
-        else:
-            self._tasks[task.name] = task
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">register_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">tasks</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Registering task &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">task</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2284,26 +2370,27 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.ExecutionManager.resolve_dependencies', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.ExecutionManager.resolve_dependencies" class="source">
-      <pre><code>def resolve_dependencies(self):
-    for task in self._tasks.values():
-        self._execute_before[task.name] = []
-        self._execute_after[task.name] = []
-        self._task_dependencies[task.name] = []
-        for d in task.dependencies:
-            if not self.has_task(d):
-                raise MissingTaskDependencyException(task.name, d)
-            self._task_dependencies[task.name].append(self.get_task(d))
-    for action in self._actions.values():
-        for task in action.execute_before:
-            if not self.has_task(task):
-                raise MissingActionDependencyException(action.name, task)
-            self._execute_before[task].append(action)
-        for task in action.execute_after:
-            if not self.has_task(task):
-                raise MissingActionDependencyException(action.name, task)
-            self._execute_after[task].append(action)
-    self._dependencies_resolved = True
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">resolve_dependencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_execute_before</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_execute_after</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_task_dependencies</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">task</span><span class="o">.</span><span class="n">dependencies</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_task</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">MissingTaskDependencyException</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_task_dependencies</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_task</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_actions</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">action</span><span class="o">.</span><span class="n">execute_before</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_task</span><span class="p">(</span><span class="n">task</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">MissingActionDependencyException</span><span class="p">(</span><span class="n">action</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">task</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_execute_before</span><span class="p">[</span><span class="n">task</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">action</span><span class="o">.</span><span class="n">execute_after</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_task</span><span class="p">(</span><span class="n">task</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">MissingActionDependencyException</span><span class="p">(</span><span class="n">action</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">task</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_execute_after</span><span class="p">[</span><span class="n">task</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_dependencies_resolved</span> <span class="o">=</span> <span class="bp">True</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2319,18 +2406,19 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.Initializer', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.Initializer" class="source">
-      <pre><code>class Initializer(Executable):
-    def __init__(self, name, callable, environments=None, description=""):
-        super(Initializer, self).__init__(name, callable, description)
-        self.environments = environments
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">Initializer</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">callable</span><span class="p">,</span> <span class="n">environments</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Initializer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">callable</span><span class="p">,</span> <span class="n">description</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">environments</span> <span class="o">=</span> <span class="n">environments</span>
 
-    def is_applicable(self, environments=None):
-        if not self.environments:
-            return True
-        for environment in as_list(environments):
-            if environment in self.environments:
-                return True
-</code></pre>
+    <span class="k">def</span> <span class="nf">is_applicable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environments</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">environments</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">for</span> <span class="n">environment</span> <span class="ow">in</span> <span class="n">as_list</span><span class="p">(</span><span class="n">environments</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">environment</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">environments</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2427,10 +2515,11 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.Initializer.__init__', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.Initializer.__init__" class="source">
-      <pre><code>def __init__(self, name, callable, environments=None, description=""):
-    super(Initializer, self).__init__(name, callable, description)
-    self.environments = environments
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">callable</span><span class="p">,</span> <span class="n">environments</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">Initializer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">callable</span><span class="p">,</span> <span class="n">description</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">environments</span> <span class="o">=</span> <span class="n">environments</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2452,14 +2541,15 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.Initializer.execute', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.Initializer.execute" class="source">
-      <pre><code>def execute(self, argument_dict):
-    arguments = []
-    for parameter in self.parameters:
-        if parameter not in argument_dict:
-            raise ValueError("Invalid parameter '%s' for %s %s" % (parameter, self.__class__.__name__, self.name))
-        arguments.append(argument_dict[parameter])
-    self.callable(*arguments)
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument_dict</span><span class="p">):</span>
+    <span class="n">arguments</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">parameter</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">argument_dict</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Invalid parameter &#39;</span><span class="si">%s</span><span class="s">&#39; for </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">parameter</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+        <span class="n">arguments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">argument_dict</span><span class="p">[</span><span class="n">parameter</span><span class="p">])</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">callable</span><span class="p">(</span><span class="o">*</span><span class="n">arguments</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2477,13 +2567,14 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.Initializer.is_applicable', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.Initializer.is_applicable" class="source">
-      <pre><code>def is_applicable(self, environments=None):
-    if not self.environments:
-        return True
-    for environment in as_list(environments):
-        if environment in self.environments:
-            return True
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">is_applicable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environments</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">environments</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">for</span> <span class="n">environment</span> <span class="ow">in</span> <span class="n">as_list</span><span class="p">(</span><span class="n">environments</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">environment</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">environments</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2499,36 +2590,37 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.Task', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.Task" class="source">
-      <pre><code>class Task(object):
-    def __init__(self, name, callable, dependencies=None, description=""):
-        self.name = name
-        self.executables = [Executable(name, callable, description)]
-        self.dependencies = as_task_name_list(dependencies)
-        self.description = [description]
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">Task</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">callable</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">executables</span> <span class="o">=</span> <span class="p">[</span><span class="n">Executable</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">callable</span><span class="p">,</span> <span class="n">description</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dependencies</span> <span class="o">=</span> <span class="n">as_task_name_list</span><span class="p">(</span><span class="n">dependencies</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="p">[</span><span class="n">description</span><span class="p">]</span>
 
-    def __eq__(self, other):
-        if isinstance(other, Task):
-            return self.name == other.name
-        return False
+    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Task</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">return</span> <span class="bp">False</span>
 
-    def __ne__(self, other):
-        return not self.__eq__(other)
+    <span class="k">def</span> <span class="nf">__ne__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__eq__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
-    def __lt__(self, other):
-        if isinstance(other, Task):
-            return self.name < other.name
-        return self.name < other
+    <span class="k">def</span> <span class="nf">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Task</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">&lt;</span> <span class="n">other</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">&lt;</span> <span class="n">other</span>
 
-    def extend(self, task):
-        self.executables += task.executables
-        self.dependencies += task.dependencies
-        self.description += task.description
+    <span class="k">def</span> <span class="nf">extend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">executables</span> <span class="o">+=</span> <span class="n">task</span><span class="o">.</span><span class="n">executables</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dependencies</span> <span class="o">+=</span> <span class="n">task</span><span class="o">.</span><span class="n">dependencies</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">+=</span> <span class="n">task</span><span class="o">.</span><span class="n">description</span>
 
-    def execute(self, logger, argument_dict):
-        for executable in self.executables:
-            logger.debug("Executing subtask from %s", executable.source)
-            executable.execute(argument_dict)
-</code></pre>
+    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">argument_dict</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">executable</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">executables</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Executing subtask from </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">executable</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+            <span class="n">executable</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">argument_dict</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2593,12 +2685,13 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.Task.__init__', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.Task.__init__" class="source">
-      <pre><code>def __init__(self, name, callable, dependencies=None, description=""):
-    self.name = name
-    self.executables = [Executable(name, callable, description)]
-    self.dependencies = as_task_name_list(dependencies)
-    self.description = [description]
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">callable</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">executables</span> <span class="o">=</span> <span class="p">[</span><span class="n">Executable</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">callable</span><span class="p">,</span> <span class="n">description</span><span class="p">)]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">dependencies</span> <span class="o">=</span> <span class="n">as_task_name_list</span><span class="p">(</span><span class="n">dependencies</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="p">[</span><span class="n">description</span><span class="p">]</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2616,11 +2709,12 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.Task.execute', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.Task.execute" class="source">
-      <pre><code>def execute(self, logger, argument_dict):
-    for executable in self.executables:
-        logger.debug("Executing subtask from %s", executable.source)
-        executable.execute(argument_dict)
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">argument_dict</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">executable</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">executables</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Executing subtask from </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">executable</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+        <span class="n">executable</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">argument_dict</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2638,11 +2732,12 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.Task.extend', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.Task.extend" class="source">
-      <pre><code>def extend(self, task):
-    self.executables += task.executables
-    self.dependencies += task.dependencies
-    self.description += task.description
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">extend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">executables</span> <span class="o">+=</span> <span class="n">task</span><span class="o">.</span><span class="n">executables</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">dependencies</span> <span class="o">+=</span> <span class="n">task</span><span class="o">.</span><span class="n">dependencies</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">+=</span> <span class="n">task</span><span class="o">.</span><span class="n">description</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2658,12 +2753,13 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.TaskExecutionSummary', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.TaskExecutionSummary" class="source">
-      <pre><code>class TaskExecutionSummary(object):
-    def __init__(self, task, number_of_actions, execution_time):
-        self.task = task
-        self.number_of_actions = number_of_actions
-        self.execution_time = execution_time
-</code></pre>
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">TaskExecutionSummary</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">number_of_actions</span><span class="p">,</span> <span class="n">execution_time</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">task</span> <span class="o">=</span> <span class="n">task</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">number_of_actions</span> <span class="o">=</span> <span class="n">number_of_actions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">execution_time</span> <span class="o">=</span> <span class="n">execution_time</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2718,11 +2814,12 @@ class ExecutionManager(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.execution.TaskExecutionSummary.__init__', this);">Show source.</a></p>
     <div id="source-pybuilder.execution.TaskExecutionSummary.__init__" class="source">
-      <pre><code>def __init__(self, task, number_of_actions, execution_time):
-    self.task = task
-    self.number_of_actions = number_of_actions
-    self.execution_time = execution_time
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">number_of_actions</span><span class="p">,</span> <span class="n">execution_time</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">task</span> <span class="o">=</span> <span class="n">task</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">number_of_actions</span> <span class="o">=</span> <span class="n">number_of_actions</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">execution_time</span> <span class="o">=</span> <span class="n">execution_time</span>
+</pre></div>
+
     </div>
 </div>
 

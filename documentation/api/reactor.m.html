@@ -794,6 +794,70 @@ table {
 
   </style>
 
+    <style type="text/css">
+    .codehilite .hll { background-color: #ffffcc }
+.codehilite  { background: #f8f8f8; }
+.codehilite .c { color: #408080; font-style: italic } /* Comment */
+.codehilite .err { border: 1px solid #FF0000 } /* Error */
+.codehilite .k { color: #008000; font-weight: bold } /* Keyword */
+.codehilite .o { color: #666666 } /* Operator */
+.codehilite .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.codehilite .cp { color: #BC7A00 } /* Comment.Preproc */
+.codehilite .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.codehilite .cs { color: #408080; font-style: italic } /* Comment.Special */
+.codehilite .gd { color: #A00000 } /* Generic.Deleted */
+.codehilite .ge { font-style: italic } /* Generic.Emph */
+.codehilite .gr { color: #FF0000 } /* Generic.Error */
+.codehilite .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.codehilite .gi { color: #00A000 } /* Generic.Inserted */
+.codehilite .go { color: #888888 } /* Generic.Output */
+.codehilite .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.codehilite .gs { font-weight: bold } /* Generic.Strong */
+.codehilite .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.codehilite .gt { color: #0044DD } /* Generic.Traceback */
+.codehilite .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.codehilite .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.codehilite .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.codehilite .kp { color: #008000 } /* Keyword.Pseudo */
+.codehilite .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.codehilite .kt { color: #B00040 } /* Keyword.Type */
+.codehilite .m { color: #666666 } /* Literal.Number */
+.codehilite .s { color: #BA2121 } /* Literal.String */
+.codehilite .na { color: #7D9029 } /* Name.Attribute */
+.codehilite .nb { color: #008000 } /* Name.Builtin */
+.codehilite .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.codehilite .no { color: #880000 } /* Name.Constant */
+.codehilite .nd { color: #AA22FF } /* Name.Decorator */
+.codehilite .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.codehilite .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.codehilite .nf { color: #0000FF } /* Name.Function */
+.codehilite .nl { color: #A0A000 } /* Name.Label */
+.codehilite .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.codehilite .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.codehilite .nv { color: #19177C } /* Name.Variable */
+.codehilite .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.codehilite .w { color: #bbbbbb } /* Text.Whitespace */
+.codehilite .mf { color: #666666 } /* Literal.Number.Float */
+.codehilite .mh { color: #666666 } /* Literal.Number.Hex */
+.codehilite .mi { color: #666666 } /* Literal.Number.Integer */
+.codehilite .mo { color: #666666 } /* Literal.Number.Oct */
+.codehilite .sb { color: #BA2121 } /* Literal.String.Backtick */
+.codehilite .sc { color: #BA2121 } /* Literal.String.Char */
+.codehilite .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.codehilite .s2 { color: #BA2121 } /* Literal.String.Double */
+.codehilite .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.codehilite .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.codehilite .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.codehilite .sx { color: #008000 } /* Literal.String.Other */
+.codehilite .sr { color: #BB6688 } /* Literal.String.Regex */
+.codehilite .s1 { color: #BA2121 } /* Literal.String.Single */
+.codehilite .ss { color: #19177C } /* Literal.String.Symbol */
+.codehilite .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.codehilite .vc { color: #19177C } /* Name.Variable.Class */
+.codehilite .vg { color: #19177C } /* Name.Variable.Global */
+.codehilite .vi { color: #19177C } /* Name.Variable.Instance */
+.codehilite .il { color: #666666 } /* Literal.Number.Integer.Long */
+    </style>
 
   <style type="text/css">
   
@@ -921,271 +985,272 @@ execution module.</p>
   
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor', this);">Show source.</a></p>
     <div id="source-pybuilder.reactor" class="source">
-      <pre><code>#  This file is part of PyBuilder
-#
-#  Copyright 2011-2014 PyBuilder Team
-#
-#  Licensed under the Apache License, Version 2.0 (the "License");
-#  you may not use this file except in compliance with the License.
-#  You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-#  Unless required by applicable law or agreed to in writing, software
-#  distributed under the License is distributed on an "AS IS" BASIS,
-#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-#  See the License for the specific language governing permissions and
-#  limitations under the License.
-"""
-    The PyBuilder reactor module.
-    Operates a build process by instrumenting an ExecutionManager from the
-    execution module.
-"""
+      <div class="codehilite"><pre><span class="c">#  This file is part of PyBuilder</span>
+<span class="c">#</span>
+<span class="c">#  Copyright 2011-2014 PyBuilder Team</span>
+<span class="c">#</span>
+<span class="c">#  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c">#  you may not use this file except in compliance with the License.</span>
+<span class="c">#  You may obtain a copy of the License at</span>
+<span class="c">#</span>
+<span class="c">#      http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c">#</span>
+<span class="c">#  Unless required by applicable law or agreed to in writing, software</span>
+<span class="c">#  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c">#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c">#  See the License for the specific language governing permissions and</span>
+<span class="c">#  limitations under the License.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The PyBuilder reactor module.</span>
+<span class="sd">    Operates a build process by instrumenting an ExecutionManager from the</span>
+<span class="sd">    execution module.</span>
+<span class="sd">&quot;&quot;&quot;</span>
 
-import imp
-import os.path
+<span class="kn">import</span> <span class="nn">imp</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
 
-from pybuilder.core import (TASK_ATTRIBUTE, DEPENDS_ATTRIBUTE,
-                            DESCRIPTION_ATTRIBUTE, AFTER_ATTRIBUTE,
-                            BEFORE_ATTRIBUTE, INITIALIZER_ATTRIBUTE,
-                            ACTION_ATTRIBUTE, ONLY_ONCE_ATTRIBUTE,
-                            Project, NAME_ATTRIBUTE, ENVIRONMENTS_ATTRIBUTE)
-from pybuilder.errors import PyBuilderException, ProjectValidationFailedException
-from pybuilder.pluginloader import (BuiltinPluginLoader,
-                                    DispatchingPluginLoader,
-                                    ThirdPartyPluginLoader)
-from pybuilder.utils import as_list
-from pybuilder.execution import Action, Initializer, Task
-
-
-class BuildSummary(object):
-
-    def __init__(self, project, task_execution_summaries):
-        self.project = project
-        self.task_summaries = task_execution_summaries
+<span class="kn">from</span> <span class="nn">pybuilder.core</span> <span class="kn">import</span> <span class="p">(</span><span class="n">TASK_ATTRIBUTE</span><span class="p">,</span> <span class="n">DEPENDS_ATTRIBUTE</span><span class="p">,</span>
+                            <span class="n">DESCRIPTION_ATTRIBUTE</span><span class="p">,</span> <span class="n">AFTER_ATTRIBUTE</span><span class="p">,</span>
+                            <span class="n">BEFORE_ATTRIBUTE</span><span class="p">,</span> <span class="n">INITIALIZER_ATTRIBUTE</span><span class="p">,</span>
+                            <span class="n">ACTION_ATTRIBUTE</span><span class="p">,</span> <span class="n">ONLY_ONCE_ATTRIBUTE</span><span class="p">,</span>
+                            <span class="n">Project</span><span class="p">,</span> <span class="n">NAME_ATTRIBUTE</span><span class="p">,</span> <span class="n">ENVIRONMENTS_ATTRIBUTE</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">pybuilder.errors</span> <span class="kn">import</span> <span class="n">PyBuilderException</span><span class="p">,</span> <span class="n">ProjectValidationFailedException</span>
+<span class="kn">from</span> <span class="nn">pybuilder.pluginloader</span> <span class="kn">import</span> <span class="p">(</span><span class="n">BuiltinPluginLoader</span><span class="p">,</span>
+                                    <span class="n">DispatchingPluginLoader</span><span class="p">,</span>
+                                    <span class="n">ThirdPartyPluginLoader</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">pybuilder.utils</span> <span class="kn">import</span> <span class="n">as_list</span>
+<span class="kn">from</span> <span class="nn">pybuilder.execution</span> <span class="kn">import</span> <span class="n">Action</span><span class="p">,</span> <span class="n">Initializer</span><span class="p">,</span> <span class="n">Task</span>
 
 
-class Reactor(object):
-    _current_instance = None
+<span class="k">class</span> <span class="nc">BuildSummary</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-    @staticmethod
-    def current_instance():
-        return Reactor._current_instance
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">task_execution_summaries</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">project</span> <span class="o">=</span> <span class="n">project</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">task_summaries</span> <span class="o">=</span> <span class="n">task_execution_summaries</span>
 
-    def __init__(self, logger, execution_manager, plugin_loader=None):
-        self.logger = logger
-        self.execution_manager = execution_manager
-        if not plugin_loader:
-            builtin_plugin_loader = BuiltinPluginLoader(self.logger)
-            thirdparty_plugin_loader = ThirdPartyPluginLoader(self.logger)
-            self.plugin_loader = DispatchingPluginLoader(
-                self.logger, builtin_plugin_loader, thirdparty_plugin_loader)
-        else:
-            self.plugin_loader = plugin_loader
-        self._plugins = []
-        self.project = None
 
-    def require_plugin(self, plugin):
-        if plugin not in self._plugins:
-            try:
-                self._plugins.append(plugin)
-                self.import_plugin(plugin)
-            except:
-                self._plugins.remove(plugin)
-                raise
+<span class="k">class</span> <span class="nc">Reactor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">_current_instance</span> <span class="o">=</span> <span class="bp">None</span>
 
-    def get_plugins(self):
-        return self._plugins
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">current_instance</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">Reactor</span><span class="o">.</span><span class="n">_current_instance</span>
 
-    def get_tasks(self):
-        return self.execution_manager.tasks
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">execution_manager</span><span class="p">,</span> <span class="n">plugin_loader</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span> <span class="o">=</span> <span class="n">execution_manager</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">plugin_loader</span><span class="p">:</span>
+            <span class="n">builtin_plugin_loader</span> <span class="o">=</span> <span class="n">BuiltinPluginLoader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+            <span class="n">thirdparty_plugin_loader</span> <span class="o">=</span> <span class="n">ThirdPartyPluginLoader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plugin_loader</span> <span class="o">=</span> <span class="n">DispatchingPluginLoader</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="n">builtin_plugin_loader</span><span class="p">,</span> <span class="n">thirdparty_plugin_loader</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plugin_loader</span> <span class="o">=</span> <span class="n">plugin_loader</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">project</span> <span class="o">=</span> <span class="bp">None</span>
 
-    def validate_project(self):
-        validation_messages = self.project.validate()
-        if len(validation_messages) > 0:
-            raise ProjectValidationFailedException(validation_messages)
+    <span class="k">def</span> <span class="nf">require_plugin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plugin</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">plugin</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">import_plugin</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
+                <span class="k">raise</span>
 
-    def prepare_build(self,
-                      property_overrides={},
-                      project_directory=".",
-                      project_descriptor="build.py"):
-        Reactor._current_instance = self
+    <span class="k">def</span> <span class="nf">get_plugins</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span>
 
-        project_directory, project_descriptor = self.verify_project_directory(
-            project_directory, project_descriptor)
+    <span class="k">def</span> <span class="nf">get_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">tasks</span>
 
-        self.logger.debug("Loading project module from %s", project_descriptor)
+    <span class="k">def</span> <span class="nf">validate_project</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">validation_messages</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">validation_messages</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ProjectValidationFailedException</span><span class="p">(</span><span class="n">validation_messages</span><span class="p">)</span>
 
-        self.project = Project(basedir=project_directory)
+    <span class="k">def</span> <span class="nf">prepare_build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                      <span class="n">property_overrides</span><span class="o">=</span><span class="p">{},</span>
+                      <span class="n">project_directory</span><span class="o">=</span><span class="s">&quot;.&quot;</span><span class="p">,</span>
+                      <span class="n">project_descriptor</span><span class="o">=</span><span class="s">&quot;build.py&quot;</span><span class="p">):</span>
+        <span class="n">Reactor</span><span class="o">.</span><span class="n">_current_instance</span> <span class="o">=</span> <span class="bp">self</span>
 
-        self.project_module = self.load_project_module(project_descriptor)
+        <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">verify_project_directory</span><span class="p">(</span>
+            <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
 
-        self.apply_project_attributes()
-        self.override_properties(property_overrides)
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Loading project module from </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
 
-        self.logger.debug("Have loaded plugins %s", ", ".join(self._plugins))
+        <span class="bp">self</span><span class="o">.</span><span class="n">project</span> <span class="o">=</span> <span class="n">Project</span><span class="p">(</span><span class="n">basedir</span><span class="o">=</span><span class="n">project_directory</span><span class="p">)</span>
 
-        self.collect_tasks_and_actions_and_initializers(self.project_module)
+        <span class="bp">self</span><span class="o">.</span><span class="n">project_module</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_project_module</span><span class="p">(</span><span class="n">project_descriptor</span><span class="p">)</span>
 
-        self.execution_manager.resolve_dependencies()
+        <span class="bp">self</span><span class="o">.</span><span class="n">apply_project_attributes</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">override_properties</span><span class="p">(</span><span class="n">property_overrides</span><span class="p">)</span>
 
-    def build(self, tasks=[], environments=[]):
-        Reactor._current_instance = self
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Have loaded plugins </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="p">))</span>
 
-        if environments:
-            self.logger.info(
-                "Activated environments: %s", ", ".join(environments))
+        <span class="bp">self</span><span class="o">.</span><span class="n">collect_tasks_and_actions_and_initializers</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project_module</span><span class="p">)</span>
 
-        self.execution_manager.execute_initializers(
-            environments, logger=self.logger, project=self.project)
+        <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">resolve_dependencies</span><span class="p">()</span>
 
-        self.log_project_properties()
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tasks</span><span class="o">=</span><span class="p">[],</span> <span class="n">environments</span><span class="o">=</span><span class="p">[]):</span>
+        <span class="n">Reactor</span><span class="o">.</span><span class="n">_current_instance</span> <span class="o">=</span> <span class="bp">self</span>
 
-        self.validate_project()
+        <span class="k">if</span> <span class="n">environments</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s">&quot;Activated environments: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">environments</span><span class="p">))</span>
 
-        tasks = as_list(tasks)
+        <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">execute_initializers</span><span class="p">(</span>
+            <span class="n">environments</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">)</span>
 
-        if not len(tasks):
-            if self.project.default_task:
-                tasks += as_list(self.project.default_task)
-            else:
-                raise PyBuilderException("No default task given.")
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_project_properties</span><span class="p">()</span>
 
-        execution_plan = self.execution_manager.build_execution_plan(tasks)
-        self.logger.debug("Execution plan is %s", ", ".join(
-            [task.name for task in execution_plan]))
+        <span class="bp">self</span><span class="o">.</span><span class="n">validate_project</span><span class="p">()</span>
 
-        self.logger.info(
-            "Building %s version %s", self.project.name, self.project.version)
-        self.logger.info("Executing build in %s", self.project.basedir)
+        <span class="n">tasks</span> <span class="o">=</span> <span class="n">as_list</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span>
 
-        if len(tasks) == 1:
-            self.logger.info("Going to execute task %s", tasks[0])
-        else:
-            list_of_tasks = ", ".join(tasks)
-            self.logger.info("Going to execute tasks: %s", list_of_tasks)
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">tasks</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">default_task</span><span class="p">:</span>
+                <span class="n">tasks</span> <span class="o">+=</span> <span class="n">as_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">default_task</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">PyBuilderException</span><span class="p">(</span><span class="s">&quot;No default task given.&quot;</span><span class="p">)</span>
 
-        task_execution_summaries = self.execution_manager.execute_execution_plan(
-            execution_plan,
-            logger=self.logger,
-            project=self.project,
-            reactor=self)
+        <span class="n">execution_plan</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">build_execution_plan</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Execution plan is </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">execution_plan</span><span class="p">]))</span>
 
-        return BuildSummary(self.project, task_execution_summaries)
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="s">&quot;Building </span><span class="si">%s</span><span class="s"> version </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Executing build in </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">basedir</span><span class="p">)</span>
 
-    def execute_task(self, task_name):
-        execution_plan = self.execution_manager.build_execution_plan(task_name)
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Going to execute task </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">tasks</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">list_of_tasks</span> <span class="o">=</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Going to execute tasks: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">list_of_tasks</span><span class="p">)</span>
 
-        self.execution_manager.execute_execution_plan(execution_plan,
-                                                      logger=self.logger,
-                                                      project=self.project,
-                                                      reactor=self)
+        <span class="n">task_execution_summaries</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">execute_execution_plan</span><span class="p">(</span>
+            <span class="n">execution_plan</span><span class="p">,</span>
+            <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span>
+            <span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span>
+            <span class="n">reactor</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 
-    def override_properties(self, property_overrides):
-        for property_override in property_overrides:
-            self.project.set_property(
-                property_override, property_overrides[property_override])
+        <span class="k">return</span> <span class="n">BuildSummary</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span> <span class="n">task_execution_summaries</span><span class="p">)</span>
 
-    def log_project_properties(self):
-        formatted = ""
-        for key in sorted(self.project.properties):
-            formatted += "\n%40s : %s" % (key, self.project.get_property(key))
-        self.logger.debug("Project properties: %s", formatted)
+    <span class="k">def</span> <span class="nf">execute_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_name</span><span class="p">):</span>
+        <span class="n">execution_plan</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">build_execution_plan</span><span class="p">(</span><span class="n">task_name</span><span class="p">)</span>
 
-    def import_plugin(self, plugin):
-        self.logger.debug("Loading plugin '%s'", plugin)
-        plugin_module = self.plugin_loader.load_plugin(self.project, plugin)
-        self.collect_tasks_and_actions_and_initializers(plugin_module)
+        <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">execute_execution_plan</span><span class="p">(</span><span class="n">execution_plan</span><span class="p">,</span>
+                                                      <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span>
+                                                      <span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span>
+                                                      <span class="n">reactor</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 
-    def collect_tasks_and_actions_and_initializers(self, project_module):
-        for name in dir(project_module):
-            candidate = getattr(project_module, name)
+    <span class="k">def</span> <span class="nf">override_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">property_overrides</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">property_override</span> <span class="ow">in</span> <span class="n">property_overrides</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span>
+                <span class="n">property_override</span><span class="p">,</span> <span class="n">property_overrides</span><span class="p">[</span><span class="n">property_override</span><span class="p">])</span>
 
-            if hasattr(candidate, NAME_ATTRIBUTE):
-                name = getattr(candidate, NAME_ATTRIBUTE)
-            elif hasattr(candidate, "__name__"):
-                name = candidate.__name__
-            description = getattr(candidate, DESCRIPTION_ATTRIBUTE) if hasattr(
-                candidate, DESCRIPTION_ATTRIBUTE) else ""
+    <span class="k">def</span> <span class="nf">log_project_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">formatted</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">properties</span><span class="p">):</span>
+            <span class="n">formatted</span> <span class="o">+=</span> <span class="s">&quot;</span><span class="se">\n</span><span class="si">%40s</span><span class="s"> : </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Project properties: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">formatted</span><span class="p">)</span>
 
-            if hasattr(candidate, TASK_ATTRIBUTE) and getattr(candidate, TASK_ATTRIBUTE):
-                dependencies = getattr(candidate, DEPENDS_ATTRIBUTE) if hasattr(
-                    candidate, DEPENDS_ATTRIBUTE) else None
+    <span class="k">def</span> <span class="nf">import_plugin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plugin</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Loading plugin &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span> <span class="n">plugin</span><span class="p">)</span>
+        <span class="n">plugin_module</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">plugin_loader</span><span class="o">.</span><span class="n">load_plugin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span> <span class="n">plugin</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">collect_tasks_and_actions_and_initializers</span><span class="p">(</span><span class="n">plugin_module</span><span class="p">)</span>
 
-                self.logger.debug("Found task %s", name)
-                self.execution_manager.register_task(
-                    Task(name, candidate, dependencies, description))
+    <span class="k">def</span> <span class="nf">collect_tasks_and_actions_and_initializers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_module</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">project_module</span><span class="p">):</span>
+            <span class="n">candidate</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">project_module</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
 
-            elif hasattr(candidate, ACTION_ATTRIBUTE) and getattr(candidate, ACTION_ATTRIBUTE):
-                before = getattr(candidate, BEFORE_ATTRIBUTE) if hasattr(
-                    candidate, BEFORE_ATTRIBUTE) else None
-                after = getattr(candidate, AFTER_ATTRIBUTE) if hasattr(
-                    candidate, AFTER_ATTRIBUTE) else None
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">NAME_ATTRIBUTE</span><span class="p">):</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">NAME_ATTRIBUTE</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="s">&quot;__name__&quot;</span><span class="p">):</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="n">candidate</span><span class="o">.</span><span class="n">__name__</span>
+            <span class="n">description</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">DESCRIPTION_ATTRIBUTE</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span>
+                <span class="n">candidate</span><span class="p">,</span> <span class="n">DESCRIPTION_ATTRIBUTE</span><span class="p">)</span> <span class="k">else</span> <span class="s">&quot;&quot;</span>
 
-                only_once = False
-                if hasattr(candidate, ONLY_ONCE_ATTRIBUTE):
-                    only_once = getattr(candidate, ONLY_ONCE_ATTRIBUTE)
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">TASK_ATTRIBUTE</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">TASK_ATTRIBUTE</span><span class="p">):</span>
+                <span class="n">dependencies</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">DEPENDS_ATTRIBUTE</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span>
+                    <span class="n">candidate</span><span class="p">,</span> <span class="n">DEPENDS_ATTRIBUTE</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span>
 
-                self.logger.debug("Found action %s", name)
-                self.execution_manager.register_action(
-                    Action(name, candidate, before, after, description, only_once))
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Found task </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">register_task</span><span class="p">(</span>
+                    <span class="n">Task</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">dependencies</span><span class="p">,</span> <span class="n">description</span><span class="p">))</span>
 
-            elif hasattr(candidate, INITIALIZER_ATTRIBUTE) and getattr(candidate, INITIALIZER_ATTRIBUTE):
-                environments = []
-                if hasattr(candidate, ENVIRONMENTS_ATTRIBUTE):
-                    environments = getattr(candidate, ENVIRONMENTS_ATTRIBUTE)
+            <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ACTION_ATTRIBUTE</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ACTION_ATTRIBUTE</span><span class="p">):</span>
+                <span class="n">before</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">BEFORE_ATTRIBUTE</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span>
+                    <span class="n">candidate</span><span class="p">,</span> <span class="n">BEFORE_ATTRIBUTE</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span>
+                <span class="n">after</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">AFTER_ATTRIBUTE</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span>
+                    <span class="n">candidate</span><span class="p">,</span> <span class="n">AFTER_ATTRIBUTE</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span>
 
-                self.execution_manager.register_initializer(
-                    Initializer(name, candidate, environments, description))
+                <span class="n">only_once</span> <span class="o">=</span> <span class="bp">False</span>
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ONLY_ONCE_ATTRIBUTE</span><span class="p">):</span>
+                    <span class="n">only_once</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ONLY_ONCE_ATTRIBUTE</span><span class="p">)</span>
 
-    def apply_project_attributes(self):
-        self.propagate_property("name")
-        self.propagate_property("version")
-        self.propagate_property("default_task")
-        self.propagate_property("summary")
-        self.propagate_property("home_page")
-        self.propagate_property("description")
-        self.propagate_property("authors")
-        self.propagate_property("license")
-        self.propagate_property("url")
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Found action </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">register_action</span><span class="p">(</span>
+                    <span class="n">Action</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">before</span><span class="p">,</span> <span class="n">after</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">only_once</span><span class="p">))</span>
 
-    def propagate_property(self, property):
-        if hasattr(self.project_module, property):
-            value = getattr(self.project_module, property)
-            setattr(self.project, property, value)
+            <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">INITIALIZER_ATTRIBUTE</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">INITIALIZER_ATTRIBUTE</span><span class="p">):</span>
+                <span class="n">environments</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ENVIRONMENTS_ATTRIBUTE</span><span class="p">):</span>
+                    <span class="n">environments</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ENVIRONMENTS_ATTRIBUTE</span><span class="p">)</span>
 
-    def load_project_module(self, project_descriptor):
-        try:
-            return imp.load_source("build", project_descriptor)
-        except ImportError as e:
-            raise PyBuilderException(
-                "Error importing project descriptor %s: %s" % (project_descriptor, e))
+                <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">register_initializer</span><span class="p">(</span>
+                    <span class="n">Initializer</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">environments</span><span class="p">,</span> <span class="n">description</span><span class="p">))</span>
 
-    def verify_project_directory(self, project_directory, project_descriptor):
-        project_directory = os.path.abspath(project_directory)
+    <span class="k">def</span> <span class="nf">apply_project_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;version&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;default_task&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;summary&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;home_page&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;description&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;authors&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;license&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;url&quot;</span><span class="p">)</span>
 
-        if not os.path.exists(project_directory):
-            raise PyBuilderException(
-                "Project directory does not exist: %s", project_directory)
+    <span class="k">def</span> <span class="nf">propagate_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">property</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project_module</span><span class="p">,</span> <span class="nb">property</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project_module</span><span class="p">,</span> <span class="nb">property</span><span class="p">)</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span> <span class="nb">property</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
-        if not os.path.isdir(project_directory):
-            raise PyBuilderException(
-                "Project directory is not a directory: %s", project_directory)
+    <span class="k">def</span> <span class="nf">load_project_module</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">imp</span><span class="o">.</span><span class="n">load_source</span><span class="p">(</span><span class="s">&quot;build&quot;</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">PyBuilderException</span><span class="p">(</span>
+                <span class="s">&quot;Error importing project descriptor </span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">project_descriptor</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span>
 
-        project_descriptor_full_path = os.path.join(
-            project_directory, project_descriptor)
+    <span class="k">def</span> <span class="nf">verify_project_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">):</span>
+        <span class="n">project_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">project_directory</span><span class="p">)</span>
 
-        if not os.path.exists(project_descriptor_full_path):
-            raise PyBuilderException(
-                "Project directory does not contain descriptor file: %s",
-                project_descriptor_full_path)
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">project_directory</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">PyBuilderException</span><span class="p">(</span>
+                <span class="s">&quot;Project directory does not exist: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">project_directory</span><span class="p">)</span>
 
-        if not os.path.isfile(project_descriptor_full_path):
-            raise PyBuilderException(
-                "Project descriptor is not a file: %s", project_descriptor_full_path)
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">project_directory</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">PyBuilderException</span><span class="p">(</span>
+                <span class="s">&quot;Project directory is not a directory: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">project_directory</span><span class="p">)</span>
 
-        return project_directory, project_descriptor_full_path
-</code></pre>
+        <span class="n">project_descriptor_full_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">project_descriptor_full_path</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">PyBuilderException</span><span class="p">(</span>
+                <span class="s">&quot;Project directory does not contain descriptor file: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span>
+                <span class="n">project_descriptor_full_path</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">project_descriptor_full_path</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">PyBuilderException</span><span class="p">(</span>
+                <span class="s">&quot;Project descriptor is not a file: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">project_descriptor_full_path</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor_full_path</span>
+</pre></div>
+
     </div>
 
   <hr>
@@ -1365,12 +1430,13 @@ class Reactor(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.BuildSummary', this);">Show source.</a></p>
     <div id="source-pybuilder.reactor.BuildSummary" class="source">
-      <pre><code>class BuildSummary(object):
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">BuildSummary</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-    def __init__(self, project, task_execution_summaries):
-        self.project = project
-        self.task_summaries = task_execution_summaries
-</code></pre>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">task_execution_summaries</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">project</span> <span class="o">=</span> <span class="n">project</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">task_summaries</span> <span class="o">=</span> <span class="n">task_execution_summaries</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1415,10 +1481,11 @@ class Reactor(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.BuildSummary.__init__', this);">Show source.</a></p>
     <div id="source-pybuilder.reactor.BuildSummary.__init__" class="source">
-      <pre><code>def __init__(self, project, task_execution_summaries):
-    self.project = project
-    self.task_summaries = task_execution_summaries
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">task_execution_summaries</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">project</span> <span class="o">=</span> <span class="n">project</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">task_summaries</span> <span class="o">=</span> <span class="n">task_execution_summaries</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1434,227 +1501,228 @@ class Reactor(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor', this);">Show source.</a></p>
     <div id="source-pybuilder.reactor.Reactor" class="source">
-      <pre><code>class Reactor(object):
-    _current_instance = None
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">Reactor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">_current_instance</span> <span class="o">=</span> <span class="bp">None</span>
 
-    @staticmethod
-    def current_instance():
-        return Reactor._current_instance
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">current_instance</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">Reactor</span><span class="o">.</span><span class="n">_current_instance</span>
 
-    def __init__(self, logger, execution_manager, plugin_loader=None):
-        self.logger = logger
-        self.execution_manager = execution_manager
-        if not plugin_loader:
-            builtin_plugin_loader = BuiltinPluginLoader(self.logger)
-            thirdparty_plugin_loader = ThirdPartyPluginLoader(self.logger)
-            self.plugin_loader = DispatchingPluginLoader(
-                self.logger, builtin_plugin_loader, thirdparty_plugin_loader)
-        else:
-            self.plugin_loader = plugin_loader
-        self._plugins = []
-        self.project = None
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">execution_manager</span><span class="p">,</span> <span class="n">plugin_loader</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span> <span class="o">=</span> <span class="n">execution_manager</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">plugin_loader</span><span class="p">:</span>
+            <span class="n">builtin_plugin_loader</span> <span class="o">=</span> <span class="n">BuiltinPluginLoader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+            <span class="n">thirdparty_plugin_loader</span> <span class="o">=</span> <span class="n">ThirdPartyPluginLoader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plugin_loader</span> <span class="o">=</span> <span class="n">DispatchingPluginLoader</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="n">builtin_plugin_loader</span><span class="p">,</span> <span class="n">thirdparty_plugin_loader</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plugin_loader</span> <span class="o">=</span> <span class="n">plugin_loader</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">project</span> <span class="o">=</span> <span class="bp">None</span>
 
-    def require_plugin(self, plugin):
-        if plugin not in self._plugins:
-            try:
-                self._plugins.append(plugin)
-                self.import_plugin(plugin)
-            except:
-                self._plugins.remove(plugin)
-                raise
+    <span class="k">def</span> <span class="nf">require_plugin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plugin</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">plugin</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">import_plugin</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
+                <span class="k">raise</span>
 
-    def get_plugins(self):
-        return self._plugins
+    <span class="k">def</span> <span class="nf">get_plugins</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span>
 
-    def get_tasks(self):
-        return self.execution_manager.tasks
+    <span class="k">def</span> <span class="nf">get_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">tasks</span>
 
-    def validate_project(self):
-        validation_messages = self.project.validate()
-        if len(validation_messages) > 0:
-            raise ProjectValidationFailedException(validation_messages)
+    <span class="k">def</span> <span class="nf">validate_project</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">validation_messages</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">validation_messages</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ProjectValidationFailedException</span><span class="p">(</span><span class="n">validation_messages</span><span class="p">)</span>
 
-    def prepare_build(self,
-                      property_overrides={},
-                      project_directory=".",
-                      project_descriptor="build.py"):
-        Reactor._current_instance = self
+    <span class="k">def</span> <span class="nf">prepare_build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                      <span class="n">property_overrides</span><span class="o">=</span><span class="p">{},</span>
+                      <span class="n">project_directory</span><span class="o">=</span><span class="s">&quot;.&quot;</span><span class="p">,</span>
+                      <span class="n">project_descriptor</span><span class="o">=</span><span class="s">&quot;build.py&quot;</span><span class="p">):</span>
+        <span class="n">Reactor</span><span class="o">.</span><span class="n">_current_instance</span> <span class="o">=</span> <span class="bp">self</span>
 
-        project_directory, project_descriptor = self.verify_project_directory(
-            project_directory, project_descriptor)
+        <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">verify_project_directory</span><span class="p">(</span>
+            <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
 
-        self.logger.debug("Loading project module from %s", project_descriptor)
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Loading project module from </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
 
-        self.project = Project(basedir=project_directory)
+        <span class="bp">self</span><span class="o">.</span><span class="n">project</span> <span class="o">=</span> <span class="n">Project</span><span class="p">(</span><span class="n">basedir</span><span class="o">=</span><span class="n">project_directory</span><span class="p">)</span>
 
-        self.project_module = self.load_project_module(project_descriptor)
+        <span class="bp">self</span><span class="o">.</span><span class="n">project_module</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_project_module</span><span class="p">(</span><span class="n">project_descriptor</span><span class="p">)</span>
 
-        self.apply_project_attributes()
-        self.override_properties(property_overrides)
+        <span class="bp">self</span><span class="o">.</span><span class="n">apply_project_attributes</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">override_properties</span><span class="p">(</span><span class="n">property_overrides</span><span class="p">)</span>
 
-        self.logger.debug("Have loaded plugins %s", ", ".join(self._plugins))
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Have loaded plugins </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="p">))</span>
 
-        self.collect_tasks_and_actions_and_initializers(self.project_module)
+        <span class="bp">self</span><span class="o">.</span><span class="n">collect_tasks_and_actions_and_initializers</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project_module</span><span class="p">)</span>
 
-        self.execution_manager.resolve_dependencies()
+        <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">resolve_dependencies</span><span class="p">()</span>
 
-    def build(self, tasks=[], environments=[]):
-        Reactor._current_instance = self
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tasks</span><span class="o">=</span><span class="p">[],</span> <span class="n">environments</span><span class="o">=</span><span class="p">[]):</span>
+        <span class="n">Reactor</span><span class="o">.</span><span class="n">_current_instance</span> <span class="o">=</span> <span class="bp">self</span>
 
-        if environments:
-            self.logger.info(
-                "Activated environments: %s", ", ".join(environments))
+        <span class="k">if</span> <span class="n">environments</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s">&quot;Activated environments: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">environments</span><span class="p">))</span>
 
-        self.execution_manager.execute_initializers(
-            environments, logger=self.logger, project=self.project)
+        <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">execute_initializers</span><span class="p">(</span>
+            <span class="n">environments</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">)</span>
 
-        self.log_project_properties()
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_project_properties</span><span class="p">()</span>
 
-        self.validate_project()
+        <span class="bp">self</span><span class="o">.</span><span class="n">validate_project</span><span class="p">()</span>
 
-        tasks = as_list(tasks)
+        <span class="n">tasks</span> <span class="o">=</span> <span class="n">as_list</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span>
 
-        if not len(tasks):
-            if self.project.default_task:
-                tasks += as_list(self.project.default_task)
-            else:
-                raise PyBuilderException("No default task given.")
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">tasks</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">default_task</span><span class="p">:</span>
+                <span class="n">tasks</span> <span class="o">+=</span> <span class="n">as_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">default_task</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">PyBuilderException</span><span class="p">(</span><span class="s">&quot;No default task given.&quot;</span><span class="p">)</span>
 
-        execution_plan = self.execution_manager.build_execution_plan(tasks)
-        self.logger.debug("Execution plan is %s", ", ".join(
-            [task.name for task in execution_plan]))
+        <span class="n">execution_plan</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">build_execution_plan</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Execution plan is </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">execution_plan</span><span class="p">]))</span>
 
-        self.logger.info(
-            "Building %s version %s", self.project.name, self.project.version)
-        self.logger.info("Executing build in %s", self.project.basedir)
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="s">&quot;Building </span><span class="si">%s</span><span class="s"> version </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Executing build in </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">basedir</span><span class="p">)</span>
 
-        if len(tasks) == 1:
-            self.logger.info("Going to execute task %s", tasks[0])
-        else:
-            list_of_tasks = ", ".join(tasks)
-            self.logger.info("Going to execute tasks: %s", list_of_tasks)
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Going to execute task </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">tasks</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">list_of_tasks</span> <span class="o">=</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Going to execute tasks: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">list_of_tasks</span><span class="p">)</span>
 
-        task_execution_summaries = self.execution_manager.execute_execution_plan(
-            execution_plan,
-            logger=self.logger,
-            project=self.project,
-            reactor=self)
+        <span class="n">task_execution_summaries</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">execute_execution_plan</span><span class="p">(</span>
+            <span class="n">execution_plan</span><span class="p">,</span>
+            <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span>
+            <span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span>
+            <span class="n">reactor</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 
-        return BuildSummary(self.project, task_execution_summaries)
+        <span class="k">return</span> <span class="n">BuildSummary</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span> <span class="n">task_execution_summaries</span><span class="p">)</span>
 
-    def execute_task(self, task_name):
-        execution_plan = self.execution_manager.build_execution_plan(task_name)
+    <span class="k">def</span> <span class="nf">execute_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_name</span><span class="p">):</span>
+        <span class="n">execution_plan</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">build_execution_plan</span><span class="p">(</span><span class="n">task_name</span><span class="p">)</span>
 
-        self.execution_manager.execute_execution_plan(execution_plan,
-                                                      logger=self.logger,
-                                                      project=self.project,
-                                                      reactor=self)
+        <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">execute_execution_plan</span><span class="p">(</span><span class="n">execution_plan</span><span class="p">,</span>
+                                                      <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span>
+                                                      <span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span>
+                                                      <span class="n">reactor</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 
-    def override_properties(self, property_overrides):
-        for property_override in property_overrides:
-            self.project.set_property(
-                property_override, property_overrides[property_override])
+    <span class="k">def</span> <span class="nf">override_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">property_overrides</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">property_override</span> <span class="ow">in</span> <span class="n">property_overrides</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span>
+                <span class="n">property_override</span><span class="p">,</span> <span class="n">property_overrides</span><span class="p">[</span><span class="n">property_override</span><span class="p">])</span>
 
-    def log_project_properties(self):
-        formatted = ""
-        for key in sorted(self.project.properties):
-            formatted += "\n%40s : %s" % (key, self.project.get_property(key))
-        self.logger.debug("Project properties: %s", formatted)
+    <span class="k">def</span> <span class="nf">log_project_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">formatted</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">properties</span><span class="p">):</span>
+            <span class="n">formatted</span> <span class="o">+=</span> <span class="s">&quot;</span><span class="se">\n</span><span class="si">%40s</span><span class="s"> : </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Project properties: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">formatted</span><span class="p">)</span>
 
-    def import_plugin(self, plugin):
-        self.logger.debug("Loading plugin '%s'", plugin)
-        plugin_module = self.plugin_loader.load_plugin(self.project, plugin)
-        self.collect_tasks_and_actions_and_initializers(plugin_module)
+    <span class="k">def</span> <span class="nf">import_plugin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plugin</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Loading plugin &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span> <span class="n">plugin</span><span class="p">)</span>
+        <span class="n">plugin_module</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">plugin_loader</span><span class="o">.</span><span class="n">load_plugin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span> <span class="n">plugin</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">collect_tasks_and_actions_and_initializers</span><span class="p">(</span><span class="n">plugin_module</span><span class="p">)</span>
 
-    def collect_tasks_and_actions_and_initializers(self, project_module):
-        for name in dir(project_module):
-            candidate = getattr(project_module, name)
+    <span class="k">def</span> <span class="nf">collect_tasks_and_actions_and_initializers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_module</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">project_module</span><span class="p">):</span>
+            <span class="n">candidate</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">project_module</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
 
-            if hasattr(candidate, NAME_ATTRIBUTE):
-                name = getattr(candidate, NAME_ATTRIBUTE)
-            elif hasattr(candidate, "__name__"):
-                name = candidate.__name__
-            description = getattr(candidate, DESCRIPTION_ATTRIBUTE) if hasattr(
-                candidate, DESCRIPTION_ATTRIBUTE) else ""
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">NAME_ATTRIBUTE</span><span class="p">):</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">NAME_ATTRIBUTE</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="s">&quot;__name__&quot;</span><span class="p">):</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="n">candidate</span><span class="o">.</span><span class="n">__name__</span>
+            <span class="n">description</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">DESCRIPTION_ATTRIBUTE</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span>
+                <span class="n">candidate</span><span class="p">,</span> <span class="n">DESCRIPTION_ATTRIBUTE</span><span class="p">)</span> <span class="k">else</span> <span class="s">&quot;&quot;</span>
 
-            if hasattr(candidate, TASK_ATTRIBUTE) and getattr(candidate, TASK_ATTRIBUTE):
-                dependencies = getattr(candidate, DEPENDS_ATTRIBUTE) if hasattr(
-                    candidate, DEPENDS_ATTRIBUTE) else None
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">TASK_ATTRIBUTE</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">TASK_ATTRIBUTE</span><span class="p">):</span>
+                <span class="n">dependencies</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">DEPENDS_ATTRIBUTE</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span>
+                    <span class="n">candidate</span><span class="p">,</span> <span class="n">DEPENDS_ATTRIBUTE</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span>
 
-                self.logger.debug("Found task %s", name)
-                self.execution_manager.register_task(
-                    Task(name, candidate, dependencies, description))
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Found task </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">register_task</span><span class="p">(</span>
+                    <span class="n">Task</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">dependencies</span><span class="p">,</span> <span class="n">description</span><span class="p">))</span>
 
-            elif hasattr(candidate, ACTION_ATTRIBUTE) and getattr(candidate, ACTION_ATTRIBUTE):
-                before = getattr(candidate, BEFORE_ATTRIBUTE) if hasattr(
-                    candidate, BEFORE_ATTRIBUTE) else None
-                after = getattr(candidate, AFTER_ATTRIBUTE) if hasattr(
-                    candidate, AFTER_ATTRIBUTE) else None
+            <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ACTION_ATTRIBUTE</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ACTION_ATTRIBUTE</span><span class="p">):</span>
+                <span class="n">before</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">BEFORE_ATTRIBUTE</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span>
+                    <span class="n">candidate</span><span class="p">,</span> <span class="n">BEFORE_ATTRIBUTE</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span>
+                <span class="n">after</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">AFTER_ATTRIBUTE</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span>
+                    <span class="n">candidate</span><span class="p">,</span> <span class="n">AFTER_ATTRIBUTE</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span>
 
-                only_once = False
-                if hasattr(candidate, ONLY_ONCE_ATTRIBUTE):
-                    only_once = getattr(candidate, ONLY_ONCE_ATTRIBUTE)
+                <span class="n">only_once</span> <span class="o">=</span> <span class="bp">False</span>
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ONLY_ONCE_ATTRIBUTE</span><span class="p">):</span>
+                    <span class="n">only_once</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ONLY_ONCE_ATTRIBUTE</span><span class="p">)</span>
 
-                self.logger.debug("Found action %s", name)
-                self.execution_manager.register_action(
-                    Action(name, candidate, before, after, description, only_once))
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Found action </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">register_action</span><span class="p">(</span>
+                    <span class="n">Action</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">before</span><span class="p">,</span> <span class="n">after</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">only_once</span><span class="p">))</span>
 
-            elif hasattr(candidate, INITIALIZER_ATTRIBUTE) and getattr(candidate, INITIALIZER_ATTRIBUTE):
-                environments = []
-                if hasattr(candidate, ENVIRONMENTS_ATTRIBUTE):
-                    environments = getattr(candidate, ENVIRONMENTS_ATTRIBUTE)
+            <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">INITIALIZER_ATTRIBUTE</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">INITIALIZER_ATTRIBUTE</span><span class="p">):</span>
+                <span class="n">environments</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ENVIRONMENTS_ATTRIBUTE</span><span class="p">):</span>
+                    <span class="n">environments</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ENVIRONMENTS_ATTRIBUTE</span><span class="p">)</span>
 
-                self.execution_manager.register_initializer(
-                    Initializer(name, candidate, environments, description))
+                <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">register_initializer</span><span class="p">(</span>
+                    <span class="n">Initializer</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">environments</span><span class="p">,</span> <span class="n">description</span><span class="p">))</span>
 
-    def apply_project_attributes(self):
-        self.propagate_property("name")
-        self.propagate_property("version")
-        self.propagate_property("default_task")
-        self.propagate_property("summary")
-        self.propagate_property("home_page")
-        self.propagate_property("description")
-        self.propagate_property("authors")
-        self.propagate_property("license")
-        self.propagate_property("url")
+    <span class="k">def</span> <span class="nf">apply_project_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;version&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;default_task&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;summary&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;home_page&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;description&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;authors&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;license&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;url&quot;</span><span class="p">)</span>
 
-    def propagate_property(self, property):
-        if hasattr(self.project_module, property):
-            value = getattr(self.project_module, property)
-            setattr(self.project, property, value)
+    <span class="k">def</span> <span class="nf">propagate_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">property</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project_module</span><span class="p">,</span> <span class="nb">property</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project_module</span><span class="p">,</span> <span class="nb">property</span><span class="p">)</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span> <span class="nb">property</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
-    def load_project_module(self, project_descriptor):
-        try:
-            return imp.load_source("build", project_descriptor)
-        except ImportError as e:
-            raise PyBuilderException(
-                "Error importing project descriptor %s: %s" % (project_descriptor, e))
+    <span class="k">def</span> <span class="nf">load_project_module</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">imp</span><span class="o">.</span><span class="n">load_source</span><span class="p">(</span><span class="s">&quot;build&quot;</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">PyBuilderException</span><span class="p">(</span>
+                <span class="s">&quot;Error importing project descriptor </span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">project_descriptor</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span>
 
-    def verify_project_directory(self, project_directory, project_descriptor):
-        project_directory = os.path.abspath(project_directory)
+    <span class="k">def</span> <span class="nf">verify_project_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">):</span>
+        <span class="n">project_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">project_directory</span><span class="p">)</span>
 
-        if not os.path.exists(project_directory):
-            raise PyBuilderException(
-                "Project directory does not exist: %s", project_directory)
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">project_directory</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">PyBuilderException</span><span class="p">(</span>
+                <span class="s">&quot;Project directory does not exist: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">project_directory</span><span class="p">)</span>
 
-        if not os.path.isdir(project_directory):
-            raise PyBuilderException(
-                "Project directory is not a directory: %s", project_directory)
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">project_directory</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">PyBuilderException</span><span class="p">(</span>
+                <span class="s">&quot;Project directory is not a directory: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">project_directory</span><span class="p">)</span>
 
-        project_descriptor_full_path = os.path.join(
-            project_directory, project_descriptor)
+        <span class="n">project_descriptor_full_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
 
-        if not os.path.exists(project_descriptor_full_path):
-            raise PyBuilderException(
-                "Project directory does not contain descriptor file: %s",
-                project_descriptor_full_path)
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">project_descriptor_full_path</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">PyBuilderException</span><span class="p">(</span>
+                <span class="s">&quot;Project directory does not contain descriptor file: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span>
+                <span class="n">project_descriptor_full_path</span><span class="p">)</span>
 
-        if not os.path.isfile(project_descriptor_full_path):
-            raise PyBuilderException(
-                "Project descriptor is not a file: %s", project_descriptor_full_path)
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">project_descriptor_full_path</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">PyBuilderException</span><span class="p">(</span>
+                <span class="s">&quot;Project descriptor is not a file: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">project_descriptor_full_path</span><span class="p">)</span>
 
-        return project_directory, project_descriptor_full_path
-</code></pre>
+        <span class="k">return</span> <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor_full_path</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1678,10 +1746,11 @@ class Reactor(object):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.current_instance', this);">Show source.</a></p>
     <div id="source-pybuilder.reactor.Reactor.current_instance" class="source">
-      <pre><code>@staticmethod
-def current_instance():
-    return Reactor._current_instance
-</code></pre>
+      <div class="codehilite"><pre><span class="nd">@staticmethod</span>
+<span class="k">def</span> <span class="nf">current_instance</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">Reactor</span><span class="o">.</span><span class="n">_current_instance</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1731,19 +1800,20 @@ def current_instance():
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.__init__', this);">Show source.</a></p>
     <div id="source-pybuilder.reactor.Reactor.__init__" class="source">
-      <pre><code>def __init__(self, logger, execution_manager, plugin_loader=None):
-    self.logger = logger
-    self.execution_manager = execution_manager
-    if not plugin_loader:
-        builtin_plugin_loader = BuiltinPluginLoader(self.logger)
-        thirdparty_plugin_loader = ThirdPartyPluginLoader(self.logger)
-        self.plugin_loader = DispatchingPluginLoader(
-            self.logger, builtin_plugin_loader, thirdparty_plugin_loader)
-    else:
-        self.plugin_loader = plugin_loader
-    self._plugins = []
-    self.project = None
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">execution_manager</span><span class="p">,</span> <span class="n">plugin_loader</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span> <span class="o">=</span> <span class="n">execution_manager</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">plugin_loader</span><span class="p">:</span>
+        <span class="n">builtin_plugin_loader</span> <span class="o">=</span> <span class="n">BuiltinPluginLoader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+        <span class="n">thirdparty_plugin_loader</span> <span class="o">=</span> <span class="n">ThirdPartyPluginLoader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plugin_loader</span> <span class="o">=</span> <span class="n">DispatchingPluginLoader</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="n">builtin_plugin_loader</span><span class="p">,</span> <span class="n">thirdparty_plugin_loader</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plugin_loader</span> <span class="o">=</span> <span class="n">plugin_loader</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">project</span> <span class="o">=</span> <span class="bp">None</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1761,17 +1831,18 @@ def current_instance():
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.apply_project_attributes', this);">Show source.</a></p>
     <div id="source-pybuilder.reactor.Reactor.apply_project_attributes" class="source">
-      <pre><code>def apply_project_attributes(self):
-    self.propagate_property("name")
-    self.propagate_property("version")
-    self.propagate_property("default_task")
-    self.propagate_property("summary")
-    self.propagate_property("home_page")
-    self.propagate_property("description")
-    self.propagate_property("authors")
-    self.propagate_property("license")
-    self.propagate_property("url")
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">apply_project_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;version&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;default_task&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;summary&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;home_page&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;description&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;authors&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;license&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">propagate_property</span><span class="p">(</span><span class="s">&quot;url&quot;</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1789,39 +1860,40 @@ def current_instance():
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.build', this);">Show source.</a></p>
     <div id="source-pybuilder.reactor.Reactor.build" class="source">
-      <pre><code>def build(self, tasks=[], environments=[]):
-    Reactor._current_instance = self
-    if environments:
-        self.logger.info(
-            "Activated environments: %s", ", ".join(environments))
-    self.execution_manager.execute_initializers(
-        environments, logger=self.logger, project=self.project)
-    self.log_project_properties()
-    self.validate_project()
-    tasks = as_list(tasks)
-    if not len(tasks):
-        if self.project.default_task:
-            tasks += as_list(self.project.default_task)
-        else:
-            raise PyBuilderException("No default task given.")
-    execution_plan = self.execution_manager.build_execution_plan(tasks)
-    self.logger.debug("Execution plan is %s", ", ".join(
-        [task.name for task in execution_plan]))
-    self.logger.info(
-        "Building %s version %s", self.project.name, self.project.version)
-    self.logger.info("Executing build in %s", self.project.basedir)
-    if len(tasks) == 1:
-        self.logger.info("Going to execute task %s", tasks[0])
-    else:
-        list_of_tasks = ", ".join(tasks)
-        self.logger.info("Going to execute tasks: %s", list_of_tasks)
-    task_execution_summaries = self.execution_manager.execute_execution_plan(
-        execution_plan,
-        logger=self.logger,
-        project=self.project,
-        reactor=self)
-    return BuildSummary(self.project, task_execution_summaries)
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tasks</span><span class="o">=</span><span class="p">[],</span> <span class="n">environments</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="n">Reactor</span><span class="o">.</span><span class="n">_current_instance</span> <span class="o">=</span> <span class="bp">self</span>
+    <span class="k">if</span> <span class="n">environments</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="s">&quot;Activated environments: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">environments</span><span class="p">))</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">execute_initializers</span><span class="p">(</span>
+        <span class="n">environments</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">log_project_properties</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">validate_project</span><span class="p">()</span>
+    <span class="n">tasks</span> <span class="o">=</span> <span class="n">as_list</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">tasks</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">default_task</span><span class="p">:</span>
+            <span class="n">tasks</span> <span class="o">+=</span> <span class="n">as_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">default_task</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">PyBuilderException</span><span class="p">(</span><span class="s">&quot;No default task given.&quot;</span><span class="p">)</span>
+    <span class="n">execution_plan</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">build_execution_plan</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Execution plan is </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">execution_plan</span><span class="p">]))</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+        <span class="s">&quot;Building </span><span class="si">%s</span><span class="s"> version </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Executing build in </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">basedir</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Going to execute task </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">tasks</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">list_of_tasks</span> <span class="o">=</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Going to execute tasks: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">list_of_tasks</span><span class="p">)</span>
+    <span class="n">task_execution_summaries</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">execute_execution_plan</span><span class="p">(</span>
+        <span class="n">execution_plan</span><span class="p">,</span>
+        <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span>
+        <span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span>
+        <span class="n">reactor</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">BuildSummary</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span> <span class="n">task_execution_summaries</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1839,39 +1911,40 @@ def current_instance():
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.collect_tasks_and_actions_and_initializers', this);">Show source.</a></p>
     <div id="source-pybuilder.reactor.Reactor.collect_tasks_and_actions_and_initializers" class="source">
-      <pre><code>def collect_tasks_and_actions_and_initializers(self, project_module):
-    for name in dir(project_module):
-        candidate = getattr(project_module, name)
-        if hasattr(candidate, NAME_ATTRIBUTE):
-            name = getattr(candidate, NAME_ATTRIBUTE)
-        elif hasattr(candidate, "__name__"):
-            name = candidate.__name__
-        description = getattr(candidate, DESCRIPTION_ATTRIBUTE) if hasattr(
-            candidate, DESCRIPTION_ATTRIBUTE) else ""
-        if hasattr(candidate, TASK_ATTRIBUTE) and getattr(candidate, TASK_ATTRIBUTE):
-            dependencies = getattr(candidate, DEPENDS_ATTRIBUTE) if hasattr(
-                candidate, DEPENDS_ATTRIBUTE) else None
-            self.logger.debug("Found task %s", name)
-            self.execution_manager.register_task(
-                Task(name, candidate, dependencies, description))
-        elif hasattr(candidate, ACTION_ATTRIBUTE) and getattr(candidate, ACTION_ATTRIBUTE):
-            before = getattr(candidate, BEFORE_ATTRIBUTE) if hasattr(
-                candidate, BEFORE_ATTRIBUTE) else None
-            after = getattr(candidate, AFTER_ATTRIBUTE) if hasattr(
-                candidate, AFTER_ATTRIBUTE) else None
-            only_once = False
-            if hasattr(candidate, ONLY_ONCE_ATTRIBUTE):
-                only_once = getattr(candidate, ONLY_ONCE_ATTRIBUTE)
-            self.logger.debug("Found action %s", name)
-            self.execution_manager.register_action(
-                Action(name, candidate, before, after, description, only_once))
-        elif hasattr(candidate, INITIALIZER_ATTRIBUTE) and getattr(candidate, INITIALIZER_ATTRIBUTE):
-            environments = []
-            if hasattr(candidate, ENVIRONMENTS_ATTRIBUTE):
-                environments = getattr(candidate, ENVIRONMENTS_ATTRIBUTE)
-            self.execution_manager.register_initializer(
-                Initializer(name, candidate, environments, description))
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">collect_tasks_and_actions_and_initializers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_module</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">project_module</span><span class="p">):</span>
+        <span class="n">candidate</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">project_module</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">NAME_ATTRIBUTE</span><span class="p">):</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">NAME_ATTRIBUTE</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="s">&quot;__name__&quot;</span><span class="p">):</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">candidate</span><span class="o">.</span><span class="n">__name__</span>
+        <span class="n">description</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">DESCRIPTION_ATTRIBUTE</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span>
+            <span class="n">candidate</span><span class="p">,</span> <span class="n">DESCRIPTION_ATTRIBUTE</span><span class="p">)</span> <span class="k">else</span> <span class="s">&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">TASK_ATTRIBUTE</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">TASK_ATTRIBUTE</span><span class="p">):</span>
+            <span class="n">dependencies</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">DEPENDS_ATTRIBUTE</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span>
+                <span class="n">candidate</span><span class="p">,</span> <span class="n">DEPENDS_ATTRIBUTE</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Found task </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">register_task</span><span class="p">(</span>
+                <span class="n">Task</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">dependencies</span><span class="p">,</span> <span class="n">description</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ACTION_ATTRIBUTE</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ACTION_ATTRIBUTE</span><span class="p">):</span>
+            <span class="n">before</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">BEFORE_ATTRIBUTE</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span>
+                <span class="n">candidate</span><span class="p">,</span> <span class="n">BEFORE_ATTRIBUTE</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span>
+            <span class="n">after</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">AFTER_ATTRIBUTE</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span>
+                <span class="n">candidate</span><span class="p">,</span> <span class="n">AFTER_ATTRIBUTE</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span>
+            <span class="n">only_once</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ONLY_ONCE_ATTRIBUTE</span><span class="p">):</span>
+                <span class="n">only_once</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ONLY_ONCE_ATTRIBUTE</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Found action </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">register_action</span><span class="p">(</span>
+                <span class="n">Action</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">before</span><span class="p">,</span> <span class="n">after</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">only_once</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">INITIALIZER_ATTRIBUTE</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">INITIALIZER_ATTRIBUTE</span><span class="p">):</span>
+            <span class="n">environments</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ENVIRONMENTS_ATTRIBUTE</span><span class="p">):</span>
+                <span class="n">environments</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">ENVIRONMENTS_ATTRIBUTE</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">register_initializer</span><span class="p">(</span>
+                <span class="n">Initializer</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">environments</span><span class="p">,</span> <span class="n">description</span><span class="p">))</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1889,13 +1962,14 @@ def current_instance():
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.execute_task', this);">Show source.</a></p>
     <div id="source-pybuilder.reactor.Reactor.execute_task" class="source">
-      <pre><code>def execute_task(self, task_name):
-    execution_plan = self.execution_manager.build_execution_plan(task_name)
-    self.execution_manager.execute_execution_plan(execution_plan,
-                                                  logger=self.logger,
-                                                  project=self.project,
-                                                  reactor=self)
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">execute_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_name</span><span class="p">):</span>
+    <span class="n">execution_plan</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">build_execution_plan</span><span class="p">(</span><span class="n">task_name</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">execute_execution_plan</span><span class="p">(</span><span class="n">execution_plan</span><span class="p">,</span>
+                                                  <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span>
+                                                  <span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span>
+                                                  <span class="n">reactor</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1913,9 +1987,10 @@ def current_instance():
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.get_plugins', this);">Show source.</a></p>
     <div id="source-pybuilder.reactor.Reactor.get_plugins" class="source">
-      <pre><code>def get_plugins(self):
-    return self._plugins
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">get_plugins</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1933,9 +2008,10 @@ def current_instance():
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.get_tasks', this);">Show source.</a></p>
     <div id="source-pybuilder.reactor.Reactor.get_tasks" class="source">
-      <pre><code>def get_tasks(self):
-    return self.execution_manager.tasks
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">get_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">tasks</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1953,11 +2029,12 @@ def current_instance():
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.import_plugin', this);">Show source.</a></p>
     <div id="source-pybuilder.reactor.Reactor.import_plugin" class="source">
-      <pre><code>def import_plugin(self, plugin):
-    self.logger.debug("Loading plugin '%s'", plugin)
-    plugin_module = self.plugin_loader.load_plugin(self.project, plugin)
-    self.collect_tasks_and_actions_and_initializers(plugin_module)
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">import_plugin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plugin</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Loading plugin &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span> <span class="n">plugin</span><span class="p">)</span>
+    <span class="n">plugin_module</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">plugin_loader</span><span class="o">.</span><span class="n">load_plugin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span> <span class="n">plugin</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">collect_tasks_and_actions_and_initializers</span><span class="p">(</span><span class="n">plugin_module</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1975,13 +2052,14 @@ def current_instance():
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.load_project_module', this);">Show source.</a></p>
     <div id="source-pybuilder.reactor.Reactor.load_project_module" class="source">
-      <pre><code>def load_project_module(self, project_descriptor):
-    try:
-        return imp.load_source("build", project_descriptor)
-    except ImportError as e:
-        raise PyBuilderException(
-            "Error importing project descriptor %s: %s" % (project_descriptor, e))
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">load_project_module</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">imp</span><span class="o">.</span><span class="n">load_source</span><span class="p">(</span><span class="s">&quot;build&quot;</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">PyBuilderException</span><span class="p">(</span>
+            <span class="s">&quot;Error importing project descriptor </span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">project_descriptor</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1999,12 +2077,13 @@ def current_instance():
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.log_project_properties', this);">Show source.</a></p>
     <div id="source-pybuilder.reactor.Reactor.log_project_properties" class="source">
-      <pre><code>def log_project_properties(self):
-    formatted = ""
-    for key in sorted(self.project.properties):
-        formatted += "\n%40s : %s" % (key, self.project.get_property(key))
-    self.logger.debug("Project properties: %s", formatted)
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">log_project_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">formatted</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">properties</span><span class="p">):</span>
+        <span class="n">formatted</span> <span class="o">+=</span> <span class="s">&quot;</span><span class="se">\n</span><span class="si">%40s</span><span class="s"> : </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Project properties: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">formatted</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2022,11 +2101,12 @@ def current_instance():
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.override_properties', this);">Show source.</a></p>
     <div id="source-pybuilder.reactor.Reactor.override_properties" class="source">
-      <pre><code>def override_properties(self, property_overrides):
-    for property_override in property_overrides:
-        self.project.set_property(
-            property_override, property_overrides[property_override])
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">override_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">property_overrides</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">property_override</span> <span class="ow">in</span> <span class="n">property_overrides</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span>
+            <span class="n">property_override</span><span class="p">,</span> <span class="n">property_overrides</span><span class="p">[</span><span class="n">property_override</span><span class="p">])</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2044,22 +2124,23 @@ def current_instance():
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.prepare_build', this);">Show source.</a></p>
     <div id="source-pybuilder.reactor.Reactor.prepare_build" class="source">
-      <pre><code>def prepare_build(self,
-                  property_overrides={},
-                  project_directory=".",
-                  project_descriptor="build.py"):
-    Reactor._current_instance = self
-    project_directory, project_descriptor = self.verify_project_directory(
-        project_directory, project_descriptor)
-    self.logger.debug("Loading project module from %s", project_descriptor)
-    self.project = Project(basedir=project_directory)
-    self.project_module = self.load_project_module(project_descriptor)
-    self.apply_project_attributes()
-    self.override_properties(property_overrides)
-    self.logger.debug("Have loaded plugins %s", ", ".join(self._plugins))
-    self.collect_tasks_and_actions_and_initializers(self.project_module)
-    self.execution_manager.resolve_dependencies()
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">prepare_build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                  <span class="n">property_overrides</span><span class="o">=</span><span class="p">{},</span>
+                  <span class="n">project_directory</span><span class="o">=</span><span class="s">&quot;.&quot;</span><span class="p">,</span>
+                  <span class="n">project_descriptor</span><span class="o">=</span><span class="s">&quot;build.py&quot;</span><span class="p">):</span>
+    <span class="n">Reactor</span><span class="o">.</span><span class="n">_current_instance</span> <span class="o">=</span> <span class="bp">self</span>
+    <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">verify_project_directory</span><span class="p">(</span>
+        <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Loading project module from </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">project</span> <span class="o">=</span> <span class="n">Project</span><span class="p">(</span><span class="n">basedir</span><span class="o">=</span><span class="n">project_directory</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">project_module</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_project_module</span><span class="p">(</span><span class="n">project_descriptor</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">apply_project_attributes</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">override_properties</span><span class="p">(</span><span class="n">property_overrides</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Have loaded plugins </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="p">))</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">collect_tasks_and_actions_and_initializers</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project_module</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">resolve_dependencies</span><span class="p">()</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2077,11 +2158,12 @@ def current_instance():
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.propagate_property', this);">Show source.</a></p>
     <div id="source-pybuilder.reactor.Reactor.propagate_property" class="source">
-      <pre><code>def propagate_property(self, property):
-    if hasattr(self.project_module, property):
-        value = getattr(self.project_module, property)
-        setattr(self.project, property, value)
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">propagate_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">property</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project_module</span><span class="p">,</span> <span class="nb">property</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project_module</span><span class="p">,</span> <span class="nb">property</span><span class="p">)</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span> <span class="nb">property</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2099,15 +2181,16 @@ def current_instance():
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.require_plugin', this);">Show source.</a></p>
     <div id="source-pybuilder.reactor.Reactor.require_plugin" class="source">
-      <pre><code>def require_plugin(self, plugin):
-    if plugin not in self._plugins:
-        try:
-            self._plugins.append(plugin)
-            self.import_plugin(plugin)
-        except:
-            self._plugins.remove(plugin)
-            raise
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">require_plugin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plugin</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">plugin</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">import_plugin</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
+            <span class="k">raise</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2125,11 +2208,12 @@ def current_instance():
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.validate_project', this);">Show source.</a></p>
     <div id="source-pybuilder.reactor.Reactor.validate_project" class="source">
-      <pre><code>def validate_project(self):
-    validation_messages = self.project.validate()
-    if len(validation_messages) > 0:
-        raise ProjectValidationFailedException(validation_messages)
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">validate_project</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">validation_messages</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">validation_messages</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">ProjectValidationFailedException</span><span class="p">(</span><span class="n">validation_messages</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2147,25 +2231,26 @@ def current_instance():
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.verify_project_directory', this);">Show source.</a></p>
     <div id="source-pybuilder.reactor.Reactor.verify_project_directory" class="source">
-      <pre><code>def verify_project_directory(self, project_directory, project_descriptor):
-    project_directory = os.path.abspath(project_directory)
-    if not os.path.exists(project_directory):
-        raise PyBuilderException(
-            "Project directory does not exist: %s", project_directory)
-    if not os.path.isdir(project_directory):
-        raise PyBuilderException(
-            "Project directory is not a directory: %s", project_directory)
-    project_descriptor_full_path = os.path.join(
-        project_directory, project_descriptor)
-    if not os.path.exists(project_descriptor_full_path):
-        raise PyBuilderException(
-            "Project directory does not contain descriptor file: %s",
-            project_descriptor_full_path)
-    if not os.path.isfile(project_descriptor_full_path):
-        raise PyBuilderException(
-            "Project descriptor is not a file: %s", project_descriptor_full_path)
-    return project_directory, project_descriptor_full_path
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">verify_project_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">):</span>
+    <span class="n">project_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">project_directory</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">project_directory</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">PyBuilderException</span><span class="p">(</span>
+            <span class="s">&quot;Project directory does not exist: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">project_directory</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">project_directory</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">PyBuilderException</span><span class="p">(</span>
+            <span class="s">&quot;Project directory is not a directory: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">project_directory</span><span class="p">)</span>
+    <span class="n">project_descriptor_full_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">project_descriptor_full_path</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">PyBuilderException</span><span class="p">(</span>
+            <span class="s">&quot;Project directory does not contain descriptor file: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span>
+            <span class="n">project_descriptor_full_path</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">project_descriptor_full_path</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">PyBuilderException</span><span class="p">(</span>
+            <span class="s">&quot;Project descriptor is not a file: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">project_descriptor_full_path</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor_full_path</span>
+</pre></div>
+
     </div>
 </div>
 

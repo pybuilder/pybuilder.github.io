@@ -795,6 +795,70 @@ table {
 
   </style>
 
+    <style type="text/css">
+    .codehilite .hll { background-color: #ffffcc }
+.codehilite  { background: #f8f8f8; }
+.codehilite .c { color: #408080; font-style: italic } /* Comment */
+.codehilite .err { border: 1px solid #FF0000 } /* Error */
+.codehilite .k { color: #008000; font-weight: bold } /* Keyword */
+.codehilite .o { color: #666666 } /* Operator */
+.codehilite .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.codehilite .cp { color: #BC7A00 } /* Comment.Preproc */
+.codehilite .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.codehilite .cs { color: #408080; font-style: italic } /* Comment.Special */
+.codehilite .gd { color: #A00000 } /* Generic.Deleted */
+.codehilite .ge { font-style: italic } /* Generic.Emph */
+.codehilite .gr { color: #FF0000 } /* Generic.Error */
+.codehilite .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.codehilite .gi { color: #00A000 } /* Generic.Inserted */
+.codehilite .go { color: #888888 } /* Generic.Output */
+.codehilite .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.codehilite .gs { font-weight: bold } /* Generic.Strong */
+.codehilite .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.codehilite .gt { color: #0044DD } /* Generic.Traceback */
+.codehilite .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.codehilite .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.codehilite .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.codehilite .kp { color: #008000 } /* Keyword.Pseudo */
+.codehilite .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.codehilite .kt { color: #B00040 } /* Keyword.Type */
+.codehilite .m { color: #666666 } /* Literal.Number */
+.codehilite .s { color: #BA2121 } /* Literal.String */
+.codehilite .na { color: #7D9029 } /* Name.Attribute */
+.codehilite .nb { color: #008000 } /* Name.Builtin */
+.codehilite .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.codehilite .no { color: #880000 } /* Name.Constant */
+.codehilite .nd { color: #AA22FF } /* Name.Decorator */
+.codehilite .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.codehilite .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.codehilite .nf { color: #0000FF } /* Name.Function */
+.codehilite .nl { color: #A0A000 } /* Name.Label */
+.codehilite .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.codehilite .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.codehilite .nv { color: #19177C } /* Name.Variable */
+.codehilite .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.codehilite .w { color: #bbbbbb } /* Text.Whitespace */
+.codehilite .mf { color: #666666 } /* Literal.Number.Float */
+.codehilite .mh { color: #666666 } /* Literal.Number.Hex */
+.codehilite .mi { color: #666666 } /* Literal.Number.Integer */
+.codehilite .mo { color: #666666 } /* Literal.Number.Oct */
+.codehilite .sb { color: #BA2121 } /* Literal.String.Backtick */
+.codehilite .sc { color: #BA2121 } /* Literal.String.Char */
+.codehilite .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.codehilite .s2 { color: #BA2121 } /* Literal.String.Double */
+.codehilite .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.codehilite .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.codehilite .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.codehilite .sx { color: #008000 } /* Literal.String.Other */
+.codehilite .sr { color: #BB6688 } /* Literal.String.Regex */
+.codehilite .s1 { color: #BA2121 } /* Literal.String.Single */
+.codehilite .ss { color: #19177C } /* Literal.String.Symbol */
+.codehilite .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.codehilite .vc { color: #19177C } /* Name.Variable.Class */
+.codehilite .vg { color: #19177C } /* Name.Variable.Global */
+.codehilite .vi { color: #19177C } /* Name.Variable.Instance */
+.codehilite .il { color: #666666 } /* Literal.Number.Integer.Long */
+    </style>
 
   <style type="text/css">
   
@@ -922,402 +986,403 @@ build.py project descriptor.</p>
   
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core', this);">Show source.</a></p>
     <div id="source-pybuilder.core" class="source">
-      <pre><code>#  This file is part of PyBuilder
-#
-#  Copyright 2011-2014 PyBuilder Team
-#
-#  Licensed under the Apache License, Version 2.0 (the "License");
-#  you may not use this file except in compliance with the License.
-#  You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-#  Unless required by applicable law or agreed to in writing, software
-#  distributed under the License is distributed on an "AS IS" BASIS,
-#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-#  See the License for the specific language governing permissions and
-#  limitations under the License.
-"""
-    The PyBuilder core module.
-    Contains the most important classes and syntax used in a
-    build.py project descriptor.
-"""
+      <div class="codehilite"><pre><span class="c">#  This file is part of PyBuilder</span>
+<span class="c">#</span>
+<span class="c">#  Copyright 2011-2014 PyBuilder Team</span>
+<span class="c">#</span>
+<span class="c">#  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c">#  you may not use this file except in compliance with the License.</span>
+<span class="c">#  You may obtain a copy of the License at</span>
+<span class="c">#</span>
+<span class="c">#      http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c">#</span>
+<span class="c">#  Unless required by applicable law or agreed to in writing, software</span>
+<span class="c">#  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c">#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c">#  See the License for the specific language governing permissions and</span>
+<span class="c">#  limitations under the License.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The PyBuilder core module.</span>
+<span class="sd">    Contains the most important classes and syntax used in a</span>
+<span class="sd">    build.py project descriptor.</span>
+<span class="sd">&quot;&quot;&quot;</span>
 
-import os
-import string
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">string</span>
 
-from os.path import sep as PATH_SEPARATOR
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">sep</span> <span class="k">as</span> <span class="n">PATH_SEPARATOR</span>
 
-from pybuilder.errors import MissingPropertyException
-from .utils import as_list
+<span class="kn">from</span> <span class="nn">pybuilder.errors</span> <span class="kn">import</span> <span class="n">MissingPropertyException</span>
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">as_list</span>
 
-INITIALIZER_ATTRIBUTE = "_python_builder_initializer"
+<span class="n">INITIALIZER_ATTRIBUTE</span> <span class="o">=</span> <span class="s">&quot;_python_builder_initializer&quot;</span>
 
-ENVIRONMENTS_ATTRIBUTE = "_python_builder_environments"
+<span class="n">ENVIRONMENTS_ATTRIBUTE</span> <span class="o">=</span> <span class="s">&quot;_python_builder_environments&quot;</span>
 
-NAME_ATTRIBUTE = "_python_builder_name"
-ACTION_ATTRIBUTE = "_python_builder_action"
-ONLY_ONCE_ATTRIBUTE = "_python_builder_action_only_once"
-BEFORE_ATTRIBUTE = "_python_builder_before"
-AFTER_ATTRIBUTE = "_python_builder_after"
+<span class="n">NAME_ATTRIBUTE</span> <span class="o">=</span> <span class="s">&quot;_python_builder_name&quot;</span>
+<span class="n">ACTION_ATTRIBUTE</span> <span class="o">=</span> <span class="s">&quot;_python_builder_action&quot;</span>
+<span class="n">ONLY_ONCE_ATTRIBUTE</span> <span class="o">=</span> <span class="s">&quot;_python_builder_action_only_once&quot;</span>
+<span class="n">BEFORE_ATTRIBUTE</span> <span class="o">=</span> <span class="s">&quot;_python_builder_before&quot;</span>
+<span class="n">AFTER_ATTRIBUTE</span> <span class="o">=</span> <span class="s">&quot;_python_builder_after&quot;</span>
 
-TASK_ATTRIBUTE = "_python_builder_task"
-DEPENDS_ATTRIBUTE = "_python_builder_depends"
+<span class="n">TASK_ATTRIBUTE</span> <span class="o">=</span> <span class="s">&quot;_python_builder_task&quot;</span>
+<span class="n">DEPENDS_ATTRIBUTE</span> <span class="o">=</span> <span class="s">&quot;_python_builder_depends&quot;</span>
 
-DESCRIPTION_ATTRIBUTE = "_python_builder_description"
+<span class="n">DESCRIPTION_ATTRIBUTE</span> <span class="o">=</span> <span class="s">&quot;_python_builder_description&quot;</span>
 
 
-def init(*possible_callable, **additional_arguments):
-    """
-    Decorator for functions that wish to perform initialization steps.
-    The decorated functions are called "initializers".
+<span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="o">*</span><span class="n">possible_callable</span><span class="p">,</span> <span class="o">**</span><span class="n">additional_arguments</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Decorator for functions that wish to perform initialization steps.</span>
+<span class="sd">    The decorated functions are called &quot;initializers&quot;.</span>
 
-    Initializers are executed after all plugins and projects have been loaded
-    but before any task is executed.
+<span class="sd">    Initializers are executed after all plugins and projects have been loaded</span>
+<span class="sd">    but before any task is executed.</span>
 
-    Initializers may take an additional named argument "environments" which should contain a string or list of strings
-    naming the environments this initializer applies for.
+<span class="sd">    Initializers may take an additional named argument &quot;environments&quot; which should contain a string or list of strings</span>
+<span class="sd">    naming the environments this initializer applies for.</span>
 
-    Examples:
+<span class="sd">    Examples:</span>
 
-    @init
-    def some_initializer(): pass
+<span class="sd">    @init</span>
+<span class="sd">    def some_initializer(): pass</span>
 
-    @init()
-    def some_initializer(): pass
+<span class="sd">    @init()</span>
+<span class="sd">    def some_initializer(): pass</span>
 
-    @init(environments="spam")
-    def some_initializer(): pass
+<span class="sd">    @init(environments=&quot;spam&quot;)</span>
+<span class="sd">    def some_initializer(): pass</span>
 
-    @init(environments=["spam", "eggs"])
-    def some_initializer(): pass
-    """
+<span class="sd">    @init(environments=[&quot;spam&quot;, &quot;eggs&quot;])</span>
+<span class="sd">    def some_initializer(): pass</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-    def do_decoration(callable):
-        setattr(callable, INITIALIZER_ATTRIBUTE, True)
+    <span class="k">def</span> <span class="nf">do_decoration</span><span class="p">(</span><span class="nb">callable</span><span class="p">):</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="nb">callable</span><span class="p">,</span> <span class="n">INITIALIZER_ATTRIBUTE</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
 
-        if "environments" in additional_arguments:
-            setattr(callable, ENVIRONMENTS_ATTRIBUTE, as_list(additional_arguments["environments"]))
+        <span class="k">if</span> <span class="s">&quot;environments&quot;</span> <span class="ow">in</span> <span class="n">additional_arguments</span><span class="p">:</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="nb">callable</span><span class="p">,</span> <span class="n">ENVIRONMENTS_ATTRIBUTE</span><span class="p">,</span> <span class="n">as_list</span><span class="p">(</span><span class="n">additional_arguments</span><span class="p">[</span><span class="s">&quot;environments&quot;</span><span class="p">]))</span>
 
-        return callable
+        <span class="k">return</span> <span class="nb">callable</span>
 
-    if possible_callable:
-        return do_decoration(possible_callable[0])
+    <span class="k">if</span> <span class="n">possible_callable</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">do_decoration</span><span class="p">(</span><span class="n">possible_callable</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
-    return do_decoration
+    <span class="k">return</span> <span class="n">do_decoration</span>
 
 
-def task(callable_or_string):
-    """
-    Decorator for functions that should be used as tasks. Tasks are the main
-    building blocks of projects.
-    You can use this decorator either plain (no argument) or with
-    a string argument, which overrides the default name.
-    """
-    if isinstance(callable_or_string, str):
-        def set_name_and_task_attribute(callable):
-            setattr(callable, TASK_ATTRIBUTE, True)
-            setattr(callable, NAME_ATTRIBUTE, callable_or_string)
-            return callable
-        return set_name_and_task_attribute
-    else:
-        setattr(callable_or_string, TASK_ATTRIBUTE, True)
-        return callable_or_string
+<span class="k">def</span> <span class="nf">task</span><span class="p">(</span><span class="n">callable_or_string</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Decorator for functions that should be used as tasks. Tasks are the main</span>
+<span class="sd">    building blocks of projects.</span>
+<span class="sd">    You can use this decorator either plain (no argument) or with</span>
+<span class="sd">    a string argument, which overrides the default name.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">callable_or_string</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">set_name_and_task_attribute</span><span class="p">(</span><span class="nb">callable</span><span class="p">):</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="nb">callable</span><span class="p">,</span> <span class="n">TASK_ATTRIBUTE</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="nb">callable</span><span class="p">,</span> <span class="n">NAME_ATTRIBUTE</span><span class="p">,</span> <span class="n">callable_or_string</span><span class="p">)</span>
+            <span class="k">return</span> <span class="nb">callable</span>
+        <span class="k">return</span> <span class="n">set_name_and_task_attribute</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">callable_or_string</span><span class="p">,</span> <span class="n">TASK_ATTRIBUTE</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">callable_or_string</span>
 
 
-class description(object):
-    def __init__(self, description):
-        self._description = description
+<span class="k">class</span> <span class="nc">description</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">description</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_description</span> <span class="o">=</span> <span class="n">description</span>
 
-    def __call__(self, callable):
-        setattr(callable, DESCRIPTION_ATTRIBUTE, self._description)
-        return callable
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">callable</span><span class="p">):</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="nb">callable</span><span class="p">,</span> <span class="n">DESCRIPTION_ATTRIBUTE</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_description</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">callable</span>
 
 
-class depends(object):
-    def __init__(self, *depends):
-        self._depends = depends
+<span class="k">class</span> <span class="nc">depends</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">depends</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_depends</span> <span class="o">=</span> <span class="n">depends</span>
 
-    def __call__(self, callable):
-        setattr(callable, DEPENDS_ATTRIBUTE, self._depends)
-        return callable
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">callable</span><span class="p">):</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="nb">callable</span><span class="p">,</span> <span class="n">DEPENDS_ATTRIBUTE</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_depends</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">callable</span>
 
 
-class BaseAction(object):
-    def __init__(self, attribute, only_once, tasks):
-        self.tasks = tasks
-        self.attribute = attribute
-        self.only_once = only_once
+<span class="k">class</span> <span class="nc">BaseAction</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">,</span> <span class="n">only_once</span><span class="p">,</span> <span class="n">tasks</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span> <span class="o">=</span> <span class="n">tasks</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attribute</span> <span class="o">=</span> <span class="n">attribute</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">only_once</span> <span class="o">=</span> <span class="n">only_once</span>
 
-    def __call__(self, callable):
-        setattr(callable, ACTION_ATTRIBUTE, True)
-        setattr(callable, self.attribute, self.tasks)
-        if self.only_once:
-            setattr(callable, ONLY_ONCE_ATTRIBUTE, True)
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">callable</span><span class="p">):</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="nb">callable</span><span class="p">,</span> <span class="n">ACTION_ATTRIBUTE</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="nb">callable</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">attribute</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">only_once</span><span class="p">:</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="nb">callable</span><span class="p">,</span> <span class="n">ONLY_ONCE_ATTRIBUTE</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
 
-        return callable
+        <span class="k">return</span> <span class="nb">callable</span>
 
 
-class before(BaseAction):
-    def __init__(self, tasks, only_once=False):
-        super(before, self).__init__(BEFORE_ATTRIBUTE, only_once, tasks)
+<span class="k">class</span> <span class="nc">before</span><span class="p">(</span><span class="n">BaseAction</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tasks</span><span class="p">,</span> <span class="n">only_once</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">before</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">BEFORE_ATTRIBUTE</span><span class="p">,</span> <span class="n">only_once</span><span class="p">,</span> <span class="n">tasks</span><span class="p">)</span>
 
 
-class after(BaseAction):
-    def __init__(self, tasks, only_once=False):
-        super(after, self).__init__(AFTER_ATTRIBUTE, only_once, tasks)
+<span class="k">class</span> <span class="nc">after</span><span class="p">(</span><span class="n">BaseAction</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tasks</span><span class="p">,</span> <span class="n">only_once</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">after</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">AFTER_ATTRIBUTE</span><span class="p">,</span> <span class="n">only_once</span><span class="p">,</span> <span class="n">tasks</span><span class="p">)</span>
 
-
-def use_plugin(name):
-    from pybuilder.reactor import Reactor
-    reactor = Reactor.current_instance()
-    if reactor is not None:
-        reactor.require_plugin(name)
+
+<span class="k">def</span> <span class="nf">use_plugin</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">pybuilder.reactor</span> <span class="kn">import</span> <span class="n">Reactor</span>
+    <span class="n">reactor</span> <span class="o">=</span> <span class="n">Reactor</span><span class="o">.</span><span class="n">current_instance</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">reactor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">reactor</span><span class="o">.</span><span class="n">require_plugin</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 
 
-class Author(object):
-    def __init__(self, name, email=None, roles=None):
-        self.name = name
-        self.email = email
-        self.roles = roles or []
-
-
-class Dependency(object):
-    """
-    Defines a dependency to another module. Use the
-        depends_on
-    method from class Project to add a dependency to a project.
-    """
-    def __init__(self, name, version=None, url=None):
-        self.name = name
-        self.version = version
-        self.url = url
-
-    def __eq__(self, other):
-        return self.name == other.name and self.version == other.version and self.url == other.url
-
-    def __ne__(self, other):
-        return not(self == other)
+<span class="k">class</span> <span class="nc">Author</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">roles</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="n">email</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">roles</span> <span class="o">=</span> <span class="n">roles</span> <span class="ow">or</span> <span class="p">[]</span>
+
+
+<span class="k">class</span> <span class="nc">Dependency</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Defines a dependency to another module. Use the</span>
+<span class="sd">        depends_on</span>
+<span class="sd">    method from class Project to add a dependency to a project.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">version</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">url</span>
+
+    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">name</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">version</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">url</span>
+
+    <span class="k">def</span> <span class="nf">__ne__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="ow">not</span><span class="p">(</span><span class="bp">self</span> <span class="o">==</span> <span class="n">other</span><span class="p">)</span>
 
-    def __hash__(self):
-        return 13 * hash(self.name) + 17 * hash(self.version)
+    <span class="k">def</span> <span class="nf">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">13</span> <span class="o">*</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="o">+</span> <span class="mi">17</span> <span class="o">*</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
 
-    def __lt__(self, other):
-        return self.name < other.name
+    <span class="k">def</span> <span class="nf">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">&lt;</span> <span class="n">other</span><span class="o">.</span><span class="n">name</span>
 
 
-class Project(object):
-    """
-    Descriptor for a project to be built. A project has a number of attributes
-    as well as some convenience methods to access these properties.
-    """
-    def __init__(self, basedir, version="1.0-SNAPSHOT", name=None):
-        self.name = name
-        self.version = version
-        self.basedir = basedir
-        if not self.name:
-            self.name = os.path.basename(basedir)
+<span class="k">class</span> <span class="nc">Project</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Descriptor for a project to be built. A project has a number of attributes</span>
+<span class="sd">    as well as some convenience methods to access these properties.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">basedir</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s">&quot;1.0-SNAPSHOT&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">version</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">basedir</span> <span class="o">=</span> <span class="n">basedir</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">basedir</span><span class="p">)</span>
 
-        self.default_task = None
+        <span class="bp">self</span><span class="o">.</span><span class="n">default_task</span> <span class="o">=</span> <span class="bp">None</span>
 
-        self.summary = ""
-        self.home_page = ""
-        self.description = ""
-        self.author = ""
-        self.authors = []
-        self.license = ""
-        self.url = ""
-        self._properties = {"verbose": False}
-        self._install_dependencies = set()
-        self._build_dependencies = set()
-        self._manifest_included_files = []
-        self._package_data = {}
-        self._files_to_install = []
+        <span class="bp">self</span><span class="o">.</span><span class="n">summary</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">home_page</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">authors</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">license</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_properties</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;verbose&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_install_dependencies</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_build_dependencies</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_manifest_included_files</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_package_data</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_files_to_install</span> <span class="o">=</span> <span class="p">[]</span>
 
-    def __str__(self):
-        return "[Project name=%s basedir=%s]" % (self.name, self.basedir)
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&quot;[Project name=</span><span class="si">%s</span><span class="s"> basedir=</span><span class="si">%s</span><span class="s">]&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">basedir</span><span class="p">)</span>
 
-    def validate(self):
-        """
-        Validates the project returning a list of validation error messages if the project is not valid.
-        Returns an empty list if the project is valid.
-        """
-        result = self.validate_dependencies()
+    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Validates the project returning a list of validation error messages if the project is not valid.</span>
+<span class="sd">        Returns an empty list if the project is valid.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_dependencies</span><span class="p">()</span>
 
-        return result
+        <span class="k">return</span> <span class="n">result</span>
 
-    def validate_dependencies(self):
-        result = []
+    <span class="k">def</span> <span class="nf">validate_dependencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
 
-        build_dependencies_found = {}
+        <span class="n">build_dependencies_found</span> <span class="o">=</span> <span class="p">{}</span>
 
-        for dependency in self.build_dependencies:
-            if dependency.name in build_dependencies_found:
-                if build_dependencies_found[dependency.name] == 1:
-                    result.append("Build dependency '%s' has been defined multiple times." % dependency.name)
-                build_dependencies_found[dependency.name] += 1
-            else:
-                build_dependencies_found[dependency.name] = 1
-
-        runtime_dependencies_found = {}
-
-        for dependency in self.dependencies:
-            if dependency.name in runtime_dependencies_found:
-                if runtime_dependencies_found[dependency.name] == 1:
-                    result.append("Runtime dependency '%s' has been defined multiple times." % dependency.name)
-                runtime_dependencies_found[dependency.name] += 1
-            else:
-                runtime_dependencies_found[dependency.name] = 1
-            if dependency.name in build_dependencies_found:
-                result.append("Runtime dependency '%s' has also been given as build dependency." % dependency.name)
-
-        return result
-
-    @property
-    def properties(self):
-        result = self._properties
-        result["basedir"] = self.basedir
-        return result
-
-    @property
-    def dependencies(self):
-        return list(sorted(self._install_dependencies))
-
-    @property
-    def build_dependencies(self):
-        return list(sorted(self._build_dependencies))
+        <span class="k">for</span> <span class="n">dependency</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_dependencies</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">dependency</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">build_dependencies_found</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">build_dependencies_found</span><span class="p">[</span><span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;Build dependency &#39;</span><span class="si">%s</span><span class="s">&#39; has been defined multiple times.&quot;</span> <span class="o">%</span> <span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+                <span class="n">build_dependencies_found</span><span class="p">[</span><span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">build_dependencies_found</span><span class="p">[</span><span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="n">runtime_dependencies_found</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">for</span> <span class="n">dependency</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dependencies</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">dependency</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">runtime_dependencies_found</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">runtime_dependencies_found</span><span class="p">[</span><span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;Runtime dependency &#39;</span><span class="si">%s</span><span class="s">&#39; has been defined multiple times.&quot;</span> <span class="o">%</span> <span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+                <span class="n">runtime_dependencies_found</span><span class="p">[</span><span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">runtime_dependencies_found</span><span class="p">[</span><span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">dependency</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">build_dependencies_found</span><span class="p">:</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;Runtime dependency &#39;</span><span class="si">%s</span><span class="s">&#39; has also been given as build dependency.&quot;</span> <span class="o">%</span> <span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">properties</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_properties</span>
+        <span class="n">result</span><span class="p">[</span><span class="s">&quot;basedir&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">basedir</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">dependencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_install_dependencies</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">build_dependencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_build_dependencies</span><span class="p">))</span>
 
-    def depends_on(self, name, version=None, url=None):
-        self._install_dependencies.add(Dependency(name, version, url))
-
-    def build_depends_on(self, name, version=None, url=None):
-        self._build_dependencies.add(Dependency(name, version, url))
-
-    @property
-    def manifest_included_files(self):
-        return self._manifest_included_files
-
-    def _manifest_include(self, glob_pattern):
-        if not glob_pattern or glob_pattern.strip() == "":
-            raise ValueError("Missing glob_pattern argument.")
-
-        self._manifest_included_files.append(glob_pattern)
+    <span class="k">def</span> <span class="nf">depends_on</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_install_dependencies</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dependency</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">url</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">build_depends_on</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_build_dependencies</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dependency</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">url</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">manifest_included_files</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_manifest_included_files</span>
+
+    <span class="k">def</span> <span class="nf">_manifest_include</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">glob_pattern</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">glob_pattern</span> <span class="ow">or</span> <span class="n">glob_pattern</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s">&quot;&quot;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Missing glob_pattern argument.&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_manifest_included_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">glob_pattern</span><span class="p">)</span>
 
-    @property
-    def package_data(self):
-        return self._package_data
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">package_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_package_data</span>
 
-    def include_file(self, package_name, filename):
-        if not package_name or package_name.strip() == "":
-            raise ValueError("Missing argument package name.")
+    <span class="k">def</span> <span class="nf">include_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">package_name</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">package_name</span> <span class="ow">or</span> <span class="n">package_name</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s">&quot;&quot;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Missing argument package name.&quot;</span><span class="p">)</span>
 
-        if not filename or filename.strip() == "":
-            raise ValueError("Missing argument filename.")
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">filename</span> <span class="ow">or</span> <span class="n">filename</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s">&quot;&quot;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Missing argument filename.&quot;</span><span class="p">)</span>
 
-        full_filename = os.path.join(package_name, filename)
-        self._manifest_include(full_filename)
+        <span class="n">full_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">package_name</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_manifest_include</span><span class="p">(</span><span class="n">full_filename</span><span class="p">)</span>
 
-        if package_name not in self._package_data:
-            self._package_data[package_name] = [filename]
-            return
-        self._package_data[package_name].append(filename)
+        <span class="k">if</span> <span class="n">package_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_package_data</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_package_data</span><span class="p">[</span><span class="n">package_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">filename</span><span class="p">]</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_package_data</span><span class="p">[</span><span class="n">package_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 
-    @property
-    def files_to_install(self):
-        return self._files_to_install
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">files_to_install</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_files_to_install</span>
 
-    def install_file(self, destination, filename):
-        if not destination:
-            raise ValueError("Missing argument destination")
+    <span class="k">def</span> <span class="nf">install_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">destination</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Missing argument destination&quot;</span><span class="p">)</span>
 
-        if not filename or filename.strip() == "":
-            raise ValueError("Missing argument filename")
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">filename</span> <span class="ow">or</span> <span class="n">filename</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s">&quot;&quot;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Missing argument filename&quot;</span><span class="p">)</span>
 
-        current_tuple = None
-        for installation_tuple in self.files_to_install:
-            destination_name = installation_tuple[0]
+        <span class="n">current_tuple</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">for</span> <span class="n">installation_tuple</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">files_to_install</span><span class="p">:</span>
+            <span class="n">destination_name</span> <span class="o">=</span> <span class="n">installation_tuple</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-            if destination_name == destination:
-                    current_tuple = installation_tuple
+            <span class="k">if</span> <span class="n">destination_name</span> <span class="o">==</span> <span class="n">destination</span><span class="p">:</span>
+                    <span class="n">current_tuple</span> <span class="o">=</span> <span class="n">installation_tuple</span>
 
-        if current_tuple:
-            list_of_files_within_tuple = current_tuple[1]
-            list_of_files_within_tuple.append(filename)
-        else:
-            initial_tuple = (destination, [filename])
-            self.files_to_install.append(initial_tuple)
+        <span class="k">if</span> <span class="n">current_tuple</span><span class="p">:</span>
+            <span class="n">list_of_files_within_tuple</span> <span class="o">=</span> <span class="n">current_tuple</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">list_of_files_within_tuple</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">initial_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="n">destination</span><span class="p">,</span> <span class="p">[</span><span class="n">filename</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">files_to_install</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">initial_tuple</span><span class="p">)</span>
 
-        self._manifest_include(filename)
+        <span class="bp">self</span><span class="o">.</span><span class="n">_manifest_include</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 
-    def expand(self, format_string):
-        previous = None
-        result = format_string
-        while previous != result:
-            try:
-                previous = result
-                result = string.Template(result).substitute(self.properties)
-            except KeyError as e:
-                raise MissingPropertyException(e)
-        return result
+    <span class="k">def</span> <span class="nf">expand</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">format_string</span><span class="p">):</span>
+        <span class="n">previous</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">format_string</span>
+        <span class="k">while</span> <span class="n">previous</span> <span class="o">!=</span> <span class="n">result</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">previous</span> <span class="o">=</span> <span class="n">result</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">Template</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="o">.</span><span class="n">substitute</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">MissingPropertyException</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
 
-    def expand_path(self, format_string, *additional_path_elements):
-        elements = [self.basedir]
-        elements += self.expand(format_string).split(PATH_SEPARATOR)
-        elements += list(additional_path_elements)
-        return os.path.join(*elements)
+    <span class="k">def</span> <span class="nf">expand_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">format_string</span><span class="p">,</span> <span class="o">*</span><span class="n">additional_path_elements</span><span class="p">):</span>
+        <span class="n">elements</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">basedir</span><span class="p">]</span>
+        <span class="n">elements</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">format_string</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">PATH_SEPARATOR</span><span class="p">)</span>
+        <span class="n">elements</span> <span class="o">+=</span> <span class="nb">list</span><span class="p">(</span><span class="n">additional_path_elements</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="o">*</span><span class="n">elements</span><span class="p">)</span>
 
-    def get_property(self, key, default_value=None):
-        return self.properties.get(key, default_value)
+    <span class="k">def</span> <span class="nf">get_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">default_value</span><span class="p">)</span>
 
-    def get_mandatory_property(self, key):
-        if not self.has_property(key):
-            raise MissingPropertyException(key)
-        return self.get_property(key)
+    <span class="k">def</span> <span class="nf">get_mandatory_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_property</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">MissingPropertyException</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 
-    def has_property(self, key):
-        return key in self.properties
+    <span class="k">def</span> <span class="nf">has_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span>
 
-    def set_property(self, key, value):
-        self.properties[key] = value
+    <span class="k">def</span> <span class="nf">set_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
 
-    def set_property_if_unset(self, key, value):
-        if not self.has_property(key):
-            self.set_property(key, value)
+    <span class="k">def</span> <span class="nf">set_property_if_unset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_property</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
 
-class Logger(object):
-    DEBUG = 1
-    INFO = 2
-    WARN = 3
-    ERROR = 4
+<span class="k">class</span> <span class="nc">Logger</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">DEBUG</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">INFO</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">WARN</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">ERROR</span> <span class="o">=</span> <span class="mi">4</span>
 
-    def __init__(self, threshold=INFO):
-        self.threshold = threshold
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="n">INFO</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span> <span class="o">=</span> <span class="n">threshold</span>
 
-    def _do_log(self, level, message, *arguments):
-        pass
+    <span class="k">def</span> <span class="nf">_do_log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">):</span>
+        <span class="k">pass</span>
 
-    def _format_message(self, message, *arguments):
-        if arguments:
-            return message % arguments
-        return message
+    <span class="k">def</span> <span class="nf">_format_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">arguments</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">message</span> <span class="o">%</span> <span class="n">arguments</span>
+        <span class="k">return</span> <span class="n">message</span>
 
-    def log(self, level, message, *arguments):
-        if level >= self.threshold:
-            self._do_log(level, message, *arguments)
+    <span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">level</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_do_log</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">)</span>
 
-    def debug(self, message, *arguments):
-        self.log(Logger.DEBUG, message, *arguments)
+    <span class="k">def</span> <span class="nf">debug</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">Logger</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">)</span>
 
-    def info(self, message, *arguments):
-        self.log(Logger.INFO, message, *arguments)
+    <span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">Logger</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">)</span>
 
-    def warn(self, message, *arguments):
-        self.log(Logger.WARN, message, *arguments)
+    <span class="k">def</span> <span class="nf">warn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">Logger</span><span class="o">.</span><span class="n">WARN</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">)</span>
 
-    def error(self, message, *arguments):
-        self.log(Logger.ERROR, message, *arguments)
-</code></pre>
+    <span class="k">def</span> <span class="nf">error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">Logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">)</span>
+</pre></div>
+
     </div>
 
   <hr>
@@ -1654,45 +1719,46 @@ def some_initializer(): pass</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.init', this);">Show source.</a></p>
     <div id="source-pybuilder.core.init" class="source">
-      <pre><code>def init(*possible_callable, **additional_arguments):
-    """
-    Decorator for functions that wish to perform initialization steps.
-    The decorated functions are called "initializers".
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="o">*</span><span class="n">possible_callable</span><span class="p">,</span> <span class="o">**</span><span class="n">additional_arguments</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Decorator for functions that wish to perform initialization steps.</span>
+<span class="sd">    The decorated functions are called &quot;initializers&quot;.</span>
 
-    Initializers are executed after all plugins and projects have been loaded
-    but before any task is executed.
+<span class="sd">    Initializers are executed after all plugins and projects have been loaded</span>
+<span class="sd">    but before any task is executed.</span>
 
-    Initializers may take an additional named argument "environments" which should contain a string or list of strings
-    naming the environments this initializer applies for.
+<span class="sd">    Initializers may take an additional named argument &quot;environments&quot; which should contain a string or list of strings</span>
+<span class="sd">    naming the environments this initializer applies for.</span>
 
-    Examples:
+<span class="sd">    Examples:</span>
 
-    @init
-    def some_initializer(): pass
+<span class="sd">    @init</span>
+<span class="sd">    def some_initializer(): pass</span>
 
-    @init()
-    def some_initializer(): pass
+<span class="sd">    @init()</span>
+<span class="sd">    def some_initializer(): pass</span>
 
-    @init(environments="spam")
-    def some_initializer(): pass
+<span class="sd">    @init(environments=&quot;spam&quot;)</span>
+<span class="sd">    def some_initializer(): pass</span>
 
-    @init(environments=["spam", "eggs"])
-    def some_initializer(): pass
-    """
+<span class="sd">    @init(environments=[&quot;spam&quot;, &quot;eggs&quot;])</span>
+<span class="sd">    def some_initializer(): pass</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-    def do_decoration(callable):
-        setattr(callable, INITIALIZER_ATTRIBUTE, True)
+    <span class="k">def</span> <span class="nf">do_decoration</span><span class="p">(</span><span class="nb">callable</span><span class="p">):</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="nb">callable</span><span class="p">,</span> <span class="n">INITIALIZER_ATTRIBUTE</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
 
-        if "environments" in additional_arguments:
-            setattr(callable, ENVIRONMENTS_ATTRIBUTE, as_list(additional_arguments["environments"]))
+        <span class="k">if</span> <span class="s">&quot;environments&quot;</span> <span class="ow">in</span> <span class="n">additional_arguments</span><span class="p">:</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="nb">callable</span><span class="p">,</span> <span class="n">ENVIRONMENTS_ATTRIBUTE</span><span class="p">,</span> <span class="n">as_list</span><span class="p">(</span><span class="n">additional_arguments</span><span class="p">[</span><span class="s">&quot;environments&quot;</span><span class="p">]))</span>
 
-        return callable
+        <span class="k">return</span> <span class="nb">callable</span>
 
-    if possible_callable:
-        return do_decoration(possible_callable[0])
+    <span class="k">if</span> <span class="n">possible_callable</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">do_decoration</span><span class="p">(</span><span class="n">possible_callable</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
-    return do_decoration
-</code></pre>
+    <span class="k">return</span> <span class="n">do_decoration</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1714,23 +1780,24 @@ a string argument, which overrides the default name.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.task', this);">Show source.</a></p>
     <div id="source-pybuilder.core.task" class="source">
-      <pre><code>def task(callable_or_string):
-    """
-    Decorator for functions that should be used as tasks. Tasks are the main
-    building blocks of projects.
-    You can use this decorator either plain (no argument) or with
-    a string argument, which overrides the default name.
-    """
-    if isinstance(callable_or_string, str):
-        def set_name_and_task_attribute(callable):
-            setattr(callable, TASK_ATTRIBUTE, True)
-            setattr(callable, NAME_ATTRIBUTE, callable_or_string)
-            return callable
-        return set_name_and_task_attribute
-    else:
-        setattr(callable_or_string, TASK_ATTRIBUTE, True)
-        return callable_or_string
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">task</span><span class="p">(</span><span class="n">callable_or_string</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Decorator for functions that should be used as tasks. Tasks are the main</span>
+<span class="sd">    building blocks of projects.</span>
+<span class="sd">    You can use this decorator either plain (no argument) or with</span>
+<span class="sd">    a string argument, which overrides the default name.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">callable_or_string</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">set_name_and_task_attribute</span><span class="p">(</span><span class="nb">callable</span><span class="p">):</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="nb">callable</span><span class="p">,</span> <span class="n">TASK_ATTRIBUTE</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="nb">callable</span><span class="p">,</span> <span class="n">NAME_ATTRIBUTE</span><span class="p">,</span> <span class="n">callable_or_string</span><span class="p">)</span>
+            <span class="k">return</span> <span class="nb">callable</span>
+        <span class="k">return</span> <span class="n">set_name_and_task_attribute</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">callable_or_string</span><span class="p">,</span> <span class="n">TASK_ATTRIBUTE</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">callable_or_string</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1748,12 +1815,13 @@ a string argument, which overrides the default name.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.use_plugin', this);">Show source.</a></p>
     <div id="source-pybuilder.core.use_plugin" class="source">
-      <pre><code>def use_plugin(name):
-    from pybuilder.reactor import Reactor
-    reactor = Reactor.current_instance()
-    if reactor is not None:
-        reactor.require_plugin(name)
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">use_plugin</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">pybuilder.reactor</span> <span class="kn">import</span> <span class="n">Reactor</span>
+    <span class="n">reactor</span> <span class="o">=</span> <span class="n">Reactor</span><span class="o">.</span><span class="n">current_instance</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">reactor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">reactor</span><span class="o">.</span><span class="n">require_plugin</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1769,12 +1837,13 @@ a string argument, which overrides the default name.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.Author', this);">Show source.</a></p>
     <div id="source-pybuilder.core.Author" class="source">
-      <pre><code>class Author(object):
-    def __init__(self, name, email=None, roles=None):
-        self.name = name
-        self.email = email
-        self.roles = roles or []
-</code></pre>
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">Author</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">roles</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="n">email</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">roles</span> <span class="o">=</span> <span class="n">roles</span> <span class="ow">or</span> <span class="p">[]</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1829,11 +1898,12 @@ a string argument, which overrides the default name.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.Author.__init__', this);">Show source.</a></p>
     <div id="source-pybuilder.core.Author.__init__" class="source">
-      <pre><code>def __init__(self, name, email=None, roles=None):
-    self.name = name
-    self.email = email
-    self.roles = roles or []
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">roles</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="n">email</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">roles</span> <span class="o">=</span> <span class="n">roles</span> <span class="ow">or</span> <span class="p">[]</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1849,20 +1919,21 @@ a string argument, which overrides the default name.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.BaseAction', this);">Show source.</a></p>
     <div id="source-pybuilder.core.BaseAction" class="source">
-      <pre><code>class BaseAction(object):
-    def __init__(self, attribute, only_once, tasks):
-        self.tasks = tasks
-        self.attribute = attribute
-        self.only_once = only_once
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">BaseAction</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">,</span> <span class="n">only_once</span><span class="p">,</span> <span class="n">tasks</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span> <span class="o">=</span> <span class="n">tasks</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attribute</span> <span class="o">=</span> <span class="n">attribute</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">only_once</span> <span class="o">=</span> <span class="n">only_once</span>
 
-    def __call__(self, callable):
-        setattr(callable, ACTION_ATTRIBUTE, True)
-        setattr(callable, self.attribute, self.tasks)
-        if self.only_once:
-            setattr(callable, ONLY_ONCE_ATTRIBUTE, True)
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">callable</span><span class="p">):</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="nb">callable</span><span class="p">,</span> <span class="n">ACTION_ATTRIBUTE</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="nb">callable</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">attribute</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">only_once</span><span class="p">:</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="nb">callable</span><span class="p">,</span> <span class="n">ONLY_ONCE_ATTRIBUTE</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
 
-        return callable
-</code></pre>
+        <span class="k">return</span> <span class="nb">callable</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1917,11 +1988,12 @@ a string argument, which overrides the default name.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.BaseAction.__init__', this);">Show source.</a></p>
     <div id="source-pybuilder.core.BaseAction.__init__" class="source">
-      <pre><code>def __init__(self, attribute, only_once, tasks):
-    self.tasks = tasks
-    self.attribute = attribute
-    self.only_once = only_once
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">,</span> <span class="n">only_once</span><span class="p">,</span> <span class="n">tasks</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span> <span class="o">=</span> <span class="n">tasks</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">attribute</span> <span class="o">=</span> <span class="n">attribute</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">only_once</span> <span class="o">=</span> <span class="n">only_once</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1940,29 +2012,30 @@ method from class Project to add a dependency to a project.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.Dependency', this);">Show source.</a></p>
     <div id="source-pybuilder.core.Dependency" class="source">
-      <pre><code>class Dependency(object):
-    """
-    Defines a dependency to another module. Use the
-        depends_on
-    method from class Project to add a dependency to a project.
-    """
-    def __init__(self, name, version=None, url=None):
-        self.name = name
-        self.version = version
-        self.url = url
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">Dependency</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Defines a dependency to another module. Use the</span>
+<span class="sd">        depends_on</span>
+<span class="sd">    method from class Project to add a dependency to a project.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">version</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">url</span>
 
-    def __eq__(self, other):
-        return self.name == other.name and self.version == other.version and self.url == other.url
+    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">name</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">version</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">url</span>
 
-    def __ne__(self, other):
-        return not(self == other)
+    <span class="k">def</span> <span class="nf">__ne__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="ow">not</span><span class="p">(</span><span class="bp">self</span> <span class="o">==</span> <span class="n">other</span><span class="p">)</span>
 
-    def __hash__(self):
-        return 13 * hash(self.name) + 17 * hash(self.version)
+    <span class="k">def</span> <span class="nf">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">13</span> <span class="o">*</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="o">+</span> <span class="mi">17</span> <span class="o">*</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
 
-    def __lt__(self, other):
-        return self.name < other.name
-</code></pre>
+    <span class="k">def</span> <span class="nf">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">&lt;</span> <span class="n">other</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2017,11 +2090,12 @@ method from class Project to add a dependency to a project.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.Dependency.__init__', this);">Show source.</a></p>
     <div id="source-pybuilder.core.Dependency.__init__" class="source">
-      <pre><code>def __init__(self, name, version=None, url=None):
-    self.name = name
-    self.version = version
-    self.url = url
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">version</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">url</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2037,39 +2111,40 @@ method from class Project to add a dependency to a project.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.Logger', this);">Show source.</a></p>
     <div id="source-pybuilder.core.Logger" class="source">
-      <pre><code>class Logger(object):
-    DEBUG = 1
-    INFO = 2
-    WARN = 3
-    ERROR = 4
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">Logger</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">DEBUG</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">INFO</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">WARN</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">ERROR</span> <span class="o">=</span> <span class="mi">4</span>
 
-    def __init__(self, threshold=INFO):
-        self.threshold = threshold
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="n">INFO</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span> <span class="o">=</span> <span class="n">threshold</span>
 
-    def _do_log(self, level, message, *arguments):
-        pass
+    <span class="k">def</span> <span class="nf">_do_log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">):</span>
+        <span class="k">pass</span>
 
-    def _format_message(self, message, *arguments):
-        if arguments:
-            return message % arguments
-        return message
+    <span class="k">def</span> <span class="nf">_format_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">arguments</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">message</span> <span class="o">%</span> <span class="n">arguments</span>
+        <span class="k">return</span> <span class="n">message</span>
 
-    def log(self, level, message, *arguments):
-        if level >= self.threshold:
-            self._do_log(level, message, *arguments)
+    <span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">level</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_do_log</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">)</span>
 
-    def debug(self, message, *arguments):
-        self.log(Logger.DEBUG, message, *arguments)
+    <span class="k">def</span> <span class="nf">debug</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">Logger</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">)</span>
 
-    def info(self, message, *arguments):
-        self.log(Logger.INFO, message, *arguments)
+    <span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">Logger</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">)</span>
 
-    def warn(self, message, *arguments):
-        self.log(Logger.WARN, message, *arguments)
+    <span class="k">def</span> <span class="nf">warn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">Logger</span><span class="o">.</span><span class="n">WARN</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">)</span>
 
-    def error(self, message, *arguments):
-        self.log(Logger.ERROR, message, *arguments)
-</code></pre>
+    <span class="k">def</span> <span class="nf">error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">Logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2145,9 +2220,10 @@ method from class Project to add a dependency to a project.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.Logger.__init__', this);">Show source.</a></p>
     <div id="source-pybuilder.core.Logger.__init__" class="source">
-      <pre><code>def __init__(self, threshold=INFO):
-    self.threshold = threshold
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="n">INFO</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span> <span class="o">=</span> <span class="n">threshold</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2165,9 +2241,10 @@ method from class Project to add a dependency to a project.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.Logger.debug', this);">Show source.</a></p>
     <div id="source-pybuilder.core.Logger.debug" class="source">
-      <pre><code>def debug(self, message, *arguments):
-    self.log(Logger.DEBUG, message, *arguments)
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">debug</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">Logger</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2185,9 +2262,10 @@ method from class Project to add a dependency to a project.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.Logger.error', this);">Show source.</a></p>
     <div id="source-pybuilder.core.Logger.error" class="source">
-      <pre><code>def error(self, message, *arguments):
-    self.log(Logger.ERROR, message, *arguments)
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">Logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2205,9 +2283,10 @@ method from class Project to add a dependency to a project.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.Logger.info', this);">Show source.</a></p>
     <div id="source-pybuilder.core.Logger.info" class="source">
-      <pre><code>def info(self, message, *arguments):
-    self.log(Logger.INFO, message, *arguments)
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">Logger</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2225,10 +2304,11 @@ method from class Project to add a dependency to a project.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.Logger.log', this);">Show source.</a></p>
     <div id="source-pybuilder.core.Logger.log" class="source">
-      <pre><code>def log(self, level, message, *arguments):
-    if level >= self.threshold:
-        self._do_log(level, message, *arguments)
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">level</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_do_log</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2246,9 +2326,10 @@ method from class Project to add a dependency to a project.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.Logger.warn', this);">Show source.</a></p>
     <div id="source-pybuilder.core.Logger.warn" class="source">
-      <pre><code>def warn(self, message, *arguments):
-    self.log(Logger.WARN, message, *arguments)
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">warn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">Logger</span><span class="o">.</span><span class="n">WARN</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2266,184 +2347,185 @@ as well as some convenience methods to access these properties.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.Project', this);">Show source.</a></p>
     <div id="source-pybuilder.core.Project" class="source">
-      <pre><code>class Project(object):
-    """
-    Descriptor for a project to be built. A project has a number of attributes
-    as well as some convenience methods to access these properties.
-    """
-    def __init__(self, basedir, version="1.0-SNAPSHOT", name=None):
-        self.name = name
-        self.version = version
-        self.basedir = basedir
-        if not self.name:
-            self.name = os.path.basename(basedir)
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">Project</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Descriptor for a project to be built. A project has a number of attributes</span>
+<span class="sd">    as well as some convenience methods to access these properties.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">basedir</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s">&quot;1.0-SNAPSHOT&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">version</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">basedir</span> <span class="o">=</span> <span class="n">basedir</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">basedir</span><span class="p">)</span>
 
-        self.default_task = None
+        <span class="bp">self</span><span class="o">.</span><span class="n">default_task</span> <span class="o">=</span> <span class="bp">None</span>
 
-        self.summary = ""
-        self.home_page = ""
-        self.description = ""
-        self.author = ""
-        self.authors = []
-        self.license = ""
-        self.url = ""
-        self._properties = {"verbose": False}
-        self._install_dependencies = set()
-        self._build_dependencies = set()
-        self._manifest_included_files = []
-        self._package_data = {}
-        self._files_to_install = []
+        <span class="bp">self</span><span class="o">.</span><span class="n">summary</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">home_page</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">authors</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">license</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_properties</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;verbose&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_install_dependencies</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_build_dependencies</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_manifest_included_files</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_package_data</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_files_to_install</span> <span class="o">=</span> <span class="p">[]</span>
 
-    def __str__(self):
-        return "[Project name=%s basedir=%s]" % (self.name, self.basedir)
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&quot;[Project name=</span><span class="si">%s</span><span class="s"> basedir=</span><span class="si">%s</span><span class="s">]&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">basedir</span><span class="p">)</span>
 
-    def validate(self):
-        """
-        Validates the project returning a list of validation error messages if the project is not valid.
-        Returns an empty list if the project is valid.
-        """
-        result = self.validate_dependencies()
+    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Validates the project returning a list of validation error messages if the project is not valid.</span>
+<span class="sd">        Returns an empty list if the project is valid.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_dependencies</span><span class="p">()</span>
 
-        return result
+        <span class="k">return</span> <span class="n">result</span>
 
-    def validate_dependencies(self):
-        result = []
+    <span class="k">def</span> <span class="nf">validate_dependencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
 
-        build_dependencies_found = {}
+        <span class="n">build_dependencies_found</span> <span class="o">=</span> <span class="p">{}</span>
 
-        for dependency in self.build_dependencies:
-            if dependency.name in build_dependencies_found:
-                if build_dependencies_found[dependency.name] == 1:
-                    result.append("Build dependency '%s' has been defined multiple times." % dependency.name)
-                build_dependencies_found[dependency.name] += 1
-            else:
-                build_dependencies_found[dependency.name] = 1
+        <span class="k">for</span> <span class="n">dependency</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_dependencies</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">dependency</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">build_dependencies_found</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">build_dependencies_found</span><span class="p">[</span><span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;Build dependency &#39;</span><span class="si">%s</span><span class="s">&#39; has been defined multiple times.&quot;</span> <span class="o">%</span> <span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+                <span class="n">build_dependencies_found</span><span class="p">[</span><span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">build_dependencies_found</span><span class="p">[</span><span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 
-        runtime_dependencies_found = {}
+        <span class="n">runtime_dependencies_found</span> <span class="o">=</span> <span class="p">{}</span>
 
-        for dependency in self.dependencies:
-            if dependency.name in runtime_dependencies_found:
-                if runtime_dependencies_found[dependency.name] == 1:
-                    result.append("Runtime dependency '%s' has been defined multiple times." % dependency.name)
-                runtime_dependencies_found[dependency.name] += 1
-            else:
-                runtime_dependencies_found[dependency.name] = 1
-            if dependency.name in build_dependencies_found:
-                result.append("Runtime dependency '%s' has also been given as build dependency." % dependency.name)
+        <span class="k">for</span> <span class="n">dependency</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dependencies</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">dependency</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">runtime_dependencies_found</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">runtime_dependencies_found</span><span class="p">[</span><span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;Runtime dependency &#39;</span><span class="si">%s</span><span class="s">&#39; has been defined multiple times.&quot;</span> <span class="o">%</span> <span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+                <span class="n">runtime_dependencies_found</span><span class="p">[</span><span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">runtime_dependencies_found</span><span class="p">[</span><span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">dependency</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">build_dependencies_found</span><span class="p">:</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;Runtime dependency &#39;</span><span class="si">%s</span><span class="s">&#39; has also been given as build dependency.&quot;</span> <span class="o">%</span> <span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
-        return result
+        <span class="k">return</span> <span class="n">result</span>
 
-    @property
-    def properties(self):
-        result = self._properties
-        result["basedir"] = self.basedir
-        return result
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">properties</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_properties</span>
+        <span class="n">result</span><span class="p">[</span><span class="s">&quot;basedir&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">basedir</span>
+        <span class="k">return</span> <span class="n">result</span>
 
-    @property
-    def dependencies(self):
-        return list(sorted(self._install_dependencies))
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">dependencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_install_dependencies</span><span class="p">))</span>
 
-    @property
-    def build_dependencies(self):
-        return list(sorted(self._build_dependencies))
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">build_dependencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_build_dependencies</span><span class="p">))</span>
 
-    def depends_on(self, name, version=None, url=None):
-        self._install_dependencies.add(Dependency(name, version, url))
+    <span class="k">def</span> <span class="nf">depends_on</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_install_dependencies</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dependency</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">url</span><span class="p">))</span>
 
-    def build_depends_on(self, name, version=None, url=None):
-        self._build_dependencies.add(Dependency(name, version, url))
+    <span class="k">def</span> <span class="nf">build_depends_on</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_build_dependencies</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dependency</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">url</span><span class="p">))</span>
 
-    @property
-    def manifest_included_files(self):
-        return self._manifest_included_files
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">manifest_included_files</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_manifest_included_files</span>
 
-    def _manifest_include(self, glob_pattern):
-        if not glob_pattern or glob_pattern.strip() == "":
-            raise ValueError("Missing glob_pattern argument.")
+    <span class="k">def</span> <span class="nf">_manifest_include</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">glob_pattern</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">glob_pattern</span> <span class="ow">or</span> <span class="n">glob_pattern</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s">&quot;&quot;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Missing glob_pattern argument.&quot;</span><span class="p">)</span>
 
-        self._manifest_included_files.append(glob_pattern)
+        <span class="bp">self</span><span class="o">.</span><span class="n">_manifest_included_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">glob_pattern</span><span class="p">)</span>
 
-    @property
-    def package_data(self):
-        return self._package_data
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">package_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_package_data</span>
 
-    def include_file(self, package_name, filename):
-        if not package_name or package_name.strip() == "":
-            raise ValueError("Missing argument package name.")
+    <span class="k">def</span> <span class="nf">include_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">package_name</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">package_name</span> <span class="ow">or</span> <span class="n">package_name</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s">&quot;&quot;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Missing argument package name.&quot;</span><span class="p">)</span>
 
-        if not filename or filename.strip() == "":
-            raise ValueError("Missing argument filename.")
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">filename</span> <span class="ow">or</span> <span class="n">filename</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s">&quot;&quot;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Missing argument filename.&quot;</span><span class="p">)</span>
 
-        full_filename = os.path.join(package_name, filename)
-        self._manifest_include(full_filename)
+        <span class="n">full_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">package_name</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_manifest_include</span><span class="p">(</span><span class="n">full_filename</span><span class="p">)</span>
 
-        if package_name not in self._package_data:
-            self._package_data[package_name] = [filename]
-            return
-        self._package_data[package_name].append(filename)
+        <span class="k">if</span> <span class="n">package_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_package_data</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_package_data</span><span class="p">[</span><span class="n">package_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">filename</span><span class="p">]</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_package_data</span><span class="p">[</span><span class="n">package_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 
-    @property
-    def files_to_install(self):
-        return self._files_to_install
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">files_to_install</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_files_to_install</span>
 
-    def install_file(self, destination, filename):
-        if not destination:
-            raise ValueError("Missing argument destination")
+    <span class="k">def</span> <span class="nf">install_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">destination</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Missing argument destination&quot;</span><span class="p">)</span>
 
-        if not filename or filename.strip() == "":
-            raise ValueError("Missing argument filename")
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">filename</span> <span class="ow">or</span> <span class="n">filename</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s">&quot;&quot;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Missing argument filename&quot;</span><span class="p">)</span>
 
-        current_tuple = None
-        for installation_tuple in self.files_to_install:
-            destination_name = installation_tuple[0]
+        <span class="n">current_tuple</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">for</span> <span class="n">installation_tuple</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">files_to_install</span><span class="p">:</span>
+            <span class="n">destination_name</span> <span class="o">=</span> <span class="n">installation_tuple</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-            if destination_name == destination:
-                    current_tuple = installation_tuple
+            <span class="k">if</span> <span class="n">destination_name</span> <span class="o">==</span> <span class="n">destination</span><span class="p">:</span>
+                    <span class="n">current_tuple</span> <span class="o">=</span> <span class="n">installation_tuple</span>
 
-        if current_tuple:
-            list_of_files_within_tuple = current_tuple[1]
-            list_of_files_within_tuple.append(filename)
-        else:
-            initial_tuple = (destination, [filename])
-            self.files_to_install.append(initial_tuple)
+        <span class="k">if</span> <span class="n">current_tuple</span><span class="p">:</span>
+            <span class="n">list_of_files_within_tuple</span> <span class="o">=</span> <span class="n">current_tuple</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">list_of_files_within_tuple</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">initial_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="n">destination</span><span class="p">,</span> <span class="p">[</span><span class="n">filename</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">files_to_install</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">initial_tuple</span><span class="p">)</span>
 
-        self._manifest_include(filename)
+        <span class="bp">self</span><span class="o">.</span><span class="n">_manifest_include</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 
-    def expand(self, format_string):
-        previous = None
-        result = format_string
-        while previous != result:
-            try:
-                previous = result
-                result = string.Template(result).substitute(self.properties)
-            except KeyError as e:
-                raise MissingPropertyException(e)
-        return result
+    <span class="k">def</span> <span class="nf">expand</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">format_string</span><span class="p">):</span>
+        <span class="n">previous</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">format_string</span>
+        <span class="k">while</span> <span class="n">previous</span> <span class="o">!=</span> <span class="n">result</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">previous</span> <span class="o">=</span> <span class="n">result</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">Template</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="o">.</span><span class="n">substitute</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">MissingPropertyException</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
 
-    def expand_path(self, format_string, *additional_path_elements):
-        elements = [self.basedir]
-        elements += self.expand(format_string).split(PATH_SEPARATOR)
-        elements += list(additional_path_elements)
-        return os.path.join(*elements)
+    <span class="k">def</span> <span class="nf">expand_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">format_string</span><span class="p">,</span> <span class="o">*</span><span class="n">additional_path_elements</span><span class="p">):</span>
+        <span class="n">elements</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">basedir</span><span class="p">]</span>
+        <span class="n">elements</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">format_string</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">PATH_SEPARATOR</span><span class="p">)</span>
+        <span class="n">elements</span> <span class="o">+=</span> <span class="nb">list</span><span class="p">(</span><span class="n">additional_path_elements</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="o">*</span><span class="n">elements</span><span class="p">)</span>
 
-    def get_property(self, key, default_value=None):
-        return self.properties.get(key, default_value)
+    <span class="k">def</span> <span class="nf">get_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">default_value</span><span class="p">)</span>
 
-    def get_mandatory_property(self, key):
-        if not self.has_property(key):
-            raise MissingPropertyException(key)
-        return self.get_property(key)
+    <span class="k">def</span> <span class="nf">get_mandatory_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_property</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">MissingPropertyException</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 
-    def has_property(self, key):
-        return key in self.properties
+    <span class="k">def</span> <span class="nf">has_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span>
 
-    def set_property(self, key, value):
-        self.properties[key] = value
+    <span class="k">def</span> <span class="nf">set_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
 
-    def set_property_if_unset(self, key, value):
-        if not self.has_property(key):
-            self.set_property(key, value)
-</code></pre>
+    <span class="k">def</span> <span class="nf">set_property_if_unset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_property</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2638,27 +2720,28 @@ as well as some convenience methods to access these properties.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.Project.__init__', this);">Show source.</a></p>
     <div id="source-pybuilder.core.Project.__init__" class="source">
-      <pre><code>def __init__(self, basedir, version="1.0-SNAPSHOT", name=None):
-    self.name = name
-    self.version = version
-    self.basedir = basedir
-    if not self.name:
-        self.name = os.path.basename(basedir)
-    self.default_task = None
-    self.summary = ""
-    self.home_page = ""
-    self.description = ""
-    self.author = ""
-    self.authors = []
-    self.license = ""
-    self.url = ""
-    self._properties = {"verbose": False}
-    self._install_dependencies = set()
-    self._build_dependencies = set()
-    self._manifest_included_files = []
-    self._package_data = {}
-    self._files_to_install = []
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">basedir</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s">&quot;1.0-SNAPSHOT&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">version</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">basedir</span> <span class="o">=</span> <span class="n">basedir</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">basedir</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">default_task</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">summary</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">home_page</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">authors</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">license</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_properties</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;verbose&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">}</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_install_dependencies</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_build_dependencies</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_manifest_included_files</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_package_data</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_files_to_install</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2676,9 +2759,10 @@ as well as some convenience methods to access these properties.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.Project.build_depends_on', this);">Show source.</a></p>
     <div id="source-pybuilder.core.Project.build_depends_on" class="source">
-      <pre><code>def build_depends_on(self, name, version=None, url=None):
-    self._build_dependencies.add(Dependency(name, version, url))
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">build_depends_on</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_build_dependencies</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dependency</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">url</span><span class="p">))</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2696,9 +2780,10 @@ as well as some convenience methods to access these properties.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.Project.depends_on', this);">Show source.</a></p>
     <div id="source-pybuilder.core.Project.depends_on" class="source">
-      <pre><code>def depends_on(self, name, version=None, url=None):
-    self._install_dependencies.add(Dependency(name, version, url))
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">depends_on</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_install_dependencies</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dependency</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">url</span><span class="p">))</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2716,17 +2801,18 @@ as well as some convenience methods to access these properties.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.Project.expand', this);">Show source.</a></p>
     <div id="source-pybuilder.core.Project.expand" class="source">
-      <pre><code>def expand(self, format_string):
-    previous = None
-    result = format_string
-    while previous != result:
-        try:
-            previous = result
-            result = string.Template(result).substitute(self.properties)
-        except KeyError as e:
-            raise MissingPropertyException(e)
-    return result
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">expand</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">format_string</span><span class="p">):</span>
+    <span class="n">previous</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">format_string</span>
+    <span class="k">while</span> <span class="n">previous</span> <span class="o">!=</span> <span class="n">result</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">previous</span> <span class="o">=</span> <span class="n">result</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">Template</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="o">.</span><span class="n">substitute</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">MissingPropertyException</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2744,12 +2830,13 @@ as well as some convenience methods to access these properties.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.Project.expand_path', this);">Show source.</a></p>
     <div id="source-pybuilder.core.Project.expand_path" class="source">
-      <pre><code>def expand_path(self, format_string, *additional_path_elements):
-    elements = [self.basedir]
-    elements += self.expand(format_string).split(PATH_SEPARATOR)
-    elements += list(additional_path_elements)
-    return os.path.join(*elements)
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">expand_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">format_string</span><span class="p">,</span> <span class="o">*</span><span class="n">additional_path_elements</span><span class="p">):</span>
+    <span class="n">elements</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">basedir</span><span class="p">]</span>
+    <span class="n">elements</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">format_string</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">PATH_SEPARATOR</span><span class="p">)</span>
+    <span class="n">elements</span> <span class="o">+=</span> <span class="nb">list</span><span class="p">(</span><span class="n">additional_path_elements</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="o">*</span><span class="n">elements</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2767,11 +2854,12 @@ as well as some convenience methods to access these properties.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.Project.get_mandatory_property', this);">Show source.</a></p>
     <div id="source-pybuilder.core.Project.get_mandatory_property" class="source">
-      <pre><code>def get_mandatory_property(self, key):
-    if not self.has_property(key):
-        raise MissingPropertyException(key)
-    return self.get_property(key)
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">get_mandatory_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_property</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">MissingPropertyException</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2789,9 +2877,10 @@ as well as some convenience methods to access these properties.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.Project.get_property', this);">Show source.</a></p>
     <div id="source-pybuilder.core.Project.get_property" class="source">
-      <pre><code>def get_property(self, key, default_value=None):
-    return self.properties.get(key, default_value)
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">get_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">default_value</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2809,9 +2898,10 @@ as well as some convenience methods to access these properties.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.Project.has_property', this);">Show source.</a></p>
     <div id="source-pybuilder.core.Project.has_property" class="source">
-      <pre><code>def has_property(self, key):
-    return key in self.properties
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">has_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2829,18 +2919,19 @@ as well as some convenience methods to access these properties.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.Project.include_file', this);">Show source.</a></p>
     <div id="source-pybuilder.core.Project.include_file" class="source">
-      <pre><code>def include_file(self, package_name, filename):
-    if not package_name or package_name.strip() == "":
-        raise ValueError("Missing argument package name.")
-    if not filename or filename.strip() == "":
-        raise ValueError("Missing argument filename.")
-    full_filename = os.path.join(package_name, filename)
-    self._manifest_include(full_filename)
-    if package_name not in self._package_data:
-        self._package_data[package_name] = [filename]
-        return
-    self._package_data[package_name].append(filename)
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">include_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">package_name</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">package_name</span> <span class="ow">or</span> <span class="n">package_name</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s">&quot;&quot;</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Missing argument package name.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">filename</span> <span class="ow">or</span> <span class="n">filename</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s">&quot;&quot;</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Missing argument filename.&quot;</span><span class="p">)</span>
+    <span class="n">full_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">package_name</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_manifest_include</span><span class="p">(</span><span class="n">full_filename</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">package_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_package_data</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_package_data</span><span class="p">[</span><span class="n">package_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">filename</span><span class="p">]</span>
+        <span class="k">return</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_package_data</span><span class="p">[</span><span class="n">package_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2858,24 +2949,25 @@ as well as some convenience methods to access these properties.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.Project.install_file', this);">Show source.</a></p>
     <div id="source-pybuilder.core.Project.install_file" class="source">
-      <pre><code>def install_file(self, destination, filename):
-    if not destination:
-        raise ValueError("Missing argument destination")
-    if not filename or filename.strip() == "":
-        raise ValueError("Missing argument filename")
-    current_tuple = None
-    for installation_tuple in self.files_to_install:
-        destination_name = installation_tuple[0]
-        if destination_name == destination:
-                current_tuple = installation_tuple
-    if current_tuple:
-        list_of_files_within_tuple = current_tuple[1]
-        list_of_files_within_tuple.append(filename)
-    else:
-        initial_tuple = (destination, [filename])
-        self.files_to_install.append(initial_tuple)
-    self._manifest_include(filename)
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">install_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">destination</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Missing argument destination&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">filename</span> <span class="ow">or</span> <span class="n">filename</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s">&quot;&quot;</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Missing argument filename&quot;</span><span class="p">)</span>
+    <span class="n">current_tuple</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">for</span> <span class="n">installation_tuple</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">files_to_install</span><span class="p">:</span>
+        <span class="n">destination_name</span> <span class="o">=</span> <span class="n">installation_tuple</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">destination_name</span> <span class="o">==</span> <span class="n">destination</span><span class="p">:</span>
+                <span class="n">current_tuple</span> <span class="o">=</span> <span class="n">installation_tuple</span>
+    <span class="k">if</span> <span class="n">current_tuple</span><span class="p">:</span>
+        <span class="n">list_of_files_within_tuple</span> <span class="o">=</span> <span class="n">current_tuple</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">list_of_files_within_tuple</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">initial_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="n">destination</span><span class="p">,</span> <span class="p">[</span><span class="n">filename</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">files_to_install</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">initial_tuple</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_manifest_include</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2893,9 +2985,10 @@ as well as some convenience methods to access these properties.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.Project.set_property', this);">Show source.</a></p>
     <div id="source-pybuilder.core.Project.set_property" class="source">
-      <pre><code>def set_property(self, key, value):
-    self.properties[key] = value
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">set_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2913,10 +3006,11 @@ as well as some convenience methods to access these properties.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.Project.set_property_if_unset', this);">Show source.</a></p>
     <div id="source-pybuilder.core.Project.set_property_if_unset" class="source">
-      <pre><code>def set_property_if_unset(self, key, value):
-    if not self.has_property(key):
-        self.set_property(key, value)
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">set_property_if_unset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_property</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2936,14 +3030,15 @@ Returns an empty list if the project is valid.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.Project.validate', this);">Show source.</a></p>
     <div id="source-pybuilder.core.Project.validate" class="source">
-      <pre><code>def validate(self):
-    """
-    Validates the project returning a list of validation error messages if the project is not valid.
-    Returns an empty list if the project is valid.
-    """
-    result = self.validate_dependencies()
-    return result
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Validates the project returning a list of validation error messages if the project is not valid.</span>
+<span class="sd">    Returns an empty list if the project is valid.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_dependencies</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2961,28 +3056,29 @@ Returns an empty list if the project is valid.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.Project.validate_dependencies', this);">Show source.</a></p>
     <div id="source-pybuilder.core.Project.validate_dependencies" class="source">
-      <pre><code>def validate_dependencies(self):
-    result = []
-    build_dependencies_found = {}
-    for dependency in self.build_dependencies:
-        if dependency.name in build_dependencies_found:
-            if build_dependencies_found[dependency.name] == 1:
-                result.append("Build dependency '%s' has been defined multiple times." % dependency.name)
-            build_dependencies_found[dependency.name] += 1
-        else:
-            build_dependencies_found[dependency.name] = 1
-    runtime_dependencies_found = {}
-    for dependency in self.dependencies:
-        if dependency.name in runtime_dependencies_found:
-            if runtime_dependencies_found[dependency.name] == 1:
-                result.append("Runtime dependency '%s' has been defined multiple times." % dependency.name)
-            runtime_dependencies_found[dependency.name] += 1
-        else:
-            runtime_dependencies_found[dependency.name] = 1
-        if dependency.name in build_dependencies_found:
-            result.append("Runtime dependency '%s' has also been given as build dependency." % dependency.name)
-    return result
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">validate_dependencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">build_dependencies_found</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">dependency</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_dependencies</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">dependency</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">build_dependencies_found</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">build_dependencies_found</span><span class="p">[</span><span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;Build dependency &#39;</span><span class="si">%s</span><span class="s">&#39; has been defined multiple times.&quot;</span> <span class="o">%</span> <span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="n">build_dependencies_found</span><span class="p">[</span><span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">build_dependencies_found</span><span class="p">[</span><span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">runtime_dependencies_found</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">dependency</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dependencies</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">dependency</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">runtime_dependencies_found</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">runtime_dependencies_found</span><span class="p">[</span><span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;Runtime dependency &#39;</span><span class="si">%s</span><span class="s">&#39; has been defined multiple times.&quot;</span> <span class="o">%</span> <span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="n">runtime_dependencies_found</span><span class="p">[</span><span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">runtime_dependencies_found</span><span class="p">[</span><span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">dependency</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">build_dependencies_found</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;Runtime dependency &#39;</span><span class="si">%s</span><span class="s">&#39; has also been given as build dependency.&quot;</span> <span class="o">%</span> <span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -2998,10 +3094,11 @@ Returns an empty list if the project is valid.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.after', this);">Show source.</a></p>
     <div id="source-pybuilder.core.after" class="source">
-      <pre><code>class after(BaseAction):
-    def __init__(self, tasks, only_once=False):
-        super(after, self).__init__(AFTER_ATTRIBUTE, only_once, tasks)
-</code></pre>
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">after</span><span class="p">(</span><span class="n">BaseAction</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tasks</span><span class="p">,</span> <span class="n">only_once</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">after</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">AFTER_ATTRIBUTE</span><span class="p">,</span> <span class="n">only_once</span><span class="p">,</span> <span class="n">tasks</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -3073,9 +3170,10 @@ Returns an empty list if the project is valid.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.after.__init__', this);">Show source.</a></p>
     <div id="source-pybuilder.core.after.__init__" class="source">
-      <pre><code>def __init__(self, tasks, only_once=False):
-    super(after, self).__init__(AFTER_ATTRIBUTE, only_once, tasks)
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tasks</span><span class="p">,</span> <span class="n">only_once</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">after</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">AFTER_ATTRIBUTE</span><span class="p">,</span> <span class="n">only_once</span><span class="p">,</span> <span class="n">tasks</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -3091,10 +3189,11 @@ Returns an empty list if the project is valid.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.before', this);">Show source.</a></p>
     <div id="source-pybuilder.core.before" class="source">
-      <pre><code>class before(BaseAction):
-    def __init__(self, tasks, only_once=False):
-        super(before, self).__init__(BEFORE_ATTRIBUTE, only_once, tasks)
-</code></pre>
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">before</span><span class="p">(</span><span class="n">BaseAction</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tasks</span><span class="p">,</span> <span class="n">only_once</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">before</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">BEFORE_ATTRIBUTE</span><span class="p">,</span> <span class="n">only_once</span><span class="p">,</span> <span class="n">tasks</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -3166,9 +3265,10 @@ Returns an empty list if the project is valid.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.before.__init__', this);">Show source.</a></p>
     <div id="source-pybuilder.core.before.__init__" class="source">
-      <pre><code>def __init__(self, tasks, only_once=False):
-    super(before, self).__init__(BEFORE_ATTRIBUTE, only_once, tasks)
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tasks</span><span class="p">,</span> <span class="n">only_once</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">before</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">BEFORE_ATTRIBUTE</span><span class="p">,</span> <span class="n">only_once</span><span class="p">,</span> <span class="n">tasks</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -3184,14 +3284,15 @@ Returns an empty list if the project is valid.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.depends', this);">Show source.</a></p>
     <div id="source-pybuilder.core.depends" class="source">
-      <pre><code>class depends(object):
-    def __init__(self, *depends):
-        self._depends = depends
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">depends</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">depends</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_depends</span> <span class="o">=</span> <span class="n">depends</span>
 
-    def __call__(self, callable):
-        setattr(callable, DEPENDS_ATTRIBUTE, self._depends)
-        return callable
-</code></pre>
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">callable</span><span class="p">):</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="nb">callable</span><span class="p">,</span> <span class="n">DEPENDS_ATTRIBUTE</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_depends</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">callable</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -3215,9 +3316,10 @@ Returns an empty list if the project is valid.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.depends.__init__', this);">Show source.</a></p>
     <div id="source-pybuilder.core.depends.__init__" class="source">
-      <pre><code>def __init__(self, *depends):
-    self._depends = depends
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">depends</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_depends</span> <span class="o">=</span> <span class="n">depends</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -3233,14 +3335,15 @@ Returns an empty list if the project is valid.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.description', this);">Show source.</a></p>
     <div id="source-pybuilder.core.description" class="source">
-      <pre><code>class description(object):
-    def __init__(self, description):
-        self._description = description
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">description</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">description</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_description</span> <span class="o">=</span> <span class="n">description</span>
 
-    def __call__(self, callable):
-        setattr(callable, DESCRIPTION_ATTRIBUTE, self._description)
-        return callable
-</code></pre>
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">callable</span><span class="p">):</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="nb">callable</span><span class="p">,</span> <span class="n">DESCRIPTION_ATTRIBUTE</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_description</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">callable</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -3264,9 +3367,10 @@ Returns an empty list if the project is valid.</p></div>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.description.__init__', this);">Show source.</a></p>
     <div id="source-pybuilder.core.description.__init__" class="source">
-      <pre><code>def __init__(self, description):
-    self._description = description
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">description</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_description</span> <span class="o">=</span> <span class="n">description</span>
+</pre></div>
+
     </div>
 </div>
 

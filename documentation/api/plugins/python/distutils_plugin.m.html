@@ -793,6 +793,70 @@ table {
 
   </style>
 
+    <style type="text/css">
+    .codehilite .hll { background-color: #ffffcc }
+.codehilite  { background: #f8f8f8; }
+.codehilite .c { color: #408080; font-style: italic } /* Comment */
+.codehilite .err { border: 1px solid #FF0000 } /* Error */
+.codehilite .k { color: #008000; font-weight: bold } /* Keyword */
+.codehilite .o { color: #666666 } /* Operator */
+.codehilite .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.codehilite .cp { color: #BC7A00 } /* Comment.Preproc */
+.codehilite .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.codehilite .cs { color: #408080; font-style: italic } /* Comment.Special */
+.codehilite .gd { color: #A00000 } /* Generic.Deleted */
+.codehilite .ge { font-style: italic } /* Generic.Emph */
+.codehilite .gr { color: #FF0000 } /* Generic.Error */
+.codehilite .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.codehilite .gi { color: #00A000 } /* Generic.Inserted */
+.codehilite .go { color: #888888 } /* Generic.Output */
+.codehilite .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.codehilite .gs { font-weight: bold } /* Generic.Strong */
+.codehilite .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.codehilite .gt { color: #0044DD } /* Generic.Traceback */
+.codehilite .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.codehilite .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.codehilite .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.codehilite .kp { color: #008000 } /* Keyword.Pseudo */
+.codehilite .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.codehilite .kt { color: #B00040 } /* Keyword.Type */
+.codehilite .m { color: #666666 } /* Literal.Number */
+.codehilite .s { color: #BA2121 } /* Literal.String */
+.codehilite .na { color: #7D9029 } /* Name.Attribute */
+.codehilite .nb { color: #008000 } /* Name.Builtin */
+.codehilite .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.codehilite .no { color: #880000 } /* Name.Constant */
+.codehilite .nd { color: #AA22FF } /* Name.Decorator */
+.codehilite .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.codehilite .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.codehilite .nf { color: #0000FF } /* Name.Function */
+.codehilite .nl { color: #A0A000 } /* Name.Label */
+.codehilite .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.codehilite .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.codehilite .nv { color: #19177C } /* Name.Variable */
+.codehilite .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.codehilite .w { color: #bbbbbb } /* Text.Whitespace */
+.codehilite .mf { color: #666666 } /* Literal.Number.Float */
+.codehilite .mh { color: #666666 } /* Literal.Number.Hex */
+.codehilite .mi { color: #666666 } /* Literal.Number.Integer */
+.codehilite .mo { color: #666666 } /* Literal.Number.Oct */
+.codehilite .sb { color: #BA2121 } /* Literal.String.Backtick */
+.codehilite .sc { color: #BA2121 } /* Literal.String.Char */
+.codehilite .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.codehilite .s2 { color: #BA2121 } /* Literal.String.Double */
+.codehilite .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.codehilite .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.codehilite .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.codehilite .sx { color: #008000 } /* Literal.String.Other */
+.codehilite .sr { color: #BB6688 } /* Literal.String.Regex */
+.codehilite .s1 { color: #BA2121 } /* Literal.String.Single */
+.codehilite .ss { color: #19177C } /* Literal.String.Symbol */
+.codehilite .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.codehilite .vc { color: #19177C } /* Name.Variable.Class */
+.codehilite .vg { color: #19177C } /* Name.Variable.Global */
+.codehilite .vi { color: #19177C } /* Name.Variable.Instance */
+.codehilite .il { color: #666666 } /* Literal.Number.Integer.Long */
+    </style>
 
   <style type="text/css">
   
@@ -918,241 +982,242 @@ table {
   
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.distutils_plugin', this);">Show source.</a></p>
     <div id="source-pybuilder.plugins.python.distutils_plugin" class="source">
-      <pre><code>#  This file is part of PyBuilder
-#
-#  Copyright 2011-2014 PyBuilder Team
-#
-#  Licensed under the Apache License, Version 2.0 (the "License");
-#  you may not use this file except in compliance with the License.
-#  You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-#  Unless required by applicable law or agreed to in writing, software
-#  distributed under the License is distributed on an "AS IS" BASIS,
-#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-#  See the License for the specific language governing permissions and
-#  limitations under the License.
+      <div class="codehilite"><pre><span class="c">#  This file is part of PyBuilder</span>
+<span class="c">#</span>
+<span class="c">#  Copyright 2011-2014 PyBuilder Team</span>
+<span class="c">#</span>
+<span class="c">#  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c">#  you may not use this file except in compliance with the License.</span>
+<span class="c">#  You may obtain a copy of the License at</span>
+<span class="c">#</span>
+<span class="c">#      http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c">#</span>
+<span class="c">#  Unless required by applicable law or agreed to in writing, software</span>
+<span class="c">#  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c">#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c">#  See the License for the specific language governing permissions and</span>
+<span class="c">#  limitations under the License.</span>
 
-import os
-import string
-import subprocess
-import sys
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">import</span> <span class="nn">sys</span>
 
-try:
-    from StringIO import StringIO
-except (ImportError) as e:
-    from io import StringIO
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">StringIO</span> <span class="kn">import</span> <span class="n">StringIO</span>
+<span class="k">except</span> <span class="p">(</span><span class="ne">ImportError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
 
-from pybuilder.core import after, before, use_plugin, init
-from pybuilder.errors import BuildFailedException
-from pybuilder.utils import as_list
+<span class="kn">from</span> <span class="nn">pybuilder.core</span> <span class="kn">import</span> <span class="n">after</span><span class="p">,</span> <span class="n">before</span><span class="p">,</span> <span class="n">use_plugin</span><span class="p">,</span> <span class="n">init</span>
+<span class="kn">from</span> <span class="nn">pybuilder.errors</span> <span class="kn">import</span> <span class="n">BuildFailedException</span>
+<span class="kn">from</span> <span class="nn">pybuilder.utils</span> <span class="kn">import</span> <span class="n">as_list</span>
 
-from .setuptools_plugin_helper import build_dependency_version_string
+<span class="kn">from</span> <span class="nn">.setuptools_plugin_helper</span> <span class="kn">import</span> <span class="n">build_dependency_version_string</span>
 
-use_plugin("python.core")
+<span class="n">use_plugin</span><span class="p">(</span><span class="s">&quot;python.core&quot;</span><span class="p">)</span>
 
-DATA_FILES_PROPERTY = "distutils_data_files"
-SETUP_TEMPLATE = string.Template("""#!/usr/bin/env python
+<span class="n">DATA_FILES_PROPERTY</span> <span class="o">=</span> <span class="s">&quot;distutils_data_files&quot;</span>
+<span class="n">SETUP_TEMPLATE</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">Template</span><span class="p">(</span><span class="s">&quot;&quot;&quot;#!/usr/bin/env python</span>
 
-from $module import setup
+<span class="s">from $module import setup</span>
 
-if __name__ == '__main__':
-    setup(
-          name = '$name',
-          version = '$version',
-          description = '''$summary''',
-          long_description = '''$description''',
-          author = "$author",
-          author_email = "$author_email",
-          license = '$license',
-          url = '$url',
-          scripts = $scripts,
-          packages = $packages,
-          classifiers = $classifiers,
-          $data_files   #  data files
-          $package_data   # package data
-          $dependencies
-          $dependency_links
-          zip_safe=True
-    )
-""")
-
-
-def default(value, default=""):
-    if value is None:
-        return default
-    return value
+<span class="s">if __name__ == &#39;__main__&#39;:</span>
+<span class="s">    setup(</span>
+<span class="s">          name = &#39;$name&#39;,</span>
+<span class="s">          version = &#39;$version&#39;,</span>
+<span class="s">          description = &#39;&#39;&#39;$summary&#39;&#39;&#39;,</span>
+<span class="s">          long_description = &#39;&#39;&#39;$description&#39;&#39;&#39;,</span>
+<span class="s">          author = &quot;$author&quot;,</span>
+<span class="s">          author_email = &quot;$author_email&quot;,</span>
+<span class="s">          license = &#39;$license&#39;,</span>
+<span class="s">          url = &#39;$url&#39;,</span>
+<span class="s">          scripts = $scripts,</span>
+<span class="s">          packages = $packages,</span>
+<span class="s">          classifiers = $classifiers,</span>
+<span class="s">          $data_files   #  data files</span>
+<span class="s">          $package_data   # package data</span>
+<span class="s">          $dependencies</span>
+<span class="s">          $dependency_links</span>
+<span class="s">          zip_safe=True</span>
+<span class="s">    )</span>
+<span class="s">&quot;&quot;&quot;</span><span class="p">)</span>
 
 
-@init
-def initialize_distutils_plugin(project):
-    project.set_property_if_unset("distutils_commands", ["sdist", "bdist_dumb"])
-    project.set_property_if_unset("distutils_classifiers", [
-        "Development Status :: 3 - Alpha",
-        "Programming Language :: Python"
-    ])
-    project.set_property_if_unset("distutils_use_setuptools", True)
+<span class="k">def</span> <span class="nf">default</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">default</span>
+    <span class="k">return</span> <span class="n">value</span>
 
 
-@after("package")
-def write_setup_script(project, logger):
-    setup_script = project.expand_path("$dir_dist/setup.py")
-    logger.info("Writing setup.py as %s", setup_script)
-
-    with open(setup_script, "w") as setup_file:
-        setup_file.write(render_setup_script(project))
-
-    os.chmod(setup_script, 0o755)
-
-
-def render_setup_script(project):
-    author = ", ".join(map(lambda a: a.name, project.authors))
-    author_email = ", ".join(map(lambda a: a.email, project.authors))
-
-    template_values = {
-        "module": "setuptools" if project.get_property("distutils_use_setuptools") else "distutils.core",
-        "name": project.name,
-        "version": project.version,
-        "summary": default(project.summary),
-        "description": default(project.description),
-        "author": author,
-        "author_email": author_email,
-        "license": default(project.license),
-        "url": default(project.url),
-        "scripts": build_scripts_string(project),
-        "packages": str([package for package in project.list_packages()]),
-        "classifiers": project.get_property("distutils_classifiers"),
-        "data_files": build_data_files_string(project),
-        "package_data": build_package_data_string(project),
-        "dependencies": build_install_dependencies_string(project),
-        "dependency_links": build_dependency_links_string(project),
-    }
-
-    return SETUP_TEMPLATE.substitute(template_values)
+<span class="nd">@init</span>
+<span class="k">def</span> <span class="nf">initialize_distutils_plugin</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+    <span class="n">project</span><span class="o">.</span><span class="n">set_property_if_unset</span><span class="p">(</span><span class="s">&quot;distutils_commands&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s">&quot;sdist&quot;</span><span class="p">,</span> <span class="s">&quot;bdist_dumb&quot;</span><span class="p">])</span>
+    <span class="n">project</span><span class="o">.</span><span class="n">set_property_if_unset</span><span class="p">(</span><span class="s">&quot;distutils_classifiers&quot;</span><span class="p">,</span> <span class="p">[</span>
+        <span class="s">&quot;Development Status :: 3 - Alpha&quot;</span><span class="p">,</span>
+        <span class="s">&quot;Programming Language :: Python&quot;</span>
+    <span class="p">])</span>
+    <span class="n">project</span><span class="o">.</span><span class="n">set_property_if_unset</span><span class="p">(</span><span class="s">&quot;distutils_use_setuptools&quot;</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
 
 
-@after("package")
-def write_manifest_file(project, logger):
-    if len(project.manifest_included_files) == 0:
-        logger.debug("No data to write into MANIFEST.in")
-        return
+<span class="nd">@after</span><span class="p">(</span><span class="s">&quot;package&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">write_setup_script</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+    <span class="n">setup_script</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s">&quot;$dir_dist/setup.py&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Writing setup.py as </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">setup_script</span><span class="p">)</span>
 
-    logger.debug("Files included in MANIFEST.in: %s" %
-                 project.manifest_included_files)
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">setup_script</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">setup_file</span><span class="p">:</span>
+        <span class="n">setup_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">render_setup_script</span><span class="p">(</span><span class="n">project</span><span class="p">))</span>
 
-    manifest_filename = project.expand_path("$dir_dist/MANIFEST.in")
-    logger.info("Writing MANIFEST.in as %s", manifest_filename)
-
-    with open(manifest_filename, "w") as manifest_file:
-        manifest_file.write(render_manifest_file(project))
-
-    os.chmod(manifest_filename, 0o664)
+    <span class="n">os</span><span class="o">.</span><span class="n">chmod</span><span class="p">(</span><span class="n">setup_script</span><span class="p">,</span> <span class="mi">0</span><span class="n">o755</span><span class="p">)</span>
 
 
-def render_manifest_file(project):
-    manifest_content = StringIO()
+<span class="k">def</span> <span class="nf">render_setup_script</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+    <span class="n">author</span> <span class="o">=</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">project</span><span class="o">.</span><span class="n">authors</span><span class="p">))</span>
+    <span class="n">author_email</span> <span class="o">=</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">email</span><span class="p">,</span> <span class="n">project</span><span class="o">.</span><span class="n">authors</span><span class="p">))</span>
 
-    for included_file in project.manifest_included_files:
-        manifest_content.write("include %s\n" % included_file)
+    <span class="n">template_values</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&quot;module&quot;</span><span class="p">:</span> <span class="s">&quot;setuptools&quot;</span> <span class="k">if</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;distutils_use_setuptools&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="s">&quot;distutils.core&quot;</span><span class="p">,</span>
+        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="n">project</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+        <span class="s">&quot;version&quot;</span><span class="p">:</span> <span class="n">project</span><span class="o">.</span><span class="n">version</span><span class="p">,</span>
+        <span class="s">&quot;summary&quot;</span><span class="p">:</span> <span class="n">default</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">summary</span><span class="p">),</span>
+        <span class="s">&quot;description&quot;</span><span class="p">:</span> <span class="n">default</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">description</span><span class="p">),</span>
+        <span class="s">&quot;author&quot;</span><span class="p">:</span> <span class="n">author</span><span class="p">,</span>
+        <span class="s">&quot;author_email&quot;</span><span class="p">:</span> <span class="n">author_email</span><span class="p">,</span>
+        <span class="s">&quot;license&quot;</span><span class="p">:</span> <span class="n">default</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">license</span><span class="p">),</span>
+        <span class="s">&quot;url&quot;</span><span class="p">:</span> <span class="n">default</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">url</span><span class="p">),</span>
+        <span class="s">&quot;scripts&quot;</span><span class="p">:</span> <span class="n">build_scripts_string</span><span class="p">(</span><span class="n">project</span><span class="p">),</span>
+        <span class="s">&quot;packages&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">([</span><span class="n">package</span> <span class="k">for</span> <span class="n">package</span> <span class="ow">in</span> <span class="n">project</span><span class="o">.</span><span class="n">list_packages</span><span class="p">()]),</span>
+        <span class="s">&quot;classifiers&quot;</span><span class="p">:</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;distutils_classifiers&quot;</span><span class="p">),</span>
+        <span class="s">&quot;data_files&quot;</span><span class="p">:</span> <span class="n">build_data_files_string</span><span class="p">(</span><span class="n">project</span><span class="p">),</span>
+        <span class="s">&quot;package_data&quot;</span><span class="p">:</span> <span class="n">build_package_data_string</span><span class="p">(</span><span class="n">project</span><span class="p">),</span>
+        <span class="s">&quot;dependencies&quot;</span><span class="p">:</span> <span class="n">build_install_dependencies_string</span><span class="p">(</span><span class="n">project</span><span class="p">),</span>
+        <span class="s">&quot;dependency_links&quot;</span><span class="p">:</span> <span class="n">build_dependency_links_string</span><span class="p">(</span><span class="n">project</span><span class="p">),</span>
+    <span class="p">}</span>
 
-    return manifest_content.getvalue()
-
-
-@before("publish")
-def build_binary_distribution(project, logger):
-    reports_dir = project.expand_path("$dir_reports/distutils")
-    if not os.path.exists(reports_dir):
-        os.mkdir(reports_dir)
-
-    setup_script = project.expand_path("$dir_dist/setup.py")
-
-    logger.info("Building binary distribution in %s",
-                project.expand_path("$dir_dist"))
-
-    commands = as_list(project.get_property("distutils_commands"))
-
-    for command in commands:
-        logger.debug("Executing distutils command %s", command)
-        with open(os.path.join(reports_dir, command), "w") as output_file:
-            process = subprocess.Popen((sys.executable, setup_script, command),
-                                       cwd=project.expand_path("$dir_dist"),
-                                       stdout=output_file,
-                                       stderr=output_file,
-                                       shell=False)
-            return_code = process.wait()
-            if return_code != 0:
-                raise BuildFailedException(
-                    "Error while executing setup command %s", command)
+    <span class="k">return</span> <span class="n">SETUP_TEMPLATE</span><span class="o">.</span><span class="n">substitute</span><span class="p">(</span><span class="n">template_values</span><span class="p">)</span>
 
 
-def build_install_dependencies_string(project):
-    dependencies = [
-        dependency for dependency in project.dependencies if not dependency.url]
-    if not dependencies:
-        return ""
+<span class="nd">@after</span><span class="p">(</span><span class="s">&quot;package&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">write_manifest_file</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">manifest_included_files</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;No data to write into MANIFEST.in&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
 
-    def format_single_dependency(dependency):
-        return '"%s%s"' % (dependency.name, build_dependency_version_string(dependency))
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Files included in MANIFEST.in: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span>
+                 <span class="n">project</span><span class="o">.</span><span class="n">manifest_included_files</span><span class="p">)</span>
 
-    result = "install_requires = [ "
-    result += ", ".join(map(format_single_dependency, dependencies))
-    result += " ],"
-    return result
+    <span class="n">manifest_filename</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s">&quot;$dir_dist/MANIFEST.in&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Writing MANIFEST.in as </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">manifest_filename</span><span class="p">)</span>
 
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">manifest_filename</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">manifest_file</span><span class="p">:</span>
+        <span class="n">manifest_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">render_manifest_file</span><span class="p">(</span><span class="n">project</span><span class="p">))</span>
 
-def build_dependency_links_string(project):
-    dependency_links = [
-        dependency for dependency in project.dependencies if dependency.url]
-    if not dependency_links:
-        return ""
-
-    def format_single_dependency(dependency):
-        return '"%s"' % (dependency.url)
-
-    result = "dependency_links = [ "
-    result += ", ".join(map(format_single_dependency, dependency_links))
-    result += " ],"
-    return result
+    <span class="n">os</span><span class="o">.</span><span class="n">chmod</span><span class="p">(</span><span class="n">manifest_filename</span><span class="p">,</span> <span class="mi">0</span><span class="n">o664</span><span class="p">)</span>
 
 
-def build_scripts_string(project):
-    scripts = [script for script in project.list_scripts()]
+<span class="k">def</span> <span class="nf">render_manifest_file</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+    <span class="n">manifest_content</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">()</span>
 
-    scripts_dir = project.get_property("dir_dist_scripts")
-    if scripts_dir:
-        scripts = map(lambda s: os.path.join(scripts_dir, s), scripts)
+    <span class="k">for</span> <span class="n">included_file</span> <span class="ow">in</span> <span class="n">project</span><span class="o">.</span><span class="n">manifest_included_files</span><span class="p">:</span>
+        <span class="n">manifest_content</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;include </span><span class="si">%s</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">included_file</span><span class="p">)</span>
 
-    return str(scripts)
-
-
-def build_data_files_string(project):
-    data_files = project.files_to_install
-
-    if not len(data_files):
-        return ""
-
-    return "data_files = %s," % str(data_files)
+    <span class="k">return</span> <span class="n">manifest_content</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
 
 
-def build_package_data_string(project):
-    package_data = project.package_data
-    if package_data == {}:
-        return ""
-    package_data_string = "package_data = {"
+<span class="nd">@before</span><span class="p">(</span><span class="s">&quot;publish&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">build_binary_distribution</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+    <span class="n">reports_dir</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s">&quot;$dir_reports/distutils&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">reports_dir</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">reports_dir</span><span class="p">)</span>
 
-    sorted_keys = sorted(package_data.keys())
-    last_element = sorted_keys[-1]
+    <span class="n">setup_script</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s">&quot;$dir_dist/setup.py&quot;</span><span class="p">)</span>
 
-    for key in sorted_keys:
-        package_data_string += "'%s': %s" % (key, str(package_data[key]))
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Building binary distribution in </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span>
+                <span class="n">project</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s">&quot;$dir_dist&quot;</span><span class="p">))</span>
 
-        if key is not last_element:
-            package_data_string += ", "
+    <span class="n">commands</span> <span class="o">=</span> <span class="n">as_list</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;distutils_commands&quot;</span><span class="p">))</span>
 
-    package_data_string += "},"
-    return package_data_string
-</code></pre>
+    <span class="k">for</span> <span class="n">command</span> <span class="ow">in</span> <span class="n">commands</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Executing distutils command </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">reports_dir</span><span class="p">,</span> <span class="n">command</span><span class="p">),</span> <span class="s">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output_file</span><span class="p">:</span>
+            <span class="n">process</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">((</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">,</span> <span class="n">setup_script</span><span class="p">,</span> <span class="n">command</span><span class="p">),</span>
+                                       <span class="n">cwd</span><span class="o">=</span><span class="n">project</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s">&quot;$dir_dist&quot;</span><span class="p">),</span>
+                                       <span class="n">stdout</span><span class="o">=</span><span class="n">output_file</span><span class="p">,</span>
+                                       <span class="n">stderr</span><span class="o">=</span><span class="n">output_file</span><span class="p">,</span>
+                                       <span class="n">shell</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+            <span class="n">return_code</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">return_code</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">BuildFailedException</span><span class="p">(</span>
+                    <span class="s">&quot;Error while executing setup command </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">build_install_dependencies_string</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+    <span class="n">dependencies</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">dependency</span> <span class="k">for</span> <span class="n">dependency</span> <span class="ow">in</span> <span class="n">project</span><span class="o">.</span><span class="n">dependencies</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">dependency</span><span class="o">.</span><span class="n">url</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">dependencies</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">format_single_dependency</span><span class="p">(</span><span class="n">dependency</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&#39;&quot;</span><span class="si">%s%s</span><span class="s">&quot;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">build_dependency_version_string</span><span class="p">(</span><span class="n">dependency</span><span class="p">))</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="s">&quot;install_requires = [ &quot;</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">format_single_dependency</span><span class="p">,</span> <span class="n">dependencies</span><span class="p">))</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="s">&quot; ],&quot;</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="k">def</span> <span class="nf">build_dependency_links_string</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+    <span class="n">dependency_links</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">dependency</span> <span class="k">for</span> <span class="n">dependency</span> <span class="ow">in</span> <span class="n">project</span><span class="o">.</span><span class="n">dependencies</span> <span class="k">if</span> <span class="n">dependency</span><span class="o">.</span><span class="n">url</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">dependency_links</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">format_single_dependency</span><span class="p">(</span><span class="n">dependency</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&#39;&quot;</span><span class="si">%s</span><span class="s">&quot;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">dependency</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="s">&quot;dependency_links = [ &quot;</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">format_single_dependency</span><span class="p">,</span> <span class="n">dependency_links</span><span class="p">))</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="s">&quot; ],&quot;</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="k">def</span> <span class="nf">build_scripts_string</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+    <span class="n">scripts</span> <span class="o">=</span> <span class="p">[</span><span class="n">script</span> <span class="k">for</span> <span class="n">script</span> <span class="ow">in</span> <span class="n">project</span><span class="o">.</span><span class="n">list_scripts</span><span class="p">()]</span>
+
+    <span class="n">scripts_dir</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;dir_dist_scripts&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">scripts_dir</span><span class="p">:</span>
+        <span class="n">scripts</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">scripts_dir</span><span class="p">,</span> <span class="n">s</span><span class="p">),</span> <span class="n">scripts</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">scripts</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">build_data_files_string</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+    <span class="n">data_files</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">files_to_install</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_files</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="s">&quot;data_files = </span><span class="si">%s</span><span class="s">,&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">data_files</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">build_package_data_string</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+    <span class="n">package_data</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">package_data</span>
+    <span class="k">if</span> <span class="n">package_data</span> <span class="o">==</span> <span class="p">{}:</span>
+        <span class="k">return</span> <span class="s">&quot;&quot;</span>
+    <span class="n">package_data_string</span> <span class="o">=</span> <span class="s">&quot;package_data = {&quot;</span>
+
+    <span class="n">sorted_keys</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">package_data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="n">last_element</span> <span class="o">=</span> <span class="n">sorted_keys</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">sorted_keys</span><span class="p">:</span>
+        <span class="n">package_data_string</span> <span class="o">+=</span> <span class="s">&quot;&#39;</span><span class="si">%s</span><span class="s">&#39;: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">package_data</span><span class="p">[</span><span class="n">key</span><span class="p">]))</span>
+
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">last_element</span><span class="p">:</span>
+            <span class="n">package_data_string</span> <span class="o">+=</span> <span class="s">&quot;, &quot;</span>
+
+    <span class="n">package_data_string</span> <span class="o">+=</span> <span class="s">&quot;},&quot;</span>
+    <span class="k">return</span> <span class="n">package_data_string</span>
+</pre></div>
+
     </div>
 
   <hr>
@@ -1227,32 +1292,33 @@ def build_package_data_string(project):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.distutils_plugin.build_binary_distribution', this);">Show source.</a></p>
     <div id="source-pybuilder.plugins.python.distutils_plugin.build_binary_distribution" class="source">
-      <pre><code>@before("publish")
-def build_binary_distribution(project, logger):
-    reports_dir = project.expand_path("$dir_reports/distutils")
-    if not os.path.exists(reports_dir):
-        os.mkdir(reports_dir)
+      <div class="codehilite"><pre><span class="nd">@before</span><span class="p">(</span><span class="s">&quot;publish&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">build_binary_distribution</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+    <span class="n">reports_dir</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s">&quot;$dir_reports/distutils&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">reports_dir</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">reports_dir</span><span class="p">)</span>
 
-    setup_script = project.expand_path("$dir_dist/setup.py")
+    <span class="n">setup_script</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s">&quot;$dir_dist/setup.py&quot;</span><span class="p">)</span>
 
-    logger.info("Building binary distribution in %s",
-                project.expand_path("$dir_dist"))
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Building binary distribution in </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span>
+                <span class="n">project</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s">&quot;$dir_dist&quot;</span><span class="p">))</span>
 
-    commands = as_list(project.get_property("distutils_commands"))
+    <span class="n">commands</span> <span class="o">=</span> <span class="n">as_list</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;distutils_commands&quot;</span><span class="p">))</span>
 
-    for command in commands:
-        logger.debug("Executing distutils command %s", command)
-        with open(os.path.join(reports_dir, command), "w") as output_file:
-            process = subprocess.Popen((sys.executable, setup_script, command),
-                                       cwd=project.expand_path("$dir_dist"),
-                                       stdout=output_file,
-                                       stderr=output_file,
-                                       shell=False)
-            return_code = process.wait()
-            if return_code != 0:
-                raise BuildFailedException(
-                    "Error while executing setup command %s", command)
-</code></pre>
+    <span class="k">for</span> <span class="n">command</span> <span class="ow">in</span> <span class="n">commands</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Executing distutils command </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">reports_dir</span><span class="p">,</span> <span class="n">command</span><span class="p">),</span> <span class="s">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output_file</span><span class="p">:</span>
+            <span class="n">process</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">((</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">,</span> <span class="n">setup_script</span><span class="p">,</span> <span class="n">command</span><span class="p">),</span>
+                                       <span class="n">cwd</span><span class="o">=</span><span class="n">project</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s">&quot;$dir_dist&quot;</span><span class="p">),</span>
+                                       <span class="n">stdout</span><span class="o">=</span><span class="n">output_file</span><span class="p">,</span>
+                                       <span class="n">stderr</span><span class="o">=</span><span class="n">output_file</span><span class="p">,</span>
+                                       <span class="n">shell</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+            <span class="n">return_code</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">return_code</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">BuildFailedException</span><span class="p">(</span>
+                    <span class="s">&quot;Error while executing setup command </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1270,14 +1336,15 @@ def build_binary_distribution(project, logger):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.distutils_plugin.build_data_files_string', this);">Show source.</a></p>
     <div id="source-pybuilder.plugins.python.distutils_plugin.build_data_files_string" class="source">
-      <pre><code>def build_data_files_string(project):
-    data_files = project.files_to_install
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">build_data_files_string</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+    <span class="n">data_files</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">files_to_install</span>
 
-    if not len(data_files):
-        return ""
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_files</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&quot;&quot;</span>
 
-    return "data_files = %s," % str(data_files)
-</code></pre>
+    <span class="k">return</span> <span class="s">&quot;data_files = </span><span class="si">%s</span><span class="s">,&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">data_files</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1295,20 +1362,21 @@ def build_binary_distribution(project, logger):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.distutils_plugin.build_dependency_links_string', this);">Show source.</a></p>
     <div id="source-pybuilder.plugins.python.distutils_plugin.build_dependency_links_string" class="source">
-      <pre><code>def build_dependency_links_string(project):
-    dependency_links = [
-        dependency for dependency in project.dependencies if dependency.url]
-    if not dependency_links:
-        return ""
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">build_dependency_links_string</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+    <span class="n">dependency_links</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">dependency</span> <span class="k">for</span> <span class="n">dependency</span> <span class="ow">in</span> <span class="n">project</span><span class="o">.</span><span class="n">dependencies</span> <span class="k">if</span> <span class="n">dependency</span><span class="o">.</span><span class="n">url</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">dependency_links</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">&quot;&quot;</span>
 
-    def format_single_dependency(dependency):
-        return '"%s"' % (dependency.url)
+    <span class="k">def</span> <span class="nf">format_single_dependency</span><span class="p">(</span><span class="n">dependency</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&#39;&quot;</span><span class="si">%s</span><span class="s">&quot;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">dependency</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
 
-    result = "dependency_links = [ "
-    result += ", ".join(map(format_single_dependency, dependency_links))
-    result += " ],"
-    return result
-</code></pre>
+    <span class="n">result</span> <span class="o">=</span> <span class="s">&quot;dependency_links = [ &quot;</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">format_single_dependency</span><span class="p">,</span> <span class="n">dependency_links</span><span class="p">))</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="s">&quot; ],&quot;</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1326,20 +1394,21 @@ def build_binary_distribution(project, logger):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.distutils_plugin.build_install_dependencies_string', this);">Show source.</a></p>
     <div id="source-pybuilder.plugins.python.distutils_plugin.build_install_dependencies_string" class="source">
-      <pre><code>def build_install_dependencies_string(project):
-    dependencies = [
-        dependency for dependency in project.dependencies if not dependency.url]
-    if not dependencies:
-        return ""
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">build_install_dependencies_string</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+    <span class="n">dependencies</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">dependency</span> <span class="k">for</span> <span class="n">dependency</span> <span class="ow">in</span> <span class="n">project</span><span class="o">.</span><span class="n">dependencies</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">dependency</span><span class="o">.</span><span class="n">url</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">dependencies</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">&quot;&quot;</span>
 
-    def format_single_dependency(dependency):
-        return '"%s%s"' % (dependency.name, build_dependency_version_string(dependency))
+    <span class="k">def</span> <span class="nf">format_single_dependency</span><span class="p">(</span><span class="n">dependency</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&#39;&quot;</span><span class="si">%s%s</span><span class="s">&quot;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">build_dependency_version_string</span><span class="p">(</span><span class="n">dependency</span><span class="p">))</span>
 
-    result = "install_requires = [ "
-    result += ", ".join(map(format_single_dependency, dependencies))
-    result += " ],"
-    return result
-</code></pre>
+    <span class="n">result</span> <span class="o">=</span> <span class="s">&quot;install_requires = [ &quot;</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">format_single_dependency</span><span class="p">,</span> <span class="n">dependencies</span><span class="p">))</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="s">&quot; ],&quot;</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1357,24 +1426,25 @@ def build_binary_distribution(project, logger):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.distutils_plugin.build_package_data_string', this);">Show source.</a></p>
     <div id="source-pybuilder.plugins.python.distutils_plugin.build_package_data_string" class="source">
-      <pre><code>def build_package_data_string(project):
-    package_data = project.package_data
-    if package_data == {}:
-        return ""
-    package_data_string = "package_data = {"
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">build_package_data_string</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+    <span class="n">package_data</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">package_data</span>
+    <span class="k">if</span> <span class="n">package_data</span> <span class="o">==</span> <span class="p">{}:</span>
+        <span class="k">return</span> <span class="s">&quot;&quot;</span>
+    <span class="n">package_data_string</span> <span class="o">=</span> <span class="s">&quot;package_data = {&quot;</span>
 
-    sorted_keys = sorted(package_data.keys())
-    last_element = sorted_keys[-1]
+    <span class="n">sorted_keys</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">package_data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="n">last_element</span> <span class="o">=</span> <span class="n">sorted_keys</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
-    for key in sorted_keys:
-        package_data_string += "'%s': %s" % (key, str(package_data[key]))
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">sorted_keys</span><span class="p">:</span>
+        <span class="n">package_data_string</span> <span class="o">+=</span> <span class="s">&quot;&#39;</span><span class="si">%s</span><span class="s">&#39;: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">package_data</span><span class="p">[</span><span class="n">key</span><span class="p">]))</span>
 
-        if key is not last_element:
-            package_data_string += ", "
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">last_element</span><span class="p">:</span>
+            <span class="n">package_data_string</span> <span class="o">+=</span> <span class="s">&quot;, &quot;</span>
 
-    package_data_string += "},"
-    return package_data_string
-</code></pre>
+    <span class="n">package_data_string</span> <span class="o">+=</span> <span class="s">&quot;},&quot;</span>
+    <span class="k">return</span> <span class="n">package_data_string</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1392,15 +1462,16 @@ def build_binary_distribution(project, logger):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.distutils_plugin.build_scripts_string', this);">Show source.</a></p>
     <div id="source-pybuilder.plugins.python.distutils_plugin.build_scripts_string" class="source">
-      <pre><code>def build_scripts_string(project):
-    scripts = [script for script in project.list_scripts()]
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">build_scripts_string</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+    <span class="n">scripts</span> <span class="o">=</span> <span class="p">[</span><span class="n">script</span> <span class="k">for</span> <span class="n">script</span> <span class="ow">in</span> <span class="n">project</span><span class="o">.</span><span class="n">list_scripts</span><span class="p">()]</span>
 
-    scripts_dir = project.get_property("dir_dist_scripts")
-    if scripts_dir:
-        scripts = map(lambda s: os.path.join(scripts_dir, s), scripts)
+    <span class="n">scripts_dir</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;dir_dist_scripts&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">scripts_dir</span><span class="p">:</span>
+        <span class="n">scripts</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">scripts_dir</span><span class="p">,</span> <span class="n">s</span><span class="p">),</span> <span class="n">scripts</span><span class="p">)</span>
 
-    return str(scripts)
-</code></pre>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">scripts</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1418,11 +1489,12 @@ def build_binary_distribution(project, logger):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.distutils_plugin.default', this);">Show source.</a></p>
     <div id="source-pybuilder.plugins.python.distutils_plugin.default" class="source">
-      <pre><code>def default(value, default=""):
-    if value is None:
-        return default
-    return value
-</code></pre>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">default</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">default</span>
+    <span class="k">return</span> <span class="n">value</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1440,15 +1512,16 @@ def build_binary_distribution(project, logger):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.distutils_plugin.initialize_distutils_plugin', this);">Show source.</a></p>
     <div id="source-pybuilder.plugins.python.distutils_plugin.initialize_distutils_plugin" class="source">
-      <pre><code>@init
-def initialize_distutils_plugin(project):
-    project.set_property_if_unset("distutils_commands", ["sdist", "bdist_dumb"])
-    project.set_property_if_unset("distutils_classifiers", [
-        "Development Status :: 3 - Alpha",
-        "Programming Language :: Python"
-    ])
-    project.set_property_if_unset("distutils_use_setuptools", True)
-</code></pre>
+      <div class="codehilite"><pre><span class="nd">@init</span>
+<span class="k">def</span> <span class="nf">initialize_distutils_plugin</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+    <span class="n">project</span><span class="o">.</span><span class="n">set_property_if_unset</span><span class="p">(</span><span class="s">&quot;distutils_commands&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s">&quot;sdist&quot;</span><span class="p">,</span> <span class="s">&quot;bdist_dumb&quot;</span><span class="p">])</span>
+    <span class="n">project</span><span class="o">.</span><span class="n">set_property_if_unset</span><span class="p">(</span><span class="s">&quot;distutils_classifiers&quot;</span><span class="p">,</span> <span class="p">[</span>
+        <span class="s">&quot;Development Status :: 3 - Alpha&quot;</span><span class="p">,</span>
+        <span class="s">&quot;Programming Language :: Python&quot;</span>
+    <span class="p">])</span>
+    <span class="n">project</span><span class="o">.</span><span class="n">set_property_if_unset</span><span class="p">(</span><span class="s">&quot;distutils_use_setuptools&quot;</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1466,14 +1539,15 @@ def initialize_distutils_plugin(project):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.distutils_plugin.render_manifest_file', this);">Show source.</a></p>
     <div id="source-pybuilder.plugins.python.distutils_plugin.render_manifest_file" class="source">
-      <pre><code>def render_manifest_file(project):
-    manifest_content = StringIO()
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">render_manifest_file</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+    <span class="n">manifest_content</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">()</span>
 
-    for included_file in project.manifest_included_files:
-        manifest_content.write("include %s\n" % included_file)
+    <span class="k">for</span> <span class="n">included_file</span> <span class="ow">in</span> <span class="n">project</span><span class="o">.</span><span class="n">manifest_included_files</span><span class="p">:</span>
+        <span class="n">manifest_content</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;include </span><span class="si">%s</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">included_file</span><span class="p">)</span>
 
-    return manifest_content.getvalue()
-</code></pre>
+    <span class="k">return</span> <span class="n">manifest_content</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1491,31 +1565,32 @@ def initialize_distutils_plugin(project):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.distutils_plugin.render_setup_script', this);">Show source.</a></p>
     <div id="source-pybuilder.plugins.python.distutils_plugin.render_setup_script" class="source">
-      <pre><code>def render_setup_script(project):
-    author = ", ".join(map(lambda a: a.name, project.authors))
-    author_email = ", ".join(map(lambda a: a.email, project.authors))
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">render_setup_script</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+    <span class="n">author</span> <span class="o">=</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">project</span><span class="o">.</span><span class="n">authors</span><span class="p">))</span>
+    <span class="n">author_email</span> <span class="o">=</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">email</span><span class="p">,</span> <span class="n">project</span><span class="o">.</span><span class="n">authors</span><span class="p">))</span>
 
-    template_values = {
-        "module": "setuptools" if project.get_property("distutils_use_setuptools") else "distutils.core",
-        "name": project.name,
-        "version": project.version,
-        "summary": default(project.summary),
-        "description": default(project.description),
-        "author": author,
-        "author_email": author_email,
-        "license": default(project.license),
-        "url": default(project.url),
-        "scripts": build_scripts_string(project),
-        "packages": str([package for package in project.list_packages()]),
-        "classifiers": project.get_property("distutils_classifiers"),
-        "data_files": build_data_files_string(project),
-        "package_data": build_package_data_string(project),
-        "dependencies": build_install_dependencies_string(project),
-        "dependency_links": build_dependency_links_string(project),
-    }
+    <span class="n">template_values</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&quot;module&quot;</span><span class="p">:</span> <span class="s">&quot;setuptools&quot;</span> <span class="k">if</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;distutils_use_setuptools&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="s">&quot;distutils.core&quot;</span><span class="p">,</span>
+        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="n">project</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+        <span class="s">&quot;version&quot;</span><span class="p">:</span> <span class="n">project</span><span class="o">.</span><span class="n">version</span><span class="p">,</span>
+        <span class="s">&quot;summary&quot;</span><span class="p">:</span> <span class="n">default</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">summary</span><span class="p">),</span>
+        <span class="s">&quot;description&quot;</span><span class="p">:</span> <span class="n">default</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">description</span><span class="p">),</span>
+        <span class="s">&quot;author&quot;</span><span class="p">:</span> <span class="n">author</span><span class="p">,</span>
+        <span class="s">&quot;author_email&quot;</span><span class="p">:</span> <span class="n">author_email</span><span class="p">,</span>
+        <span class="s">&quot;license&quot;</span><span class="p">:</span> <span class="n">default</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">license</span><span class="p">),</span>
+        <span class="s">&quot;url&quot;</span><span class="p">:</span> <span class="n">default</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">url</span><span class="p">),</span>
+        <span class="s">&quot;scripts&quot;</span><span class="p">:</span> <span class="n">build_scripts_string</span><span class="p">(</span><span class="n">project</span><span class="p">),</span>
+        <span class="s">&quot;packages&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">([</span><span class="n">package</span> <span class="k">for</span> <span class="n">package</span> <span class="ow">in</span> <span class="n">project</span><span class="o">.</span><span class="n">list_packages</span><span class="p">()]),</span>
+        <span class="s">&quot;classifiers&quot;</span><span class="p">:</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;distutils_classifiers&quot;</span><span class="p">),</span>
+        <span class="s">&quot;data_files&quot;</span><span class="p">:</span> <span class="n">build_data_files_string</span><span class="p">(</span><span class="n">project</span><span class="p">),</span>
+        <span class="s">&quot;package_data&quot;</span><span class="p">:</span> <span class="n">build_package_data_string</span><span class="p">(</span><span class="n">project</span><span class="p">),</span>
+        <span class="s">&quot;dependencies&quot;</span><span class="p">:</span> <span class="n">build_install_dependencies_string</span><span class="p">(</span><span class="n">project</span><span class="p">),</span>
+        <span class="s">&quot;dependency_links&quot;</span><span class="p">:</span> <span class="n">build_dependency_links_string</span><span class="p">(</span><span class="n">project</span><span class="p">),</span>
+    <span class="p">}</span>
 
-    return SETUP_TEMPLATE.substitute(template_values)
-</code></pre>
+    <span class="k">return</span> <span class="n">SETUP_TEMPLATE</span><span class="o">.</span><span class="n">substitute</span><span class="p">(</span><span class="n">template_values</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1533,23 +1608,24 @@ def initialize_distutils_plugin(project):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.distutils_plugin.write_manifest_file', this);">Show source.</a></p>
     <div id="source-pybuilder.plugins.python.distutils_plugin.write_manifest_file" class="source">
-      <pre><code>@after("package")
-def write_manifest_file(project, logger):
-    if len(project.manifest_included_files) == 0:
-        logger.debug("No data to write into MANIFEST.in")
-        return
+      <div class="codehilite"><pre><span class="nd">@after</span><span class="p">(</span><span class="s">&quot;package&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">write_manifest_file</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">manifest_included_files</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;No data to write into MANIFEST.in&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
 
-    logger.debug("Files included in MANIFEST.in: %s" %
-                 project.manifest_included_files)
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Files included in MANIFEST.in: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span>
+                 <span class="n">project</span><span class="o">.</span><span class="n">manifest_included_files</span><span class="p">)</span>
 
-    manifest_filename = project.expand_path("$dir_dist/MANIFEST.in")
-    logger.info("Writing MANIFEST.in as %s", manifest_filename)
+    <span class="n">manifest_filename</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s">&quot;$dir_dist/MANIFEST.in&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Writing MANIFEST.in as </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">manifest_filename</span><span class="p">)</span>
 
-    with open(manifest_filename, "w") as manifest_file:
-        manifest_file.write(render_manifest_file(project))
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">manifest_filename</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">manifest_file</span><span class="p">:</span>
+        <span class="n">manifest_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">render_manifest_file</span><span class="p">(</span><span class="n">project</span><span class="p">))</span>
 
-    os.chmod(manifest_filename, 0o664)
-</code></pre>
+    <span class="n">os</span><span class="o">.</span><span class="n">chmod</span><span class="p">(</span><span class="n">manifest_filename</span><span class="p">,</span> <span class="mi">0</span><span class="n">o664</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
@@ -1567,16 +1643,17 @@ def write_manifest_file(project, logger):
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.distutils_plugin.write_setup_script', this);">Show source.</a></p>
     <div id="source-pybuilder.plugins.python.distutils_plugin.write_setup_script" class="source">
-      <pre><code>@after("package")
-def write_setup_script(project, logger):
-    setup_script = project.expand_path("$dir_dist/setup.py")
-    logger.info("Writing setup.py as %s", setup_script)
+      <div class="codehilite"><pre><span class="nd">@after</span><span class="p">(</span><span class="s">&quot;package&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">write_setup_script</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+    <span class="n">setup_script</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s">&quot;$dir_dist/setup.py&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Writing setup.py as </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">setup_script</span><span class="p">)</span>
 
-    with open(setup_script, "w") as setup_file:
-        setup_file.write(render_setup_script(project))
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">setup_script</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">setup_file</span><span class="p">:</span>
+        <span class="n">setup_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">render_setup_script</span><span class="p">(</span><span class="n">project</span><span class="p">))</span>
 
-    os.chmod(setup_script, 0o755)
-</code></pre>
+    <span class="n">os</span><span class="o">.</span><span class="n">chmod</span><span class="p">(</span><span class="n">setup_script</span><span class="p">,</span> <span class="mi">0</span><span class="n">o755</span><span class="p">)</span>
+</pre></div>
+
     </div>
 </div>
 
