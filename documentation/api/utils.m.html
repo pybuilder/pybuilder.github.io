@@ -940,6 +940,7 @@ Provides generic utilities that can be used by plugins.</p>
     Provides generic utilities that can be used by plugins.
 """
 
+import fnmatch
 import json
 import os
 import re
@@ -1006,12 +1007,20 @@ def remove_leading_slash_or_dot_from_path(path):
 
 
 def remove_python_source_suffix(file_name):
-    return file_name[0:-len(".py")]
+    if file_name.endswith(".py"):
+        return file_name[0:-len(".py")]
+    return file_name
 
 
 def discover_modules(source_path, suffix=".py"):
+    return discover_modules_matching(source_path, "*{0}".format(suffix))
+
+
+def discover_modules_matching(source_path, module_glob):
     result = []
-    for module_file_path in discover_files(source_path, suffix):
+    if not module_glob.endswith(".py"):
+        module_glob += ".py"
+    for module_file_path in discover_files_matching(source_path, module_glob):
         relative_module_file_path = module_file_path.replace(source_path, "")
         relative_module_file_path = relative_module_file_path.replace(os.sep, ".")
         module_file = remove_leading_slash_or_dot_from_path(relative_module_file_path)
@@ -1023,9 +1032,13 @@ def discover_modules(source_path, suffix=".py"):
 
 
 def discover_files(start_dir, suffix):
+    return discover_files_matching(start_dir, "*{0}".format(suffix))
+
+
+def discover_files_matching(start_dir, file_glob):
     for root, _, files in os.walk(start_dir):
         for file_name in files:
-            if file_name.endswith(suffix):
+            if fnmatch.fnmatch(file_name, file_glob):
                 yield os.path.join(root, file_name)
 
 
@@ -1145,16 +1158,18 @@ def mkdir(directory):
           <li class="mono"><a href="#pybuilder.utils.as_list">as_list</a></li>
           <li class="mono"><a href="#pybuilder.utils.assert_can_execute">assert_can_execute</a></li>
           <li class="mono"><a href="#pybuilder.utils.discover_files">discover_files</a></li>
+          <li class="mono"><a href="#pybuilder.utils.discover_files_matching">discover_files_matching</a></li>
           <li class="mono"><a href="#pybuilder.utils.discover_modules">discover_modules</a></li>
       </ul>
       <ul>
+          <li class="mono"><a href="#pybuilder.utils.discover_modules_matching">discover_modules_matching</a></li>
           <li class="mono"><a href="#pybuilder.utils.execute_command">execute_command</a></li>
           <li class="mono"><a href="#pybuilder.utils.format_timestamp">format_timestamp</a></li>
           <li class="mono"><a href="#pybuilder.utils.mkdir">mkdir</a></li>
           <li class="mono"><a href="#pybuilder.utils.read_file">read_file</a></li>
-          <li class="mono"><a href="#pybuilder.utils.remove_leading_slash_or_dot_from_path">remove_leading_slash_or_dot_from_path</a></li>
       </ul>
       <ul>
+          <li class="mono"><a href="#pybuilder.utils.remove_leading_slash_or_dot_from_path">remove_leading_slash_or_dot_from_path</a></li>
           <li class="mono"><a href="#pybuilder.utils.remove_python_source_suffix">remove_python_source_suffix</a></li>
           <li class="mono"><a href="#pybuilder.utils.render_report">render_report</a></li>
           <li class="mono"><a href="#pybuilder.utils.timedelta_in_millis">timedelta_in_millis</a></li>
@@ -1357,9 +1372,29 @@ are added to the resulting list.</p>
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.utils.discover_files', this);">Show source.</a></p>
     <div id="source-pybuilder.utils.discover_files" class="source">
       <pre><code>def discover_files(start_dir, suffix):
+    return discover_files_matching(start_dir, "*{0}".format(suffix))
+</code></pre>
+    </div>
+</div>
+
+    </div>
+  
+      
+    <div class="item">
+      <div class="name def" id="pybuilder.utils.discover_files_matching">
+        <p>def <span class="ident">discover_files_matching</span>(</p><p>start_dir, file_glob)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.utils.discover_files_matching', this);">Show source.</a></p>
+    <div id="source-pybuilder.utils.discover_files_matching" class="source">
+      <pre><code>def discover_files_matching(start_dir, file_glob):
     for root, _, files in os.walk(start_dir):
         for file_name in files:
-            if file_name.endswith(suffix):
+            if fnmatch.fnmatch(file_name, file_glob):
                 yield os.path.join(root, file_name)
 </code></pre>
     </div>
@@ -1380,8 +1415,30 @@ are added to the resulting list.</p>
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.utils.discover_modules', this);">Show source.</a></p>
     <div id="source-pybuilder.utils.discover_modules" class="source">
       <pre><code>def discover_modules(source_path, suffix=".py"):
+    return discover_modules_matching(source_path, "*{0}".format(suffix))
+</code></pre>
+    </div>
+</div>
+
+    </div>
+  
+      
+    <div class="item">
+      <div class="name def" id="pybuilder.utils.discover_modules_matching">
+        <p>def <span class="ident">discover_modules_matching</span>(</p><p>source_path, module_glob)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.utils.discover_modules_matching', this);">Show source.</a></p>
+    <div id="source-pybuilder.utils.discover_modules_matching" class="source">
+      <pre><code>def discover_modules_matching(source_path, module_glob):
     result = []
-    for module_file_path in discover_files(source_path, suffix):
+    if not module_glob.endswith(".py"):
+        module_glob += ".py"
+    for module_file_path in discover_files_matching(source_path, module_glob):
         relative_module_file_path = module_file_path.replace(source_path, "")
         relative_module_file_path = relative_module_file_path.replace(os.sep, ".")
         module_file = remove_leading_slash_or_dot_from_path(relative_module_file_path)
@@ -1537,7 +1594,9 @@ all parents is created.</p></div>
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.utils.remove_python_source_suffix', this);">Show source.</a></p>
     <div id="source-pybuilder.utils.remove_python_source_suffix" class="source">
       <pre><code>def remove_python_source_suffix(file_name):
-    return file_name[0:-len(".py")]
+    if file_name.endswith(".py"):
+        return file_name[0:-len(".py")]
+    return file_name
 </code></pre>
     </div>
 </div>
