@@ -454,7 +454,7 @@ This will make the following tasks available:
   </tr>
 </table>
 
-### Building a Python Egg
+### Building a Python package
 
 *PyBuilder* ships a plugin that generates and executes setup.py files using with distutils or setuptools (distribute will
 be supported in future releases). In order to generate a ```setup.py``` file use the ```python.distutils```
