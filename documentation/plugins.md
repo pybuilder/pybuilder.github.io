@@ -518,7 +518,21 @@ def initialize (project):
     <td>True</td>
     <td>Use setuptools instead of distutils</td>
   </tr>
+
+  <tr>
+    <td>distutils_issue8876_workaround_enabled</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Deny distutils the use of hardlinks for creating binary distributions</td>
+  </tr>
 </table>
+
+<div class="alert alert-warning alert-dismissable">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <h4>VirtualBox pitfall with binary dists</h4>
+If you build your project on a shared filesystem (e.G. with vagrant/Virtualbox virtualization) then distutils is unable to build a binary distribution <a href="http://bugs.python.org/issue8876">due to a python stdlib bug</a>.
+Setting the property <code>distutils_issue8876_workaround_enabled</code> to True (off by default) will work around this for you.
+</div>
 
 ### Copying resources into a distribution
 
