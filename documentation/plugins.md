@@ -460,7 +460,7 @@ This will make the following tasks available:
 be supported in future releases). In order to generate a ```setup.py``` file use the ```python.distutils```
 plugin.
 
-The distutils plugin will consider a lot of the project's attributes, i.e.
+The distutils plugin will consider many of the project's attributes, i.e.
 * name
 * version
 * summary
