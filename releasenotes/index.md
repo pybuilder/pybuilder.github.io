@@ -5,6 +5,10 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.4
+* `pyb --start-project` now always generates an initializer so that plugin can be configured more easily.
+* There is now a workaround for [a distutils bug](http://bugs.python.org/issue8876) available through the distutils plugin. See [the GitHub issue](https://github.com/pybuilder/pybuilder/issues/56) or [the documentation](http://pybuilder.github.io/documentation/plugins.html#VirtualBoxpitfallwithbinarydists).
+
 ## Version 0.10.3
 * The unittest, pyfix and integrationtest plugins now find modules (or files, for the integrationtest plugin) using globs.
 Kudos to [markmevans](https://github.com/markmevans) for this feature!
