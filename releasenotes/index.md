@@ -5,6 +5,12 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.6
+* `pyb --start-project` now activates the plugin `python.install_dependencies` by default.
+
+## Version 0.10.5
+* `pyb --start-project` will now suggest a few plugins.
+
 ## Version 0.10.4
 * `pyb --start-project` now always generates an initializer so that plugin can be configured more easily.
 * There is now a workaround for [a distutils bug](http://bugs.python.org/issue8876) available through the distutils plugin. See [the GitHub issue](https://github.com/pybuilder/pybuilder/issues/56) or [the documentation](http://pybuilder.github.io/documentation/plugins.html#VirtualBoxpitfallwithbinarydists).
