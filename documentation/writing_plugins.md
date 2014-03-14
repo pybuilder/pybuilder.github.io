@@ -83,7 +83,7 @@ def bar():
     pass
 ```
 
-Now everytime the task *foo* is run, *PyBuilder* will ensure that *bar* will have run first.
+Now every time the task *foo* is run, *PyBuilder* will ensure that *bar* will have run first.
 Dependencies on more than one task are expressed by increasing the arity of the depends decorator like so :
 
 ```
@@ -183,7 +183,7 @@ def my_plugin_task():
 There is a `verbose` flag though. When it is present, your plugin should
 provide information about errors using the logger.
 
-For most plugins using the helper function `execute_tool_on_source_files` from `pybuilder.plugins.python.python_plugin_helper` will suffice. Tt will display the output of the tool, provided the property `$name_verbose_output` is set to true. The `$name` is simply the name argument passed to the function. You can set this property in your task based on the verbose property of the project :
+For most plugins using the helper function `execute_tool_on_source_files` from `pybuilder.plugins.python.python_plugin_helper` will suffice. It will display the output of the tool, provided the property `$name_verbose_output` is set to true. The `$name` is simply the name argument passed to the function. You can set this property in your task based on the verbose property of the project :
 
 ```
 from pybuilder.core import task, description, use_plugin, depends
