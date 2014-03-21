@@ -5,6 +5,10 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.10
+* It should no longer occur that CI servers count unit tests twice when coverage is used.
+* TeamCity service messages for unit test failures are now well-formed
+
 ## Version 0.10.8
 * The property "teamcity_output" can be set to True so that teamcity messages are produced by the `python.unittest` and `python.integrationtest` plugin.
 Please note that the coverage plugin also runs unit tests and might lead to teamcity counting the amount of unit tests twice.
