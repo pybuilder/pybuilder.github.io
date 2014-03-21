@@ -26,6 +26,14 @@ The plugin executes all test cases found in modules ending with ```_tests.py``` 
     <th>Default Value</th>
     <th>Description</th>
   </tr>
+
+    <tr>
+    <td>teamcity_output</td>
+    <td>bool</td>
+    <td>False</td>
+    <td>Output teamcity service messages with test names and errors</td>
+  </tr>
+
   <tr>
     <td>dir_source_unittest_python</td>
     <td>string</td>
@@ -242,6 +250,14 @@ the production source directory.
     <th>Default Value</th>
     <th>Description</th>
   </tr>
+
+    <tr>
+    <td>teamcity_output</td>
+    <td>bool</td>
+    <td>False</td>
+    <td>Output teamcity service messages with test names and errors</td>
+  </tr>
+
   <tr>
     <td>dir_source_integrationtest_python</td>
     <td>string</td>
