@@ -122,6 +122,46 @@ Use the ```python.coverage``` module to activate coverage.
 
 ### Linting python sources
 
+#### Frosted plugin
+
+Frosted is a fork of pyflakes (originally created by Phil Frost) that aims at more open contribution from the outside public, a smaller more maintainable code base, and a better Python checker for all.
+
+
+##### Frosted configuration
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>frosted_break_build</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Break the build if warnings are found</td>
+  </tr>
+
+  <tr>
+    <td>frosted_include_test_sources</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Also run frosted on integrationtest and unittest sources</td>
+  </tr>
+
+  <tr>
+    <td>frosted_exclude_warnings</td>
+    <td>List of strings</td>
+    <td>[ ]</td>
+    <td>List of warnings to exclude<br/>
+        Example: <code>["E205", "W101"]</code>.<br/>
+        See <a href="https://github.com/timothycrosley/frosted">here</a>, section <em>Frosted error codes</em>, for reference.</td>
+  </tr>
+
+</table>
+
 #### Flake8 plugin
 
 *PyBuilder* can lint your files and verify (or enforce) compliance with
