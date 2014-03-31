@@ -6,7 +6,7 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 # Release Notes
 
 ## Version 0.10.12
-* Bldsup support : custom tasks and per-project specifics can be stored in a separate directory (default: `bldsup`). Kudos go to [@markmevans](https://github.com/markmevans) for implementing this.
+* [Bldsup support](/documentation/plugins.html#Splittingupyourbuild.pywithbldsup) : custom tasks and per-project specifics can be stored in a separate directory (default: `bldsup`). Kudos go to [@markmevans](https://github.com/markmevans) for implementing this.
 
 ## Version 0.10.11
 * New plugin : [python.frosted](/documentation/plugins.html#Frostedplugin)
