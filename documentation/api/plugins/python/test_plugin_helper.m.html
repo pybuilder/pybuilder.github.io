@@ -1000,6 +1000,7 @@ table {
 
 <span class="kn">from</span> <span class="nn">pybuilder.errors</span> <span class="kn">import</span> <span class="n">BuildFailedException</span>
 <span class="kn">from</span> <span class="nn">pybuilder.utils</span> <span class="kn">import</span> <span class="n">render_report</span>
+<span class="kn">from</span> <span class="nn">pybuilder.ci_server_interaction</span> <span class="kn">import</span> <span class="n">test_proxy_for</span>
 
 
 <span class="k">class</span> <span class="nc">ReportsProcessor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -1033,6 +1034,14 @@ table {
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Executed </span><span class="si">%d</span><span class="s"> integration tests.&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tests_executed</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tests_failed</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">BuildFailedException</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%d</span><span class="s"> of </span><span class="si">%d</span><span class="s"> integration tests failed.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tests_failed</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tests_executed</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">report_to_ci_server</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">report</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">reports</span><span class="p">:</span>
+            <span class="n">test_name</span> <span class="o">=</span> <span class="n">report</span><span class="p">[</span><span class="s">&#39;test&#39;</span><span class="p">]</span>
+            <span class="n">test_failed</span> <span class="o">=</span> <span class="n">report</span><span class="p">[</span><span class="s">&#39;success&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">True</span>
+            <span class="k">with</span> <span class="n">test_proxy_for</span><span class="p">(</span><span class="n">project</span><span class="p">)</span><span class="o">.</span><span class="n">and_test_name</span><span class="p">(</span><span class="s">&#39;Integrationtest.</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">test_name</span><span class="p">)</span> <span class="k">as</span> <span class="n">test</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">test_failed</span><span class="p">:</span>
+                    <span class="n">test</span><span class="o">.</span><span class="n">fails</span><span class="p">(</span><span class="n">report</span><span class="p">[</span><span class="s">&#39;exception&#39;</span><span class="p">])</span>
 </pre></div>
 
     </div>
@@ -1054,9 +1063,10 @@ table {
   <div class="column_list">
       <ul>
           <li class="mono"><a href="#pybuilder.plugins.python.test_plugin_helper.ReportsProcessor.__init__">__init__</a></li>
+          <li class="mono"><a href="#pybuilder.plugins.python.test_plugin_helper.ReportsProcessor.process_reports">process_reports</a></li>
       </ul>
       <ul>
-          <li class="mono"><a href="#pybuilder.plugins.python.test_plugin_helper.ReportsProcessor.process_reports">process_reports</a></li>
+          <li class="mono"><a href="#pybuilder.plugins.python.test_plugin_helper.ReportsProcessor.report_to_ci_server">report_to_ci_server</a></li>
       </ul>
       <ul>
           <li class="mono"><a href="#pybuilder.plugins.python.test_plugin_helper.ReportsProcessor.write_report_and_ensure_all_tests_passed">write_report_and_ensure_all_tests_passed</a></li>
@@ -1111,6 +1121,14 @@ table {
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Executed </span><span class="si">%d</span><span class="s"> integration tests.&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tests_executed</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tests_failed</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">BuildFailedException</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%d</span><span class="s"> of </span><span class="si">%d</span><span class="s"> integration tests failed.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tests_failed</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tests_executed</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">report_to_ci_server</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">report</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">reports</span><span class="p">:</span>
+            <span class="n">test_name</span> <span class="o">=</span> <span class="n">report</span><span class="p">[</span><span class="s">&#39;test&#39;</span><span class="p">]</span>
+            <span class="n">test_failed</span> <span class="o">=</span> <span class="n">report</span><span class="p">[</span><span class="s">&#39;success&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">True</span>
+            <span class="k">with</span> <span class="n">test_proxy_for</span><span class="p">(</span><span class="n">project</span><span class="p">)</span><span class="o">.</span><span class="n">and_test_name</span><span class="p">(</span><span class="s">&#39;Integrationtest.</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">test_name</span><span class="p">)</span> <span class="k">as</span> <span class="n">test</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">test_failed</span><span class="p">:</span>
+                    <span class="n">test</span><span class="o">.</span><span class="n">fails</span><span class="p">(</span><span class="n">report</span><span class="p">[</span><span class="s">&#39;exception&#39;</span><span class="p">])</span>
 </pre></div>
 
     </div>
@@ -1227,6 +1245,32 @@ table {
   
                   
     <div class="item">
+      <div class="name def" id="pybuilder.plugins.python.test_plugin_helper.ReportsProcessor.report_to_ci_server">
+        <p>def <span class="ident">report_to_ci_server</span>(</p><p>self, project)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.test_plugin_helper.ReportsProcessor.report_to_ci_server', this);">Show source.</a></p>
+    <div id="source-pybuilder.plugins.python.test_plugin_helper.ReportsProcessor.report_to_ci_server" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">report_to_ci_server</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">report</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">reports</span><span class="p">:</span>
+        <span class="n">test_name</span> <span class="o">=</span> <span class="n">report</span><span class="p">[</span><span class="s">&#39;test&#39;</span><span class="p">]</span>
+        <span class="n">test_failed</span> <span class="o">=</span> <span class="n">report</span><span class="p">[</span><span class="s">&#39;success&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">True</span>
+        <span class="k">with</span> <span class="n">test_proxy_for</span><span class="p">(</span><span class="n">project</span><span class="p">)</span><span class="o">.</span><span class="n">and_test_name</span><span class="p">(</span><span class="s">&#39;Integrationtest.</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">test_name</span><span class="p">)</span> <span class="k">as</span> <span class="n">test</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">test_failed</span><span class="p">:</span>
+                <span class="n">test</span><span class="o">.</span><span class="n">fails</span><span class="p">(</span><span class="n">report</span><span class="p">[</span><span class="s">&#39;exception&#39;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
       <div class="name def" id="pybuilder.plugins.python.test_plugin_helper.ReportsProcessor.write_report_and_ensure_all_tests_passed">
         <p>def <span class="ident">write_report_and_ensure_all_tests_passed</span>(</p><p>self)</p>
       </div>
@@ -1258,7 +1302,7 @@ table {
 <p style="text-align: right;">
   Documentation generated by
   <code><a href="https://github.com/BurntSushi/pdoc">pdoc</a></code>
-  0.1.8.
+  0.2.1.
 
   pdoc is in the public domain with the
   <a href="http://unlicense.org">UNLICENSE</a>.

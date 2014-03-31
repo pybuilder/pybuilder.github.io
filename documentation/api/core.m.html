@@ -1009,6 +1009,7 @@ build.py project descriptor.</p>
 
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">sep</span> <span class="k">as</span> <span class="n">PATH_SEPARATOR</span>
 
@@ -1130,6 +1131,19 @@ build.py project descriptor.</p>
 <span class="k">class</span> <span class="nc">after</span><span class="p">(</span><span class="n">BaseAction</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tasks</span><span class="p">,</span> <span class="n">only_once</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">after</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">AFTER_ATTRIBUTE</span><span class="p">,</span> <span class="n">only_once</span><span class="p">,</span> <span class="n">tasks</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">use_bldsup</span><span class="p">(</span><span class="n">build_support_dir</span><span class="o">=</span><span class="s">&quot;bldsup&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Specify a local build support directory for build specific extensions.</span>
+
+<span class="sd">    use_plugin(name) and import will look for python modules in BUILD_SUPPORT_DIR.</span>
+
+<span class="sd">    WARNING: The BUILD_SUPPORT_DIR must exist and must have an __init__.py file in it.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">build_support_dir</span><span class="p">),</span> <span class="s">&quot;use_bldsup(&#39;{0}&#39;): The {0} directory must exist!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">build_support_dir</span><span class="p">)</span>
+    <span class="n">init_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">build_support_dir</span><span class="p">,</span> <span class="s">&quot;__init__.py&quot;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">init_file</span><span class="p">),</span> <span class="s">&quot;use_bldsup(&#39;{0}&#39;): The {1} file must exist!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">build_support_dir</span><span class="p">,</span> <span class="n">init_file</span><span class="p">)</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">build_support_dir</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">use_plugin</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
@@ -1421,9 +1435,10 @@ build.py project descriptor.</p>
   <div class="column_list">
       <ul>
           <li class="mono"><a href="#pybuilder.core.init">init</a></li>
+          <li class="mono"><a href="#pybuilder.core.task">task</a></li>
       </ul>
       <ul>
-          <li class="mono"><a href="#pybuilder.core.task">task</a></li>
+          <li class="mono"><a href="#pybuilder.core.use_bldsup">use_bldsup</a></li>
       </ul>
       <ul>
           <li class="mono"><a href="#pybuilder.core.use_plugin">use_plugin</a></li>
@@ -1796,6 +1811,39 @@ a string argument, which overrides the default name.</p></div>
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">setattr</span><span class="p">(</span><span class="n">callable_or_string</span><span class="p">,</span> <span class="n">TASK_ATTRIBUTE</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">callable_or_string</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+      
+    <div class="item">
+      <div class="name def" id="pybuilder.core.use_bldsup">
+        <p>def <span class="ident">use_bldsup</span>(</p><p>build_support_dir=&#39;bldsup&#39;)</p>
+      </div>
+      
+
+      
+  
+      <div class="desc"><p>Specify a local build support directory for build specific extensions.</p>
+<p>use_plugin(name) and import will look for python modules in BUILD_SUPPORT_DIR.</p>
+<p>WARNING: The BUILD_SUPPORT_DIR must exist and must have an <strong>init</strong>.py file in it.</p></div>
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.core.use_bldsup', this);">Show source.</a></p>
+    <div id="source-pybuilder.core.use_bldsup" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">use_bldsup</span><span class="p">(</span><span class="n">build_support_dir</span><span class="o">=</span><span class="s">&quot;bldsup&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Specify a local build support directory for build specific extensions.</span>
+
+<span class="sd">    use_plugin(name) and import will look for python modules in BUILD_SUPPORT_DIR.</span>
+
+<span class="sd">    WARNING: The BUILD_SUPPORT_DIR must exist and must have an __init__.py file in it.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">build_support_dir</span><span class="p">),</span> <span class="s">&quot;use_bldsup(&#39;{0}&#39;): The {0} directory must exist!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">build_support_dir</span><span class="p">)</span>
+    <span class="n">init_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">build_support_dir</span><span class="p">,</span> <span class="s">&quot;__init__.py&quot;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">init_file</span><span class="p">),</span> <span class="s">&quot;use_bldsup(&#39;{0}&#39;): The {1} file must exist!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">build_support_dir</span><span class="p">,</span> <span class="n">init_file</span><span class="p">)</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">build_support_dir</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2711,7 +2759,7 @@ as well as some convenience methods to access these properties.</p></div>
                   
     <div class="item">
       <div class="name def" id="pybuilder.core.Project.__init__">
-        <p>def <span class="ident">__init__</span>(</p><p>self, basedir, version='1.0-SNAPSHOT', name=None)</p>
+        <p>def <span class="ident">__init__</span>(</p><p>self, basedir, version=&#39;1.0-SNAPSHOT&#39;, name=None)</p>
       </div>
       
 
@@ -3385,7 +3433,7 @@ Returns an empty list if the project is valid.</p></div>
 <p style="text-align: right;">
   Documentation generated by
   <code><a href="https://github.com/BurntSushi/pdoc">pdoc</a></code>
-  0.1.8.
+  0.2.1.
 
   pdoc is in the public domain with the
   <a href="http://unlicense.org">UNLICENSE</a>.

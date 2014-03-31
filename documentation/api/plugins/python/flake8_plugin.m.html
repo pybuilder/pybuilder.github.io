@@ -1012,8 +1012,8 @@ Flake8 is a wrapper around: PyFlakes, pep8, Ned's McCabe script.</p>
 
 <span class="kn">from</span> <span class="nn">pybuilder.core</span> <span class="kn">import</span> <span class="n">after</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">init</span><span class="p">,</span> <span class="n">use_plugin</span><span class="p">,</span> <span class="n">depends</span>
 <span class="kn">from</span> <span class="nn">pybuilder.errors</span> <span class="kn">import</span> <span class="n">BuildFailedException</span>
-<span class="kn">from</span> <span class="nn">pybuilder.utils</span> <span class="kn">import</span> <span class="n">assert_can_execute</span><span class="p">,</span> <span class="n">read_file</span>
-<span class="kn">from</span> <span class="nn">pybuilder.plugins.python.python_plugin_helper</span> <span class="kn">import</span> <span class="n">execute_tool_on_source_files</span>
+<span class="kn">from</span> <span class="nn">pybuilder.utils</span> <span class="kn">import</span> <span class="n">assert_can_execute</span>
+<span class="kn">from</span> <span class="nn">pybuilder.pluginhelper.external_command</span> <span class="kn">import</span> <span class="n">ExternalCommandBuilder</span>
 
 
 <span class="n">use_plugin</span><span class="p">(</span><span class="s">&quot;python.core&quot;</span><span class="p">)</span>
@@ -1047,31 +1047,20 @@ Flake8 is a wrapper around: PyFlakes, pep8, Ned's McCabe script.</p>
     <span class="n">verbose</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;verbose&quot;</span><span class="p">)</span>
     <span class="n">project</span><span class="o">.</span><span class="n">set_property_if_unset</span><span class="p">(</span><span class="s">&quot;flake8_verbose_output&quot;</span><span class="p">,</span> <span class="n">verbose</span><span class="p">)</span>
 
-    <span class="n">command_and_arguments</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;flake8&quot;</span><span class="p">]</span>
-
-    <span class="n">flake8_ignore</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;flake8_ignore&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">flake8_ignore</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">ignore_option</span> <span class="o">=</span> <span class="s">&quot;--ignore={0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">flake8_ignore</span><span class="p">)</span>
-        <span class="n">command_and_arguments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ignore_option</span><span class="p">)</span>
-
-    <span class="n">max_line_length</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;flake8_max_line_length&quot;</span><span class="p">)</span>
-    <span class="n">command_and_arguments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;--max-line-length={0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">max_line_length</span><span class="p">))</span>
-
-    <span class="n">exclude_patterns</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;flake8_exclude_patterns&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">exclude_patterns</span><span class="p">:</span>
-        <span class="n">command_and_arguments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;--exclude={0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">exclude_patterns</span><span class="p">))</span>
+    <span class="n">command</span> <span class="o">=</span> <span class="n">ExternalCommandBuilder</span><span class="p">(</span><span class="s">&#39;flake8&#39;</span><span class="p">,</span> <span class="n">project</span><span class="p">)</span>
+    <span class="n">command</span><span class="o">.</span><span class="n">use_argument</span><span class="p">(</span><span class="s">&#39;--ignore={0}&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">formatted_with_truthy_property</span><span class="p">(</span><span class="s">&#39;flake8_ignore&#39;</span><span class="p">)</span>
+    <span class="n">command</span><span class="o">.</span><span class="n">use_argument</span><span class="p">(</span><span class="s">&#39;--max-line-length={0}&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">formatted_with_property</span><span class="p">(</span><span class="s">&#39;flake8_max_line_length&#39;</span><span class="p">)</span>
+    <span class="n">command</span><span class="o">.</span><span class="n">use_argument</span><span class="p">(</span><span class="s">&#39;--exclude={0}&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">formatted_with_truthy_property</span><span class="p">(</span><span class="s">&#39;flake8_exclude_patterns&#39;</span><span class="p">)</span>
 
     <span class="n">include_test_sources</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;flake8_include_test_sources&quot;</span><span class="p">)</span>
 
-    <span class="n">execution_result</span> <span class="o">=</span> <span class="n">execute_tool_on_source_files</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="n">project</span><span class="p">,</span>
-                                                    <span class="n">name</span><span class="o">=</span><span class="s">&quot;flake8&quot;</span><span class="p">,</span>
-                                                    <span class="n">command_and_arguments</span><span class="o">=</span><span class="n">command_and_arguments</span><span class="p">,</span>
-                                                    <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span>
-                                                    <span class="n">include_test_sources</span><span class="o">=</span><span class="n">include_test_sources</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">command</span><span class="o">.</span><span class="n">run_on_production_source_files</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">include_test_sources</span><span class="o">=</span><span class="n">include_test_sources</span><span class="p">)</span>
 
-    <span class="n">report_file</span> <span class="o">=</span> <span class="n">execution_result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">report_lines</span> <span class="o">=</span> <span class="n">read_file</span><span class="p">(</span><span class="n">report_file</span><span class="p">)</span>
-    <span class="n">count_of_warnings</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">report_lines</span><span class="p">)</span>
+    <span class="n">count_of_warnings</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">report_lines</span><span class="p">)</span>
+    <span class="n">count_of_errors</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">error_report_lines</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">count_of_errors</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&#39;Errors while running flake8, see {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">error_report_file</span><span class="p">))</span>
 
     <span class="k">if</span> <span class="n">count_of_warnings</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;flake8_break_build&quot;</span><span class="p">):</span>
@@ -1133,31 +1122,20 @@ Flake8 is a wrapper around: PyFlakes, pep8, Ned's McCabe script.</p>
     <span class="n">verbose</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;verbose&quot;</span><span class="p">)</span>
     <span class="n">project</span><span class="o">.</span><span class="n">set_property_if_unset</span><span class="p">(</span><span class="s">&quot;flake8_verbose_output&quot;</span><span class="p">,</span> <span class="n">verbose</span><span class="p">)</span>
 
-    <span class="n">command_and_arguments</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;flake8&quot;</span><span class="p">]</span>
-
-    <span class="n">flake8_ignore</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;flake8_ignore&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">flake8_ignore</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">ignore_option</span> <span class="o">=</span> <span class="s">&quot;--ignore={0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">flake8_ignore</span><span class="p">)</span>
-        <span class="n">command_and_arguments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ignore_option</span><span class="p">)</span>
-
-    <span class="n">max_line_length</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;flake8_max_line_length&quot;</span><span class="p">)</span>
-    <span class="n">command_and_arguments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;--max-line-length={0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">max_line_length</span><span class="p">))</span>
-
-    <span class="n">exclude_patterns</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;flake8_exclude_patterns&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">exclude_patterns</span><span class="p">:</span>
-        <span class="n">command_and_arguments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;--exclude={0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">exclude_patterns</span><span class="p">))</span>
+    <span class="n">command</span> <span class="o">=</span> <span class="n">ExternalCommandBuilder</span><span class="p">(</span><span class="s">&#39;flake8&#39;</span><span class="p">,</span> <span class="n">project</span><span class="p">)</span>
+    <span class="n">command</span><span class="o">.</span><span class="n">use_argument</span><span class="p">(</span><span class="s">&#39;--ignore={0}&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">formatted_with_truthy_property</span><span class="p">(</span><span class="s">&#39;flake8_ignore&#39;</span><span class="p">)</span>
+    <span class="n">command</span><span class="o">.</span><span class="n">use_argument</span><span class="p">(</span><span class="s">&#39;--max-line-length={0}&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">formatted_with_property</span><span class="p">(</span><span class="s">&#39;flake8_max_line_length&#39;</span><span class="p">)</span>
+    <span class="n">command</span><span class="o">.</span><span class="n">use_argument</span><span class="p">(</span><span class="s">&#39;--exclude={0}&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">formatted_with_truthy_property</span><span class="p">(</span><span class="s">&#39;flake8_exclude_patterns&#39;</span><span class="p">)</span>
 
     <span class="n">include_test_sources</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;flake8_include_test_sources&quot;</span><span class="p">)</span>
 
-    <span class="n">execution_result</span> <span class="o">=</span> <span class="n">execute_tool_on_source_files</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="n">project</span><span class="p">,</span>
-                                                    <span class="n">name</span><span class="o">=</span><span class="s">&quot;flake8&quot;</span><span class="p">,</span>
-                                                    <span class="n">command_and_arguments</span><span class="o">=</span><span class="n">command_and_arguments</span><span class="p">,</span>
-                                                    <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span>
-                                                    <span class="n">include_test_sources</span><span class="o">=</span><span class="n">include_test_sources</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">command</span><span class="o">.</span><span class="n">run_on_production_source_files</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">include_test_sources</span><span class="o">=</span><span class="n">include_test_sources</span><span class="p">)</span>
 
-    <span class="n">report_file</span> <span class="o">=</span> <span class="n">execution_result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">report_lines</span> <span class="o">=</span> <span class="n">read_file</span><span class="p">(</span><span class="n">report_file</span><span class="p">)</span>
-    <span class="n">count_of_warnings</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">report_lines</span><span class="p">)</span>
+    <span class="n">count_of_warnings</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">report_lines</span><span class="p">)</span>
+    <span class="n">count_of_errors</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">error_report_lines</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">count_of_errors</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&#39;Errors while running flake8, see {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">error_report_file</span><span class="p">))</span>
 
     <span class="k">if</span> <span class="n">count_of_warnings</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;flake8_break_build&quot;</span><span class="p">):</span>
@@ -1234,7 +1212,7 @@ Flake8 is a wrapper around: PyFlakes, pep8, Ned's McCabe script.</p>
 <p style="text-align: right;">
   Documentation generated by
   <code><a href="https://github.com/BurntSushi/pdoc">pdoc</a></code>
-  0.1.8.
+  0.2.1.
 
   pdoc is in the public domain with the
   <a href="http://unlicense.org">UNLICENSE</a>.

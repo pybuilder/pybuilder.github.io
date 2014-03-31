@@ -1018,7 +1018,7 @@ table {
 
 <span class="n">DATA_FILES_PROPERTY</span> <span class="o">=</span> <span class="s">&quot;distutils_data_files&quot;</span>
 <span class="n">SETUP_TEMPLATE</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">Template</span><span class="p">(</span><span class="s">&quot;&quot;&quot;#!/usr/bin/env python</span>
-
+<span class="s">$remove_hardlink_capabilities_for_shared_filesystems</span>
 <span class="s">from $module import setup</span>
 
 <span class="s">if __name__ == &#39;__main__&#39;:</span>
@@ -1052,6 +1052,9 @@ table {
 <span class="nd">@init</span>
 <span class="k">def</span> <span class="nf">initialize_distutils_plugin</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
     <span class="n">project</span><span class="o">.</span><span class="n">set_property_if_unset</span><span class="p">(</span><span class="s">&quot;distutils_commands&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s">&quot;sdist&quot;</span><span class="p">,</span> <span class="s">&quot;bdist_dumb&quot;</span><span class="p">])</span>
+    <span class="c"># Workaround for http://bugs.python.org/issue8876 , unable to build a bdist</span>
+    <span class="c"># on a filesystem that does not support hardlinks</span>
+    <span class="n">project</span><span class="o">.</span><span class="n">set_property_if_unset</span><span class="p">(</span><span class="s">&quot;distutils_issue8876_workaround_enabled&quot;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
     <span class="n">project</span><span class="o">.</span><span class="n">set_property_if_unset</span><span class="p">(</span><span class="s">&quot;distutils_classifiers&quot;</span><span class="p">,</span> <span class="p">[</span>
         <span class="s">&quot;Development Status :: 3 - Alpha&quot;</span><span class="p">,</span>
         <span class="s">&quot;Programming Language :: Python&quot;</span>
@@ -1091,6 +1094,10 @@ table {
         <span class="s">&quot;package_data&quot;</span><span class="p">:</span> <span class="n">build_package_data_string</span><span class="p">(</span><span class="n">project</span><span class="p">),</span>
         <span class="s">&quot;dependencies&quot;</span><span class="p">:</span> <span class="n">build_install_dependencies_string</span><span class="p">(</span><span class="n">project</span><span class="p">),</span>
         <span class="s">&quot;dependency_links&quot;</span><span class="p">:</span> <span class="n">build_dependency_links_string</span><span class="p">(</span><span class="n">project</span><span class="p">),</span>
+        <span class="s">&quot;remove_hardlink_capabilities_for_shared_filesystems&quot;</span><span class="p">:</span> <span class="p">(</span>
+            <span class="s">&quot;import os</span><span class="se">\n</span><span class="s">del os.link&quot;</span>
+            <span class="k">if</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;distutils_issue8876_workaround_enabled&quot;</span><span class="p">)</span>
+            <span class="k">else</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
     <span class="p">}</span>
 
     <span class="k">return</span> <span class="n">SETUP_TEMPLATE</span><span class="o">.</span><span class="n">substitute</span><span class="p">(</span><span class="n">template_values</span><span class="p">)</span>
@@ -1480,7 +1487,7 @@ table {
       
     <div class="item">
       <div class="name def" id="pybuilder.plugins.python.distutils_plugin.default">
-        <p>def <span class="ident">default</span>(</p><p>value, default='')</p>
+        <p>def <span class="ident">default</span>(</p><p>value, default=&#39;&#39;)</p>
       </div>
       
 
@@ -1515,6 +1522,9 @@ table {
       <div class="codehilite"><pre><span class="nd">@init</span>
 <span class="k">def</span> <span class="nf">initialize_distutils_plugin</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
     <span class="n">project</span><span class="o">.</span><span class="n">set_property_if_unset</span><span class="p">(</span><span class="s">&quot;distutils_commands&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s">&quot;sdist&quot;</span><span class="p">,</span> <span class="s">&quot;bdist_dumb&quot;</span><span class="p">])</span>
+    <span class="c"># Workaround for http://bugs.python.org/issue8876 , unable to build a bdist</span>
+    <span class="c"># on a filesystem that does not support hardlinks</span>
+    <span class="n">project</span><span class="o">.</span><span class="n">set_property_if_unset</span><span class="p">(</span><span class="s">&quot;distutils_issue8876_workaround_enabled&quot;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
     <span class="n">project</span><span class="o">.</span><span class="n">set_property_if_unset</span><span class="p">(</span><span class="s">&quot;distutils_classifiers&quot;</span><span class="p">,</span> <span class="p">[</span>
         <span class="s">&quot;Development Status :: 3 - Alpha&quot;</span><span class="p">,</span>
         <span class="s">&quot;Programming Language :: Python&quot;</span>
@@ -1586,6 +1596,10 @@ table {
         <span class="s">&quot;package_data&quot;</span><span class="p">:</span> <span class="n">build_package_data_string</span><span class="p">(</span><span class="n">project</span><span class="p">),</span>
         <span class="s">&quot;dependencies&quot;</span><span class="p">:</span> <span class="n">build_install_dependencies_string</span><span class="p">(</span><span class="n">project</span><span class="p">),</span>
         <span class="s">&quot;dependency_links&quot;</span><span class="p">:</span> <span class="n">build_dependency_links_string</span><span class="p">(</span><span class="n">project</span><span class="p">),</span>
+        <span class="s">&quot;remove_hardlink_capabilities_for_shared_filesystems&quot;</span><span class="p">:</span> <span class="p">(</span>
+            <span class="s">&quot;import os</span><span class="se">\n</span><span class="s">del os.link&quot;</span>
+            <span class="k">if</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;distutils_issue8876_workaround_enabled&quot;</span><span class="p">)</span>
+            <span class="k">else</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
     <span class="p">}</span>
 
     <span class="k">return</span> <span class="n">SETUP_TEMPLATE</span><span class="o">.</span><span class="n">substitute</span><span class="p">(</span><span class="n">template_values</span><span class="p">)</span>
@@ -1667,7 +1681,7 @@ table {
 <p style="text-align: right;">
   Documentation generated by
   <code><a href="https://github.com/BurntSushi/pdoc">pdoc</a></code>
-  0.1.8.
+  0.2.1.
 
   pdoc is in the public domain with the
   <a href="http://unlicense.org">UNLICENSE</a>.

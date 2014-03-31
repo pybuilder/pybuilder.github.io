@@ -1010,6 +1010,7 @@ table {
 
 <span class="n">DEFAULT_SOURCE_DIRECTORY</span> <span class="o">=</span> <span class="s">&#39;src/main/python&#39;</span>
 <span class="n">DEFAULT_UNITTEST_DIRECTORY</span> <span class="o">=</span> <span class="s">&#39;src/unittest/python&#39;</span>
+<span class="n">PLUGINS_TO_SUGGEST</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;python.flake8&#39;</span><span class="p">,</span> <span class="s">&#39;python.coverage&#39;</span><span class="p">,</span> <span class="s">&#39;python.distutils&#39;</span><span class="p">]</span>
 
 
 <span class="k">def</span> <span class="nf">prompt_user</span><span class="p">(</span><span class="n">description</span><span class="p">,</span> <span class="n">default</span><span class="p">):</span>
@@ -1026,6 +1027,9 @@ table {
     <span class="n">dir_source_unittest_python</span> <span class="o">=</span> <span class="n">prompt_user</span><span class="p">(</span>
         <span class="s">&#39;Unittest directory&#39;</span><span class="p">,</span> <span class="n">DEFAULT_UNITTEST_DIRECTORY</span><span class="p">)</span>
 
+    <span class="n">plugins</span> <span class="o">=</span> <span class="n">suggest_plugins</span><span class="p">(</span><span class="n">PLUGINS_TO_SUGGEST</span><span class="p">)</span>
+    <span class="n">scaffolding</span><span class="o">.</span><span class="n">add_plugins</span><span class="p">(</span><span class="n">plugins</span><span class="p">)</span>
+
     <span class="k">if</span> <span class="n">dir_source_main_python</span><span class="p">:</span>
         <span class="n">scaffolding</span><span class="o">.</span><span class="n">dir_source_main_python</span> <span class="o">=</span> <span class="n">dir_source_main_python</span>
     <span class="k">if</span> <span class="n">dir_source_unittest_python</span><span class="p">:</span>
@@ -1034,11 +1038,22 @@ table {
     <span class="k">return</span> <span class="n">scaffolding</span>
 
 
+<span class="k">def</span> <span class="nf">suggest_plugins</span><span class="p">(</span><span class="n">plugins</span><span class="p">):</span>
+    <span class="n">chosen_plugins</span> <span class="o">=</span> <span class="p">[</span><span class="n">plugin</span> <span class="k">for</span> <span class="n">plugin</span> <span class="ow">in</span> <span class="p">[</span><span class="n">suggest</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span> <span class="k">for</span> <span class="n">plugin</span> <span class="ow">in</span> <span class="n">plugins</span><span class="p">]</span> <span class="k">if</span> <span class="n">plugin</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">chosen_plugins</span>
+
+
+<span class="k">def</span> <span class="nf">suggest</span><span class="p">(</span><span class="n">plugin</span><span class="p">):</span>
+    <span class="n">choice</span> <span class="o">=</span> <span class="n">prompt_user</span><span class="p">(</span><span class="s">&#39;Use plugin </span><span class="si">%s</span><span class="s"> (Y/n)?&#39;</span> <span class="o">%</span> <span class="n">plugin</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">)</span>
+    <span class="n">plugin_enabled</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">choice</span> <span class="ow">or</span> <span class="n">choice</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s">&#39;y&#39;</span>
+    <span class="k">return</span> <span class="n">plugin</span> <span class="k">if</span> <span class="n">plugin_enabled</span> <span class="k">else</span> <span class="bp">None</span>
+
+
 <span class="k">def</span> <span class="nf">start_project</span><span class="p">():</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">scaffolding</span> <span class="o">=</span> <span class="n">collect_project_information</span><span class="p">()</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="n">print_text_line</span><span class="p">(</span><span class="s">&#39;Canceled.&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+        <span class="n">print_text_line</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">Canceled.&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="mi">1</span>
 
     <span class="n">descriptor</span> <span class="o">=</span> <span class="n">scaffolding</span><span class="o">.</span><span class="n">render_build_descriptor</span><span class="p">()</span>
@@ -1052,35 +1067,44 @@ table {
 
 <span class="k">class</span> <span class="nc">PythonProjectScaffolding</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-    <span class="n">descriptor_template</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">Template</span><span class="p">(</span><span class="s">&quot;&quot;&quot;</span>
+    <span class="n">DESCRIPTOR_TEMPLATE</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">Template</span><span class="p">(</span><span class="s">&quot;&quot;&quot;</span><span class="se">\</span>
 <span class="s">from pybuilder.core import $core_imports</span>
 
-<span class="s">use_plugin(&quot;python.core&quot;)</span>
-<span class="s">use_plugin(&quot;python.unittest&quot;)</span>
+<span class="s">$activated_plugins</span>
+
 
 <span class="s">name = &quot;${project_name}&quot;</span>
 <span class="s">default_task = &quot;publish&quot;</span>
 
-<span class="s">$initializer</span>
 
+<span class="s">$initializer</span>
 <span class="s">&quot;&quot;&quot;</span><span class="p">)</span>
+
+    <span class="n">INITIALIZER_HEAD</span> <span class="o">=</span> <span class="s">&#39;&#39;&#39;@init</span>
+<span class="s">def set_properties(project):</span>
+<span class="s">&#39;&#39;&#39;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">project_name</span> <span class="o">=</span> <span class="n">project_name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_main_python</span> <span class="o">=</span> <span class="n">DEFAULT_SOURCE_DIRECTORY</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_unittest_python</span> <span class="o">=</span> <span class="n">DEFAULT_UNITTEST_DIRECTORY</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">core_imports</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;use_plugin&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plugins</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;python.core&#39;</span><span class="p">,</span> <span class="s">&#39;python.unittest&#39;</span><span class="p">,</span> <span class="s">&#39;python.install_dependencies&#39;</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">initializer</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">add_plugins</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plugins</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plugins</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">plugins</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">render_build_descriptor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">build_initializer</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">build_imports</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">core_imports</span> <span class="o">=</span> <span class="s">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">core_imports</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">descriptor_template</span><span class="o">.</span><span class="n">substitute</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">DESCRIPTOR_TEMPLATE</span><span class="o">.</span><span class="n">substitute</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">build_imports</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">activated_plugins</span> <span class="o">=</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s">&#39;use_plugin(&quot;</span><span class="si">%s</span><span class="s">&quot;)&#39;</span> <span class="o">%</span> <span class="n">plugin</span> <span class="k">for</span> <span class="n">plugin</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">plugins</span><span class="p">])</span>
 
     <span class="k">def</span> <span class="nf">build_initializer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_default_source_main_python</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_default_source_unittest_python</span><span class="p">:</span>
-            <span class="k">return</span>
-
         <span class="bp">self</span><span class="o">.</span><span class="n">core_imports</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;init&#39;</span><span class="p">)</span>
 
         <span class="n">properties_to_set</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1089,11 +1113,9 @@ table {
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_default_source_unittest_python</span><span class="p">:</span>
             <span class="n">properties_to_set</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s">&#39;dir_source_unittest_python&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_unittest_python</span><span class="p">))</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">initializer</span> <span class="o">=</span> <span class="s">&#39;&#39;&#39;@init</span>
-<span class="s">def set_properties(project):</span>
-<span class="s">&#39;&#39;&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">initializer</span> <span class="o">+=</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-            <span class="p">[</span><span class="s">&#39;    project.set_property(&quot;{0}&quot;, &quot;{1}&quot;)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">properties_to_set</span><span class="p">])</span>
+        <span class="n">initializer_body</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_initializer_body_with_properties</span><span class="p">(</span><span class="n">properties_to_set</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">initializer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">INITIALIZER_HEAD</span> <span class="o">+</span> <span class="n">initializer_body</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">is_default_source_main_python</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1108,6 +1130,16 @@ table {
                                  <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_unittest_python</span><span class="p">):</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">needed_directory</span><span class="p">):</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">needed_directory</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_build_initializer_body_with_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">properties_to_set</span><span class="p">):</span>
+        <span class="n">initializer_body</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+        <span class="n">initializer_body</span> <span class="o">+=</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="p">[</span><span class="s">&#39;    project.set_property(&quot;{0}&quot;, &quot;{1}&quot;)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">properties_to_set</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">initializer_body</span><span class="p">:</span>
+            <span class="n">initializer_body</span> <span class="o">+=</span> <span class="s">&#39;    pass&#39;</span>
+
+        <span class="k">return</span> <span class="n">initializer_body</span>
 </pre></div>
 
     </div>
@@ -1128,6 +1160,7 @@ table {
           <li class="mono"><a href="#pybuilder.scaffolding.DEFAULT_UNITTEST_DIRECTORY">DEFAULT_UNITTEST_DIRECTORY</a></li>
       </ul>
       <ul>
+          <li class="mono"><a href="#pybuilder.scaffolding.PLUGINS_TO_SUGGEST">PLUGINS_TO_SUGGEST</a></li>
       </ul>
   </div>
 
@@ -1139,12 +1172,14 @@ table {
   <div class="column_list">
       <ul>
           <li class="mono"><a href="#pybuilder.scaffolding.collect_project_information">collect_project_information</a></li>
-      </ul>
-      <ul>
           <li class="mono"><a href="#pybuilder.scaffolding.prompt_user">prompt_user</a></li>
       </ul>
       <ul>
           <li class="mono"><a href="#pybuilder.scaffolding.start_project">start_project</a></li>
+          <li class="mono"><a href="#pybuilder.scaffolding.suggest">suggest</a></li>
+      </ul>
+      <ul>
+          <li class="mono"><a href="#pybuilder.scaffolding.suggest_plugins">suggest_plugins</a></li>
       </ul>
   </div>
 
@@ -1160,12 +1195,14 @@ table {
   <div class="column_list">
       <ul>
           <li class="mono"><a href="#pybuilder.scaffolding.PythonProjectScaffolding.__init__">__init__</a></li>
+          <li class="mono"><a href="#pybuilder.scaffolding.PythonProjectScaffolding.add_plugins">add_plugins</a></li>
+      </ul>
+      <ul>
+          <li class="mono"><a href="#pybuilder.scaffolding.PythonProjectScaffolding.build_imports">build_imports</a></li>
           <li class="mono"><a href="#pybuilder.scaffolding.PythonProjectScaffolding.build_initializer">build_initializer</a></li>
       </ul>
       <ul>
           <li class="mono"><a href="#pybuilder.scaffolding.PythonProjectScaffolding.render_build_descriptor">render_build_descriptor</a></li>
-      </ul>
-      <ul>
           <li class="mono"><a href="#pybuilder.scaffolding.PythonProjectScaffolding.set_up_project">set_up_project</a></li>
       </ul>
   </div>
@@ -1187,6 +1224,14 @@ table {
       </div>
       <div class="item">
         <p id="pybuilder.scaffolding.DEFAULT_UNITTEST_DIRECTORY" class="name">var <span class="ident">DEFAULT_UNITTEST_DIRECTORY</span></p>
+        
+  
+    <div class="source_cont">
+</div>
+
+      </div>
+      <div class="item">
+        <p id="pybuilder.scaffolding.PLUGINS_TO_SUGGEST" class="name">var <span class="ident">PLUGINS_TO_SUGGEST</span></p>
         
   
     <div class="source_cont">
@@ -1215,6 +1260,9 @@ table {
     <span class="n">dir_source_main_python</span> <span class="o">=</span> <span class="n">prompt_user</span><span class="p">(</span><span class="s">&#39;Source directory&#39;</span><span class="p">,</span> <span class="n">DEFAULT_SOURCE_DIRECTORY</span><span class="p">)</span>
     <span class="n">dir_source_unittest_python</span> <span class="o">=</span> <span class="n">prompt_user</span><span class="p">(</span>
         <span class="s">&#39;Unittest directory&#39;</span><span class="p">,</span> <span class="n">DEFAULT_UNITTEST_DIRECTORY</span><span class="p">)</span>
+
+    <span class="n">plugins</span> <span class="o">=</span> <span class="n">suggest_plugins</span><span class="p">(</span><span class="n">PLUGINS_TO_SUGGEST</span><span class="p">)</span>
+    <span class="n">scaffolding</span><span class="o">.</span><span class="n">add_plugins</span><span class="p">(</span><span class="n">plugins</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">dir_source_main_python</span><span class="p">:</span>
         <span class="n">scaffolding</span><span class="o">.</span><span class="n">dir_source_main_python</span> <span class="o">=</span> <span class="n">dir_source_main_python</span>
@@ -1266,8 +1314,8 @@ table {
       <div class="codehilite"><pre><span class="k">def</span> <span class="nf">start_project</span><span class="p">():</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">scaffolding</span> <span class="o">=</span> <span class="n">collect_project_information</span><span class="p">()</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="n">print_text_line</span><span class="p">(</span><span class="s">&#39;Canceled.&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+        <span class="n">print_text_line</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">Canceled.&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="mi">1</span>
 
     <span class="n">descriptor</span> <span class="o">=</span> <span class="n">scaffolding</span><span class="o">.</span><span class="n">render_build_descriptor</span><span class="p">()</span>
@@ -1277,6 +1325,51 @@ table {
 
     <span class="n">scaffolding</span><span class="o">.</span><span class="n">set_up_project</span><span class="p">()</span>
     <span class="k">return</span> <span class="mi">0</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+      
+    <div class="item">
+      <div class="name def" id="pybuilder.scaffolding.suggest">
+        <p>def <span class="ident">suggest</span>(</p><p>plugin)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.scaffolding.suggest', this);">Show source.</a></p>
+    <div id="source-pybuilder.scaffolding.suggest" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">suggest</span><span class="p">(</span><span class="n">plugin</span><span class="p">):</span>
+    <span class="n">choice</span> <span class="o">=</span> <span class="n">prompt_user</span><span class="p">(</span><span class="s">&#39;Use plugin </span><span class="si">%s</span><span class="s"> (Y/n)?&#39;</span> <span class="o">%</span> <span class="n">plugin</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">)</span>
+    <span class="n">plugin_enabled</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">choice</span> <span class="ow">or</span> <span class="n">choice</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s">&#39;y&#39;</span>
+    <span class="k">return</span> <span class="n">plugin</span> <span class="k">if</span> <span class="n">plugin_enabled</span> <span class="k">else</span> <span class="bp">None</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+      
+    <div class="item">
+      <div class="name def" id="pybuilder.scaffolding.suggest_plugins">
+        <p>def <span class="ident">suggest_plugins</span>(</p><p>plugins)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.scaffolding.suggest_plugins', this);">Show source.</a></p>
+    <div id="source-pybuilder.scaffolding.suggest_plugins" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">suggest_plugins</span><span class="p">(</span><span class="n">plugins</span><span class="p">):</span>
+    <span class="n">chosen_plugins</span> <span class="o">=</span> <span class="p">[</span><span class="n">plugin</span> <span class="k">for</span> <span class="n">plugin</span> <span class="ow">in</span> <span class="p">[</span><span class="n">suggest</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span> <span class="k">for</span> <span class="n">plugin</span> <span class="ow">in</span> <span class="n">plugins</span><span class="p">]</span> <span class="k">if</span> <span class="n">plugin</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">chosen_plugins</span>
 </pre></div>
 
     </div>
@@ -1296,35 +1389,44 @@ table {
     <div id="source-pybuilder.scaffolding.PythonProjectScaffolding" class="source">
       <div class="codehilite"><pre><span class="k">class</span> <span class="nc">PythonProjectScaffolding</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-    <span class="n">descriptor_template</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">Template</span><span class="p">(</span><span class="s">&quot;&quot;&quot;</span>
+    <span class="n">DESCRIPTOR_TEMPLATE</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">Template</span><span class="p">(</span><span class="s">&quot;&quot;&quot;</span><span class="se">\</span>
 <span class="s">from pybuilder.core import $core_imports</span>
 
-<span class="s">use_plugin(&quot;python.core&quot;)</span>
-<span class="s">use_plugin(&quot;python.unittest&quot;)</span>
+<span class="s">$activated_plugins</span>
+
 
 <span class="s">name = &quot;${project_name}&quot;</span>
 <span class="s">default_task = &quot;publish&quot;</span>
 
-<span class="s">$initializer</span>
 
+<span class="s">$initializer</span>
 <span class="s">&quot;&quot;&quot;</span><span class="p">)</span>
+
+    <span class="n">INITIALIZER_HEAD</span> <span class="o">=</span> <span class="s">&#39;&#39;&#39;@init</span>
+<span class="s">def set_properties(project):</span>
+<span class="s">&#39;&#39;&#39;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">project_name</span> <span class="o">=</span> <span class="n">project_name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_main_python</span> <span class="o">=</span> <span class="n">DEFAULT_SOURCE_DIRECTORY</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_unittest_python</span> <span class="o">=</span> <span class="n">DEFAULT_UNITTEST_DIRECTORY</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">core_imports</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;use_plugin&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plugins</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;python.core&#39;</span><span class="p">,</span> <span class="s">&#39;python.unittest&#39;</span><span class="p">,</span> <span class="s">&#39;python.install_dependencies&#39;</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">initializer</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">add_plugins</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plugins</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plugins</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">plugins</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">render_build_descriptor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">build_initializer</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">build_imports</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">core_imports</span> <span class="o">=</span> <span class="s">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">core_imports</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">descriptor_template</span><span class="o">.</span><span class="n">substitute</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">DESCRIPTOR_TEMPLATE</span><span class="o">.</span><span class="n">substitute</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">build_imports</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">activated_plugins</span> <span class="o">=</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s">&#39;use_plugin(&quot;</span><span class="si">%s</span><span class="s">&quot;)&#39;</span> <span class="o">%</span> <span class="n">plugin</span> <span class="k">for</span> <span class="n">plugin</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">plugins</span><span class="p">])</span>
 
     <span class="k">def</span> <span class="nf">build_initializer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_default_source_main_python</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_default_source_unittest_python</span><span class="p">:</span>
-            <span class="k">return</span>
-
         <span class="bp">self</span><span class="o">.</span><span class="n">core_imports</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;init&#39;</span><span class="p">)</span>
 
         <span class="n">properties_to_set</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1333,11 +1435,9 @@ table {
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_default_source_unittest_python</span><span class="p">:</span>
             <span class="n">properties_to_set</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s">&#39;dir_source_unittest_python&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_unittest_python</span><span class="p">))</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">initializer</span> <span class="o">=</span> <span class="s">&#39;&#39;&#39;@init</span>
-<span class="s">def set_properties(project):</span>
-<span class="s">&#39;&#39;&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">initializer</span> <span class="o">+=</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-            <span class="p">[</span><span class="s">&#39;    project.set_property(&quot;{0}&quot;, &quot;{1}&quot;)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">properties_to_set</span><span class="p">])</span>
+        <span class="n">initializer_body</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_initializer_body_with_properties</span><span class="p">(</span><span class="n">properties_to_set</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">initializer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">INITIALIZER_HEAD</span> <span class="o">+</span> <span class="n">initializer_body</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">is_default_source_main_python</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1352,6 +1452,16 @@ table {
                                  <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_unittest_python</span><span class="p">):</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">needed_directory</span><span class="p">):</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">needed_directory</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_build_initializer_body_with_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">properties_to_set</span><span class="p">):</span>
+        <span class="n">initializer_body</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+        <span class="n">initializer_body</span> <span class="o">+=</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="p">[</span><span class="s">&#39;    project.set_property(&quot;{0}&quot;, &quot;{1}&quot;)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">properties_to_set</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">initializer_body</span><span class="p">:</span>
+            <span class="n">initializer_body</span> <span class="o">+=</span> <span class="s">&#39;    pass&#39;</span>
+
+        <span class="k">return</span> <span class="n">initializer_body</span>
 </pre></div>
 
     </div>
@@ -1366,7 +1476,17 @@ table {
               </ul>
               <h4>Class variables</h4>
                   <div class="item">
-                    <p id="pybuilder.scaffolding.PythonProjectScaffolding.descriptor_template" class="name">var <span class="ident">descriptor_template</span></p>
+                    <p id="pybuilder.scaffolding.PythonProjectScaffolding.DESCRIPTOR_TEMPLATE" class="name">var <span class="ident">DESCRIPTOR_TEMPLATE</span></p>
+                    
+
+                    
+  
+    <div class="source_cont">
+</div>
+
+                  </div>
+                  <div class="item">
+                    <p id="pybuilder.scaffolding.PythonProjectScaffolding.INITIALIZER_HEAD" class="name">var <span class="ident">INITIALIZER_HEAD</span></p>
                     
 
                     
@@ -1437,6 +1557,16 @@ table {
 
                   </div>
                   <div class="item">
+                    <p id="pybuilder.scaffolding.PythonProjectScaffolding.plugins" class="name">var <span class="ident">plugins</span></p>
+                    
+
+                    
+  
+    <div class="source_cont">
+</div>
+
+                  </div>
+                  <div class="item">
                     <p id="pybuilder.scaffolding.PythonProjectScaffolding.project_name" class="name">var <span class="ident">project_name</span></p>
                     
 
@@ -1464,7 +1594,50 @@ table {
     <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_main_python</span> <span class="o">=</span> <span class="n">DEFAULT_SOURCE_DIRECTORY</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_unittest_python</span> <span class="o">=</span> <span class="n">DEFAULT_UNITTEST_DIRECTORY</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">core_imports</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;use_plugin&#39;</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">plugins</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;python.core&#39;</span><span class="p">,</span> <span class="s">&#39;python.unittest&#39;</span><span class="p">,</span> <span class="s">&#39;python.install_dependencies&#39;</span><span class="p">]</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">initializer</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.scaffolding.PythonProjectScaffolding.add_plugins">
+        <p>def <span class="ident">add_plugins</span>(</p><p>self, plugins)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.scaffolding.PythonProjectScaffolding.add_plugins', this);">Show source.</a></p>
+    <div id="source-pybuilder.scaffolding.PythonProjectScaffolding.add_plugins" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">add_plugins</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plugins</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">plugins</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">plugins</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.scaffolding.PythonProjectScaffolding.build_imports">
+        <p>def <span class="ident">build_imports</span>(</p><p>self)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.scaffolding.PythonProjectScaffolding.build_imports', this);">Show source.</a></p>
+    <div id="source-pybuilder.scaffolding.PythonProjectScaffolding.build_imports" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">build_imports</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">activated_plugins</span> <span class="o">=</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s">&#39;use_plugin(&quot;</span><span class="si">%s</span><span class="s">&quot;)&#39;</span> <span class="o">%</span> <span class="n">plugin</span> <span class="k">for</span> <span class="n">plugin</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">plugins</span><span class="p">])</span>
 </pre></div>
 
     </div>
@@ -1485,18 +1658,14 @@ table {
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.scaffolding.PythonProjectScaffolding.build_initializer', this);">Show source.</a></p>
     <div id="source-pybuilder.scaffolding.PythonProjectScaffolding.build_initializer" class="source">
       <div class="codehilite"><pre><span class="k">def</span> <span class="nf">build_initializer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_default_source_main_python</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_default_source_unittest_python</span><span class="p">:</span>
-        <span class="k">return</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">core_imports</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;init&#39;</span><span class="p">)</span>
     <span class="n">properties_to_set</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_default_source_main_python</span><span class="p">:</span>
         <span class="n">properties_to_set</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s">&#39;dir_source_main_python&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_main_python</span><span class="p">))</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_default_source_unittest_python</span><span class="p">:</span>
         <span class="n">properties_to_set</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s">&#39;dir_source_unittest_python&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_unittest_python</span><span class="p">))</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">initializer</span> <span class="o">=</span> <span class="s">&#39;&#39;&#39;@init</span>
-<span class="s">set_properties(project):</span>
-<span class="s">    self.initializer += &#39;</span><span class="se">\n</span><span class="s">&#39;.join(</span>
-<span class="s">        [&#39;    project.set_property(&quot;{0}&quot;, &quot;{1}&quot;)&#39;.format(k, v) for k, v in properties_to_set])</span>
+    <span class="n">initializer_body</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_initializer_body_with_properties</span><span class="p">(</span><span class="n">properties_to_set</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">initializer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">INITIALIZER_HEAD</span> <span class="o">+</span> <span class="n">initializer_body</span>
 </pre></div>
 
     </div>
@@ -1518,8 +1687,9 @@ table {
     <div id="source-pybuilder.scaffolding.PythonProjectScaffolding.render_build_descriptor" class="source">
       <div class="codehilite"><pre><span class="k">def</span> <span class="nf">render_build_descriptor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">build_initializer</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">build_imports</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">core_imports</span> <span class="o">=</span> <span class="s">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">core_imports</span><span class="p">)</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">descriptor_template</span><span class="o">.</span><span class="n">substitute</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">DESCRIPTOR_TEMPLATE</span><span class="o">.</span><span class="n">substitute</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1560,7 +1730,7 @@ table {
 <p style="text-align: right;">
   Documentation generated by
   <code><a href="https://github.com/BurntSushi/pdoc">pdoc</a></code>
-  0.1.8.
+  0.2.1.
 
   pdoc is in the public domain with the
   <a href="http://unlicense.org">UNLICENSE</a>.

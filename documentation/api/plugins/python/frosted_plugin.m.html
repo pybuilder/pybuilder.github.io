@@ -6,8 +6,9 @@
 <head>
 	<meta charset="utf-8">
 
-      <title>pybuilder API documentation</title>
-      <meta name="description" content="">
+      <title>pybuilder.plugins.python.frosted_plugin API documentation</title>
+      <meta name="description" content="Frosted is a fork of pyflakes (originally created by Phil Frost) that aims
+at more open contribution...">
 
   
   <style type="text/css">
@@ -977,11 +978,14 @@ table {
   
 
 
-  <h1>Module pybuilder</h1>
+  <h1>Module pybuilder.plugins.python.frosted_plugin</h1>
+  <p>Frosted is a fork of pyflakes (originally created by Phil Frost) that aims
+at more open contribution from the outside public, a smaller more
+maintainable code base, and a better Python checker for all.</p>
+<p>https://github.com/timothycrosley/frosted</p>
   
-  
-    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder', this);">Show source.</a></p>
-    <div id="source-pybuilder" class="source">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.frosted_plugin', this);">Show source.</a></p>
+    <div id="source-pybuilder.plugins.python.frosted_plugin" class="source">
       <div class="codehilite"><pre><span class="c">#  This file is part of PyBuilder</span>
 <span class="c">#</span>
 <span class="c">#  Copyright 2011-2014 PyBuilder Team</span>
@@ -998,7 +1002,71 @@ table {
 <span class="c">#  See the License for the specific language governing permissions and</span>
 <span class="c">#  limitations under the License.</span>
 
-<span class="n">__version__</span> <span class="o">=</span> <span class="s">&quot;${version}&quot;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Frosted is a fork of pyflakes (originally created by Phil Frost) that aims</span>
+<span class="sd">    at more open contribution from the outside public, a smaller more</span>
+<span class="sd">    maintainable code base, and a better Python checker for all.</span>
+
+<span class="sd">    https://github.com/timothycrosley/frosted</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">__author__</span> <span class="o">=</span> <span class="s">&#39;Maximilien Riehl&#39;</span>
+
+<span class="kn">from</span> <span class="nn">pybuilder.core</span> <span class="kn">import</span> <span class="n">after</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">init</span><span class="p">,</span> <span class="n">use_plugin</span><span class="p">,</span> <span class="n">depends</span>
+<span class="kn">from</span> <span class="nn">pybuilder.errors</span> <span class="kn">import</span> <span class="n">BuildFailedException</span>
+<span class="kn">from</span> <span class="nn">pybuilder.utils</span> <span class="kn">import</span> <span class="n">assert_can_execute</span>
+<span class="kn">from</span> <span class="nn">pybuilder.pluginhelper.external_command</span> <span class="kn">import</span> <span class="n">ExternalCommandBuilder</span>
+
+
+<span class="n">use_plugin</span><span class="p">(</span><span class="s">&quot;python.core&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@init</span>
+<span class="k">def</span> <span class="nf">initialize_frosted_plugin</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+    <span class="n">project</span><span class="o">.</span><span class="n">build_depends_on</span><span class="p">(</span><span class="s">&quot;frosted&quot;</span><span class="p">)</span>
+    <span class="n">project</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s">&quot;frosted_break_build&quot;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+    <span class="n">project</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s">&quot;frosted_include_test_sources&quot;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+
+
+<span class="nd">@after</span><span class="p">(</span><span class="s">&quot;prepare&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">assert_frosted_is_executable</span><span class="p">(</span><span class="n">logger</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Asserts that the frosted script is executable. &quot;&quot;&quot;</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Checking if frosted is executable.&quot;</span><span class="p">)</span>
+
+    <span class="n">assert_can_execute</span><span class="p">(</span><span class="n">command_and_arguments</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;frosted&quot;</span><span class="p">,</span> <span class="s">&quot;--version&quot;</span><span class="p">],</span>
+                       <span class="n">prerequisite</span><span class="o">=</span><span class="s">&quot;frosted (PyPI)&quot;</span><span class="p">,</span>
+                       <span class="n">caller</span><span class="o">=</span><span class="s">&quot;plugin python.frosted&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@task</span>
+<span class="nd">@depends</span><span class="p">(</span><span class="s">&quot;prepare&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">analyze</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Applies the frosted script to the sources of the given project. &quot;&quot;&quot;</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Executing frosted on project sources.&quot;</span><span class="p">)</span>
+
+    <span class="n">verbose</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;verbose&quot;</span><span class="p">)</span>
+    <span class="n">project</span><span class="o">.</span><span class="n">set_property_if_unset</span><span class="p">(</span><span class="s">&quot;frosted_verbose_output&quot;</span><span class="p">,</span> <span class="n">verbose</span><span class="p">)</span>
+
+    <span class="n">command</span> <span class="o">=</span> <span class="n">ExternalCommandBuilder</span><span class="p">(</span><span class="s">&#39;frosted&#39;</span><span class="p">,</span> <span class="n">project</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ignored_error_code</span> <span class="ow">in</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&#39;frosted_ignore&#39;</span><span class="p">,</span> <span class="p">[]):</span>
+        <span class="n">command</span><span class="o">.</span><span class="n">use_argument</span><span class="p">(</span><span class="s">&#39;--ignore {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ignored_error_code</span><span class="p">))</span>
+
+    <span class="n">include_test_sources</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;frosted_include_test_sources&quot;</span><span class="p">)</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">command</span><span class="o">.</span><span class="n">run_on_production_source_files</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">include_test_sources</span><span class="o">=</span><span class="n">include_test_sources</span><span class="p">)</span>
+
+    <span class="n">count_of_warnings</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">report_lines</span><span class="p">)</span>
+    <span class="n">count_of_errors</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">error_report_lines</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">count_of_errors</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&#39;Errors while running frosted, see {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">error_report_file</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">count_of_warnings</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;frosted_break_build&quot;</span><span class="p">):</span>
+            <span class="n">error_message</span> <span class="o">=</span> <span class="s">&quot;frosted found {0} warning(s)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">count_of_warnings</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">BuildFailedException</span><span class="p">(</span><span class="n">error_message</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s">&quot;frosted found </span><span class="si">%d</span><span class="s"> warning(s).&quot;</span><span class="p">,</span> <span class="n">count_of_warnings</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1009,135 +1077,131 @@ table {
 
   <ul id="index">
 
-
-
-    <li><h4><a href="#header-submodules">Sub-modules</a></h4>
+    <li><h4><a href="#header-functions">Functions</a></h4>
+      
+  
+  <div class="column_list">
       <ul>
-          <li class="mono"><a href="ci_server_interaction.m.html">pybuilder.ci_server_interaction</a></li>
-          <li class="mono"><a href="cli.m.html">pybuilder.cli</a></li>
-          <li class="mono"><a href="core.m.html">pybuilder.core</a></li>
-          <li class="mono"><a href="errors.m.html">pybuilder.errors</a></li>
-          <li class="mono"><a href="execution.m.html">pybuilder.execution</a></li>
-          <li class="mono"><a href="pluginhelper/index.html">pybuilder.pluginhelper</a></li>
-          <li class="mono"><a href="pluginloader.m.html">pybuilder.pluginloader</a></li>
-          <li class="mono"><a href="plugins/index.html">pybuilder.plugins</a></li>
-          <li class="mono"><a href="reactor.m.html">pybuilder.reactor</a></li>
-          <li class="mono"><a href="scaffolding.m.html">pybuilder.scaffolding</a></li>
-          <li class="mono"><a href="terminal.m.html">pybuilder.terminal</a></li>
-          <li class="mono"><a href="utils.m.html">pybuilder.utils</a></li>
+          <li class="mono"><a href="#pybuilder.plugins.python.frosted_plugin.analyze">analyze</a></li>
       </ul>
+      <ul>
+          <li class="mono"><a href="#pybuilder.plugins.python.frosted_plugin.assert_frosted_is_executable">assert_frosted_is_executable</a></li>
+      </ul>
+      <ul>
+          <li class="mono"><a href="#pybuilder.plugins.python.frosted_plugin.initialize_frosted_plugin">initialize_frosted_plugin</a></li>
+      </ul>
+  </div>
+
     </li>
+
+
   </ul>
 
 
+  <h2 id="header-functions">Functions</h2>
+      
+    <div class="item">
+      <div class="name def" id="pybuilder.plugins.python.frosted_plugin.analyze">
+        <p>def <span class="ident">analyze</span>(</p><p>project, logger)</p>
+      </div>
+      
 
+      
+  
+      <div class="desc"><p>Applies the frosted script to the sources of the given project.</p></div>
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.frosted_plugin.analyze', this);">Show source.</a></p>
+    <div id="source-pybuilder.plugins.python.frosted_plugin.analyze" class="source">
+      <div class="codehilite"><pre><span class="nd">@task</span>
+<span class="nd">@depends</span><span class="p">(</span><span class="s">&quot;prepare&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">analyze</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Applies the frosted script to the sources of the given project. &quot;&quot;&quot;</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Executing frosted on project sources.&quot;</span><span class="p">)</span>
 
-  <h2 id="header-submodules">Sub-modules</h2>
-      <div class="item">
-        <p class="name"><a href="ci_server_interaction.m.html">pybuilder.ci_server_interaction</a></p>
-        
+    <span class="n">verbose</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;verbose&quot;</span><span class="p">)</span>
+    <span class="n">project</span><span class="o">.</span><span class="n">set_property_if_unset</span><span class="p">(</span><span class="s">&quot;frosted_verbose_output&quot;</span><span class="p">,</span> <span class="n">verbose</span><span class="p">)</span>
+
+    <span class="n">command</span> <span class="o">=</span> <span class="n">ExternalCommandBuilder</span><span class="p">(</span><span class="s">&#39;frosted&#39;</span><span class="p">,</span> <span class="n">project</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ignored_error_code</span> <span class="ow">in</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&#39;frosted_ignore&#39;</span><span class="p">,</span> <span class="p">[]):</span>
+        <span class="n">command</span><span class="o">.</span><span class="n">use_argument</span><span class="p">(</span><span class="s">&#39;--ignore {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ignored_error_code</span><span class="p">))</span>
+
+    <span class="n">include_test_sources</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;frosted_include_test_sources&quot;</span><span class="p">)</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">command</span><span class="o">.</span><span class="n">run_on_production_source_files</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">include_test_sources</span><span class="o">=</span><span class="n">include_test_sources</span><span class="p">)</span>
+
+    <span class="n">count_of_warnings</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">report_lines</span><span class="p">)</span>
+    <span class="n">count_of_errors</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">error_report_lines</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">count_of_errors</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&#39;Errors while running frosted, see {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">error_report_file</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">count_of_warnings</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;frosted_break_build&quot;</span><span class="p">):</span>
+            <span class="n">error_message</span> <span class="o">=</span> <span class="s">&quot;frosted found {0} warning(s)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">count_of_warnings</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">BuildFailedException</span><span class="p">(</span><span class="n">error_message</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s">&quot;frosted found </span><span class="si">%d</span><span class="s"> warning(s).&quot;</span><span class="p">,</span> <span class="n">count_of_warnings</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+      
+    <div class="item">
+      <div class="name def" id="pybuilder.plugins.python.frosted_plugin.assert_frosted_is_executable">
+        <p>def <span class="ident">assert_frosted_is_executable</span>(</p><p>logger)</p>
+      </div>
+      
+
+      
+  
+      <div class="desc"><p>Asserts that the frosted script is executable.</p></div>
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.frosted_plugin.assert_frosted_is_executable', this);">Show source.</a></p>
+    <div id="source-pybuilder.plugins.python.frosted_plugin.assert_frosted_is_executable" class="source">
+      <div class="codehilite"><pre><span class="nd">@after</span><span class="p">(</span><span class="s">&quot;prepare&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">assert_frosted_is_executable</span><span class="p">(</span><span class="n">logger</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Asserts that the frosted script is executable. &quot;&quot;&quot;</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Checking if frosted is executable.&quot;</span><span class="p">)</span>
+
+    <span class="n">assert_can_execute</span><span class="p">(</span><span class="n">command_and_arguments</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;frosted&quot;</span><span class="p">,</span> <span class="s">&quot;--version&quot;</span><span class="p">],</span>
+                       <span class="n">prerequisite</span><span class="o">=</span><span class="s">&quot;frosted (PyPI)&quot;</span><span class="p">,</span>
+                       <span class="n">caller</span><span class="o">=</span><span class="s">&quot;plugin python.frosted&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+      
+    <div class="item">
+      <div class="name def" id="pybuilder.plugins.python.frosted_plugin.initialize_frosted_plugin">
+        <p>def <span class="ident">initialize_frosted_plugin</span>(</p><p>project)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.frosted_plugin.initialize_frosted_plugin', this);">Show source.</a></p>
+    <div id="source-pybuilder.plugins.python.frosted_plugin.initialize_frosted_plugin" class="source">
+      <div class="codehilite"><pre><span class="nd">@init</span>
+<span class="k">def</span> <span class="nf">initialize_frosted_plugin</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+    <span class="n">project</span><span class="o">.</span><span class="n">build_depends_on</span><span class="p">(</span><span class="s">&quot;frosted&quot;</span><span class="p">)</span>
+    <span class="n">project</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s">&quot;frosted_break_build&quot;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+    <span class="n">project</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s">&quot;frosted_include_test_sources&quot;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
   
 
-      </div>
-      <div class="item">
-        <p class="name"><a href="cli.m.html">pybuilder.cli</a></p>
-        
-  
-      <div class="desc"><p>The PyBuilder cli module.
-Contains the PyBuilder command-line entrypoint.</p></div>
 
-      </div>
-      <div class="item">
-        <p class="name"><a href="core.m.html">pybuilder.core</a></p>
-        
-  
-      <div class="desc"><p>The PyBuilder core module.
-Contains the most important classes and syntax used in a
-build.py project descriptor.</p></div>
-
-      </div>
-      <div class="item">
-        <p class="name"><a href="errors.m.html">pybuilder.errors</a></p>
-        
-  
-      <div class="desc"><p>The PyBuilder error module.
-Defines all possible errors that can arise during the execution of PyBuilder.</p></div>
-
-      </div>
-      <div class="item">
-        <p class="name"><a href="execution.m.html">pybuilder.execution</a></p>
-        
-  
-      <div class="desc"><p>The PyBuilder execution module.
-Deals with the execution of a PyBuilder process by
-running tasks, actions and initializers in the correct
-order regarding dependencies.</p></div>
-
-      </div>
-      <div class="item">
-        <p class="name"><a href="pluginhelper/index.html">pybuilder.pluginhelper</a></p>
-        
-  
-
-      </div>
-      <div class="item">
-        <p class="name"><a href="pluginloader.m.html">pybuilder.pluginloader</a></p>
-        
-  
-      <div class="desc"><p>The PyBuilder pluginloader module.
-Provides a mechanism to load PyBuilder plugins.</p></div>
-
-      </div>
-      <div class="item">
-        <p class="name"><a href="plugins/index.html">pybuilder.plugins</a></p>
-        
-  
-      <div class="desc"><p>The PyBuilder plugins package.
-This package contains all plugins that are included with the PyBuilder
-distribution.
-Note that plugins directly in this package should be language-agnostic,
-since python-related plugins are located in the python subpackage.</p></div>
-
-      </div>
-      <div class="item">
-        <p class="name"><a href="reactor.m.html">pybuilder.reactor</a></p>
-        
-  
-      <div class="desc"><p>The PyBuilder reactor module.
-Operates a build process by instrumenting an ExecutionManager from the
-execution module.</p></div>
-
-      </div>
-      <div class="item">
-        <p class="name"><a href="scaffolding.m.html">pybuilder.scaffolding</a></p>
-        
-  
-
-      </div>
-      <div class="item">
-        <p class="name"><a href="terminal.m.html">pybuilder.terminal</a></p>
-        
-  
-      <div class="desc"><p>The PyBuilder terminal module.
-Python module providing easy to use text styling for terminals
-being able to understand standard escape sequences.</p>
-<p>Sample usages:</p>
-<div class="codehilite"><pre><span class="n">print</span> <span class="n">styled_text</span><span class="p">(</span><span class="s">&quot;spam&quot;</span><span class="p">,</span> <span class="n">fg</span><span class="p">(</span><span class="n">RED</span><span class="p">))</span>
-<span class="n">print</span> <span class="n">styled_text</span><span class="p">(</span><span class="s">&quot;spam&quot;</span><span class="p">,</span> <span class="n">fg</span><span class="p">(</span><span class="n">BLACK</span><span class="p">),</span> <span class="n">bg</span><span class="p">(</span><span class="n">GREY</span><span class="p">))</span>
-
-<span class="n">print</span> <span class="n">bold</span><span class="p">(</span><span class="s">&quot;eggs&quot;</span><span class="p">)</span>
-<span class="n">print</span> <span class="n">underline</span><span class="p">(</span><span class="n">bol</span><span class="p">...</span>
-</pre></div></div>
-
-      </div>
-      <div class="item">
-        <p class="name"><a href="utils.m.html">pybuilder.utils</a></p>
-        
-  
-      <div class="desc"><p>The PyBuilder utils module.
-Provides generic utilities that can be used by plugins.</p></div>
-
-      </div>
 
 
 <hr>

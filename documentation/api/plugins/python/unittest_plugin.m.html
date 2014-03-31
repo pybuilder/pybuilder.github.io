@@ -1008,10 +1008,43 @@ table {
 
 <span class="kn">from</span> <span class="nn">pybuilder.core</span> <span class="kn">import</span> <span class="n">init</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">use_plugin</span>
 <span class="kn">from</span> <span class="nn">pybuilder.errors</span> <span class="kn">import</span> <span class="n">BuildFailedException</span>
-<span class="kn">from</span> <span class="nn">pybuilder.utils</span> <span class="kn">import</span> <span class="n">discover_modules</span>  <span class="c"># noqa To ensure 0.10.2 compatibility.</span>
 <span class="kn">from</span> <span class="nn">pybuilder.utils</span> <span class="kn">import</span> <span class="n">discover_modules_matching</span><span class="p">,</span> <span class="n">render_report</span>
+<span class="kn">from</span> <span class="nn">pybuilder.ci_server_interaction</span> <span class="kn">import</span> <span class="n">test_proxy_for</span>
 <span class="kn">from</span> <span class="nn">pybuilder.terminal</span> <span class="kn">import</span> <span class="n">print_text_line</span>
 <span class="n">use_plugin</span><span class="p">(</span><span class="s">&quot;python.core&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
+    <span class="n">TextTestResult</span> <span class="o">=</span> <span class="n">unittest</span><span class="o">.</span><span class="n">_TextTestResult</span>  <span class="c"># brought to you by 2.6</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">TextTestResult</span> <span class="o">=</span> <span class="n">unittest</span><span class="o">.</span><span class="n">TextTestResult</span>
+
+
+<span class="k">class</span> <span class="nc">TestNameAwareTextTestRunner</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TextTestRunner</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">_makeResult</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">TestNameAwareTestResult</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">descriptions</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbosity</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">TestNameAwareTestResult</span><span class="p">(</span><span class="n">TextTestResult</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_names</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">failed_test_names_and_reasons</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TestNameAwareTestResult</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">startTest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TestNameAwareTestResult</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">startTest</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">addError</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">err</span><span class="p">):</span>
+        <span class="n">exception_type</span><span class="p">,</span> <span class="n">exception</span><span class="p">,</span> <span class="n">traceback</span> <span class="o">=</span> <span class="n">err</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">failed_test_names_and_reasons</span><span class="p">[</span><span class="n">test</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;{0}: {1}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">exception_type</span><span class="p">,</span> <span class="n">exception</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\&#39;</span><span class="s">&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TestNameAwareTestResult</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">addError</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">addFailure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">err</span><span class="p">):</span>
+        <span class="n">exception_type</span><span class="p">,</span> <span class="n">exception</span><span class="p">,</span> <span class="n">traceback</span> <span class="o">=</span> <span class="n">err</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">failed_test_names_and_reasons</span><span class="p">[</span><span class="n">test</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;{0}: {1}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">exception_type</span><span class="p">,</span> <span class="n">exception</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\&#39;</span><span class="s">&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TestNameAwareTestResult</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">addFailure</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
 
 
 <span class="nd">@init</span>
@@ -1032,7 +1065,8 @@ table {
         <span class="n">logger</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s">&quot;unittest_file_suffix is deprecated, please use unittest_module_glob&quot;</span><span class="p">)</span>
         <span class="n">module_glob</span> <span class="o">=</span> <span class="s">&quot;*{0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">unittest_file_suffix</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">module_glob</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s">&quot;.py&quot;</span><span class="p">):</span>
-            <span class="n">module_glob</span> <span class="o">=</span> <span class="n">module_glob</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+            <span class="n">WITHOUT_DOT_PY</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+            <span class="n">module_glob</span> <span class="o">=</span> <span class="n">module_glob</span><span class="p">[</span><span class="n">WITHOUT_DOT_PY</span><span class="p">]</span>
         <span class="n">project</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s">&quot;unittest_module_glob&quot;</span><span class="p">,</span> <span class="n">module_glob</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">module_glob</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;unittest_module_glob&quot;</span><span class="p">)</span>
@@ -1078,7 +1112,7 @@ table {
         <span class="k">if</span> <span class="n">test_method_prefix</span><span class="p">:</span>
             <span class="n">loader</span><span class="o">.</span><span class="n">testMethodPrefix</span> <span class="o">=</span> <span class="n">test_method_prefix</span>
         <span class="n">tests</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">loadTestsFromNames</span><span class="p">(</span><span class="n">test_modules</span><span class="p">)</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">unittest</span><span class="o">.</span><span class="n">TextTestRunner</span><span class="p">(</span><span class="n">stream</span><span class="o">=</span><span class="n">output_log_file</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tests</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">TestNameAwareTextTestRunner</span><span class="p">(</span><span class="n">stream</span><span class="o">=</span><span class="n">output_log_file</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tests</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">result</span><span class="p">,</span> <span class="n">output_log_file</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
     <span class="k">finally</span><span class="p">:</span>
         <span class="n">output_log_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -1116,6 +1150,15 @@ table {
             <span class="n">print_text_line</span><span class="p">(</span><span class="n">failure</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
     <span class="n">project</span><span class="o">.</span><span class="n">write_report</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s">.json&quot;</span> <span class="o">%</span> <span class="n">name</span><span class="p">,</span> <span class="n">render_report</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
+
+    <span class="n">report_to_ci_server</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">report_to_ci_server</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">test_name</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">test_names</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">test_proxy_for</span><span class="p">(</span><span class="n">project</span><span class="p">)</span><span class="o">.</span><span class="n">and_test_name</span><span class="p">(</span><span class="n">test_name</span><span class="p">)</span> <span class="k">as</span> <span class="n">test</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">test_name</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">failed_test_names_and_reasons</span><span class="p">:</span>
+                <span class="n">test</span><span class="o">.</span><span class="n">fails</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">failed_test_names_and_reasons</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">test_name</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -1136,15 +1179,68 @@ table {
       </ul>
       <ul>
           <li class="mono"><a href="#pybuilder.plugins.python.unittest_plugin.init_test_source_directory">init_test_source_directory</a></li>
-          <li class="mono"><a href="#pybuilder.plugins.python.unittest_plugin.run_unit_tests">run_unit_tests</a></li>
+          <li class="mono"><a href="#pybuilder.plugins.python.unittest_plugin.report_to_ci_server">report_to_ci_server</a></li>
       </ul>
       <ul>
+          <li class="mono"><a href="#pybuilder.plugins.python.unittest_plugin.run_unit_tests">run_unit_tests</a></li>
           <li class="mono"><a href="#pybuilder.plugins.python.unittest_plugin.write_report">write_report</a></li>
       </ul>
   </div>
 
     </li>
 
+    <li><h4><a href="#header-classes">Classes</a></h4>
+      <ul>
+          <li class="mono">
+            <span class="class_name"><a href="#pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult">TestNameAwareTestResult</a></span>
+            
+              
+  
+  <div class="column_list">
+      <ul>
+          <li class="mono"><a href="#pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.__init__">__init__</a></li>
+          <li class="mono"><a href="#pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.addError">addError</a></li>
+          <li class="mono"><a href="#pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.addExpectedFailure">addExpectedFailure</a></li>
+          <li class="mono"><a href="#pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.addFailure">addFailure</a></li>
+          <li class="mono"><a href="#pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.addSkip">addSkip</a></li>
+          <li class="mono"><a href="#pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.addSuccess">addSuccess</a></li>
+      </ul>
+      <ul>
+          <li class="mono"><a href="#pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.addUnexpectedSuccess">addUnexpectedSuccess</a></li>
+          <li class="mono"><a href="#pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.getDescription">getDescription</a></li>
+          <li class="mono"><a href="#pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.printErrorList">printErrorList</a></li>
+          <li class="mono"><a href="#pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.printErrors">printErrors</a></li>
+          <li class="mono"><a href="#pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.startTest">startTest</a></li>
+      </ul>
+      <ul>
+          <li class="mono"><a href="#pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.startTestRun">startTestRun</a></li>
+          <li class="mono"><a href="#pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.stop">stop</a></li>
+          <li class="mono"><a href="#pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.stopTest">stopTest</a></li>
+          <li class="mono"><a href="#pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.stopTestRun">stopTestRun</a></li>
+          <li class="mono"><a href="#pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.wasSuccessful">wasSuccessful</a></li>
+      </ul>
+  </div>
+
+          </li>
+          <li class="mono">
+            <span class="class_name"><a href="#pybuilder.plugins.python.unittest_plugin.TestNameAwareTextTestRunner">TestNameAwareTextTestRunner</a></span>
+            
+              
+  
+  <div class="column_list">
+      <ul>
+          <li class="mono"><a href="#pybuilder.plugins.python.unittest_plugin.TestNameAwareTextTestRunner.__init__">__init__</a></li>
+      </ul>
+      <ul>
+          <li class="mono"><a href="#pybuilder.plugins.python.unittest_plugin.TestNameAwareTextTestRunner.run">run</a></li>
+      </ul>
+      <ul>
+      </ul>
+  </div>
+
+          </li>
+      </ul>
+    </li>
 
   </ul>
 
@@ -1192,7 +1288,7 @@ table {
         <span class="k">if</span> <span class="n">test_method_prefix</span><span class="p">:</span>
             <span class="n">loader</span><span class="o">.</span><span class="n">testMethodPrefix</span> <span class="o">=</span> <span class="n">test_method_prefix</span>
         <span class="n">tests</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">loadTestsFromNames</span><span class="p">(</span><span class="n">test_modules</span><span class="p">)</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">unittest</span><span class="o">.</span><span class="n">TextTestRunner</span><span class="p">(</span><span class="n">stream</span><span class="o">=</span><span class="n">output_log_file</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tests</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">TestNameAwareTextTestRunner</span><span class="p">(</span><span class="n">stream</span><span class="o">=</span><span class="n">output_log_file</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tests</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">result</span><span class="p">,</span> <span class="n">output_log_file</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
     <span class="k">finally</span><span class="p">:</span>
         <span class="n">output_log_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -1230,6 +1326,30 @@ table {
   
       
     <div class="item">
+      <div class="name def" id="pybuilder.plugins.python.unittest_plugin.report_to_ci_server">
+        <p>def <span class="ident">report_to_ci_server</span>(</p><p>project, result)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.unittest_plugin.report_to_ci_server', this);">Show source.</a></p>
+    <div id="source-pybuilder.plugins.python.unittest_plugin.report_to_ci_server" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">report_to_ci_server</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">test_name</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">test_names</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">test_proxy_for</span><span class="p">(</span><span class="n">project</span><span class="p">)</span><span class="o">.</span><span class="n">and_test_name</span><span class="p">(</span><span class="n">test_name</span><span class="p">)</span> <span class="k">as</span> <span class="n">test</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">test_name</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">failed_test_names_and_reasons</span><span class="p">:</span>
+                <span class="n">test</span><span class="o">.</span><span class="n">fails</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">failed_test_names_and_reasons</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">test_name</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+      
+    <div class="item">
       <div class="name def" id="pybuilder.plugins.python.unittest_plugin.run_unit_tests">
         <p>def <span class="ident">run_unit_tests</span>(</p><p>project, logger)</p>
       </div>
@@ -1250,7 +1370,8 @@ table {
         <span class="n">logger</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s">&quot;unittest_file_suffix is deprecated, please use unittest_module_glob&quot;</span><span class="p">)</span>
         <span class="n">module_glob</span> <span class="o">=</span> <span class="s">&quot;*{0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">unittest_file_suffix</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">module_glob</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s">&quot;.py&quot;</span><span class="p">):</span>
-            <span class="n">module_glob</span> <span class="o">=</span> <span class="n">module_glob</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+            <span class="n">WITHOUT_DOT_PY</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+            <span class="n">module_glob</span> <span class="o">=</span> <span class="n">module_glob</span><span class="p">[</span><span class="n">WITHOUT_DOT_PY</span><span class="p">]</span>
         <span class="n">project</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s">&quot;unittest_module_glob&quot;</span><span class="p">,</span> <span class="n">module_glob</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">module_glob</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;unittest_module_glob&quot;</span><span class="p">)</span>
@@ -1324,6 +1445,8 @@ table {
             <span class="n">print_text_line</span><span class="p">(</span><span class="n">failure</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
     <span class="n">project</span><span class="o">.</span><span class="n">write_report</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s">.json&quot;</span> <span class="o">%</span> <span class="n">name</span><span class="p">,</span> <span class="n">render_report</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
+
+    <span class="n">report_to_ci_server</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1332,6 +1455,625 @@ table {
     </div>
   
 
+  <h2 id="header-classes">Classes</h2>
+      
+      <div class="item">
+        <p id="pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult" class="name">class <span class="ident">TestNameAwareTestResult</span></p>
+        
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult', this);">Show source.</a></p>
+    <div id="source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult" class="source">
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">TestNameAwareTestResult</span><span class="p">(</span><span class="n">TextTestResult</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_names</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">failed_test_names_and_reasons</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TestNameAwareTestResult</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">startTest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TestNameAwareTestResult</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">startTest</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">addError</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">err</span><span class="p">):</span>
+        <span class="n">exception_type</span><span class="p">,</span> <span class="n">exception</span><span class="p">,</span> <span class="n">traceback</span> <span class="o">=</span> <span class="n">err</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">failed_test_names_and_reasons</span><span class="p">[</span><span class="n">test</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;{0}: {1}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">exception_type</span><span class="p">,</span> <span class="n">exception</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\&#39;</span><span class="s">&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TestNameAwareTestResult</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">addError</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">addFailure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">err</span><span class="p">):</span>
+        <span class="n">exception_type</span><span class="p">,</span> <span class="n">exception</span><span class="p">,</span> <span class="n">traceback</span> <span class="o">=</span> <span class="n">err</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">failed_test_names_and_reasons</span><span class="p">[</span><span class="n">test</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;{0}: {1}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">exception_type</span><span class="p">,</span> <span class="n">exception</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\&#39;</span><span class="s">&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TestNameAwareTestResult</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">addFailure</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+
+        <div class="class">
+              <h4>Ancestors (in MRO)</h4>
+              <ul class="class_list">
+                <li><a href="#pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult">TestNameAwareTestResult</a></li>
+                <li>unittest.runner.TextTestResult</li>
+                <li>unittest.result.TestResult</li>
+                <li>__builtin__.object</li>
+              </ul>
+              <h4>Class variables</h4>
+                  <div class="item">
+                    <p id="pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.separator1" class="name">var <span class="ident">separator1</span></p>
+                    
+
+                    
+  
+    <div class="source_cont">
+</div>
+
+                  </div>
+                  <div class="item">
+                    <p id="pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.separator2" class="name">var <span class="ident">separator2</span></p>
+                    
+
+                    
+  
+    <div class="source_cont">
+</div>
+
+                  </div>
+              <h4>Instance variables</h4>
+                  <div class="item">
+                    <p id="pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.failed_test_names_and_reasons" class="name">var <span class="ident">failed_test_names_and_reasons</span></p>
+                    
+
+                    
+  
+    <div class="source_cont">
+</div>
+
+                  </div>
+                  <div class="item">
+                    <p id="pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.test_names" class="name">var <span class="ident">test_names</span></p>
+                    
+
+                    
+  
+    <div class="source_cont">
+</div>
+
+                  </div>
+              <h4>Methods</h4>
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.__init__">
+        <p>def <span class="ident">__init__</span>(</p><p>self, *args, **kwargs)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.__init__', this);">Show source.</a></p>
+    <div id="source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.__init__" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">test_names</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">failed_test_names_and_reasons</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">TestNameAwareTestResult</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.addError">
+        <p>def <span class="ident">addError</span>(</p><p>self, test, err)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.addError', this);">Show source.</a></p>
+    <div id="source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.addError" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">addError</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">err</span><span class="p">):</span>
+    <span class="n">exception_type</span><span class="p">,</span> <span class="n">exception</span><span class="p">,</span> <span class="n">traceback</span> <span class="o">=</span> <span class="n">err</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">failed_test_names_and_reasons</span><span class="p">[</span><span class="n">test</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;{0}: {1}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">exception_type</span><span class="p">,</span> <span class="n">exception</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\&#39;</span><span class="s">&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">TestNameAwareTestResult</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">addError</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.addExpectedFailure">
+        <p>def <span class="ident">addExpectedFailure</span>(</p><p>self, test, err)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.addExpectedFailure', this);">Show source.</a></p>
+    <div id="source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.addExpectedFailure" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">addExpectedFailure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">err</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">TextTestResult</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">addExpectedFailure</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">showAll</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">writeln</span><span class="p">(</span><span class="s">&quot;expected failure&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">dots</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.addFailure">
+        <p>def <span class="ident">addFailure</span>(</p><p>self, test, err)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.addFailure', this);">Show source.</a></p>
+    <div id="source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.addFailure" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">addFailure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">err</span><span class="p">):</span>
+    <span class="n">exception_type</span><span class="p">,</span> <span class="n">exception</span><span class="p">,</span> <span class="n">traceback</span> <span class="o">=</span> <span class="n">err</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">failed_test_names_and_reasons</span><span class="p">[</span><span class="n">test</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;{0}: {1}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">exception_type</span><span class="p">,</span> <span class="n">exception</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\&#39;</span><span class="s">&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">TestNameAwareTestResult</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">addFailure</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.addSkip">
+        <p>def <span class="ident">addSkip</span>(</p><p>self, test, reason)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.addSkip', this);">Show source.</a></p>
+    <div id="source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.addSkip" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">addSkip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">reason</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">TextTestResult</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">addSkip</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">reason</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">showAll</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">writeln</span><span class="p">(</span><span class="s">&quot;skipped {0!r}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reason</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">dots</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.addSuccess">
+        <p>def <span class="ident">addSuccess</span>(</p><p>self, test)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.addSuccess', this);">Show source.</a></p>
+    <div id="source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.addSuccess" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">addSuccess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">TextTestResult</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">addSuccess</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">showAll</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">writeln</span><span class="p">(</span><span class="s">&quot;ok&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">dots</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.addUnexpectedSuccess">
+        <p>def <span class="ident">addUnexpectedSuccess</span>(</p><p>self, test)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.addUnexpectedSuccess', this);">Show source.</a></p>
+    <div id="source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.addUnexpectedSuccess" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">addUnexpectedSuccess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">TextTestResult</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">addUnexpectedSuccess</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">showAll</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">writeln</span><span class="p">(</span><span class="s">&quot;unexpected success&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">dots</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;u&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.getDescription">
+        <p>def <span class="ident">getDescription</span>(</p><p>self, test)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.getDescription', this);">Show source.</a></p>
+    <div id="source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.getDescription" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">getDescription</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test</span><span class="p">):</span>
+    <span class="n">doc_first_line</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">shortDescription</span><span class="p">()</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">descriptions</span> <span class="ow">and</span> <span class="n">doc_first_line</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="nb">str</span><span class="p">(</span><span class="n">test</span><span class="p">),</span> <span class="n">doc_first_line</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.printErrorList">
+        <p>def <span class="ident">printErrorList</span>(</p><p>self, flavour, errors)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.printErrorList', this);">Show source.</a></p>
+    <div id="source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.printErrorList" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">printErrorList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flavour</span><span class="p">,</span> <span class="n">errors</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">test</span><span class="p">,</span> <span class="n">err</span> <span class="ow">in</span> <span class="n">errors</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">writeln</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">separator1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">writeln</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">flavour</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">getDescription</span><span class="p">(</span><span class="n">test</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">writeln</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">separator2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">writeln</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">err</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.printErrors">
+        <p>def <span class="ident">printErrors</span>(</p><p>self)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.printErrors', this);">Show source.</a></p>
+    <div id="source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.printErrors" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">printErrors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dots</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">showAll</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">writeln</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">printErrorList</span><span class="p">(</span><span class="s">&#39;ERROR&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">errors</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">printErrorList</span><span class="p">(</span><span class="s">&#39;FAIL&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">failures</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.startTest">
+        <p>def <span class="ident">startTest</span>(</p><p>self, test)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.startTest', this);">Show source.</a></p>
+    <div id="source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.startTest" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">startTest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">test_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">TestNameAwareTestResult</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">startTest</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.startTestRun">
+        <p>def <span class="ident">startTestRun</span>(</p><p>self)</p>
+      </div>
+      
+
+      
+  
+      <div class="desc"><p>Called once before any tests are executed.</p>
+<p>See startTest for a method called before each test.</p></div>
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.startTestRun', this);">Show source.</a></p>
+    <div id="source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.startTestRun" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">startTestRun</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Called once before any tests are executed.</span>
+<span class="sd">    See startTest for a method called before each test.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.stop">
+        <p>def <span class="ident">stop</span>(</p><p>self)</p>
+      </div>
+      
+
+      
+  
+      <div class="desc"><p>Indicates that the tests should be aborted</p></div>
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.stop', this);">Show source.</a></p>
+    <div id="source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.stop" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="s">&quot;Indicates that the tests should be aborted&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">shouldStop</span> <span class="o">=</span> <span class="bp">True</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.stopTest">
+        <p>def <span class="ident">stopTest</span>(</p><p>self, test)</p>
+      </div>
+      
+
+      
+  
+      <div class="desc"><p>Called when the given test has been run</p></div>
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.stopTest', this);">Show source.</a></p>
+    <div id="source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.stopTest" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">stopTest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Called when the given test has been run&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_restoreStdout</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_mirrorOutput</span> <span class="o">=</span> <span class="bp">False</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.stopTestRun">
+        <p>def <span class="ident">stopTestRun</span>(</p><p>self)</p>
+      </div>
+      
+
+      
+  
+      <div class="desc"><p>Called once after all tests are executed.</p>
+<p>See stopTest for a method called after each test.</p></div>
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.stopTestRun', this);">Show source.</a></p>
+    <div id="source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.stopTestRun" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">stopTestRun</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Called once after all tests are executed.</span>
+<span class="sd">    See stopTest for a method called after each test.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.wasSuccessful">
+        <p>def <span class="ident">wasSuccessful</span>(</p><p>self)</p>
+      </div>
+      
+
+      
+  
+      <div class="desc"><p>Tells whether or not this result was a success</p></div>
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.wasSuccessful', this);">Show source.</a></p>
+    <div id="source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.wasSuccessful" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">wasSuccessful</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="s">&quot;Tells whether or not this result was a success&quot;</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">failures</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">errors</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+        </div>
+      </div>
+      
+      <div class="item">
+        <p id="pybuilder.plugins.python.unittest_plugin.TestNameAwareTextTestRunner" class="name">class <span class="ident">TestNameAwareTextTestRunner</span></p>
+        
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTextTestRunner', this);">Show source.</a></p>
+    <div id="source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTextTestRunner" class="source">
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">TestNameAwareTextTestRunner</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TextTestRunner</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">_makeResult</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">TestNameAwareTestResult</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">descriptions</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbosity</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+
+        <div class="class">
+              <h4>Ancestors (in MRO)</h4>
+              <ul class="class_list">
+                <li><a href="#pybuilder.plugins.python.unittest_plugin.TestNameAwareTextTestRunner">TestNameAwareTextTestRunner</a></li>
+                <li>unittest.runner.TextTestRunner</li>
+                <li>__builtin__.object</li>
+              </ul>
+              <h4>Class variables</h4>
+                  <div class="item">
+                    <p id="pybuilder.plugins.python.unittest_plugin.TestNameAwareTextTestRunner.resultclass" class="name">var <span class="ident">resultclass</span></p>
+                    
+
+                    
+  
+    <div class="source_cont">
+</div>
+
+                  </div>
+              <h4>Methods</h4>
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.plugins.python.unittest_plugin.TestNameAwareTextTestRunner.__init__">
+        <p>def <span class="ident">__init__</span>(</p><p>self, stream=&lt;pdoc._Null object at 0x332e950&gt;, descriptions=True, verbosity=1, failfast=False, buffer=False, resultclass=None)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTextTestRunner.__init__', this);">Show source.</a></p>
+    <div id="source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTextTestRunner.__init__" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="n">descriptions</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">verbosity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+             <span class="n">failfast</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">buffer</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">resultclass</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">stream</span> <span class="o">=</span> <span class="n">_WritelnDecorator</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">descriptions</span> <span class="o">=</span> <span class="n">descriptions</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">verbosity</span> <span class="o">=</span> <span class="n">verbosity</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">failfast</span> <span class="o">=</span> <span class="n">failfast</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span> <span class="o">=</span> <span class="nb">buffer</span>
+    <span class="k">if</span> <span class="n">resultclass</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">resultclass</span> <span class="o">=</span> <span class="n">resultclass</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.plugins.python.unittest_plugin.TestNameAwareTextTestRunner.run">
+        <p>def <span class="ident">run</span>(</p><p>self, test)</p>
+      </div>
+      
+
+      
+  
+      <div class="desc"><p>Run the given test case or test suite.</p></div>
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTextTestRunner.run', this);">Show source.</a></p>
+    <div id="source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTextTestRunner.run" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test</span><span class="p">):</span>
+    <span class="s">&quot;Run the given test case or test suite.&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_makeResult</span><span class="p">()</span>
+    <span class="n">registerResult</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">failfast</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">failfast</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">buffer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span>
+    <span class="n">startTime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">startTestRun</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="s">&#39;startTestRun&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">startTestRun</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">startTestRun</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">test</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">stopTestRun</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="s">&#39;stopTestRun&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">stopTestRun</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">stopTestRun</span><span class="p">()</span>
+    <span class="n">stopTime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">timeTaken</span> <span class="o">=</span> <span class="n">stopTime</span> <span class="o">-</span> <span class="n">startTime</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">printErrors</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="s">&#39;separator2&#39;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">writeln</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">separator2</span><span class="p">)</span>
+    <span class="n">run</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">testsRun</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">writeln</span><span class="p">(</span><span class="s">&quot;Ran </span><span class="si">%d</span><span class="s"> test</span><span class="si">%s</span><span class="s"> in </span><span class="si">%.3f</span><span class="s">s&quot;</span> <span class="o">%</span>
+                        <span class="p">(</span><span class="n">run</span><span class="p">,</span> <span class="n">run</span> <span class="o">!=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="s">&quot;s&quot;</span> <span class="ow">or</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">timeTaken</span><span class="p">))</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">writeln</span><span class="p">()</span>
+    <span class="n">expectedFails</span> <span class="o">=</span> <span class="n">unexpectedSuccesses</span> <span class="o">=</span> <span class="n">skipped</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">len</span><span class="p">,</span> <span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">expectedFailures</span><span class="p">,</span>
+                            <span class="n">result</span><span class="o">.</span><span class="n">unexpectedSuccesses</span><span class="p">,</span>
+                            <span class="n">result</span><span class="o">.</span><span class="n">skipped</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">expectedFails</span><span class="p">,</span> <span class="n">unexpectedSuccesses</span><span class="p">,</span> <span class="n">skipped</span> <span class="o">=</span> <span class="n">results</span>
+    <span class="n">infos</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">result</span><span class="o">.</span><span class="n">wasSuccessful</span><span class="p">():</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;FAILED&quot;</span><span class="p">)</span>
+        <span class="n">failed</span><span class="p">,</span> <span class="n">errored</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">len</span><span class="p">,</span> <span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">failures</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">errors</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">failed</span><span class="p">:</span>
+            <span class="n">infos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;failures=</span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">failed</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">errored</span><span class="p">:</span>
+            <span class="n">infos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;errors=</span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">errored</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;OK&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">skipped</span><span class="p">:</span>
+        <span class="n">infos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;skipped=</span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">skipped</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">expectedFails</span><span class="p">:</span>
+        <span class="n">infos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;expected failures=</span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">expectedFails</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">unexpectedSuccesses</span><span class="p">:</span>
+        <span class="n">infos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;unexpected successes=</span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">unexpectedSuccesses</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">infos</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">writeln</span><span class="p">(</span><span class="s">&quot; (</span><span class="si">%s</span><span class="s">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">infos</span><span class="p">),))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+        </div>
+      </div>
 
 
 
@@ -1339,7 +2081,7 @@ table {
 <p style="text-align: right;">
   Documentation generated by
   <code><a href="https://github.com/BurntSushi/pdoc">pdoc</a></code>
-  0.1.8.
+  0.2.1.
 
   pdoc is in the public domain with the
   <a href="http://unlicense.org">UNLICENSE</a>.

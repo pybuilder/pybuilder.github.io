@@ -1010,7 +1010,7 @@ table {
 
 
 <span class="kn">from</span> <span class="nn">pybuilder.core</span> <span class="kn">import</span> <span class="n">init</span><span class="p">,</span> <span class="n">use_plugin</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">description</span>
-<span class="kn">from</span> <span class="nn">pybuilder.utils</span> <span class="kn">import</span> <span class="n">discover_files_matching</span><span class="p">,</span> <span class="n">execute_command</span><span class="p">,</span> <span class="n">Timer</span>
+<span class="kn">from</span> <span class="nn">pybuilder.utils</span> <span class="kn">import</span> <span class="n">discover_files_matching</span><span class="p">,</span> <span class="n">execute_command</span><span class="p">,</span> <span class="n">Timer</span><span class="p">,</span> <span class="n">read_file</span>
 <span class="kn">from</span> <span class="nn">pybuilder.terminal</span> <span class="kn">import</span> <span class="n">print_text_line</span><span class="p">,</span> <span class="n">print_file_content</span><span class="p">,</span> <span class="n">print_text</span>
 <span class="kn">from</span> <span class="nn">pybuilder.plugins.python.test_plugin_helper</span> <span class="kn">import</span> <span class="n">ReportsProcessor</span>
 <span class="kn">from</span> <span class="nn">pybuilder.terminal</span> <span class="kn">import</span> <span class="n">styled_text</span><span class="p">,</span> <span class="n">fg</span><span class="p">,</span> <span class="n">GREEN</span><span class="p">,</span> <span class="n">MAGENTA</span><span class="p">,</span> <span class="n">GREY</span>
@@ -1040,6 +1040,7 @@ table {
 
     <span class="n">reports_processor</span> <span class="o">=</span> <span class="n">ReportsProcessor</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span>
     <span class="n">reports_processor</span><span class="o">.</span><span class="n">process_reports</span><span class="p">(</span><span class="n">reports</span><span class="p">,</span> <span class="n">total_time</span><span class="p">)</span>
+    <span class="n">reports_processor</span><span class="o">.</span><span class="n">report_to_ci_server</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
     <span class="n">reports_processor</span><span class="o">.</span><span class="n">write_report_and_ensure_all_tests_passed</span><span class="p">()</span>
 
 
@@ -1097,7 +1098,8 @@ table {
                     <span class="s">&quot;test&quot;</span><span class="p">:</span> <span class="n">test</span><span class="p">,</span>
                     <span class="s">&quot;test_file&quot;</span><span class="p">:</span> <span class="n">test</span><span class="p">,</span>
                     <span class="s">&quot;time&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-                    <span class="s">&quot;success&quot;</span><span class="p">:</span> <span class="bp">False</span>
+                    <span class="s">&quot;success&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+                    <span class="s">&quot;exception&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
                 <span class="p">}</span>
                 <span class="n">reports</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">failed_report</span><span class="p">)</span>
                 <span class="k">continue</span>
@@ -1187,6 +1189,7 @@ table {
     <span class="n">name</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">test</span><span class="p">))</span>
     <span class="k">if</span> <span class="n">output_test_names</span><span class="p">:</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Running integration test </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
     <span class="n">env</span> <span class="o">=</span> <span class="n">prepare_environment</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
     <span class="n">test_time</span> <span class="o">=</span> <span class="n">Timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
     <span class="n">command_and_arguments</span> <span class="o">=</span> <span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">,</span> <span class="n">test</span><span class="p">)</span>
@@ -1202,6 +1205,7 @@ table {
         <span class="s">&quot;success&quot;</span><span class="p">:</span> <span class="bp">True</span>
     <span class="p">}</span>
     <span class="k">if</span> <span class="n">return_code</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+
         <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&quot;Integration test failed: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">test</span><span class="p">)</span>
         <span class="n">report_item</span><span class="p">[</span><span class="s">&quot;success&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
 
@@ -1209,6 +1213,7 @@ table {
             <span class="n">print_file_content</span><span class="p">(</span><span class="n">report_file_name</span><span class="p">)</span>
             <span class="n">print_text_line</span><span class="p">()</span>
             <span class="n">print_file_content</span><span class="p">(</span><span class="n">error_file_name</span><span class="p">)</span>
+            <span class="n">report_item</span><span class="p">[</span><span class="s">&#39;exception&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">read_file</span><span class="p">(</span><span class="n">error_file_name</span><span class="p">))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\&#39;</span><span class="s">&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">report_item</span>
 
@@ -1258,14 +1263,11 @@ table {
     <span class="n">PENDING_SYMBOL</span> <span class="o">=</span> <span class="s">&quot;/&quot;</span>
     <span class="n">WAITING_SYMBOL</span> <span class="o">=</span> <span class="s">&quot;|&quot;</span>
     <span class="n">PACMAN_FORWARD</span> <span class="o">=</span> <span class="s">&quot;á§&quot;</span>
-    <span class="n">PACMAN_BACKWARD</span> <span class="o">=</span> <span class="s">&quot;á¤&quot;</span>
-    <span class="n">PACMAN_CYCLE</span> <span class="o">=</span> <span class="p">[</span><span class="n">PACMAN_BACKWARD</span><span class="p">,</span> <span class="n">PACMAN_FORWARD</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">total_tasks_count</span><span class="p">,</span> <span class="n">workers_count</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">total_tasks_count</span> <span class="o">=</span> <span class="n">total_tasks_count</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">finished_tasks_count</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">workers_count</span> <span class="o">=</span> <span class="n">workers_count</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pacman_index</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">last_render_length</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">finished_tasks_count</span><span class="p">):</span>
@@ -1298,10 +1300,7 @@ table {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">pacman_symbol</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">pacman_symbol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">PACMAN_CYCLE</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">pacman_index</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pacman_index</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pacman_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pacman_index</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">PACMAN_CYCLE</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">pacman_symbol</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">PACMAN_FORWARD</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">running_tasks_count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1478,7 +1477,7 @@ table {
       
     <div class="item">
       <div class="name def" id="pybuilder.plugins.python.integrationtest_plugin.discover_integration_tests">
-        <p>def <span class="ident">discover_integration_tests</span>(</p><p>source_path, suffix='.py')</p>
+        <p>def <span class="ident">discover_integration_tests</span>(</p><p>source_path, suffix=&#39;.py&#39;)</p>
       </div>
       
 
@@ -1677,6 +1676,7 @@ table {
 
     <span class="n">reports_processor</span> <span class="o">=</span> <span class="n">ReportsProcessor</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span>
     <span class="n">reports_processor</span><span class="o">.</span><span class="n">process_reports</span><span class="p">(</span><span class="n">reports</span><span class="p">,</span> <span class="n">total_time</span><span class="p">)</span>
+    <span class="n">reports_processor</span><span class="o">.</span><span class="n">report_to_ci_server</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
     <span class="n">reports_processor</span><span class="o">.</span><span class="n">write_report_and_ensure_all_tests_passed</span><span class="p">()</span>
 </pre></div>
 
@@ -1734,7 +1734,8 @@ table {
                     <span class="s">&quot;test&quot;</span><span class="p">:</span> <span class="n">test</span><span class="p">,</span>
                     <span class="s">&quot;test_file&quot;</span><span class="p">:</span> <span class="n">test</span><span class="p">,</span>
                     <span class="s">&quot;time&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-                    <span class="s">&quot;success&quot;</span><span class="p">:</span> <span class="bp">False</span>
+                    <span class="s">&quot;success&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+                    <span class="s">&quot;exception&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
                 <span class="p">}</span>
                 <span class="n">reports</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">failed_report</span><span class="p">)</span>
                 <span class="k">continue</span>
@@ -1816,6 +1817,7 @@ table {
     <span class="n">name</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">test</span><span class="p">))</span>
     <span class="k">if</span> <span class="n">output_test_names</span><span class="p">:</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Running integration test </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
     <span class="n">env</span> <span class="o">=</span> <span class="n">prepare_environment</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
     <span class="n">test_time</span> <span class="o">=</span> <span class="n">Timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
     <span class="n">command_and_arguments</span> <span class="o">=</span> <span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">,</span> <span class="n">test</span><span class="p">)</span>
@@ -1831,6 +1833,7 @@ table {
         <span class="s">&quot;success&quot;</span><span class="p">:</span> <span class="bp">True</span>
     <span class="p">}</span>
     <span class="k">if</span> <span class="n">return_code</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+
         <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&quot;Integration test failed: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">test</span><span class="p">)</span>
         <span class="n">report_item</span><span class="p">[</span><span class="s">&quot;success&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
 
@@ -1838,6 +1841,7 @@ table {
             <span class="n">print_file_content</span><span class="p">(</span><span class="n">report_file_name</span><span class="p">)</span>
             <span class="n">print_text_line</span><span class="p">()</span>
             <span class="n">print_file_content</span><span class="p">(</span><span class="n">error_file_name</span><span class="p">)</span>
+            <span class="n">report_item</span><span class="p">[</span><span class="s">&#39;exception&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">read_file</span><span class="p">(</span><span class="n">error_file_name</span><span class="p">))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\&#39;</span><span class="s">&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">report_item</span>
 </pre></div>
@@ -2040,14 +2044,11 @@ executed and render its progress.</p></div>
     <span class="n">PENDING_SYMBOL</span> <span class="o">=</span> <span class="s">&quot;/&quot;</span>
     <span class="n">WAITING_SYMBOL</span> <span class="o">=</span> <span class="s">&quot;|&quot;</span>
     <span class="n">PACMAN_FORWARD</span> <span class="o">=</span> <span class="s">&quot;á§&quot;</span>
-    <span class="n">PACMAN_BACKWARD</span> <span class="o">=</span> <span class="s">&quot;á¤&quot;</span>
-    <span class="n">PACMAN_CYCLE</span> <span class="o">=</span> <span class="p">[</span><span class="n">PACMAN_BACKWARD</span><span class="p">,</span> <span class="n">PACMAN_FORWARD</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">total_tasks_count</span><span class="p">,</span> <span class="n">workers_count</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">total_tasks_count</span> <span class="o">=</span> <span class="n">total_tasks_count</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">finished_tasks_count</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">workers_count</span> <span class="o">=</span> <span class="n">workers_count</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pacman_index</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">last_render_length</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">finished_tasks_count</span><span class="p">):</span>
@@ -2080,10 +2081,7 @@ executed and render its progress.</p></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">pacman_symbol</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">pacman_symbol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">PACMAN_CYCLE</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">pacman_index</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pacman_index</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pacman_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pacman_index</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">PACMAN_CYCLE</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">pacman_symbol</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">PACMAN_FORWARD</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">running_tasks_count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -2130,26 +2128,6 @@ executed and render its progress.</p></div>
                   </div>
                   <div class="item">
                     <p id="pybuilder.plugins.python.integrationtest_plugin.TaskPoolProgress.FINISHED_SYMBOL" class="name">var <span class="ident">FINISHED_SYMBOL</span></p>
-                    
-
-                    
-  
-    <div class="source_cont">
-</div>
-
-                  </div>
-                  <div class="item">
-                    <p id="pybuilder.plugins.python.integrationtest_plugin.TaskPoolProgress.PACMAN_BACKWARD" class="name">var <span class="ident">PACMAN_BACKWARD</span></p>
-                    
-
-                    
-  
-    <div class="source_cont">
-</div>
-
-                  </div>
-                  <div class="item">
-                    <p id="pybuilder.plugins.python.integrationtest_plugin.TaskPoolProgress.PACMAN_CYCLE" class="name">var <span class="ident">PACMAN_CYCLE</span></p>
                     
 
                     
@@ -2230,16 +2208,6 @@ executed and render its progress.</p></div>
 
                   </div>
                   <div class="item">
-                    <p id="pybuilder.plugins.python.integrationtest_plugin.TaskPoolProgress.pacman_index" class="name">var <span class="ident">pacman_index</span></p>
-                    
-
-                    
-  
-    <div class="source_cont">
-</div>
-
-                  </div>
-                  <div class="item">
                     <p id="pybuilder.plugins.python.integrationtest_plugin.TaskPoolProgress.pacman_symbol" class="name">var <span class="ident">pacman_symbol</span></p>
                     
 
@@ -2306,7 +2274,6 @@ executed and render its progress.</p></div>
     <span class="bp">self</span><span class="o">.</span><span class="n">total_tasks_count</span> <span class="o">=</span> <span class="n">total_tasks_count</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">finished_tasks_count</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">workers_count</span> <span class="o">=</span> <span class="n">workers_count</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">pacman_index</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">last_render_length</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 
@@ -2423,7 +2390,7 @@ executed and render its progress.</p></div>
 <p style="text-align: right;">
   Documentation generated by
   <code><a href="https://github.com/BurntSushi/pdoc">pdoc</a></code>
-  0.1.8.
+  0.2.1.
 
   pdoc is in the public domain with the
   <a href="http://unlicense.org">UNLICENSE</a>.
