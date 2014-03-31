@@ -753,3 +753,17 @@ This task can be used to generate a PyCharm project files in the project root di
 ### Visual feedback for tests
 The `python.pytddmon` plugin provides the task `pytddmon` which will start a graphical application that gives real-time feedback about passing or failing unit tests.
 Please [see the pytddmon page](http://pytddmon.org/) for more information about pytddmon.
+
+## Additional project structure
+
+### Splitting up your `build.py` with bldsup
+
+Maybe you want to have project specific plugins and support code while keeping your build.py file small, while avoiding to clutter your project's root directory.
+This can be done by activating bldsup support :
+
+```
+from pybuilder.core import use_bldsup
+use_bldsup(build_support_dir="bldsup")
+```
+
+ If it's not called in a project's build.py, then no "bldsup" directory is searched. If it is called, then it confirms that the build_support_dir directory exists and that includes a `__init__.py` file so imports will work. It just needs to be called before you try to `import`/`use_plugin()` any modules from the `build_support_dir`.
