@@ -371,6 +371,19 @@ We have experienced strange problems (EOFErrors) on python 3.2. This seems to be
 
 The plugin `python.cram` can be used to run tests written for cram. Cram tests run during `run_integration_tests` but there is also a separate task available (`run_cram_tests`).
 
+<div class="alert alert-warning alert-dismissable">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <h4>Python 3.2.3 warning</h4>
+Cram crashes on python 3.2.3 : <a href="https://bitbucket.org/brodie/cram/issue/28/crash-on-323">see the relevant bitbucket issue</a>. An easy workaround is to not use the plugin on python 3.2 :
+<br/>
+<pre>
+<code>
+if not sys.version_info[0:2] == (3,2):
+    use_plugin("python.cram")
+</code>
+</pre>
+</div>
+
 #### Cram properties
 
 <table class="table table-striped">
