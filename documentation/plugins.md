@@ -366,6 +366,34 @@ Please refer to <a href="https://github.com/travis-ci/travis-cookbooks/issues/15
 We have experienced strange problems (EOFErrors) on python 3.2. This seems to be due to a bug with pickling randomly raising EOFError. We recomment updating to python 3.3 or 3.4, where it works fine.
 </div>
 
+### Running Cram tests
+[Cram is a functional testing framework for command line applications based on Mercurial's unified test format.](https://pypi.python.org/pypi/cram)
+
+The plugin `python.cram` can be used to run tests written for cram. Cram tests run during `run_integration_tests` but there is also a separate task available (`run_cram_tests`).
+
+#### Cram properties
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>dir_source_cmdlinetest</td>
+    <td>string</td>
+    <td>src/cmdlinetest</td>
+    <td>Directory where cram test files are located.</td>
+  </tr>
+  <tr>
+    <td>cram_test_file_glob</td>
+    <td>string</td>
+    <td>*.t</td>
+    <td>Glob matching the cram test files</td>
+  </tr>
+</table>
+
 ## Python deployment
 
 ### Python core
