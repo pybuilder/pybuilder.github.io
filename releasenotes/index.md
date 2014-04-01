@@ -6,7 +6,7 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 # Release Notes
 
 ## Version 0.10.13
-* Cram support : The `python.cram` plugin can be used to run [cram](https://pypi.python.org/pypi/cram) tests.
+* Cram support : The [`python.cram`](/documentation/plugins.html#RunningCramtests) plugin can be used to run [cram](https://pypi.python.org/pypi/cram) tests.
 
 ## Version 0.10.12
 * [Bldsup support](/documentation/plugins.html#Splittingupyourbuild.pywithbldsup) : custom tasks and per-project specifics can be stored in a separate directory (default: `bldsup`). Kudos go to [@markmevans](https://github.com/markmevans) for implementing this.
