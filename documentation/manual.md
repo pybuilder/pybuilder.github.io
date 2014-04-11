@@ -98,6 +98,7 @@ def say_hello (logger):
 </code></pre>
 
 ## Project-specific configuration
+
 ### Initializers
 The configuration of a project is done by mutating the `project` object. You can access this object from within `build.py` by
 writing an initializer.
