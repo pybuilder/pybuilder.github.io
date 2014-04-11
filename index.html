@@ -3,11 +3,12 @@ layout: default
 title: PyBuilder an easy to use continuous build tool for Python
 ---
 <div class="jumbotron hero">
-  <h1>PyBuilder <small>Build automation for python</small></h1>
-
-{% capture claim %}{% include content/claim.md %}{% endcapture %}
+  <h1>
+    PyBuilder
+    <small>Build automation for python</small>
+  </h1>
+  {% capture claim %}{% include content/claim.md %}{% endcapture %}
 {{ claim | markdownify }}
-
   <p>
     <a href="https://github.com/pybuilder/pybuilder" class="btn btn-primary btn-lg">
       100% <strong>Open Source</strong>
@@ -17,74 +18,71 @@ title: PyBuilder an easy to use continuous build tool for Python
 </div>
 
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-6">
     <h2>
       <span class="glyphicon glyphicon-play"></span>
-      Get started
+      Start a project
     </h2>
 
-    <p>
-      To get started with a simple Python project that has unittests create a file
-      <code>build.py</code>
-      with the
-    following content:
-    </p>
+    <pre><code>
+#!/bin/sh
+pip install pybuilder
+pyb --start-project
+pyb install_dependencies
+pyb publish
 
-    <pre><code>from pybuilder.core import use_plugin
-
-use_plugin("python.core")
-use_plugin("python.unittest")
-use_plugin("python.coverage")
-use_plugin("python.distutils")
-
-default_task = "publish"
-</code></pre>
-
-    <p>
-      Create a directory
-      <code>src/main/python</code>
-      and put all your Python code there. Create a directory
-      <code>src/unittest/python</code>
-      and put all your unittest modules there, each named
-      <code>*_tests.py</code>
-      .
-    </p>
-
-    <p>
-      In the root directory, run
-      <code>pyb</code>
-      :
-    </p>
-    <pre><code>pyb</code></pre>
-
+    </code></pre>
     <p>
       <a class="btn btn-primary btn-small"
          href="https://github.com/pybuilder/pybuilder/tree/master/samples/simple-python-app">Try it yourself &raquo;</a>
     </p>
-  </div>
 
-  <div class="col-md-4">
+  </div>
+  <div class="col-md-6">
+
+    <h2>
+      <span class="glyphicon glyphicon-wrench"></span>
+      Build an existing project
+    </h2>
+
+    <pre><code>
+    git clone https://github.com/aelgru/fluentmock
+    cd fluentmock
+    virtualenv venv; source venv/bin/activate
+    pip install pybuilder
+    pyb install_dependencies
+    pyb
+    </code></pre>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-md-6">
     <h2>
       <span class="glyphicon glyphicon-cloud-download"></span>
-      Installation
+      Install PyBuilder
     </h2>
     <p>
-      <em>PyBuilder</em>
-      is available on PyPI:
+      <div align="left"> <em>PyBuilder</em>
+        is available on PyPI
+      </div>
+      <div align="right">
+        <a href="https://badge.fury.io/py/pybuilder">
+          <img src="https://badge.fury.io/py/pybuilder.png" alt="PyPi version" style="max-width:100%;"></a>
+      </div>
     </p>
     <pre><code>pip install pybuilder</code></pre>
     <p>
-      We recommend using
-      <em>virtualenv</em>
+      We recommend using <em>virtualenv</em>
       .
     Please see the
       <a href="/documentation/installation.html">dedicated installation page</a>
       .
     </p>
-    <a href="https://badge.fury.io/py/pybuilder">
-      <img src="https://badge.fury.io/py/pybuilder.png" alt="PyPi version" style="max-width:100%;">
-    </a>
-    <hr>
+  </div>
+  <div class="col-md-6">
 
     <h2>
       <span class="glyphicon glyphicon-book"></span>
