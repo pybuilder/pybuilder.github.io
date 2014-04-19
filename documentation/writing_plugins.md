@@ -4,6 +4,7 @@ title: PyBuilder Usage Documentation
 ---
 
 # Writing a plugin
+
 ## Task basics
 An essential part of a plugin are the tasks that come with it. The tasks are the blocks of build logic that a plugin can use to act during the build process. We shall start with simple task declarations and then move on to the additions necessary to a plugin.
 
