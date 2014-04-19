@@ -5,6 +5,10 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.14
+* External plugin support : It is now finally possible to use plugins
+  published to PyPI. See [the manual](/documentation/external_plugins.html) for more information.
+
 ## Version 0.10.13
 * Cram support : The [`python.cram`](/documentation/plugins.html#RunningCramtests) plugin can be used to run [cram](https://pypi.python.org/pypi/cram) tests. Kudos go to [@esc](https://github.com/esc) for the implementation.
 
