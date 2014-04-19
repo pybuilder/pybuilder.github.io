@@ -41,11 +41,14 @@ Once your plugin is published to PyPI, you can use it by requiring the plugin pr
 
 As an example, the [sample external plugin](https://github.com/pybuilder/pybuilder/blob/master/samples/pybuilder_external_plugin_demo) can be activated by adding 
 
-```python
+```
 use_plugin("pypi:pybuilder_external_plugin_demo")
 ```
 
 Note that you need to require the plugin name with underscores (as it is the name that will be imported).
+
+## Plugin list
+If possible and desired, add your plugin to the [external plugin list](https://github.com/pybuilder/pybuilder.github.io/tree/master/documentation/external_plugin_list.md).
 
 ## TLDR
   * Prefix your package with `pybuilder_`
@@ -53,3 +56,4 @@ Note that you need to require the plugin name with underscores (as it is the nam
   * Package has all plugin related things (tasks ...) at top-level
   * PyPI name of package is `pybuilder-*` (with dashes instead of underscores)
   * Plugin is used by prefixing the package name (underscores!) with `pypi:`
+  * Add your plugin to the [external plugin list](https://github.com/pybuilder/pybuilder.github.io/tree/master/documentation/external_plugin_list.md)
