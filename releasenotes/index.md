@@ -5,6 +5,9 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.15
+* Fixed a minor rendering issue in integrationtest_parallel
+
 ## Version 0.10.14
 * External plugin support : It is now finally possible to use plugins
   published to PyPI. See [the manual](/documentation/external_plugins.html) for more information.
