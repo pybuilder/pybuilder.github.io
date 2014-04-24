@@ -14,44 +14,44 @@ Defining tasks is done with the `task` decorator.
 
 Our simple task might look like so:
 
-```
+{% highlight python %}
 from __future__ import print_function
 from pybuilder.core import task
 
 @task
 def hello():
     print("hello")
-```
+{% endhighlight %}
 
 We can now list the available tasks using the `-t` option:
 
-```
+{% highlight python %}
 $ pyb -t
 Tasks found for project "task-demo":
     hello - < no description available >
-```
+{% endhighlight %}
 
 As you can see *PyBuilder* has picked up our task using the function name.
 Note that task names should be unique! We can control the tasks' name by adding it as an argument to the decorator. Let us rename the task into "foo" without changing the function name.
 
-```
+{% highlight python %}
 from __future__ import print_function
 from pybuilder.core import task
 
 @task("foo")
 def hello():
     print("hello")
-```
-```
+{% endhighlight %}
+{% highlight python %}
 $ pyb -t
 Tasks found for project "test":
     foo - < no description available >
-```
+{% endhighlight %}
 
 ### Descriptions
 As you can see above, our task has no description currently. We can change that by adding one through the description decorator :
 
-```
+{% highlight python %}
 from __future__ import print_function
 from pybuilder.core import task, description
 
@@ -59,19 +59,19 @@ from pybuilder.core import task, description
 @description("Greets people")
 def hello():
     print("hello")
-```
+{% endhighlight %}
 Listing tasks will now yield a description of our task :
-```
+{% highlight python %}
 $ pyb -t
 Tasks found for project "test":
     foo - Greets people
-```
+{% endhighlight %}
 
 ### Dependencies
 Dependencies between tasks is easy. You can use the `depends` decorator to express that a task requires another one to run.
 In the following example we create a task *foo*, that depends on another task, *bar*, to run.
 
-```
+{% highlight python %}
 from pybuilder.core import task, depends
 
 @task
@@ -82,12 +82,12 @@ def foo():
 @task
 def bar():
     pass
-```
+{% endhighlight %}
 
 Now every time the task *foo* is run, *PyBuilder* will ensure that *bar* will have run first.
 Dependencies on more than one task are expressed by increasing the arity of the depends decorator like so :
 
-```
+{% highlight python %}
 from pybuilder.core import task, depends
 
 @task
@@ -102,24 +102,24 @@ def bar():
 @task
 def baz():
     pass
-```
+{% endhighlight %}
 
 ### Assuming control
 If a task wishes to show output to the user, it can request the use of the *PyBuilder* logger by accepting a `logger` argument :
 
-```
+{% highlight python %}
 @task
 def mytask(logger):
     logger.info("Hello user, how are you today?!")
-```
+{% endhighlight %}
 
 Most decisions a task can take (e.G. configuration) require the knowledge of the project. A task can be made aware of the project by accepting a `project` argument. Since those are named arguments, nothing is stopping us from accepting both a logger and a project (the order does not matter) :
 
-```
+{% highlight python %}
 @task
 def mytask(project, logger):
     logger.info("I am building {0} in version {1}!".format(project.name, project.version))
-```
+{% endhighlight %}
 
 ## Anatomy of a plugin
 A plugin can be broken down in essentially two parts :
@@ -136,48 +136,48 @@ This is suitable for defaults because the initializer of the plugin will run bef
 
 Setting properties is done through the `set_property` method of project :
 
-```
+{% highlight python %}
 from pybuilder.core import init
 
 @init
 def initialize_my_plugin(project):
     project.set_property("property_for_my_plugin", 42)
-```
+{% endhighlight %}
 
 We can then use this property in our tasks through the project object :
-```
+{% highlight python %}
 from pybuilder.core import task
 
 @task
 def mytask(project, logger):
     my_property = project.get_property("property_for_my_plugin")
     logger.info("The property for my plugin is {0}".format(my_property))
-```
+{% endhighlight %}
 Properties can be of any type (usually strings, integers, booleans or lists).
 If a property is mandatory and there is no default, then `project.get_mandatory_property` is more suitable since it also raises an error in case the property is unset. See [the project API](/documentation/api/core.m.html#pybuilder.core.Project) for even more possibilities!
 
 #### Requiring external libraries
 If the plugin requires external libraries installable through pip, the project object can be used to add this as a dependency :
 
-```
+{% highlight python %}
 from pybuilder.core import init
 
 @init
 def init_my_plugin(project):
     project.build_depends_on("py.test")
-```
+{% endhighlight %}
 
 #### Ensuring that programs are installed
 If the plugin relies on an external program like *pylint* then you should ensure that the program is available through the `assert_can_execute` function. The aim is to provide quick feedback to users why the plugin is not working.
 
-```
+{% highlight python %}
 from pybuilder.utils import assert_can_execute
 from pybuilder.core import task
 
 @task
 def my_plugin_task():
     assert_can_execute(["committer", "--version"], prerequisite="committer by @aelgru", caller="my_plugin")
-```
+{% endhighlight %}
 
 ### Compliance with the verbose flag
 *PyBuilder* is designed to focus on the big picture of the build process.
@@ -186,7 +186,7 @@ provide information about errors using the logger.
 
 For most plugins using the helper function `execute_tool_on_source_files` from `pybuilder.plugins.python.python_plugin_helper` will suffice. It will display the output of the tool, provided the property `$name_verbose_output` is set to true. The `$name` is simply the name argument passed to the function. You can set this property in your task based on the verbose property of the project :
 
-```
+{% highlight python %}
 from pybuilder.core import task, description, use_plugin, depends
 from pybuilder.plugins.python.python_plugin_helper import execute_tool_on_source_files
 
@@ -206,7 +206,7 @@ def my_verbose_compliant_task(project, logger):
                                  command_and_arguments=["/usr/bin/file",
                                                         "-bi"],
                                  logger=logger)
-```
+{% endhighlight %}
 
 
 ### Tasks
