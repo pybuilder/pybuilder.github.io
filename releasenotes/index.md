@@ -5,6 +5,9 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.16
+* The pycharm plugin now ignores the `target` directory by default.
+
 ## Version 0.10.15
 * Fixed a minor rendering issue in integrationtest_parallel
 
