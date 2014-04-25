@@ -5,6 +5,12 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.18
+* Python files in `$dir_source_main_python` (`src/main/python` by default) are now treated as standalone python modules. Previously, it was only possible to package python files by putting them in a package.
+
+## Version 0.10.17
+* The `frosted_property` now works as intended.
+
 ## Version 0.10.16
 * The pycharm plugin now ignores the `target` directory by default.
 
