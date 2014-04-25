@@ -152,12 +152,12 @@ Frosted is a fork of pyflakes (originally created by Phil Frost) that aims at mo
   </tr>
 
   <tr>
-    <td>frosted_exclude_warnings</td>
+    <td>frosted_ignore</td>
     <td>List of strings</td>
     <td>[ ]</td>
     <td>List of warnings to exclude<br/>
         Example: <code>["E205", "W101"]</code>.<br/>
-        See <a href="https://github.com/timothycrosley/frosted">here</a>, section <em>Frosted error codes</em>, for reference.</td>
+        See <a href="https://github.com/timothycrosley/frosted">here</a>, section <em>Frosted error codes</em>, for reference (or use frosted --verbose to check).</td>
   </tr>
 
 </table>
