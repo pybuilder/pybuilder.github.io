@@ -18,31 +18,28 @@ title: PyBuilder an easy to use continuous build tool for Python
 </div>
 
 <div class="row">
-  <div class="col-md-6">
-    <h2>
-      <span class="glyphicon glyphicon-play"></span>
-      Start a project
-    </h2>
-
+  <h2>
+  <span class="glyphicon glyphicon-wrench"></span>
+  Get started
+  </h2>
+  <ul class="tabs" data-persist="true">
+    <li>
+      <a href="#startproject">Start a project</a>
+    </li>
+    <li>
+      <a href="#checkoutbuild">Checkout and build an existing project</a>
+    </li>
+  </ul>
+  <div class="tabcontents">
+    <div id="startproject">
     <pre><code>
 #!/bin/sh
 pip install pybuilder
 pyb --start-project
 pyb install_dependencies publish
     </code></pre>
-    <p>
-      <a class="btn btn-primary btn-small"
-         href="https://github.com/pybuilder/pybuilder/tree/master/samples/simple-python-app">Try it yourself &raquo;</a>
-    </p>
-
-  </div>
-  <div class="col-md-6">
-
-    <h2>
-      <span class="glyphicon glyphicon-wrench"></span>
-      Build an existing project
-    </h2>
-
+    </div>
+    <div id="checkoutbuild">
     <pre><code>
     git clone https://github.com/aelgru/fluentmock
     cd fluentmock
@@ -51,10 +48,9 @@ pyb install_dependencies publish
     pyb install_dependencies
     pyb
     </code></pre>
+    </div>
   </div>
 </div>
-
-<hr>
 
 <div class="row">
   <div class="col-md-6">
@@ -64,7 +60,8 @@ pyb install_dependencies publish
     </h2>
     <p>
       <div align="left"> <em>PyBuilder</em>
-        is available on <a href="https://pypi.python.org/pypi/pybuilder">PyPI</a>
+        is available on
+        <a href="https://pypi.python.org/pypi/pybuilder">PyPI</a>
       </div>
     </p>
     <pre><code>pip install pybuilder</code></pre>
