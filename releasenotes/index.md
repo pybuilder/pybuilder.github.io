@@ -5,6 +5,10 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.19
+* The frosted and flake8 linter now consider the property `frosted|flake8_include_scripts`. If this is set to True (default False) then all scripts in `$dir_source_main_scripts` will be linted too.
+* The integrationtest plugin may now pass arbitrary additional command line parts to the integrationtest call. The property `integrationtest_additional_commandline` can be used for that purpose.
+
 ## Version 0.10.18
 * Python files in `$dir_source_main_python` (`src/main/python` by default) are now treated as standalone python modules. Previously, it was only possible to package python files by putting them in a package.
 
