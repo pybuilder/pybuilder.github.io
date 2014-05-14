@@ -152,6 +152,13 @@ Frosted is a fork of pyflakes (originally created by Phil Frost) that aims at mo
   </tr>
 
   <tr>
+    <td>frosted_include_scripts</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Also run the frosted linter on all files in $dir_source_main_scripts</td>
+  </tr>
+
+  <tr>
     <td>frosted_ignore</td>
     <td>List of strings</td>
     <td>[ ]</td>
@@ -191,6 +198,13 @@ Use the ```python.flake8``` module to activate linting.
     <td>boolean</td>
     <td>False</td>
     <td>Also run flake8 on integrationtest and unittest sources</td>
+  </tr>
+
+  <tr>
+    <td>flake8_include_scripts</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Also run the flake8 linter on all files in $dir_source_main_scripts</td>
   </tr>
 
   <tr>
@@ -317,6 +331,13 @@ the production source directory.
     <td>map</td>
     <td>empty</td>
     <td>Map containing additional environment variables used when executing the integration tests.</td>
+  </tr>
+
+  <tr>
+    <td>integrationtest_additional_commandline</td>
+    <td>string</td>
+    <td>Not set</td>
+    <td>Additional command line arguments/commands to pass to the integration test call</td>
   </tr>
 
   <tr>
