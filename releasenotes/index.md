@@ -5,6 +5,9 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.20
+* The `--start-project` (to get started with a new project) now suggests the default scripts directory and creates it. Files in this folder will automatically be shipped as scripts (as in the setup.py `scripts` kwarg) which might be `/usr/bin` or `/usr/local/bin` or so, depending on your system.
+
 ## Version 0.10.19
 * The frosted and flake8 linter now consider the property `frosted|flake8_include_scripts`. If this is set to True (default False) then all scripts in `$dir_source_main_scripts` will be linted too.
 * The integrationtest plugin may now pass arbitrary additional command line parts to the integrationtest call. The property `integrationtest_additional_commandline` can be used for that purpose.
