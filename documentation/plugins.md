@@ -510,7 +510,6 @@ The project object exposes the following methods for declaring dependencies
 
 Note that the `*_depends_on` methods accept the following arguments :
 
-name, version=None, url=None):
 <table class="table table-striped">
   <tr>
     <th>Argument</th>
