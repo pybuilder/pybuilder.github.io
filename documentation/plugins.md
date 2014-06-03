@@ -523,12 +523,12 @@ Note that the `*_depends_on` methods accept the following arguments :
 
   <tr>
     <td>version</td>
-    <td>Optional keyword argument (`None` default). Set it to a version string (example `"==1.5.4"` or `">=0.10"` if necessary.</td>
+    <td>Optional keyword argument (<code>None</code> default). Set it to a version string (example <code>"==1.5.4"</code> or <code>">=0.10"</code> if necessary.</td>
   </tr>
 
   <tr>
     <td>url</td>
-    <td>Optional keyword argument (`None` default). Set it to an editable URL where the dependency should be downloaded from.</td>
+    <td>Optional keyword argument (<code>None</code> default). Set it to an editable URL where the dependency should be downloaded from.</td>
   </tr>
 </table>
 
