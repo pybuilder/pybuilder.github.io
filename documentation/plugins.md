@@ -499,13 +499,13 @@ This will make the following tasks available:
   </tr>
 </table>
 
-#### Declaring dependencies :
+#### Declaring dependencies
 The project object exposes the following methods for declaring dependencies
 
 ##### Runtime dependencies :
 <pre><code>project.depends_on("awesome-library")</code></pre>
 
-##### Build dependencies
+##### Build dependencies :
 <pre><code>project.build_depends_on("awesome-library")</code></pre>
 
 Note that the `*_depends_on` methods accept the following arguments :
