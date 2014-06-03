@@ -499,6 +499,40 @@ This will make the following tasks available:
   </tr>
 </table>
 
+#### Declaring dependencies
+The project object exposes the following methods for declaring dependencies
+
+##### Runtime dependencies
+<pre><code>project.depends_on("awesome-library")</code></pre>
+
+##### Build dependencies
+<pre><code>project.build_depends_on("awesome-library")</code></pre>
+
+Note that the `*_depends_on` methods accept the following arguments :
+
+name, version=None, url=None):
+<table class="table table-striped">
+  <tr>
+    <th>Argument</th>
+    <th>Effect</th>
+  </tr>
+
+  <tr>
+    <td>name</td>
+    <td>Required positional argument. It's the name of the dependency on PyPI.</td>
+  </tr>
+
+  <tr>
+    <td>version</td>
+    <td>Optional keyword argument (`None` default). Set it to a version string (example `"==1.5.4"` or `">=0.10"` if necessary.</td>
+  </tr>
+
+  <tr>
+    <td>url</td>
+    <td>Optional keyword argument (`None` default). Set it to an editable URL where the dependency should be downloaded from.</td>
+  </tr>
+</table>
+
 #### Install dependencies configuration
 <table class="table table-striped">
   <tr>
