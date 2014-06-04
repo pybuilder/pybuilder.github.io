@@ -579,7 +579,7 @@ Note that the `*_depends_on` methods accept the following arguments :
   <tr>
     <td>install_dependencies_insecure_installation</td>
     <td>List of strings</td>
-    <td>[]</td>
+    <td><code>[ ]</code></td>
     <td>Tell newer versions of pip that it's OK to install those dependencies insecurely (externally hosted, potentially unverified)</td>
   </tr>
 </table>
