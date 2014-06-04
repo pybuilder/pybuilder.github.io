@@ -5,6 +5,11 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.23
+* It is now possible to use the `distutils_commands` property for an automated upload, since 
+  the distutils_plugin will now do the right thing when presented with a command with spaces, 
+  like [`sdist upload`]
+
 ## Version 0.10.22
 * Unit tests names will now be logged to DEBUG as they run. Thanks [@aelgru](https://github.com/aelgru)!
 * Introduced a new property for the [`install_dependencies` plugin](/documentation/plugins.html#Installingdependencies), 
