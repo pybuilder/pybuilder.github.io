@@ -5,6 +5,14 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.22
+* Unit tests names will now be logged to DEBUG as they run. Thanks [@aelgru](https://github.com/aelgru)!
+* Introduced a new property for the [`install_dependencies` plugin](/documentation/plugins.html#Installingdependencies), 
+`install_dependencies_insecure_installation`.
+
+## Version 0.10.21
+* Maintenance release (updated trove classifiers for PyPI)
+
 ## Version 0.10.20
 * The `--start-project` (to get started with a new project) now suggests the default scripts directory and creates it. Files in this folder will automatically be shipped as scripts (as in the setup.py `scripts` kwarg) which might be `/usr/bin` or `/usr/local/bin` or so, depending on your system.
 
