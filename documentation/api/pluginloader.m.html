@@ -1005,11 +1005,17 @@ Provides a mechanism to load PyBuilder plugins.</p>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
 
 <span class="kn">from</span> <span class="nn">pybuilder.errors</span> <span class="kn">import</span> <span class="n">MissingPluginException</span>
+<span class="kn">from</span> <span class="nn">pybuilder.utils</span> <span class="kn">import</span> <span class="n">execute_command</span><span class="p">,</span> <span class="n">read_file</span>
+
+
+<span class="n">PYPI_PLUGIN_PROTOCOL</span> <span class="o">=</span> <span class="s">&quot;pypi:&quot;</span>
 
 
 <span class="k">class</span> <span class="nc">PluginLoader</span> <span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
 
@@ -1018,6 +1024,7 @@ Provides a mechanism to load PyBuilder plugins.</p>
 
 
 <span class="k">class</span> <span class="nc">BuiltinPluginLoader</span><span class="p">(</span><span class="n">PluginLoader</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">load_plugin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Trying to load builtin plugin &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
         <span class="n">builtin_plugin_name</span> <span class="o">=</span> <span class="s">&quot;pybuilder.plugins.</span><span class="si">%s</span><span class="s">_plugin&quot;</span> <span class="o">%</span> <span class="n">name</span>
@@ -1030,9 +1037,14 @@ Provides a mechanism to load PyBuilder plugins.</p>
 
 
 <span class="k">class</span> <span class="nc">ThirdPartyPluginLoader</span><span class="p">(</span><span class="n">PluginLoader</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">load_plugin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Trying to load third party plugin &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
-        <span class="n">thirdparty_plugin</span> <span class="o">=</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">name</span>
+        <span class="n">thirdparty_plugin</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="c"># Maybe we already installed this plugin from PyPI before</span>
+        <span class="k">if</span> <span class="n">thirdparty_plugin</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">PYPI_PLUGIN_PROTOCOL</span><span class="p">):</span>
+            <span class="n">thirdparty_plugin</span> <span class="o">=</span> <span class="n">thirdparty_plugin</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">PYPI_PLUGIN_PROTOCOL</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Trying to load third party plugin &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span> <span class="n">thirdparty_plugin</span><span class="p">)</span>
+
         <span class="k">try</span><span class="p">:</span>
             <span class="nb">__import__</span><span class="p">(</span><span class="n">thirdparty_plugin</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Found third party plugin &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span> <span class="n">thirdparty_plugin</span><span class="p">)</span>
@@ -1041,18 +1053,50 @@ Provides a mechanism to load PyBuilder plugins.</p>
             <span class="k">raise</span> <span class="n">MissingPluginException</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">import_error</span><span class="p">)</span>
 
 
+<span class="k">class</span> <span class="nc">DownloadingPluginLoader</span><span class="p">(</span><span class="n">ThirdPartyPluginLoader</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">load_plugin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Downloading missing plugin {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">_install_external_plugin</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Installed plugin {0}.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+        <span class="k">except</span> <span class="n">MissingPluginException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&quot;Could not install plugin {0}: {1}.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span>
+            <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">return</span> <span class="n">ThirdPartyPluginLoader</span><span class="o">.</span><span class="n">load_plugin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+
 <span class="k">class</span> <span class="nc">DispatchingPluginLoader</span><span class="p">(</span><span class="n">PluginLoader</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="o">*</span><span class="n">loader</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">DispatchingPluginLoader</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">logger</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">loader</span> <span class="o">=</span> <span class="n">loader</span>
 
     <span class="k">def</span> <span class="nf">load_plugin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="n">last_problem</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="k">for</span> <span class="n">loader</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">loader</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">loader</span><span class="o">.</span><span class="n">load_plugin</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
-            <span class="k">except</span> <span class="n">MissingPluginException</span><span class="p">:</span>
-                <span class="k">pass</span>
-        <span class="k">raise</span> <span class="n">MissingPluginException</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">MissingPluginException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">last_problem</span> <span class="o">=</span> <span class="n">e</span>
+        <span class="k">raise</span> <span class="n">last_problem</span>
+
+
+<span class="k">def</span> <span class="nf">_install_external_plugin</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">PYPI_PLUGIN_PROTOCOL</span><span class="p">):</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="s">&quot;Only plugins starting with &#39;{0}&#39; are currently supported&quot;</span>
+        <span class="k">raise</span> <span class="n">MissingPluginException</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">message</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">PYPI_PLUGIN_PROTOCOL</span><span class="p">))</span>
+    <span class="n">plugin_name_on_pypi</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">PYPI_PLUGIN_PROTOCOL</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">log_file</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">delete</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">name</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">execute_command</span><span class="p">(</span>
+        <span class="s">&#39;pip install {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">plugin_name_on_pypi</span><span class="p">),</span>
+        <span class="n">log_file</span><span class="p">,</span>
+        <span class="n">error_file_name</span><span class="o">=</span><span class="n">log_file</span><span class="p">,</span>
+        <span class="n">shell</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">result</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&quot;The following pip error was encountered:</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">+</span> <span class="s">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">read_file</span><span class="p">(</span><span class="n">log_file</span><span class="p">)))</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="s">&quot;Failed to install from PyPI&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">plugin_name_on_pypi</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">MissingPluginException</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1062,6 +1106,20 @@ Provides a mechanism to load PyBuilder plugins.</p>
   <h2>Index</h2>
 
   <ul id="index">
+    <li><h4><a href="#header-variables">Module variables</a></h4>
+      
+  
+  <div class="column_list">
+      <ul>
+          <li class="mono"><a href="#pybuilder.pluginloader.PYPI_PLUGIN_PROTOCOL">PYPI_PLUGIN_PROTOCOL</a></li>
+      </ul>
+      <ul>
+      </ul>
+      <ul>
+      </ul>
+  </div>
+
+    </li>
 
 
     <li><h4><a href="#header-classes">Classes</a></h4>
@@ -1094,6 +1152,23 @@ Provides a mechanism to load PyBuilder plugins.</p>
       </ul>
       <ul>
           <li class="mono"><a href="#pybuilder.pluginloader.DispatchingPluginLoader.load_plugin">load_plugin</a></li>
+      </ul>
+      <ul>
+      </ul>
+  </div>
+
+          </li>
+          <li class="mono">
+            <span class="class_name"><a href="#pybuilder.pluginloader.DownloadingPluginLoader">DownloadingPluginLoader</a></span>
+            
+              
+  
+  <div class="column_list">
+      <ul>
+          <li class="mono"><a href="#pybuilder.pluginloader.DownloadingPluginLoader.__init__">__init__</a></li>
+      </ul>
+      <ul>
+          <li class="mono"><a href="#pybuilder.pluginloader.DownloadingPluginLoader.load_plugin">load_plugin</a></li>
       </ul>
       <ul>
       </ul>
@@ -1139,6 +1214,15 @@ Provides a mechanism to load PyBuilder plugins.</p>
 
   </ul>
 
+  <h2 id="header-variables">Module variables</h2>
+      <div class="item">
+        <p id="pybuilder.pluginloader.PYPI_PLUGIN_PROTOCOL" class="name">var <span class="ident">PYPI_PLUGIN_PROTOCOL</span></p>
+        
+  
+    <div class="source_cont">
+</div>
+
+      </div>
 
 
   <h2 id="header-classes">Classes</h2>
@@ -1151,6 +1235,7 @@ Provides a mechanism to load PyBuilder plugins.</p>
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.pluginloader.BuiltinPluginLoader', this);">Show source.</a></p>
     <div id="source-pybuilder.pluginloader.BuiltinPluginLoader" class="source">
       <div class="codehilite"><pre><span class="k">class</span> <span class="nc">BuiltinPluginLoader</span><span class="p">(</span><span class="n">PluginLoader</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">load_plugin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Trying to load builtin plugin &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
         <span class="n">builtin_plugin_name</span> <span class="o">=</span> <span class="s">&quot;pybuilder.plugins.</span><span class="si">%s</span><span class="s">_plugin&quot;</span> <span class="o">%</span> <span class="n">name</span>
@@ -1257,17 +1342,19 @@ Provides a mechanism to load PyBuilder plugins.</p>
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.pluginloader.DispatchingPluginLoader', this);">Show source.</a></p>
     <div id="source-pybuilder.pluginloader.DispatchingPluginLoader" class="source">
       <div class="codehilite"><pre><span class="k">class</span> <span class="nc">DispatchingPluginLoader</span><span class="p">(</span><span class="n">PluginLoader</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="o">*</span><span class="n">loader</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">DispatchingPluginLoader</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">logger</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">loader</span> <span class="o">=</span> <span class="n">loader</span>
 
     <span class="k">def</span> <span class="nf">load_plugin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="n">last_problem</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="k">for</span> <span class="n">loader</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">loader</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">loader</span><span class="o">.</span><span class="n">load_plugin</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
-            <span class="k">except</span> <span class="n">MissingPluginException</span><span class="p">:</span>
-                <span class="k">pass</span>
-        <span class="k">raise</span> <span class="n">MissingPluginException</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">MissingPluginException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">last_problem</span> <span class="o">=</span> <span class="n">e</span>
+        <span class="k">raise</span> <span class="n">last_problem</span>
 </pre></div>
 
     </div>
@@ -1350,12 +1437,121 @@ Provides a mechanism to load PyBuilder plugins.</p>
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.pluginloader.DispatchingPluginLoader.load_plugin', this);">Show source.</a></p>
     <div id="source-pybuilder.pluginloader.DispatchingPluginLoader.load_plugin" class="source">
       <div class="codehilite"><pre><span class="k">def</span> <span class="nf">load_plugin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="n">last_problem</span> <span class="o">=</span> <span class="bp">None</span>
     <span class="k">for</span> <span class="n">loader</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">loader</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">loader</span><span class="o">.</span><span class="n">load_plugin</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
-        <span class="k">except</span> <span class="n">MissingPluginException</span><span class="p">:</span>
-            <span class="k">pass</span>
-    <span class="k">raise</span> <span class="n">MissingPluginException</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">MissingPluginException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">last_problem</span> <span class="o">=</span> <span class="n">e</span>
+    <span class="k">raise</span> <span class="n">last_problem</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+        </div>
+      </div>
+      
+      <div class="item">
+        <p id="pybuilder.pluginloader.DownloadingPluginLoader" class="name">class <span class="ident">DownloadingPluginLoader</span></p>
+        
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.pluginloader.DownloadingPluginLoader', this);">Show source.</a></p>
+    <div id="source-pybuilder.pluginloader.DownloadingPluginLoader" class="source">
+      <div class="codehilite"><pre><span class="k">class</span> <span class="nc">DownloadingPluginLoader</span><span class="p">(</span><span class="n">ThirdPartyPluginLoader</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">load_plugin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Downloading missing plugin {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">_install_external_plugin</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Installed plugin {0}.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+        <span class="k">except</span> <span class="n">MissingPluginException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&quot;Could not install plugin {0}: {1}.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span>
+            <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">return</span> <span class="n">ThirdPartyPluginLoader</span><span class="o">.</span><span class="n">load_plugin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+
+        <div class="class">
+              <h4>Ancestors (in MRO)</h4>
+              <ul class="class_list">
+                <li><a href="#pybuilder.pluginloader.DownloadingPluginLoader">DownloadingPluginLoader</a></li>
+                <li><a href="#pybuilder.pluginloader.ThirdPartyPluginLoader">ThirdPartyPluginLoader</a></li>
+                <li><a href="#pybuilder.pluginloader.PluginLoader">PluginLoader</a></li>
+                <li>__builtin__.object</li>
+              </ul>
+              <h4>Instance variables</h4>
+                  <div class="item">
+                    <p id="pybuilder.pluginloader.DownloadingPluginLoader.logger" class="name">var <span class="ident">logger</span></p>
+                    
+      <p class="inheritance">
+         <strong>Inheritance:</strong>
+           <code><a href="#pybuilder.pluginloader.ThirdPartyPluginLoader">ThirdPartyPluginLoader</a></code>.<code><a href="#pybuilder.pluginloader.ThirdPartyPluginLoader.logger">logger</a></code>
+      </p>
+
+                    
+  
+    <div class="source_cont">
+</div>
+
+                  </div>
+              <h4>Methods</h4>
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.pluginloader.DownloadingPluginLoader.__init__">
+        <p>def <span class="ident">__init__</span>(</p><p>self, logger)</p>
+      </div>
+      
+      <p class="inheritance">
+         <strong>Inheritance:</strong>
+           <code><a href="#pybuilder.pluginloader.ThirdPartyPluginLoader">ThirdPartyPluginLoader</a></code>.<code><a href="#pybuilder.pluginloader.ThirdPartyPluginLoader.__init__">__init__</a></code>
+      </p>
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.pluginloader.DownloadingPluginLoader.__init__', this);">Show source.</a></p>
+    <div id="source-pybuilder.pluginloader.DownloadingPluginLoader.__init__" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.pluginloader.DownloadingPluginLoader.load_plugin">
+        <p>def <span class="ident">load_plugin</span>(</p><p>self, project, name)</p>
+      </div>
+      
+      <p class="inheritance">
+         <strong>Inheritance:</strong>
+           <code><a href="#pybuilder.pluginloader.ThirdPartyPluginLoader">ThirdPartyPluginLoader</a></code>.<code><a href="#pybuilder.pluginloader.ThirdPartyPluginLoader.load_plugin">load_plugin</a></code>
+      </p>
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.pluginloader.DownloadingPluginLoader.load_plugin', this);">Show source.</a></p>
+    <div id="source-pybuilder.pluginloader.DownloadingPluginLoader.load_plugin" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">load_plugin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Downloading missing plugin {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">_install_external_plugin</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Installed plugin {0}.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+    <span class="k">except</span> <span class="n">MissingPluginException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&quot;Could not install plugin {0}: {1}.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">None</span>
+    <span class="k">return</span> <span class="n">ThirdPartyPluginLoader</span><span class="o">.</span><span class="n">load_plugin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1374,6 +1570,7 @@ Provides a mechanism to load PyBuilder plugins.</p>
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.pluginloader.PluginLoader', this);">Show source.</a></p>
     <div id="source-pybuilder.pluginloader.PluginLoader" class="source">
       <div class="codehilite"><pre><span class="k">class</span> <span class="nc">PluginLoader</span> <span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
 
@@ -1456,9 +1653,14 @@ Provides a mechanism to load PyBuilder plugins.</p>
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.pluginloader.ThirdPartyPluginLoader', this);">Show source.</a></p>
     <div id="source-pybuilder.pluginloader.ThirdPartyPluginLoader" class="source">
       <div class="codehilite"><pre><span class="k">class</span> <span class="nc">ThirdPartyPluginLoader</span><span class="p">(</span><span class="n">PluginLoader</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">load_plugin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Trying to load third party plugin &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
-        <span class="n">thirdparty_plugin</span> <span class="o">=</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">name</span>
+        <span class="n">thirdparty_plugin</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="c"># Maybe we already installed this plugin from PyPI before</span>
+        <span class="k">if</span> <span class="n">thirdparty_plugin</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">PYPI_PLUGIN_PROTOCOL</span><span class="p">):</span>
+            <span class="n">thirdparty_plugin</span> <span class="o">=</span> <span class="n">thirdparty_plugin</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">PYPI_PLUGIN_PROTOCOL</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Trying to load third party plugin &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span> <span class="n">thirdparty_plugin</span><span class="p">)</span>
+
         <span class="k">try</span><span class="p">:</span>
             <span class="nb">__import__</span><span class="p">(</span><span class="n">thirdparty_plugin</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Found third party plugin &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span> <span class="n">thirdparty_plugin</span><span class="p">)</span>
@@ -1536,8 +1738,11 @@ Provides a mechanism to load PyBuilder plugins.</p>
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.pluginloader.ThirdPartyPluginLoader.load_plugin', this);">Show source.</a></p>
     <div id="source-pybuilder.pluginloader.ThirdPartyPluginLoader.load_plugin" class="source">
       <div class="codehilite"><pre><span class="k">def</span> <span class="nf">load_plugin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Trying to load third party plugin &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
-    <span class="n">thirdparty_plugin</span> <span class="o">=</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">name</span>
+    <span class="n">thirdparty_plugin</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="c"># Maybe we already installed this plugin from PyPI before</span>
+    <span class="k">if</span> <span class="n">thirdparty_plugin</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">PYPI_PLUGIN_PROTOCOL</span><span class="p">):</span>
+        <span class="n">thirdparty_plugin</span> <span class="o">=</span> <span class="n">thirdparty_plugin</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">PYPI_PLUGIN_PROTOCOL</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Trying to load third party plugin &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span> <span class="n">thirdparty_plugin</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="nb">__import__</span><span class="p">(</span><span class="n">thirdparty_plugin</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Found third party plugin &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span> <span class="n">thirdparty_plugin</span><span class="p">)</span>
@@ -1560,7 +1765,7 @@ Provides a mechanism to load PyBuilder plugins.</p>
 <p style="text-align: right;">
   Documentation generated by
   <code><a href="https://github.com/BurntSushi/pdoc">pdoc</a></code>
-  0.2.1.
+  0.2.3.
 
   pdoc is in the public domain with the
   <a href="http://unlicense.org">UNLICENSE</a>.

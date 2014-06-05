@@ -1017,7 +1017,8 @@ execution module.</p>
 <span class="kn">from</span> <span class="nn">pybuilder.errors</span> <span class="kn">import</span> <span class="n">PyBuilderException</span><span class="p">,</span> <span class="n">ProjectValidationFailedException</span>
 <span class="kn">from</span> <span class="nn">pybuilder.pluginloader</span> <span class="kn">import</span> <span class="p">(</span><span class="n">BuiltinPluginLoader</span><span class="p">,</span>
                                     <span class="n">DispatchingPluginLoader</span><span class="p">,</span>
-                                    <span class="n">ThirdPartyPluginLoader</span><span class="p">)</span>
+                                    <span class="n">ThirdPartyPluginLoader</span><span class="p">,</span>
+                                    <span class="n">DownloadingPluginLoader</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">pybuilder.utils</span> <span class="kn">import</span> <span class="n">as_list</span>
 <span class="kn">from</span> <span class="nn">pybuilder.execution</span> <span class="kn">import</span> <span class="n">Action</span><span class="p">,</span> <span class="n">Initializer</span><span class="p">,</span> <span class="n">Task</span>
 
@@ -1041,9 +1042,10 @@ execution module.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span> <span class="o">=</span> <span class="n">execution_manager</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">plugin_loader</span><span class="p">:</span>
             <span class="n">builtin_plugin_loader</span> <span class="o">=</span> <span class="n">BuiltinPluginLoader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
-            <span class="n">thirdparty_plugin_loader</span> <span class="o">=</span> <span class="n">ThirdPartyPluginLoader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+            <span class="n">installed_thirdparty_plugin_loader</span> <span class="o">=</span> <span class="n">ThirdPartyPluginLoader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+            <span class="n">downloading_thirdparty_plugin_loader</span> <span class="o">=</span> <span class="n">DownloadingPluginLoader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">plugin_loader</span> <span class="o">=</span> <span class="n">DispatchingPluginLoader</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="n">builtin_plugin_loader</span><span class="p">,</span> <span class="n">thirdparty_plugin_loader</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="n">builtin_plugin_loader</span><span class="p">,</span> <span class="n">installed_thirdparty_plugin_loader</span><span class="p">,</span> <span class="n">downloading_thirdparty_plugin_loader</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">plugin_loader</span> <span class="o">=</span> <span class="n">plugin_loader</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1054,7 +1056,7 @@ execution module.</p>
             <span class="k">try</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">import_plugin</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
-            <span class="k">except</span><span class="p">:</span>
+            <span class="k">except</span><span class="p">:</span>  <span class="c"># NOQA</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
                 <span class="k">raise</span>
 
@@ -1070,9 +1072,11 @@ execution module.</p>
             <span class="k">raise</span> <span class="n">ProjectValidationFailedException</span><span class="p">(</span><span class="n">validation_messages</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">prepare_build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-                      <span class="n">property_overrides</span><span class="o">=</span><span class="p">{},</span>
+                      <span class="n">property_overrides</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
                       <span class="n">project_directory</span><span class="o">=</span><span class="s">&quot;.&quot;</span><span class="p">,</span>
                       <span class="n">project_descriptor</span><span class="o">=</span><span class="s">&quot;build.py&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">property_overrides</span><span class="p">:</span>
+            <span class="n">property_overrides</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">Reactor</span><span class="o">.</span><span class="n">_current_instance</span> <span class="o">=</span> <span class="bp">self</span>
 
         <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">verify_project_directory</span><span class="p">(</span>
@@ -1093,7 +1097,11 @@ execution module.</p>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">resolve_dependencies</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tasks</span><span class="o">=</span><span class="p">[],</span> <span class="n">environments</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tasks</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">environments</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">tasks</span><span class="p">:</span>
+            <span class="n">tasks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">environments</span><span class="p">:</span>
+            <span class="n">environments</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">Reactor</span><span class="o">.</span><span class="n">_current_instance</span> <span class="o">=</span> <span class="bp">self</span>
 
         <span class="k">if</span> <span class="n">environments</span><span class="p">:</span>
@@ -1218,14 +1226,16 @@ execution module.</p>
             <span class="n">value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project_module</span><span class="p">,</span> <span class="nb">property</span><span class="p">)</span>
             <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span> <span class="nb">property</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">load_project_module</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">):</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">load_project_module</span><span class="p">(</span><span class="n">project_descriptor</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">imp</span><span class="o">.</span><span class="n">load_source</span><span class="p">(</span><span class="s">&quot;build&quot;</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">PyBuilderException</span><span class="p">(</span>
                 <span class="s">&quot;Error importing project descriptor </span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">project_descriptor</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span>
 
-    <span class="k">def</span> <span class="nf">verify_project_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">):</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">verify_project_directory</span><span class="p">(</span><span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">):</span>
         <span class="n">project_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">project_directory</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">project_directory</span><span class="p">):</span>
@@ -1309,26 +1319,26 @@ execution module.</p>
   <div class="column_list">
       <ul>
           <li class="mono"><a href="#pybuilder.reactor.Reactor.current_instance">current_instance</a></li>
+          <li class="mono"><a href="#pybuilder.reactor.Reactor.load_project_module">load_project_module</a></li>
+          <li class="mono"><a href="#pybuilder.reactor.Reactor.verify_project_directory">verify_project_directory</a></li>
           <li class="mono"><a href="#pybuilder.reactor.Reactor.__init__">__init__</a></li>
           <li class="mono"><a href="#pybuilder.reactor.Reactor.apply_project_attributes">apply_project_attributes</a></li>
           <li class="mono"><a href="#pybuilder.reactor.Reactor.build">build</a></li>
-          <li class="mono"><a href="#pybuilder.reactor.Reactor.collect_tasks_and_actions_and_initializers">collect_tasks_and_actions_and_initializers</a></li>
-          <li class="mono"><a href="#pybuilder.reactor.Reactor.execute_task">execute_task</a></li>
       </ul>
       <ul>
+          <li class="mono"><a href="#pybuilder.reactor.Reactor.collect_tasks_and_actions_and_initializers">collect_tasks_and_actions_and_initializers</a></li>
+          <li class="mono"><a href="#pybuilder.reactor.Reactor.execute_task">execute_task</a></li>
           <li class="mono"><a href="#pybuilder.reactor.Reactor.get_plugins">get_plugins</a></li>
           <li class="mono"><a href="#pybuilder.reactor.Reactor.get_tasks">get_tasks</a></li>
           <li class="mono"><a href="#pybuilder.reactor.Reactor.import_plugin">import_plugin</a></li>
-          <li class="mono"><a href="#pybuilder.reactor.Reactor.load_project_module">load_project_module</a></li>
           <li class="mono"><a href="#pybuilder.reactor.Reactor.log_project_properties">log_project_properties</a></li>
-          <li class="mono"><a href="#pybuilder.reactor.Reactor.override_properties">override_properties</a></li>
       </ul>
       <ul>
+          <li class="mono"><a href="#pybuilder.reactor.Reactor.override_properties">override_properties</a></li>
           <li class="mono"><a href="#pybuilder.reactor.Reactor.prepare_build">prepare_build</a></li>
           <li class="mono"><a href="#pybuilder.reactor.Reactor.propagate_property">propagate_property</a></li>
           <li class="mono"><a href="#pybuilder.reactor.Reactor.require_plugin">require_plugin</a></li>
           <li class="mono"><a href="#pybuilder.reactor.Reactor.validate_project">validate_project</a></li>
-          <li class="mono"><a href="#pybuilder.reactor.Reactor.verify_project_directory">verify_project_directory</a></li>
       </ul>
   </div>
 
@@ -1513,9 +1523,10 @@ execution module.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span> <span class="o">=</span> <span class="n">execution_manager</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">plugin_loader</span><span class="p">:</span>
             <span class="n">builtin_plugin_loader</span> <span class="o">=</span> <span class="n">BuiltinPluginLoader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
-            <span class="n">thirdparty_plugin_loader</span> <span class="o">=</span> <span class="n">ThirdPartyPluginLoader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+            <span class="n">installed_thirdparty_plugin_loader</span> <span class="o">=</span> <span class="n">ThirdPartyPluginLoader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+            <span class="n">downloading_thirdparty_plugin_loader</span> <span class="o">=</span> <span class="n">DownloadingPluginLoader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">plugin_loader</span> <span class="o">=</span> <span class="n">DispatchingPluginLoader</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="n">builtin_plugin_loader</span><span class="p">,</span> <span class="n">thirdparty_plugin_loader</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="n">builtin_plugin_loader</span><span class="p">,</span> <span class="n">installed_thirdparty_plugin_loader</span><span class="p">,</span> <span class="n">downloading_thirdparty_plugin_loader</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">plugin_loader</span> <span class="o">=</span> <span class="n">plugin_loader</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1526,7 +1537,7 @@ execution module.</p>
             <span class="k">try</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">import_plugin</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
-            <span class="k">except</span><span class="p">:</span>
+            <span class="k">except</span><span class="p">:</span>  <span class="c"># NOQA</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
                 <span class="k">raise</span>
 
@@ -1542,9 +1553,11 @@ execution module.</p>
             <span class="k">raise</span> <span class="n">ProjectValidationFailedException</span><span class="p">(</span><span class="n">validation_messages</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">prepare_build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-                      <span class="n">property_overrides</span><span class="o">=</span><span class="p">{},</span>
+                      <span class="n">property_overrides</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
                       <span class="n">project_directory</span><span class="o">=</span><span class="s">&quot;.&quot;</span><span class="p">,</span>
                       <span class="n">project_descriptor</span><span class="o">=</span><span class="s">&quot;build.py&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">property_overrides</span><span class="p">:</span>
+            <span class="n">property_overrides</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">Reactor</span><span class="o">.</span><span class="n">_current_instance</span> <span class="o">=</span> <span class="bp">self</span>
 
         <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">verify_project_directory</span><span class="p">(</span>
@@ -1565,7 +1578,11 @@ execution module.</p>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span><span class="o">.</span><span class="n">resolve_dependencies</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tasks</span><span class="o">=</span><span class="p">[],</span> <span class="n">environments</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tasks</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">environments</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">tasks</span><span class="p">:</span>
+            <span class="n">tasks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">environments</span><span class="p">:</span>
+            <span class="n">environments</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">Reactor</span><span class="o">.</span><span class="n">_current_instance</span> <span class="o">=</span> <span class="bp">self</span>
 
         <span class="k">if</span> <span class="n">environments</span><span class="p">:</span>
@@ -1690,14 +1707,16 @@ execution module.</p>
             <span class="n">value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project_module</span><span class="p">,</span> <span class="nb">property</span><span class="p">)</span>
             <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span> <span class="nb">property</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">load_project_module</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">):</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">load_project_module</span><span class="p">(</span><span class="n">project_descriptor</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">imp</span><span class="o">.</span><span class="n">load_source</span><span class="p">(</span><span class="s">&quot;build&quot;</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">PyBuilderException</span><span class="p">(</span>
                 <span class="s">&quot;Error importing project descriptor </span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">project_descriptor</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span>
 
-    <span class="k">def</span> <span class="nf">verify_project_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">):</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">verify_project_directory</span><span class="p">(</span><span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">):</span>
         <span class="n">project_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">project_directory</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">project_directory</span><span class="p">):</span>
@@ -1756,6 +1775,70 @@ execution module.</p>
 
     </div>
   
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.reactor.Reactor.load_project_module">
+        <p>def <span class="ident">load_project_module</span>(</p><p>project_descriptor)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.load_project_module', this);">Show source.</a></p>
+    <div id="source-pybuilder.reactor.Reactor.load_project_module" class="source">
+      <div class="codehilite"><pre><span class="nd">@staticmethod</span>
+<span class="k">def</span> <span class="nf">load_project_module</span><span class="p">(</span><span class="n">project_descriptor</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">imp</span><span class="o">.</span><span class="n">load_source</span><span class="p">(</span><span class="s">&quot;build&quot;</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">PyBuilderException</span><span class="p">(</span>
+            <span class="s">&quot;Error importing project descriptor </span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">project_descriptor</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
+      <div class="name def" id="pybuilder.reactor.Reactor.verify_project_directory">
+        <p>def <span class="ident">verify_project_directory</span>(</p><p>project_directory, project_descriptor)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.verify_project_directory', this);">Show source.</a></p>
+    <div id="source-pybuilder.reactor.Reactor.verify_project_directory" class="source">
+      <div class="codehilite"><pre><span class="nd">@staticmethod</span>
+<span class="k">def</span> <span class="nf">verify_project_directory</span><span class="p">(</span><span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">):</span>
+    <span class="n">project_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">project_directory</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">project_directory</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">PyBuilderException</span><span class="p">(</span>
+            <span class="s">&quot;Project directory does not exist: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">project_directory</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">project_directory</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">PyBuilderException</span><span class="p">(</span>
+            <span class="s">&quot;Project directory is not a directory: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">project_directory</span><span class="p">)</span>
+    <span class="n">project_descriptor_full_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">project_descriptor_full_path</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">PyBuilderException</span><span class="p">(</span>
+            <span class="s">&quot;Project directory does not contain descriptor file: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span>
+            <span class="n">project_descriptor_full_path</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">project_descriptor_full_path</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">PyBuilderException</span><span class="p">(</span>
+            <span class="s">&quot;Project descriptor is not a file: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">project_descriptor_full_path</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor_full_path</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
               <h4>Instance variables</h4>
                   <div class="item">
                     <p id="pybuilder.reactor.Reactor.execution_manager" class="name">var <span class="ident">execution_manager</span></p>
@@ -1805,9 +1888,10 @@ execution module.</p>
     <span class="bp">self</span><span class="o">.</span><span class="n">execution_manager</span> <span class="o">=</span> <span class="n">execution_manager</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">plugin_loader</span><span class="p">:</span>
         <span class="n">builtin_plugin_loader</span> <span class="o">=</span> <span class="n">BuiltinPluginLoader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
-        <span class="n">thirdparty_plugin_loader</span> <span class="o">=</span> <span class="n">ThirdPartyPluginLoader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+        <span class="n">installed_thirdparty_plugin_loader</span> <span class="o">=</span> <span class="n">ThirdPartyPluginLoader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+        <span class="n">downloading_thirdparty_plugin_loader</span> <span class="o">=</span> <span class="n">DownloadingPluginLoader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">plugin_loader</span> <span class="o">=</span> <span class="n">DispatchingPluginLoader</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="n">builtin_plugin_loader</span><span class="p">,</span> <span class="n">thirdparty_plugin_loader</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="n">builtin_plugin_loader</span><span class="p">,</span> <span class="n">installed_thirdparty_plugin_loader</span><span class="p">,</span> <span class="n">downloading_thirdparty_plugin_loader</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">plugin_loader</span> <span class="o">=</span> <span class="n">plugin_loader</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1851,7 +1935,7 @@ execution module.</p>
                   
     <div class="item">
       <div class="name def" id="pybuilder.reactor.Reactor.build">
-        <p>def <span class="ident">build</span>(</p><p>self, tasks=[], environments=[])</p>
+        <p>def <span class="ident">build</span>(</p><p>self, tasks=None, environments=None)</p>
       </div>
       
 
@@ -1860,7 +1944,11 @@ execution module.</p>
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.build', this);">Show source.</a></p>
     <div id="source-pybuilder.reactor.Reactor.build" class="source">
-      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tasks</span><span class="o">=</span><span class="p">[],</span> <span class="n">environments</span><span class="o">=</span><span class="p">[]):</span>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tasks</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">environments</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">tasks</span><span class="p">:</span>
+        <span class="n">tasks</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">environments</span><span class="p">:</span>
+        <span class="n">environments</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">Reactor</span><span class="o">.</span><span class="n">_current_instance</span> <span class="o">=</span> <span class="bp">self</span>
     <span class="k">if</span> <span class="n">environments</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
@@ -2042,31 +2130,6 @@ execution module.</p>
   
                   
     <div class="item">
-      <div class="name def" id="pybuilder.reactor.Reactor.load_project_module">
-        <p>def <span class="ident">load_project_module</span>(</p><p>self, project_descriptor)</p>
-      </div>
-      
-
-      
-  
-    <div class="source_cont">
-    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.load_project_module', this);">Show source.</a></p>
-    <div id="source-pybuilder.reactor.Reactor.load_project_module" class="source">
-      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">load_project_module</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">imp</span><span class="o">.</span><span class="n">load_source</span><span class="p">(</span><span class="s">&quot;build&quot;</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">PyBuilderException</span><span class="p">(</span>
-            <span class="s">&quot;Error importing project descriptor </span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">project_descriptor</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-
-    </div>
-  
-                  
-    <div class="item">
       <div class="name def" id="pybuilder.reactor.Reactor.log_project_properties">
         <p>def <span class="ident">log_project_properties</span>(</p><p>self)</p>
       </div>
@@ -2115,7 +2178,7 @@ execution module.</p>
                   
     <div class="item">
       <div class="name def" id="pybuilder.reactor.Reactor.prepare_build">
-        <p>def <span class="ident">prepare_build</span>(</p><p>self, property_overrides={}, project_directory=&#39;.&#39;, project_descriptor=&#39;build.py&#39;)</p>
+        <p>def <span class="ident">prepare_build</span>(</p><p>self, property_overrides=None, project_directory=&#39;.&#39;, project_descriptor=&#39;build.py&#39;)</p>
       </div>
       
 
@@ -2125,9 +2188,11 @@ execution module.</p>
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.prepare_build', this);">Show source.</a></p>
     <div id="source-pybuilder.reactor.Reactor.prepare_build" class="source">
       <div class="codehilite"><pre><span class="k">def</span> <span class="nf">prepare_build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-                  <span class="n">property_overrides</span><span class="o">=</span><span class="p">{},</span>
+                  <span class="n">property_overrides</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
                   <span class="n">project_directory</span><span class="o">=</span><span class="s">&quot;.&quot;</span><span class="p">,</span>
                   <span class="n">project_descriptor</span><span class="o">=</span><span class="s">&quot;build.py&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">property_overrides</span><span class="p">:</span>
+        <span class="n">property_overrides</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">Reactor</span><span class="o">.</span><span class="n">_current_instance</span> <span class="o">=</span> <span class="bp">self</span>
     <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">verify_project_directory</span><span class="p">(</span>
         <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
@@ -2186,7 +2251,7 @@ execution module.</p>
         <span class="k">try</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">import_plugin</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
-        <span class="k">except</span><span class="p">:</span>
+        <span class="k">except</span><span class="p">:</span>  <span class="c"># NOQA</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
             <span class="k">raise</span>
 </pre></div>
@@ -2219,43 +2284,6 @@ execution module.</p>
 
     </div>
   
-                  
-    <div class="item">
-      <div class="name def" id="pybuilder.reactor.Reactor.verify_project_directory">
-        <p>def <span class="ident">verify_project_directory</span>(</p><p>self, project_directory, project_descriptor)</p>
-      </div>
-      
-
-      
-  
-    <div class="source_cont">
-    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.reactor.Reactor.verify_project_directory', this);">Show source.</a></p>
-    <div id="source-pybuilder.reactor.Reactor.verify_project_directory" class="source">
-      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">verify_project_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">):</span>
-    <span class="n">project_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">project_directory</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">project_directory</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="n">PyBuilderException</span><span class="p">(</span>
-            <span class="s">&quot;Project directory does not exist: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">project_directory</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">project_directory</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="n">PyBuilderException</span><span class="p">(</span>
-            <span class="s">&quot;Project directory is not a directory: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">project_directory</span><span class="p">)</span>
-    <span class="n">project_descriptor_full_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-        <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">project_descriptor_full_path</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="n">PyBuilderException</span><span class="p">(</span>
-            <span class="s">&quot;Project directory does not contain descriptor file: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span>
-            <span class="n">project_descriptor_full_path</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">project_descriptor_full_path</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="n">PyBuilderException</span><span class="p">(</span>
-            <span class="s">&quot;Project descriptor is not a file: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">project_descriptor_full_path</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">project_directory</span><span class="p">,</span> <span class="n">project_descriptor_full_path</span>
-</pre></div>
-
-    </div>
-</div>
-
-    </div>
-  
         </div>
       </div>
 
@@ -2265,7 +2293,7 @@ execution module.</p>
 <p style="text-align: right;">
   Documentation generated by
   <code><a href="https://github.com/BurntSushi/pdoc">pdoc</a></code>
-  0.2.1.
+  0.2.3.
 
   pdoc is in the public domain with the
   <a href="http://unlicense.org">UNLICENSE</a>.

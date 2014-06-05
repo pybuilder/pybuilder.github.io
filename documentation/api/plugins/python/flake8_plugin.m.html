@@ -1026,6 +1026,7 @@ Flake8 is a wrapper around: PyFlakes, pep8, Ned's McCabe script.</p>
     <span class="n">project</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s">&quot;flake8_max_line_length&quot;</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
     <span class="n">project</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s">&quot;flake8_exclude_patterns&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
     <span class="n">project</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s">&quot;flake8_include_test_sources&quot;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+    <span class="n">project</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s">&quot;flake8_include_scripts&quot;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
 
 
 <span class="nd">@after</span><span class="p">(</span><span class="s">&quot;prepare&quot;</span><span class="p">)</span>
@@ -1053,8 +1054,11 @@ Flake8 is a wrapper around: PyFlakes, pep8, Ned's McCabe script.</p>
     <span class="n">command</span><span class="o">.</span><span class="n">use_argument</span><span class="p">(</span><span class="s">&#39;--exclude={0}&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">formatted_with_truthy_property</span><span class="p">(</span><span class="s">&#39;flake8_exclude_patterns&#39;</span><span class="p">)</span>
 
     <span class="n">include_test_sources</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;flake8_include_test_sources&quot;</span><span class="p">)</span>
+    <span class="n">include_scripts</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;flake8_include_scripts&quot;</span><span class="p">)</span>
 
-    <span class="n">result</span> <span class="o">=</span> <span class="n">command</span><span class="o">.</span><span class="n">run_on_production_source_files</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">include_test_sources</span><span class="o">=</span><span class="n">include_test_sources</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">command</span><span class="o">.</span><span class="n">run_on_production_source_files</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span>
+                                                    <span class="n">include_test_sources</span><span class="o">=</span><span class="n">include_test_sources</span><span class="p">,</span>
+                                                    <span class="n">include_scripts</span><span class="o">=</span><span class="n">include_scripts</span><span class="p">)</span>
 
     <span class="n">count_of_warnings</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">report_lines</span><span class="p">)</span>
     <span class="n">count_of_errors</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">error_report_lines</span><span class="p">)</span>
@@ -1128,8 +1132,11 @@ Flake8 is a wrapper around: PyFlakes, pep8, Ned's McCabe script.</p>
     <span class="n">command</span><span class="o">.</span><span class="n">use_argument</span><span class="p">(</span><span class="s">&#39;--exclude={0}&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">formatted_with_truthy_property</span><span class="p">(</span><span class="s">&#39;flake8_exclude_patterns&#39;</span><span class="p">)</span>
 
     <span class="n">include_test_sources</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;flake8_include_test_sources&quot;</span><span class="p">)</span>
+    <span class="n">include_scripts</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;flake8_include_scripts&quot;</span><span class="p">)</span>
 
-    <span class="n">result</span> <span class="o">=</span> <span class="n">command</span><span class="o">.</span><span class="n">run_on_production_source_files</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">include_test_sources</span><span class="o">=</span><span class="n">include_test_sources</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">command</span><span class="o">.</span><span class="n">run_on_production_source_files</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span>
+                                                    <span class="n">include_test_sources</span><span class="o">=</span><span class="n">include_test_sources</span><span class="p">,</span>
+                                                    <span class="n">include_scripts</span><span class="o">=</span><span class="n">include_scripts</span><span class="p">)</span>
 
     <span class="n">count_of_warnings</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">report_lines</span><span class="p">)</span>
     <span class="n">count_of_errors</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">error_report_lines</span><span class="p">)</span>
@@ -1197,6 +1204,7 @@ Flake8 is a wrapper around: PyFlakes, pep8, Ned's McCabe script.</p>
     <span class="n">project</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s">&quot;flake8_max_line_length&quot;</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
     <span class="n">project</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s">&quot;flake8_exclude_patterns&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
     <span class="n">project</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s">&quot;flake8_include_test_sources&quot;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+    <span class="n">project</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s">&quot;flake8_include_scripts&quot;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1212,7 +1220,7 @@ Flake8 is a wrapper around: PyFlakes, pep8, Ned's McCabe script.</p>
 <p style="text-align: right;">
   Documentation generated by
   <code><a href="https://github.com/BurntSushi/pdoc">pdoc</a></code>
-  0.2.1.
+  0.2.3.
 
   pdoc is in the public domain with the
   <a href="http://unlicense.org">UNLICENSE</a>.

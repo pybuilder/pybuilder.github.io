@@ -999,6 +999,7 @@ table {
 <span class="c">#   limitations under the License.</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
 
 <span class="kn">from</span> <span class="nn">pybuilder.utils</span> <span class="kn">import</span> <span class="p">(</span><span class="n">discover_modules</span><span class="p">,</span>
                              <span class="n">discover_files_matching</span><span class="p">,</span>
@@ -1018,23 +1019,26 @@ table {
     <span class="k">return</span> <span class="n">discover_files_matching</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s">&quot;*.py&quot;</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">discover_affected_files</span><span class="p">(</span><span class="n">include_test_sources</span><span class="p">,</span> <span class="n">project</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">discover_affected_files</span><span class="p">(</span><span class="n">include_test_sources</span><span class="p">,</span> <span class="n">include_scripts</span><span class="p">,</span> <span class="n">project</span><span class="p">):</span>
     <span class="n">source_dir</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;dir_source_main_python&quot;</span><span class="p">)</span>
     <span class="n">files</span> <span class="o">=</span> <span class="n">discover_python_files</span><span class="p">(</span><span class="n">source_dir</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">include_test_sources</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">itertools</span>
         <span class="k">if</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;dir_source_unittest_python&quot;</span><span class="p">):</span>
             <span class="n">unittest_dir</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;dir_source_unittest_python&quot;</span><span class="p">)</span>
             <span class="n">files</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">discover_python_files</span><span class="p">(</span><span class="n">unittest_dir</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;dir_source_integrationtest_python&quot;</span><span class="p">):</span>
             <span class="n">integrationtest_dir</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;dir_source_integrationtest_python&quot;</span><span class="p">)</span>
             <span class="n">files</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">discover_python_files</span><span class="p">(</span><span class="n">integrationtest_dir</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">include_scripts</span> <span class="ow">and</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;dir_source_main_scripts&quot;</span><span class="p">):</span>
+        <span class="n">scripts_dir</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;dir_source_main_scripts&quot;</span><span class="p">)</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">discover_files_matching</span><span class="p">(</span><span class="n">scripts_dir</span><span class="p">,</span> <span class="s">&quot;*&quot;</span><span class="p">))</span>  <span class="c"># we have no idea how scripts might look</span>
     <span class="k">return</span> <span class="n">files</span>
 
 
-<span class="k">def</span> <span class="nf">execute_tool_on_source_files</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">command_and_arguments</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">include_test_sources</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-    <span class="n">files</span> <span class="o">=</span> <span class="n">discover_affected_files</span><span class="p">(</span><span class="n">include_test_sources</span><span class="p">,</span> <span class="n">project</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">execute_tool_on_source_files</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">command_and_arguments</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                                 <span class="n">include_test_sources</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">include_scripts</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="n">discover_affected_files</span><span class="p">(</span><span class="n">include_test_sources</span><span class="p">,</span> <span class="n">include_scripts</span><span class="p">,</span> <span class="n">project</span><span class="p">)</span>
 
     <span class="n">command</span> <span class="o">=</span> <span class="n">as_list</span><span class="p">(</span><span class="n">command_and_arguments</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">]</span>
 
@@ -1099,7 +1103,7 @@ table {
       
     <div class="item">
       <div class="name def" id="pybuilder.plugins.python.python_plugin_helper.discover_affected_files">
-        <p>def <span class="ident">discover_affected_files</span>(</p><p>include_test_sources, project)</p>
+        <p>def <span class="ident">discover_affected_files</span>(</p><p>include_test_sources, include_scripts, project)</p>
       </div>
       
 
@@ -1108,18 +1112,20 @@ table {
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.python_plugin_helper.discover_affected_files', this);">Show source.</a></p>
     <div id="source-pybuilder.plugins.python.python_plugin_helper.discover_affected_files" class="source">
-      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">discover_affected_files</span><span class="p">(</span><span class="n">include_test_sources</span><span class="p">,</span> <span class="n">project</span><span class="p">):</span>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">discover_affected_files</span><span class="p">(</span><span class="n">include_test_sources</span><span class="p">,</span> <span class="n">include_scripts</span><span class="p">,</span> <span class="n">project</span><span class="p">):</span>
     <span class="n">source_dir</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;dir_source_main_python&quot;</span><span class="p">)</span>
     <span class="n">files</span> <span class="o">=</span> <span class="n">discover_python_files</span><span class="p">(</span><span class="n">source_dir</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">include_test_sources</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">itertools</span>
         <span class="k">if</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;dir_source_unittest_python&quot;</span><span class="p">):</span>
             <span class="n">unittest_dir</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;dir_source_unittest_python&quot;</span><span class="p">)</span>
             <span class="n">files</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">discover_python_files</span><span class="p">(</span><span class="n">unittest_dir</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;dir_source_integrationtest_python&quot;</span><span class="p">):</span>
             <span class="n">integrationtest_dir</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;dir_source_integrationtest_python&quot;</span><span class="p">)</span>
             <span class="n">files</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">discover_python_files</span><span class="p">(</span><span class="n">integrationtest_dir</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">include_scripts</span> <span class="ow">and</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;dir_source_main_scripts&quot;</span><span class="p">):</span>
+        <span class="n">scripts_dir</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;dir_source_main_scripts&quot;</span><span class="p">)</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">discover_files_matching</span><span class="p">(</span><span class="n">scripts_dir</span><span class="p">,</span> <span class="s">&quot;*&quot;</span><span class="p">))</span>  <span class="c"># we have no idea how scripts might look</span>
     <span class="k">return</span> <span class="n">files</span>
 </pre></div>
 
@@ -1182,7 +1188,7 @@ table {
       
     <div class="item">
       <div class="name def" id="pybuilder.plugins.python.python_plugin_helper.execute_tool_on_source_files">
-        <p>def <span class="ident">execute_tool_on_source_files</span>(</p><p>project, name, command_and_arguments, logger=None, include_test_sources=False)</p>
+        <p>def <span class="ident">execute_tool_on_source_files</span>(</p><p>project, name, command_and_arguments, logger=None, include_test_sources=False, include_scripts=False)</p>
       </div>
       
 
@@ -1191,8 +1197,9 @@ table {
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.python_plugin_helper.execute_tool_on_source_files', this);">Show source.</a></p>
     <div id="source-pybuilder.plugins.python.python_plugin_helper.execute_tool_on_source_files" class="source">
-      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">execute_tool_on_source_files</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">command_and_arguments</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">include_test_sources</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-    <span class="n">files</span> <span class="o">=</span> <span class="n">discover_affected_files</span><span class="p">(</span><span class="n">include_test_sources</span><span class="p">,</span> <span class="n">project</span><span class="p">)</span>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">execute_tool_on_source_files</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">command_and_arguments</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                                 <span class="n">include_test_sources</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">include_scripts</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="n">discover_affected_files</span><span class="p">(</span><span class="n">include_test_sources</span><span class="p">,</span> <span class="n">include_scripts</span><span class="p">,</span> <span class="n">project</span><span class="p">)</span>
 
     <span class="n">command</span> <span class="o">=</span> <span class="n">as_list</span><span class="p">(</span><span class="n">command_and_arguments</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">]</span>
 
@@ -1246,7 +1253,7 @@ table {
 <p style="text-align: right;">
   Documentation generated by
   <code><a href="https://github.com/BurntSushi/pdoc">pdoc</a></code>
-  0.2.1.
+  0.2.3.
 
   pdoc is in the public domain with the
   <a href="http://unlicense.org">UNLICENSE</a>.

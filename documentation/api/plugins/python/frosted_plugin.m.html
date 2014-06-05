@@ -1026,6 +1026,7 @@ maintainable code base, and a better Python checker for all.</p>
     <span class="n">project</span><span class="o">.</span><span class="n">build_depends_on</span><span class="p">(</span><span class="s">&quot;frosted&quot;</span><span class="p">)</span>
     <span class="n">project</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s">&quot;frosted_break_build&quot;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
     <span class="n">project</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s">&quot;frosted_include_test_sources&quot;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+    <span class="n">project</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s">&quot;frosted_include_scripts&quot;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
 
 
 <span class="nd">@after</span><span class="p">(</span><span class="s">&quot;prepare&quot;</span><span class="p">)</span>
@@ -1049,11 +1050,14 @@ maintainable code base, and a better Python checker for all.</p>
 
     <span class="n">command</span> <span class="o">=</span> <span class="n">ExternalCommandBuilder</span><span class="p">(</span><span class="s">&#39;frosted&#39;</span><span class="p">,</span> <span class="n">project</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">ignored_error_code</span> <span class="ow">in</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&#39;frosted_ignore&#39;</span><span class="p">,</span> <span class="p">[]):</span>
-        <span class="n">command</span><span class="o">.</span><span class="n">use_argument</span><span class="p">(</span><span class="s">&#39;--ignore {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ignored_error_code</span><span class="p">))</span>
+        <span class="n">command</span><span class="o">.</span><span class="n">use_argument</span><span class="p">(</span><span class="s">&#39;--ignore={0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ignored_error_code</span><span class="p">))</span>
 
     <span class="n">include_test_sources</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;frosted_include_test_sources&quot;</span><span class="p">)</span>
+    <span class="n">include_scripts</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;frosted_include_scripts&quot;</span><span class="p">)</span>
 
-    <span class="n">result</span> <span class="o">=</span> <span class="n">command</span><span class="o">.</span><span class="n">run_on_production_source_files</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">include_test_sources</span><span class="o">=</span><span class="n">include_test_sources</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">command</span><span class="o">.</span><span class="n">run_on_production_source_files</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span>
+                                                    <span class="n">include_test_sources</span><span class="o">=</span><span class="n">include_test_sources</span><span class="p">,</span>
+                                                    <span class="n">include_scripts</span><span class="o">=</span><span class="n">include_scripts</span><span class="p">)</span>
 
     <span class="n">count_of_warnings</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">report_lines</span><span class="p">)</span>
     <span class="n">count_of_errors</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">error_report_lines</span><span class="p">)</span>
@@ -1123,11 +1127,14 @@ maintainable code base, and a better Python checker for all.</p>
 
     <span class="n">command</span> <span class="o">=</span> <span class="n">ExternalCommandBuilder</span><span class="p">(</span><span class="s">&#39;frosted&#39;</span><span class="p">,</span> <span class="n">project</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">ignored_error_code</span> <span class="ow">in</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&#39;frosted_ignore&#39;</span><span class="p">,</span> <span class="p">[]):</span>
-        <span class="n">command</span><span class="o">.</span><span class="n">use_argument</span><span class="p">(</span><span class="s">&#39;--ignore {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ignored_error_code</span><span class="p">))</span>
+        <span class="n">command</span><span class="o">.</span><span class="n">use_argument</span><span class="p">(</span><span class="s">&#39;--ignore={0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ignored_error_code</span><span class="p">))</span>
 
     <span class="n">include_test_sources</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;frosted_include_test_sources&quot;</span><span class="p">)</span>
+    <span class="n">include_scripts</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;frosted_include_scripts&quot;</span><span class="p">)</span>
 
-    <span class="n">result</span> <span class="o">=</span> <span class="n">command</span><span class="o">.</span><span class="n">run_on_production_source_files</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">include_test_sources</span><span class="o">=</span><span class="n">include_test_sources</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">command</span><span class="o">.</span><span class="n">run_on_production_source_files</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span>
+                                                    <span class="n">include_test_sources</span><span class="o">=</span><span class="n">include_test_sources</span><span class="p">,</span>
+                                                    <span class="n">include_scripts</span><span class="o">=</span><span class="n">include_scripts</span><span class="p">)</span>
 
     <span class="n">count_of_warnings</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">report_lines</span><span class="p">)</span>
     <span class="n">count_of_errors</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">error_report_lines</span><span class="p">)</span>
@@ -1193,6 +1200,7 @@ maintainable code base, and a better Python checker for all.</p>
     <span class="n">project</span><span class="o">.</span><span class="n">build_depends_on</span><span class="p">(</span><span class="s">&quot;frosted&quot;</span><span class="p">)</span>
     <span class="n">project</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s">&quot;frosted_break_build&quot;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
     <span class="n">project</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s">&quot;frosted_include_test_sources&quot;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+    <span class="n">project</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s">&quot;frosted_include_scripts&quot;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1208,7 +1216,7 @@ maintainable code base, and a better Python checker for all.</p>
 <p style="text-align: right;">
   Documentation generated by
   <code><a href="https://github.com/BurntSushi/pdoc">pdoc</a></code>
-  0.2.1.
+  0.2.3.
 
   pdoc is in the public domain with the
   <a href="http://unlicense.org">UNLICENSE</a>.

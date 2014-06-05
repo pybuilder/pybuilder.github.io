@@ -1000,7 +1000,7 @@ table {
 
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">StringIO</span> <span class="kn">import</span> <span class="n">StringIO</span>
-<span class="k">except</span> <span class="p">(</span><span class="ne">ImportError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -1021,19 +1021,25 @@ table {
 
 <span class="k">class</span> <span class="nc">TestNameAwareTextTestRunner</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TextTestRunner</span><span class="p">):</span>
 
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">stream</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TestNameAwareTextTestRunner</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">stream</span><span class="o">=</span><span class="n">stream</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">_makeResult</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">TestNameAwareTestResult</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">descriptions</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbosity</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">TestNameAwareTestResult</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">descriptions</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbosity</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">TestNameAwareTestResult</span><span class="p">(</span><span class="n">TextTestResult</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">descriptions</span><span class="p">,</span> <span class="n">verbosity</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">test_names</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">failed_test_names_and_reasons</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">TestNameAwareTestResult</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TestNameAwareTestResult</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">descriptions</span><span class="p">,</span> <span class="n">verbosity</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">startTest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">test_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;starting </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">test</span><span class="p">)</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">TestNameAwareTestResult</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">startTest</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">addError</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">err</span><span class="p">):</span>
@@ -1076,7 +1082,7 @@ table {
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">test_method_prefix</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;unittest_test_method_prefix&quot;</span><span class="p">)</span>
-        <span class="n">result</span><span class="p">,</span> <span class="n">console_out</span> <span class="o">=</span> <span class="n">execute_tests_matching</span><span class="p">(</span><span class="n">test_dir</span><span class="p">,</span> <span class="n">module_glob</span><span class="p">,</span> <span class="n">test_method_prefix</span><span class="p">)</span>
+        <span class="n">result</span><span class="p">,</span> <span class="n">console_out</span> <span class="o">=</span> <span class="n">execute_tests_matching</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">test_dir</span><span class="p">,</span> <span class="n">module_glob</span><span class="p">,</span> <span class="n">test_method_prefix</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">testsRun</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s">&quot;No unittests executed.&quot;</span><span class="p">)</span>
@@ -1099,11 +1105,11 @@ table {
         <span class="k">raise</span> <span class="n">BuildFailedException</span><span class="p">(</span><span class="s">&quot;Unable to execute unit tests.&quot;</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">execute_tests</span><span class="p">(</span><span class="n">test_source</span><span class="p">,</span> <span class="n">suffix</span><span class="p">,</span> <span class="n">test_method_prefix</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">execute_tests_matching</span><span class="p">(</span><span class="n">test_source</span><span class="p">,</span> <span class="s">&quot;*{0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">suffix</span><span class="p">),</span> <span class="n">test_method_prefix</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">execute_tests</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">test_source</span><span class="p">,</span> <span class="n">suffix</span><span class="p">,</span> <span class="n">test_method_prefix</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">execute_tests_matching</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">test_source</span><span class="p">,</span> <span class="s">&quot;*{0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">suffix</span><span class="p">),</span> <span class="n">test_method_prefix</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">execute_tests_matching</span><span class="p">(</span><span class="n">test_source</span><span class="p">,</span> <span class="n">file_glob</span><span class="p">,</span> <span class="n">test_method_prefix</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">execute_tests_matching</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">test_source</span><span class="p">,</span> <span class="n">file_glob</span><span class="p">,</span> <span class="n">test_method_prefix</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="n">output_log_file</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">()</span>
 
     <span class="k">try</span><span class="p">:</span>
@@ -1112,7 +1118,7 @@ table {
         <span class="k">if</span> <span class="n">test_method_prefix</span><span class="p">:</span>
             <span class="n">loader</span><span class="o">.</span><span class="n">testMethodPrefix</span> <span class="o">=</span> <span class="n">test_method_prefix</span>
         <span class="n">tests</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">loadTestsFromNames</span><span class="p">(</span><span class="n">test_modules</span><span class="p">)</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">TestNameAwareTextTestRunner</span><span class="p">(</span><span class="n">stream</span><span class="o">=</span><span class="n">output_log_file</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tests</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">TestNameAwareTextTestRunner</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">output_log_file</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tests</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">result</span><span class="p">,</span> <span class="n">output_log_file</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
     <span class="k">finally</span><span class="p">:</span>
         <span class="n">output_log_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -1249,7 +1255,7 @@ table {
       
     <div class="item">
       <div class="name def" id="pybuilder.plugins.python.unittest_plugin.execute_tests">
-        <p>def <span class="ident">execute_tests</span>(</p><p>test_source, suffix, test_method_prefix=None)</p>
+        <p>def <span class="ident">execute_tests</span>(</p><p>logger, test_source, suffix, test_method_prefix=None)</p>
       </div>
       
 
@@ -1258,8 +1264,8 @@ table {
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.unittest_plugin.execute_tests', this);">Show source.</a></p>
     <div id="source-pybuilder.plugins.python.unittest_plugin.execute_tests" class="source">
-      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">execute_tests</span><span class="p">(</span><span class="n">test_source</span><span class="p">,</span> <span class="n">suffix</span><span class="p">,</span> <span class="n">test_method_prefix</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">execute_tests_matching</span><span class="p">(</span><span class="n">test_source</span><span class="p">,</span> <span class="s">&quot;*{0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">suffix</span><span class="p">),</span> <span class="n">test_method_prefix</span><span class="p">)</span>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">execute_tests</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">test_source</span><span class="p">,</span> <span class="n">suffix</span><span class="p">,</span> <span class="n">test_method_prefix</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">execute_tests_matching</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">test_source</span><span class="p">,</span> <span class="s">&quot;*{0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">suffix</span><span class="p">),</span> <span class="n">test_method_prefix</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1270,7 +1276,7 @@ table {
       
     <div class="item">
       <div class="name def" id="pybuilder.plugins.python.unittest_plugin.execute_tests_matching">
-        <p>def <span class="ident">execute_tests_matching</span>(</p><p>test_source, file_glob, test_method_prefix=None)</p>
+        <p>def <span class="ident">execute_tests_matching</span>(</p><p>logger, test_source, file_glob, test_method_prefix=None)</p>
       </div>
       
 
@@ -1279,7 +1285,7 @@ table {
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.unittest_plugin.execute_tests_matching', this);">Show source.</a></p>
     <div id="source-pybuilder.plugins.python.unittest_plugin.execute_tests_matching" class="source">
-      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">execute_tests_matching</span><span class="p">(</span><span class="n">test_source</span><span class="p">,</span> <span class="n">file_glob</span><span class="p">,</span> <span class="n">test_method_prefix</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">execute_tests_matching</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">test_source</span><span class="p">,</span> <span class="n">file_glob</span><span class="p">,</span> <span class="n">test_method_prefix</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="n">output_log_file</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">()</span>
 
     <span class="k">try</span><span class="p">:</span>
@@ -1288,7 +1294,7 @@ table {
         <span class="k">if</span> <span class="n">test_method_prefix</span><span class="p">:</span>
             <span class="n">loader</span><span class="o">.</span><span class="n">testMethodPrefix</span> <span class="o">=</span> <span class="n">test_method_prefix</span>
         <span class="n">tests</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">loadTestsFromNames</span><span class="p">(</span><span class="n">test_modules</span><span class="p">)</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">TestNameAwareTextTestRunner</span><span class="p">(</span><span class="n">stream</span><span class="o">=</span><span class="n">output_log_file</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tests</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">TestNameAwareTextTestRunner</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">output_log_file</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tests</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">result</span><span class="p">,</span> <span class="n">output_log_file</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
     <span class="k">finally</span><span class="p">:</span>
         <span class="n">output_log_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -1381,7 +1387,7 @@ table {
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">test_method_prefix</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&quot;unittest_test_method_prefix&quot;</span><span class="p">)</span>
-        <span class="n">result</span><span class="p">,</span> <span class="n">console_out</span> <span class="o">=</span> <span class="n">execute_tests_matching</span><span class="p">(</span><span class="n">test_dir</span><span class="p">,</span> <span class="n">module_glob</span><span class="p">,</span> <span class="n">test_method_prefix</span><span class="p">)</span>
+        <span class="n">result</span><span class="p">,</span> <span class="n">console_out</span> <span class="o">=</span> <span class="n">execute_tests_matching</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">test_dir</span><span class="p">,</span> <span class="n">module_glob</span><span class="p">,</span> <span class="n">test_method_prefix</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">testsRun</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s">&quot;No unittests executed.&quot;</span><span class="p">)</span>
@@ -1466,13 +1472,15 @@ table {
     <div id="source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult" class="source">
       <div class="codehilite"><pre><span class="k">class</span> <span class="nc">TestNameAwareTestResult</span><span class="p">(</span><span class="n">TextTestResult</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">descriptions</span><span class="p">,</span> <span class="n">verbosity</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">test_names</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">failed_test_names_and_reasons</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">TestNameAwareTestResult</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TestNameAwareTestResult</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">descriptions</span><span class="p">,</span> <span class="n">verbosity</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">startTest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">test_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;starting </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">test</span><span class="p">)</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">TestNameAwareTestResult</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">startTest</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">addError</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">err</span><span class="p">):</span>
@@ -1531,6 +1539,16 @@ table {
 
                   </div>
                   <div class="item">
+                    <p id="pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.logger" class="name">var <span class="ident">logger</span></p>
+                    
+
+                    
+  
+    <div class="source_cont">
+</div>
+
+                  </div>
+                  <div class="item">
                     <p id="pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.test_names" class="name">var <span class="ident">test_names</span></p>
                     
 
@@ -1544,7 +1562,7 @@ table {
                   
     <div class="item">
       <div class="name def" id="pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.__init__">
-        <p>def <span class="ident">__init__</span>(</p><p>self, *args, **kwargs)</p>
+        <p>def <span class="ident">__init__</span>(</p><p>self, logger, stream, descriptions, verbosity)</p>
       </div>
       
 
@@ -1553,10 +1571,11 @@ table {
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.__init__', this);">Show source.</a></p>
     <div id="source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.__init__" class="source">
-      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">descriptions</span><span class="p">,</span> <span class="n">verbosity</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">test_names</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">failed_test_names_and_reasons</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="nb">super</span><span class="p">(</span><span class="n">TestNameAwareTestResult</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">TestNameAwareTestResult</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">descriptions</span><span class="p">,</span> <span class="n">verbosity</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1802,6 +1821,7 @@ table {
     <div id="source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTestResult.startTest" class="source">
       <div class="codehilite"><pre><span class="k">def</span> <span class="nf">startTest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">test_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;starting </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">test</span><span class="p">)</span>
     <span class="nb">super</span><span class="p">(</span><span class="n">TestNameAwareTestResult</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">startTest</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
 </pre></div>
 
@@ -1942,8 +1962,12 @@ table {
     <div id="source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTextTestRunner" class="source">
       <div class="codehilite"><pre><span class="k">class</span> <span class="nc">TestNameAwareTextTestRunner</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TextTestRunner</span><span class="p">):</span>
 
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">stream</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TestNameAwareTextTestRunner</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">stream</span><span class="o">=</span><span class="n">stream</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">_makeResult</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">TestNameAwareTestResult</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">descriptions</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbosity</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">TestNameAwareTestResult</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">descriptions</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbosity</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1968,11 +1992,22 @@ table {
 </div>
 
                   </div>
+              <h4>Instance variables</h4>
+                  <div class="item">
+                    <p id="pybuilder.plugins.python.unittest_plugin.TestNameAwareTextTestRunner.logger" class="name">var <span class="ident">logger</span></p>
+                    
+
+                    
+  
+    <div class="source_cont">
+</div>
+
+                  </div>
               <h4>Methods</h4>
                   
     <div class="item">
       <div class="name def" id="pybuilder.plugins.python.unittest_plugin.TestNameAwareTextTestRunner.__init__">
-        <p>def <span class="ident">__init__</span>(</p><p>self, stream=&lt;pdoc._Null object at 0x332e950&gt;, descriptions=True, verbosity=1, failfast=False, buffer=False, resultclass=None)</p>
+        <p>def <span class="ident">__init__</span>(</p><p>self, logger, stream)</p>
       </div>
       
 
@@ -1981,15 +2016,9 @@ table {
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTextTestRunner.__init__', this);">Show source.</a></p>
     <div id="source-pybuilder.plugins.python.unittest_plugin.TestNameAwareTextTestRunner.__init__" class="source">
-      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="n">descriptions</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">verbosity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-             <span class="n">failfast</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">buffer</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">resultclass</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">stream</span> <span class="o">=</span> <span class="n">_WritelnDecorator</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">descriptions</span> <span class="o">=</span> <span class="n">descriptions</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">verbosity</span> <span class="o">=</span> <span class="n">verbosity</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">failfast</span> <span class="o">=</span> <span class="n">failfast</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span> <span class="o">=</span> <span class="nb">buffer</span>
-    <span class="k">if</span> <span class="n">resultclass</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">resultclass</span> <span class="o">=</span> <span class="n">resultclass</span>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">stream</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">TestNameAwareTextTestRunner</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">stream</span><span class="o">=</span><span class="n">stream</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2081,7 +2110,7 @@ table {
 <p style="text-align: right;">
   Documentation generated by
   <code><a href="https://github.com/BurntSushi/pdoc">pdoc</a></code>
-  0.2.1.
+  0.2.3.
 
   pdoc is in the public domain with the
   <a href="http://unlicense.org">UNLICENSE</a>.

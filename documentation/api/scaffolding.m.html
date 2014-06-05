@@ -1010,6 +1010,7 @@ table {
 
 <span class="n">DEFAULT_SOURCE_DIRECTORY</span> <span class="o">=</span> <span class="s">&#39;src/main/python&#39;</span>
 <span class="n">DEFAULT_UNITTEST_DIRECTORY</span> <span class="o">=</span> <span class="s">&#39;src/unittest/python&#39;</span>
+<span class="n">DEFAULT_SCRIPTS_DIRECTORY</span> <span class="o">=</span> <span class="s">&#39;src/main/scripts&#39;</span>
 <span class="n">PLUGINS_TO_SUGGEST</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;python.flake8&#39;</span><span class="p">,</span> <span class="s">&#39;python.coverage&#39;</span><span class="p">,</span> <span class="s">&#39;python.distutils&#39;</span><span class="p">]</span>
 
 
@@ -1026,6 +1027,7 @@ table {
     <span class="n">dir_source_main_python</span> <span class="o">=</span> <span class="n">prompt_user</span><span class="p">(</span><span class="s">&#39;Source directory&#39;</span><span class="p">,</span> <span class="n">DEFAULT_SOURCE_DIRECTORY</span><span class="p">)</span>
     <span class="n">dir_source_unittest_python</span> <span class="o">=</span> <span class="n">prompt_user</span><span class="p">(</span>
         <span class="s">&#39;Unittest directory&#39;</span><span class="p">,</span> <span class="n">DEFAULT_UNITTEST_DIRECTORY</span><span class="p">)</span>
+    <span class="n">dir_source_main_scripts</span> <span class="o">=</span> <span class="n">prompt_user</span><span class="p">(</span><span class="s">&quot;Scripts directory&quot;</span><span class="p">,</span> <span class="n">DEFAULT_SCRIPTS_DIRECTORY</span><span class="p">)</span>
 
     <span class="n">plugins</span> <span class="o">=</span> <span class="n">suggest_plugins</span><span class="p">(</span><span class="n">PLUGINS_TO_SUGGEST</span><span class="p">)</span>
     <span class="n">scaffolding</span><span class="o">.</span><span class="n">add_plugins</span><span class="p">(</span><span class="n">plugins</span><span class="p">)</span>
@@ -1034,6 +1036,8 @@ table {
         <span class="n">scaffolding</span><span class="o">.</span><span class="n">dir_source_main_python</span> <span class="o">=</span> <span class="n">dir_source_main_python</span>
     <span class="k">if</span> <span class="n">dir_source_unittest_python</span><span class="p">:</span>
         <span class="n">scaffolding</span><span class="o">.</span><span class="n">dir_source_unittest_python</span> <span class="o">=</span> <span class="n">dir_source_unittest_python</span>
+    <span class="k">if</span> <span class="n">dir_source_main_scripts</span><span class="p">:</span>
+        <span class="n">scaffolding</span><span class="o">.</span><span class="n">dir_source_main_scripts</span> <span class="o">=</span> <span class="n">dir_source_main_scripts</span>
 
     <span class="k">return</span> <span class="n">scaffolding</span>
 
@@ -1088,6 +1092,7 @@ table {
         <span class="bp">self</span><span class="o">.</span><span class="n">project_name</span> <span class="o">=</span> <span class="n">project_name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_main_python</span> <span class="o">=</span> <span class="n">DEFAULT_SOURCE_DIRECTORY</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_unittest_python</span> <span class="o">=</span> <span class="n">DEFAULT_UNITTEST_DIRECTORY</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_main_scripts</span> <span class="o">=</span> <span class="n">DEFAULT_SCRIPTS_DIRECTORY</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">core_imports</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;use_plugin&#39;</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">plugins</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;python.core&#39;</span><span class="p">,</span> <span class="s">&#39;python.unittest&#39;</span><span class="p">,</span> <span class="s">&#39;python.install_dependencies&#39;</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">initializer</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
@@ -1112,6 +1117,8 @@ table {
             <span class="n">properties_to_set</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s">&#39;dir_source_main_python&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_main_python</span><span class="p">))</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_default_source_unittest_python</span><span class="p">:</span>
             <span class="n">properties_to_set</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s">&#39;dir_source_unittest_python&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_unittest_python</span><span class="p">))</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_default_source_main_scripts</span><span class="p">:</span>
+            <span class="n">properties_to_set</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s">&#39;dir_source_main_scripts&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_main_scripts</span><span class="p">))</span>
 
         <span class="n">initializer_body</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_initializer_body_with_properties</span><span class="p">(</span><span class="n">properties_to_set</span><span class="p">)</span>
 
@@ -1125,13 +1132,19 @@ table {
     <span class="k">def</span> <span class="nf">is_default_source_unittest_python</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_unittest_python</span> <span class="o">==</span> <span class="n">DEFAULT_UNITTEST_DIRECTORY</span>
 
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_default_source_main_scripts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_main_scripts</span> <span class="o">==</span> <span class="n">DEFAULT_SCRIPTS_DIRECTORY</span>
+
     <span class="k">def</span> <span class="nf">set_up_project</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">needed_directory</span> <span class="ow">in</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dir_source_main_python</span><span class="p">,</span>
-                                 <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_unittest_python</span><span class="p">):</span>
+                                 <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_unittest_python</span><span class="p">,</span>
+                                 <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_main_scripts</span><span class="p">):</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">needed_directory</span><span class="p">):</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">needed_directory</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_build_initializer_body_with_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">properties_to_set</span><span class="p">):</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_build_initializer_body_with_properties</span><span class="p">(</span><span class="n">properties_to_set</span><span class="p">):</span>
         <span class="n">initializer_body</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
         <span class="n">initializer_body</span> <span class="o">+=</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
             <span class="p">[</span><span class="s">&#39;    project.set_property(&quot;{0}&quot;, &quot;{1}&quot;)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">properties_to_set</span><span class="p">])</span>
@@ -1154,6 +1167,7 @@ table {
   
   <div class="column_list">
       <ul>
+          <li class="mono"><a href="#pybuilder.scaffolding.DEFAULT_SCRIPTS_DIRECTORY">DEFAULT_SCRIPTS_DIRECTORY</a></li>
           <li class="mono"><a href="#pybuilder.scaffolding.DEFAULT_SOURCE_DIRECTORY">DEFAULT_SOURCE_DIRECTORY</a></li>
       </ul>
       <ul>
@@ -1215,6 +1229,14 @@ table {
 
   <h2 id="header-variables">Module variables</h2>
       <div class="item">
+        <p id="pybuilder.scaffolding.DEFAULT_SCRIPTS_DIRECTORY" class="name">var <span class="ident">DEFAULT_SCRIPTS_DIRECTORY</span></p>
+        
+  
+    <div class="source_cont">
+</div>
+
+      </div>
+      <div class="item">
         <p id="pybuilder.scaffolding.DEFAULT_SOURCE_DIRECTORY" class="name">var <span class="ident">DEFAULT_SOURCE_DIRECTORY</span></p>
         
   
@@ -1260,6 +1282,7 @@ table {
     <span class="n">dir_source_main_python</span> <span class="o">=</span> <span class="n">prompt_user</span><span class="p">(</span><span class="s">&#39;Source directory&#39;</span><span class="p">,</span> <span class="n">DEFAULT_SOURCE_DIRECTORY</span><span class="p">)</span>
     <span class="n">dir_source_unittest_python</span> <span class="o">=</span> <span class="n">prompt_user</span><span class="p">(</span>
         <span class="s">&#39;Unittest directory&#39;</span><span class="p">,</span> <span class="n">DEFAULT_UNITTEST_DIRECTORY</span><span class="p">)</span>
+    <span class="n">dir_source_main_scripts</span> <span class="o">=</span> <span class="n">prompt_user</span><span class="p">(</span><span class="s">&quot;Scripts directory&quot;</span><span class="p">,</span> <span class="n">DEFAULT_SCRIPTS_DIRECTORY</span><span class="p">)</span>
 
     <span class="n">plugins</span> <span class="o">=</span> <span class="n">suggest_plugins</span><span class="p">(</span><span class="n">PLUGINS_TO_SUGGEST</span><span class="p">)</span>
     <span class="n">scaffolding</span><span class="o">.</span><span class="n">add_plugins</span><span class="p">(</span><span class="n">plugins</span><span class="p">)</span>
@@ -1268,6 +1291,8 @@ table {
         <span class="n">scaffolding</span><span class="o">.</span><span class="n">dir_source_main_python</span> <span class="o">=</span> <span class="n">dir_source_main_python</span>
     <span class="k">if</span> <span class="n">dir_source_unittest_python</span><span class="p">:</span>
         <span class="n">scaffolding</span><span class="o">.</span><span class="n">dir_source_unittest_python</span> <span class="o">=</span> <span class="n">dir_source_unittest_python</span>
+    <span class="k">if</span> <span class="n">dir_source_main_scripts</span><span class="p">:</span>
+        <span class="n">scaffolding</span><span class="o">.</span><span class="n">dir_source_main_scripts</span> <span class="o">=</span> <span class="n">dir_source_main_scripts</span>
 
     <span class="k">return</span> <span class="n">scaffolding</span>
 </pre></div>
@@ -1410,6 +1435,7 @@ table {
         <span class="bp">self</span><span class="o">.</span><span class="n">project_name</span> <span class="o">=</span> <span class="n">project_name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_main_python</span> <span class="o">=</span> <span class="n">DEFAULT_SOURCE_DIRECTORY</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_unittest_python</span> <span class="o">=</span> <span class="n">DEFAULT_UNITTEST_DIRECTORY</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_main_scripts</span> <span class="o">=</span> <span class="n">DEFAULT_SCRIPTS_DIRECTORY</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">core_imports</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;use_plugin&#39;</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">plugins</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;python.core&#39;</span><span class="p">,</span> <span class="s">&#39;python.unittest&#39;</span><span class="p">,</span> <span class="s">&#39;python.install_dependencies&#39;</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">initializer</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
@@ -1434,6 +1460,8 @@ table {
             <span class="n">properties_to_set</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s">&#39;dir_source_main_python&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_main_python</span><span class="p">))</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_default_source_unittest_python</span><span class="p">:</span>
             <span class="n">properties_to_set</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s">&#39;dir_source_unittest_python&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_unittest_python</span><span class="p">))</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_default_source_main_scripts</span><span class="p">:</span>
+            <span class="n">properties_to_set</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s">&#39;dir_source_main_scripts&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_main_scripts</span><span class="p">))</span>
 
         <span class="n">initializer_body</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_initializer_body_with_properties</span><span class="p">(</span><span class="n">properties_to_set</span><span class="p">)</span>
 
@@ -1447,13 +1475,19 @@ table {
     <span class="k">def</span> <span class="nf">is_default_source_unittest_python</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_unittest_python</span> <span class="o">==</span> <span class="n">DEFAULT_UNITTEST_DIRECTORY</span>
 
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_default_source_main_scripts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_main_scripts</span> <span class="o">==</span> <span class="n">DEFAULT_SCRIPTS_DIRECTORY</span>
+
     <span class="k">def</span> <span class="nf">set_up_project</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">needed_directory</span> <span class="ow">in</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dir_source_main_python</span><span class="p">,</span>
-                                 <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_unittest_python</span><span class="p">):</span>
+                                 <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_unittest_python</span><span class="p">,</span>
+                                 <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_main_scripts</span><span class="p">):</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">needed_directory</span><span class="p">):</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">needed_directory</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_build_initializer_body_with_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">properties_to_set</span><span class="p">):</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_build_initializer_body_with_properties</span><span class="p">(</span><span class="n">properties_to_set</span><span class="p">):</span>
         <span class="n">initializer_body</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
         <span class="n">initializer_body</span> <span class="o">+=</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
             <span class="p">[</span><span class="s">&#39;    project.set_property(&quot;{0}&quot;, &quot;{1}&quot;)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">properties_to_set</span><span class="p">])</span>
@@ -1517,6 +1551,16 @@ table {
 
                   </div>
                   <div class="item">
+                    <p id="pybuilder.scaffolding.PythonProjectScaffolding.dir_source_main_scripts" class="name">var <span class="ident">dir_source_main_scripts</span></p>
+                    
+
+                    
+  
+    <div class="source_cont">
+</div>
+
+                  </div>
+                  <div class="item">
                     <p id="pybuilder.scaffolding.PythonProjectScaffolding.dir_source_unittest_python" class="name">var <span class="ident">dir_source_unittest_python</span></p>
                     
 
@@ -1538,6 +1582,16 @@ table {
                   </div>
                   <div class="item">
                     <p id="pybuilder.scaffolding.PythonProjectScaffolding.is_default_source_main_python" class="name">var <span class="ident">is_default_source_main_python</span></p>
+                    
+
+                    
+  
+    <div class="source_cont">
+</div>
+
+                  </div>
+                  <div class="item">
+                    <p id="pybuilder.scaffolding.PythonProjectScaffolding.is_default_source_main_scripts" class="name">var <span class="ident">is_default_source_main_scripts</span></p>
                     
 
                     
@@ -1593,6 +1647,7 @@ table {
     <span class="bp">self</span><span class="o">.</span><span class="n">project_name</span> <span class="o">=</span> <span class="n">project_name</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_main_python</span> <span class="o">=</span> <span class="n">DEFAULT_SOURCE_DIRECTORY</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_unittest_python</span> <span class="o">=</span> <span class="n">DEFAULT_UNITTEST_DIRECTORY</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_main_scripts</span> <span class="o">=</span> <span class="n">DEFAULT_SCRIPTS_DIRECTORY</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">core_imports</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;use_plugin&#39;</span><span class="p">]</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">plugins</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;python.core&#39;</span><span class="p">,</span> <span class="s">&#39;python.unittest&#39;</span><span class="p">,</span> <span class="s">&#39;python.install_dependencies&#39;</span><span class="p">]</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">initializer</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
@@ -1664,6 +1719,8 @@ table {
         <span class="n">properties_to_set</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s">&#39;dir_source_main_python&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_main_python</span><span class="p">))</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_default_source_unittest_python</span><span class="p">:</span>
         <span class="n">properties_to_set</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s">&#39;dir_source_unittest_python&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_unittest_python</span><span class="p">))</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_default_source_main_scripts</span><span class="p">:</span>
+        <span class="n">properties_to_set</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s">&#39;dir_source_main_scripts&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_main_scripts</span><span class="p">))</span>
     <span class="n">initializer_body</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_initializer_body_with_properties</span><span class="p">(</span><span class="n">properties_to_set</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">initializer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">INITIALIZER_HEAD</span> <span class="o">+</span> <span class="n">initializer_body</span>
 </pre></div>
@@ -1711,7 +1768,8 @@ table {
     <div id="source-pybuilder.scaffolding.PythonProjectScaffolding.set_up_project" class="source">
       <div class="codehilite"><pre><span class="k">def</span> <span class="nf">set_up_project</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">needed_directory</span> <span class="ow">in</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dir_source_main_python</span><span class="p">,</span>
-                             <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_unittest_python</span><span class="p">):</span>
+                             <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_unittest_python</span><span class="p">,</span>
+                             <span class="bp">self</span><span class="o">.</span><span class="n">dir_source_main_scripts</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">needed_directory</span><span class="p">):</span>
             <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">needed_directory</span><span class="p">)</span>
 </pre></div>
@@ -1730,7 +1788,7 @@ table {
 <p style="text-align: right;">
   Documentation generated by
   <code><a href="https://github.com/BurntSushi/pdoc">pdoc</a></code>
-  0.2.1.
+  0.2.3.
 
   pdoc is in the public domain with the
   <a href="http://unlicense.org">UNLICENSE</a>.

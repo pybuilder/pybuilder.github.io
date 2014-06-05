@@ -1032,7 +1032,15 @@ table {
                     <span class="n">package</span> <span class="o">=</span> <span class="n">package</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">,</span> <span class="s">&quot;.&quot;</span><span class="p">)</span>
                     <span class="k">yield</span> <span class="n">package</span>
 
+    <span class="k">def</span> <span class="nf">list_modules</span><span class="p">():</span>
+        <span class="n">source_path</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s">&quot;$dir_source_main_python&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">potential_module_file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">source_path</span><span class="p">):</span>
+            <span class="n">potential_module_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">source_path</span><span class="p">,</span> <span class="n">potential_module_file</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">potential_module_path</span><span class="p">)</span> <span class="ow">and</span> <span class="n">potential_module_file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s">&quot;.py&quot;</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">potential_module_file</span><span class="p">[:</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="s">&quot;.py&quot;</span><span class="p">)]</span>
+
     <span class="n">project</span><span class="o">.</span><span class="n">list_packages</span> <span class="o">=</span> <span class="n">list_packages</span>
+    <span class="n">project</span><span class="o">.</span><span class="n">list_modules</span> <span class="o">=</span> <span class="n">list_modules</span>
 
     <span class="k">def</span> <span class="nf">list_scripts</span><span class="p">():</span>
         <span class="n">scripts_dir</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s">&quot;$dir_source_main_scripts&quot;</span><span class="p">)</span>
@@ -1318,7 +1326,15 @@ table {
                     <span class="n">package</span> <span class="o">=</span> <span class="n">package</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">,</span> <span class="s">&quot;.&quot;</span><span class="p">)</span>
                     <span class="k">yield</span> <span class="n">package</span>
 
+    <span class="k">def</span> <span class="nf">list_modules</span><span class="p">():</span>
+        <span class="n">source_path</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s">&quot;$dir_source_main_python&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">potential_module_file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">source_path</span><span class="p">):</span>
+            <span class="n">potential_module_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">source_path</span><span class="p">,</span> <span class="n">potential_module_file</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">potential_module_path</span><span class="p">)</span> <span class="ow">and</span> <span class="n">potential_module_file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s">&quot;.py&quot;</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">potential_module_file</span><span class="p">[:</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="s">&quot;.py&quot;</span><span class="p">)]</span>
+
     <span class="n">project</span><span class="o">.</span><span class="n">list_packages</span> <span class="o">=</span> <span class="n">list_packages</span>
+    <span class="n">project</span><span class="o">.</span><span class="n">list_modules</span> <span class="o">=</span> <span class="n">list_modules</span>
 
     <span class="k">def</span> <span class="nf">list_scripts</span><span class="p">():</span>
         <span class="n">scripts_dir</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s">&quot;$dir_source_main_scripts&quot;</span><span class="p">)</span>
@@ -1372,7 +1388,7 @@ table {
 <p style="text-align: right;">
   Documentation generated by
   <code><a href="https://github.com/BurntSushi/pdoc">pdoc</a></code>
-  0.2.1.
+  0.2.3.
 
   pdoc is in the public domain with the
   <a href="http://unlicense.org">UNLICENSE</a>.

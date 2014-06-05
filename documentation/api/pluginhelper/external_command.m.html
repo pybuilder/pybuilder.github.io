@@ -1041,11 +1041,12 @@ table {
     <span class="k">def</span> <span class="nf">as_string</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parts</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">run_on_production_source_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">include_test_sources</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">run_on_production_source_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">include_test_sources</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">include_scripts</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="n">execution_result</span> <span class="o">=</span> <span class="n">execute_tool_on_source_files</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span>
                                                         <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">command_name</span><span class="p">,</span>
                                                         <span class="n">command_and_arguments</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parts</span><span class="p">,</span>
                                                         <span class="n">include_test_sources</span><span class="o">=</span><span class="n">include_test_sources</span><span class="p">,</span>
+                                                        <span class="n">include_scripts</span><span class="o">=</span><span class="n">include_scripts</span><span class="p">,</span>
                                                         <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span>
         <span class="n">exit_code</span><span class="p">,</span> <span class="n">report_file</span> <span class="o">=</span> <span class="n">execution_result</span>
         <span class="n">report_lines</span> <span class="o">=</span> <span class="n">read_file</span><span class="p">(</span><span class="n">report_file</span><span class="p">)</span>
@@ -1055,6 +1056,9 @@ table {
 
     <span class="k">def</span> <span class="nf">run_on_production_and_test_source_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_on_production_source_files</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">include_test_sources</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">run_on_production_and_test_source_files_and_scripts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_on_production_source_files</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">include_test_sources</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">include_scripts</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1082,6 +1086,7 @@ table {
       <ul>
           <li class="mono"><a href="#pybuilder.pluginhelper.external_command.ExternalCommandBuilder.only_if_property_is_truthy">only_if_property_is_truthy</a></li>
           <li class="mono"><a href="#pybuilder.pluginhelper.external_command.ExternalCommandBuilder.run_on_production_and_test_source_files">run_on_production_and_test_source_files</a></li>
+          <li class="mono"><a href="#pybuilder.pluginhelper.external_command.ExternalCommandBuilder.run_on_production_and_test_source_files_and_scripts">run_on_production_and_test_source_files_and_scripts</a></li>
       </ul>
       <ul>
           <li class="mono"><a href="#pybuilder.pluginhelper.external_command.ExternalCommandBuilder.run_on_production_source_files">run_on_production_source_files</a></li>
@@ -1151,11 +1156,12 @@ table {
     <span class="k">def</span> <span class="nf">as_string</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parts</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">run_on_production_source_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">include_test_sources</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">run_on_production_source_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">include_test_sources</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">include_scripts</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="n">execution_result</span> <span class="o">=</span> <span class="n">execute_tool_on_source_files</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span>
                                                         <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">command_name</span><span class="p">,</span>
                                                         <span class="n">command_and_arguments</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parts</span><span class="p">,</span>
                                                         <span class="n">include_test_sources</span><span class="o">=</span><span class="n">include_test_sources</span><span class="p">,</span>
+                                                        <span class="n">include_scripts</span><span class="o">=</span><span class="n">include_scripts</span><span class="p">,</span>
                                                         <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span>
         <span class="n">exit_code</span><span class="p">,</span> <span class="n">report_file</span> <span class="o">=</span> <span class="n">execution_result</span>
         <span class="n">report_lines</span> <span class="o">=</span> <span class="n">read_file</span><span class="p">(</span><span class="n">report_file</span><span class="p">)</span>
@@ -1165,6 +1171,9 @@ table {
 
     <span class="k">def</span> <span class="nf">run_on_production_and_test_source_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_on_production_source_files</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">include_test_sources</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">run_on_production_and_test_source_files_and_scripts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_on_production_source_files</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">include_test_sources</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">include_scripts</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1333,8 +1342,29 @@ table {
   
                   
     <div class="item">
+      <div class="name def" id="pybuilder.pluginhelper.external_command.ExternalCommandBuilder.run_on_production_and_test_source_files_and_scripts">
+        <p>def <span class="ident">run_on_production_and_test_source_files_and_scripts</span>(</p><p>self, logger)</p>
+      </div>
+      
+
+      
+  
+    <div class="source_cont">
+    <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.pluginhelper.external_command.ExternalCommandBuilder.run_on_production_and_test_source_files_and_scripts', this);">Show source.</a></p>
+    <div id="source-pybuilder.pluginhelper.external_command.ExternalCommandBuilder.run_on_production_and_test_source_files_and_scripts" class="source">
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">run_on_production_and_test_source_files_and_scripts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_on_production_source_files</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">include_test_sources</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">include_scripts</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+    </div>
+  
+                  
+    <div class="item">
       <div class="name def" id="pybuilder.pluginhelper.external_command.ExternalCommandBuilder.run_on_production_source_files">
-        <p>def <span class="ident">run_on_production_source_files</span>(</p><p>self, logger, include_test_sources=False)</p>
+        <p>def <span class="ident">run_on_production_source_files</span>(</p><p>self, logger, include_test_sources=False, include_scripts=False)</p>
       </div>
       
 
@@ -1343,11 +1373,12 @@ table {
     <div class="source_cont">
     <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pybuilder.pluginhelper.external_command.ExternalCommandBuilder.run_on_production_source_files', this);">Show source.</a></p>
     <div id="source-pybuilder.pluginhelper.external_command.ExternalCommandBuilder.run_on_production_source_files" class="source">
-      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">run_on_production_source_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">include_test_sources</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+      <div class="codehilite"><pre><span class="k">def</span> <span class="nf">run_on_production_source_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">include_test_sources</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">include_scripts</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
     <span class="n">execution_result</span> <span class="o">=</span> <span class="n">execute_tool_on_source_files</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span>
                                                     <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">command_name</span><span class="p">,</span>
                                                     <span class="n">command_and_arguments</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parts</span><span class="p">,</span>
                                                     <span class="n">include_test_sources</span><span class="o">=</span><span class="n">include_test_sources</span><span class="p">,</span>
+                                                    <span class="n">include_scripts</span><span class="o">=</span><span class="n">include_scripts</span><span class="p">,</span>
                                                     <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span>
     <span class="n">exit_code</span><span class="p">,</span> <span class="n">report_file</span> <span class="o">=</span> <span class="n">execution_result</span>
     <span class="n">report_lines</span> <span class="o">=</span> <span class="n">read_file</span><span class="p">(</span><span class="n">report_file</span><span class="p">)</span>
@@ -1499,7 +1530,7 @@ table {
 <p style="text-align: right;">
   Documentation generated by
   <code><a href="https://github.com/BurntSushi/pdoc">pdoc</a></code>
-  0.2.1.
+  0.2.3.
 
   pdoc is in the public domain with the
   <a href="http://unlicense.org">UNLICENSE</a>.
