@@ -33,6 +33,18 @@ Readable assertions framework for Python
 
 See [build.py](https://github.com/pyclectic/pyassert/blob/master/build.py)
 
+## [pybuilder_header_plugin](https://github.com/aelgru/pybuilder_header_plugin)
+
+A PyBuilder plugin to ensure all your source files have the expected file header.
+
+See [build.py](https://github.com/aelgru/pybuilder_header_plugin/blob/master/build.py)
+
+## [pybuilder_release_plugin](https://github.com/aelgru/pybuilder_release_plugin)
+
+A PyBuilder plugin to automate releasing a new version of your project.
+
+See [build.py](https://github.com/aelgru/pybuilder_release_plugin/blob/master/build.py)
+
 ## [pyfix](https://github.com/pyclectic/pyfix)
 
 A framework for writing automated tests focussing on fixtures (non xUnit based)
