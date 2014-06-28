@@ -10,12 +10,20 @@ An essential part of a plugin are the tasks that come with it. The tasks are the
 
 ### A simple task
 Begin by creating a new folder with a `build.py` descriptor in it.
-Defining tasks is done with the `task` decorator.
+
+Extend your `build.py` with a simple function called `hello`:
+{% highlight python %}
+from __future__ import print_function
+
+def hello():
+    print("hello")
+{% endhighlight %}
+
+Use the `task` decorator from `pybuilder.core` to declare the `hello` function to a PyBuilder task.
 
 Our simple task might look like so:
 
 {% highlight python %}
-from __future__ import print_function
 from pybuilder.core import task
 
 @task
@@ -32,16 +40,16 @@ Tasks found for project "task-demo":
 {% endhighlight %}
 
 As you can see *PyBuilder* has picked up our task using the function name.
-Note that task names should be unique! We can control the tasks' name by adding it as an argument to the decorator. Let us rename the task into "foo" without changing the function name.
+Note that task names should be unique! We can control the tasks' name by adding it as an argument to the decorator.
+Let us rename the task into "foo" without changing the function name.
 
 {% highlight python %}
-from __future__ import print_function
-from pybuilder.core import task
-
 @task("foo")
 def hello():
     print("hello")
 {% endhighlight %}
+
+When we list the tasks again, we can see that the task is renamed to "foo" now:
 {% highlight python %}
 $ pyb -t
 Tasks found for project "test":
@@ -52,7 +60,6 @@ Tasks found for project "test":
 As you can see above, our task has no description currently. We can change that by adding one through the description decorator :
 
 {% highlight python %}
-from __future__ import print_function
 from pybuilder.core import task, description
 
 @task("foo")
@@ -69,7 +76,7 @@ Tasks found for project "test":
 
 ### Dependencies
 Dependencies between tasks is easy. You can use the `depends` decorator to express that a task requires another one to run.
-In the following example we create a task *foo*, that depends on another task, *bar*, to run.
+In the following example we create a task *foo*, which depends on the successful execution of task *bar*.
 
 {% highlight python %}
 from pybuilder.core import task, depends
@@ -127,7 +134,7 @@ A plugin can be broken down in essentially two parts :
  * Tasks the plugin provides
 
 ### Initialization
-The initialization of a plugin involves setting default configuration. 
+The initialization of a plugin involves setting default configuration.
 It is done from within an [*initializer*](/documentation/manual.html#Initializers)
 
 #### Setting defaults
