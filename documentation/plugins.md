@@ -197,7 +197,7 @@ Use the ```python.flake8``` module to activate linting.
     <td>flake8_ignore</td>
     <td>string</td>
     <td>None</td>
-    <td>Comma separated list of error messages to exclude.<br/>
+    <td>Comma separated list of error messages to ignore<br/>
         Example: <code>"F403,W404,W801"</code></td>
   </tr>
 
@@ -227,7 +227,7 @@ Use the ```python.flake8``` module to activate linting.
     <td>string</td>
     <td>None, but flake8 comes with the default:<br/>
         .svn,CVS,.bzr,.hg,.git,__pycache__</td>
-    <td>Comma separated list of file patterns to ignore<br/>
+    <td>Comma separated list of file patterns to exclude<br/>
         Example: <code>".git,__pycache__"</code></td>
   </tr>
 
