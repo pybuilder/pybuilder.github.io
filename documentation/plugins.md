@@ -194,10 +194,11 @@ Use the ```python.flake8``` module to activate linting.
   </tr>
 
   <tr>
-    <td>flake8_include_test_sources</td>
-    <td>boolean</td>
-    <td>False</td>
-    <td>Also run flake8 on integrationtest and unittest sources</td>
+    <td>flake8_ignore</td>
+    <td>string</td>
+    <td>None</td>
+    <td>Comma separated list of error messages to exclude.<br/>
+        Example: <code>"F403,W404,W801"</code></td>
   </tr>
 
   <tr>
@@ -205,6 +206,13 @@ Use the ```python.flake8``` module to activate linting.
     <td>boolean</td>
     <td>False</td>
     <td>Also run the flake8 linter on all files in $dir_source_main_scripts</td>
+  </tr>
+
+  <tr>
+    <td>flake8_include_test_sources</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Also run flake8 on integrationtest and unittest sources</td>
   </tr>
 
   <tr>
@@ -217,9 +225,10 @@ Use the ```python.flake8``` module to activate linting.
   <tr>
     <td>flake8_exclude_patterns</td>
     <td>string</td>
-    <td>None</td>
-    <td>Comma separated list of warnings to exclude.<br/>
-        Example: <code>"F403,W404,W801"</code></td>
+    <td>None, but flake8 comes with the default:<br/>
+        .svn,CVS,.bzr,.hg,.git,__pycache__</td>
+    <td>Comma separated list of file patterns to ignore<br/>
+        Example: <code>".git,__pycache__"</code></td>
   </tr>
 
 </table>
