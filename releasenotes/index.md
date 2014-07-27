@@ -5,6 +5,22 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.28
+* Resolved a python 3 compatibility problem with the `exec` plugin.
+
+## Version 0.10.27
+* Added another pybuilder command `pyb_`. which is a binary (`.exe`) on windows installations of PyBuilder.
+  This should be used instead of the `pyb` script on windows installations.
+
+## Version 0.10.26
+* install_dependencies should now work as intended on windows.
+
+## Version 0.10.25
+* Fixed a problem when the installed pip had no __version__ which is the case of old installations.
+
+## Version 0.10.24
+* Fixed a problem with the distutils plugin. Using slashes in `distutils_commands` resulted in problems as it was interpreted as a path. This is now resolved.
+
 ## Version 0.10.23
 * It is now possible to use the `distutils_commands` property for an automated upload, since 
   the distutils_plugin will now do the right thing when presented with a command with spaces, 
