@@ -5,6 +5,9 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.29
+* Added plugin `jedi_linter` (EXPERIMENTAL)
+
 ## Version 0.10.28
 * Resolved a python 3 compatibility problem with the `exec` plugin.
 
