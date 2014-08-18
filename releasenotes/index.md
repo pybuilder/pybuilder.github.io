@@ -5,6 +5,15 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.32
+* implement using requirements files as dependencies
+
+## Version 0.10.31
+* Improved output of the jedi plugin
+
+## Version 0.10.30
+* Resolved some problems with the bundled jedi plugin
+
 ## Version 0.10.29
 * Added plugin `jedi_linter` (EXPERIMENTAL)
 
