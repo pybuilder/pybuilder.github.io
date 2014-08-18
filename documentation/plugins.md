@@ -511,6 +511,10 @@ This will make the following tasks available:
 #### Declaring dependencies
 The project object exposes the following methods for declaring dependencies
 
+##### Requirements file :
+<pre><code>project.depends_on_requirements("requirements.txt")</code></pre>
+<pre><code>project.build_depends_on_requirements("requirements-dev.txt")</code></pre>
+
 ##### Runtime dependencies :
 <pre><code>project.depends_on("awesome-library")</code></pre>
 
