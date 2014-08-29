@@ -5,6 +5,9 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.33
+* The `filter_resources` plugin will now warn and skip keys that can not be replaced. This allows the use of `string.Template` in source files that go through the `filter_resources` plugin.
+
 ## Version 0.10.32
 * implement using requirements files as dependencies
 
