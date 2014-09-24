@@ -5,6 +5,18 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.35
+* The generated setup.py is now correct even if the `$dir_source_main_python` contains a trailing slash.
+  See [issue 110](https://github.com/pybuilder/pybuilder/issues/110) for more details. 
+  Thanks @MirkoRossini for reporting!
+* The `pyb -Qt` line format is now `$task_name:$task_description`. 
+  This allows for better completions by also exposing the task names.
+
+## Version 0.10.34
+* The jedi linter has been externalized, please use `pypi:pybuilder_jedi_plugin` now.
+* The task list (-t) in very quiet mode (-Q) will now output space separated task data.
+
+
 ## Version 0.10.33
 * The `filter_resources` plugin will now warn and skip keys that can not be replaced. This allows the use of `string.Template` in source files that go through the `filter_resources` plugin.
 
