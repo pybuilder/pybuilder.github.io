@@ -5,6 +5,13 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.36
+* Coverage plugin: ignored modules will no longer contribute to the
+  overall coverage calculation [(referring to the modules or packages
+  in `coverage_exceptions`)](/documentation/plugins.html#Measuringunittestcoverage).
+  Thanks to [@MirkoRossini](https://github.com/MirkoRossini) for the pull
+  request!
+
 ## Version 0.10.35
 * The generated setup.py is now correct even if the `$dir_source_main_python` contains a trailing slash.
   See [issue 110](https://github.com/pybuilder/pybuilder/issues/110) for more details. 
