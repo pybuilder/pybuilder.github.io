@@ -12,16 +12,14 @@ title: PyBuilder an easy to use continuous build tool for Python
 
 </div>
 
-
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-6">
     <h2>
       <span class="glyphicon glyphicon glyphicon-bullhorn" style="color: gray"></span>
       PyBuilder
     </h2>
     {% capture claim %}{% include content/claim.md %}{% endcapture %}
-    {{ claim | markdownify }} 
-  
+    {{ claim | markdownify }}
     <p>
       <a href="https://github.com/pybuilder/pybuilder" class="btn btn-primary btn-lg">
         100% <strong>Open Source</strong>
@@ -29,13 +27,22 @@ title: PyBuilder an easy to use continuous build tool for Python
       </a>
     </p>
   </div>
+  <div class="col-md-6">
+    <h2>
+      <span class="glyphicon glyphicon-flash" style="color: gold"></span>
+      New: enjoy fish shell completions
+    </h2>
+      <a href="https://asciinema.org/a/12431">
+      <img class="img-responsive img-rounded" alt="Screenshot of fish completion" src="/img/fish.png"/>
+      </a>
+  </div>
 </div>
 
 <div class="row">
   <div class="col-md-12">
     <h2>
-    <span class="glyphicon glyphicon-wrench" style="color: steelblue"></span>
-    Get started
+      <span class="glyphicon glyphicon-wrench" style="color: steelblue"></span>
+      Get started
     </h2>
     <ul class="tabs" data-persist="true">
       <li>
@@ -47,23 +54,25 @@ title: PyBuilder an easy to use continuous build tool for Python
     </ul>
     <div class="tabcontents">
       <div id="startproject">
-      <pre><code>
+        <pre><code>
   #!/bin/sh
 
   pip install pybuilder
 
   pyb --start-project
   pyb install_dependencies publish
+
   </code></pre>
       </div>
       <div id="checkoutbuild">
-      <pre><code>
+        <pre><code>
   git clone https://github.com/aelgru/fluentmock
   cd fluentmock
   virtualenv venv; source venv/bin/activate
   pip install pybuilder
   pyb install_dependencies
   pyb
+
   </code></pre>
       </div>
     </div>
