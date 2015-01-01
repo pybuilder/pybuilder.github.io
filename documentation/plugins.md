@@ -777,7 +777,6 @@ We can tell the plugin to filter this file by adding `['**/YOUR-PACKAGE-NAME/__i
 The correct version will be patched in at run-time since the version is defined in `project.version`.
 For filtering other attributes like `${myattribute}`, just add a `project.myattribute = "foobar"` in `build.py`'s initializer.
 
-
 ### Creating documentation with sphinx
 
 The plugin `python.sphinx` will expose the task `sphinx_generate_documentation` which will generate the project documentation.
@@ -820,7 +819,6 @@ The plugin `python.sphinx` will expose the task `sphinx_generate_documentation` 
     <td>The path to the sphinx output directory where the documentation will be generated</td>
   </tr>
 </table>
-
 
 ## Generic build plugins
 
