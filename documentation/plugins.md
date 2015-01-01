@@ -778,11 +778,11 @@ The correct version will be patched in at run-time since the version is defined 
 For filtering other attributes like `${myattribute}`, just add a `project.myattribute = "foobar"` in `build.py`'s initializer.
 
 
-#### Creating documentation with sphinx
+### Creating documentation with sphinx
 
 The plugin `python.sphinx` will expose the task `sphinx_generate_documentation` which will generate the project documentation.
 
-##### Sphinx plugin configuration
+#### Sphinx plugin configuration
 
 <table class="table table-striped">
   <tr>
