@@ -5,6 +5,13 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.38
+* Initial version of a sphinx plugin. Pull request by [@tjpnz](https://github.com/tjpnz), thanks!.
+
+## Version 0.10.37
+*  Fix using the `dir_dist_scripts` property in python3 which was breaking the setup script.
+   Thanks to [@raphiz](https://github.com/raphiz) for the pull request!
+
 ## Version 0.10.36
 * Coverage plugin: ignored modules will no longer contribute to the
   overall coverage calculation [(referring to the modules or packages
