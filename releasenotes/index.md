@@ -5,6 +5,9 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.39
+* Resolved problems with the python core plugin on windows. Packages with leading backslashes were leading to problems with the setup script. Thanks to [@SzeMengTan](https://github.com/SzeMengTan) for reporting.
+
 ## Version 0.10.38
 * Initial version of a sphinx plugin. Pull request by [@tjpnz](https://github.com/tjpnz), thanks!.
 
