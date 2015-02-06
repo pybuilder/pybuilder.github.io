@@ -5,6 +5,13 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+# Version 0.10.40
+* Improved error messages when the setup commands from `python.distutils` fail.
+* Naming a script (`src/main/scripts/foo`) like a package
+  (`src/main/python/foo/__init__.py`) now works without any specific configuration.
+  Technical detail: the property `dir_dist_scripts` is now set to `"scripts"` by
+  default instead of `None`.
+
 ## Version 0.10.39
 * Resolved problems with the python core plugin on windows. Packages with leading backslashes were leading to problems with the setup script. Thanks to [@SzeMengTan](https://github.com/SzeMengTan) for reporting.
 
@@ -24,9 +31,9 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 ## Version 0.10.35
 * The generated setup.py is now correct even if the `$dir_source_main_python` contains a trailing slash.
-  See [issue 110](https://github.com/pybuilder/pybuilder/issues/110) for more details. 
+  See [issue 110](https://github.com/pybuilder/pybuilder/issues/110) for more details.
   Thanks @MirkoRossini for reporting!
-* The `pyb -Qt` line format is now `$task_name:$task_description`. 
+* The `pyb -Qt` line format is now `$task_name:$task_description`.
   This allows for better completions by also exposing the task names.
 
 ## Version 0.10.34
@@ -66,13 +73,13 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 * Fixed a problem with the distutils plugin. Using slashes in `distutils_commands` resulted in problems as it was interpreted as a path. This is now resolved.
 
 ## Version 0.10.23
-* It is now possible to use the `distutils_commands` property for an automated upload, since 
-  the distutils_plugin will now do the right thing when presented with a command with spaces, 
+* It is now possible to use the `distutils_commands` property for an automated upload, since
+  the distutils_plugin will now do the right thing when presented with a command with spaces,
   like [`sdist upload`]
 
 ## Version 0.10.22
 * Unit tests names will now be logged to DEBUG as they run. Thanks [@aelgru](https://github.com/aelgru)!
-* Introduced a new property for the [`install_dependencies` plugin](/documentation/plugins.html#Installingdependencies), 
+* Introduced a new property for the [`install_dependencies` plugin](/documentation/plugins.html#Installingdependencies),
 `install_dependencies_insecure_installation`.
 
 ## Version 0.10.21

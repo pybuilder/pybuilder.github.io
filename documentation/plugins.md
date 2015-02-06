@@ -475,7 +475,7 @@ into the distribution directory.
   <tr>
     <td>dir_dist_scripts</td>
     <td>string</td>
-    <td>None <em>(results in $dir_dist)</em></td>
+    <td>scripts (starting with 0.10.40, before that scripts are simply copied to the dir_dist by default)</em></td>
     <td>Directory where scripts are copied to <em>(relative to distribution directory)</em>.</td>
   </tr>
 </table>
