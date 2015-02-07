@@ -5,6 +5,9 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.41
+* Default project version (when no version is given in the `build.py` is now 1.0.dev0 instead of 1.0-SNAPSHOT, as per PEP 440. Pull request by [@zroadhouse-wsm](https://github.com/zroadhouse-wsm), thanks!
+
 ## Version 0.10.40
 * Improved error messages when the setup commands from `python.distutils` fail.
 * Naming a script (`src/main/scripts/foo`) like a package
