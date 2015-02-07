@@ -5,7 +5,7 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
-# Version 0.10.40
+## Version 0.10.40
 * Improved error messages when the setup commands from `python.distutils` fail.
 * Naming a script (`src/main/scripts/foo`) like a package
   (`src/main/python/foo/__init__.py`) now works without any specific configuration.
