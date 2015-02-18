@@ -5,6 +5,25 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.43
+* Coverage plugin: Try really hard to work well with coveralls
+    
+    The coverage configuration is used to tell coverage to avoid covering the python
+    stdlib if possible, and also specifies the source root to cover.
+    Additionally a .coverage file is written in the coverage root, so that
+    it can be consumed by coveralls.
+
+
+## Version 0.10.42
+* detect teamcity environment automatically
+
+    If the variable TEAMCITY_VERSION is set, teamcity output will be
+    generated automatically. It can still be forced with the project
+    property "teamcity_output", and setting both the property and the
+    environment variable will also result in teamcity specific output being
+    generated.
+
+
 ## Version 0.10.41
 * Default project version (when no version is given in the `build.py` is now 1.0.dev0 instead of 1.0-SNAPSHOT, as per PEP 440. Pull request by [@zroadhouse-wsm](https://github.com/zroadhouse-wsm), thanks!
 
