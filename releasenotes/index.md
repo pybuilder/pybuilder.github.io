@@ -5,6 +5,9 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.44
+* Coverage plugin: Should now work with coveralls without further adjustements since a coverage data file is written.
+
 ## Version 0.10.43
 * Coverage plugin: Try really hard to work well with coveralls
     
@@ -17,7 +20,7 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 ## Version 0.10.42
 * detect teamcity environment automatically
 
-    If the variable TEAMCITY_VERSION is set, teamcity output will be
+    If the environment variable TEAMCITY_VERSION is set, teamcity output will be
     generated automatically. It can still be forced with the project
     property "teamcity_output", and setting both the property and the
     environment variable will also result in teamcity specific output being
