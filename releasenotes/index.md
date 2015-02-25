@@ -5,6 +5,9 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.49:
+* Added API functionality to automatically version the project based on the version control system.
+
 ## Version 0.10.48
 * Sonarqube plugin: Should now correctly report coverage.
 
