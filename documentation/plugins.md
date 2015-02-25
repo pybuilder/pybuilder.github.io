@@ -120,6 +120,36 @@ Use the ```python.coverage``` module to activate coverage.
   </tr>
 </table>
 
+### SonarQube integration
+
+Using the plugin `python.sonarqube` will add the task `run_sonar_analysis` to your project. This task has a run-time dependency to the `sonar-runner` program and will submit your project to [sonarqube](http://www.sonarqube.org/) for analysis.
+
+#### Sonarqube configuration
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>sonarqube_project_key</td>
+    <td>string</td>
+    <td>`project.name`</td>
+    <td>The SonarQube project key to use for analysis.</td>
+  </tr>
+
+  <tr>
+    <td>sonarqube_project_name</td>
+    <td>string</td>
+    <td>`project.name`</td>
+    <td>The SonarQube project name to use for analysis.</td>
+  </tr>
+</table>
+
+
 ### Linting python sources
 
 #### Frosted plugin
