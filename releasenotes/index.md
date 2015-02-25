@@ -5,6 +5,12 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.47
+* Sonarqube plugin: Should now correctly report coverage.
+
+## Version 0.10.46
+* Sonarqube plugin: Fixed source path setting.
+
 ## Version 0.10.45
 * Coverage plugin: now writes a cobertura compatible XML report to the reports directory.
 * New plugin: [sonarqube plugin](/documentation/plugins.html#SonarQubeintegration), which can be used to run sonar analysis.
