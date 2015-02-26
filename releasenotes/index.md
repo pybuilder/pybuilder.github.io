@@ -5,6 +5,12 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.51:
+* The snakefood plugin will now pull in the snakefood dependency as intended.
+
+## Version 0.10.50:
+* The snakefood plugin will now generate external and internal project reports (external dependencies and internal dependencies, respectively).
+
 ## Version 0.10.49:
 * Added API functionality to automatically version the project based on the version control system.
 
