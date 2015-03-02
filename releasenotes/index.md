@@ -5,6 +5,12 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.52:
+* Ignore errors while trying to save coverage data
+  This fixes #119. In cases where there is no coverage data at all, saving
+  leads to an error, which would crash the build even if
+  `coverage_break_build` was set to False.
+
 ## Version 0.10.51:
 * The snakefood plugin will now pull in the snakefood dependency as intended.
 
