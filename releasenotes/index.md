@@ -5,6 +5,11 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.53:
+*  Fix autoversioning for older git version like found on RHEL6.
+
+   Pull request by [@schlomo](https://github.com/schlomo), thanks!
+
 ## Version 0.10.52:
 * Ignore errors while trying to save coverage data
   This fixes #119. In cases where there is no coverage data at all, saving
