@@ -5,6 +5,16 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.56
+* Resolved problems where the python unittest plugin would cause a crash when a test failed with an exception containing non-ascii text. 
+
+## Version 0.10.55
+* Resolved python3 compatibility issue introduced with `0.10.54`
+
+## Version 0.10.54
+* Improved the cyclic dependency detection algorithm used to resolve task dependencies
+* Added possibility for tasks to introspect their dependencies (see [#122](https://github.com/pybuilder/pybuilder/issues/122))
+
 ## Version 0.10.53:
 *  Fix autoversioning for older git version like found on RHEL6.
 
