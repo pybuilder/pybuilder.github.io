@@ -5,6 +5,15 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.59
+* integrationtest plugin: The property `integrationtest_always_verbose` can now be used to always display the integration test output, even when the tests are green.
+
+## Version 0.10.58
+* Fixed python3 incompatibility introduced in 0.10.57
+
+## Version 0.10.57
+* Using editable URLs in a `requirements.txt` file now works - integrating the requirements into PyBuilder with `project.depends_on_requirements("requirements.txt")` was not generating the correct setup script.
+
 ## Version 0.10.56
 * Resolved problems where the python unittest plugin would cause a crash when a test failed with an exception containing non-ascii text. 
 
