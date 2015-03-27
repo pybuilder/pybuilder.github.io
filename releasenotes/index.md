@@ -6,7 +6,7 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 # Release Notes
 
 ## Version 0.10.59
-* integrationtest plugin: The property `integrationtest_always_verbose` can now be used to always display the integration test output, even when the tests are green.
+* integrationtest plugin: The property `integrationtest_always_verbose` can now be used to always display the integration test output, even when the tests are green. Pull request by [@snordhausen](https://github.com/snordhausen)
 
 ## Version 0.10.58
 * Fixed python3 incompatibility introduced in 0.10.57
