@@ -5,6 +5,14 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.60
+* sphinx plugin:  you can now configure sphinx_doc_author, sphinx_doc_builder, sphinx_project_name, sphinx_project_version via project.set_property in your build.py (pull request by @locolupo)
+* sphinx plugin: pyb --start-project now asking for a documentation folder (pull request by @locolupo)
+* sphinx plugin: new task, `sphinx_quickstart` (pull request by @locolupo)
+* install dependencies plugin: Setting the property `install_dependencies_local_mapping` to a dictionary
+   allows to specify where the dependencies are to be installed locally.
+   The dictionary should map dependency names to paths where the dependencies should be installed.
+
 ## Version 0.10.59
 * integrationtest plugin: The property `integrationtest_always_verbose` can now be used to always display the integration test output, even when the tests are green. Pull request by [@snordhausen](https://github.com/snordhausen)
 
