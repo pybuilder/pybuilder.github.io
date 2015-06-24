@@ -5,6 +5,9 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.10.61
+* pycharm plugin: Generate entries for unit and integration test directories (if respective plugins are activated) and mark them as test sources (pull request by [arcivanov](https://github.com/arcivanov))
+
 ## Version 0.10.60
 * sphinx plugin:  you can now configure sphinx_doc_author, sphinx_doc_builder, sphinx_project_name, sphinx_project_version via project.set_property in your build.py (pull request by @locolupo)
 * sphinx plugin: pyb --start-project now asking for a documentation folder (pull request by @locolupo)
