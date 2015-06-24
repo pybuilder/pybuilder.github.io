@@ -18,6 +18,7 @@ Please read the documentation of each plugin to get more information on plugin t
 
 * [pybuilder_header_plugin](https://github.com/aelgru/pybuilder_header_plugin) - ensure all your source files have the expected file header
 * [pybuilder_release_plugin](https://github.com/aelgru/pybuilder_release_plugin) - release a new version of your project to PyPI
+* [pybuilder_smart_copy_resources](https://github.com/margru/pybuilder-smart-copy-resources) - copy additional files into various destinations
 
 ## Pybuilder external plugin demo
 
