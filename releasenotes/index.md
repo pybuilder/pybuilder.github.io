@@ -6,10 +6,11 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 # Release Notes
 
 ## Version 0.11.0
-* Introduced `reactor.execute_task_shortest_plan` API (pull request by [arcivanov](https://github.com/arcivanov)
-* Fixed an issue where a forked coverage measurement would not properly failed the build (pull request by [arcivanov](https://github.com/arcivanov)
-* unit testing and coverage measurement are now library functions in an API sense (pull request by [arcivanov](https://github.com/arcivanov)
-* `pyb install` now works and acts like `setup.py install` (distutils plugin)
+* Nearly this entire release is courtesy of [arcivanov](https://github.com/arcivanov). Thanks!!!
+* Introduced `reactor.execute_task_shortest_plan` API.
+* Fixed an issue where a forked coverage measurement would not properly failed the build.
+* unit test and coverage measurement are now library functions in an API sense.
+* `pyb install` now works and acts like `setup.py install` (distutils plugin).
 * PyBuilder can now be installed with `pip install git://github.com/pybuilder/pybuilder.git@<branch>`
 * Forked processes (like coverage measurements) now correctly report back their errors.
 * Huge improvements to coverage accuracy when building PyBuilder itself / libraries which use part of their own code in order to build, e.G. if you run library code in `build.py`.
