@@ -629,7 +629,7 @@ Note that the `*_depends_on` methods accept the following arguments :
 
 ### Creating a source distribution
 
-*PyBuilder* can build a source distribution of your code with the plugin `source_distribution`. Activating this plugin will expose a task, `create_source_distribution`.
+*PyBuilder* can build a source distribution of your code with the plugin `source_distribution`. Activating this plugin will expose a task, `build_source_distribution`.
 
 #### Source distribution configuration
 
