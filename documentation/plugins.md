@@ -331,6 +331,12 @@ There is no configuration possible currently, consider using the flake8 plugin i
 ```python.integrationtest```. It executes all python modules named ```*_tests.py``` in the
 ```src/integrationtest/python``` directory.
 
+However, the default ```run_integration_tests``` job is just a stub per default
+, which won't run your integration tests. In order to use integration tests,
+you will have to enable the module by specifying
+```use_plugin('python.integrationtest')```. If you don't specify this,
+your integration tests will not be runned.
+
 Every module is executed as a Python module. The Python path contains the integration test directory as well as
 the production source directory.
 
