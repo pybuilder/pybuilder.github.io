@@ -30,8 +30,8 @@ cd pybuilder
 Now to the bootstrapping part : install the dependencies and build PyBuilder... using PyBuilder!
 
 <pre>
-./bootstrap install_dependencies
-./bootstrap
+./build.py install_dependencies
+./build.py
 </pre>
 
 Congratulations, you just built a binary distribution!
