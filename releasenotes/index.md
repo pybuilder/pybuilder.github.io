@@ -5,6 +5,19 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.11.2
+* Added `project.include_directory` functionality [#223](https://github.com/pybuilder/pybuilder/issues/223). Pull request by [@glujan](https://github.com/glujan)
+* Coverage plugin will not reset modules per default (only if `coverage_reset_modules` is set to `True`) [#211](https://github.com/pybuilder/pybuilder/issues/211).
+* Coverage forking disabled for windows OS [#184](https://github.com/pybuilder/pybuilder/issues/184)
+* Coverage / branch coverage discrepancy fix [#203](https://github.com/pybuilder/pybuilder/issues/203)
+* Resolved flake8 plugin filtering issue [#202](https://github.com/pybuilder/pybuilder/issues/202)
+* New plugin for debian packaging by @locolupo [#190](https://github.com/pybuilder/pybuilder/issues/190)
+* The distutils plugin can now upload distributions [#187](https://github.com/pybuilder/pybuilder/issues/187)
+* Resolved issue with `install_dependencies` on windows OS [#185](https://github.com/pybuilder/pybuilder/issues/185).
+
+## Version 0.11.1
+* The `0.11.0` metadata claimed to support python 3.2. This has been fixed.
+
 ## Version 0.11.0
 * Nearly this entire release is courtesy of [arcivanov](https://github.com/arcivanov). Thanks!!!
 * Introduced `reactor.execute_task_shortest_plan` API.
