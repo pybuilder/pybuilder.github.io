@@ -5,6 +5,31 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.11.3
+* Coverage plugin now excludes namespaces (not backed by an actual source file) [#301](https://github.com/pybuilder/pybuilder/issues/301)
+* Installing dependencies with use of an HTTPS proxy is now possible [#299](https://github.com/pybuilder/pybuilder/issues/299)
+* Python 3.5 issue resolved [#287](https://github.com/pybuilder/pybuilder/issues/287)
+* External tool dependencies for plugins are now properly updated [#272](https://github.com/pybuilder/pybuilder/issues/272)
+* `pyb install` now forces the reinstallation [#282](https://github.com/pybuilder/pybuilder/issues/282)
+* Cram now handles the case where there are no tests [#280](https://github.com/pybuilder/pybuilder/issues/280)
+* Plugins can be installed via VCS [#276](https://github.com/pybuilder/pybuilder/issues/276)
+* PyBuilder projects can be installed via URL-based install [#200](https://github.com/pybuilder/pybuilder/issues/200)
+* Plugins can now find out if a task is in the current execution plan [#275](https://github.com/pybuilder/pybuilder/issues/275)
+* Handling system exits gracefully [#255](https://github.com/pybuilder/pybuilder/issues/255)
+* Plugin-specified constraints for PyBuilder API version [#257](https://github.com/pybuilder/pybuilder/issues/257)
+* `pyb -o` now properly excludes all optional tasks [#263](https://github.com/pybuilder/pybuilder/issues/263)
+* Fixed missing `xmlrunner` dependency [#267](https://github.com/pybuilder/pybuilder/issues/267)
+* `pyb -T` shows build plan [#262](https://github.com/pybuilder/pybuilder/issues/262)
+* Possibility to inject tasks as dependent [#188](https://github.com/pybuilder/pybuilder/issues/188)
+* Fixed egg/wheel shebangs [#168](https://github.com/pybuilder/pybuilder/issues/168)
+* Optional automatic version augmentation based on `.dev` releases [#209](https://github.com/pybuilder/pybuilder/issues/209)
+* Upload repository for distutils upload task now works [#243](https://github.com/pybuilder/pybuilder/issues/243)
+* Fixed issue with `@task` decorator
+* New tasks for printing module and script directory path [#208](https://github.com/pybuilder/pybuilder/issues/208)
+* Support for setuptools pre- and post-install logic [#227](https://github.com/pybuilder/pybuilder/issues/227)
+* Flake8 plugin now checks for directory existence before including it [#230](https://github.com/pybuilder/pybuilder/issues/230)
+* Helpful error message when `pyb -t` is not called in the project root directory [#226](https://github.com/pybuilder/pybuilder/issues/226)
+
 ## Version 0.11.2
 * Added `project.include_directory` functionality [#223](https://github.com/pybuilder/pybuilder/issues/223). Pull request by [@glujan](https://github.com/glujan)
 * Coverage plugin will not reset modules per default (only if `coverage_reset_modules` is set to `True`) [#211](https://github.com/pybuilder/pybuilder/issues/211).
