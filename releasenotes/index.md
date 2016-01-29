@@ -5,6 +5,22 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.11.6
+
+* Cram plugin can now run cram from the `target` directory and does so by default [#318](https://github.com/pybuilder/pybuilder/pull/318)
+
+## Version 0.11.5
+
+* Update cram plugin to use the 'outside' environment [#316](https://github.com/pybuilder/pybuilder/pull/316)
+* Honor `pylint` options [#315](https://github.com/pybuilder/pybuilder/pull/315)
+
+## Version 0.11.4
+
+* `install_dependencies_(extra_)index_url` should affect all PIP operations [#313](https://github.com/pybuilder/pybuilder/pull/313)
+* Task `install_dependencies` doesn't work in version 0.11.3 [#311](https://github.com/pybuilder/pybuilder/pull/311)
+* Allow dynamic discovery `entry_points` configuration [#309](https://github.com/pybuilder/pybuilder/pull/309)
+
+
 ## Version 0.11.3
 * Coverage plugin now excludes namespaces (not backed by an actual source file) [#301](https://github.com/pybuilder/pybuilder/issues/301)
 * Installing dependencies with use of an HTTPS proxy is now possible [#299](https://github.com/pybuilder/pybuilder/issues/299)
