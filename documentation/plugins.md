@@ -471,6 +471,18 @@ if not sys.version_info[0:2] == (3,2):
     <td>*.t</td>
     <td>Glob matching the cram test files</td>
   </tr>
+  <tr>
+    <td>cram_fail_if_no_tests</td>
+    <td>boolean</td>
+    <td>True</td>
+    <td>Fail if there are no cram tests</td>
+  </tr>
+  <tr>
+    <td>cram_run_test_from_target</td>
+    <td>boolean</td>
+    <td>True</td>
+    <td>Run tests from the <code>target</code> or <code>src</code> directory.</td>
+  </tr>
 </table>
 
 ## Python deployment
