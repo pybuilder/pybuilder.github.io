@@ -732,6 +732,27 @@ def initialize (project):
   </tr>
 
   <tr>
+    <td>distutils_upload_repository</td>
+    <td>string</td>
+    <td>None</td>
+    <td>The PyPI repository to upload the package to</td>
+  </tr>
+  
+  <tr>
+    <td>distutils_upload_sign</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Sign each uploaded file using GPG (GNU Privacy Guard)</td>
+  </tr>
+
+  <tr>
+    <td>distutils_upload_sign_identity</td>
+    <td>string</td>
+    <td>None</td>
+    <td>The identity to sign each file with, when distutils_upload_sign is True</td>
+  </tr>
+
+  <tr>
     <td>distutils_use_setuptools</td>
     <td>boolean</td>
     <td>True</td>
