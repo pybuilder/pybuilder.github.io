@@ -5,9 +5,15 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.11.8
+
+* Support for pip trusted hosts [#341](https://github.com/pybuilder/pybuilder/issues/341)
+* Add possibility to specify plugin versions [#340](https://github.com/pybuilder/pybuilder/issues/340)
+* Fix issue in generated `setup.py` [#332](https://github.com/pybuilder/pybuilder/pull/332)
+
 ## Version 0.11.7
 
-
+* Pin `unittest-xml-reporting` dependency to maintain py2.6 support [#333](https://github.com/pybuilder/pybuilder/pull/333) (thanks @snordhausen)
 * Distutils upload signing [#325](https://github.com/pybuilder/pybuilder/issues/325)
 * Ability to customize packaging options ad nauseam [#331](https://github.com/pybuilder/pybuilder/pull/331)
 * Success message after generating `setup.py` in `--start-project`
