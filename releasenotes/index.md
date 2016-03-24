@@ -5,6 +5,14 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.11.7
+
+
+* Distutils upload signing [#325](https://github.com/pybuilder/pybuilder/issues/325)
+* Ability to customize packaging options ad nauseam [#331](https://github.com/pybuilder/pybuilder/pull/331)
+* Success message after generating `setup.py` in `--start-project`
+* Windows fixes (thanks @Lucas-C and @guillermooo).
+
 ## Version 0.11.6
 
 * Cram plugin can now run cram from the `target` directory and does so by default [#318](https://github.com/pybuilder/pybuilder/pull/318)
