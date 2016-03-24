@@ -57,13 +57,10 @@ Tasks found for project "test":
 {% endhighlight %}
 
 ### Descriptions
-As you can see above, our task has no description currently. We can change that by adding one through the description decorator :
+As you can see above, our task has no description currently. We can change that by adding one through the description keyword argument :
 
 {% highlight python %}
-from pybuilder.core import task, description
-
-@task("foo")
-@description("Greets people")
+@task("foo", description="Greets people")
 def hello():
     print("hello")
 {% endhighlight %}
@@ -73,6 +70,7 @@ $ pyb -t
 Tasks found for project "test":
     foo - Greets people
 {% endhighlight %}
+
 
 ### Dependencies
 Dependencies between tasks is easy. You can use the `depends` decorator to express that a task requires another one to run.
