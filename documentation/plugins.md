@@ -261,6 +261,14 @@ Use the ```python.flake8``` module to activate linting.
         Example: <code>".git,__pycache__"</code></td>
   </tr>
 
+  <tr>
+    <td>flake8_verbose_output</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Display flake8 warnings and errors in command line output.</td>
+  </tr>
+
+
 </table>
 
 #### Pychecker plugin
