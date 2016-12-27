@@ -601,6 +601,12 @@ Note that the `*_depends_on` methods accept the following arguments :
   </tr>
 </table>
 
+The logic of version goes as follows:
+
+* If you don't specify any version, you don't care about the version and any version will do, so PyB will get whatever version if one doesn't exist and then don't bother ever updating.
+* If you specify an exact version once it is obtained there is no point in updating it.
+* If you specify a fuzzy version, you want the latest and greatest that satisfies the expression specified. This aids rapid incompatibility detection, as PyBuilder tracks the latest version that always satisfies the version specifier.
+
 #### Install dependencies configuration
 <table class="table table-striped">
   <tr>
