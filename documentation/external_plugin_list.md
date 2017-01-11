@@ -19,6 +19,7 @@ Please read the documentation of each plugin to get more information on plugin t
 * [pybuilder_header_plugin](https://github.com/cowst/pybuilder_header_plugin) - ensure all your source files have the expected file header
 * [pybuilder_smart_copy_resources](https://github.com/margru/pybuilder-smart-copy-resources) - copy additional files into various destinations
 * [pybuilder_pytest](https://github.com/AlexeySanko/pybuilder_pytest) - use pytest Python module for running unittests
+* [pybuilder_read_profile_properties](https://github.com/AlexeySanko/pybuilder_read_profile_properties) - provides possibility to read project properties from YAML file according profile
 
 ## Pybuilder external plugin demo
 
