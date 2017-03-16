@@ -21,7 +21,7 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 * Flake8 3.2.0 broke the build [#420](https://github.com/pybuilder/pybuilder/issues/420)
 * Uptake new PIP upgrade features [#416](https://github.com/pybuilder/pybuilder/issues/416)
 * Allow to append build targets to default from command line [#413](https://github.com/pybuilder/pybuilder/issues/413)
-* Generate package summary and description based on a README.md [#408](https://github.com/pybuilder/pybuilder/issues/408)
+* Generate package summary and description based on a `README.md` [#408](https://github.com/pybuilder/pybuilder/issues/408)
 * Wrong dependency version error formatting [#405](https://github.com/pybuilder/pybuilder/issues/405)
 * Fix paths in the Sphinx PyB quickstart and runtime configuration [#403](https://github.com/pybuilder/pybuilder/issues/403)
 * Wrong logging level for `sphinx_generate_documentation` [#401](https://github.com/pybuilder/pybuilder/issues/401)
