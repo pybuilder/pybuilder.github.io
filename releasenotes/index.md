@@ -7,17 +7,17 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 ## Version 0.11.9
 
-adding `count_travis` [#372](https://github.com/pybuilder/pybuilder/issues/372)
-Fix path separators and protect log file names on Windows [#371](https://github.com/pybuilder/pybuilder/issues/371)
-`include_directory` fix for manifest and `setup.py` [#367](https://github.com/pybuilder/pybuilder/issues/367)
-use `shutil.rmtree` instead of `os.removedirs` [#365](https://github.com/pybuilder/pybuilder/issues/365)
-implement `get_git_hash` [#363](https://github.com/pybuilder/pybuilder/issues/363)
-Entry-points should handle a single entry correctly [#359](https://github.com/pybuilder/pybuilder/issues/359)
-Add a proper pdoc plugin [#353](https://github.com/pybuilder/pybuilder/issues/353)
-`@dependents` ignores customized task name [#357](https://github.com/pybuilder/pybuilder/issues/357)
-`@dependents` does not inject dependencies from plugin if task is already defined earlier [#355](https://github.com/pybuilder/pybuilder/issues/355)
-PyBuilder `install_dependencies` behavior should mirror #340 [#347](https://github.com/pybuilder/pybuilder/issues/347)
-Sphinx indicates failure with -v but not without it [#350](https://github.com/pybuilder/pybuilder/issues/350)
+* adding `count_travis` [#372](https://github.com/pybuilder/pybuilder/issues/372)
+* Fix path separators and protect log file names on Windows [#371](https://github.com/pybuilder/pybuilder/issues/371)
+* `include_directory` fix for manifest and `setup.py` [#367](https://github.com/pybuilder/pybuilder/issues/367)
+* use `shutil.rmtree` instead of `os.removedirs` [#365](https://github.com/pybuilder/pybuilder/issues/365)
+* implement `get_git_hash` [#363](https://github.com/pybuilder/pybuilder/issues/363)
+* Entry-points should handle a single entry correctly [#359](https://github.com/pybuilder/pybuilder/issues/359)
+* Add a proper pdoc plugin [#353](https://github.com/pybuilder/pybuilder/issues/353)
+* `@dependents` ignores customized task name [#357](https://github.com/pybuilder/pybuilder/issues/357)
+* `@dependents` does not inject dependencies from plugin if task is already defined earlier [#355](https://github.com/pybuilder/pybuilder/issues/355)
+* PyBuilder `install_dependencies` behavior should mirror #340 [#347](https://github.com/pybuilder/pybuilder/issues/347)
+* Sphinx indicates failure with -v but not without it [#350](https://github.com/pybuilder/pybuilder/issues/350)
 
 ## Version 0.11.8
 
