@@ -5,6 +5,49 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.11.10
+
+* Allow obsoleting packages with "obsoletes" [#456](https://github.com/pybuilder/pybuilder/issues/456)
+* PyBuilder needs to depend on modern setuptools [#452](https://github.com/pybuilder/pybuilder/issues/452)
+* Allow specifying python version constraint [#450](https://github.com/pybuilder/pybuilder/issues/450)
+* Add Python 3.6 support [#446](https://github.com/pybuilder/pybuilder/issues/446)
+* Copy resource doesn't include the `LICENSE` file in the distro [#443](https://github.com/pybuilder/pybuilder/issues/443)
+* Coverage plugin fails when fails to load covered module [#441](https://github.com/pybuilder/pybuilder/issues/441)
+* Increasing test coverage on vcs_tests.py [#439](https://github.com/pybuilder/pybuilder/issues/439)
+* Allow modifying default targets similar to manner of adding them in #412 [#438](https://github.com/pybuilder/pybuilder/issues/438)
+* Fix PyPI documentation [#435](https://github.com/pybuilder/pybuilder/issues/435)
+* PyBuilder's `setup.py` broken when `pandoc>=1.18` is installed with `pypandoc~=1.2.0` [#429](https://github.com/pybuilder/pybuilder/issues/429)
+* python.distutils plugin: `setup.py` keywords [#424](https://github.com/pybuilder/pybuilder/issues/424)
+* Flake8 3.2.0 broke the build [#420](https://github.com/pybuilder/pybuilder/issues/420)
+* Uptake new PIP upgrade features [#416](https://github.com/pybuilder/pybuilder/issues/416)
+* Allow to append build targets to default from command line [#413](https://github.com/pybuilder/pybuilder/issues/413)
+* Generate package summary and description based on a `README.md` [#408](https://github.com/pybuilder/pybuilder/issues/408)
+* Wrong dependency version error formatting [#405](https://github.com/pybuilder/pybuilder/issues/405)
+* Fix paths in the Sphinx PyB quickstart and runtime configuration [#403](https://github.com/pybuilder/pybuilder/issues/403)
+* Wrong logging level for `sphinx_generate_documentation` [#401](https://github.com/pybuilder/pybuilder/issues/401)
+* Sphinx configuration should share PyB at runtime #398 [#399](https://github.com/pybuilder/pybuilder/issues/399)
+* Color escape sequence not properly terminated [#390](https://github.com/pybuilder/pybuilder/issues/390)
+* Harden `expand_path` for Windows and `safe_log_file_name` [#393](https://github.com/pybuilder/pybuilder/issues/393)
+* Pathing issues on pypi upload on Windows [#391](https://github.com/pybuilder/pybuilder/issues/391)
+* `python.distutils` plugin doesn't support `namespace_packages` [#385](https://github.com/pybuilder/pybuilder/issues/385)
+* Coverage should be setup to cover multiprocessing and forks [#384](https://github.com/pybuilder/pybuilder/issues/384)
+* Recursive dependency upgrades should be subject to global version constraints [#380](https://github.com/pybuilder/pybuilder/issues/380)
+* Coverage for missing modules should cause a failure [#377](https://github.com/pybuilder/pybuilder/issues/377)
+
+## Version 0.11.9
+
+* adding `count_travis` [#372](https://github.com/pybuilder/pybuilder/issues/372)
+* Fix path separators and protect log file names on Windows [#371](https://github.com/pybuilder/pybuilder/issues/371)
+* `include_directory` fix for manifest and `setup.py` [#367](https://github.com/pybuilder/pybuilder/issues/367)
+* use `shutil.rmtree` instead of `os.removedirs` [#365](https://github.com/pybuilder/pybuilder/issues/365)
+* implement `get_git_hash` [#363](https://github.com/pybuilder/pybuilder/issues/363)
+* Entry-points should handle a single entry correctly [#359](https://github.com/pybuilder/pybuilder/issues/359)
+* Add a proper pdoc plugin [#353](https://github.com/pybuilder/pybuilder/issues/353)
+* `@dependents` ignores customized task name [#357](https://github.com/pybuilder/pybuilder/issues/357)
+* `@dependents` does not inject dependencies from plugin if task is already defined earlier [#355](https://github.com/pybuilder/pybuilder/issues/355)
+* PyBuilder `install_dependencies` behavior should mirror #340 [#347](https://github.com/pybuilder/pybuilder/issues/347)
+* Sphinx indicates failure with -v but not without it [#350](https://github.com/pybuilder/pybuilder/issues/350)
+
 ## Version 0.11.8
 
 * Support for pip trusted hosts [#341](https://github.com/pybuilder/pybuilder/issues/341)
