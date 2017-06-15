@@ -12,10 +12,10 @@ This page documents the plugins that ship with the PyBuilder distribution.
 ### Running Python Unittests
 
 *PyBuilder* ships with a plugin to execute unittests written using [Python's unittest module](http://docs.python.org/library/unittest.html)
-during the build. Use the ```python.unittest``` plugin to enable unittest support.
+during the build. Use the `python.unittest` plugin to enable unittest support.
 
-The plugin executes all test cases found in modules ending with ```_tests.py``` in the directory
-```src/unittest/python```.
+The plugin executes all test cases found in modules ending with `_tests.py` in the directory
+`src/unittest/python`.
 
 
 #### Python unittest properties
