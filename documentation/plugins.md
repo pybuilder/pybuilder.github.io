@@ -19,6 +19,7 @@ The plugin executes all test cases found in modules ending with ```_tests.py``` 
 
 
 #### Python unittest properties
+
 <table class="table table-striped">
   <tr>
     <th>Name</th>
@@ -76,6 +77,7 @@ Use the ```python.coverage``` module to activate coverage.
 
 
 #### Coverage properties
+
 <table class="table table-striped">
   <tr>
     <th>Name</th>
