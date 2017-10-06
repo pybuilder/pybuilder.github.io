@@ -111,6 +111,29 @@ def initialize(project):
     pass
 </code></pre>
 
+Pybuilder always collects and calls initilizers from `build.py` sorted by alphabetical order.
+This fact could be used for initilizers managing.
+
+<pre><code>
+from pybuilder.core import init
+
+@init
+def initialize2(project):
+    pass
+    
+@init
+def initialize1(project):
+    pass
+</code></pre>
+
+```
+[DEBUG] Registering initializer 'initialize1'
+[DEBUG] Registering initializer 'initialize2'
+....
+[DEBUG] Executing initializer 'initialize1' from 'build'
+[DEBUG] Executing initializer 'initialize2' from 'build'
+```
+
 ### Project Attributes
 Project attributes are values that describe a project. Unlike the properties below, they are not used
 to configure plugins but rather to describe the project. Each project has several default attributes
