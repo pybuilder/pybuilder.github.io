@@ -73,7 +73,7 @@ Tasks found for project "test":
 
 
 ### Dependencies
-Dependencies between tasks is easy. You can use the `depends` decorator to express that a task requires another one to run.
+Dependencies between tasks is easy. You can use the `depends` and `dependent` decorators to express that a task requires another one to run.
 In the following example we create a task *foo*, which depends on the successful execution of task *bar*.
 
 {% highlight python %}
@@ -90,6 +90,22 @@ def bar():
 {% endhighlight %}
 
 Now every time the task *foo* is run, *PyBuilder* will ensure that *bar* will have run first.
+
+The same result could be obtained with `dependent` decorator:
+
+{% highlight python %}
+from pybuilder.core import task, dependent
+
+@task
+def foo():
+    pass
+
+@task
+@dependent("foo")
+def bar():
+    pass
+{% endhighlight %}
+
 Dependencies on more than one task are expressed by increasing the arity of the depends decorator like so :
 
 {% highlight python %}
