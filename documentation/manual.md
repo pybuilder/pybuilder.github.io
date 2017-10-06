@@ -111,6 +111,20 @@ def initialize(project):
     pass
 </code></pre>
 
+`pyb` command apply project option `-E <environment>, --environment=<environment>`
+which could be used to define environment specific initializers.
+
+<pre><code>
+from pybuilder.core import init
+@init(environments="dev")
+def initialize_dev_env(project):
+    pass
+</code></pre>
+
+So initializer `initialize_dev_env` will be called only if `pyb` is called with project option `--environment=dev`.
+
+Project option `-E <environment>, --environment=<environment>` can be used multiple time.
+
 ### Project Attributes
 Project attributes are values that describe a project. Unlike the properties below, they are not used
 to configure plugins but rather to describe the project. Each project has several default attributes
