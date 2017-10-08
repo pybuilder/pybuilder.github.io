@@ -111,6 +111,29 @@ def initialize(project):
     pass
 </code></pre>
 
+Pybuilder always collects and calls initilizers from `build.py` sorted by alphabetical order.
+This fact could be used for initilizers managing.
+
+<pre><code>
+from pybuilder.core import init
+
+@init
+def initialize2(project):
+    pass
+    
+@init
+def initialize1(project):
+    pass
+</code></pre>
+
+```
+[DEBUG] Registering initializer 'initialize1'
+[DEBUG] Registering initializer 'initialize2'
+....
+[DEBUG] Executing initializer 'initialize1' from 'build'
+[DEBUG] Executing initializer 'initialize2' from 'build'
+```
+
 `pyb` command apply project option `-E <environment>, --environment=<environment>`
 which could be used to define environment specific initializers.
 
