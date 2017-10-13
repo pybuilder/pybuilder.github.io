@@ -92,6 +92,20 @@ Use the ```python.coverage``` module to activate coverage.
     <td>70</td>
     <td>Warn if the overall coverage drops below this threshold.</td>
   </tr>
+  
+  <tr>
+    <td>coverage_branch_threshold_warn</td>
+    <td>integer</td>
+    <td>0</td>
+    <td>Warn if the branch coverage drops below this threshold.</td>
+  </tr>
+  
+  <tr>
+    <td>coverage_branch_partial_threshold_warn</td>
+    <td>integer</td>
+    <td>0</td>
+    <td>Warn if the branch partial coverage drops below this threshold.</td>
+  </tr>
 
   <tr>
     <td>coverage_break_build</td>
@@ -99,19 +113,19 @@ Use the ```python.coverage``` module to activate coverage.
     <td>True</td>
     <td>Break the build (i.e. fail it) if the coverage is below the given threshold.</td>
   </tr>
-
+  
   <tr>
-    <td>coverage_reload_modules</td>
+    <td>coverage_allow_non_imported_modules</td>
     <td>bool</td>
     <td>True</td>
-    <td>Reload modules during coverage to also count definition lines.</td>
-  </tr>
+    <td>Allow modules which were not imported by the covered tests.</td>
+  </tr>  
 
   <tr>
-    <td>coverage_fork</td>
+    <td>coverage_reset_modules</td>
     <td>bool</td>
     <td>False</td>
-    <td>Run coverage in a different process.</td>
+    <td>Reset imported modules before coverage.</td>
   </tr>
 
   <tr>
@@ -121,6 +135,8 @@ Use the ```python.coverage``` module to activate coverage.
     <td>List of package names to exclude from coverage analyzation.</td>
   </tr>
 </table>
+
+Please note that properties `coverage_reload_modules` and `coverage_fork` are deprecated and will not be used.
 
 ### SonarQube integration
 
