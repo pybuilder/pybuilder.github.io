@@ -151,7 +151,15 @@ Project option `-E <environment>, --environment=<environment>` can be used multi
 ### Project Attributes
 Project attributes are values that describe a project. Unlike the properties below, they are not used
 to configure plugins but rather to describe the project. Each project has several default attributes
-like `version` and `license`. These can be set from within an initializer:
+like `version` and `license`. These can be set in the `build.py`:
+
+<pre><code>
+name = "myproject"
+version = "0.1.14"
+</code></pre>
+
+ 
+Or from within an initializer:
 
 <pre><code>@init
 def initialize(project):
@@ -162,6 +170,12 @@ A project's attributes affect the build in a variety of ways. For instance the `
 is used when generating a setuptools script to correctly fill the metadata fields.
 A notable use case for project attributes is replacing placeholder values in source files
 at build-time with the [filter_resources plugin](/documentation/plugins.html#Filteringfiles).
+
+### Project Version Attribute
+The `version` has to be specified by PEP-440.
+Additionally, *PyBuilder* provides *Apache Maven* logic for versions with suffix `.dev` by adding 
+generated timestamp label after that which guarantees unique increasing version of distribution.
+For example, project with version `0.1.14.dev` will be built with version `0.1.14.dev20171004032551`.   
 
 ### Project Properties
 A property is identified by a key (the *name* of the property, which is a string) and has a value.
