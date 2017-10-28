@@ -5,6 +5,14 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.11.11
+
+* FINAL VERSION TO SUPPORT PYTHON 2.6/3.3
+* Final 0.11.x release [#505](https://github.com/pybuilder/pybuilder/issues/505)
+* using / as path separator in setup.py [#488](https://github.com/pybuilder/pybuilder/issues/488)
+* Move setuptools to 35.x [#478](https://github.com/pybuilder/pybuilder/issues/478)
+* Update setuptools to ~=34.0 [#465](https://github.com/pybuilder/pybuilder/issues/465)
+
 ## Version 0.11.10
 
 * Allow obsoleting packages with "obsoletes" [#456](https://github.com/pybuilder/pybuilder/issues/456)
