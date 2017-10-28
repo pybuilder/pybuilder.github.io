@@ -19,6 +19,11 @@ Please read the documentation of each plugin to get more information on plugin t
 * [pybuilder_header_plugin](https://github.com/cowst/pybuilder_header_plugin) - ensure all your source files have the expected file header
 * [pybuilder_smart_copy_resources](https://github.com/margru/pybuilder-smart-copy-resources) - copy additional files into various destinations
 * [pybuilder_pytest](https://github.com/AlexeySanko/pybuilder_pytest) - use pytest Python module for running unittests
+* [pybuilder_pytest_coverage](https://github.com/AlexeySanko/pybuilder_pytest_coverage) - adds pytest-cov for coverage measure for pybuilder_pytest plugin
+* [pybuilder_read_profile_properties](https://github.com/AlexeySanko/pybuilder_read_profile_properties) - provides possibility to read project properties from YAML file according profile
+* [pybuilder_cram_console_scripts](https://github.com/AlexeySanko/pybuilder_cram_console_scripts) - extends PyBuilder Cram plugin with console scripts based on distutils plugin properties
+* [pybuilder_pypi_server](https://github.com/AlexeySanko/pybuilder_pypi_server) - provides project property pypi_server for pypi repository name from .pipyrc file and uses this property for assignment distutils_upload_repository and install_dependencies_index_url properties
+* [pybuilder_semver_git_tag](https://github.com/AlexeySanko/pybuilder_semver_git_tag) - provides dynamic project version based on SemVer git tag
 
 ## Pybuilder external plugin demo
 
