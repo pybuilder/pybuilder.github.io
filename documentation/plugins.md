@@ -754,6 +754,13 @@ def initialize (project):
     <td>sdist, bdist_dump</td>
     <td>Commands to execute using the generated <code>setup.py</code> script during <code>publish</code></td>
   </tr>
+  
+  <tr>
+    <td>distutils_command_options</td>
+    <td>dictionary</td>
+    <td>None</td>
+    <td>Additional options for <code>distutils_commands</code> values. Has to be provided as dictionary of <code>key:value</code> pairs where <code>key</code> is <code>distutils_commands</code> list value and <code>value</code> is list of additional parameters for this <code>distutils_commands</code> command.</td>
+  </tr>
 
   <tr>
     <td>distutils_classifiers</td>
@@ -790,6 +797,48 @@ def initialize (project):
     <td>True</td>
     <td>Use setuptools instead of distutils</td>
   </tr>
+  
+  <tr>
+    <td>distutils_readme_description</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Get <code>description</code> and <code>summary</code> project properties from readme file</td>
+  </tr>
+  
+  <tr>
+    <td>distutils_readme_file</td>
+    <td>string</td>
+    <td>README.md</td>
+    <td>Relative path of readme file for <code>distutils_readme_description</code> property</td>
+  </tr>
+  
+  <tr>
+    <td>distutils_description_overwrite</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Overwrite <code>description</code> and <code>summary</code> project properties if even set</td>
+  </tr>
+  
+  <tr>
+    <td>distutils_console_scripts</td>
+    <td>list of strings</td>
+    <td>None</td>
+    <td>Array of console scripts for <code>entry_points</code> argument into <code>setup.py</code> file. Cannot be used with <code>distutils_entry_points</code></td>
+  </tr>
+  
+  <tr>
+    <td>distutils_entry_points</td>
+    <td>dictionary</td>
+    <td>None</td>
+    <td>Entry points for <code>entry_points</code> argument into <code>setup.py</code> file. Could include <code>console_scripts</code> section. Cannot be used with <code>distutils_console_scripts</code></td>
+  </tr>
+  
+  <tr>
+    <td>distutils_setup_keywords</td>
+    <td>list of strings or string</td>
+    <td>None</td>
+    <td>Setup keywords for <code>setup_keywords</code> argument into <code>setup.py</code> file.</td>
+  </tr>
 
   <tr>
     <td>distutils_issue8876_workaround_enabled</td>
@@ -799,12 +848,45 @@ def initialize (project):
   </tr>
 </table>
 
+Each `distutils_commands` is called individually with `clean --all` parameter.
+The reason that `clean --all` is used is to ensure that if PyBuilder is generating multiple packages (`bdist_wheel` vs `dumb` vs `bdist`) that the `build/` directory doesn't cross-contaminate the builds. Some use absolute paths, some use relative.
+
 <div class="alert alert-warning alert-dismissable">
   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
   <h4>VirtualBox pitfall with binary dists</h4>
 If you build your project on a shared filesystem (e.G. with vagrant/Virtualbox virtualization) then distutils is unable to build a binary distribution <a href="http://bugs.python.org/issue8876">due to a python stdlib bug</a>.
 Setting the property <code>distutils_issue8876_workaround_enabled</code> to True (off by default) will work around this for you.
 </div>
+
+#### Distutils property examples
+
+##### distutils_command_options
+
+```
+project.set_property('distutils_commands', 'build')
+project.set_property('distutils_command_options',
+                     {'build': ('-e', '/opt/python2.7/bin/python', 'bdist_wheel')})
+```
+
+##### distutils_console_scripts
+
+```
+project.set_property('distutils_console_scripts', [
+    "some_console1 = some_module1:some_function1",
+    "some_console2 = some_package.some_module2:some_function2"])
+```
+
+##### distutils_entry_points
+
+```
+project.set_property('distutils_entry_points', {
+    'console_scripts': [
+        "some_console1 = some_module1:some_function1",
+        "some_console2 = some_package.some_module2:some_function2"],
+    'some.entry.point': [
+        'value1 = some_module3:some_function3',
+        'value2 = some_module4:some_function4']})
+```
 
 ### Copying resources into a distribution
 
