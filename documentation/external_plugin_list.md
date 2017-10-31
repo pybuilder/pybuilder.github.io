@@ -25,6 +25,7 @@ Please read the documentation of each plugin to get more information on plugin t
 * [pybuilder_pypi_server](https://github.com/AlexeySanko/pybuilder_pypi_server) - provides project property pypi_server for pypi repository name from .pipyrc file and uses this property for assignment distutils_upload_repository and install_dependencies_index_url properties
 * [pybuilder_semver_git_tag](https://github.com/AlexeySanko/pybuilder_semver_git_tag) - provides dynamic project version based on SemVer git tag
 * [pybuilder_aws_plugin](https://github.com/immobilienscout24/pybuilder_aws_plugin) - handle AWS functionality
+* [pybuilder_pylint_extended](https://github.com/AlexeySanko/pybuilder_pylint_extended) - provides Pylint tool usage with extended properties (has behaviour as flake8 plugin)
 
 ## Pybuilder external plugin demo
 
