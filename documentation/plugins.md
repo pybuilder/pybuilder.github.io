@@ -921,7 +921,7 @@ The `copy_resources` plugin will do this for you at build-time.
 ### Filtering files
 
 With the `filter_resources` plugin, it is possible to replace placeholder values of type `${version}` with actual values at build-time.
-The actual values are attributes of the `project` object, so `${version}` will be replaced with the value of `project.version`.
+The actual values are the attributes and the properties dict of the `project` object. So `${version}` will be replaced with the value of `project.version` and `${some_property}` by `project.get_property('some_property')`.
 In order to make resource filtering explicit, all files that go through filtering need to be specified with a glob.
 
 #### Filter resources configuration
