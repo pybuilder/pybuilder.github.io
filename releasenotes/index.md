@@ -5,6 +5,14 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 # Release Notes
 
+## Version 0.11.13
+
+* Implement PyBuilder access to git describe [#565](https://github.com/pybuilder/pybuilder/pull/565)
+
+## Version 0.11.12
+
+* Fix for #523 for the 0.11 branch [#527](https://github.com/pybuilder/pybuilder/pull/527)
+
 ## Version 0.11.11
 
 * FINAL VERSION TO SUPPORT PYTHON 2.6/3.3
