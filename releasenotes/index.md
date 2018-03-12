@@ -7,7 +7,7 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 
 ## Version 0.11.14
 
-* Better Windows support [#568](https://github.com/pybuilder/pybuilder/pull/568))
+* Better Windows support [#568](https://github.com/pybuilder/pybuilder/pull/568)
 
 ## Version 0.11.13
 
