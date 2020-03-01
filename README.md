@@ -2,8 +2,7 @@
 
 This project contains the documentation of [PyBuilder](https://github.com/pybuilder/pybuilder).
 
-Please visit [pybuilder.github.io](http://pybuilder.github.io).
-
+Please visit [pybuilder.github.io](https://pybuilder.github.io).
 
 ## Contributing
 

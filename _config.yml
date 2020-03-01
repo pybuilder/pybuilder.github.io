@@ -3,3 +3,6 @@ lsi: false
 highlighter: rouge
 permalink: /:categories/:title.html
 markdown: kramdown
+
+plugins:
+  - jekyll-sitemap

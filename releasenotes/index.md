@@ -4,6 +4,33 @@ title: pybuilder - an extensible, easy to use continuous build tool for Python
 ---
 
 # Release Notes
+## Version 0.12.0 (Unreleased)
+
+Version 0.12.0 is a major release bringing a large number of backwards-compatible changes to the PyBuilder:
+
+### Fundamental Infrastructure
+
+* PyBuilder no longer has any direct dependencies and therefore doesn't polute the Python environment it is installed in.
+* The following projects were internally vendored into PyBuilder:
+  * setuptools
+  * virtualenv
+  * tailer
+  * tblib
+* PyBuilder now uses multiple tiers of virtual environments (`venvs`) to provide dependency isolation for PyBuilder
+and for different stages of the build process. The venvs are programmatically available to the plugins via 
+`Reactor` and are structured as follows:
+  * **system** - the environment that launched the PyBuilder. Currently it is used as a seed environment for all of the
+  following:
+    * **pybuilder** - this is a `venv` that is created internally inside PyBuilder reactor during the initialization 
+    process and is located in the `$basedir/.pybuilder/plugins/<python version name>`. `<python version name>` is 
+    derived from the system `venv` type and version, e.g.:
+      * cpython-3.8.1.final.0
+      * pypy-2.7.13.final.42
+    
+      **pybuilder** is used to install remote plugins and plugin dependencies used by the build project and hosts all 
+      the plugin dependencies and 
+    * `python.core` plugin is `**build** - `venv` installed 
+
 
 ## Version 0.11.14
 

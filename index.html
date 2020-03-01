@@ -3,54 +3,54 @@ layout: default
 title: PyBuilder an easy to use continuous build tool for Python
 ---
 <div class="jumbotron hero">
-  <h1>
-    PyBuilder
-    <small>Build automation for python</small>
-  </h1>
+    <h1>
+        PyBuilder
+        <small>Build automation for python</small>
+    </h1>
 </div>
 
 <div class="row">
-  <div class="col-md-6">
-    <h2>
-      <span class="glyphicon glyphicon glyphicon-bullhorn" style="color: gray"></span>
-      PyBuilder
-    </h2>
-    {% capture claim %}{% include content/claim.md %}{% endcapture %}
-    {{ claim | markdownify }}
-    <p>
-      <a href="https://github.com/pybuilder/pybuilder" class="btn btn-primary btn-lg">
-        100% <strong>Open Source</strong>
-        &raquo;
-      </a>
-    </p>
-  </div>
-  <div class="col-md-6">
-    <h2>
-      <span class="glyphicon glyphicon-flash" style="color: gold"></span>
-      New: Sublime Text 3 plugin!
-    </h2>
-    <a href="https://packagecontrol.io/packages/PyBuilder">
-      <img class="img-responsive img-rounded" alt="Screenshot of sublime_pybuilder" src="/img/sublime_pybuilder.gif"/>
-    </a>
-  </div>
+    <div class="col-md-6">
+        <h2>
+            <span class="glyphicon glyphicon glyphicon-bullhorn" style="color: gray"></span>
+            PyBuilder
+        </h2>
+        {% capture claim %}{% include content/claim.md %}{% endcapture %}
+        {{ claim | markdownify }}
+        <p>
+            <a href="https://github.com/pybuilder/pybuilder" class="btn btn-primary btn-lg">
+                100% <strong>Open Source</strong> &raquo;
+            </a>
+        </p>
+    </div>
+    <div class="col-md-6">
+        <h2>
+            <span class="glyphicon glyphicon-flash" style="color: gold"></span>
+            New: Sublime Text 3 plugin!
+        </h2>
+        <a href="https://packagecontrol.io/packages/PyBuilder">
+            <img class="img-responsive img-rounded" alt="Screenshot of sublime_pybuilder"
+                 src="/img/sublime_pybuilder.gif"/>
+        </a>
+    </div>
 </div>
 
 <div class="row">
-  <div class="col-md-12">
-    <h2>
-      <span class="glyphicon glyphicon-wrench" style="color: steelblue"></span>
-      Get started
-    </h2>
-    <ul class="tabs" data-persist="true">
-      <li>
-        <a href="#startproject">New project</a>
-      </li>
-      <li>
-        <a href="#checkoutbuild">Existing project</a>
-      </li>
-    </ul>
-    <div class="tabcontents">
-      <div id="startproject">
+    <div class="col-md-12">
+        <h2>
+            <span class="glyphicon glyphicon-wrench" style="color: steelblue"></span>
+            Get started
+        </h2>
+        <ul class="tabs" data-persist="true">
+            <li>
+                <a href="#startproject">New project</a>
+            </li>
+            <li>
+                <a href="#checkoutbuild">Existing project</a>
+            </li>
+        </ul>
+        <div class="tabcontents">
+            <div id="startproject">
         <pre><code>
   #!/bin/sh
 
@@ -62,8 +62,8 @@ title: PyBuilder an easy to use continuous build tool for Python
   pyb install_dependencies publish
 
   </code></pre>
-      </div>
-      <div id="checkoutbuild">
+            </div>
+            <div id="checkoutbuild">
         <pre><code>
   git clone https://github.com/twentybn/GulpIO
   cd GulpIO
@@ -74,103 +74,106 @@ title: PyBuilder an easy to use continuous build tool for Python
   pyb
 
   </code></pre>
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <div class="row">
-  <div class="col-md-6">
-    <h2>
-      <span class="glyphicon glyphicon-cloud-download" style="color: lightblue"></span>
-      Install PyBuilder
-    </h2>
-    <p>
-      <div align="left"> <em>PyBuilder</em>
-        is available on
-        <a href="https://pypi.python.org/pypi/pybuilder">PyPI</a>
-      </div>
-    </p>
-    <pre><code>pip install pybuilder</code></pre>
-    <p>
-      We recommend using <em>virtualenv</em>
-      .
-    Please see the
-      <a href="/documentation/installation.html">dedicated installation page</a>
-      .
-    </p>
-  </div>
-  <div class="col-md-6">
+    <div class="col-md-6">
+        <h2>
+            <span class="glyphicon glyphicon-cloud-download" style="color: lightblue"></span>
+            Install PyBuilder
+        </h2>
+        <p>
+        <div align="left"><em>PyBuilder</em>
+            is available on <a href="https://pypi.org/project/pybuilder/">PyPI</a>
+        </div>
+        </p>
+        <pre><code>pip install pybuilder</code></pre>
+        <p>
+            We recommend using <em>virtualenv</em>.
+            Please see the <a href="/documentation/installation.html">dedicated installation page</a>.
+        </p>
+    </div>
+    <div class="col-md-6">
 
-    <h2>
-      <span class="glyphicon glyphicon-book" style="color: brown"></span>
-      Read the tutorial
-    </h2>
-    <p>
-      The tutorial shows you how to get started using
-      <em>PyBuilder</em>
-      for your Python project including unittests, coverage and distutils.
-    </p>
-    <a class="btn btn-primary btn-small" href="/documentation/tutorial.html">Tutorial &raquo;</a>
-    <a class="btn btn-primary btn-small" href="https://www.youtube.com/watch?v=iQU18hAjux4">Watch the EuroPython video &raquo;</a>
-  </div>
+        <h2>
+            <span class="glyphicon glyphicon-book" style="color: brown"></span>
+            Read the tutorial
+        </h2>
+        <p>
+            The tutorial shows you how to get started using
+            <em>PyBuilder</em>
+            for your Python project including unittests, coverage and distutils.
+        </p>
+        <a class="btn btn-primary btn-small" href="/documentation/tutorial.html">Tutorial &raquo;</a>
+        <a class="btn btn-primary btn-small" href="https://www.youtube.com/watch?v=iQU18hAjux4">Watch the EuroPython
+            video &raquo;</a>
+    </div>
 </div>
 
 <hr>
 
 <div class="row">
 
-  <div class="col-md-4">
+    <div class="col-md-4">
 
-    <h2>
-      <span class="glyphicon glyphicon-star"  style="color: gold"></span>
-      Open Source
-    </h2>
-    <em>PyBuilder</em>
-    is licensed under
-    <a href="https://github.com/pybuilder/pybuilder/blob/master/LICENSE">Apache 2.0 License</a>
-    and hosted on
-    <a href="https://github.com/pybuilder/pybuilder">github.com/pybuilder/pybuilder</a>
-    .
-    <br/>
-    <br/>
-    <iframe src="http://ghbtns.com/github-btn.html?user=pybuilder&repo=pybuilder&type=watch&size=large&count=true"
-            allowtransparency="true"
-            frameborder="0"
-            scrolling="0"
-            width="200"
-            height="30"></iframe>
-  </div>
+        <h2>
+            <span class="glyphicon glyphicon-star" style="color: gold"></span>
+            Open Source
+        </h2>
+        <em>PyBuilder</em>
+        is licensed under
+        <a href="https://github.com/pybuilder/pybuilder/blob/master/LICENSE">Apache 2.0 License</a>
+        and hosted on
+        <a href="https://github.com/pybuilder/pybuilder">github.com/pybuilder/pybuilder</a>
+        .
+        <br/>
+        <br/>
+        <iframe src="https://ghbtns.com/github-btn.html?user=pybuilder&repo=pybuilder&type=watch&count=true&size=large"
+                frameborder="0"
+                scrolling="0"
+                width="160"
+                height="30"></iframe>
+        <iframe src="https://ghbtns.com/github-btn.html?user=pybuilder&repo=pybuilder&type=fork&count=true&size=large"
+                frameborder="0" scrolling="0" width="158px" height="30px"></iframe>
+    </div>
 
-  <div class="col-md-4">
-    <h2>
-      <span class="glyphicon glyphicon-check" style="color: green"></span>
-      Compatible
-    </h2>
+    <div class="col-md-4">
+        <h2>
+            <span class="glyphicon glyphicon-check" style="color: green"></span>
+            Compatible
+        </h2>
 
-    <p>
-      <em>PyBuilder</em>
-      supports
-      <a href="/documentation/plugins.html">many tools</a>
-      typically used when building a Python application, such as unittest, coverage,
-    pychecker, pylint and setuptools.
-    </p>
-  </div>
+        <p>
+            <em>PyBuilder</em>
+            supports
+            <a href="/documentation/plugins.html">many tools</a>
+            typically used when building a Python application, such as unittest, coverage,
+            pychecker, pylint and setuptools.
+        </p>
+    </div>
 
-  <div class="col-md-4">
-    <h2>
-      <span class="glyphicon glyphicon-flag" style="color: orange"></span>
-      Runs on Python 2 / 3
-    </h2>
+    <div class="col-md-4">
+        <h2>
+            <span class="glyphicon glyphicon-flag" style="color: orange"></span>
+            Runs on Python 2 / 3
+        </h2>
 
-    <p>
-      <em>PyBuilder</em>
-      runs on Python <strong>2.7 to 3.6 and PyPy</strong>
-      . Every commit is tested on versions 2.7, 3.3, 3.4, 3.5, 3.6 and PyPy on
-      Travis-CI. (v0.11.x still supports Python 2.6)
-    </p>
-    <a href="http://travis-ci.org/#!/pybuilder/pybuilder">
-      <img src="https://secure.travis-ci.org/pybuilder/pybuilder.png?branch=master"/>
-    </a>
-  </div>
+        <p>
+            <em>PyBuilder</em> runs on Python <strong>2.7 to 3.8 and PyPy</strong>.
+            Every commit is tested on CPython v2.7, 3.5, 3.6, 3.7, 3.8 and PyPy on
+            <a href="https://travis-ci.org/pybuilder/pybuilder/">Travis CI</a> on Linux, OSX and Windows.
+        </p>
+        <p>
+            v0.11.x still supports Python 2.6, 3.3 and 3.4 but is no longer maintained.
+        </p>
+        <a href="https://travis-ci.org/pybuilder/pybuilder/">
+            <img src="https://travis-ci.org/pybuilder/pybuilder.svg?branch=master"/>
+        </a>
+        <a href="https://coveralls.io/github/pybuilder/pybuilder">
+            <img src="https://coveralls.io/repos/pybuilder/pybuilder/badge.svg?branch=master">
+        </a>
+    </div>
 </div>
