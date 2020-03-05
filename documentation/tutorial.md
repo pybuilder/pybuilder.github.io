@@ -1,6 +1,6 @@
 ---
 layout: documentation
-title: PyBuilder Tutorial
+title: Tutorial
 ---
 
 # Tutorial

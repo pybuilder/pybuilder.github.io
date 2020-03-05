@@ -1,6 +1,6 @@
 ---
 layout: documentation
-title: PyBuilder Usage Documentation
+title: Usage Documentation
 ---
 
 # Writing a plugin

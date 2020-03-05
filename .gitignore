@@ -2,6 +2,7 @@
 .idea
 
 # jekyll files
+.jekyll-cache
 _site
 *~
 build

@@ -7,62 +7,103 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand pybuilder-brand" href="/">PyBuilder</a>
+            <a class="navbar-brand pybuilder-brand dropdown" href="/" title="PyBuilder">
+                <img src="/img/logo_brand.png"/></a>
         </div>
 
         <div class="collapse navbar-collapse" id="hdr-nb-collapse">
             <ul class="nav navbar-nav">
-                <li>
-                    <a href="/documentation/tutorial.html">Tutorial</a>
+                <li class="dropdown">
+                    <a href="/" title="PyBuilder">PyBuilder</a>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        User Documentation <b class="caret"></b>
-                    </a>
+                    <a href="/about.html" title="About">About</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/news/" title="News">News</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Documentation <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li>
-                            <a href="/documentation/installation.html">Installation</a>
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">User Documentation <b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/documentation/installation.html">Installation</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/examples.html">Examples</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/manual.html">Manual</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/plugins.html">Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/external-plugin-list.html">External plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/ide.html">IDE integration</a>
+                                </li>
+                            </ul>
                         </li>
-                        <li>
-                            <a href="/documentation/manual.html">Manual</a>
-                        </li>
-                        <li>
-                            <a href="/documentation/plugins.html">Plugins</a>
-                        </li>
-                        <li>
-                            <a href="/documentation/external_plugin_list.html">External plugins</a>
-                        </li>
-                        <li>
-                            <a href="/documentation/ide.html">IDE integration</a>
-                        </li>
-                        <li>
-                            <a href="/releasenotes/">Release notes</a>
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">Developer Documentation <b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/documentation/writing-plugins.html">Writing Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/developing-pybuilder.html">Developing PyBuilder</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/publishing-plugins.html">Publishing Your Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/api/">API</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        Developer Documentation <b class="caret"></b>
-                    </a>
+                    <a href="#" class="dropdown-toggle">Releases <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li>
-                            <a href="/documentation/writing_plugins.html">Writing plugins</a>
+                        <li class="dropdown-submenu">
+                            <a href="/release-notes/" class="dropdown-item dropdown-toggle">Release Notes
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/release-notes/v0.12.x.html">Versions 0.12.x (Current)</a>
+                                </li>
+                                <li>
+                                    <a href="/release-notes/v0.11.x.html">Versions 0.11.x</a>
+                                </li>
+                                <li>
+                                    <a href="/release-notes/v0.10.x.html">Versions 0.10.x</a>
+                                </li>
+                                <li>
+                                    <a href="/release-notes/archived.html">Archived Versions</a>
+                                </li>
+                            </ul>
                         </li>
-                        <li>
-                            <a href="/documentation/developing_pybuilder.html">Developing PyBuilder</a>
-                        </li>
-                        <li>
-                            <a href="/documentation/external_plugins.html">Publishing your plugins</a>
-                        </li>
-                        <li>
-                            <a href="/documentation/api/">API</a>
+                        <li class="dropdown-submenu">
+                            <a href="/migration-guides/" class="dropdown-item dropdown-toggle">Migration Guides
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/migration-guides/v0.11.x-v0.12.0.html">Migrating from 0.11.x to 0.12.0</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="/documentation/examples.html">Examples</a>
-                </li>
-            </ul>
+
             </ul>
         </div>
     </div>

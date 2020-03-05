@@ -16,10 +16,6 @@ footer div.container div.row a {
     padding: 20px;
 }
 
-.tocify {
-    background-color: white;
-}
-
 .hero {
     text-align: center;
     background: rgb(255,255,255); /* Old browsers */
@@ -40,4 +36,41 @@ div.hero h1 {
 
 div.hero h1 small{
     font-size: 30%;
+}
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu a::after {
+  transform: rotate(-90deg);
+  position: absolute;
+  right: 6px;
+  top: .8em;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-left: .1rem;
+  margin-right: .1rem;
+}
+
+.navbar-brand>img {
+  height: 100%;
+  width: auto;
+}
+
+iframe {
+    vertical-align: middle;
+}
+
+.post-metadata {
+    font-size: small;
+}
+
+.post-metadata img {
+    height: 16px;
+    width: auto;
+    vertical-align:baseline;
 }

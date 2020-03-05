@@ -1,9 +1,9 @@
 ---
 layout: documentation
-title: PyBuilder Usage Documentation
+title: Developing PyBuilder
 ---
 
-# Running a full build
+# Running a Full Build
 PyBuilder is, [of course](http://en.wikipedia.org/wiki/Eating_your_own_dog_food), built with itself.
 
 This is attained through self-bootstrapping with the `build.py` file, which lies in the toplevel sources.

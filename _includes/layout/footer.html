@@ -11,16 +11,36 @@
     </div>
 </footer>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="//code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
 <script src="/js/jquery-ui-1.10.3.custom.min.js"></script>
-<script src="/js/jquery.tocify.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script src="//cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
 <script src="/js/tabcontent.js"></script>
 <script src="/js/highlight.pack.js"></script>
+
 
 <script type="text/javascript">
   $(document).ready(function() {
     $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
   });
-</script>
 
+
+</script>
+<script>
+    $(function() {
+        $(".dropdown").hover(
+            function(){ $(this).addClass('open') },
+            function(){ $(this).removeClass('open') }
+        );
+    });
+    $(function() {
+        $(".dropdown-submenu").hover(
+            function(){ $(this).addClass('open') },
+            function(){ $(this).removeClass('open') }
+        );
+    });
+</script>
