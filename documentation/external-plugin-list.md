@@ -1,6 +1,6 @@
 ---
 layout: documentation
-title: External plugin list
+title: External Plugin List
 ---
 
 # {{ page.title }}

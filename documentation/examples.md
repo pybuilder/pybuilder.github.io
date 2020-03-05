@@ -1,6 +1,6 @@
 ---
 layout: documentation
-title: Projects using PyBuilder
+title: Examples
 ---
 
 # Projects using PyBuilder
