@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
-Sitemap: {{site.url}}/sitemap.xml
-Host: www.pybuilder.io
+Sitemap: https://pybuilder.io/sitemap.xml
+Host: pybuilder.io
