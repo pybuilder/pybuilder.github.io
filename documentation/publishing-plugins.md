@@ -6,7 +6,7 @@ title: Publishing your plugins to PyPI
 # {{ page.title }}
 
 ## Developing your plugin
-Please refer to [the plugin development documentation](/documentation/writing_plugins.html) for this step.
+Please refer to [the plugin development documentation](/documentation/writing-plugins.html) for this step.
 
 As for the layout, you should create a python package (folder with an `__init__.py` inside). Your package should expose everything that PyBuilder requires from a plugin (tasks, initializers, ...) in the package top-level.
 To do this, you can either declare everything in `__init__.py`, or you can simply import those things.
@@ -48,7 +48,7 @@ use_plugin("pypi:pybuilder_external_plugin_demo")
 Note that you need to require the plugin name with underscores (as it is the name that will be imported).
 
 ## Plugin list
-If possible and desired, add your plugin to the [external plugin list](https://github.com/pybuilder/pybuilder.github.io/tree/master/documentation/external_plugin_list.md).
+If possible and desired, add your plugin to the [external plugin list](https://github.com/pybuilder/pybuilder.github.io/tree/master/documentation/external-plugin-list.md).
 
 ## TLDR
   * Prefix your package with `pybuilder_`
@@ -56,4 +56,4 @@ If possible and desired, add your plugin to the [external plugin list](https://g
   * Package has all plugin related things (tasks ...) at top-level
   * PyPI name of package is `pybuilder-*` (with dashes instead of underscores)
   * Plugin is used by prefixing the package name (underscores!) with `pypi:`
-  * Add your plugin to the [external plugin list](https://github.com/pybuilder/pybuilder.github.io/tree/master/documentation/external_plugin_list.md)
+  * Add your plugin to the [external plugin list](https://github.com/pybuilder/pybuilder.github.io/tree/master/documentation/external-plugin-list.md)
