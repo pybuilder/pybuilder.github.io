@@ -26,6 +26,10 @@ Please read the documentation of each plugin to get more information on plugin t
 * [pybuilder_semver_git_tag](https://github.com/AlexeySanko/pybuilder_semver_git_tag) - provides dynamic project version based on SemVer git tag
 * [pybuilder_aws_plugin](https://github.com/immobilienscout24/pybuilder_aws_plugin) - handle AWS functionality
 * [pybuilder_pylint_extended](https://github.com/AlexeySanko/pybuilder_pylint_extended) - provides Pylint tool usage with extended properties (has behaviour as flake8 plugin)
+* [pybuilder_pycharm_workspace](https://github.com/yeuk0/pybuilder-pycharm-workspace) - generates PyCharm metadata files to include running profiles, project interpreter config, etc. (recommended with pybuilder_archetype_base)
+* [pybuilder_archetype_base](https://github.com/yeuk0/pybuilder-archetype-base) - builds an easy project structure with some examples ready to go
+* [pybuilder_archetype_api](https://github.com/yeuk0/pybuilder-archetype-api) - adds new packages and files' examples from base structure built with pybuilder_archetype_base for a project based on web services
+
 
 ## Pybuilder external plugin demo
 
