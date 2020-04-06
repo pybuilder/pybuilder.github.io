@@ -1,0 +1,28 @@
+language: ruby
+dist: bionic
+branches:
+  only:
+    - source
+os:
+  - linux
+addons:
+  apt:
+    packages:
+      - libcurl4-openssl-dev
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/3e07f25a6c20d8c6c172
+    on_cancel:  never # default: always
+cache: bundler
+
+script: travis_wait 60 ./build.sh
+
+before-deploy: openssl aes-256-cbc -K $encrypted_c04e33ae193e_key -iv $encrypted_c04e33ae193e_iv -in deploy.key.enc -out deploy.key -d
+deploy:
+  provider: pages:git
+  edge: true
+  deploy_key: deploy.key
+  target_branch: master
+  local_dir: _site
+

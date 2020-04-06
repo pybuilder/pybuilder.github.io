@@ -17,7 +17,7 @@ list_title: Archived Versions
 * Improved resilience of the integration test plugin when running tests in parallel and there are errors in the plugin code itself.
 
 ## Version 0.9.22
-* The [integrationtest plugin](/documentation/plugins.html#RunningPythonIntegrationTests) now displays a progress bar when tests are run in parallel. The bar indicates the amount of tests that are finished, running, and not started yet. In an automated CI build environment without TTY (Jenkins, Teamcity, …) text based output is used to avoid cluttering the logs with carriage returns.
+* The [integrationtest plugin](/documentation/plugins.html#running-python-integration-tests) now displays a progress bar when tests are run in parallel. The bar indicates the amount of tests that are finished, running, and not started yet. In an automated CI build environment without TTY (Jenkins, Teamcity, …) text based output is used to avoid cluttering the logs with carriage returns.
 
 ## Version 0.9.21
 * The unittest plugin is now able to provide useful error messages
@@ -30,8 +30,8 @@ list_title: Archived Versions
 * Increased severity of the `pythonbuilder` module deprecation warning.
 
 ## Version 0.9.18
-* Added a new plugin, `python.pycharm`, [which can generate PyCharm project files](/documentation/plugins.html#ProjectfilesforJetbrainsPyCharm).
-* Added a new plugin, `python.pytddmon`, [which can be used to monitor unit tests](http://pybuilder.github.io/documentation/plugins.html#Visualfeedbackfortests)
+* Added a new plugin, `python.pycharm`, [which can generate PyCharm project files](/documentation/plugins.html#project-files-for-jetbrains-pycharm).
+* Added a new plugin, `python.pytddmon`, [which can be used to monitor unit tests](/documentation/plugins.html#visual-feedback-for-tests)
 
 ## Version 0.9.17
 * Allows the user to define a project variable "unittest_test_method_prefix" as a prefix for the unit test method names.

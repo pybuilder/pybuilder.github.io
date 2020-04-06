@@ -169,7 +169,7 @@ def initialize(project):
 A project's attributes affect the build in a variety of ways. For instance the `license` attribute
 is used when generating a setuptools script to correctly fill the metadata fields.
 A notable use case for project attributes is replacing placeholder values in source files
-at build-time with the [filter_resources plugin](/documentation/plugins.html#Filteringfiles).
+at build-time with the [filter_resources plugin](/documentation/plugins.html#filtering-files).
 
 ### Project Version Attribute
 The `version` has to be specified by PEP-440.
@@ -188,7 +188,8 @@ This is conform to the idea of _convention over configuration_.
 For instance the `unittest` plugin ships with a default property `unittest_module_glob` set to `"*_tests"`.
 If the default value does not suit you you can override it by setting the property to something else.
 
-This is done by using the `set_property` method of the [`project` object](/documentation/api/core.m.html#pybuilder.core.Project). You should do this from within an initializer like so:
+This is done by using the `set_property` method of the 
+[`project` object](#). You should do this from within an initializer like so:
 
 <pre><code>@init
 def initialize(project):

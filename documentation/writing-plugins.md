@@ -149,10 +149,10 @@ A plugin can be broken down in essentially two parts :
 
 ### Initialization
 The initialization of a plugin involves setting default configuration.
-It is done from within an [*initializer*](/documentation/manual.html#Initializers)
+It is done from within an [*initializer*](/documentation/manual.html#initializers)
 
 #### Setting defaults
-The initializer can use the project object to set [property](/documentation/manual.html#ProjectProperties) values.
+The initializer can use the project object to set [property](/documentation/manual.html#project-properties) values.
 This is suitable for defaults because the initializer of the plugin will run before any user-provided initializers in `build.py`. Thus you can set a property (the *default*) which can then be overridden by the user.
 
 Setting properties is done through the `set_property` method of project :
@@ -175,7 +175,7 @@ def mytask(project, logger):
     logger.info("The property for my plugin is {0}".format(my_property))
 {% endhighlight %}
 Properties can be of any type (usually strings, integers, booleans or lists).
-If a property is mandatory and there is no default, then `project.get_mandatory_property` is more suitable since it also raises an error in case the property is unset. See [the project API](/documentation/api/core.m.html#pybuilder.core.Project) for even more possibilities!
+If a property is mandatory and there is no default, then `project.get_mandatory_property` is more suitable since it also raises an error in case the property is unset. See [the project API](#) for even more possibilities!
 
 #### Requiring external libraries
 If the plugin requires external libraries installable through pip, the project object can be used to add this as a plugin dependency :
