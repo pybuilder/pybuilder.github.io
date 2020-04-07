@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <script async src="//www.googletagmanager.com/gtag/js?id=UA-2839506-6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-2839506-6');
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="description" content="PyBuilder is an easy-to-use build automation tool for Python"/>
+<meta name="author" content="PyBuilder Community"/>
+<meta name="keywords" content="python, continuous integration, build tool, automation, CI, CD, CI/CD"/>
+
+<link href="https://pybuilder.io/documentation/tutorial" rel="canonical"/>
+<link rel="shortcut icon" href="/favicon.ico"/>
+<link href="//fonts.googleapis.com/css?family=Oleo+Script:700" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+      integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
+<link type="text/css" rel="stylesheet" href="/css/styles.css"/>
+<link type="text/css" rel="stylesheet" href="/css/highlightjs.css"/>
+<link type="text/css" rel="stylesheet" href="/css/tabcontent.css"/>
+
+
+    <title>PyBuilder &#x2014; Tutorial</title>
+</head>
+
+<body data-spy="scroll" data-target="#toc">
+
+<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#hdr-nb-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand pybuilder-brand dropdown" href="/" title="PyBuilder">
+                <img src="/img/logo_brand.png" alt="PyBuilder Logo"/></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="hdr-nb-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="/" title="PyBuilder">PyBuilder</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/about.html" title="About">About</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/news/" title="News">News</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Documentation <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">User Documentation <b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/documentation/installation.html">Installation</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/examples.html">Examples</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/manual.html">Manual</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/plugins.html">Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/external-plugin-list.html">External plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/ide.html">IDE integration</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">Developer Documentation <b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/documentation/writing-plugins.html">Writing Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/developing-pybuilder.html">Developing PyBuilder</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/publishing-plugins.html">Publishing Your Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="#">API (Unavailable)</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Releases <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a href="/release-notes/" class="dropdown-item dropdown-toggle">Release Notes
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/release-notes/v0.12.x.html">Versions 0.12.x (Current)</a>
+                                </li>
+                                <li>
+                                    <a href="/release-notes/v0.11.x.html">Versions 0.11.x</a>
+                                </li>
+                                <li>
+                                    <a href="/release-notes/v0.10.x.html">Versions 0.10.x</a>
+                                </li>
+                                <li>
+                                    <a href="/release-notes/archived.html">Archived Versions</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a href="/migration-guides/" class="dropdown-item dropdown-toggle">Migration Guides
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/migration-guides/v0.11.x-v0.12.0.html">Migrating from 0.11.x to 0.12.0</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-7" id="content"><h1 id="tutorial">Tutorial</h1>
+
+<p>This tutorial shows you how to use <em>PyBuilder</em> to build a
+hello world program in python.</p>
+
+<h2 id="setting-up-the-stage">Setting up the stage</h2>
+
+<p><em>PyBuilder</em> is configured (or programmed) using a Python file that is named <code class="highlighter-rouge">build.py</code>. To start, create an empty
+directory <code class="highlighter-rouge">helloworld</code> as well as an empty file <code class="highlighter-rouge">build.py</code>.
+We recommend installing PyBuilder in a virtual environment :</p>
+
+<pre><code>virtualenv venv
+source venv/bin/activate
+pip install pybuilder
+</code></pre>
+
+<p>Run <code class="highlighter-rouge">pyb</code> in this directory. This is what you should get:</p>
+
+<pre>$ pyb
+
+PYBUILDER Version 0.9.17
+Build started at 2013-12-26 23:50:38
+------------------------------------------------------------
+------------------------------------------------------------
+BUILD FAILED - No default task given.
+------------------------------------------------------------
+Build finished at 2013-12-26 23:50:38
+Build took 0 seconds (1 ms)
+</pre>
+
+<p><code class="highlighter-rouge">pyb</code> is the command line interface of <em>PyBuilder</em>.</p>
+
+<h2 id="adding-python-source-files">Adding Python Source Files</h2>
+
+<p>The next step is to add a Python module that contains our sources.
+PyBuilder separates source files and expects them in different directories based on their meaning. The default
+location for main python sources is</p>
+
+<p><code class="highlighter-rouge">src/main/python</code></p>
+
+<p>This is a convention borrowed from Apache Maven. You can alter this location but in this tutorial we stick to the
+defaults. Create the directory and in there, create a file <code class="highlighter-rouge">helloworld.py</code> with the following sample code:</p>
+
+<pre><code>import sys
+
+def helloworld(out):
+    out.write("Hello world of Python\n")
+</code></pre>
+
+<p>Now we need to tell <em>PyBuilder</em> that we want to build a Python project. Fortunately, <em>PyBuilder</em> comes with a first
+class Python support, so telling it to build a Python project is dead easy. Modify your <code class="highlighter-rouge">build.py</code> as follows:</p>
+
+<pre><code>from pybuilder.core import use_plugin
+
+use_plugin("python.core")
+
+default_task = "publish"
+</code></pre>
+
+<p>Now, if you run <code class="highlighter-rouge">pyb</code> again, here is what you get:</p>
+
+<pre>$ pyb
+
+PYBUILDER Version 0.9.17
+Build started at 2013-12-26 23:53:53
+------------------------------------------------------------
+[INFO]  Building helloworld version 1.0-SNAPSHOT
+[INFO]  Executing build in /home/user/helloworld
+[INFO]  Going to execute task publish
+[INFO]  Building distribution in /home/user/helloworld/target/dist/helloworld-1.0-SNAPSHOT
+[INFO]  Copying scripts to /home/user/helloworld/target/dist/helloworld-1.0-SNAPSHOT
+------------------------------------------------------------
+BUILD SUCCESSFUL
+------------------------------------------------------------
+Build Summary
+             Project: helloworld
+             Version: 1.0-SNAPSHOT
+      Base directory: /home/user/helloworld
+        Environments:
+               Tasks: prepare [0 ms] compile_sources [0 ms] run_unit_tests [0 ms] package [1 ms] run_integration_tests [0 ms] verify [0 ms] publish [0 ms]
+Build finished at 2013-12-26 23:53:53
+Build took 0 seconds (7 ms)
+</pre>
+
+<p>Ok, now everything seems to work, but that doesn’t really help us. That’s ok, because this was just the foundation we
+are going to extend. Usually Python projects will want to deliver a runnable entry-point file - we’ll see how to do that
+in the next section.</p>
+
+<h2 id="adding-a-runnable-script">Adding a runnable script</h2>
+
+<p>Adding scripts is as simple as writing them and putting them in the directory <code class="highlighter-rouge">src/main/scripts</code>.
+Note that this path is configurable, but let us stick with the conventions here.</p>
+
+<p>We add a file <code class="highlighter-rouge">src/main/scripts/hello-pybuilder</code> with these contents :</p>
+
+<pre><code>#!/usr/bin/env python
+import sys
+
+sys.stdout.write('Hello from my script!\n')
+</code></pre>
+
+<p>Now we can run the PyBuilder again :</p>
+
+<pre>$ pyb
+
+PYBUILDER Version 0.9.17
+Build started at 2013-12-26 23:57:00
+------------------------------------------------------------
+[INFO]  Building helloworld version 1.0-SNAPSHOT
+[INFO]  Executing build in /home/user/helloworld
+[INFO]  Going to execute task publish
+[INFO]  Building distribution in /home/user/helloworld/target/dist/helloworld-1.0-SNAPSHOT
+[INFO]  Copying scripts to /home/user/helloworld/target/dist/helloworld-1.0-SNAPSHOT
+------------------------------------------------------------
+BUILD SUCCESSFUL
+------------------------------------------------------------
+Build Summary
+             Project: helloworld
+             Version: 1.0-SNAPSHOT
+      Base directory: /home/user/helloworld
+        Environments:
+               Tasks: prepare [0 ms] compile_sources [0 ms] run_unit_tests [0 ms] package [2 ms] run_integration_tests [0 ms] verify [0 ms] publish [0 ms]
+Build finished at 2013-12-26 23:57:00
+Build took 0 seconds (7 ms)
+</pre>
+
+<p>As you can see, the script was picked up. We didn’t need to fill a list with all the scripts,
+putting the file in the right place was enough.</p>
+
+<p>In the next section, we will start writing tests and integrate their execution into our build.</p>
+
+<h2 id="writing-unit-tests">Writing Unit Tests</h2>
+<p>As a next step, we want to add a unit test for our helloworld function.</p>
+
+<p>We add a file <code class="highlighter-rouge">src/unittest/python/helloworld_tests.py</code> with the following content</p>
+
+<pre><code>from mockito import mock, verify
+import unittest
+
+from helloworld import helloworld
+
+class HelloWorldTest(unittest.TestCase):
+    def test_should_issue_hello_world_message(self):
+        out = mock()
+
+        helloworld(out)
+
+        verify(out).write("Hello world of Python\n")
+</code></pre>
+
+<p>Notice that there is no black magic in the test sources. It’s just a simple
+<a href="http://docs.python.org/library/unittest.html#unittest.TestCase">unittest TestCase</a> using
+<a href="http://code.google.com/p/mockito-python/">mockito</a> to stub the call to <code class="highlighter-rouge">sys.stdout.write</code>.</p>
+
+<p>Concerning the filename it is important to notice that</p>
+<ul>
+  <li>The file must be located under <code class="highlighter-rouge">src/unittest/python</code>. This is the default and <a href="/documentation/plugins.html#python-unittest-properties">may be altered</a> but as with the main sources, we stick to the defaults.</li>
+  <li>The file must end with <code class="highlighter-rouge">_tests.py</code>. This tells <em>PyBuilder</em> to consider this file when discovering test cases. Again, <a href="/documentation/plugins.html#python-unittest-properties">this can be altered</a>, although we don’t do this.</li>
+</ul>
+
+<p>Since <code class="highlighter-rouge">mockito</code> is not part of the Python standard libraries, we have to tell <em>PyBuilder</em> that our build
+process for our project from now on depends on mockito. Therefore we adapt <code class="highlighter-rouge">build.py</code>:</p>
+
+<pre><code>from pybuilder.core import init, use_plugin
+
+use_plugin("python.core")
+use_plugin("python.install_dependencies")
+
+default_task = "publish"
+
+@init
+def initialize(project):
+    project.build_depends_on('mockito')
+</code></pre>
+
+<p>The <code class="highlighter-rouge">init</code> decorator tells <em>PyBuilder</em> that function <code class="highlighter-rouge">initialize</code> is used to initialize the project.</p>
+
+<pre>$ pyb install_dependencies
+
+PYBUILDER Version 0.9.17
+Build started at 2013-12-27 00:07:47
+------------------------------------------------------------
+[INFO]  Building helloworld version 1.0-SNAPSHOT
+[INFO]  Executing build in /home/user/helloworld
+[INFO]  Going to execute task install_dependencies
+[INFO]  Installing all dependencies
+[INFO]  Installing build dependencies
+[INFO]  Installing dependency 'mockito'
+[INFO]  Installing runtime dependencies
+------------------------------------------------------------
+BUILD SUCCESSFUL
+------------------------------------------------------------
+Build Summary
+             Project: helloworld
+             Version: 1.0-SNAPSHOT
+      Base directory: /home/user/helloworld
+        Environments:
+               Tasks: install_dependencies [19955 ms]
+Build finished at 2013-12-27 00:08:07
+Build took 19 seconds (19970 ms)
+</pre>
+
+<p>As you can see mockito has been installed. Now let’s execute our unittest.</p>
+
+<p>Now it’s time to tell <em>PyBuilder</em> to</p>
+<ul>
+  <li>execute the tests on each build</li>
+  <li>break the build (i.e. produce a failure) when a test fails.</li>
+</ul>
+
+<p>Again, it’s dead easy. Modify your <code class="highlighter-rouge">build.py</code> as follows:</p>
+
+<pre><code>from pybuilder.core import init, use_plugin
+
+use_plugin("python.core")
+use_plugin("python.unittest")
+use_plugin("python.install_dependencies")
+
+default_task = "publish"
+
+@init
+def initialize(project):
+    project.build_depends_on('mockito')
+</code></pre>
+
+<p>and run pyb again:</p>
+
+<pre>$ pyb
+
+PYBUILDER Version 0.9.17
+Build started at 2013-12-27 00:23:03
+------------------------------------------------------------
+[INFO]  Building helloworld version 1.0-SNAPSHOT
+[INFO]  Executing build in /home/user/helloworld
+[INFO]  Going to execute task publish
+[INFO]  Executing unittests in /home/user/helloworld/src/unittest/python
+[INFO]  Executed 1 unittests
+[INFO]  All unittests passed.
+[INFO]  Building distribution in /home/user/helloworld/target/dist/helloworld-1.0-SNAPSHOT
+[INFO]  Copying scripts to /home/user/helloworld/target/dist/helloworld-1.0-SNAPSHOT
+------------------------------------------------------------
+BUILD SUCCESSFUL
+------------------------------------------------------------
+Build Summary
+             Project: helloworld
+             Version: 1.0-SNAPSHOT
+      Base directory: /home/user/helloworld
+        Environments:
+               Tasks: prepare [327 ms] compile_sources [0 ms] run_unit_tests [9 ms] package [6 ms] run_integration_tests [0 ms] verify [0 ms] publish [0 ms]
+Build finished at 2013-12-27 00:23:03
+Build took 0 seconds (365 ms)
+</pre>
+
+<p><em>PyBuilder</em> executed the test case. Now let’s see what happens, when we force the test to fail.</p>
+
+<p>Modify the test case to verify the call to <code class="highlighter-rouge">sys.stdout</code> for a string that is never written and run pyb again.</p>
+
+<pre>$ pyb
+
+PYBUILDER Version 0.9.17
+Build started at 2013-12-27 00:25:00
+------------------------------------------------------------
+[INFO]  Building helloworld version 1.0-SNAPSHOT
+[INFO]  Executing build in /home/user/helloworld
+[INFO]  Going to execute task publish
+[INFO]  Executing unittests in /home/user/helloworld/src/unittest/python
+[INFO]  Executed 1 unittests
+[ERROR] Test failed: helloworld_tests.HelloWorldTest.test_should_issue_hello_world_message
+------------------------------------------------------------
+BUILD FAILED - There were test errors.
+------------------------------------------------------------
+Build finished at 2013-12-27 00:25:01
+Build took 0 seconds (271 ms)
+</pre>
+
+<p>The build failed because there were test errors. How do we get to know which test failed and why?</p>
+
+<p><em>PyBuilder</em> writes reports along each build to capture all the output produced by all the tools it uses, including the
+unittest framework.</p>
+
+<p>Have a look at the file <code class="highlighter-rouge">target/reports/unittest</code>. It contains all the output written during the execution of the
+tests.</p>
+
+<p>Again <code class="highlighter-rouge">target</code> as well as <code class="highlighter-rouge">reports</code> are configurable but we won’t change them here.</p>
+
+<p>The command line interface <code class="highlighter-rouge">pyb</code> also provides a verbose option <code class="highlighter-rouge">-v</code>.</p>
+
+<pre>$ pyb -v
+
+PYBUILDER Version 0.9.17
+Build started at 2013-12-27 00:26:39
+------------------------------------------------------------
+[INFO]  Building helloworld version 1.0-SNAPSHOT
+[INFO]  Executing build in /home/user/helloworld
+[INFO]  Going to execute task publish
+[INFO]  Executing unittests in /home/user/helloworld/src/unittest/python
+[INFO]  Executed 1 unittests
+[ERROR] Test failed: helloworld_tests.HelloWorldTest.test_should_issue_hello_world_message
+Traceback (most recent call last):
+  File "/home/user/helloworld/src/unittest/python/helloworld_tests.py", line 12, in test_should_issue_hello_world_message
+    verify(out).write("Hello world of Python!\n")
+  File "/home/user/helloworld/venv/local/lib/python2.7/site-packages/mockito/invocation.py", line 111, in __call__
+    verification.verify(self, len(matched_invocations))
+  File "/home/user/helloworld/venv/local/lib/python2.7/site-packages/mockito/verification.py", line 63, in verify
+    raise VerificationError("\nWanted but not invoked: %s" % (invocation))
+VerificationError:
+Wanted but not invoked: write('foo bar spam eggs\n')
+
+------------------------------------------------------------
+BUILD FAILED - There were test errors.
+------------------------------------------------------------
+Build finished at 2013-12-27 00:26:39
+Build took 0 seconds (325 ms)
+</pre>
+
+<h2 id="measuring-test-coverage">Measuring Test Coverage</h2>
+
+<p>When writing tests, it is important to know which parts if of the code are covered by automatic tests and which aren’t.
+For Python, there exists a bunch of tools to calculate the coverage. One of these tools that is integrated with
+<em>PyBuilder</em> is <a href="http://nedbatchelder.com/code/coverage/">coverage</a>. Python-Coverage measures the line coverage
+(as opposed to branch coverage).</p>
+
+<p>To execute python coverage during the execution of unit tests and analyze the results, all you need to do is use a plugin.</p>
+
+<p>Modify your <code class="highlighter-rouge">build.py</code> again:</p>
+
+<pre><code>from pybuilder.core import init, use_plugin
+
+use_plugin("python.core")
+use_plugin("python.unittest")
+use_plugin("python.coverage")
+use_plugin("python.install_dependencies")
+
+default_task = "publish"
+
+@init
+def initialize(project):
+    project.build_depends_on('mockito')
+</code></pre>
+
+<p>The <code class="highlighter-rouge">python.coverage</code> plugin uses Ned Blatchers coverage.py to determine the test coverage. Ensure that it will be
+installed into your virtual environment by running <code class="highlighter-rouge">pyb install_dependencies</code> again. After that run pyb again:</p>
+
+<pre>$ pyb
+
+PYBUILDER Version 0.9.17
+Build started at 2013-12-27 00:35:35
+------------------------------------------------------------
+[INFO]  Building helloworld version 1.0-SNAPSHOT
+[INFO]  Executing build in /home/user/helloworld
+[INFO]  Going to execute task publish
+[INFO]  Executing unittests in /home/user/helloworld/src/unittest/python
+[INFO]  Executed 1 unittests
+[INFO]  All unittests passed.
+[INFO]  Building distribution in /home/user/helloworld/target/dist/helloworld-1.0-SNAPSHOT
+[INFO]  Copying scripts to /home/user/helloworld/target/dist/helloworld-1.0-SNAPSHOT
+[INFO]  Collecting coverage information
+[INFO]  Executing unittests in /home/user/helloworld/src/unittest/python
+[INFO]  Executed 1 unittests
+[INFO]  All unittests passed.
+[INFO]  Overall coverage is 100%
+------------------------------------------------------------
+BUILD SUCCESSFUL
+------------------------------------------------------------
+Build Summary
+             Project: helloworld
+             Version: 1.0-SNAPSHOT
+      Base directory: /home/user/helloworld
+        Environments:
+               Tasks: prepare [245 ms] compile_sources [0 ms] run_unit_tests [6 ms] package [2 ms] run_integration_tests [0 ms] verify [325 ms] publish [0 ms]
+Build finished at 2013-12-27 00:35:36
+Build took 0 seconds (598 ms)
+</pre>
+
+<p>Notice the last INFO message. As with the unittest, PyBuilder writes a detailed report to
+<code class="highlighter-rouge">target/reports/coverage</code>. In case your coverage does not equal 100% you can find a list of source lines not
+covered in this file.</p>
+
+<p>The coverage plugin is also capable of breaking the build, if the coverage drops below a given threshold
+(70% by default). This allows you to make sure, your code is always tested (to a given extend) before you ship it.</p>
+
+<h2 id="building-a-distribution">Building a distribution</h2>
+
+<p>Before you make your code available to the public, you need to think about how users can install the software on
+their computers. In the Python world, one standard way to do this is using
+<a href="http://docs.python.org/distutils/index.html">distutils</a> which is shipped with the standard Python distribution.</p>
+
+<p>Using distutils basically means providing a <code class="highlighter-rouge">setup.py</code> that can be used to install the software.</p>
+
+<p><em>PyBuilder</em> comes with a plugin, that can generate the <code class="highlighter-rouge">setup.py</code> script so you don’t need to write it your own.
+<em>PyBuilder</em> automatically discovers your modules, packages and scripts and writes configuration for the setup script
+accordingly.</p>
+
+<p>Modify your <code class="highlighter-rouge">build.py</code> to use the plugin:</p>
+
+<pre><code>from pybuilder.core import init, use_plugin
+
+use_plugin("python.core")
+use_plugin("python.unittest")
+use_plugin("python.coverage")
+use_plugin("python.install_dependencies")
+use_plugin("python.distutils")
+
+default_task = "publish"
+
+@init
+def initialize(project):
+    project.build_depends_on('mockito')
+</code></pre>
+
+<p>Now run pyb again:</p>
+
+<pre>$ pyb
+
+PYBUILDER Version 0.9.17
+Build started at 2013-12-27 00:38:01
+------------------------------------------------------------
+[INFO]  Building helloworld version 1.0-SNAPSHOT
+[INFO]  Executing build in /home/user/helloworld
+[INFO]  Going to execute task publish
+[INFO]  Executing unittests in /home/user/helloworld/src/unittest/python
+[INFO]  Executed 1 unittests
+[INFO]  All unittests passed.
+[INFO]  Building distribution in /home/user/helloworld/target/dist/helloworld-1.0-SNAPSHOT
+[INFO]  Copying scripts to /home/user/helloworld/target/dist/helloworld-1.0-SNAPSHOT
+[INFO]  Writing setup.py as /home/user/helloworld/target/dist/helloworld-1.0-SNAPSHOT/setup.py
+[INFO]  Collecting coverage information
+[INFO]  Executing unittests in /home/user/helloworld/src/unittest/python
+[INFO]  Executed 1 unittests
+[INFO]  All unittests passed.
+[INFO]  Overall coverage is 100%
+[INFO]  Building binary distribution in /home/user/helloworld/target/dist/helloworld-1.0-SNAPSHOT
+------------------------------------------------------------
+BUILD SUCCESSFUL
+------------------------------------------------------------
+Build Summary
+             Project: helloworld
+             Version: 1.0-SNAPSHOT
+      Base directory: /home/user/helloworld
+        Environments:
+               Tasks: prepare [242 ms] compile_sources [0 ms] run_unit_tests [6 ms] package [3 ms] run_integration_tests [0 ms] verify [306 ms] publish [317 ms]
+Build finished at 2013-12-27 00:38:02
+Build took 0 seconds (897 ms)
+</pre>
+
+<p>Let’s have a look, what pyb generated in the target directory:</p>
+
+<pre>target
+├── dist
+│   └── helloworld-1.0-SNAPSHOT
+│       ├── build
+│       │   ├── bdist.linux-i686
+│       │   └── scripts-2.7
+│       │       └── hello-pybuilder
+│       ├── dist
+│       │   ├── helloworld-1.0-SNAPSHOT.linux-i686.tar.gz
+│       │   └── helloworld-1.0-SNAPSHOT.tar.gz
+│       ├── hello-pybuilder
+│       ├── helloworld.egg-info
+│       │   ├── dependency_links.txt
+│       │   ├── PKG-INFO
+│       │   ├── SOURCES.txt
+│       │   ├── top_level.txt
+│       │   └── zip-safe
+│       ├── helloworld.py
+│       ├── helloworld.pyc
+│       └── setup.py
+├── logs
+│   └── install_dependencies
+│       ├── coverage
+│       ├── coverage.err
+│       ├── mockito
+│       └── mockito.err
+└── reports
+    ├── coverage
+    ├── coverage.json
+    ├── distutils
+    │   ├── bdist_dumb
+    │   └── sdist
+    ├── unittest
+    └── unittest.json
+</pre>
+
+<p>In the reports directory you can find some reports each containing detailed information on a tool or command, <code class="highlighter-rouge">pyb</code>
+invoked during the build. We already saw the unittest and coverage report.</p>
+
+<p>A second directory is the dist directory which contains the distribution. The distribution directory contains the same
+sources but in a Python-typical directory layout. You can also find the <code class="highlighter-rouge">setup.py</code> script there.</p>
+
+<h2 id="recap">Recap</h2>
+
+<p>In this tutorial we saw how PyBuilder can be used to “build” a typical Python project. Building in an interpreted
+language is more a step of packaging the sources rather than compiling them. Additionally, we saw how PyBuilder
+can help you ensuring that all the automatic tests are executed and that the test coverage matches you standards.</p>
+
+<p>We saw a few plugins in action. <em>PyBuilder</em> provides more of them.
+See the <a href="/documentation/plugins.html">documentation of plugins</a> for available plugins.</p>
+</div>
+        <div class="col-lg-5 visible-md visible-lg">
+            <nav id="toc" data-spy="affix" data-toggle="toc"></nav>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <a href="https://github.com/pybuilder/pybuilder">PyBuilder on GitHub</a>
+            <a href="https://pypi.org/project/pybuilder/">PyBuilder on PyPI</a>
+        </div>
+    </div>
+    <div class="publish-date">
+        <small>site published on 2020-04-07 05:24:57 +0000</small>
+    </div>
+</footer>
+
+<script src="//code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<script src="/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script src="//cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
+<script src="/js/tabcontent.js"></script>
+<script src="/js/highlight.pack.js"></script>
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+  });
+
+
+</script>
+<script>
+    $(function() {
+        $(".dropdown").hover(
+            function(){ $(this).addClass('open') },
+            function(){ $(this).removeClass('open') }
+        );
+    });
+    $(function() {
+        $(".dropdown-submenu").hover(
+            function(){ $(this).addClass('open') },
+            function(){ $(this).removeClass('open') }
+        );
+    });
+</script>
+
+</body>
+</html>

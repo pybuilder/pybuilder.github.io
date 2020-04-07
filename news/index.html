@@ -1,48 +1,236 @@
----
-layout: default
-title: News
----
+<!doctype html>
+<html lang="en">
+<head>
+    <script async src="//www.googletagmanager.com/gtag/js?id=UA-2839506-6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-<div class="row">
+  gtag('config', 'UA-2839506-6');
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="description" content="PyBuilder is an easy-to-use build automation tool for Python"/>
+<meta name="author" content="PyBuilder Community"/>
+<meta name="keywords" content="python, continuous integration, build tool, automation, CI, CD, CI/CD"/>
+
+<link href="https://pybuilder.io/news/" rel="canonical"/>
+<link rel="shortcut icon" href="/favicon.ico"/>
+<link href="//fonts.googleapis.com/css?family=Oleo+Script:700" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+      integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
+<link type="text/css" rel="stylesheet" href="/css/styles.css"/>
+<link type="text/css" rel="stylesheet" href="/css/highlightjs.css"/>
+<link type="text/css" rel="stylesheet" href="/css/tabcontent.css"/>
+
+
+    <title>PyBuilder &#x2014; News</title>
+</head>
+
+<body>
+
+<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#hdr-nb-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand pybuilder-brand dropdown" href="/" title="PyBuilder">
+                <img src="/img/logo_brand.png" alt="PyBuilder Logo"/></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="hdr-nb-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="/" title="PyBuilder">PyBuilder</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/about.html" title="About">About</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/news/" title="News">News</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Documentation <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">User Documentation <b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/documentation/installation.html">Installation</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/examples.html">Examples</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/manual.html">Manual</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/plugins.html">Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/external-plugin-list.html">External plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/ide.html">IDE integration</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">Developer Documentation <b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/documentation/writing-plugins.html">Writing Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/developing-pybuilder.html">Developing PyBuilder</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/publishing-plugins.html">Publishing Your Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="#">API (Unavailable)</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Releases <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a href="/release-notes/" class="dropdown-item dropdown-toggle">Release Notes
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/release-notes/v0.12.x.html">Versions 0.12.x (Current)</a>
+                                </li>
+                                <li>
+                                    <a href="/release-notes/v0.11.x.html">Versions 0.11.x</a>
+                                </li>
+                                <li>
+                                    <a href="/release-notes/v0.10.x.html">Versions 0.10.x</a>
+                                </li>
+                                <li>
+                                    <a href="/release-notes/archived.html">Archived Versions</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a href="/migration-guides/" class="dropdown-item dropdown-toggle">Migration Guides
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/migration-guides/v0.11.x-v0.12.0.html">Migrating from 0.11.x to 0.12.0</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="container">
+    <div class="row">
     <div class="col-lg-12">
         <h1>
             <span class="glyphicon glyphicon-flash" style="color: silver"></span> News
         </h1>
-        {% for post in paginator.posts %}
+        
         <div class="row">
             <div class="col-lg-12">
                 <h2>
-                    <a href="{{ post.url | absolute_url }}">{{ post.title }}</a>
+                    <a href="https://pybuilder.io/articles/news/version-0.12-release.html">Version 0.12 Release</a>
                 </h2>
-                {{ post.excerpt }}
+                <p>While only a minor version bump, the 0.12.0 is the largest PyBuilder release in years. 
+Please bear with us while we update the website, draft release notes, migration guides, and freshen-up documentation.</p>
+
+
             </div>
         </div>
-        {% endfor %}
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>
+                    <a href="https://pybuilder.io/articles/3rd-party/new-sublime-text-3-plugin.html">New: Sublime Text 3 Plugin!</a>
+                </h2>
+                <p>A Sublime Text 3 Plugin for PyBuilder is now available!</p>
+
+
+            </div>
+        </div>
+        
     </div>
 </div>
 
-{% if paginator.total_pages > 1 %}
-<div class="row">
-  {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path | relative_url }}">&laquo; Prev</a>
-  {% else %}
-    <span>&laquo; Prev</span>
-  {% endif %}
 
-  {% for page in (1..paginator.total_pages) %}
-    {% if page == paginator.page %}
-      <em>{{ page }}</em>
-    {% elsif page == 1 %}
-      <a href="{{ paginator.previous_page_path | relative_url }}">{{ page }}</a>
-    {% else %}
-      <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a>
-    {% endif %}
-  {% endfor %}
 
-  {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path | relative_url }}">Next &raquo;</a>
-  {% else %}
-    <span>Next &raquo;</span>
-  {% endif %}
 </div>
-{% endif %}
+
+<footer>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <a href="https://github.com/pybuilder/pybuilder">PyBuilder on GitHub</a>
+            <a href="https://pypi.org/project/pybuilder/">PyBuilder on PyPI</a>
+        </div>
+    </div>
+    <div class="publish-date">
+        <small>site published on 2020-04-07 05:24:57 +0000</small>
+    </div>
+</footer>
+
+<script src="//code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<script src="/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script src="//cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
+<script src="/js/tabcontent.js"></script>
+<script src="/js/highlight.pack.js"></script>
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+  });
+
+
+</script>
+<script>
+    $(function() {
+        $(".dropdown").hover(
+            function(){ $(this).addClass('open') },
+            function(){ $(this).removeClass('open') }
+        );
+    });
+    $(function() {
+        $(".dropdown-submenu").hover(
+            function(){ $(this).addClass('open') },
+            function(){ $(this).removeClass('open') }
+        );
+    });
+</script>
+
+
+</body>
+</html>

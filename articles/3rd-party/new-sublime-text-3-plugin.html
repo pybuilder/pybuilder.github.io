@@ -17,7 +17,7 @@
 <meta name="author" content="PyBuilder Community"/>
 <meta name="keywords" content="python, continuous integration, build tool, automation, CI, CD, CI/CD"/>
 
-<link href="https://pybuilder.io/" rel="canonical"/>
+<link href="https://pybuilder.io/articles/3rd-party/new-sublime-text-3-plugin.html" rel="canonical"/>
 <link rel="shortcut icon" href="/favicon.ico"/>
 <link href="//fonts.googleapis.com/css?family=Oleo+Script:700" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -30,7 +30,7 @@
 <link type="text/css" rel="stylesheet" href="/css/tabcontent.css"/>
 
 
-    <title>PyBuilder &#x2014; an easy-to-use build automation tool for Python</title>
+    <title>PyBuilder &#x2014; New: Sublime Text 3 Plugin!</title>
 </head>
 
 <body>
@@ -149,206 +149,43 @@
 
 <div class="container">
     <div class="row">
-    <div class="col-lg-12">
-        <h2>
-            <span class="glyphicon glyphicon-star" style="color: gold"></span> PyBuilder
-        </h2>
-        <p>
-            <em>PyBuilder</em> is a software build automation tool written in pure Python mainly
-            targeting Python ecosystem. It is based on the concept of dependency-based programming but also comes
-            along with powerful plugin mechanism that allows the construction of build life-cycles similar to those
-            known
-            from other famous build tools like <em>Apache Maven</em> and <em>Gradle</em>.
-        </p>
-        <p>
-            <em>PyBuilder</em> runs on Python <strong>2.7 to 3.8 and PyPy</strong>.
-            Every commit is tested on CPython v2.7, 3.5, 3.6, 3.7, 3.8 and PyPy on Linux, OSX and Windows
-            via <a href="https://travis-ci.org/pybuilder/pybuilder/">Travis CI</a>.
-        </p>
-        <p>
-            <small>v0.11.x still supports Python 2.6, 3.3 and 3.4 but is no longer maintained.</small>
-        </p>
-        <p>
-            <em>PyBuilder</em>
-            is licensed under
-            <a href="https://github.com/pybuilder/pybuilder/blob/master/LICENSE">Apache 2.0 License</a>
-            and is hosted on
-            <a href="https://github.com/pybuilder/pybuilder">github.com/pybuilder/pybuilder</a>.
-        </p>
-        <p>
-            <iframe src="https://ghbtns.com/github-btn.html?user=pybuilder&repo=pybuilder&type=star&count=true"
-                    frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
-            <iframe src="https://ghbtns.com/github-btn.html?user=pybuilder&repo=pybuilder&type=fork&count=true"
-                    frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
-            <a href="https://gitter.im/pybuilder/pybuilder">
-                <img src="https://img.shields.io/gitter/room/pybuilder/pybuilder"
-                     alt="PyBuilder Gitter Room"/></a>
-            <a href="https://travis-ci.org/pybuilder/pybuilder/">
-                <img src="https://img.shields.io/travis/pybuilder/pybuilder/master"
-                     alt="PyBuilder Travis Build Status"/></a>
-            <a href="https://coveralls.io/github/pybuilder/pybuilder">
-                <img src="https://img.shields.io/coveralls/github/pybuilder/pybuilder/master"
-                     alt="PyBuilder Coveralls Build"/></a>
-        </p>
-        <p>
-            <a href="https://pypi.org/project/pybuilder/">
-                <img src="https://img.shields.io/pypi/v/pybuilder" alt="PyBuilder Version"></a>
-            <a href="https://pypi.org/project/pybuilder/">
-                <img src="https://img.shields.io/pypi/pyversions/pybuilder" alt="PyBuilder Python Versions"></a>
-            <a href="https://pypi.org/project/pybuilder/">
-                <img src="https://img.shields.io/pypi/dd/pybuilder" alt="PyBuilder Daily Downloads"></a>
-            <a href="https://pypi.org/project/pybuilder/">
-                <img src="https://img.shields.io/pypi/dw/pybuilder" alt="PyBuilder Weekly Downloads"></a>
-            <a href="https://pypi.org/project/pybuilder/">
-                <img src="https://img.shields.io/pypi/dm/pybuilder" alt="PyBuilder Monthly Downloads"></a>
-        </p>
-    </div>
-</div>
-
-<hr/>
-
-<div class="row">
-    <div class="col-lg-12">
-        <h2>
-            <span class="glyphicon glyphicon-flash" style="color: silver"></span> News
-        </h2>
-        
-        <div class="row">
-            <div class="col-lg-12">
-                <h3>
-                    <a href="https://pybuilder.io/articles/news/version-0.12-release.html">Version 0.12 Release</a>
-                </h3>
-                <p>While only a minor version bump, the 0.12.0 is the largest PyBuilder release in years. 
-Please bear with us while we update the website, draft release notes, migration guides, and freshen-up documentation.</p>
-
-
-            </div>
-        </div>
-        
-        
-        
-        
-        
-        
-        
-        <div class="row">
-            <div class="col-lg-12">
-                <h3>
-                    <a href="https://pybuilder.io/articles/3rd-party/new-sublime-text-3-plugin.html">New: Sublime Text 3 Plugin!</a>
-                </h3>
-                <p>A Sublime Text 3 Plugin for PyBuilder is now available!</p>
-
-
-            </div>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-<hr/>
-
-<div class="row">
-    <div class="col-lg-6">
-        <div class="row">
-            <div class="col-lg-12">
-                <h2>
-                    <span class="glyphicon glyphicon-wrench" style="color: steelblue"></span>
-                    Get started
-                </h2>
-                <ul class="tabs" data-persist="true">
-                    <li>
-                        <a href="#startproject">New project</a>
-                    </li>
-                    <li>
-                        <a href="#checkoutbuild">Existing project</a>
-                    </li>
-                </ul>
-                <div class="tabcontents">
-                    <div id="startproject">
-        <pre><code>
-  #!/bin/sh
-
-  pip install pybuilder
-
-  # If you want the bleeding edge
-  # (we release after every commit)
-  # pip install --pre pybuilder
-
-  pyb --start-project
-  pyb publish
-
-  </code></pre>
-                    </div>
-                    <div id="checkoutbuild">
-        <pre><code>
-  git clone https://github.com/twentybn/GulpIO
-  cd GulpIO
-  python -m venv venv
-  source venv/bin/activate
-  pip install pybuilder
-
-  # If you want the bleeding edge
-  # (we release after every commit)
-  # pip install --pre pybuilder
-
-  pyb
-
-  </code></pre>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <h2>
-                    <span class="glyphicon glyphicon-cloud-download" style="color: lightblue"></span>
-                    Install PyBuilder
-                </h2>
-                <div align="left"><em>PyBuilder</em> is available on <a
-                        href="https://pypi.org/project/pybuilder/">PyPI</a>
-                </div>
-                <pre><code>pip install pybuilder</code></pre>
+        <div class="col-lg-12">
+            <h1>New: Sublime Text 3 Plugin!</h1>
+            <div class="post-metadata pull-right">
                 <p>
-                    We recommend using <em>virtualenv</em>.
-                    Please see the <a href="/documentation/installation.html">dedicated installation page</a>.
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-6">
-        <div class="row">
-            <div class="col-lg-12">
-                <h2>
-                    <span class="glyphicon glyphicon-book" style="color: brown"></span>
-                    Read the Tutorial
-                </h2>
-                <p>
-                    The tutorial shows you how to get started using
-                    <em>PyBuilder</em>
-                    for your Python project including unittests, coverage and distutils.
+                    
+                    Written by:
+                    
+                    
+                    <a rel="author" href="https://max.riehl.io/" title="Maximilien Riehl's Website">Maximilien Riehl</a>
+                    
+                    
+                    <a rel="author" href="mailto:max@riehl.io" title="Maximilien Riehl's Email">
+                        <span class="glyphicon glyphicon-envelope" style="font-size: 18px"></span>
+                    </a>
+                    
+                    
+                    <a rel="author" href="https://github.com/mriehl" title="Maximilien Riehl's GitHub">
+                        <img src="//external-content.duckduckgo.com/ip/github.com.ico" alt="GitHub Logo"></a>
+                    
+                    
+                    
+                    
+                    
                 </p>
                 <p>
-                    <a class="btn btn-primary btn-small" href="/documentation/tutorial.html">Tutorial &raquo;</a>
+                    Published: 2015-02-05
                 </p>
+                
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <h2>
-                    <span class="glyphicon glyphicon-film" style="color: gray"></span>
-                    Watch the Presentation
-                </h2>
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/iQU18hAjux4"
-                            allowfullscreen></iframe>
-                </div>
-            </div>
+            <p>A Sublime Text 3 Plugin for PyBuilder is now available!</p>
+
+<!--more-->
+
+<p><a href="https://packagecontrol.io/packages/PyBuilder"><img class="img-responsive img-rounded" alt="Screenshot of Sublime_Pybuilder" src="/img/sublime_pybuilder.gif" /></a></p>
+
         </div>
     </div>
-</div>
-
 </div>
 
 <footer>
