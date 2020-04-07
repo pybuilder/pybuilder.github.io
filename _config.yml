@@ -24,3 +24,7 @@ collections:
   migration-guides:
     output: true
 news_posts_max: 3
+exclude:
+  - build.sh
+  - deploy.key
+  - deploy.key.enc
