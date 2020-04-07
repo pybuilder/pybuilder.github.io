@@ -28,7 +28,7 @@ The plugin executes all test cases found in modules ending with `_tests.py` in t
     <th>Description</th>
   </tr>
 
-    <tr>
+  <tr>
     <td>teamcity_output</td>
     <td>bool</td>
     <td>False</td>
@@ -142,7 +142,7 @@ Please note that properties `coverage_reload_modules` and `coverage_fork` are de
 
 Using the plugin `python.sonarqube` will add the task `run_sonar_analysis` to your project. This task has a run-time dependency to the `sonar-runner` program and will submit your project to [sonarqube](http://www.sonarqube.org/) for analysis.
 
-#### Sonarqube configuration
+#### SonarQube configuration
 
 <table class="table table-striped">
   <tr>
@@ -853,7 +853,7 @@ The reason that `clean --all` is used is to ensure that if PyBuilder is generati
 
 <div class="alert alert-warning alert-dismissable">
   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-  <h4>VirtualBox pitfall with binary dists</h4>
+  <h4 id="virtualbox-pitfall-with-binary-dists">VirtualBox pitfall with binary dists</h4>
 If you build your project on a shared filesystem (e.G. with vagrant/Virtualbox virtualization) then distutils is unable to build a binary distribution <a href="http://bugs.python.org/issue8876">due to a python stdlib bug</a>.
 Setting the property <code>distutils_issue8876_workaround_enabled</code> to True (off by default) will work around this for you.
 </div>
