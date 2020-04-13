@@ -5,38 +5,36 @@ title: Installing PyBuilder
 
 # Installation
 
-## Pip and Easy Install
+## PIP
 
-We recommend installing *PyBuilder* into a [virtual environment](http://pypi.python.org/pypi/virtualenv) using
-[pip](http://pypi.python.org/pypi/pip):
+Prior to version 0.12.0 the recommendation was to install *PyBuilder* into a 
+[virtual environment](http://pypi.python.org/pypi/virtualenv) using [pip](http://pypi.python.org/pypi/pip):
 
-<pre><code>pip install pybuilder</code></pre>
+`pip install pybuilder`
 
-<div class="alert alert-warning">
-At first it might seem tempting to install PyBuilder system-wide with <code>sudo pip install pybuilder</code>,
-but if you work with <em>virtualenvs</em> then PyBuilder will see your system python (due to being installed there)
-instead of the virtualenv python.
-</div>
+While this is still a preferred way, beginning with version 0.12.0 *PyBuilder* no longer alters the environment
+it is installed in by virtue of managing its own `venvs` and therefore can be safely installed into the 
+system-wide Python via `sudo pip install pybuilder`.
 
-## Building from source
+## Installing From Source
 
-Please get the most recent version of *PyBuilder* first :
+Starting with version 0.12.0 PyBuilder supports PEP-517 (`pyproject.toml`) and can be installed with PIP from source: 
 
-<pre>
+`pip install git+git://github.com/pybuilder/pybuilder`
+
+## Building From Source
+
+Please get the most recent version of *PyBuilder* first:
+
+```bash
 git clone https://github.com/pybuilder/pybuilder
 cd pybuilder
-</pre>
+```
 
-Now to the bootstrapping part : install the dependencies and build PyBuilder... using PyBuilder!
+To build simply run
 
-<pre>
-./build.py install_dependencies
+```bash
 ./build.py
-</pre>
+```
 
-Congratulations, you just built a binary distribution!
-
-You can now head to ```target/dist/pybuilder-$VERSION```
-and use the [distutils](http://docs.python.org/distutils/index.html) ```setup.py``` installation script.
-Just type
-<pre><code>python setup.py install</code></pre>
+Congratulations, you just built PyBuilder from source!

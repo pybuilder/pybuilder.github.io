@@ -30,22 +30,25 @@
                                     class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="/documentation/installation.html">Installation</a>
+                                    <a href="/documentation/installation">Installation</a>
                                 </li>
                                 <li>
-                                    <a href="/documentation/examples.html">Examples</a>
+                                    <a href="/documentation/tutorial">Tutorial</a>
                                 </li>
                                 <li>
-                                    <a href="/documentation/manual.html">Manual</a>
+                                    <a href="/documentation/examples">Examples</a>
                                 </li>
                                 <li>
-                                    <a href="/documentation/plugins.html">Plugins</a>
+                                    <a href="/documentation/manual">Manual</a>
                                 </li>
                                 <li>
-                                    <a href="/documentation/external-plugin-list.html">External plugins</a>
+                                    <a href="/documentation/plugins">Plugins</a>
                                 </li>
                                 <li>
-                                    <a href="/documentation/ide.html">IDE integration</a>
+                                    <a href="/documentation/external-plugin-list">External plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/ide">IDE integration</a>
                                 </li>
                             </ul>
                         </li>
@@ -54,13 +57,13 @@
                                     class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="/documentation/writing-plugins.html">Writing Plugins</a>
+                                    <a href="/documentation/writing-plugins">Writing Plugins</a>
                                 </li>
                                 <li>
-                                    <a href="/documentation/developing-pybuilder.html">Developing PyBuilder</a>
+                                    <a href="/documentation/developing-pybuilder">Developing PyBuilder</a>
                                 </li>
                                 <li>
-                                    <a href="/documentation/publishing-plugins.html">Publishing Your Plugins</a>
+                                    <a href="/documentation/publishing-plugins">Publishing Your Plugins</a>
                                 </li>
                                 <li>
                                     <a href="#">API (Unavailable)</a>
@@ -77,18 +80,13 @@
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
+                                {% assign items = site["release-notes"] | reverse %}
+                                {% for item in items %}
                                 <li>
-                                    <a href="/release-notes/v0.12.x.html">Versions 0.12.x (Current)</a>
+                                    <a href="{{ item.url | rel_canonical_url }}">{{item.list_title}}
+                                        {% if items[0] == item %}(Current){%endif%}</a>
                                 </li>
-                                <li>
-                                    <a href="/release-notes/v0.11.x.html">Versions 0.11.x</a>
-                                </li>
-                                <li>
-                                    <a href="/release-notes/v0.10.x.html">Versions 0.10.x</a>
-                                </li>
-                                <li>
-                                    <a href="/release-notes/archived.html">Archived Versions</a>
-                                </li>
+                                {% endfor %}
                             </ul>
                         </li>
                         <li class="dropdown-submenu">
@@ -96,9 +94,12 @@
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
+                                {% assign items = site["migration-guides"] | reverse %}
+                                {% for item in items %}
                                 <li>
-                                    <a href="/migration-guides/v0.11.x-v0.12.0.html">Migrating from 0.11.x to 0.12.0</a>
+                                    <a href="{{ item.url | rel_canonical_url }}">{{ item.list_title }}</a>
                                 </li>
+                                {% endfor %}
                             </ul>
                         </li>
                     </ul>
