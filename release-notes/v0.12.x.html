@@ -221,7 +221,7 @@ following <code class="highlighter-rouge">venvs</code> in <code class="highlight
       <li><a href="https://pypi.org/project/colorama/">colorama</a></li>
     </ul>
   </li>
-  <li>PyBuilder intercepts project <code class="highlighter-rouge">build.py</code> descriptor class loading process to reduce the number of <code class="highlighter-rouge">pip install</code> 
+  <li>PyBuilder intercepts project <code class="highlighter-rouge">build.py</code> descriptor module loading/import process to reduce the number of <code class="highlighter-rouge">pip install</code> 
 invocations. Thus dependency installations will be batched and installed lazily as much a possible reducing 
 total environment preparation times.</li>
   <li>Offline mode allows PyBuilder to function in the absence of Internet connectivity, provided the PIP artifacts are
@@ -229,7 +229,7 @@ available in cache and/or otherwise already satisfied in the <code class="highli
   <li>A <code class="highlighter-rouge">Remote</code> framework similar to Java RMI was created for PyBuilder that allows remote method invocation and 
 runtime data serialization with minimal boilerplate (i.e. with automatic Proxy creation) and utilizing a single 
 communication channel with no additional threads. This dramatically simplifies writing of remote tooling for PyBuilder
-and guarantees that PyBuilder class loading is not affected by the remote tools.</li>
+and guarantees that PyBuilder module loading is not affected by the remote tools and vice versa.</li>
   <li>Windows text colorization added.</li>
   <li>PyBuilder now supports PEP-517, i.e. <code class="highlighter-rouge">pyproject.toml</code> can be both generated for the managed projects and is used 
 to install PyBuilder itself from the source tree.</li>
@@ -237,7 +237,7 @@ to install PyBuilder itself from the source tree.</li>
 
 <h4 id="unit-tests">Unit Tests</h4>
 <p>All unit tests now run execute in a fresh separate process and communicate remotely with PyBuilder reporting results.
-This provides full test isolation and prevents non-reproducible test results if PyBuilder loads classes that are later
+This provides full test isolation and prevents non-reproducible test results if PyBuilder loads modules that are later
 unit tested.</p>
 
 <p>Unit tests run in the <strong>build</strong> <code class="highlighter-rouge">venv</code> which contains build-time and run-time dependencies.</p>
@@ -322,7 +322,7 @@ version <code class="highlighter-rouge">19.0.0</code>.</li>
         </div>
     </div>
     <div class="publish-date">
-        <small>site published on 2020-04-13 20:53:15 +0000</small>
+        <small>site published on 2020-04-13 22:03:27 +0000</small>
     </div>
 </footer>
 
