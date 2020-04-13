@@ -376,7 +376,7 @@ the production source directory.
     <th>Description</th>
   </tr>
 
-    <tr>
+  <tr>
     <td>teamcity_output</td>
     <td>bool</td>
     <td>False</td>
