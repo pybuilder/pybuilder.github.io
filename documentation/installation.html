@@ -17,17 +17,17 @@
 <meta name="author" content="PyBuilder Community"/>
 <meta name="keywords" content="python, continuous integration, build tool, automation, CI, CD, CI/CD"/>
 
-<link href="https://pybuilder.io/documentation/installation" rel="canonical"/>
+<link rel="canonical" href="https://pybuilder.io/documentation/installation"/>
 <link rel="shortcut icon" href="/favicon.ico"/>
-<link href="//fonts.googleapis.com/css?family=Oleo+Script:700" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Oleo+Script:700"/>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
       integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
       integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
-<link type="text/css" rel="stylesheet" href="/css/styles.css"/>
-<link type="text/css" rel="stylesheet" href="/css/highlightjs.css"/>
-<link type="text/css" rel="stylesheet" href="/css/tabcontent.css"/>
+<link rel="stylesheet" type="text/css" href="/css/styles.css"/>
+<link rel="stylesheet" type="text/css" href="/css/highlightjs.css"/>
+<link rel="stylesheet" type="text/css" href="/css/tabcontent.css"/>
 
 
     <title>PyBuilder &#x2014; Installing PyBuilder</title>
@@ -67,22 +67,25 @@
                                     class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="/documentation/installation.html">Installation</a>
+                                    <a href="/documentation/installation">Installation</a>
                                 </li>
                                 <li>
-                                    <a href="/documentation/examples.html">Examples</a>
+                                    <a href="/documentation/tutorial">Tutorial</a>
                                 </li>
                                 <li>
-                                    <a href="/documentation/manual.html">Manual</a>
+                                    <a href="/documentation/examples">Examples</a>
                                 </li>
                                 <li>
-                                    <a href="/documentation/plugins.html">Plugins</a>
+                                    <a href="/documentation/manual">Manual</a>
                                 </li>
                                 <li>
-                                    <a href="/documentation/external-plugin-list.html">External plugins</a>
+                                    <a href="/documentation/plugins">Plugins</a>
                                 </li>
                                 <li>
-                                    <a href="/documentation/ide.html">IDE integration</a>
+                                    <a href="/documentation/external-plugin-list">External plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/ide">IDE integration</a>
                                 </li>
                             </ul>
                         </li>
@@ -91,13 +94,13 @@
                                     class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="/documentation/writing-plugins.html">Writing Plugins</a>
+                                    <a href="/documentation/writing-plugins">Writing Plugins</a>
                                 </li>
                                 <li>
-                                    <a href="/documentation/developing-pybuilder.html">Developing PyBuilder</a>
+                                    <a href="/documentation/developing-pybuilder">Developing PyBuilder</a>
                                 </li>
                                 <li>
-                                    <a href="/documentation/publishing-plugins.html">Publishing Your Plugins</a>
+                                    <a href="/documentation/publishing-plugins">Publishing Your Plugins</a>
                                 </li>
                                 <li>
                                     <a href="#">API (Unavailable)</a>
@@ -114,18 +117,28 @@
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
+                                
+                                
                                 <li>
-                                    <a href="/release-notes/v0.12.x.html">Versions 0.12.x (Current)</a>
+                                    <a href="/release-notes/v0.12.x">Versions 0.12.x
+                                        (Current)</a>
                                 </li>
+                                
                                 <li>
-                                    <a href="/release-notes/v0.11.x.html">Versions 0.11.x</a>
+                                    <a href="/release-notes/v0.11.x">Versions 0.11.x
+                                        </a>
                                 </li>
+                                
                                 <li>
-                                    <a href="/release-notes/v0.10.x.html">Versions 0.10.x</a>
+                                    <a href="/release-notes/v0.10.x">Versions 0.10.x
+                                        </a>
                                 </li>
+                                
                                 <li>
-                                    <a href="/release-notes/archived.html">Archived Versions</a>
+                                    <a href="/release-notes/archived">Archived Versions
+                                        </a>
                                 </li>
+                                
                             </ul>
                         </li>
                         <li class="dropdown-submenu">
@@ -133,9 +146,12 @@
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
+                                
+                                
                                 <li>
-                                    <a href="/migration-guides/v0.11.x-v0.12.0.html">Migrating from 0.11.x to 0.12.0</a>
+                                    <a href="/migration-guides/v0.11.x-v0.12.0">Migrating v0.11.x to v0.12.0</a>
                                 </li>
+                                
                             </ul>
                         </li>
                     </ul>
@@ -151,41 +167,37 @@
     <div class="row">
         <div class="col-lg-7" id="content"><h1 id="installation">Installation</h1>
 
-<h2 id="pip-and-easy-install">Pip and Easy Install</h2>
+<h2 id="pip">PIP</h2>
 
-<p>We recommend installing <em>PyBuilder</em> into a <a href="http://pypi.python.org/pypi/virtualenv">virtual environment</a> using
-<a href="http://pypi.python.org/pypi/pip">pip</a>:</p>
+<p>Prior to version 0.12.0 the recommendation was to install <em>PyBuilder</em> into a 
+<a href="http://pypi.python.org/pypi/virtualenv">virtual environment</a> using <a href="http://pypi.python.org/pypi/pip">pip</a>:</p>
 
-<pre><code>pip install pybuilder</code></pre>
+<p><code class="highlighter-rouge">pip install pybuilder</code></p>
 
-<div class="alert alert-warning">
-At first it might seem tempting to install PyBuilder system-wide with <code>sudo pip install pybuilder</code>,
-but if you work with <em>virtualenvs</em> then PyBuilder will see your system python (due to being installed there)
-instead of the virtualenv python.
-</div>
+<p>While this is still a preferred way, beginning with version 0.12.0 <em>PyBuilder</em> no longer alters the environment
+it is installed in by virtue of managing its own <code class="highlighter-rouge">venvs</code> and therefore can be safely installed into the 
+system-wide Python via <code class="highlighter-rouge">sudo pip install pybuilder</code>.</p>
 
-<h2 id="building-from-source">Building from source</h2>
+<h2 id="installing-from-source">Installing From Source</h2>
 
-<p>Please get the most recent version of <em>PyBuilder</em> first :</p>
+<p>Starting with version 0.12.0 PyBuilder supports PEP-517 (<code class="highlighter-rouge">pyproject.toml</code>) and can be installed with PIP from source:</p>
 
-<pre>
-git clone https://github.com/pybuilder/pybuilder
-cd pybuilder
-</pre>
+<p><code class="highlighter-rouge">pip install git+git://github.com/pybuilder/pybuilder</code></p>
 
-<p>Now to the bootstrapping part : install the dependencies and build PyBuilder… using PyBuilder!</p>
+<h2 id="building-from-source">Building From Source</h2>
 
-<pre>
-./build.py install_dependencies
-./build.py
-</pre>
+<p>Please get the most recent version of <em>PyBuilder</em> first:</p>
 
-<p>Congratulations, you just built a binary distribution!</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/pybuilder/pybuilder
+<span class="nb">cd </span>pybuilder
+</code></pre></div></div>
 
-<p>You can now head to <code class="highlighter-rouge">target/dist/pybuilder-$VERSION</code>
-and use the <a href="http://docs.python.org/distutils/index.html">distutils</a> <code class="highlighter-rouge">setup.py</code> installation script.
-Just type</p>
-<pre><code>python setup.py install</code></pre>
+<p>To build simply run</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./build.py
+</code></pre></div></div>
+
+<p>Congratulations, you just built PyBuilder from source!</p>
 </div>
         <div class="col-lg-5 visible-md visible-lg">
             <nav id="toc" data-spy="affix" data-toggle="toc"></nav>
@@ -202,7 +214,7 @@ Just type</p>
         </div>
     </div>
     <div class="publish-date">
-        <small>site published on 2020-04-07 05:51:43 +0000</small>
+        <small>site published on 2020-04-13 20:53:15 +0000</small>
     </div>
 </footer>
 

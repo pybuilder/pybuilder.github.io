@@ -1,5 +1,0 @@
-Configuration file: /home/travis/build/pybuilder/pybuilder.github.io/_config.yml
-            Source: /home/travis/build/pybuilder/pybuilder.github.io
-       Destination: /home/travis/build/pybuilder/pybuilder.github.io/_site
- Incremental build: disabled. Enable with --incremental
-      Generating... 
