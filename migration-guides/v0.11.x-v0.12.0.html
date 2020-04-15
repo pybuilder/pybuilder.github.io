@@ -202,17 +202,43 @@
                     
                 </p>
                 <p>
-                    Published: 2020-04-13
+                    Published: 2020-04-15
                 </p>
                 
             </div>
-            <ul>
+            <h1 id="cli-and-buildpy-changes">CLI and <code class="highlighter-rouge">build.py</code> Changes</h1>
+
+<ul>
   <li><code class="highlighter-rouge">install_dependencies</code> task, while still available, is most likely no longer necessary as PyBuilder 0.12.x manages 
 <code class="highlighter-rouge">venvs</code> automatically.</li>
   <li>it’s highly recommended to run <code class="highlighter-rouge">pyb --update-project</code> to create <code class="highlighter-rouge">pyproject.toml</code> and update <code class="highlighter-rouge">setup.py</code>.</li>
   <li>Coverage 5.0+ uses sqlite to store coverage data which is now saved in <code class="highlighter-rouge">$dir_target/*.coverage</code>. If you have CI 
 coverage analytics running you need to update the reference to the location of the coverage files.</li>
 </ul>
+
+<h1 id="api-changes">API Changes</h1>
+
+<h2 id="externalcommandbuilder">ExternalCommandBuilder</h2>
+<p>Where as in 0.11.x the <code class="highlighter-rouge">ExternalCommandBuilder</code> constructor was</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ExternalCommandBuilder</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command_name</span><span class="p">,</span> <span class="n">project</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">command_name</span> <span class="o">=</span> <span class="n">command_name</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">parts</span> <span class="o">=</span> <span class="p">[</span><span class="n">command_name</span><span class="p">]</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">project</span> <span class="o">=</span> <span class="n">project</span>
+</code></pre></div></div>
+
+<p>in 0.12.x the API now requires a <code class="highlighter-rouge">reactor</code> and an optional <code class="highlighter-rouge">venv</code> name to be able to utilize PyBuilder venv
+infrastructure:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ExternalCommandBuilder</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command_name</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">reactor</span><span class="p">,</span> <span class="n">python_env_name</span><span class="o">=</span><span class="s">"pybuilder"</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">command_name</span> <span class="o">=</span> <span class="n">command_name</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">parts</span> <span class="o">=</span> <span class="p">[</span><span class="n">command_name</span><span class="p">]</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">project</span> <span class="o">=</span> <span class="n">project</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">reactor</span> <span class="o">=</span> <span class="n">reactor</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_env</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">reactor</span><span class="p">.</span><span class="n">python_env_registry</span><span class="p">[</span><span class="n">python_env_name</span><span class="p">]</span>
+</code></pre></div></div>
 
         </div>
     </div>
@@ -227,7 +253,7 @@ coverage analytics running you need to update the reference to the location of t
         </div>
     </div>
     <div class="publish-date">
-        <small>site published on 2020-04-13 22:03:27 +0000</small>
+        <small>site published on 2020-04-15 18:16:55 +0000</small>
     </div>
 </footer>
 

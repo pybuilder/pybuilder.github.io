@@ -247,7 +247,7 @@ defaults. Navigate to <code class="highlighter-rouge">src/main/python</code> and
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="k">def</span> <span class="nf">helloworld</span><span class="p">(</span><span class="n">out</span><span class="p">):</span>
-    <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">"Hello world of Python</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+    <span class="n">out</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"Hello world of Python</span><span class="si">\</span><span class="se">n</span><span class="s">"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>We are now ready to build our project for the first time! If you run <code class="highlighter-rouge">pyb</code> again, here is what you get:</p>
@@ -323,13 +323,13 @@ coverage by default for the project to build successfully.</p>
 
 <span class="kn">from</span> <span class="nn">helloworld</span> <span class="kn">import</span> <span class="n">helloworld</span>
 
-<span class="k">class</span> <span class="nc">HelloWorldTest</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">HelloWorldTest</span><span class="p">(</span><span class="n">unittest</span><span class="p">.</span><span class="n">TestCase</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">test_should_issue_hello_world_message</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">out</span> <span class="o">=</span> <span class="n">mock</span><span class="p">()</span>
 
         <span class="n">helloworld</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
 
-        <span class="n">verify</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">"Hello world of Python</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+        <span class="n">verify</span><span class="p">(</span><span class="n">out</span><span class="p">).</span><span class="n">write</span><span class="p">(</span><span class="s">"Hello world of Python</span><span class="si">\</span><span class="se">n</span><span class="s">"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>Notice that there is no black magic in the test sources. It’s just a simple
@@ -360,7 +360,7 @@ process for our project from now on depends on mockito. Therefore we adapt <code
 
 <span class="o">@</span><span class="n">init</span>
 <span class="k">def</span> <span class="nf">set_properties</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
-    <span class="n">project</span><span class="o">.</span><span class="n">build_depends_on</span><span class="p">(</span><span class="s">"mockito"</span><span class="p">)</span>
+    <span class="n">project</span><span class="p">.</span><span class="n">build_depends_on</span><span class="p">(</span><span class="s">"mockito"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>The <code class="highlighter-rouge">init</code> decorator tells <em>PyBuilder</em> that function <code class="highlighter-rouge">initialize</code> is used to initialize the project.</p>
@@ -525,7 +525,7 @@ Note that this path is configurable, but let’s stick with the conventions here
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/env python
 </span><span class="kn">import</span> <span class="nn">sys</span>
 
-<span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">'Hello from my script!</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+<span class="n">sys</span><span class="p">.</span><span class="n">stdout</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">'Hello from my script!</span><span class="si">\</span><span class="se">n</span><span class="s">'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>Now we can run the PyBuilder again :</p>
@@ -753,7 +753,7 @@ See the <a href="/documentation/plugins.html">documentation of plugins</a> for a
         </div>
     </div>
     <div class="publish-date">
-        <small>site published on 2020-04-13 22:03:27 +0000</small>
+        <small>site published on 2020-04-15 18:16:55 +0000</small>
     </div>
 </footer>
 

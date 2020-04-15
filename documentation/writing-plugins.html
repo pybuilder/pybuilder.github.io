@@ -275,13 +275,13 @@ In the following example we create a task <em>foo</em>, which depends on the suc
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">@</span><span class="n">task</span>
 <span class="k">def</span> <span class="nf">mytask</span><span class="p">(</span><span class="n">logger</span><span class="p">):</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">"Hello user, how are you today?!"</span><span class="p">)</span></code></pre></figure>
+    <span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">"Hello user, how are you today?!"</span><span class="p">)</span></code></pre></figure>
 
 <p>Most decisions a task can take (e.G. configuration) require the knowledge of the project. A task can be made aware of the project by accepting a <code class="highlighter-rouge">project</code> argument. Since those are named arguments, nothing is stopping us from accepting both a logger and a project (the order does not matter) :</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">@</span><span class="n">task</span>
 <span class="k">def</span> <span class="nf">mytask</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">"I am building {0} in version {1}!"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">project</span><span class="o">.</span><span class="n">version</span><span class="p">))</span></code></pre></figure>
+    <span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">"I am building {0} in version {1}!"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">project</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">project</span><span class="p">.</span><span class="n">version</span><span class="p">))</span></code></pre></figure>
 
 <h2 id="anatomy-of-a-plugin">Anatomy of a plugin</h2>
 <p>A plugin can be broken down in essentially two parts :</p>
@@ -304,7 +304,7 @@ This is suitable for defaults because the initializer of the plugin will run bef
 
 <span class="o">@</span><span class="n">init</span>
 <span class="k">def</span> <span class="nf">initialize_my_plugin</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
-    <span class="n">project</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s">"property_for_my_plugin"</span><span class="p">,</span> <span class="mi">42</span><span class="p">)</span></code></pre></figure>
+    <span class="n">project</span><span class="p">.</span><span class="n">set_property</span><span class="p">(</span><span class="s">"property_for_my_plugin"</span><span class="p">,</span> <span class="mi">42</span><span class="p">)</span></code></pre></figure>
 
 <p>We can then use this property in our tasks through the project object :</p>
 
@@ -312,8 +312,8 @@ This is suitable for defaults because the initializer of the plugin will run bef
 
 <span class="o">@</span><span class="n">task</span>
 <span class="k">def</span> <span class="nf">mytask</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
-    <span class="n">my_property</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">"property_for_my_plugin"</span><span class="p">)</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">"The property for my plugin is {0}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">my_property</span><span class="p">))</span></code></pre></figure>
+    <span class="n">my_property</span> <span class="o">=</span> <span class="n">project</span><span class="p">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">"property_for_my_plugin"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">"The property for my plugin is {0}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">my_property</span><span class="p">))</span></code></pre></figure>
 
 <p>Properties can be of any type (usually strings, integers, booleans or lists).
 If a property is mandatory and there is no default, then <code class="highlighter-rouge">project.get_mandatory_property</code> is more suitable since it also raises an error in case the property is unset. See <a href="#">the project API</a> for even more possibilities!</p>
@@ -325,7 +325,7 @@ If a property is mandatory and there is no default, then <code class="highlighte
 
 <span class="o">@</span><span class="n">init</span>
 <span class="k">def</span> <span class="nf">init_my_plugin</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
-    <span class="n">project</span><span class="o">.</span><span class="n">plugin_depends_on</span><span class="p">(</span><span class="s">"py.test"</span><span class="p">)</span></code></pre></figure>
+    <span class="n">project</span><span class="p">.</span><span class="n">plugin_depends_on</span><span class="p">(</span><span class="s">"py.test"</span><span class="p">)</span></code></pre></figure>
 
 <h4 id="ensuring-that-programs-are-installed">Ensuring that programs are installed</h4>
 <p>If the plugin relies on an external program like <em>pylint</em> then you should ensure that the program is available through the <code class="highlighter-rouge">assert_can_execute</code> function. The aim is to provide quick feedback to users why the plugin is not working.</p>
@@ -354,8 +354,8 @@ provide information about errors using the logger.</p>
 <span class="o">@</span><span class="n">description</span><span class="p">(</span><span class="s">"a task that complies with the verbose flag"</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">my_verbose_compliant_task</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
     <span class="c1"># is true if user set verbose in build.py or from command line
-</span>    <span class="n">verbose_flag</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">"verbose"</span><span class="p">)</span>
-    <span class="n">project</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s">"my_plugin_verbose_output"</span><span class="p">,</span> <span class="n">verbose_flag</span><span class="p">)</span>
+</span>    <span class="n">verbose_flag</span> <span class="o">=</span> <span class="n">project</span><span class="p">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">"verbose"</span><span class="p">)</span>
+    <span class="n">project</span><span class="p">.</span><span class="n">set_property</span><span class="p">(</span><span class="s">"my_plugin_verbose_output"</span><span class="p">,</span> <span class="n">verbose_flag</span><span class="p">)</span>
 
     <span class="c1"># verbose output if "my_plugin_verbose_output" is True
 </span>    <span class="n">execute_tool_on_source_files</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="n">project</span><span class="p">,</span>
@@ -405,7 +405,7 @@ Plugins that want to run during verification can then simply use <code class="hi
         </div>
     </div>
     <div class="publish-date">
-        <small>site published on 2020-04-13 22:03:27 +0000</small>
+        <small>site published on 2020-04-15 18:16:55 +0000</small>
     </div>
 </footer>
 
