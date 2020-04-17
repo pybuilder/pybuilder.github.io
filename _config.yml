@@ -9,6 +9,7 @@ kramdown:
 plugins:
   - jekyll-sitemap
   - jekyll-paginate
+  - jekyll-last-modified-at
 permalink: "/articles/:categories/:title.html"
 paginate: 5
 paginate_path: "/news/page:num/"
