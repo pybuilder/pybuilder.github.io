@@ -3,12 +3,12 @@ Configuration file: /home/travis/build/pybuilder/pybuilder.github.io/_config.yml
        Destination: /home/travis/build/pybuilder/pybuilder.github.io/_site
  Incremental build: disabled. Enable with --incremental
       Generating... 
-                    done in 0.492 seconds.
+                    done in 0.441 seconds.
  Auto-regeneration: disabled. Use --watch to enable.
 Running ["FaviconCheck", "ImageCheck", "HtmlCheck", "OpenGraphCheck", "LinkCheck", "ScriptCheck"] on ["./_site"] on *.html... 
 
 
-Checking 217 external links...
+Checking 218 external links...
 Ran on 22 files!
 
 
