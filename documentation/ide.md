@@ -1,9 +1,9 @@
 ---
 layout: documentation
-title: Usage Documentation
+title: IDE Integration
 ---
 
-# IDE integration
+# IDE Integration
 Like Maven, *PyBuilder* was designed to be convenient to use from the command-line since the commands are very high-level.
 Using an IDE integration, however, might improve your workflow and speed.
 
