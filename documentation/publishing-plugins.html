@@ -170,13 +170,13 @@
 <h2 id="developing-your-plugin">Developing your plugin</h2>
 <p>Please refer to <a href="/documentation/writing-plugins.html">the plugin development documentation</a> for this step.</p>
 
-<p>As for the layout, you should create a python package (folder with an <code class="highlighter-rouge">__init__.py</code> inside). Your package should expose everything that PyBuilder requires from a plugin (tasks, initializers, …) in the package top-level.
-To do this, you can either declare everything in <code class="highlighter-rouge">__init__.py</code>, or you can simply import those things.
+<p>As for the layout, you should create a python package (folder with an <code class="language-plaintext highlighter-rouge">__init__.py</code> inside). Your package should expose everything that PyBuilder requires from a plugin (tasks, initializers, …) in the package top-level.
+To do this, you can either declare everything in <code class="language-plaintext highlighter-rouge">__init__.py</code>, or you can simply import those things.
 A plugin sample is available <a href="https://github.com/pybuilder/pybuilder/tree/master/samples/pybuilder_external_plugin_demo">here</a>.</p>
 
 <h3 id="plugin-naming">Plugin naming</h3>
 <p>The easiest solution is to use a lowercase name without special characters.
-If you want the plugin name to be readable, though, you might be tempted to use underscores (the author of this document recommends namespacing with <code class="highlighter-rouge">pybuilder_*</code>).</p>
+If you want the plugin name to be readable, though, you might be tempted to use underscores (the author of this document recommends namespacing with <code class="language-plaintext highlighter-rouge">pybuilder_*</code>).</p>
 
 <p>This would lead to a package structure like so:</p>
 
@@ -191,21 +191,21 @@ pybuilder_myplugin
 </code>
 </pre>
 
-<p>In that case, you will have to <a href="https://github.com/pybuilder/pybuilder/blob/master/samples/pybuilder_external_plugin_demo/build.py#L11">set the name of your package (for PyPI) to <code class="highlighter-rouge">pybuilder-*</code></a> (dashes instead of underscores).</p>
+<p>In that case, you will have to <a href="https://github.com/pybuilder/pybuilder/blob/master/samples/pybuilder_external_plugin_demo/build.py#L11">set the name of your package (for PyPI) to <code class="language-plaintext highlighter-rouge">pybuilder-*</code></a> (dashes instead of underscores).</p>
 
 <p>Why this?</p>
 
 <ul>
-  <li>Using a project name with dashes will make your plugin installable with <code class="highlighter-rouge">pip</code>. Pip replaces underscores with dashes, so if you use underscores in the project name it will not work.</li>
+  <li>Using a project name with dashes will make your plugin installable with <code class="language-plaintext highlighter-rouge">pip</code>. Pip replaces underscores with dashes, so if you use underscores in the project name it will not work.</li>
   <li>Having a package name with underscores is required, because using dashes in an package name is a syntax error at import.</li>
 </ul>
 
 <h2 id="using-your-plugin">Using your plugin</h2>
-<p>Once your plugin is published to PyPI, you can use it by requiring the plugin prefixed with <code class="highlighter-rouge">pypi:</code>.</p>
+<p>Once your plugin is published to PyPI, you can use it by requiring the plugin prefixed with <code class="language-plaintext highlighter-rouge">pypi:</code>.</p>
 
 <p>As an example, the <a href="https://github.com/pybuilder/pybuilder/blob/master/samples/pybuilder_external_plugin_demo">sample external plugin</a> can be activated by adding</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>use_plugin("pypi:pybuilder_external_plugin_demo")
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>use_plugin("pypi:pybuilder_external_plugin_demo")
 </code></pre></div></div>
 
 <p>Note that you need to require the plugin name with underscores (as it is the name that will be imported).</p>
@@ -215,11 +215,11 @@ pybuilder_myplugin
 
 <h2 id="tldr">TLDR</h2>
 <ul>
-  <li>Prefix your package with <code class="highlighter-rouge">pybuilder_</code></li>
-  <li>Package itself is named <code class="highlighter-rouge">pybuilder_*</code></li>
+  <li>Prefix your package with <code class="language-plaintext highlighter-rouge">pybuilder_</code></li>
+  <li>Package itself is named <code class="language-plaintext highlighter-rouge">pybuilder_*</code></li>
   <li>Package has all plugin related things (tasks …) at top-level</li>
-  <li>PyPI name of package is <code class="highlighter-rouge">pybuilder-*</code> (with dashes instead of underscores)</li>
-  <li>Plugin is used by prefixing the package name (underscores!) with <code class="highlighter-rouge">pypi:</code></li>
+  <li>PyPI name of package is <code class="language-plaintext highlighter-rouge">pybuilder-*</code> (with dashes instead of underscores)</li>
+  <li>Plugin is used by prefixing the package name (underscores!) with <code class="language-plaintext highlighter-rouge">pypi:</code></li>
   <li>Add your plugin to the <a href="https://github.com/pybuilder/pybuilder.github.io/tree/source/documentation/external-plugin-list.md">external plugin list</a></li>
 </ul>
 </div>
@@ -238,7 +238,7 @@ pybuilder_myplugin
         </div>
     </div>
     <div class="publish-date">
-        <small>site published on 2020-05-08 09:22:17 +0000</small>
+        <small>site published on 2020-07-12 19:29:25 +0000</small>
     </div>
 </footer>
 

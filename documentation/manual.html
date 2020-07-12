@@ -179,7 +179,7 @@ commonly it targets the building and management of software with a strong focus 
   <li>Automatic execution of unit and integration tests on every build</li>
   <li>Automatic analysis of the code coverage</li>
   <li>Automatic execution and result interpretation of analysis tools, such as flake8</li>
-  <li>Automatic generation of distutils script <code class="highlighter-rouge">setup.py</code></li>
+  <li>Automatic generation of distutils script <code class="language-plaintext highlighter-rouge">setup.py</code></li>
 </ul>
 
 <p>The general idea is that everything you do in your <em>continuous integration</em> chain, you also do locally
@@ -227,7 +227,7 @@ by parameter name.</p>
 
 <h2 id="writing-tasks">Writing Tasks</h2>
 
-<p>Writing a task is easy. You just create a function and decorate with the <code class="highlighter-rouge">@task</code> decorator, and add it to your <code class="highlighter-rouge">build.py</code>:</p>
+<p>Writing a task is easy. You just create a function and decorate with the <code class="language-plaintext highlighter-rouge">@task</code> decorator, and add it to your <code class="language-plaintext highlighter-rouge">build.py</code>:</p>
 
 <pre><code>from pybuilder.core import task
 
@@ -236,7 +236,7 @@ def say_hello ():
     print "Hello, PyBuilder"
 </code></pre>
 
-<p>There is now a new task named <code class="highlighter-rouge">say_hello</code> available to you. You can verify this by running <code class="highlighter-rouge">pyb -t</code>.</p>
+<p>There is now a new task named <code class="language-plaintext highlighter-rouge">say_hello</code> available to you. You can verify this by running <code class="language-plaintext highlighter-rouge">pyb -t</code>.</p>
 
 <h3 id="dependency-injection">Dependency Injection</h3>
 
@@ -262,7 +262,7 @@ def say_hello (logger):
 <h2 id="project-specific-configuration">Project-specific configuration</h2>
 
 <h3 id="initializers">Initializers</h3>
-<p>The configuration of a project is done by mutating the <code class="highlighter-rouge">project</code> object. You can access this object from within <code class="highlighter-rouge">build.py</code> by
+<p>The configuration of a project is done by mutating the <code class="language-plaintext highlighter-rouge">project</code> object. You can access this object from within <code class="language-plaintext highlighter-rouge">build.py</code> by
 writing an initializer.
 An initializer is a plain python function that is decorated to become an initializer:</p>
 
@@ -273,7 +273,7 @@ def initialize(project):
     pass
 </code></pre>
 
-<p>Pybuilder always collects and calls initilizers from <code class="highlighter-rouge">build.py</code> sorted by alphabetical order.
+<p>Pybuilder always collects and calls initilizers from <code class="language-plaintext highlighter-rouge">build.py</code> sorted by alphabetical order.
 This fact could be used for initilizers managing.</p>
 
 <pre><code>
@@ -288,14 +288,14 @@ def initialize1(project):
     pass
 </code></pre>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[DEBUG] Registering initializer 'initialize1'
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[DEBUG] Registering initializer 'initialize1'
 [DEBUG] Registering initializer 'initialize2'
 ....
 [DEBUG] Executing initializer 'initialize1' from 'build'
 [DEBUG] Executing initializer 'initialize2' from 'build'
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">pyb</code> command apply project option <code class="highlighter-rouge">-E &lt;environment&gt;, --environment=&lt;environment&gt;</code>
+<p><code class="language-plaintext highlighter-rouge">pyb</code> command apply project option <code class="language-plaintext highlighter-rouge">-E &lt;environment&gt;, --environment=&lt;environment&gt;</code>
 which could be used to define environment specific initializers.</p>
 
 <pre><code>
@@ -305,14 +305,14 @@ def initialize_dev_env(project):
     pass
 </code></pre>
 
-<p>So initializer <code class="highlighter-rouge">initialize_dev_env</code> will be called only if <code class="highlighter-rouge">pyb</code> is called with project option <code class="highlighter-rouge">--environment=dev</code>.</p>
+<p>So initializer <code class="language-plaintext highlighter-rouge">initialize_dev_env</code> will be called only if <code class="language-plaintext highlighter-rouge">pyb</code> is called with project option <code class="language-plaintext highlighter-rouge">--environment=dev</code>.</p>
 
-<p>Project option <code class="highlighter-rouge">-E &lt;environment&gt;, --environment=&lt;environment&gt;</code> can be used multiple time.</p>
+<p>Project option <code class="language-plaintext highlighter-rouge">-E &lt;environment&gt;, --environment=&lt;environment&gt;</code> can be used multiple time.</p>
 
 <h3 id="project-attributes">Project Attributes</h3>
 <p>Project attributes are values that describe a project. Unlike the properties below, they are not used
 to configure plugins but rather to describe the project. Each project has several default attributes
-like <code class="highlighter-rouge">version</code> and <code class="highlighter-rouge">license</code>. These can be set in the <code class="highlighter-rouge">build.py</code>:</p>
+like <code class="language-plaintext highlighter-rouge">version</code> and <code class="language-plaintext highlighter-rouge">license</code>. These can be set in the <code class="language-plaintext highlighter-rouge">build.py</code>:</p>
 
 <pre><code>
 name = "myproject"
@@ -326,16 +326,16 @@ def initialize(project):
     project.version = "0.1.14"
 </code></pre>
 
-<p>A project’s attributes affect the build in a variety of ways. For instance the <code class="highlighter-rouge">license</code> attribute
+<p>A project’s attributes affect the build in a variety of ways. For instance the <code class="language-plaintext highlighter-rouge">license</code> attribute
 is used when generating a setuptools script to correctly fill the metadata fields.
 A notable use case for project attributes is replacing placeholder values in source files
 at build-time with the <a href="/documentation/plugins.html#filtering-files">filter_resources plugin</a>.</p>
 
 <h3 id="project-version-attribute">Project Version Attribute</h3>
-<p>The <code class="highlighter-rouge">version</code> has to be specified by PEP-440.
-Additionally, <em>PyBuilder</em> provides <em>Apache Maven</em> logic for versions with suffix <code class="highlighter-rouge">.dev</code> by adding 
+<p>The <code class="language-plaintext highlighter-rouge">version</code> has to be specified by PEP-440.
+Additionally, <em>PyBuilder</em> provides <em>Apache Maven</em> logic for versions with suffix <code class="language-plaintext highlighter-rouge">.dev</code> by adding 
 generated timestamp label after that which guarantees unique increasing version of distribution.
-For example, project with version <code class="highlighter-rouge">0.1.14.dev</code> will be built with version <code class="highlighter-rouge">0.1.14.dev20171004032551</code>.</p>
+For example, project with version <code class="language-plaintext highlighter-rouge">0.1.14.dev</code> will be built with version <code class="language-plaintext highlighter-rouge">0.1.14.dev20171004032551</code>.</p>
 
 <h3 id="project-properties">Project Properties</h3>
 <p>A property is identified by a key (the <em>name</em> of the property, which is a string) and has a value.
@@ -345,11 +345,11 @@ The type of a property value can be any valid python type.</p>
 Plugins that rely on properties usually set a default value, that you can override.
 This is conform to the idea of <em>convention over configuration</em>.</p>
 
-<p>For instance the <code class="highlighter-rouge">unittest</code> plugin ships with a default property <code class="highlighter-rouge">unittest_module_glob</code> set to <code class="highlighter-rouge">"*_tests"</code>.
+<p>For instance the <code class="language-plaintext highlighter-rouge">unittest</code> plugin ships with a default property <code class="language-plaintext highlighter-rouge">unittest_module_glob</code> set to <code class="language-plaintext highlighter-rouge">"*_tests"</code>.
 If the default value does not suit you you can override it by setting the property to something else.</p>
 
-<p>This is done by using the <code class="highlighter-rouge">set_property</code> method of the 
-<a href="#"><code class="highlighter-rouge">project</code> object</a>. You should do this from within an initializer like so:</p>
+<p>This is done by using the <code class="language-plaintext highlighter-rouge">set_property</code> method of the 
+<a href="#"><code class="language-plaintext highlighter-rouge">project</code> object</a>. You should do this from within an initializer like so:</p>
 
 <pre><code>@init
 def initialize(project):
@@ -359,9 +359,9 @@ def initialize(project):
 <p>A complete reference of the available properties is included in the <a href="/documentation/plugins.html">plugin reference</a></p>
 
 <h4 id="setting-properties-from-tasks">Setting Properties from tasks</h4>
-<p>Tasks should always bring a sane default for mandatory properties. Setting properties is done from an <em>initializer</em>, just like in <code class="highlighter-rouge">build.py</code>.
+<p>Tasks should always bring a sane default for mandatory properties. Setting properties is done from an <em>initializer</em>, just like in <code class="language-plaintext highlighter-rouge">build.py</code>.
 Note that setting project properties from within a task function is possible but will override user-specified properties because initializers run before tasks are executed.
-Thus, as a general rule, functions decorated with <code class="highlighter-rouge">task</code> should only read project properties using <code>project.get_property</code>.</p>
+Thus, as a general rule, functions decorated with <code class="language-plaintext highlighter-rouge">task</code> should only read project properties using <code>project.get_property</code>.</p>
 
 <h4 id="setting-properties-from-the-command-line">Setting Properties from the command line</h4>
 
@@ -369,7 +369,7 @@ Thus, as a general rule, functions decorated with <code class="highlighter-rouge
 
 <pre>$ pyb -P spam="spam message"</pre>
 
-<p>This command sets/ overrides the property with the name <code class="highlighter-rouge">spam</code> with the value <code class="highlighter-rouge">spam message</code>.</p>
+<p>This command sets/ overrides the property with the name <code class="language-plaintext highlighter-rouge">spam</code> with the value <code class="language-plaintext highlighter-rouge">spam message</code>.</p>
 
 <p>Note that command line switches only allow properties to be set/ overridden using string values.</p>
 </div>
@@ -388,7 +388,7 @@ Thus, as a general rule, functions decorated with <code class="highlighter-rouge
         </div>
     </div>
     <div class="publish-date">
-        <small>site published on 2020-05-08 09:22:17 +0000</small>
+        <small>site published on 2020-07-12 19:29:25 +0000</small>
     </div>
 </footer>
 

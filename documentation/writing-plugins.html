@@ -171,16 +171,16 @@
 <p>An essential part of a plugin are the tasks that come with it. The tasks are the blocks of build logic that a plugin can use to act during the build process. We shall start with simple task declarations and then move on to the additions necessary to a plugin.</p>
 
 <h3 id="a-simple-task">A simple task</h3>
-<p>Begin by creating a new folder with a <code class="highlighter-rouge">build.py</code> descriptor in it.</p>
+<p>Begin by creating a new folder with a <code class="language-plaintext highlighter-rouge">build.py</code> descriptor in it.</p>
 
-<p>Extend your <code class="highlighter-rouge">build.py</code> with a simple function called <code class="highlighter-rouge">hello</code>:</p>
+<p>Extend your <code class="language-plaintext highlighter-rouge">build.py</code> with a simple function called <code class="language-plaintext highlighter-rouge">hello</code>:</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
 
 <span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
     <span class="k">print</span><span class="p">(</span><span class="s">"hello"</span><span class="p">)</span></code></pre></figure>
 
-<p>Use the <code class="highlighter-rouge">task</code> decorator from <code class="highlighter-rouge">pybuilder.core</code> to declare the <code class="highlighter-rouge">hello</code> function to a PyBuilder task.</p>
+<p>Use the <code class="language-plaintext highlighter-rouge">task</code> decorator from <code class="language-plaintext highlighter-rouge">pybuilder.core</code> to declare the <code class="language-plaintext highlighter-rouge">hello</code> function to a PyBuilder task.</p>
 
 <p>Our simple task might look like so:</p>
 
@@ -190,7 +190,7 @@
 <span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
     <span class="k">print</span><span class="p">(</span><span class="s">"hello"</span><span class="p">)</span></code></pre></figure>
 
-<p>We can now list the available tasks using the <code class="highlighter-rouge">-t</code> option:</p>
+<p>We can now list the available tasks using the <code class="language-plaintext highlighter-rouge">-t</code> option:</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="err">$</span> <span class="n">pyb</span> <span class="o">-</span><span class="n">t</span>
 <span class="n">Tasks</span> <span class="n">found</span> <span class="k">for</span> <span class="n">project</span> <span class="s">"task-demo"</span><span class="p">:</span>
@@ -224,7 +224,7 @@ Let us rename the task into “foo” without changing the function name.</p>
     <span class="n">foo</span> <span class="o">-</span> <span class="n">Greets</span> <span class="n">people</span></code></pre></figure>
 
 <h3 id="dependencies">Dependencies</h3>
-<p>Dependencies between tasks is easy. You can use the <code class="highlighter-rouge">depends</code> and <code class="highlighter-rouge">dependent</code> decorators to express that a task requires another one to run.
+<p>Dependencies between tasks is easy. You can use the <code class="language-plaintext highlighter-rouge">depends</code> and <code class="language-plaintext highlighter-rouge">dependent</code> decorators to express that a task requires another one to run.
 In the following example we create a task <em>foo</em>, which depends on the successful execution of task <em>bar</em>.</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">pybuilder.core</span> <span class="kn">import</span> <span class="n">task</span><span class="p">,</span> <span class="n">depends</span>
@@ -240,7 +240,7 @@ In the following example we create a task <em>foo</em>, which depends on the suc
 
 <p>Now every time the task <em>foo</em> is run, <em>PyBuilder</em> will ensure that <em>bar</em> will have run first.</p>
 
-<p>The same result could be obtained with <code class="highlighter-rouge">dependent</code> decorator:</p>
+<p>The same result could be obtained with <code class="language-plaintext highlighter-rouge">dependent</code> decorator:</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">pybuilder.core</span> <span class="kn">import</span> <span class="n">task</span><span class="p">,</span> <span class="n">dependent</span>
 
@@ -271,13 +271,13 @@ In the following example we create a task <em>foo</em>, which depends on the suc
     <span class="k">pass</span></code></pre></figure>
 
 <h3 id="assuming-control">Assuming control</h3>
-<p>If a task wishes to show output to the user, it can request the use of the <em>PyBuilder</em> logger by accepting a <code class="highlighter-rouge">logger</code> argument :</p>
+<p>If a task wishes to show output to the user, it can request the use of the <em>PyBuilder</em> logger by accepting a <code class="language-plaintext highlighter-rouge">logger</code> argument :</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">@</span><span class="n">task</span>
 <span class="k">def</span> <span class="nf">mytask</span><span class="p">(</span><span class="n">logger</span><span class="p">):</span>
     <span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">"Hello user, how are you today?!"</span><span class="p">)</span></code></pre></figure>
 
-<p>Most decisions a task can take (e.G. configuration) require the knowledge of the project. A task can be made aware of the project by accepting a <code class="highlighter-rouge">project</code> argument. Since those are named arguments, nothing is stopping us from accepting both a logger and a project (the order does not matter) :</p>
+<p>Most decisions a task can take (e.G. configuration) require the knowledge of the project. A task can be made aware of the project by accepting a <code class="language-plaintext highlighter-rouge">project</code> argument. Since those are named arguments, nothing is stopping us from accepting both a logger and a project (the order does not matter) :</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">@</span><span class="n">task</span>
 <span class="k">def</span> <span class="nf">mytask</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
@@ -296,9 +296,9 @@ It is done from within an <a href="/documentation/manual.html#initializers"><em>
 
 <h4 id="setting-defaults">Setting defaults</h4>
 <p>The initializer can use the project object to set <a href="/documentation/manual.html#project-properties">property</a> values.
-This is suitable for defaults because the initializer of the plugin will run before any user-provided initializers in <code class="highlighter-rouge">build.py</code>. Thus you can set a property (the <em>default</em>) which can then be overridden by the user.</p>
+This is suitable for defaults because the initializer of the plugin will run before any user-provided initializers in <code class="language-plaintext highlighter-rouge">build.py</code>. Thus you can set a property (the <em>default</em>) which can then be overridden by the user.</p>
 
-<p>Setting properties is done through the <code class="highlighter-rouge">set_property</code> method of project :</p>
+<p>Setting properties is done through the <code class="language-plaintext highlighter-rouge">set_property</code> method of project :</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">pybuilder.core</span> <span class="kn">import</span> <span class="n">init</span>
 
@@ -316,7 +316,7 @@ This is suitable for defaults because the initializer of the plugin will run bef
     <span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">"The property for my plugin is {0}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">my_property</span><span class="p">))</span></code></pre></figure>
 
 <p>Properties can be of any type (usually strings, integers, booleans or lists).
-If a property is mandatory and there is no default, then <code class="highlighter-rouge">project.get_mandatory_property</code> is more suitable since it also raises an error in case the property is unset. See <a href="#">the project API</a> for even more possibilities!</p>
+If a property is mandatory and there is no default, then <code class="language-plaintext highlighter-rouge">project.get_mandatory_property</code> is more suitable since it also raises an error in case the property is unset. See <a href="#">the project API</a> for even more possibilities!</p>
 
 <h4 id="requiring-external-libraries">Requiring external libraries</h4>
 <p>If the plugin requires external libraries installable through pip, the project object can be used to add this as a plugin dependency :</p>
@@ -328,7 +328,7 @@ If a property is mandatory and there is no default, then <code class="highlighte
     <span class="n">project</span><span class="p">.</span><span class="n">plugin_depends_on</span><span class="p">(</span><span class="s">"py.test"</span><span class="p">)</span></code></pre></figure>
 
 <h4 id="ensuring-that-programs-are-installed">Ensuring that programs are installed</h4>
-<p>If the plugin relies on an external program like <em>pylint</em> then you should ensure that the program is available through the <code class="highlighter-rouge">assert_can_execute</code> function. The aim is to provide quick feedback to users why the plugin is not working.</p>
+<p>If the plugin relies on an external program like <em>pylint</em> then you should ensure that the program is available through the <code class="language-plaintext highlighter-rouge">assert_can_execute</code> function. The aim is to provide quick feedback to users why the plugin is not working.</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">pybuilder.utils</span> <span class="kn">import</span> <span class="n">assert_can_execute</span>
 <span class="kn">from</span> <span class="nn">pybuilder.core</span> <span class="kn">import</span> <span class="n">task</span>
@@ -339,10 +339,10 @@ If a property is mandatory and there is no default, then <code class="highlighte
 
 <h3 id="compliance-with-the-verbose-flag">Compliance with the verbose flag</h3>
 <p><em>PyBuilder</em> is designed to focus on the big picture of the build process.
-There is a <code class="highlighter-rouge">verbose</code> flag though. When it is present, your plugin should
+There is a <code class="language-plaintext highlighter-rouge">verbose</code> flag though. When it is present, your plugin should
 provide information about errors using the logger.</p>
 
-<p>For most plugins using the helper function <code class="highlighter-rouge">execute_tool_on_source_files</code> from <code class="highlighter-rouge">pybuilder.plugins.python.python_plugin_helper</code> will suffice. It will display the output of the tool, provided the property <code class="highlighter-rouge">$name_verbose_output</code> is set to true. The <code class="highlighter-rouge">$name</code> is simply the name argument passed to the function. You can set this property in your task based on the verbose property of the project :</p>
+<p>For most plugins using the helper function <code class="language-plaintext highlighter-rouge">execute_tool_on_source_files</code> from <code class="language-plaintext highlighter-rouge">pybuilder.plugins.python.python_plugin_helper</code> will suffice. It will display the output of the tool, provided the property <code class="language-plaintext highlighter-rouge">$name_verbose_output</code> is set to true. The <code class="language-plaintext highlighter-rouge">$name</code> is simply the name argument passed to the function. You can set this property in your task based on the verbose property of the project :</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">pybuilder.core</span> <span class="kn">import</span> <span class="n">task</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">use_plugin</span><span class="p">,</span> <span class="n">depends</span>
 <span class="kn">from</span> <span class="nn">pybuilder.plugins.python.python_plugin_helper</span> <span class="kn">import</span> <span class="n">execute_tool_on_source_files</span>
@@ -375,17 +375,17 @@ There are three ways to get a task to run :</p>
 </ul>
 
 <h4 id="direct-invocation">Direct invocation</h4>
-<p>This is the most common approach. The user will use <code class="highlighter-rouge">pyb my_task</code> which will run the task.</p>
+<p>This is the most common approach. The user will use <code class="language-plaintext highlighter-rouge">pyb my_task</code> which will run the task.</p>
 
 <h4 id="indirect-invocation-through-a-dependency">Indirect invocation through a dependency</h4>
 <p>When there is a dependency chain between tasks, for example if <em>foo</em> requires <em>bar</em> to run first.
-If the user executes <code class="highlighter-rouge">pyb foo</code> this will run <em>bar</em> and <em>foo</em> in that order.</p>
+If the user executes <code class="language-plaintext highlighter-rouge">pyb foo</code> this will run <em>bar</em> and <em>foo</em> in that order.</p>
 
 <h4 id="indirect-invocation-through-naming">Indirect invocation through naming</h4>
 <p>As we saw before, tasks are identified by their name. When there are multiple tasks with the same name, then all of those tasks will run.</p>
 
-<p>For instance the <a href="https://github.com/pybuilder/pybuilder/blob/master/src/main/python/pybuilder/plugins/core_plugin.py"><em>core plugin</em></a> defines many generic tasks like <code class="highlighter-rouge">verify</code> and <code class="highlighter-rouge">package</code> that are actually empty.
-Plugins that want to run during verification can then simply use <code class="highlighter-rouge">verify</code> as a task name.</p>
+<p>For instance the <a href="https://github.com/pybuilder/pybuilder/blob/master/src/main/python/pybuilder/plugins/core_plugin.py"><em>core plugin</em></a> defines many generic tasks like <code class="language-plaintext highlighter-rouge">verify</code> and <code class="language-plaintext highlighter-rouge">package</code> that are actually empty.
+Plugins that want to run during verification can then simply use <code class="language-plaintext highlighter-rouge">verify</code> as a task name.</p>
 
 <h2 id="examples">Examples</h2>
 <p>See the plugins that ship with <em>PyBuilder</em>. A very nice example is the <a href="https://github.com/pybuilder/pybuilder/blob/master/src/main/python/pybuilder/plugins/python/flake8_plugin.py">flake8 plugin</a>.</p>
@@ -405,7 +405,7 @@ Plugins that want to run during verification can then simply use <code class="hi
         </div>
     </div>
     <div class="publish-date">
-        <small>site published on 2020-05-08 09:22:17 +0000</small>
+        <small>site published on 2020-07-12 19:29:25 +0000</small>
     </div>
 </footer>
 

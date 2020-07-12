@@ -179,7 +179,7 @@
 
 <h2 id="version-0923">Version 0.9.23</h2>
 <ul>
-  <li>Improved error messages when <code class="highlighter-rouge">integrationtest_additional_environment</code> is not a map.</li>
+  <li>Improved error messages when <code class="language-plaintext highlighter-rouge">integrationtest_additional_environment</code> is not a map.</li>
   <li>Improved resilience of the integration test plugin when running tests in parallel and there are errors in the plugin code itself.</li>
 </ul>
 
@@ -197,15 +197,15 @@ when unit tests have import errors.</li>
 <h2 id="version-0920">Version 0.9.20</h2>
 <ul>
   <li>The pytddmon plugin now disables the color pulse for more focus.</li>
-  <li>Added a command, <code class="highlighter-rouge">pyb --start-project</code>, to create a python project skeleton.</li>
-  <li>The <code class="highlighter-rouge">flake8</code> plugin now complies with the project <code class="highlighter-rouge">verbose</code> property.</li>
-  <li>Increased severity of the <code class="highlighter-rouge">pythonbuilder</code> module deprecation warning.</li>
+  <li>Added a command, <code class="language-plaintext highlighter-rouge">pyb --start-project</code>, to create a python project skeleton.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">flake8</code> plugin now complies with the project <code class="language-plaintext highlighter-rouge">verbose</code> property.</li>
+  <li>Increased severity of the <code class="language-plaintext highlighter-rouge">pythonbuilder</code> module deprecation warning.</li>
 </ul>
 
 <h2 id="version-0918">Version 0.9.18</h2>
 <ul>
-  <li>Added a new plugin, <code class="highlighter-rouge">python.pycharm</code>, <a href="/documentation/plugins.html#project-files-for-jetbrains-pycharm">which can generate PyCharm project files</a>.</li>
-  <li>Added a new plugin, <code class="highlighter-rouge">python.pytddmon</code>, <a href="/documentation/plugins.html#visual-feedback-for-tests">which can be used to monitor unit tests</a></li>
+  <li>Added a new plugin, <code class="language-plaintext highlighter-rouge">python.pycharm</code>, <a href="/documentation/plugins.html#project-files-for-jetbrains-pycharm">which can generate PyCharm project files</a>.</li>
+  <li>Added a new plugin, <code class="language-plaintext highlighter-rouge">python.pytddmon</code>, <a href="/documentation/plugins.html#visual-feedback-for-tests">which can be used to monitor unit tests</a></li>
 </ul>
 
 <h2 id="version-0917">Version 0.9.17</h2>
@@ -216,7 +216,7 @@ when unit tests have import errors.</li>
 <h2 id="version-0916">Version 0.9.16</h2>
 <ul>
   <li>The flake8 plugin no longer causes build errors when used on a project without unittests or integrationtests
-in conjunction with the property <code class="highlighter-rouge">flake8_include_test_sources</code>.</li>
+in conjunction with the property <code class="language-plaintext highlighter-rouge">flake8_include_test_sources</code>.</li>
 </ul>
 
 <h2 id="version-0915">Version 0.9.15</h2>
@@ -224,14 +224,14 @@ in conjunction with the property <code class="highlighter-rouge">flake8_include_
 <ul>
   <li>The flake8 plugin is now able to also lint test sources.
 This behaviour is disabled by default but may be enabled by setting the
-property <code class="highlighter-rouge">flake8_include_test_sources</code> to True.</li>
+property <code class="language-plaintext highlighter-rouge">flake8_include_test_sources</code> to True.</li>
 </ul>
 
 <h2 id="version-0914">Version 0.9.14</h2>
 
 <ul>
-  <li>The flake8 plugin now requires <code class="highlighter-rouge">prepare</code> to run first and thus no longer
-results in errors after <code class="highlighter-rouge">clean</code>.</li>
+  <li>The flake8 plugin now requires <code class="language-plaintext highlighter-rouge">prepare</code> to run first and thus no longer
+results in errors after <code class="language-plaintext highlighter-rouge">clean</code>.</li>
 </ul>
 
 <h2 id="version-0913">Version 0.9.13</h2>
@@ -240,17 +240,17 @@ results in errors after <code class="highlighter-rouge">clean</code>.</li>
   <li>Fixed a compatibility issue on windows</li>
   <li>It is now possible to use external plugins.
 An external plugin should be an importable python package that exposes its tasks
-in the top-level (e.G. in <code class="highlighter-rouge">__init__.py</code>).
-The plugin can be used through the <code class="highlighter-rouge">use_plugin</code> directive without further ado
+in the top-level (e.G. in <code class="language-plaintext highlighter-rouge">__init__.py</code>).
+The plugin can be used through the <code class="language-plaintext highlighter-rouge">use_plugin</code> directive without further ado
 but must currently be bootstrapped manually.</li>
 </ul>
 
 <h2 id="version-0912">Version 0.9.12</h2>
 
 <ul>
-  <li>The property <code class="highlighter-rouge">integrationtest_workers</code> was removed.
-Instead, you may now set <code class="highlighter-rouge">integrationtest_cpu_scaling_factor</code> to an integer n,
-which will use <code class="highlighter-rouge">n * cpu_count</code> workers to run the integration tests.</li>
+  <li>The property <code class="language-plaintext highlighter-rouge">integrationtest_workers</code> was removed.
+Instead, you may now set <code class="language-plaintext highlighter-rouge">integrationtest_cpu_scaling_factor</code> to an integer n,
+which will use <code class="language-plaintext highlighter-rouge">n * cpu_count</code> workers to run the integration tests.</li>
 </ul>
 
 <h2 id="version-0911">Version 0.9.11</h2>
@@ -258,17 +258,17 @@ which will use <code class="highlighter-rouge">n * cpu_count</code> workers to r
 <ul>
   <li>
     <p>The integrationtest plugin can now run test in parallel.
-This behaviour can be enabled with <code class="highlighter-rouge">project.set_property("integrationtest_parallel", True)</code>.</p>
+This behaviour can be enabled with <code class="language-plaintext highlighter-rouge">project.set_property("integrationtest_parallel", True)</code>.</p>
 
     <p>The degree of parallelization defaults to four times the amount of cores but may be
-overridden with <code class="highlighter-rouge">project.set_property("integrationtest_workers", 42)</code>.</p>
+overridden with <code class="language-plaintext highlighter-rouge">project.set_property("integrationtest_workers", 42)</code>.</p>
   </li>
 </ul>
 
 <h2 id="version-0910">Version 0.9.10</h2>
 
 <ul>
-  <li>It can no longer occur that the <code class="highlighter-rouge">ronn_manpage</code> plugin fails due to the reports directory not existing.</li>
+  <li>It can no longer occur that the <code class="language-plaintext highlighter-rouge">ronn_manpage</code> plugin fails due to the reports directory not existing.</li>
 </ul>
 
 <h2 id="version-099">Version 0.9.9</h2>
@@ -308,7 +308,7 @@ overridden with <code class="highlighter-rouge">project.set_property("integratio
 <h2 id="version-094">Version 0.9.4</h2>
 
 <ul>
-  <li><code class="highlighter-rouge">pybuilder.VERSION</code> is now <code class="highlighter-rouge">pybuilder.__version__</code></li>
+  <li><code class="language-plaintext highlighter-rouge">pybuilder.VERSION</code> is now <code class="language-plaintext highlighter-rouge">pybuilder.__version__</code></li>
 </ul>
 
 <h2 id="version-093">Version 0.9.3</h2>
@@ -327,16 +327,16 @@ overridden with <code class="highlighter-rouge">project.set_property("integratio
 <h2 id="version-091">Version 0.9.1</h2>
 
 <ul>
-  <li>Added several new options for the <code class="highlighter-rouge">install_dependencies</code> plugin to customize the <code class="highlighter-rouge">pip</code> behaviour.</li>
-  <li><code class="highlighter-rouge">coverage</code> and <code class="highlighter-rouge">pyfix</code> plugins define their dependencies.</li>
-  <li>Added <code class="highlighter-rouge">very-quiet</code> command line option.</li>
-  <li>Bug fix: <code class="highlighter-rouge">copy_resources</code> plugin uses correct target.</li>
+  <li>Added several new options for the <code class="language-plaintext highlighter-rouge">install_dependencies</code> plugin to customize the <code class="language-plaintext highlighter-rouge">pip</code> behaviour.</li>
+  <li><code class="language-plaintext highlighter-rouge">coverage</code> and <code class="language-plaintext highlighter-rouge">pyfix</code> plugins define their dependencies.</li>
+  <li>Added <code class="language-plaintext highlighter-rouge">very-quiet</code> command line option.</li>
+  <li>Bug fix: <code class="language-plaintext highlighter-rouge">copy_resources</code> plugin uses correct target.</li>
 </ul>
 
 <h2 id="version-083">Version 0.8.3</h2>
 
 <ul>
-  <li>Added <code class="highlighter-rouge">pyfix_unittest</code> plugin that executes unittests written using <a href="https://github.com/pyclectic/pyfix">pyfix</a>.</li>
+  <li>Added <code class="language-plaintext highlighter-rouge">pyfix_unittest</code> plugin that executes unittests written using <a href="https://github.com/pyclectic/pyfix">pyfix</a>.</li>
 </ul>
 
 <h2 id="version-082">Version 0.8.2</h2>
@@ -372,13 +372,13 @@ overridden with <code class="highlighter-rouge">project.set_property("integratio
 <h2 id="version-074">Version 0.7.4</h2>
 
 <ul>
-  <li>Distutils plugin supports URLs for dependencies and adds a <code class="highlighter-rouge">dependency_links</code> parameter to <code class="highlighter-rouge">setup()</code>.</li>
+  <li>Distutils plugin supports URLs for dependencies and adds a <code class="language-plaintext highlighter-rouge">dependency_links</code> parameter to <code class="language-plaintext highlighter-rouge">setup()</code>.</li>
 </ul>
 
 <h2 id="version-073">Version 0.7.3</h2>
 
 <ul>
-  <li>Bugfix release for <code class="highlighter-rouge">install_dependencies</code> plugin.</li>
+  <li>Bugfix release for <code class="language-plaintext highlighter-rouge">install_dependencies</code> plugin.</li>
   <li>Dependencies take an optional URL which is used for installation.</li>
 </ul>
 
@@ -422,7 +422,7 @@ overridden with <code class="highlighter-rouge">project.set_property("integratio
         </div>
     </div>
     <div class="publish-date">
-        <small>site published on 2020-05-08 09:22:17 +0000</small>
+        <small>site published on 2020-07-12 19:29:25 +0000</small>
     </div>
 </footer>
 

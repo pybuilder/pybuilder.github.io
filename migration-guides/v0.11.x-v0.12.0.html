@@ -202,24 +202,24 @@
                     
                 </p>
                 <p>
-                    Published: 2020-05-08
+                    Published: 2020-07-12
                 </p>
                 
             </div>
-            <h1 id="cli-and-buildpy-changes">CLI and <code class="highlighter-rouge">build.py</code> Changes</h1>
+            <h1 id="cli-and-buildpy-changes">CLI and <code class="language-plaintext highlighter-rouge">build.py</code> Changes</h1>
 
 <ul>
-  <li><code class="highlighter-rouge">install_dependencies</code> task, while still available, is most likely no longer necessary as PyBuilder 0.12.x manages 
-<code class="highlighter-rouge">venvs</code> automatically.</li>
-  <li>it’s highly recommended to run <code class="highlighter-rouge">pyb --update-project</code> to create <code class="highlighter-rouge">pyproject.toml</code> and update <code class="highlighter-rouge">setup.py</code>.</li>
-  <li>Coverage 5.0+ uses sqlite to store coverage data which is now saved in <code class="highlighter-rouge">$dir_target/*.coverage</code>. If you have CI 
+  <li><code class="language-plaintext highlighter-rouge">install_dependencies</code> task, while still available, is most likely no longer necessary as PyBuilder 0.12.x manages 
+<code class="language-plaintext highlighter-rouge">venvs</code> automatically.</li>
+  <li>it’s highly recommended to run <code class="language-plaintext highlighter-rouge">pyb --update-project</code> to create <code class="language-plaintext highlighter-rouge">pyproject.toml</code> and update <code class="language-plaintext highlighter-rouge">setup.py</code>.</li>
+  <li>Coverage 5.0+ uses sqlite to store coverage data which is now saved in <code class="language-plaintext highlighter-rouge">$dir_target/*.coverage</code>. If you have CI 
 coverage analytics running you need to update the reference to the location of the coverage files.</li>
 </ul>
 
 <h1 id="api-changes">API Changes</h1>
 
 <h2 id="externalcommandbuilder">ExternalCommandBuilder</h2>
-<p>Where as in 0.11.x the <code class="highlighter-rouge">ExternalCommandBuilder</code> constructor was</p>
+<p>Where as in 0.11.x the <code class="language-plaintext highlighter-rouge">ExternalCommandBuilder</code> constructor was</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ExternalCommandBuilder</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command_name</span><span class="p">,</span> <span class="n">project</span><span class="p">):</span>
@@ -228,7 +228,7 @@ coverage analytics running you need to update the reference to the location of t
         <span class="bp">self</span><span class="p">.</span><span class="n">project</span> <span class="o">=</span> <span class="n">project</span>
 </code></pre></div></div>
 
-<p>in 0.12.x the API now requires a <code class="highlighter-rouge">reactor</code> and an optional <code class="highlighter-rouge">venv</code> name to be able to utilize PyBuilder venv
+<p>in 0.12.x the API now requires a <code class="language-plaintext highlighter-rouge">reactor</code> and an optional <code class="language-plaintext highlighter-rouge">venv</code> name to be able to utilize PyBuilder venv
 infrastructure:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ExternalCommandBuilder</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -242,9 +242,9 @@ infrastructure:</p>
 
 <h2 id="projecthome_page">Project.home_page</h2>
 
-<p>The field <code class="highlighter-rouge">project.home_page</code> was vestigial from time immemorial and has been removed as it was not used 
+<p>The field <code class="language-plaintext highlighter-rouge">project.home_page</code> was vestigial from time immemorial and has been removed as it was not used 
 to generate any distribution metadata or anywhere else for that matter.
-Please use <code class="highlighter-rouge">project.url</code> or <code class="highlighter-rouge">project.urls</code> as a functioning alternative.</p>
+Please use <code class="language-plaintext highlighter-rouge">project.url</code> or <code class="language-plaintext highlighter-rouge">project.urls</code> as a functioning alternative.</p>
 
         </div>
     </div>
@@ -259,7 +259,7 @@ Please use <code class="highlighter-rouge">project.url</code> or <code class="hi
         </div>
     </div>
     <div class="publish-date">
-        <small>site published on 2020-05-08 09:22:17 +0000</small>
+        <small>site published on 2020-07-12 19:29:25 +0000</small>
     </div>
 </footer>
 

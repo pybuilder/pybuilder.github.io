@@ -174,10 +174,10 @@
 <h3 id="running-python-unittests">Running Python Unittests</h3>
 
 <p><em>PyBuilder</em> ships with a plugin to execute unittests written using <a href="http://docs.python.org/library/unittest.html">Python’s unittest module</a>
-during the build. Use the <code class="highlighter-rouge">python.unittest</code> plugin to enable unittest support.</p>
+during the build. Use the <code class="language-plaintext highlighter-rouge">python.unittest</code> plugin to enable unittest support.</p>
 
-<p>The plugin executes all test cases found in modules ending with <code class="highlighter-rouge">_tests.py</code> in the directory
-<code class="highlighter-rouge">src/unittest/python</code>.</p>
+<p>The plugin executes all test cases found in modules ending with <code class="language-plaintext highlighter-rouge">_tests.py</code> in the directory
+<code class="language-plaintext highlighter-rouge">src/unittest/python</code>.</p>
 
 <h4 id="python-unittest-properties">Python unittest properties</h4>
 
@@ -233,8 +233,8 @@ during the build. Use the <code class="highlighter-rouge">python.unittest</code>
 
 <h3 id="measuring-unittest-coverage">Measuring unittest coverage</h3>
 
-<p><em>PyBuilder</em> adds support to measure the coverage of your unittest using the <code class="highlighter-rouge">coverage</code> module.
-Use the <code class="highlighter-rouge">python.coverage</code> module to activate coverage.</p>
+<p><em>PyBuilder</em> adds support to measure the coverage of your unittest using the <code class="language-plaintext highlighter-rouge">coverage</code> module.
+Use the <code class="language-plaintext highlighter-rouge">python.coverage</code> module to activate coverage.</p>
 
 <h4 id="coverage-properties">Coverage properties</h4>
 
@@ -296,11 +296,11 @@ Use the <code class="highlighter-rouge">python.coverage</code> module to activat
   </tr>
 </table>
 
-<p>Please note that properties <code class="highlighter-rouge">coverage_reload_modules</code> and <code class="highlighter-rouge">coverage_fork</code> are deprecated and will not be used.</p>
+<p>Please note that properties <code class="language-plaintext highlighter-rouge">coverage_reload_modules</code> and <code class="language-plaintext highlighter-rouge">coverage_fork</code> are deprecated and will not be used.</p>
 
 <h3 id="sonarqube-integration">SonarQube integration</h3>
 
-<p>Using the plugin <code class="highlighter-rouge">python.sonarqube</code> will add the task <code class="highlighter-rouge">run_sonar_analysis</code> to your project. This task has a run-time dependency to the <code class="highlighter-rouge">sonar-runner</code> program and will submit your project to <a href="http://www.sonarqube.org/">sonarqube</a> for analysis.</p>
+<p>Using the plugin <code class="language-plaintext highlighter-rouge">python.sonarqube</code> will add the task <code class="language-plaintext highlighter-rouge">run_sonar_analysis</code> to your project. This task has a run-time dependency to the <code class="language-plaintext highlighter-rouge">sonar-runner</code> program and will submit your project to <a href="http://www.sonarqube.org/">sonarqube</a> for analysis.</p>
 
 <h4 id="sonarqube-configuration">SonarQube configuration</h4>
 
@@ -379,7 +379,7 @@ Use the <code class="highlighter-rouge">python.coverage</code> module to activat
 
 <p><em>PyBuilder</em> can lint your files and verify (or enforce) compliance with
 PEP8 and PyFlakes through the flake8 module.
-Use the <code class="highlighter-rouge">python.flake8</code> module to activate linting.</p>
+Use the <code class="language-plaintext highlighter-rouge">python.flake8</code> module to activate linting.</p>
 
 <h5 id="flake8-configuration">Flake8 configuration</h5>
 
@@ -448,7 +448,7 @@ Use the <code class="highlighter-rouge">python.flake8</code> module to activate 
 
 <h4 id="pychecker-plugin">Pychecker plugin</h4>
 
-<p>Using the plugin <code class="highlighter-rouge">python.pychecker</code> will let pychecker run on python source modules.</p>
+<p>Using the plugin <code class="language-plaintext highlighter-rouge">python.pychecker</code> will let pychecker run on python source modules.</p>
 
 <h5 id="pychecker-configuration">Pychecker configuration</h5>
 
@@ -477,7 +477,7 @@ Use the <code class="highlighter-rouge">python.flake8</code> module to activate 
 
 <h4 id="pylint-plugin">Pylint plugin</h4>
 
-<p>Using the plugin <code class="highlighter-rouge">python.pylint</code> will let pylint run on python source modules.</p>
+<p>Using the plugin <code class="language-plaintext highlighter-rouge">python.pylint</code> will let pylint run on python source modules.</p>
 
 <h5 id="pylint-configuration">Pylint configuration</h5>
 
@@ -499,24 +499,24 @@ Use the <code class="highlighter-rouge">python.flake8</code> module to activate 
 
 <h4 id="pep8-plugin">Pep8 plugin</h4>
 
-<p>Using the plugin <code class="highlighter-rouge">python.pep8</code> will let pep8 run on python sources.
+<p>Using the plugin <code class="language-plaintext highlighter-rouge">python.pep8</code> will let pep8 run on python sources.
 There is no configuration possible currently, consider using the flake8 plugin instead.</p>
 
 <h4 id="pymetrics-plugin">Pymetrics plugin</h4>
 
-<p>Using the plugin <code class="highlighter-rouge">python.pymetrics</code> will let pymetrics run on all python source files.
+<p>Using the plugin <code class="language-plaintext highlighter-rouge">python.pymetrics</code> will let pymetrics run on all python source files.
 There is no configuration possible currently, consider using the flake8 plugin instead.</p>
 
 <h3 id="running-python-integration-tests">Running Python Integration Tests</h3>
 
 <p><em>PyBuilder</em> ships with a plugin to run integration tests written in Python. The plugin is named
-<code class="highlighter-rouge">python.integrationtest</code>. It executes all python modules named <code class="highlighter-rouge">*_tests.py</code> in the
-<code class="highlighter-rouge">src/integrationtest/python</code> directory.</p>
+<code class="language-plaintext highlighter-rouge">python.integrationtest</code>. It executes all python modules named <code class="language-plaintext highlighter-rouge">*_tests.py</code> in the
+<code class="language-plaintext highlighter-rouge">src/integrationtest/python</code> directory.</p>
 
-<p>However, the default <code class="highlighter-rouge">run_integration_tests</code> job is just a stub per default
+<p>However, the default <code class="language-plaintext highlighter-rouge">run_integration_tests</code> job is just a stub per default
 , which won’t run your integration tests. In order to use integration tests,
 you will have to enable the module by specifying
-<code class="highlighter-rouge">use_plugin('python.integrationtest')</code>. If you don’t specify this,
+<code class="language-plaintext highlighter-rouge">use_plugin('python.integrationtest')</code>. If you don’t specify this,
 your integration tests will not be run.</p>
 
 <p>Every module is executed as a Python module. The Python path contains the integration test directory as well as
@@ -615,7 +615,7 @@ We have experienced strange problems (EOFErrors) on python 3.2. This seems to be
 <h3 id="running-cram-tests">Running Cram tests</h3>
 <p><a href="https://pypi.python.org/pypi/cram">Cram is a functional testing framework for command line applications based on Mercurial’s unified test format.</a></p>
 
-<p>The plugin <code class="highlighter-rouge">python.cram</code> can be used to run tests written for cram. Cram tests run during <code class="highlighter-rouge">run_integration_tests</code> but there is also a separate task available (<code class="highlighter-rouge">run_cram_tests</code>).</p>
+<p>The plugin <code class="language-plaintext highlighter-rouge">python.cram</code> can be used to run tests written for cram. Cram tests run during <code class="language-plaintext highlighter-rouge">run_integration_tests</code> but there is also a separate task available (<code class="language-plaintext highlighter-rouge">run_cram_tests</code>).</p>
 
 <div class="alert alert-warning alert-dismissable">
   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -711,7 +711,7 @@ into the distribution directory.</p>
 <h3 id="installing-dependencies">Installing dependencies</h3>
 
 <p><em>PyBuilder</em> manages build and runtime dependencies for you.
-Use the <code class="highlighter-rouge">python.install_dependencies</code> module to activate dependency management.
+Use the <code class="language-plaintext highlighter-rouge">python.install_dependencies</code> module to activate dependency management.
 This will make the following tasks available:</p>
 
 <table class="table table-striped">
@@ -749,7 +749,7 @@ This will make the following tasks available:</p>
 <h5 id="build-dependencies-">Build dependencies :</h5>
 <pre><code>project.build_depends_on("awesome-library")</code></pre>
 
-<p>Note that the <code class="highlighter-rouge">*_depends_on</code> methods accept the following arguments :</p>
+<p>Note that the <code class="language-plaintext highlighter-rouge">*_depends_on</code> methods accept the following arguments :</p>
 
 <table class="table table-striped">
   <tr>
@@ -835,7 +835,7 @@ This will make the following tasks available:</p>
 
 <h3 id="creating-a-source-distribution">Creating a source distribution</h3>
 
-<p><em>PyBuilder</em> can build a source distribution of your code with the plugin <code class="highlighter-rouge">source_distribution</code>. Activating this plugin will expose a task, <code class="highlighter-rouge">build_source_distribution</code>.</p>
+<p><em>PyBuilder</em> can build a source distribution of your code with the plugin <code class="language-plaintext highlighter-rouge">source_distribution</code>. Activating this plugin will expose a task, <code class="language-plaintext highlighter-rouge">build_source_distribution</code>.</p>
 
 <h4 id="source-distribution-configuration">Source distribution configuration</h4>
 
@@ -864,7 +864,7 @@ This will make the following tasks available:</p>
 <h3 id="building-a-python-package">Building a Python package</h3>
 
 <p><em>PyBuilder</em> ships a plugin that generates and executes setup.py files using with distutils or setuptools (distribute will
-be supported in future releases). In order to generate a <code class="highlighter-rouge">setup.py</code> file use the <code class="highlighter-rouge">python.distutils</code>
+be supported in future releases). In order to generate a <code class="language-plaintext highlighter-rouge">setup.py</code> file use the <code class="language-plaintext highlighter-rouge">python.distutils</code>
 plugin.</p>
 
 <p>The distutils plugin will consider many of the project’s attributes, i.e.</p>
@@ -880,11 +880,11 @@ plugin.</p>
 
 <h4 id="moving-scripts-to-a-nested-directory">Moving scripts to a nested directory</h4>
 
-<p>By default, executable scripts are located at the egg’s root. The <code class="highlighter-rouge">setup.py</code> contains the bare script names.
+<p>By default, executable scripts are located at the egg’s root. The <code class="language-plaintext highlighter-rouge">setup.py</code> contains the bare script names.
 Sometimes though you may want to move the scripts inside a directory to avoid naming collisions (i.e. with
 packages).</p>
 
-<p>The <code class="highlighter-rouge">python.core</code> and <code class="highlighter-rouge">python.distutils</code> plugins support the property <code class="highlighter-rouge">dir_dist_scripts</code> that
+<p>The <code class="language-plaintext highlighter-rouge">python.core</code> and <code class="language-plaintext highlighter-rouge">python.distutils</code> plugins support the property <code class="language-plaintext highlighter-rouge">dir_dist_scripts</code> that
 can name a directory to contain scripts inside the egg. This property is empty by default. Set it to the local name
 of the directory you want the scripts to be moved to:</p>
 
@@ -1004,8 +1004,8 @@ def initialize (project):
   </tr>
 </table>
 
-<p>Each <code class="highlighter-rouge">distutils_commands</code> is called individually with <code class="highlighter-rouge">clean --all</code> parameter.
-The reason that <code class="highlighter-rouge">clean --all</code> is used is to ensure that if PyBuilder is generating multiple packages (<code class="highlighter-rouge">bdist_wheel</code> vs <code class="highlighter-rouge">dumb</code> vs <code class="highlighter-rouge">bdist</code>) that the <code class="highlighter-rouge">build/</code> directory doesn’t cross-contaminate the builds. Some use absolute paths, some use relative.</p>
+<p>Each <code class="language-plaintext highlighter-rouge">distutils_commands</code> is called individually with <code class="language-plaintext highlighter-rouge">clean --all</code> parameter.
+The reason that <code class="language-plaintext highlighter-rouge">clean --all</code> is used is to ensure that if PyBuilder is generating multiple packages (<code class="language-plaintext highlighter-rouge">bdist_wheel</code> vs <code class="language-plaintext highlighter-rouge">dumb</code> vs <code class="language-plaintext highlighter-rouge">bdist</code>) that the <code class="language-plaintext highlighter-rouge">build/</code> directory doesn’t cross-contaminate the builds. Some use absolute paths, some use relative.</p>
 
 <div class="alert alert-warning alert-dismissable">
   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -1018,21 +1018,21 @@ Setting the property <code>distutils_issue8876_workaround_enabled</code> to True
 
 <h5 id="distutils_command_options">distutils_command_options</h5>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>project.set_property('distutils_commands', 'build')
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>project.set_property('distutils_commands', 'build')
 project.set_property('distutils_command_options',
                      {'build': ('-e', '/opt/python2.7/bin/python', 'bdist_wheel')})
 </code></pre></div></div>
 
 <h5 id="distutils_console_scripts">distutils_console_scripts</h5>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>project.set_property('distutils_console_scripts', [
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>project.set_property('distutils_console_scripts', [
     "some_console1 = some_module1:some_function1",
     "some_console2 = some_package.some_module2:some_function2"])
 </code></pre></div></div>
 
 <h5 id="distutils_entry_points">distutils_entry_points</h5>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>project.set_property('distutils_entry_points', {
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>project.set_property('distutils_entry_points', {
     'console_scripts': [
         "some_console1 = some_module1:some_function1",
         "some_console2 = some_package.some_module2:some_function2"],
@@ -1043,8 +1043,8 @@ project.set_property('distutils_command_options',
 
 <h3 id="copying-resources-into-a-distribution">Copying resources into a distribution</h3>
 
-<p>In some cases you want to include non-source files in a distribution. An example is adding a <code class="highlighter-rouge">setup.cfg</code> to your project. It is not a source file, but it needs to be in the distribution to work (beneath the <code class="highlighter-rouge">setup.py</code> file).
-The <code class="highlighter-rouge">copy_resources</code> plugin will do this for you at build-time.</p>
+<p>In some cases you want to include non-source files in a distribution. An example is adding a <code class="language-plaintext highlighter-rouge">setup.cfg</code> to your project. It is not a source file, but it needs to be in the distribution to work (beneath the <code class="language-plaintext highlighter-rouge">setup.py</code> file).
+The <code class="language-plaintext highlighter-rouge">copy_resources</code> plugin will do this for you at build-time.</p>
 
 <h4 id="copy-resources-configuration">Copy resources configuration</h4>
 
@@ -1073,8 +1073,8 @@ The <code class="highlighter-rouge">copy_resources</code> plugin will do this fo
 
 <h3 id="filtering-files">Filtering files</h3>
 
-<p>With the <code class="highlighter-rouge">filter_resources</code> plugin, it is possible to replace placeholder values of type <code class="highlighter-rouge">${version}</code> with actual values at build-time.
-The actual values are the attributes and the properties dict of the <code class="highlighter-rouge">project</code> object. So <code class="highlighter-rouge">${version}</code> will be replaced with the value of <code class="highlighter-rouge">project.version</code> and <code class="highlighter-rouge">${some_property}</code> by <code class="highlighter-rouge">project.get_property('some_property')</code>.
+<p>With the <code class="language-plaintext highlighter-rouge">filter_resources</code> plugin, it is possible to replace placeholder values of type <code class="language-plaintext highlighter-rouge">${version}</code> with actual values at build-time.
+The actual values are the attributes and the properties dict of the <code class="language-plaintext highlighter-rouge">project</code> object. So <code class="language-plaintext highlighter-rouge">${version}</code> will be replaced with the value of <code class="language-plaintext highlighter-rouge">project.version</code> and <code class="language-plaintext highlighter-rouge">${some_property}</code> by <code class="language-plaintext highlighter-rouge">project.get_property('some_property')</code>.
 In order to make resource filtering explicit, all files that go through filtering need to be specified with a glob.</p>
 
 <h4 id="filter-resources-configuration">Filter resources configuration</h4>
@@ -1104,18 +1104,18 @@ In order to make resource filtering explicit, all files that go through filterin
 
 <h4 id="filter-resources-example">Filter resources example</h4>
 
-<p>A common use case is keeping a <code class="highlighter-rouge">__version__</code> attribute in your main module.
-But you don’t want to specify the version both in <code class="highlighter-rouge">build.py</code> and in <code class="highlighter-rouge">__init__.py</code> because <code class="highlighter-rouge">build.py</code> should be the single point of truth.</p>
+<p>A common use case is keeping a <code class="language-plaintext highlighter-rouge">__version__</code> attribute in your main module.
+But you don’t want to specify the version both in <code class="language-plaintext highlighter-rouge">build.py</code> and in <code class="language-plaintext highlighter-rouge">__init__.py</code> because <code class="language-plaintext highlighter-rouge">build.py</code> should be the single point of truth.</p>
 
-<p>So just use <code class="highlighter-rouge">__version__ = '${version}'</code> in <code class="highlighter-rouge">__init__.py</code>.</p>
+<p>So just use <code class="language-plaintext highlighter-rouge">__version__ = '${version}'</code> in <code class="language-plaintext highlighter-rouge">__init__.py</code>.</p>
 
-<p>We can tell the plugin to filter this file by adding <code class="highlighter-rouge">['**/YOUR-PACKAGE-NAME/__init__.py']</code> to the <code class="highlighter-rouge">filter_resources_glob</code>.
-The correct version will be patched in at run-time since the version is defined in <code class="highlighter-rouge">project.version</code>.
-For filtering other attributes like <code class="highlighter-rouge">${myattribute}</code>, just add a <code class="highlighter-rouge">project.myattribute = "foobar"</code> in <code class="highlighter-rouge">build.py</code>’s initializer.</p>
+<p>We can tell the plugin to filter this file by adding <code class="language-plaintext highlighter-rouge">['**/YOUR-PACKAGE-NAME/__init__.py']</code> to the <code class="language-plaintext highlighter-rouge">filter_resources_glob</code>.
+The correct version will be patched in at run-time since the version is defined in <code class="language-plaintext highlighter-rouge">project.version</code>.
+For filtering other attributes like <code class="language-plaintext highlighter-rouge">${myattribute}</code>, just add a <code class="language-plaintext highlighter-rouge">project.myattribute = "foobar"</code> in <code class="language-plaintext highlighter-rouge">build.py</code>’s initializer.</p>
 
 <h3 id="creating-documentation-with-sphinx">Creating documentation with sphinx</h3>
 
-<p>The plugin <code class="highlighter-rouge">python.sphinx</code> will expose the task <code class="highlighter-rouge">sphinx_generate_documentation</code> which will generate the project documentation.</p>
+<p>The plugin <code class="language-plaintext highlighter-rouge">python.sphinx</code> will expose the task <code class="language-plaintext highlighter-rouge">sphinx_generate_documentation</code> which will generate the project documentation.</p>
 
 <h4 id="sphinx-plugin-configuration">Sphinx plugin configuration</h4>
 
@@ -1162,7 +1162,7 @@ For filtering other attributes like <code class="highlighter-rouge">${myattribut
 <p><em>PyBuilder</em> ships with a plugin that allows you to incorporate arbitrary shell
 commands in the build process.</p>
 
-<p>This plugin can be activated using <code class="highlighter-rouge">use_plugin("exec")</code> and is configured through
+<p>This plugin can be activated using <code class="language-plaintext highlighter-rouge">use_plugin("exec")</code> and is configured through
 the project properties.</p>
 
 <h4 id="adding-a-shell-command-to-the-build-process">Adding a shell command to the build process</h4>
@@ -1205,9 +1205,9 @@ lifecycle for example.</p>
 </table>
 
 <p>The output of the plugin can also be customized by using the properties
-<code class="highlighter-rouge">$PHASE_propagate_stdout</code> and <code class="highlighter-rouge">$PHASE_propagate_stderr</code>.</p>
+<code class="language-plaintext highlighter-rouge">$PHASE_propagate_stdout</code> and <code class="language-plaintext highlighter-rouge">$PHASE_propagate_stderr</code>.</p>
 
-<p>See the properties for the phase <code class="highlighter-rouge">run_unit_tests</code> for example:</p>
+<p>See the properties for the phase <code class="language-plaintext highlighter-rouge">run_unit_tests</code> for example:</p>
 
 <table class="table table-striped">
   <tr>
@@ -1234,31 +1234,31 @@ lifecycle for example.</p>
 
 <h3 id="project-files-for-eclipse-pydev">Project files for Eclipse PyDev</h3>
 
-<p>If the plugin <code class="highlighter-rouge">python.pydev</code> is used, PyBuilder provides the task <code class="highlighter-rouge">pydev_generate</code>.
+<p>If the plugin <code class="language-plaintext highlighter-rouge">python.pydev</code> is used, PyBuilder provides the task <code class="language-plaintext highlighter-rouge">pydev_generate</code>.
 This task can be used to generate PyDev project files in the project root directory. The project can then be imported easily.</p>
 
 <h3 id="project-files-for-jetbrains-pycharm">Project files for Jetbrains PyCharm</h3>
-<p>If the plugin <code class="highlighter-rouge">python.pycharm</code> is used, PyBuilder provides the task <code class="highlighter-rouge">pycharm_generate</code>.
-This task can be used to generate a PyCharm project files in the project root directory. The project can then be imported easily through the <code class="highlighter-rouge">Open...</code> command.</p>
+<p>If the plugin <code class="language-plaintext highlighter-rouge">python.pycharm</code> is used, PyBuilder provides the task <code class="language-plaintext highlighter-rouge">pycharm_generate</code>.
+This task can be used to generate a PyCharm project files in the project root directory. The project can then be imported easily through the <code class="language-plaintext highlighter-rouge">Open...</code> command.</p>
 
 <h2 id="developer-tools">Developer tools</h2>
 
 <h3 id="visual-feedback-for-tests">Visual feedback for tests</h3>
-<p>The <code class="highlighter-rouge">python.pytddmon</code> plugin provides the task <code class="highlighter-rouge">pytddmon</code> which will start a graphical application that gives real-time feedback about passing or failing unit tests.
+<p>The <code class="language-plaintext highlighter-rouge">python.pytddmon</code> plugin provides the task <code class="language-plaintext highlighter-rouge">pytddmon</code> which will start a graphical application that gives real-time feedback about passing or failing unit tests.
 Please <a href="http://pytddmon.org/">see the pytddmon page</a> for more information about pytddmon.</p>
 
 <h2 id="additional-project-structure">Additional project structure</h2>
 
-<h3 id="splitting-up-your-buildpy-with-bldsup">Splitting up your <code class="highlighter-rouge">build.py</code> with bldsup</h3>
+<h3 id="splitting-up-your-buildpy-with-bldsup">Splitting up your <code class="language-plaintext highlighter-rouge">build.py</code> with bldsup</h3>
 
 <p>Maybe you want to have project specific plugins and support code while keeping your build.py file small, while avoiding to clutter your project’s root directory.
 This can be done by activating bldsup support :</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from pybuilder.core import use_bldsup
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from pybuilder.core import use_bldsup
 use_bldsup(build_support_dir="bldsup")
 </code></pre></div></div>
 
-<p>If it’s not called in a project’s build.py, then no “bldsup” directory is searched. If it is called, then it confirms that the build_support_dir directory exists and that includes a <code class="highlighter-rouge">__init__.py</code> file so imports will work. It just needs to be called before you try to <code class="highlighter-rouge">import</code>/<code class="highlighter-rouge">use_plugin()</code> any modules from the <code class="highlighter-rouge">build_support_dir</code>.</p>
+<p>If it’s not called in a project’s build.py, then no “bldsup” directory is searched. If it is called, then it confirms that the build_support_dir directory exists and that includes a <code class="language-plaintext highlighter-rouge">__init__.py</code> file so imports will work. It just needs to be called before you try to <code class="language-plaintext highlighter-rouge">import</code>/<code class="language-plaintext highlighter-rouge">use_plugin()</code> any modules from the <code class="language-plaintext highlighter-rouge">build_support_dir</code>.</p>
 </div>
         <div class="col-lg-5 visible-md visible-lg">
             <nav id="toc" data-spy="affix" data-toggle="toc"></nav>
@@ -1275,7 +1275,7 @@ use_bldsup(build_support_dir="bldsup")
         </div>
     </div>
     <div class="publish-date">
-        <small>site published on 2020-05-08 09:22:17 +0000</small>
+        <small>site published on 2020-07-12 19:29:25 +0000</small>
     </div>
 </footer>
 
