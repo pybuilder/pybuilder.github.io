@@ -10,6 +10,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-paginate
   - jekyll-last-modified-at
+  - jekyll-datapage-generator
 permalink: "/articles/:categories/:title.html"
 paginate: 5
 paginate_path: "/news/page:num/"
@@ -24,6 +25,12 @@ collections:
   migration-guides:
     output: true
 news_posts_max: 3
+page_gen:
+  - index_files: false
+    data: plugin-docs
+    template: plugin
+    name: plugin
+    dir: articles/plugins
 exclude:
   - build.sh
   - deploy.key

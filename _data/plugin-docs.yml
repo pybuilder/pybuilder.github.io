@@ -1,0 +1,274 @@
+- plugin: core
+  category: Core
+  heading: Core PyBuilder workspace setup
+  summary: Sets up target directory structure for other plugins to use.
+  description: |
+    Language independent core plugin setting up basic build directory layout.
+    Core plugin is, essentially, always active as any plugin that needs to write to disk will require workspace
+    directories to be prepared.
+  properties:
+    dir_target:
+      default: target
+      type: path
+      description: the main working directory where all artifacts, logs and scratch will be stored
+    dir_reports:
+      default: $dir_reports/reports
+      type: path
+      description: reports directory contains various report files and utility statuses
+    dir_logs:
+      default: $dir_target/logs
+      type: path
+      description: logs directory for utility logs
+    remote_debug:
+      default: 0
+      type: int
+      description: controls the debug level of the PyBuilder remoting (troubleshooting only)
+      since: 0.12.0
+    write_report:
+      type: callable
+      description: a function for writing reports
+
+- plugin: copy_resources
+  category: Core
+  heading: Copying Resources Into a Distribution
+  summary: Copies resources into a distribution directory according to a specified glob.
+  description: |
+    In some cases you want to include non-source files in a distribution. An example is adding a `setup.cfg` to your
+    project. It is not a source file, but it needs to be in the distribution to work (beneath the `setup.py` file).
+    The `copy_resources` plugin will do this for you at build-time.
+  properties:
+    copy_resources_target:
+      default: $dir_target
+      type: path
+      description: where resources should be copied to
+    copy_resources_glob:
+      default: []
+      type: List[str]
+      description: a list of globs matching files that should be copied to `$copy_resources_target`
+
+- plugin: filter_resources
+  category: Core
+  heading: Filtering Files
+  summary: Allows to substitute placeholders in source files with project variables.
+  description: |
+    With the `filter_resources` plugin, it is possible to replace placeholder values of type `${version}` with actual
+    values at build-time. The actual values are the attributes and the properties dict of the `project` object.
+    So `${version}` will be replaced with the value of `project.version` and `${some_property}` by
+    `project.get_property('some_property')`.
+    In order to make resource filtering explicit, all files that go through filtering need to be
+    specified with a glob.
+  properties:
+    filter_resources_target:
+      default: $dir_target
+      type: path
+      description: top-level directory containing the resources to be filtered
+    filter_resources_glob:
+      type: List[str]
+      default: []
+      description: a list of globs matching files that should be filtered
+  example: |
+    A common use case is keeping a `__version__` attribute in your main module.
+    But you don't want to specify the version both in `build.py` and in `__init__.py` because `build.py` should be the
+    single point of truth.
+
+    So just use `__version__ = '${version}'` in `__init__.py`.
+
+    We can tell the plugin to filter this file by adding `['**/YOUR-PACKAGE-NAME/__init__.py']` to the
+    `filter_resources_glob`.
+
+    The correct version will be patched in at run-time since the version is defined in `project.version`.
+    For filtering other attributes like `${myattribute}`, just add a `project.myattribute = "foobar"` in
+    `build.py`'s initializer.
+
+- plugin: source_distribution
+  category: Core
+  heading: Creating a Source Distribution
+  summary: Creates a source-only project distribution package.
+  description: |
+    *PyBuilder* can build a source distribution of your code with the plugin `source_distribution`.
+    Activating this plugin will expose a task, `build_source_distribution`.
+  properties:
+    dir_source_dist:
+      type: path
+      default: $dir_target/dist/$(project.name)-$(project.version)-src
+      description: where the source distribution should be created
+    source_dist_ignore_patterns:
+      type: List[str]
+      default: '["*.pyc", ".hg*", ".svn", ".CVS"]'
+      description: patterns to ignore when copying sources for the source distribution
+- plugin: ronn_manpage
+  category: [Core, Documentation]
+  heading: Generate Man Pages from Markdown
+  summary: Converts markdown files into *nix man pages using `ronn` utility.
+  properties:
+    dir_manpages:
+      type: path
+      default: docs/man
+      description: directory where man-pages will be placed
+    manpage_source:
+      type: path
+      default: README.md
+      description: the source file to convert to man page
+    manpage_section:
+      type: int
+      default: 1
+      description: specifies the standard section of the manual to be generated
+- plugin: python.core
+  category: Python
+  heading: Python Core
+  summary: Python core plugin enabling Python project functionality.
+  description: |
+    The Python core plugin deals with foundation services and setup for Python projects. It deals with sources and
+    distributions, configures installation parameters for Python packages and copies the source into the distribution
+    directory.
+  properties:
+    dir_source_main_python:
+      type: path
+      default: src/main/python
+      description: directory where Python modules are located
+    dir_source_main_scripts:
+      type: path
+      default: src/main/scripts
+      description: directory where runnable scripts are located
+    dir_dist:
+      type: path
+      default: $dir_target/dist/$name-$version
+      description: directory where distributions are built
+    dir_dist_scripts:
+      type: path
+      default: scripts
+      since: 0.10.40
+      description: directory where scripts are copied to **(relative to distribution directory)**
+    refresh_venvs:
+      type: bool
+      default: False
+      since: 0.12.0
+      description: whether to wipe all cached virtual environments generated to build and test the project
+    pip_verbose:
+      type: int
+      default: 0
+      since: 0.12.0
+      description: cause all PIP operations to be verbose in the logs (valid values 0 - 3)
+    dir_install_logs:
+      type: path
+      default: $dir_logs/install_dependencies
+      since: 0.12.0
+      description: default location for PIP operations logs
+    install_dependencies_index_url:
+      type: str
+      default: None
+      since: 0.12.0
+      description: |
+        base URL of the Python Package Index (default https://pypi.org/simple if `None`); this should point to a
+        repository compliant with PEP 503 (the simple repository API) or a local directory laid out in the same format
+    install_dependencies_extra_index_url:
+      type: str
+      default: None
+      since: 0.12.0
+      description: |
+        extra URLs of package indexes to use in addition to `install_dependencies_index_url`; should follow the same
+        rules as `install_dependencies_index_url`
+    install_dependencies_trusted_host:
+      type: str
+      default: None
+      since: 0.12.0
+      description: mark this host or host:port pair as trusted, even though it does not have valid or any HTTPS.
+    install_dependencies_constraints:
+      type: path
+      default: constrants_file
+      since: 0.12.0
+      description: the name/path of the constraints file used
+    install_dependencies_upgrade:
+      type: bool
+      default: False
+      deprecated: 0.12.0
+      description: if dependencies are already available, try to upgrade them instead - **HAS NO EFFECT**
+    install_dependencies_insecure_installation:
+      type: List[str]
+      default: "[]"
+      deprecated: 0.12.0
+      description: |
+        tell newer versions of PIP that it's OK to install those dependencies insecurely
+        (externally hosted, potentially unverified) - **HAS NO EFFECT**
+    venv_names:
+      type: List[str]
+      default: '["build", "test"]'
+      since: 0.12.0
+      description: |
+        a list of names of Python virtual environments to create
+    venv_dependencies:
+      type: Dict[str, List[Dependency]]
+      default: {}
+      since: 0.12.0
+      description: |
+        A mapping of the list of packages for each Python virtual environment created.
+
+        "build" and "test" are
+        special cases where "build" environment defaults to installing `project.build_dependencies` and
+        `project.dependencies`, while "test" defaults to `project.dependencies` only.
+
+        All other environments will not be populated with any packages unless explicitly specified in this mapping.
+    venv_clean:
+      type: bool
+      default: False
+      since: 0.12.0
+      description: |
+        if `True` forces cleaning of the specified venvs on reinstallation; `False` overlays the existing keeping the
+        installed packages
+
+- plugin: python.unittest
+  category: [Python, QA]
+  heading: Testing with unittest
+  summary: Provides testing functionality via Python's bundled `unittest` library
+  description: |
+    *PyBuilder* ships with a plugin to execute unit tests written using
+    [Python's unittest library](https://docs.python.org/3/library/unittest.html)
+    as part of the build process. Use the `python.unittest` plugin to enable unittest support.
+
+    The plugin executes all test cases found in modules matching `$unittest_module_glob` in the directory
+    `$dir_source_unittest_python`.
+  properties:
+    dir_source_unittest_python:
+      type: path
+      default: src/unittest/python
+      description: directory where unittest modules are located
+    unittest_breaks_build:
+      type: bool
+      default: True
+      description: whether build failure occurs on unit test failure
+    unittest_module_glob:
+      type: path
+      default: "*_tests"
+      description: pattern used to filter Python modules that should be imported by the unittest runner
+    unittest_test_method_prefix:
+      type: str
+      default: "`None`"
+      description: |
+        This allows you to define how the module unittest identifies tests.
+        The plugin sets defaultTestLoader.testMethodPrefix to the given value.
+        When set to None the plugin will not set the value at all
+    unittest_python_env:
+      type: str
+      default: build
+      since: 0.12.0
+      description: the name of the Python VEnv to use to run unit tests
+    unittest_runner:
+      type: Tuple[Union[Callable, str], Union[str, MethodType, FunctionType]]
+      default: `XMLTestRunner` with `_make_result` method
+      description: |
+        **ADVANCED**: specifies tuple, with zeroth element specifying a unittest `TestRunner` class via a string name
+        or a callable returning said class; and a first element specifying either a function or a bound method of the
+        class specified as a zeroeth element that is the `_makeResult`-equivalent function of the `unittest` to be
+        patched. In 99% of the cases you want to leave this alone unless your case is really advanced.
+- plugin: python.flake8
+  category: [Python, Linting]
+  heading: Flake8 Plugin
+  summary: Allows to lint your Python code with Flake8
+  description: |
+    *PyBuilder* can lint your files and verify (or enforce) compliance with PEP8 and PyFlakes through the flake8 module.
+    Use the `python.flake8` module to activate linting.
+  properties:
+    flake8_break_build:
+    type: bool
+    default: False
+    description: Break the build if warnings are found

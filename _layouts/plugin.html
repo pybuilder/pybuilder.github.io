@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% include layout/metaAndStyles.html %}
+    <title>PyBuilder &#x2014; '{{ page.plugin }}' Plugin</title>
+</head>
+
+<body data-spy="scroll" data-target="#toc">
+
+{% include layout/header.html %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12" id="content">
+            <h1>{{ page.heading | append: " (`" | append: page.plugin | append: "`)" | markdownify }}</h1>
+
+            {{ page.description | markdownify }}
+
+            {% if page.properties %}
+            <h2>{{ "`" | append: page.plugin | append: "` Plugin Properties" | markdownify }}</h2>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Default Value</th>
+                    <th>Since</th>
+                    <th>Deprecated</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {% assign properties = page.properties | sort %}
+                {% for prop in properties %}
+                <tr>
+                    <td>{{prop[0]}}</td>
+                    <td>{{prop[1].type}}</td>
+                    <td>{{prop[1].default}}</td>
+                    <td>{{prop[1].since}}</td>
+                    <td>{{prop[1].deprecated}}</td>
+                    <td>{{prop[1].description | markdownify }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+
+            {% if page.example %}
+            <h2>{{ "`" | append: page.plugin | append: "` Plugin Example" | markdownify }}</h2>
+
+            {{ page.example | markdownify }}
+
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% include layout/footer.html %}
+</body>
+</html>
