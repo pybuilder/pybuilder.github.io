@@ -1,6 +1,7 @@
 ---
 layout: documentation
 title: Usage Documentation
+redirect_from: /documentation/writing_plugins
 ---
 
 # Writing a plugin

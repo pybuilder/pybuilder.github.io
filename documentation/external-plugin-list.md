@@ -1,6 +1,7 @@
 ---
 layout: documentation
 title: External Plugin List
+redirect_from: /documentation/external_plugin_list
 ---
 
 # {{ page.title }}

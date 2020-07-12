@@ -1,6 +1,7 @@
 ---
 layout: documentation
 title: Developing PyBuilder
+redirect_from: /documentation/developing_pybuilder
 ---
 
 # Running a Full Build

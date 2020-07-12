@@ -1,6 +1,7 @@
 ---
 layout: documentation
 title: Publishing your plugins to PyPI
+redirect_from: /documentation/external_plugins
 ---
 
 # {{ page.title }}
