@@ -11,7 +11,7 @@ plugins:
   - jekyll-paginate
   - jekyll-last-modified-at
   - jekyll-redirect-from
-permalink: "/articles/:categories/:title.html"
+permalink: "/articles/:categories/:title"
 paginate: 5
 paginate_path: "/news/page:num/"
 titles_from_headings:
