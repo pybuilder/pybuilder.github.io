@@ -466,7 +466,7 @@ The plugin `python.cram` can be used to run tests written for cram. Cram tests r
 <div class="alert alert-warning alert-dismissable">
   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
   <h4>Python 3.2.3 warning</h4>
-Cram crashes on python 3.2.3 : <a href="https://bitbucket.org/brodie/cram/issue/28/crash-on-323">see the relevant bitbucket issue</a>. An easy workaround is to not use the plugin on python 3.2 :
+Cram crashes on python 3.2.3 : https://bitbucket.org/brodie/cram/issue/28/crash-on-323 (no longer available). An easy workaround is to not use the plugin on python 3.2 :
 <br/>
 <pre>
 <code>
