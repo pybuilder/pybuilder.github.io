@@ -1,7 +1,9 @@
 ---
 layout: documentation
 title: Release Notes
-redirect_from: /releasenotes
+redirect_from: 
+ - /releasenotes
+ - /releasenotes/
 ---
 
 # Release Notes
