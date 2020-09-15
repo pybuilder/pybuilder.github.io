@@ -3,13 +3,13 @@ Configuration file: /home/travis/build/pybuilder/pybuilder.github.io/_config.yml
        Destination: /home/travis/build/pybuilder/pybuilder.github.io/_site
  Incremental build: disabled. Enable with --incremental
       Generating... 
-                    done in 0.484 seconds.
+                    done in 0.505 seconds.
  Auto-regeneration: disabled. Use --watch to enable.
 Running ["FaviconCheck", "ImageCheck", "HtmlCheck", "OpenGraphCheck", "LinkCheck", "ScriptCheck"] on ["./_site"] on *.html... 
 
 
 Checking 228 external links...
-Ran on 29 files!
+Ran on 30 files!
 
 
 HTML-Proofer finished successfully.
