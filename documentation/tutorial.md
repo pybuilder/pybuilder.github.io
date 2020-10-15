@@ -249,7 +249,7 @@ Build started at 2020-04-10 08:27:37
 [INFO]  Overall helloworld branch coverage is 100%
 [INFO]  Overall helloworld partial branch coverage is 100%
 [INFO]  Building binary distribution in /home/user/projects/helloworld/target/dist/helloworld-1.0.dev0
-[INFO]  Running Twine check for generated artifcats
+[INFO]  Running Twine check for generated artifacts
 ------------------------------------------------------------
 BUILD SUCCESSFUL
 ------------------------------------------------------------
@@ -416,7 +416,7 @@ Build started at 2020-04-12 20:08:50
 [INFO]  Overall helloworld branch coverage is 100%
 [INFO]  Overall helloworld partial branch coverage is 100%
 [INFO]  Building binary distribution in /home/user/projects/helloworld/target/dist/helloworld-1.0.dev0
-[INFO]  Running Twine check for generated artifcats
+[INFO]  Running Twine check for generated artifacts
 ------------------------------------------------------------
 BUILD SUCCESSFUL
 ------------------------------------------------------------
@@ -484,7 +484,7 @@ Build started at 2020-04-12 22:45:13
 [INFO]  Overall helloworld branch coverage is 100%
 [INFO]  Overall helloworld partial branch coverage is 100%
 [INFO]  Building binary distribution in /home/user/projects/helloworld/target/dist/helloworld-1.0.dev0
-[INFO]  Running Twine check for generated artifcats
+[INFO]  Running Twine check for generated artifacts
 ------------------------------------------------------------
 BUILD SUCCESSFUL
 ------------------------------------------------------------
@@ -530,7 +530,7 @@ Build started at 2020-04-12 22:45:13
 [INFO]  Executing build in /home/user/projects/helloworld
 ...
 [INFO]  Building binary distribution in /home/user/projects/helloworld/target/dist/helloworld-1.0.dev0
-[INFO]  Running Twine check for generated artifcats
+[INFO]  Running Twine check for generated artifacts
 ------------------------------------------------------------
 BUILD SUCCESSFUL
 ------------------------------------------------------------
