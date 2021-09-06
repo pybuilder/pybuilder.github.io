@@ -6,9 +6,9 @@ tags: [v0.12.x, release]
 excerpt_separator: <!--more-->
 author: arcivanov
 ---
-Due to requests of Anaconda environment users PyBuilder version 0.12.9 introduced a `--no-venvs` 
-option. This option turns off all Python virtual environment management implemented in 0.12.x 
-for those users who prefer (or must) manager their own virtual environments. 
+Due to requests of Anaconda environment users PyBuilder version 0.12.9+ introduced a `--no-venvs`
+option. This option turns off all Python virtual environment management implemented in 0.12.x
+for those users who prefer (or must) manage their own virtual environments.
 
 <!--more-->
 
