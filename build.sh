@@ -1,4 +1,4 @@
-#!/bin/bash -eEu
+#!/bin/bash -eEux
 
 bundle exec jekyll build
 
