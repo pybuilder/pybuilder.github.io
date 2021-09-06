@@ -1,0 +1,25 @@
+name: pybuilder.github.io
+on:
+  pull_request:
+    branches:
+      - source
+  push:
+    branches:
+      - source
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+          bundler-cache: true
+      - name: Build Jekyll Site
+        run: $GITHUB_WORKSPACE/build.sh
+      - name: Deploy Site
+        if: ${{ github.event_name == 'push' }}
+        uses: NickSchimek/deploy_jamstack_action@main
+        with:
+          build-dir: _site
+          deploy-branch: master
