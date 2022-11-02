@@ -30,6 +30,7 @@ Please read the documentation of each plugin to get more information on plugin t
 * [pybuilder_pycharm_workspace](https://github.com/yeuk0/pybuilder-pycharm-workspace) - generates PyCharm metadata files to include running profiles, project interpreter config, etc. (recommended with pybuilder_archetype_base)
 * [pybuilder_archetype_base](https://github.com/yeuk0/pybuilder-archetype-base) - builds an easy project structure with some examples ready to go
 * [pybuilder_archetype_api](https://github.com/yeuk0/pybuilder-archetype-api) - adds new packages and files' examples from base structure built with pybuilder_archetype_base for a project based on web services
+* [pybuilder_stubs_package](https://github.com/chylek/pybuilder-stubs-package) - creates type-hinting stubs (\*.pyi files) as a separate package. This stubs-only package is named with the -stubs suffix following PEP 561.
 
 
 ## Pybuilder external plugin demo
