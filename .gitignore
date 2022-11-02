@@ -7,3 +7,4 @@ _site
 *~
 build
 Gemfile.lock
+vendor
