@@ -10,11 +10,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7
-          bundler-cache: true
+          ruby-version: "3.1"
+          bundler-cache: false
+      - name: Install Dependencies
+        run: bundle install
       - name: Build Jekyll Site
         run: $GITHUB_WORKSPACE/build.sh
       - name: Deploy Site
