@@ -1085,7 +1085,7 @@ This task can be used to generate a PyCharm project files in the project root di
 
 ### Visual feedback for tests
 The `python.pytddmon` plugin provides the task `pytddmon` which will start a graphical application that gives real-time feedback about passing or failing unit tests.
-Please [see the pytddmon page](http://pytddmon.org/) for more information about pytddmon.
+Please see the pytddmon page (http://pytddmon.org/ broken link) for more information about pytddmon.
 
 ## Additional project structure
 
