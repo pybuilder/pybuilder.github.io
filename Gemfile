@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "html-proofer", "<4"
+gem "html-proofer"
 gem "jekyll", "~> 4.0"
 gem "jekyll-sass-converter" #, "~>2.0
 
