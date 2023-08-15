@@ -34,3 +34,8 @@ twitter:
   card: summary
   username: pybuilder_
 logo: /img/logo.svg
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /img/logo.svg
