@@ -11,6 +11,7 @@ plugins:
   - jekyll-paginate
   - jekyll-last-modified-at
   - jekyll-redirect-from
+  - jekyll-seo-tag
 permalink: "/articles/:categories/:title"
 paginate: 5
 paginate_path: "/news/page:num/"
@@ -29,3 +30,6 @@ exclude:
   - build.sh
   - deploy.key
   - deploy.key.enc
+twitter:
+  card: summary
+  username: pybuilder_
