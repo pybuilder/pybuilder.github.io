@@ -33,3 +33,4 @@ exclude:
 twitter:
   card: summary
   username: pybuilder_
+logo: /img/logo.svg
