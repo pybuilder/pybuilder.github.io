@@ -33,9 +33,9 @@ exclude:
 twitter:
   card: summary
   username: pybuilder_
-logo: /img/logo.svg
+logo: /img/logo.png
 defaults:
   - scope:
       path: ""
     values:
-      image: /img/logo.svg
+      image: /img/logo.png
