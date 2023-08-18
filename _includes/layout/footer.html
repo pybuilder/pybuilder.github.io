@@ -21,7 +21,7 @@
 <script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
 <script src="/js/tabcontent.js"></script>
 <script src="/js/highlight.pack.js"></script>
-
+<script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.5.0/lite-youtube.js"></script>
 
 <script type="text/javascript">
   $(document).ready(function() {
@@ -41,13 +41,4 @@
             function(){ $(this).removeClass('open') }
         );
     });
-</script>
-<script type="text/javascript">
- function init() {
-var vidDefer = document.getElementsByTagName('iframe');
-for (var i=0; i<vidDefer.length; i++) {
-if(vidDefer[i].getAttribute('data-src')) {
-vidDefer[i].setAttribute('src',vidDefer[i].getAttribute('data-src'));
-} } }
-window.onload = init;
 </script>
