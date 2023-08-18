@@ -28,7 +28,7 @@
     $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
   });
 </script>
-<script>
+<script type="text/javascript">
     $(function() {
         $(".dropdown").hover(
             function(){ $(this).addClass('open') },
@@ -41,4 +41,13 @@
             function(){ $(this).removeClass('open') }
         );
     });
+</script>
+<script type="text/javascript">
+ function init() {
+var vidDefer = document.getElementsByTagName('iframe');
+for (var i=0; i<vidDefer.length; i++) {
+if(vidDefer[i].getAttribute('data-src')) {
+vidDefer[i].setAttribute('src',vidDefer[i].getAttribute('data-src'));
+} } }
+window.onload = init;
 </script>
