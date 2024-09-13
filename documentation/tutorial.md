@@ -153,7 +153,7 @@ Thus, we have two options:
 1. Override the coverage plugin default setting and disable failure on missing code coverage threshold.
 2. Add a test that ensures that the code is properly tested.
 
-Being a diligent responsible developer that follows 21-st century best practices we will choose the **first option**
+Being a diligent responsible developer that follows 21-st century best practices we will choose the **second option**
  and add an appropriate test.
 
 ## Writing Unit Tests
