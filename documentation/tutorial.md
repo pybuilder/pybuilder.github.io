@@ -510,7 +510,7 @@ your code is always tested (to a given extend) before you ship it.
 
 Before you make your code available to the public, you need to think about how users can install the software on
 their computers. In the Python world, one standard way to do this is using
-[distutils](http://docs.python.org/distutils/index.html) which is shipped with the standard Python distribution.
+[distutils](http://docs.python.org/3.11/distutils/index.html) which is shipped with the standard Python distribution.
 
 Using distutils basically means providing a `setup.py` or `pyproject.toml` that can be used to install the software.
 
