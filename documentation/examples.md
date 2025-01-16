@@ -29,8 +29,6 @@ See [build.py](https://github.com/pyclectic/pyfix/blob/master/build.py)
 
 ## [yadtshell](https://github.com/yadt/yadtshell)
 
-[YADT - an Augmented Deployment Tool - The Shell Part](http://www.yadt-project.org/)
-
 This project uses a [custom task](/documentation/manual.html#writing-tasks) to generate manpages and several *PyBuilder* features to deliver them.
 See [build.py](https://github.com/yadt/yadtshell/blob/master/build.py)
 
