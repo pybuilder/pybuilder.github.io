@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C74FKNHM7K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C74FKNHM7K');
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="description" content="PyBuilder is an easy-to-use build automation tool for Python"/>
+<meta name="author" content="PyBuilder Community"/>
+<meta name="keywords" content="python, continuous integration, build tool, automation, CI, CD, CI/CD"/>
+
+<meta name="theme-color" content="#000000"/>
+
+<link rel="canonical" href="https://pybuilder.io/documentation/writing-plugins"/>
+<link rel="icon" href="/img/logo.svg"/>
+<link rel="apple-touch-icon" href="/img/logo-apple-touch-icon.png">
+
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oleo+Script:700"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+      integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
+<link rel="stylesheet" type="text/css" href="/css/highlightjs.css"/>
+<link rel="stylesheet" type="text/css" href="/css/tabcontent.css"/>
+<link rel="stylesheet" type="text/css" href="/css/styles.css"/>
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Usage Documentation" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://pybuilder.io/documentation/writing-plugins" />
+<meta property="og:url" content="https://pybuilder.io/documentation/writing-plugins" />
+<meta property="og:image" content="https://pybuilder.io/img/logo.png" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:image" content="https://pybuilder.io/img/logo.png" />
+<meta property="twitter:title" content="Usage Documentation" />
+<meta name="twitter:site" content="@pybuilder_" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","dateModified":"2025-09-09T01:46:07+00:00","headline":"Usage Documentation","image":"https://pybuilder.io/img/logo.png","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://pybuilder.io/img/logo.png"}},"url":"https://pybuilder.io/documentation/writing-plugins"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <title>PyBuilder &#x2014; Usage Documentation</title>
+</head>
+
+<body data-spy="scroll" data-target="#toc">
+
+<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#hdr-nb-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand pybuilder-brand dropdown" href="/" title="PyBuilder">
+                <img src="/img/logo.svg" alt="PyBuilder Logo"
+                     onerror="this.onerror=null; this.src='/img/logo-brand.png'"/></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="hdr-nb-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="/" title="PyBuilder">PyBuilder</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/about" title="About">About</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/news/" title="News">News</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/documentation/" class="dropdown-toggle">Documentation <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">User Documentation <b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/documentation/installation">Installation</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/tutorial">Tutorial</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/examples">Examples</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/manual">Manual</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/plugins">Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/external-plugin-list">External plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/ide">IDE integration</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">Developer Documentation <b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/documentation/writing-plugins">Writing Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/developing-pybuilder">Developing PyBuilder</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/publishing-plugins">Publishing Your Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="#">API (Unavailable)</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Releases <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a href="/release-notes/" class="dropdown-item dropdown-toggle">Release Notes
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                
+                                
+                                <li>
+                                    <a href="/release-notes/v0.13.x">Versions 0.13.x
+                                        (Current)</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/v0.12.x">Versions 0.12.x
+                                        </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/v0.11.x">Versions 0.11.x
+                                        </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/v0.10.x">Versions 0.10.x
+                                        </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/archived">Archived Versions
+                                        </a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a href="/migration-guides/" class="dropdown-item dropdown-toggle">Migration Guides
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                
+                                
+                                <li>
+                                    <a href="/migration-guides/v0.11.x-v0.12.0">Migrating v0.11.x to v0.12.0</a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-7" id="content"><h1 id="writing-a-plugin">Writing a plugin</h1>
+
+<h2 id="task-basics">Task basics</h2>
+<p>An essential part of a plugin are the tasks that come with it. The tasks are the blocks of build logic that a plugin can use to act during the build process. We shall start with simple task declarations and then move on to the additions necessary to a plugin.</p>
+
+<h3 id="a-simple-task">A simple task</h3>
+<p>Begin by creating a new folder with a <code class="language-plaintext highlighter-rouge">build.py</code> descriptor in it.</p>
+
+<p>Extend your <code class="language-plaintext highlighter-rouge">build.py</code> with a simple function called <code class="language-plaintext highlighter-rouge">hello</code>:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="n">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+
+<span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">hello</span><span class="sh">"</span><span class="p">)</span></code></pre></figure>
+
+<p>Use the <code class="language-plaintext highlighter-rouge">task</code> decorator from <code class="language-plaintext highlighter-rouge">pybuilder.core</code> to declare the <code class="language-plaintext highlighter-rouge">hello</code> function to a PyBuilder task.</p>
+
+<p>Our simple task might look like so:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="n">pybuilder.core</span> <span class="kn">import</span> <span class="n">task</span>
+
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">hello</span><span class="sh">"</span><span class="p">)</span></code></pre></figure>
+
+<p>We can now list the available tasks using the <code class="language-plaintext highlighter-rouge">-t</code> option:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="err">$</span> <span class="n">pyb</span> <span class="o">-</span><span class="n">t</span>
+<span class="n">Tasks</span> <span class="n">found</span> <span class="k">for</span> <span class="n">project</span> <span class="sh">"</span><span class="s">task-demo</span><span class="sh">"</span><span class="p">:</span>
+    <span class="n">hello</span> <span class="o">-</span> <span class="o">&lt;</span> <span class="n">no</span> <span class="n">description</span> <span class="n">available</span> <span class="o">&gt;</span></code></pre></figure>
+
+<p>As you can see <em>PyBuilder</em> has picked up our task using the function name.
+Note that task names should be unique! We can control the tasks’ name by adding it as an argument to the decorator.
+Let us rename the task into “foo” without changing the function name.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="nd">@task</span><span class="p">(</span><span class="sh">"</span><span class="s">foo</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">hello</span><span class="sh">"</span><span class="p">)</span></code></pre></figure>
+
+<p>When we list the tasks again, we can see that the task is renamed to “foo” now:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="err">$</span> <span class="n">pyb</span> <span class="o">-</span><span class="n">t</span>
+<span class="n">Tasks</span> <span class="n">found</span> <span class="k">for</span> <span class="n">project</span> <span class="sh">"</span><span class="s">test</span><span class="sh">"</span><span class="p">:</span>
+    <span class="n">foo</span> <span class="o">-</span> <span class="o">&lt;</span> <span class="n">no</span> <span class="n">description</span> <span class="n">available</span> <span class="o">&gt;</span></code></pre></figure>
+
+<h3 id="descriptions">Descriptions</h3>
+<p>As you can see above, our task has no description currently. We can change that by adding one through the description keyword argument :</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="nd">@task</span><span class="p">(</span><span class="sh">"</span><span class="s">foo</span><span class="sh">"</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sh">"</span><span class="s">Greets people</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">hello</span><span class="sh">"</span><span class="p">)</span></code></pre></figure>
+
+<p>Listing tasks will now yield a description of our task :</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="err">$</span> <span class="n">pyb</span> <span class="o">-</span><span class="n">t</span>
+<span class="n">Tasks</span> <span class="n">found</span> <span class="k">for</span> <span class="n">project</span> <span class="sh">"</span><span class="s">test</span><span class="sh">"</span><span class="p">:</span>
+    <span class="n">foo</span> <span class="o">-</span> <span class="n">Greets</span> <span class="n">people</span></code></pre></figure>
+
+<h3 id="dependencies">Dependencies</h3>
+<p>Dependencies between tasks is easy. You can use the <code class="language-plaintext highlighter-rouge">depends</code> and <code class="language-plaintext highlighter-rouge">dependent</code> decorators to express that a task requires another one to run.
+In the following example we create a task <em>foo</em>, which depends on the successful execution of task <em>bar</em>.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="n">pybuilder.core</span> <span class="kn">import</span> <span class="n">task</span><span class="p">,</span> <span class="n">depends</span>
+
+<span class="nd">@task</span>
+<span class="nd">@depends</span><span class="p">(</span><span class="sh">"</span><span class="s">bar</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">bar</span><span class="p">():</span>
+    <span class="k">pass</span></code></pre></figure>
+
+<p>Now every time the task <em>foo</em> is run, <em>PyBuilder</em> will ensure that <em>bar</em> will have run first.</p>
+
+<p>The same result could be obtained with <code class="language-plaintext highlighter-rouge">dependent</code> decorator:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="n">pybuilder.core</span> <span class="kn">import</span> <span class="n">task</span><span class="p">,</span> <span class="n">dependent</span>
+
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+<span class="nd">@task</span>
+<span class="nd">@dependent</span><span class="p">(</span><span class="sh">"</span><span class="s">foo</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">bar</span><span class="p">():</span>
+    <span class="k">pass</span></code></pre></figure>
+
+<p>Dependencies on more than one task are expressed by increasing the arity of the depends decorator like so :</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="n">pybuilder.core</span> <span class="kn">import</span> <span class="n">task</span><span class="p">,</span> <span class="n">depends</span>
+
+<span class="nd">@task</span>
+<span class="nd">@depends</span><span class="p">(</span><span class="sh">"</span><span class="s">bar</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">baz</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">bar</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">baz</span><span class="p">():</span>
+    <span class="k">pass</span></code></pre></figure>
+
+<h3 id="assuming-control">Assuming control</h3>
+<p>If a task wishes to show output to the user, it can request the use of the <em>PyBuilder</em> logger by accepting a <code class="language-plaintext highlighter-rouge">logger</code> argument :</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">mytask</span><span class="p">(</span><span class="n">logger</span><span class="p">):</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sh">"</span><span class="s">Hello user, how are you today?!</span><span class="sh">"</span><span class="p">)</span></code></pre></figure>
+
+<p>Most decisions a task can take (e.G. configuration) require the knowledge of the project. A task can be made aware of the project by accepting a <code class="language-plaintext highlighter-rouge">project</code> argument. Since those are named arguments, nothing is stopping us from accepting both a logger and a project (the order does not matter) :</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">mytask</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sh">"</span><span class="s">I am building {0} in version {1}!</span><span class="sh">"</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">project</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">project</span><span class="p">.</span><span class="n">version</span><span class="p">))</span></code></pre></figure>
+
+<h2 id="anatomy-of-a-plugin">Anatomy of a plugin</h2>
+<p>A plugin can be broken down in essentially two parts :</p>
+<ul>
+  <li>Initialization of the plugin</li>
+  <li>Tasks the plugin provides</li>
+</ul>
+
+<h3 id="initialization">Initialization</h3>
+<p>The initialization of a plugin involves setting default configuration.
+It is done from within an <a href="/documentation/manual.html#initializers"><em>initializer</em></a></p>
+
+<h4 id="setting-defaults">Setting defaults</h4>
+<p>The initializer can use the project object to set <a href="/documentation/manual.html#project-properties">property</a> values.
+This is suitable for defaults because the initializer of the plugin will run before any user-provided initializers in <code class="language-plaintext highlighter-rouge">build.py</code>. Thus you can set a property (the <em>default</em>) which can then be overridden by the user.</p>
+
+<p>Setting properties is done through the <code class="language-plaintext highlighter-rouge">set_property</code> method of project :</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="n">pybuilder.core</span> <span class="kn">import</span> <span class="n">init</span>
+
+<span class="nd">@init</span>
+<span class="k">def</span> <span class="nf">initialize_my_plugin</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+    <span class="n">project</span><span class="p">.</span><span class="nf">set_property</span><span class="p">(</span><span class="sh">"</span><span class="s">property_for_my_plugin</span><span class="sh">"</span><span class="p">,</span> <span class="mi">42</span><span class="p">)</span></code></pre></figure>
+
+<p>We can then use this property in our tasks through the project object :</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="n">pybuilder.core</span> <span class="kn">import</span> <span class="n">task</span>
+
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">mytask</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+    <span class="n">my_property</span> <span class="o">=</span> <span class="n">project</span><span class="p">.</span><span class="nf">get_property</span><span class="p">(</span><span class="sh">"</span><span class="s">property_for_my_plugin</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sh">"</span><span class="s">The property for my plugin is {0}</span><span class="sh">"</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">my_property</span><span class="p">))</span></code></pre></figure>
+
+<p>Properties can be of any type (usually strings, integers, booleans or lists).
+If a property is mandatory and there is no default, then <code class="language-plaintext highlighter-rouge">project.get_mandatory_property</code> is more suitable since it also raises an error in case the property is unset. See <a href="#">the project API</a> for even more possibilities!</p>
+
+<h4 id="requiring-external-libraries">Requiring external libraries</h4>
+<p>If the plugin requires external libraries installable through pip, the project object can be used to add this as a plugin dependency :</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="n">pybuilder.core</span> <span class="kn">import</span> <span class="n">init</span>
+
+<span class="nd">@init</span>
+<span class="k">def</span> <span class="nf">init_my_plugin</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+    <span class="n">project</span><span class="p">.</span><span class="nf">plugin_depends_on</span><span class="p">(</span><span class="sh">"</span><span class="s">py.test</span><span class="sh">"</span><span class="p">)</span></code></pre></figure>
+
+<h4 id="ensuring-that-programs-are-installed">Ensuring that programs are installed</h4>
+<p>If the plugin relies on an external program like <em>pylint</em> then you should ensure that the program is available through the <code class="language-plaintext highlighter-rouge">assert_can_execute</code> function. The aim is to provide quick feedback to users why the plugin is not working.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="n">pybuilder.utils</span> <span class="kn">import</span> <span class="n">assert_can_execute</span>
+<span class="kn">from</span> <span class="n">pybuilder.core</span> <span class="kn">import</span> <span class="n">task</span>
+
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">my_plugin_task</span><span class="p">():</span>
+    <span class="nf">assert_can_execute</span><span class="p">([</span><span class="sh">"</span><span class="s">committer</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">--version</span><span class="sh">"</span><span class="p">],</span> <span class="n">prerequisite</span><span class="o">=</span><span class="sh">"</span><span class="s">committer by @aelgru</span><span class="sh">"</span><span class="p">,</span> <span class="n">caller</span><span class="o">=</span><span class="sh">"</span><span class="s">my_plugin</span><span class="sh">"</span><span class="p">)</span></code></pre></figure>
+
+<h3 id="compliance-with-the-verbose-flag">Compliance with the verbose flag</h3>
+<p><em>PyBuilder</em> is designed to focus on the big picture of the build process.
+There is a <code class="language-plaintext highlighter-rouge">verbose</code> flag though. When it is present, your plugin should
+provide information about errors using the logger.</p>
+
+<p>For most plugins using the helper function <code class="language-plaintext highlighter-rouge">execute_tool_on_source_files</code> from <code class="language-plaintext highlighter-rouge">pybuilder.plugins.python.python_plugin_helper</code> will suffice. It will display the output of the tool, provided the property <code class="language-plaintext highlighter-rouge">$name_verbose_output</code> is set to true. The <code class="language-plaintext highlighter-rouge">$name</code> is simply the name argument passed to the function. You can set this property in your task based on the verbose property of the project :</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="n">pybuilder.core</span> <span class="kn">import</span> <span class="n">task</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">use_plugin</span><span class="p">,</span> <span class="n">depends</span>
+<span class="kn">from</span> <span class="n">pybuilder.plugins.python.python_plugin_helper</span> <span class="kn">import</span> <span class="n">execute_tool_on_source_files</span>
+
+<span class="nf">use_plugin</span><span class="p">(</span><span class="sh">"</span><span class="s">python.core</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="nd">@task</span>
+<span class="nd">@depends</span><span class="p">(</span><span class="sh">"</span><span class="s">prepare</span><span class="sh">"</span><span class="p">)</span>
+<span class="nd">@description</span><span class="p">(</span><span class="sh">"</span><span class="s">a task that complies with the verbose flag</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">my_verbose_compliant_task</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+    <span class="c1"># is true if user set verbose in build.py or from command line
+</span>    <span class="n">verbose_flag</span> <span class="o">=</span> <span class="n">project</span><span class="p">.</span><span class="nf">get_property</span><span class="p">(</span><span class="sh">"</span><span class="s">verbose</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">project</span><span class="p">.</span><span class="nf">set_property</span><span class="p">(</span><span class="sh">"</span><span class="s">my_plugin_verbose_output</span><span class="sh">"</span><span class="p">,</span> <span class="n">verbose_flag</span><span class="p">)</span>
+
+    <span class="c1"># verbose output if "my_plugin_verbose_output" is True
+</span>    <span class="nf">execute_tool_on_source_files</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="n">project</span><span class="p">,</span>
+                                 <span class="n">name</span><span class="o">=</span><span class="sh">"</span><span class="s">my_plugin</span><span class="sh">"</span><span class="p">,</span>
+                                 <span class="n">command_and_arguments</span><span class="o">=</span><span class="p">[</span><span class="sh">"</span><span class="s">/usr/bin/file</span><span class="sh">"</span><span class="p">,</span>
+                                                        <span class="sh">"</span><span class="s">-bi</span><span class="sh">"</span><span class="p">],</span>
+                                 <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span></code></pre></figure>
+
+<h3 id="tasks">Tasks</h3>
+<p>The tasks section of a plugin is the declaration of one or possibly more tasks. When a plugin is activated, its tasks are made available.
+There are three ways to get a task to run :</p>
+
+<ul>
+  <li>direct invocation</li>
+  <li>indirect invocation through a dependency</li>
+  <li>indirect invocation through naming</li>
+</ul>
+
+<h4 id="direct-invocation">Direct invocation</h4>
+<p>This is the most common approach. The user will use <code class="language-plaintext highlighter-rouge">pyb my_task</code> which will run the task.</p>
+
+<h4 id="indirect-invocation-through-a-dependency">Indirect invocation through a dependency</h4>
+<p>When there is a dependency chain between tasks, for example if <em>foo</em> requires <em>bar</em> to run first.
+If the user executes <code class="language-plaintext highlighter-rouge">pyb foo</code> this will run <em>bar</em> and <em>foo</em> in that order.</p>
+
+<h4 id="indirect-invocation-through-naming">Indirect invocation through naming</h4>
+<p>As we saw before, tasks are identified by their name. When there are multiple tasks with the same name, then all of those tasks will run.</p>
+
+<p>For instance the <a href="https://github.com/pybuilder/pybuilder/blob/master/src/main/python/pybuilder/plugins/core_plugin.py"><em>core plugin</em></a> defines many generic tasks like <code class="language-plaintext highlighter-rouge">verify</code> and <code class="language-plaintext highlighter-rouge">package</code> that are actually empty.
+Plugins that want to run during verification can then simply use <code class="language-plaintext highlighter-rouge">verify</code> as a task name.</p>
+
+<h2 id="examples">Examples</h2>
+<p>See the plugins that ship with <em>PyBuilder</em>. A very nice example is the <a href="https://github.com/pybuilder/pybuilder/blob/master/src/main/python/pybuilder/plugins/python/flake8_plugin.py">flake8 plugin</a>.</p>
+</div>
+        <div class="col-lg-5 visible-md visible-lg">
+            <nav id="toc" data-spy="affix" data-toggle="toc"></nav>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <a href="https://github.com/pybuilder/pybuilder">PyBuilder on GitHub</a>
+            <a href="https://pypi.org/project/pybuilder/">PyBuilder on PyPI</a>
+        </div>
+    </div>
+    <div class="publish-date">
+        <small>site published on 2025-09-09 01:46:55 +0000</small>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<script src="/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
+<script src="/js/tabcontent.js"></script>
+<script src="/js/highlight.pack.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.5.0/lite-youtube.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+  });
+</script>
+<script type="text/javascript">
+    $(function() {
+        $(".dropdown").hover(
+            function(){ $(this).addClass('open') },
+            function(){ $(this).removeClass('open') }
+        );
+    });
+    $(function() {
+        $(".dropdown-submenu").hover(
+            function(){ $(this).addClass('open') },
+            function(){ $(this).removeClass('open') }
+        );
+    });
+</script>
+
+</body>
+</html>

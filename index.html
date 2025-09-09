@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C74FKNHM7K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C74FKNHM7K');
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="description" content="PyBuilder is an easy-to-use build automation tool for Python"/>
+<meta name="author" content="PyBuilder Community"/>
+<meta name="keywords" content="python, continuous integration, build tool, automation, CI, CD, CI/CD"/>
+
+<meta name="theme-color" content="#000000"/>
+
+<link rel="canonical" href="https://pybuilder.io/"/>
+<link rel="icon" href="/img/logo.svg"/>
+<link rel="apple-touch-icon" href="/img/logo-apple-touch-icon.png">
+
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oleo+Script:700"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+      integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
+<link rel="stylesheet" type="text/css" href="/css/highlightjs.css"/>
+<link rel="stylesheet" type="text/css" href="/css/tabcontent.css"/>
+<link rel="stylesheet" type="text/css" href="/css/styles.css"/>
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="An easy-to-use build automation tool for Python" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://pybuilder.io/" />
+<meta property="og:url" content="https://pybuilder.io/" />
+<meta property="og:image" content="https://pybuilder.io/img/logo.png" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:image" content="https://pybuilder.io/img/logo.png" />
+<meta property="twitter:title" content="An easy-to-use build automation tool for Python" />
+<meta name="twitter:site" content="@pybuilder_" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","dateModified":"2025-09-09T01:46:07+00:00","headline":"An easy-to-use build automation tool for Python","image":"https://pybuilder.io/img/logo.png","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://pybuilder.io/img/logo.png"}},"url":"https://pybuilder.io/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <title>PyBuilder &#x2014; An easy-to-use build automation tool for Python</title>
+</head>
+
+<body>
+
+<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#hdr-nb-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand pybuilder-brand dropdown" href="/" title="PyBuilder">
+                <img src="/img/logo.svg" alt="PyBuilder Logo"
+                     onerror="this.onerror=null; this.src='/img/logo-brand.png'"/></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="hdr-nb-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="/" title="PyBuilder">PyBuilder</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/about" title="About">About</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/news/" title="News">News</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/documentation/" class="dropdown-toggle">Documentation <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">User Documentation <b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/documentation/installation">Installation</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/tutorial">Tutorial</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/examples">Examples</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/manual">Manual</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/plugins">Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/external-plugin-list">External plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/ide">IDE integration</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">Developer Documentation <b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/documentation/writing-plugins">Writing Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/developing-pybuilder">Developing PyBuilder</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/publishing-plugins">Publishing Your Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="#">API (Unavailable)</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Releases <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a href="/release-notes/" class="dropdown-item dropdown-toggle">Release Notes
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                
+                                
+                                <li>
+                                    <a href="/release-notes/v0.13.x">Versions 0.13.x
+                                        (Current)</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/v0.12.x">Versions 0.12.x
+                                        </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/v0.11.x">Versions 0.11.x
+                                        </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/v0.10.x">Versions 0.10.x
+                                        </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/archived">Archived Versions
+                                        </a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a href="/migration-guides/" class="dropdown-item dropdown-toggle">Migration Guides
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                
+                                
+                                <li>
+                                    <a href="/migration-guides/v0.11.x-v0.12.0">Migrating v0.11.x to v0.12.0</a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="container">
+    <div class="row">
+    <div class="col-lg-12">
+        <h1>
+            <span class="glyphicon glyphicon-star" style="color: gold"></span> PyBuilder
+        </h1>
+        <p>
+            <em>PyBuilder</em> is a software build automation tool written in pure Python mainly
+            targeting Python ecosystem. It is based on the concept of dependency-based programming but also comes
+            along with powerful plugin mechanism that allows the construction of build life-cycles similar to those
+            known
+            from other famous build tools like <em>Apache Maven</em> and <em>Gradle</em>.
+        </p>
+        <p>
+            <em>PyBuilder</em> runs on Python <strong>3.9 to 3.13 and PyPy</strong>.
+            Every commit is tested via
+            <a href="https://github.com/pybuilder/pybuilder/actions/workflows/pybuilder.yml">GitHub Actions</a>
+            on CPython 3.9, 3.10, 3.11, 3.12, 3.13 and PyPy on Linux, MacOS
+            (with and without Homebrew) and Windows.
+        </p>
+        <p>
+            <small>v0.13.13 is the last version supporting Python 3.8.</small>
+        </p>
+        <p>
+            <small>v0.13.10 is the last version supporting Python 3.7.</small>
+        </p>
+        <p>
+            <small>v0.13.6 is the last version supporting Python 3.6.</small>
+        </p>
+        <p>
+            <small>v0.12.x still supports Python 2.7, and 3.5 but is no longer maintained.</small>
+        </p>
+        <p>
+            <small>v0.11.x still supports Python 2.6, 3.3 and 3.4 but is no longer maintained.</small>
+        </p>
+        <p>
+            <em>PyBuilder</em>
+            is licensed under
+            <a href="https://github.com/pybuilder/pybuilder/blob/master/LICENSE">Apache 2.0 License</a>
+            and is hosted on
+            <a href="https://github.com/pybuilder/pybuilder">github.com/pybuilder/pybuilder</a>.
+        </p>
+        <p>
+            <iframe src="https://ghbtns.com/github-btn.html?user=pybuilder&repo=pybuilder&type=star&count=true"
+                    loading="lazy" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
+            <iframe src="https://ghbtns.com/github-btn.html?user=pybuilder&repo=pybuilder&type=fork&count=true"
+                    loading="lazy" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
+            <a href="https://twitter.com/intent/follow?screen_name=pybuilder_">
+                <img src="https://img.shields.io/twitter/follow/pybuilder_?label=Follow%20PyBuilder&style=social"
+                     loading="lazy" alt="Follow PyBuilder on Twitter"/></a>
+            <a href="https://app.gitter.im/#/room/#pybuilder_pybuilder:gitter.im">
+                <img src="https://img.shields.io/gitter/room/pybuilder/pybuilder?logo=gitter"
+                     loading="lazy" alt="PyBuilder Gitter Room"/></a>
+            <a href="https://github.com/pybuilder/pybuilder/actions/workflows/pybuilder.yml">
+                <img src="https://img.shields.io/github/actions/workflow/status/pybuilder/pybuilder/pybuilder.yml?branch=master"
+                     loading="lazy" alt="PyBuilder GitHub Actions Build Status"/></a>
+            <a href="https://coveralls.io/github/pybuilder/pybuilder">
+                <img src="https://img.shields.io/coveralls/github/pybuilder/pybuilder/master?logo=coveralls"
+                     loading="lazy" alt="PyBuilder Coveralls Build"/></a>
+        </p>
+        <p>
+            <a href="https://pypi.org/project/pybuilder/">
+                <img src="https://img.shields.io/pypi/v/pybuilder?logo=pypi"
+                     loading="lazy" alt="PyBuilder Version"></a>
+            <a href="https://pypi.org/project/pybuilder/">
+                <img src="https://img.shields.io/pypi/pyversions/pybuilder?logo=pypi"
+                     loading="lazy" alt="PyBuilder Python Versions"></a>
+            <a href="https://pypi.org/project/pybuilder/">
+                <img src="https://img.shields.io/pypi/dd/pybuilder?logo=pypi"
+                     loading="lazy" alt="PyBuilder Daily Downloads"></a>
+            <a href="https://pypi.org/project/pybuilder/">
+                <img src="https://img.shields.io/pypi/dw/pybuilder?logo=pypi"
+                     loading="lazy" alt="PyBuilder Weekly Downloads"></a>
+            <a href="https://pypi.org/project/pybuilder/">
+                <img src="https://img.shields.io/pypi/dm/pybuilder?logo=pypi"
+                     loading="lazy" alt="PyBuilder Monthly Downloads"></a>
+        </p>
+    </div>
+</div>
+
+<hr/>
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2>
+            <span class="glyphicon glyphicon-flash" style="color: silver"></span> News
+        </h2>
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>
+                    <a href="/articles/news/version-0.13.3-new-features">New Features in 0.13.3</a>
+                </h3>
+                <p>PyBuilder 0.13.3 introduced two new features:</p>
+
+<ul>
+  <li>Resettable integration test Python virtual environment.</li>
+  <li>The activated build environments can now be introspected from the project.</li>
+</ul>
+
+
+            </div>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>
+                    <a href="/articles/news/version-0.13-released">Version 0.13.0 Released!</a>
+                </h3>
+                <p>PyBuilder 0.13.0 has been released adding support for Python 3.10, 
+deprecating EOL Pythons (2.7 and 3.5), stabilizing environment orchestration across all 
+major platforms and migrating CI/CD to GitHub Actions.</p>
+
+
+            </div>
+        </div>
+        
+        
+        
+        
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>
+                    <a href="/articles/news/3rd-party/pybuilder-github-action">PyBuilder GitHub Action Released!</a>
+                </h3>
+                <p>The first version of <a href="https://github.com/marketplace/actions/pybuilder-action">GitHub Action for PyBuilder</a> has been 
+released!</p>
+
+
+            </div>
+        </div>
+        
+        
+        
+        
+        
+    </div>
+</div>
+
+<hr/>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>
+                    <span class="glyphicon glyphicon-wrench" style="color: steelblue"></span>
+                    Get started
+                </h2>
+                <ul class="tabs" data-persist="true">
+                    <li>
+                        <a href="#startproject">New project</a>
+                    </li>
+                    <li>
+                        <a href="#checkoutbuild">Existing project</a>
+                    </li>
+                </ul>
+                <div class="tabcontents">
+                    <div id="startproject">
+        <pre><code>
+  #!/bin/sh
+
+  pip install pybuilder
+
+  # If you want the bleeding edge
+  # (we release after every commit)
+  # pip install --pre pybuilder
+
+  pyb --start-project
+  pyb publish
+
+  </code></pre>
+                    </div>
+                    <div id="checkoutbuild">
+        <pre><code>
+  git clone https://github.com/twentybn/GulpIO
+  cd GulpIO
+  python -m venv venv
+  source venv/bin/activate
+  pip install pybuilder
+
+  # If you want the bleeding edge
+  # (we release after every commit)
+  # pip install --pre pybuilder
+
+  pyb
+
+  </code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>
+                    <span class="glyphicon glyphicon-cloud-download" style="color: lightblue"></span>
+                    Install PyBuilder
+                </h2>
+                <div align="left"><em>PyBuilder</em> is available on <a
+                        href="https://pypi.org/project/pybuilder/">PyPI</a>
+                </div>
+                <pre><code>pip install pybuilder</code></pre>
+                <p>
+                    We recommend using <em>virtualenv</em>.
+                    Please see the <a href="/documentation/installation">dedicated installation page</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>
+                    <span class="glyphicon glyphicon-book" style="color: brown"></span>
+                    Read the Tutorial
+                </h2>
+                <p>
+                    The tutorial shows you how to get started using
+                    <em>PyBuilder</em>
+                    for your Python project including unittests, coverage and distutils.
+                </p>
+                <p>
+                    <a class="btn btn-primary btn-small" href="/documentation/tutorial">Tutorial &raquo;</a>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>
+                    <span class="glyphicon glyphicon-film" style="color: gray"></span>
+                    Watch the Presentation
+                </h2>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <lite-youtube videoid="iQU18hAjux4" autoload></lite-youtube>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<footer>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <a href="https://github.com/pybuilder/pybuilder">PyBuilder on GitHub</a>
+            <a href="https://pypi.org/project/pybuilder/">PyBuilder on PyPI</a>
+        </div>
+    </div>
+    <div class="publish-date">
+        <small>site published on 2025-09-09 01:46:55 +0000</small>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<script src="/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
+<script src="/js/tabcontent.js"></script>
+<script src="/js/highlight.pack.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.5.0/lite-youtube.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+  });
+</script>
+<script type="text/javascript">
+    $(function() {
+        $(".dropdown").hover(
+            function(){ $(this).addClass('open') },
+            function(){ $(this).removeClass('open') }
+        );
+    });
+    $(function() {
+        $(".dropdown-submenu").hover(
+            function(){ $(this).addClass('open') },
+            function(){ $(this).removeClass('open') }
+        );
+    });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,1334 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C74FKNHM7K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C74FKNHM7K');
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="description" content="PyBuilder is an easy-to-use build automation tool for Python"/>
+<meta name="author" content="PyBuilder Community"/>
+<meta name="keywords" content="python, continuous integration, build tool, automation, CI, CD, CI/CD"/>
+
+<meta name="theme-color" content="#000000"/>
+
+<link rel="canonical" href="https://pybuilder.io/documentation/plugins"/>
+<link rel="icon" href="/img/logo.svg"/>
+<link rel="apple-touch-icon" href="/img/logo-apple-touch-icon.png">
+
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oleo+Script:700"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+      integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
+<link rel="stylesheet" type="text/css" href="/css/highlightjs.css"/>
+<link rel="stylesheet" type="text/css" href="/css/tabcontent.css"/>
+<link rel="stylesheet" type="text/css" href="/css/styles.css"/>
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Usage Documentation" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://pybuilder.io/documentation/plugins" />
+<meta property="og:url" content="https://pybuilder.io/documentation/plugins" />
+<meta property="og:image" content="https://pybuilder.io/img/logo.png" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:image" content="https://pybuilder.io/img/logo.png" />
+<meta property="twitter:title" content="Usage Documentation" />
+<meta name="twitter:site" content="@pybuilder_" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","dateModified":"2025-09-09T01:46:07+00:00","headline":"Usage Documentation","image":"https://pybuilder.io/img/logo.png","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://pybuilder.io/img/logo.png"}},"url":"https://pybuilder.io/documentation/plugins"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <title>PyBuilder &#x2014; Usage Documentation</title>
+</head>
+
+<body data-spy="scroll" data-target="#toc">
+
+<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#hdr-nb-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand pybuilder-brand dropdown" href="/" title="PyBuilder">
+                <img src="/img/logo.svg" alt="PyBuilder Logo"
+                     onerror="this.onerror=null; this.src='/img/logo-brand.png'"/></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="hdr-nb-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="/" title="PyBuilder">PyBuilder</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/about" title="About">About</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/news/" title="News">News</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/documentation/" class="dropdown-toggle">Documentation <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">User Documentation <b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/documentation/installation">Installation</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/tutorial">Tutorial</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/examples">Examples</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/manual">Manual</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/plugins">Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/external-plugin-list">External plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/ide">IDE integration</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">Developer Documentation <b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/documentation/writing-plugins">Writing Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/developing-pybuilder">Developing PyBuilder</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/publishing-plugins">Publishing Your Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="#">API (Unavailable)</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Releases <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a href="/release-notes/" class="dropdown-item dropdown-toggle">Release Notes
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                
+                                
+                                <li>
+                                    <a href="/release-notes/v0.13.x">Versions 0.13.x
+                                        (Current)</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/v0.12.x">Versions 0.12.x
+                                        </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/v0.11.x">Versions 0.11.x
+                                        </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/v0.10.x">Versions 0.10.x
+                                        </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/archived">Archived Versions
+                                        </a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a href="/migration-guides/" class="dropdown-item dropdown-toggle">Migration Guides
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                
+                                
+                                <li>
+                                    <a href="/migration-guides/v0.11.x-v0.12.0">Migrating v0.11.x to v0.12.0</a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-7" id="content"><h1 id="plugins">Plugins</h1>
+
+<p>This page documents the plugins that ship with the PyBuilder distribution.</p>
+
+<h2 id="qa-plugins">QA plugins</h2>
+
+<h3 id="running-python-unittests">Running Python Unittests</h3>
+
+<p><em>PyBuilder</em> ships with a plugin to execute unittests written using <a href="http://docs.python.org/library/unittest.html">Python’s unittest module</a>
+during the build. Use the <code class="language-plaintext highlighter-rouge">python.unittest</code> plugin to enable unittest support.</p>
+
+<p>The plugin executes all test cases found in modules ending with <code class="language-plaintext highlighter-rouge">_tests.py</code> in the directory
+<code class="language-plaintext highlighter-rouge">src/unittest/python</code>.</p>
+
+<h4 id="python-unittest-properties">Python unittest properties</h4>
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>teamcity_output</td>
+    <td>bool</td>
+    <td>False</td>
+    <td>Output teamcity service messages with test names and errors</td>
+  </tr>
+
+  <tr>
+    <td>dir_source_unittest_python</td>
+    <td>string</td>
+    <td>src/unittest/python</td>
+    <td>Directory where unittest modules are located.</td>
+  </tr>
+
+  <tr>
+    <td>unittest_module_glob</td>
+    <td>string</td>
+    <td>*_tests</td>
+    <td>Pattern used to filter Python modules that should be imported by the unittest runner.</td>
+  </tr>
+
+  <tr>
+    <td>unittest_test_method_prefix</td>
+    <td>string</td>
+    <td>None</td>
+    <td>This allows you to define how the module unittest identifies tests.
+        The plugin sets defaultTestLoader.testMethodPrefix to the given value.
+        When set to None the plugin will not set the value at all.</td>
+  </tr>
+
+  <tr>
+    <td>unittest_file_suffix</td>
+    <td>string</td>
+    <td>None</td>
+    <td>Suffix used to filter files that should be executed as tests.<br />
+        <b>Deprecated:</b> This exists for backwards compatibility with existing
+        build.py files.  If it is set to a non-None value, it will override
+        unittest_module_glob with an appropriate glob pattern by prefixing the
+        value with an asterisk (*) and removing the ".py" extension.</td>
+  </tr>
+</table>
+
+<h3 id="measuring-unittest-coverage">Measuring unittest coverage</h3>
+
+<p><em>PyBuilder</em> adds support to measure the coverage of your unittest using the <code class="language-plaintext highlighter-rouge">coverage</code> module.
+Use the <code class="language-plaintext highlighter-rouge">python.coverage</code> module to activate coverage.</p>
+
+<h4 id="coverage-properties">Coverage properties</h4>
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>coverage_threshold_warn</td>
+    <td>integer</td>
+    <td>70</td>
+    <td>Warn if the overall coverage drops below this threshold.</td>
+  </tr>
+  
+  <tr>
+    <td>coverage_branch_threshold_warn</td>
+    <td>integer</td>
+    <td>0</td>
+    <td>Warn if the branch coverage drops below this threshold.</td>
+  </tr>
+  
+  <tr>
+    <td>coverage_branch_partial_threshold_warn</td>
+    <td>integer</td>
+    <td>0</td>
+    <td>Warn if the branch partial coverage drops below this threshold.</td>
+  </tr>
+
+  <tr>
+    <td>coverage_break_build</td>
+    <td>bool</td>
+    <td>True</td>
+    <td>Break the build (i.e. fail it) if the coverage is below the given threshold.</td>
+  </tr>
+  
+  <tr>
+    <td>coverage_allow_non_imported_modules</td>
+    <td>bool</td>
+    <td>True</td>
+    <td>Allow modules which were not imported by the covered tests.</td>
+  </tr>  
+
+  <tr>
+    <td>coverage_reset_modules</td>
+    <td>bool</td>
+    <td>False</td>
+    <td>Reset imported modules before coverage.</td>
+  </tr>
+
+  <tr>
+    <td>coverage_exceptions</td>
+    <td>list of strings</td>
+    <td>empty</td>
+    <td>List of package names to exclude from coverage analyzation.</td>
+  </tr>
+</table>
+
+<p>Please note that properties <code class="language-plaintext highlighter-rouge">coverage_reload_modules</code> and <code class="language-plaintext highlighter-rouge">coverage_fork</code> are deprecated and will not be used.</p>
+
+<h3 id="sonarqube-integration">SonarQube integration</h3>
+
+<p>Using the plugin <code class="language-plaintext highlighter-rouge">python.sonarqube</code> will add the task <code class="language-plaintext highlighter-rouge">run_sonar_analysis</code> to your project. This task has a run-time dependency to the <code class="language-plaintext highlighter-rouge">sonar-runner</code> program and will submit your project to <a href="http://www.sonarqube.org/">sonarqube</a> for analysis.</p>
+
+<h4 id="sonarqube-configuration">SonarQube configuration</h4>
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>sonarqube_project_key</td>
+    <td>string</td>
+    <td>`project.name`</td>
+    <td>The SonarQube project key to use for analysis.</td>
+  </tr>
+
+  <tr>
+    <td>sonarqube_project_name</td>
+    <td>string</td>
+    <td>`project.name`</td>
+    <td>The SonarQube project name to use for analysis.</td>
+  </tr>
+</table>
+
+<h3 id="linting-python-sources">Linting python sources</h3>
+
+<h4 id="frosted-plugin">Frosted plugin</h4>
+
+<p>Frosted is a fork of pyflakes (originally created by Phil Frost) that aims at more open contribution from the outside public, a smaller more maintainable code base, and a better Python checker for all.</p>
+
+<h5 id="frosted-configuration">Frosted configuration</h5>
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>frosted_break_build</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Break the build if warnings are found</td>
+  </tr>
+
+  <tr>
+    <td>frosted_include_test_sources</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Also run frosted on integrationtest and unittest sources</td>
+  </tr>
+
+  <tr>
+    <td>frosted_include_scripts</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Also run the frosted linter on all files in $dir_source_main_scripts</td>
+  </tr>
+
+  <tr>
+    <td>frosted_ignore</td>
+    <td>List of strings</td>
+    <td>[ ]</td>
+    <td>List of warnings to exclude<br />
+        Example: <code>["E205", "W101"]</code>.<br />
+        See <a href="https://github.com/timothycrosley/frosted">here</a>, section <em>Frosted error codes</em>, for reference (or use frosted --verbose to check).</td>
+  </tr>
+
+</table>
+
+<h4 id="flake8-plugin">Flake8 plugin</h4>
+
+<p><em>PyBuilder</em> can lint your files and verify (or enforce) compliance with
+PEP8 and PyFlakes through the flake8 module.
+Use the <code class="language-plaintext highlighter-rouge">python.flake8</code> module to activate linting.</p>
+
+<h5 id="flake8-configuration">Flake8 configuration</h5>
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>flake8_break_build</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Break the build if warnings are found</td>
+  </tr>
+
+  <tr>
+    <td>flake8_ignore</td>
+    <td>string</td>
+    <td>None</td>
+    <td>Comma separated list of error messages to ignore<br />
+        Example: <code>"F403,W404,W801"</code></td>
+  </tr>
+
+  <tr>
+    <td>flake8_include_scripts</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Also run the flake8 linter on all files in $dir_source_main_scripts</td>
+  </tr>
+
+  <tr>
+    <td>flake8_include_test_sources</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Also run flake8 on integrationtest and unittest sources</td>
+  </tr>
+
+  <tr>
+    <td>flake8_max_line_length</td>
+    <td>integer</td>
+    <td>120</td>
+    <td>Maximum allowed line length</td>
+  </tr>
+
+  <tr>
+    <td>flake8_exclude_patterns</td>
+    <td>string</td>
+    <td>None, but flake8 comes with the default:<br />
+        .svn,CVS,.bzr,.hg,.git,__pycache__</td>
+    <td>Comma separated list of file patterns to exclude<br />
+        Example: <code>".git,__pycache__"</code></td>
+  </tr>
+
+  <tr>
+    <td>flake8_verbose_output</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Display flake8 warnings and errors in command line output.</td>
+  </tr>
+
+
+</table>
+
+<h4 id="pychecker-plugin">Pychecker plugin</h4>
+
+<p>Using the plugin <code class="language-plaintext highlighter-rouge">python.pychecker</code> will let pychecker run on python source modules.</p>
+
+<h5 id="pychecker-configuration">Pychecker configuration</h5>
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>pychecker_break_build</td>
+    <td>boolean</td>
+    <td>True</td>
+    <td>Break the build if warnings are found.</td>
+  </tr>
+
+  <tr>
+    <td>pychecker_break_build_threshold</td>
+    <td>integer</td>
+    <td>0</td>
+    <td>Threshold to break the build. A threshold of `n` means: "break the build if more than `x` warnings are found".</td>
+  </tr>
+</table>
+
+<h4 id="pylint-plugin">Pylint plugin</h4>
+
+<p>Using the plugin <code class="language-plaintext highlighter-rouge">python.pylint</code> will let pylint run on python source modules.</p>
+
+<h5 id="pylint-configuration">Pylint configuration</h5>
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>pylint_options</td>
+    <td>list of strings</td>
+    <td>`["--max-line-length=100", "--no-docstring-rgx=.*"]`</td>
+    <td>Options to be passed to pylint</td>
+  </tr>
+</table>
+
+<h4 id="pep8-plugin">Pep8 plugin</h4>
+
+<p>Using the plugin <code class="language-plaintext highlighter-rouge">python.pep8</code> will let pep8 run on python sources.
+There is no configuration possible currently, consider using the flake8 plugin instead.</p>
+
+<h4 id="pymetrics-plugin">Pymetrics plugin</h4>
+
+<p>Using the plugin <code class="language-plaintext highlighter-rouge">python.pymetrics</code> will let pymetrics run on all python source files.
+There is no configuration possible currently, consider using the flake8 plugin instead.</p>
+
+<h3 id="running-python-integration-tests">Running Python Integration Tests</h3>
+
+<p><em>PyBuilder</em> ships with a plugin to run integration tests written in Python. The plugin is named
+<code class="language-plaintext highlighter-rouge">python.integrationtest</code>. It executes all python modules named <code class="language-plaintext highlighter-rouge">*_tests.py</code> in the
+<code class="language-plaintext highlighter-rouge">src/integrationtest/python</code> directory.</p>
+
+<p>However, the default <code class="language-plaintext highlighter-rouge">run_integration_tests</code> job is just a stub per default
+, which won’t run your integration tests. In order to use integration tests,
+you will have to enable the module by specifying
+<code class="language-plaintext highlighter-rouge">use_plugin('python.integrationtest')</code>. If you don’t specify this,
+your integration tests will not be run.</p>
+
+<p>Every module is executed as a Python module. The Python path contains the integration test directory as well as
+the production source directory.</p>
+
+<h4 id="integration-test-properties">Integration test properties</h4>
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>teamcity_output</td>
+    <td>bool</td>
+    <td>False</td>
+    <td>Output teamcity service messages with test names and errors</td>
+  </tr>
+
+  <tr>
+    <td>dir_source_integrationtest_python</td>
+    <td>string</td>
+    <td>src/integrationtest/python</td>
+    <td>Directory where integration test modules are located</td>
+  </tr>
+
+  <tr>
+    <td>integrationtest_file_glob</td>
+    <td>string</td>
+    <td>*_tests.py</td>
+    <td>Pattern used to filter files that should be executed as tests.</td>
+  </tr>
+
+  <tr>
+    <td>integrationtest_additional_environment</td>
+    <td>map</td>
+    <td>empty</td>
+    <td>Map containing additional environment variables used when executing the integration tests.</td>
+  </tr>
+
+  <tr>
+    <td>integrationtest_additional_commandline</td>
+    <td>string</td>
+    <td>Not set</td>
+    <td>Additional command line arguments/commands to pass to the integration test call</td>
+  </tr>
+
+  <tr>
+    <td>integrationtest_inherit_environment</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Inherit the current environment to integration tests.</td>
+  </tr>
+
+  <tr>
+    <td>integrationtest_parallel</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Run integration tests in parallel.</td>
+  </tr>
+
+  <tr>
+    <td>integrationtest_cpu_scaling_factor</td>
+    <td>integer</td>
+    <td>4</td>
+    <td>The amount of workers to use per cpu for integration test parallelization</td>
+  </tr>
+
+  <tr>
+    <td>integrationtest_file_suffix</td>
+    <td>string</td>
+    <td>None</td>
+    <td>Suffix used to filter files that should be executed as tests.<br />
+        <b>Deprecated:</b> This exists for backwards compatibility with existing
+        build.py files.  If it is set to a non-None value, it will override
+        integrationtest_file_glob with an appropriate glob pattern by prefixing the
+        value with an asterisk (*).</td>
+  </tr>
+</table>
+
+<div class="alert alert-warning alert-dismissable">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <h4>Python 3.2 warning</h4>
+We have experienced strange problems (EOFErrors) on python 3.2. This seems to be due to a bug with pickling randomly raising EOFError. We recomment updating to python 3.3 or 3.4, where it works fine.
+</div>
+
+<h3 id="running-cram-tests">Running Cram tests</h3>
+<p><a href="https://pypi.python.org/pypi/cram">Cram is a functional testing framework for command line applications based on Mercurial’s unified test format.</a></p>
+
+<p>The plugin <code class="language-plaintext highlighter-rouge">python.cram</code> can be used to run tests written for cram. Cram tests run during <code class="language-plaintext highlighter-rouge">run_integration_tests</code> but there is also a separate task available (<code class="language-plaintext highlighter-rouge">run_cram_tests</code>).</p>
+
+<div class="alert alert-warning alert-dismissable">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <h4>Python 3.2.3 warning</h4>
+Cram crashes on python 3.2.3 : https://bitbucket.org/brodie/cram/issue/28/crash-on-323 (no longer available). An easy workaround is to not use the plugin on python 3.2 :
+<br />
+<pre>
+<code>
+if not sys.version_info[0:2] == (3,2):
+    use_plugin("python.cram")
+</code>
+</pre>
+</div>
+
+<h4 id="cram-properties">Cram properties</h4>
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>dir_source_cmdlinetest</td>
+    <td>string</td>
+    <td>src/cmdlinetest</td>
+    <td>Directory where cram test files are located.</td>
+  </tr>
+  <tr>
+    <td>cram_test_file_glob</td>
+    <td>string</td>
+    <td>*.t</td>
+    <td>Glob matching the cram test files</td>
+  </tr>
+  <tr>
+    <td>cram_fail_if_no_tests</td>
+    <td>boolean</td>
+    <td>True</td>
+    <td>Fail if there are no cram tests</td>
+  </tr>
+  <tr>
+    <td>cram_run_test_from_target</td>
+    <td>boolean</td>
+    <td>True</td>
+    <td>Run tests from the <code>target</code> or <code>src</code> directory.</td>
+  </tr>
+</table>
+
+<h2 id="python-deployment">Python deployment</h2>
+
+<h3 id="python-core">Python core</h3>
+<p>The python core plugin deals with sources and distributions. It copies the sources
+into the distribution directory.</p>
+
+<h4 id="python-core-properties">Python core properties</h4>
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>dir_source_main_python</td>
+    <td>string</td>
+    <td>src/main/python</td>
+    <td>Directory where python modules are located.</td>
+  </tr>
+
+  <tr>
+    <td>dir_source_main_scripts</td>
+    <td>string</td>
+    <td>src/main/scripts</td>
+    <td>Directory where runnable scripts are located.</td>
+  </tr>
+
+  <tr>
+    <td>dir_dist</td>
+    <td>string</td>
+    <td>$dir_target/dist/$name-$version</td>
+    <td>Directory where distributions are built.</td>
+  </tr>
+
+  <tr>
+    <td>dir_dist_scripts</td>
+    <td>string</td>
+    <td>scripts (starting with 0.10.40, before that scripts are simply copied to the dir_dist by default)&lt;/em&gt;</td>
+    <td>Directory where scripts are copied to <em>(relative to distribution directory)</em>.</td>
+  </tr>
+</table>
+
+<h3 id="installing-dependencies">Installing dependencies</h3>
+
+<p><em>PyBuilder</em> manages build and runtime dependencies for you.
+Use the <code class="language-plaintext highlighter-rouge">python.install_dependencies</code> module to activate dependency management.
+This will make the following tasks available:</p>
+
+<table class="table table-striped">
+  <tr>
+    <th>Task</th>
+    <th>Effect</th>
+  </tr>
+
+  <tr>
+    <td>install_build_dependencies</td>
+    <td>Installs build dependencies only</td>
+  </tr>
+
+  <tr>
+    <td>install_runtime_dependencies</td>
+    <td>Installs runtime dependencies only</td>
+  </tr>
+
+  <tr>
+    <td>install_dependencies</td>
+    <td>Installs all dependencies (build and runtime)</td>
+  </tr>
+</table>
+
+<h4 id="declaring-dependencies">Declaring dependencies</h4>
+<p>The project object exposes the following methods for declaring dependencies</p>
+
+<h5 id="requirements-file-">Requirements file :</h5>
+<pre><code>project.depends_on_requirements("requirements.txt")</code></pre>
+<pre><code>project.build_depends_on_requirements("requirements-dev.txt")</code></pre>
+
+<h5 id="runtime-dependencies-">Runtime dependencies :</h5>
+<pre><code>project.depends_on("awesome-library")</code></pre>
+
+<h5 id="build-dependencies-">Build dependencies :</h5>
+<pre><code>project.build_depends_on("awesome-library")</code></pre>
+
+<p>Note that the <code class="language-plaintext highlighter-rouge">*_depends_on</code> methods accept the following arguments :</p>
+
+<table class="table table-striped">
+  <tr>
+    <th>Argument</th>
+    <th>Effect</th>
+  </tr>
+
+  <tr>
+    <td>name</td>
+    <td>Required positional argument. It's the name of the dependency on PyPI.</td>
+  </tr>
+
+  <tr>
+    <td>version</td>
+    <td>Optional keyword argument (<code>None</code> default). Set it to a version string (example <code>"==1.5.4"</code> or <code>"&gt;=0.10"</code> if necessary.</td>
+  </tr>
+
+  <tr>
+    <td>url</td>
+    <td>Optional keyword argument (<code>None</code> default). Set it to an editable URL where the dependency should be downloaded from.</td>
+  </tr>
+</table>
+
+<p>The logic of version goes as follows:</p>
+
+<ul>
+  <li>If you don’t specify any version, you don’t care about the version and any version will do, so PyB will get whatever version if one doesn’t exist and then don’t bother ever updating.</li>
+  <li>If you specify an exact version once it is obtained there is no point in updating it.</li>
+  <li>If you specify a fuzzy version, you want the latest and greatest that satisfies the expression specified. This aids rapid incompatibility detection, as PyBuilder tracks the latest version that always satisfies the version specifier.</li>
+</ul>
+
+<h4 id="install-dependencies-configuration">Install dependencies configuration</h4>
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>dir_install_logs</td>
+    <td>string</td>
+    <td>$dir_logs/install_dependencies</td>
+    <td>Where installation logs should be saved.</td>
+  </tr>
+
+  <tr>
+    <td>install_dependencies_index_url</td>
+    <td>string</td>
+    <td>None</td>
+    <td>Index URL to use with pip (None means use the pip default).</td>
+  </tr>
+
+  <tr>
+    <td>install_dependencies_extra_index_url</td>
+    <td>string</td>
+    <td>None</td>
+    <td>Extra index url to use with pip.</td>
+  </tr>
+
+  <tr>
+    <td>install_dependencies_use_mirrors</td>
+    <td>boolean</td>
+    <td>True</td>
+    <td>Enables the use of PyPI mirros for pip operations.</td>
+  </tr>
+
+  <tr>
+    <td>install_dependencies_upgrade</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>If dependencies are already available, try to upgrade them instead.</td>
+  </tr>
+
+  <tr>
+    <td>install_dependencies_insecure_installation</td>
+    <td>List of strings</td>
+    <td><code>[ ]</code></td>
+    <td>Tell newer versions of pip that it's OK to install those dependencies insecurely (externally hosted, potentially unverified)</td>
+  </tr>
+</table>
+
+<h3 id="creating-a-source-distribution">Creating a source distribution</h3>
+
+<p><em>PyBuilder</em> can build a source distribution of your code with the plugin <code class="language-plaintext highlighter-rouge">source_distribution</code>. Activating this plugin will expose a task, <code class="language-plaintext highlighter-rouge">build_source_distribution</code>.</p>
+
+<h4 id="source-distribution-configuration">Source distribution configuration</h4>
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>dir_source_dist</td>
+    <td>string</td>
+    <td>$dir_target/dist/$(project.name)-$(project.version)-src</td>
+    <td>Where the source distribution should be created.</td>
+  </tr>
+  <tr>
+    <td>source_dist_ignore_patterns</td>
+    <td>list of strings</td>
+    <td>["*.pyc", ".hg*", ".svn", ".CVS"]</td>
+    <td>Patterns to ignore when copying sources for the source distribution.</td>
+  </tr>
+</table>
+
+<h3 id="building-a-python-package">Building a Python package</h3>
+
+<p><em>PyBuilder</em> ships a plugin that generates and executes setup.py files using with distutils or setuptools (distribute will
+be supported in future releases). In order to generate a <code class="language-plaintext highlighter-rouge">setup.py</code> file use the <code class="language-plaintext highlighter-rouge">python.distutils</code>
+plugin.</p>
+
+<p>The distutils plugin will consider many of the project’s attributes, i.e.</p>
+<ul>
+  <li>name</li>
+  <li>version</li>
+  <li>summary</li>
+  <li>description</li>
+  <li>author</li>
+  <li>license</li>
+  <li>url</li>
+</ul>
+
+<h4 id="moving-scripts-to-a-nested-directory">Moving scripts to a nested directory</h4>
+
+<p>By default, executable scripts are located at the egg’s root. The <code class="language-plaintext highlighter-rouge">setup.py</code> contains the bare script names.
+Sometimes though you may want to move the scripts inside a directory to avoid naming collisions (i.e. with
+packages).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">python.core</code> and <code class="language-plaintext highlighter-rouge">python.distutils</code> plugins support the property <code class="language-plaintext highlighter-rouge">dir_dist_scripts</code> that
+can name a directory to contain scripts inside the egg. This property is empty by default. Set it to the local name
+of the directory you want the scripts to be moved to:</p>
+
+<pre><code>@init
+def initialize (project):
+    project.set_property("dir_dist_scripts", 'scripts')
+
+...
+</code></pre>
+
+<h4 id="distutils-properties">Distutils properties</h4>
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>distutils_commands</td>
+    <td>list of strings</td>
+    <td>sdist, bdist_dump</td>
+    <td>Commands to execute using the generated <code>setup.py</code> script during <code>publish</code></td>
+  </tr>
+  
+  <tr>
+    <td>distutils_command_options</td>
+    <td>dictionary</td>
+    <td>None</td>
+    <td>Additional options for <code>distutils_commands</code> values. Has to be provided as dictionary of <code>key:value</code> pairs where <code>key</code> is <code>distutils_commands</code> list value and <code>value</code> is list of additional parameters for this <code>distutils_commands</code> command.</td>
+  </tr>
+
+  <tr>
+    <td>distutils_classifiers</td>
+    <td>list of strings</td>
+    <td>Development Status :: 3 - Alpha<br />
+        Programming Language :: Python</td>
+    <td>Classifiers describing the project; see <a href="http://pypi.python.org/pypi?%3Aaction=list_classifiers">http://pypi.python.org/pypi?%3Aaction=list_classifiers</a></td>
+  </tr>
+
+  <tr>
+    <td>distutils_upload_repository</td>
+    <td>string</td>
+    <td>None</td>
+    <td>The PyPI repository to upload the package to</td>
+  </tr>
+  
+  <tr>
+    <td>distutils_upload_sign</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Sign each uploaded file using GPG (GNU Privacy Guard)</td>
+  </tr>
+
+  <tr>
+    <td>distutils_upload_sign_identity</td>
+    <td>string</td>
+    <td>None</td>
+    <td>The identity to sign each file with, when distutils_upload_sign is True</td>
+  </tr>
+
+  <tr>
+    <td>distutils_use_setuptools</td>
+    <td>boolean</td>
+    <td>True</td>
+    <td>Use setuptools instead of distutils</td>
+  </tr>
+  
+  <tr>
+    <td>distutils_readme_description</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Get <code>description</code> and <code>summary</code> project properties from readme file</td>
+  </tr>
+  
+  <tr>
+    <td>distutils_readme_file</td>
+    <td>string</td>
+    <td>README.md</td>
+    <td>Relative path of readme file for <code>distutils_readme_description</code> property</td>
+  </tr>
+  
+  <tr>
+    <td>distutils_description_overwrite</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Overwrite <code>description</code> and <code>summary</code> project properties if even set</td>
+  </tr>
+  
+  <tr>
+    <td>distutils_console_scripts</td>
+    <td>list of strings</td>
+    <td>None</td>
+    <td>Array of console scripts for <code>entry_points</code> argument into <code>setup.py</code> file. Cannot be used with <code>distutils_entry_points</code></td>
+  </tr>
+  
+  <tr>
+    <td>distutils_entry_points</td>
+    <td>dictionary</td>
+    <td>None</td>
+    <td>Entry points for <code>entry_points</code> argument into <code>setup.py</code> file. Could include <code>console_scripts</code> section. Cannot be used with <code>distutils_console_scripts</code></td>
+  </tr>
+  
+  <tr>
+    <td>distutils_setup_keywords</td>
+    <td>list of strings or string</td>
+    <td>None</td>
+    <td>Setup keywords for <code>setup_keywords</code> argument into <code>setup.py</code> file.</td>
+  </tr>
+
+  <tr>
+    <td>distutils_issue8876_workaround_enabled</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Deny distutils the use of hardlinks for creating binary distributions</td>
+  </tr>
+</table>
+
+<p>Each <code class="language-plaintext highlighter-rouge">distutils_commands</code> is called individually with <code class="language-plaintext highlighter-rouge">clean --all</code> parameter.
+The reason that <code class="language-plaintext highlighter-rouge">clean --all</code> is used is to ensure that if PyBuilder is generating multiple packages (<code class="language-plaintext highlighter-rouge">bdist_wheel</code> vs <code class="language-plaintext highlighter-rouge">dumb</code> vs <code class="language-plaintext highlighter-rouge">bdist</code>) that the <code class="language-plaintext highlighter-rouge">build/</code> directory doesn’t cross-contaminate the builds. Some use absolute paths, some use relative.</p>
+
+<div class="alert alert-warning alert-dismissable">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <h4 id="virtualbox-pitfall-with-binary-dists">VirtualBox pitfall with binary dists</h4>
+If you build your project on a shared filesystem (e.G. with vagrant/Virtualbox virtualization) then distutils is unable to build a binary distribution <a href="http://bugs.python.org/issue8876">due to a python stdlib bug</a>.
+Setting the property <code>distutils_issue8876_workaround_enabled</code> to True (off by default) will work around this for you.
+</div>
+
+<h4 id="distutils-property-examples">Distutils property examples</h4>
+
+<h5 id="distutils_command_options">distutils_command_options</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>project.set_property('distutils_commands', 'build')
+project.set_property('distutils_command_options',
+                     {'build': ('-e', '/opt/python2.7/bin/python', 'bdist_wheel')})
+</code></pre></div></div>
+
+<h5 id="distutils_console_scripts">distutils_console_scripts</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>project.set_property('distutils_console_scripts', [
+    "some_console1 = some_module1:some_function1",
+    "some_console2 = some_package.some_module2:some_function2"])
+</code></pre></div></div>
+
+<h5 id="distutils_entry_points">distutils_entry_points</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>project.set_property('distutils_entry_points', {
+    'console_scripts': [
+        "some_console1 = some_module1:some_function1",
+        "some_console2 = some_package.some_module2:some_function2"],
+    'some.entry.point': [
+        'value1 = some_module3:some_function3',
+        'value2 = some_module4:some_function4']})
+</code></pre></div></div>
+
+<h3 id="copying-resources-into-a-distribution">Copying resources into a distribution</h3>
+
+<p>In some cases you want to include non-source files in a distribution. An example is adding a <code class="language-plaintext highlighter-rouge">setup.cfg</code> to your project. It is not a source file, but it needs to be in the distribution to work (beneath the <code class="language-plaintext highlighter-rouge">setup.py</code> file).
+The <code class="language-plaintext highlighter-rouge">copy_resources</code> plugin will do this for you at build-time.</p>
+
+<h4 id="copy-resources-configuration">Copy resources configuration</h4>
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>copy_resources_target</td>
+    <td>string</td>
+    <td>$dir_target</td>
+    <td>Where resources should be copied to.</td>
+  </tr>
+
+  <tr>
+    <td>copy_resources_glob</td>
+    <td>list of strings</td>
+    <td>[]</td>
+    <td>A list of globs matching files that should be copied to <code>$copy_resources_target</code>.</td>
+  </tr>
+</table>
+
+<h3 id="filtering-files">Filtering files</h3>
+
+<p>With the <code class="language-plaintext highlighter-rouge">filter_resources</code> plugin, it is possible to replace placeholder values of type <code class="language-plaintext highlighter-rouge">${version}</code> with actual values at build-time.
+The actual values are the attributes and the properties dict of the <code class="language-plaintext highlighter-rouge">project</code> object. So <code class="language-plaintext highlighter-rouge">${version}</code> will be replaced with the value of <code class="language-plaintext highlighter-rouge">project.version</code> and <code class="language-plaintext highlighter-rouge">${some_property}</code> by <code class="language-plaintext highlighter-rouge">project.get_property('some_property')</code>.
+In order to make resource filtering explicit, all files that go through filtering need to be specified with a glob.</p>
+
+<h4 id="filter-resources-configuration">Filter resources configuration</h4>
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>filter_resources_target</td>
+    <td>string</td>
+    <td>$dir_target</td>
+    <td>Toplevel directory containing the resources to be filtered.</td>
+  </tr>
+
+  <tr>
+    <td>filter_resources_glob</td>
+    <td>list of strings</td>
+    <td>[]</td>
+    <td>A list of globs matching files that should be filtered.</td>
+  </tr>
+</table>
+
+<h4 id="filter-resources-example">Filter resources example</h4>
+
+<p>A common use case is keeping a <code class="language-plaintext highlighter-rouge">__version__</code> attribute in your main module.
+But you don’t want to specify the version both in <code class="language-plaintext highlighter-rouge">build.py</code> and in <code class="language-plaintext highlighter-rouge">__init__.py</code> because <code class="language-plaintext highlighter-rouge">build.py</code> should be the single point of truth.</p>
+
+<p>So just use <code class="language-plaintext highlighter-rouge">__version__ = '${version}'</code> in <code class="language-plaintext highlighter-rouge">__init__.py</code>.</p>
+
+<p>We can tell the plugin to filter this file by adding <code class="language-plaintext highlighter-rouge">['**/YOUR-PACKAGE-NAME/__init__.py']</code> to the <code class="language-plaintext highlighter-rouge">filter_resources_glob</code>.
+The correct version will be patched in at run-time since the version is defined in <code class="language-plaintext highlighter-rouge">project.version</code>.
+For filtering other attributes like <code class="language-plaintext highlighter-rouge">${myattribute}</code>, just add a <code class="language-plaintext highlighter-rouge">project.myattribute = "foobar"</code> in <code class="language-plaintext highlighter-rouge">build.py</code>’s initializer.</p>
+
+<h3 id="creating-documentation-with-sphinx">Creating documentation with sphinx</h3>
+
+<p>The plugin <code class="language-plaintext highlighter-rouge">python.sphinx</code> will expose the task <code class="language-plaintext highlighter-rouge">sphinx_generate_documentation</code> which will generate the project documentation.</p>
+
+<h4 id="sphinx-plugin-configuration">Sphinx plugin configuration</h4>
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default Value</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>sphinx_builder</td>
+    <td>string</td>
+    <td>html</td>
+    <td>The sphinx builder to use</td>
+  </tr>
+
+  <tr>
+    <td>sphinx_config_path</td>
+    <td>string</td>
+    <td>""</td>
+    <td>The path to the sphinx configuration</td>
+  </tr>
+
+  <tr>
+    <td>sphinx_source_dir</td>
+    <td>string</td>
+    <td>""</td>
+    <td>The path to the sphinx sources</td>
+  </tr>
+
+  <tr>
+    <td>sphinx_output_dir</td>
+    <td>string</td>
+    <td>"_build/"</td>
+    <td>The path to the sphinx output directory where the documentation will be generated</td>
+  </tr>
+</table>
+
+<h2 id="generic-build-plugins">Generic build plugins</h2>
+
+<h3 id="executing-shell-commands">Executing shell commands</h3>
+<p><em>PyBuilder</em> ships with a plugin that allows you to incorporate arbitrary shell
+commands in the build process.</p>
+
+<p>This plugin can be activated using <code class="language-plaintext highlighter-rouge">use_plugin("exec")</code> and is configured through
+the project properties.</p>
+
+<h4 id="adding-a-shell-command-to-the-build-process">Adding a shell command to the build process</h4>
+<p>Adding commands is done by setting properties and is discrete towards the
+project lifecycles, thus you may have only one shell command for the analyze
+lifecycle for example.</p>
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>run_unit_tests_command</td>
+    <td>string</td>
+    <td>Run a shell command during run_unit_tests</td>
+  </tr>
+  <tr>
+    <td>run_integration_tests_command</td>
+    <td>string</td>
+    <td>Run a shell command during run_integration_tests</td>
+  </tr>
+  <tr>
+    <td>analyze_command</td>
+    <td>string</td>
+    <td>Run a shell command during analyze</td>
+  </tr>
+  <tr>
+    <td>package_command</td>
+    <td>string</td>
+    <td>Run a shell command during package</td>
+  </tr>
+  <tr>
+    <td>publish_command</td>
+    <td>string</td>
+    <td>Run a shell command during publish</td>
+  </tr>
+</table>
+
+<p>The output of the plugin can also be customized by using the properties
+<code class="language-plaintext highlighter-rouge">$PHASE_propagate_stdout</code> and <code class="language-plaintext highlighter-rouge">$PHASE_propagate_stderr</code>.</p>
+
+<p>See the properties for the phase <code class="language-plaintext highlighter-rouge">run_unit_tests</code> for example:</p>
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>run_unit_tests_propagate_stdout</td>
+    <td>string</td>
+    <td>False</td>
+    <td>Propagate the stdout of the command to the PyBuilder output</td>
+  </tr>
+  <tr>
+    <td>run_unit_tests_propagate_stderr</td>
+    <td>string</td>
+    <td>False</td>
+    <td>Propagate the stdout of the command to the PyBuilder output</td>
+  </tr>
+</table>
+
+<h2 id="ide-integration">IDE integration</h2>
+
+<h3 id="project-files-for-eclipse-pydev">Project files for Eclipse PyDev</h3>
+
+<p>If the plugin <code class="language-plaintext highlighter-rouge">python.pydev</code> is used, PyBuilder provides the task <code class="language-plaintext highlighter-rouge">pydev_generate</code>.
+This task can be used to generate PyDev project files in the project root directory. The project can then be imported easily.</p>
+
+<h3 id="project-files-for-jetbrains-pycharm">Project files for Jetbrains PyCharm</h3>
+<p>If the plugin <code class="language-plaintext highlighter-rouge">python.pycharm</code> is used, PyBuilder provides the task <code class="language-plaintext highlighter-rouge">pycharm_generate</code>.
+This task can be used to generate a PyCharm project files in the project root directory. The project can then be imported easily through the <code class="language-plaintext highlighter-rouge">Open...</code> command.</p>
+
+<h2 id="developer-tools">Developer tools</h2>
+
+<h3 id="visual-feedback-for-tests">Visual feedback for tests</h3>
+<p>The <code class="language-plaintext highlighter-rouge">python.pytddmon</code> plugin provides the task <code class="language-plaintext highlighter-rouge">pytddmon</code> which will start a graphical application that gives real-time feedback about passing or failing unit tests.
+Please see the pytddmon page (http://pytddmon.org/ broken link) for more information about pytddmon.</p>
+
+<h2 id="additional-project-structure">Additional project structure</h2>
+
+<h3 id="splitting-up-your-buildpy-with-bldsup">Splitting up your <code class="language-plaintext highlighter-rouge">build.py</code> with bldsup</h3>
+
+<p>Maybe you want to have project specific plugins and support code while keeping your build.py file small, while avoiding to clutter your project’s root directory.
+This can be done by activating bldsup support :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from pybuilder.core import use_bldsup
+use_bldsup(build_support_dir="bldsup")
+</code></pre></div></div>
+
+<p>If it’s not called in a project’s build.py, then no “bldsup” directory is searched. If it is called, then it confirms that the build_support_dir directory exists and that includes a <code class="language-plaintext highlighter-rouge">__init__.py</code> file so imports will work. It just needs to be called before you try to <code class="language-plaintext highlighter-rouge">import</code>/<code class="language-plaintext highlighter-rouge">use_plugin()</code> any modules from the <code class="language-plaintext highlighter-rouge">build_support_dir</code>.</p>
+</div>
+        <div class="col-lg-5 visible-md visible-lg">
+            <nav id="toc" data-spy="affix" data-toggle="toc"></nav>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <a href="https://github.com/pybuilder/pybuilder">PyBuilder on GitHub</a>
+            <a href="https://pypi.org/project/pybuilder/">PyBuilder on PyPI</a>
+        </div>
+    </div>
+    <div class="publish-date">
+        <small>site published on 2025-09-09 01:46:55 +0000</small>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<script src="/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
+<script src="/js/tabcontent.js"></script>
+<script src="/js/highlight.pack.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.5.0/lite-youtube.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+  });
+</script>
+<script type="text/javascript">
+    $(function() {
+        $(".dropdown").hover(
+            function(){ $(this).addClass('open') },
+            function(){ $(this).removeClass('open') }
+        );
+    });
+    $(function() {
+        $(".dropdown-submenu").hover(
+            function(){ $(this).addClass('open') },
+            function(){ $(this).removeClass('open') }
+        );
+    });
+</script>
+
+</body>
+</html>

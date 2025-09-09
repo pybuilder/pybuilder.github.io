@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C74FKNHM7K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C74FKNHM7K');
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="description" content="PyBuilder is an easy-to-use build automation tool for Python"/>
+<meta name="author" content="PyBuilder Community"/>
+<meta name="keywords" content="python, continuous integration, build tool, automation, CI, CD, CI/CD"/>
+
+<meta name="theme-color" content="#000000"/>
+
+<link rel="canonical" href="https://pybuilder.io/release-notes/v0.10.x"/>
+<link rel="icon" href="/img/logo.svg"/>
+<link rel="apple-touch-icon" href="/img/logo-apple-touch-icon.png">
+
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oleo+Script:700"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+      integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
+<link rel="stylesheet" type="text/css" href="/css/highlightjs.css"/>
+<link rel="stylesheet" type="text/css" href="/css/tabcontent.css"/>
+<link rel="stylesheet" type="text/css" href="/css/styles.css"/>
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="PyBuilder Release Notes - Versions 0.10.x" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Release Notes - Version 0.10.x" />
+<meta property="og:description" content="Release Notes - Version 0.10.x" />
+<link rel="canonical" href="https://pybuilder.io/release-notes/v0.10.x" />
+<meta property="og:url" content="https://pybuilder.io/release-notes/v0.10.x" />
+<meta property="og:image" content="https://pybuilder.io/img/logo.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-09-09T01:46:55+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:image" content="https://pybuilder.io/img/logo.png" />
+<meta property="twitter:title" content="PyBuilder Release Notes - Versions 0.10.x" />
+<meta name="twitter:site" content="@pybuilder_" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-09-09T01:46:07+00:00","datePublished":"2025-09-09T01:46:55+00:00","description":"Release Notes - Version 0.10.x","headline":"PyBuilder Release Notes - Versions 0.10.x","image":"https://pybuilder.io/img/logo.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://pybuilder.io/release-notes/v0.10.x"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://pybuilder.io/img/logo.png"}},"url":"https://pybuilder.io/release-notes/v0.10.x"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <title>PyBuilder &#x2014; PyBuilder Release Notes - Versions 0.10.x</title>
+</head>
+
+<body data-spy="scroll" data-target="#toc">
+
+<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#hdr-nb-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand pybuilder-brand dropdown" href="/" title="PyBuilder">
+                <img src="/img/logo.svg" alt="PyBuilder Logo"
+                     onerror="this.onerror=null; this.src='/img/logo-brand.png'"/></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="hdr-nb-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="/" title="PyBuilder">PyBuilder</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/about" title="About">About</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/news/" title="News">News</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/documentation/" class="dropdown-toggle">Documentation <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">User Documentation <b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/documentation/installation">Installation</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/tutorial">Tutorial</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/examples">Examples</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/manual">Manual</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/plugins">Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/external-plugin-list">External plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/ide">IDE integration</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">Developer Documentation <b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/documentation/writing-plugins">Writing Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/developing-pybuilder">Developing PyBuilder</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/publishing-plugins">Publishing Your Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="#">API (Unavailable)</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Releases <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a href="/release-notes/" class="dropdown-item dropdown-toggle">Release Notes
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                
+                                
+                                <li>
+                                    <a href="/release-notes/v0.13.x">Versions 0.13.x
+                                        (Current)</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/v0.12.x">Versions 0.12.x
+                                        </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/v0.11.x">Versions 0.11.x
+                                        </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/v0.10.x">Versions 0.10.x
+                                        </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/archived">Archived Versions
+                                        </a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a href="/migration-guides/" class="dropdown-item dropdown-toggle">Migration Guides
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                
+                                
+                                <li>
+                                    <a href="/migration-guides/v0.11.x-v0.12.0">Migrating v0.11.x to v0.12.0</a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-7" id="content"><h1 id="release-notes---version-010x">Release Notes - Version 0.10.x</h1>
+
+<h2 id="version-01063">Version 0.10.63</h2>
+<ul>
+  <li>Fixed a regression introduced in <code class="language-plaintext highlighter-rouge">0.10.62</code> where the unit test reports generated by the <code class="language-plaintext highlighter-rouge">python.unittest</code> plugin would always be empty.</li>
+</ul>
+
+<h2 id="version-01062">Version 0.10.62</h2>
+<ul>
+  <li>Allow to specify a custom unittest runner. See <a href="https://github.com/pybuilder/pybuilder/pull/140">PR</a> for more information (pull request by <a href="https://github.com/arcivanov">arcivanov</a>.</li>
+</ul>
+
+<h2 id="version-01061">Version 0.10.61</h2>
+<ul>
+  <li>pycharm plugin: Generate entries for unit and integration test directories (if respective plugins are activated) and mark them as test sources (pull request by <a href="https://github.com/arcivanov">arcivanov</a>)</li>
+</ul>
+
+<h2 id="version-01060">Version 0.10.60</h2>
+<ul>
+  <li>sphinx plugin:  you can now configure sphinx_doc_author, sphinx_doc_builder, sphinx_project_name, sphinx_project_version via project.set_property in your build.py (pull request by @locolupo)</li>
+  <li>sphinx plugin: pyb –start-project now asking for a documentation folder (pull request by @locolupo)</li>
+  <li>sphinx plugin: new task, <code class="language-plaintext highlighter-rouge">sphinx_quickstart</code> (pull request by @locolupo)</li>
+  <li>install dependencies plugin: Setting the property <code class="language-plaintext highlighter-rouge">install_dependencies_local_mapping</code> to a dictionary
+ allows to specify where the dependencies are to be installed locally.
+ The dictionary should map dependency names to paths where the dependencies should be installed.</li>
+</ul>
+
+<h2 id="version-01059">Version 0.10.59</h2>
+<ul>
+  <li>integrationtest plugin: The property <code class="language-plaintext highlighter-rouge">integrationtest_always_verbose</code> can now be used to always display the integration test output, even when the tests are green. Pull request by <a href="https://github.com/snordhausen">@snordhausen</a></li>
+</ul>
+
+<h2 id="version-01058">Version 0.10.58</h2>
+<ul>
+  <li>Fixed python3 incompatibility introduced in 0.10.57</li>
+</ul>
+
+<h2 id="version-01057">Version 0.10.57</h2>
+<ul>
+  <li>Using editable URLs in a <code class="language-plaintext highlighter-rouge">requirements.txt</code> file now works - integrating the requirements into PyBuilder with <code class="language-plaintext highlighter-rouge">project.depends_on_requirements("requirements.txt")</code> was not generating the correct setup script.</li>
+</ul>
+
+<h2 id="version-01056">Version 0.10.56</h2>
+<ul>
+  <li>Resolved problems where the python unittest plugin would cause a crash when a test failed with an exception containing non-ascii text.</li>
+</ul>
+
+<h2 id="version-01055">Version 0.10.55</h2>
+<ul>
+  <li>Resolved python3 compatibility issue introduced with <code class="language-plaintext highlighter-rouge">0.10.54</code></li>
+</ul>
+
+<h2 id="version-01054">Version 0.10.54</h2>
+<ul>
+  <li>Improved the cyclic dependency detection algorithm used to resolve task dependencies</li>
+  <li>Added possibility for tasks to introspect their dependencies (see <a href="https://github.com/pybuilder/pybuilder/issues/122">#122</a>)</li>
+</ul>
+
+<h2 id="version-01053">Version 0.10.53</h2>
+<ul>
+  <li>
+    <p>Fix autoversioning for older git version like found on RHEL6.</p>
+
+    <p>Pull request by <a href="https://github.com/schlomo">@schlomo</a>, thanks!</p>
+  </li>
+</ul>
+
+<h2 id="version-01052">Version 0.10.52</h2>
+<ul>
+  <li>Ignore errors while trying to save coverage data
+This fixes #119. In cases where there is no coverage data at all, saving
+leads to an error, which would crash the build even if
+<code class="language-plaintext highlighter-rouge">coverage_break_build</code> was set to False.</li>
+</ul>
+
+<h2 id="version-01051">Version 0.10.51</h2>
+<ul>
+  <li>The snakefood plugin will now pull in the snakefood dependency as intended.</li>
+</ul>
+
+<h2 id="version-01050">Version 0.10.50</h2>
+<ul>
+  <li>The snakefood plugin will now generate external and internal project reports (external dependencies and internal dependencies, respectively).</li>
+</ul>
+
+<h2 id="version-01049">Version 0.10.49</h2>
+<ul>
+  <li>Added API functionality to automatically version the project based on the version control system.</li>
+</ul>
+
+<h2 id="version-01048">Version 0.10.48</h2>
+<ul>
+  <li>Sonarqube plugin: Should now correctly report coverage.</li>
+</ul>
+
+<h2 id="version-01046">Version 0.10.46</h2>
+<ul>
+  <li>Sonarqube plugin: Fixed source path setting.</li>
+</ul>
+
+<h2 id="version-01045">Version 0.10.45</h2>
+<ul>
+  <li>Coverage plugin: now writes a cobertura compatible XML report to the reports directory.</li>
+  <li>New plugin: <a href="/documentation/plugins.html#sonarqube-integration">sonarqube plugin</a>, which can be used to run sonar analysis.</li>
+</ul>
+
+<h2 id="version-01044">Version 0.10.44</h2>
+<ul>
+  <li>Coverage plugin: Should now work with coveralls without further adjustements since a coverage data file is written.</li>
+</ul>
+
+<h2 id="version-01043">Version 0.10.43</h2>
+<ul>
+  <li>
+    <p>Coverage plugin: Try really hard to work well with coveralls</p>
+
+    <p>The coverage configuration is used to tell coverage to avoid covering the python
+  stdlib if possible, and also specifies the source root to cover.
+  Additionally a .coverage file is written in the coverage root, so that
+  it can be consumed by coveralls.</p>
+  </li>
+</ul>
+
+<h2 id="version-01042">Version 0.10.42</h2>
+<ul>
+  <li>
+    <p>detect teamcity environment automatically</p>
+
+    <p>If the environment variable TEAMCITY_VERSION is set, teamcity output will be
+  generated automatically. It can still be forced with the project
+  property “teamcity_output”, and setting both the property and the
+  environment variable will also result in teamcity specific output being
+  generated.</p>
+  </li>
+</ul>
+
+<h2 id="version-01041">Version 0.10.41</h2>
+<ul>
+  <li>Default project version (when no version is given in the <code class="language-plaintext highlighter-rouge">build.py</code> is now 1.0.dev0 instead of 1.0-SNAPSHOT, as per PEP 440. Pull request by <a href="#">@zroadhouse-wsm</a>, thanks!</li>
+</ul>
+
+<h2 id="version-01040">Version 0.10.40</h2>
+<ul>
+  <li>Improved error messages when the setup commands from <code class="language-plaintext highlighter-rouge">python.distutils</code> fail.</li>
+  <li>Naming a script (<code class="language-plaintext highlighter-rouge">src/main/scripts/foo</code>) like a package
+(<code class="language-plaintext highlighter-rouge">src/main/python/foo/__init__.py</code>) now works without any specific configuration.
+Technical detail: the property <code class="language-plaintext highlighter-rouge">dir_dist_scripts</code> is now set to <code class="language-plaintext highlighter-rouge">"scripts"</code> by
+default instead of <code class="language-plaintext highlighter-rouge">None</code>.</li>
+</ul>
+
+<h2 id="version-01039">Version 0.10.39</h2>
+<ul>
+  <li>Resolved problems with the python core plugin on windows. Packages with leading backslashes were leading to problems with the setup script. Thanks to <a href="#">@SzeMengTan</a> for reporting.</li>
+</ul>
+
+<h2 id="version-01038">Version 0.10.38</h2>
+<ul>
+  <li>Initial version of a sphinx plugin. Pull request by <a href="https://github.com/tjpnz">@tjpnz</a>, thanks!.</li>
+</ul>
+
+<h2 id="version-01037">Version 0.10.37</h2>
+<ul>
+  <li>Fix using the <code class="language-plaintext highlighter-rouge">dir_dist_scripts</code> property in python3 which was breaking the setup script.
+Thanks to <a href="https://github.com/raphiz">@raphiz</a> for the pull request!</li>
+</ul>
+
+<h2 id="version-01036">Version 0.10.36</h2>
+<ul>
+  <li>Coverage plugin: ignored modules will no longer contribute to the
+overall coverage calculation <a href="/documentation/plugins.html#measuring-unittest-coverage">(referring to the modules or packages
+in <code class="language-plaintext highlighter-rouge">coverage_exceptions</code>)</a>.
+Thanks to <a href="https://github.com/MirkoRossini">@MirkoRossini</a> for the pull
+request!</li>
+</ul>
+
+<h2 id="version-01035">Version 0.10.35</h2>
+<ul>
+  <li>The generated setup.py is now correct even if the <code class="language-plaintext highlighter-rouge">$dir_source_main_python</code> contains a trailing slash.
+See <a href="https://github.com/pybuilder/pybuilder/issues/110">issue 110</a> for more details.
+Thanks @MirkoRossini for reporting!</li>
+  <li>The <code class="language-plaintext highlighter-rouge">pyb -Qt</code> line format is now <code class="language-plaintext highlighter-rouge">$task_name:$task_description</code>.
+This allows for better completions by also exposing the task names.</li>
+</ul>
+
+<h2 id="version-01034">Version 0.10.34</h2>
+<ul>
+  <li>The jedi linter has been externalized, please use <code class="language-plaintext highlighter-rouge">pypi:pybuilder_jedi_plugin</code> now.</li>
+  <li>The task list (-t) in very quiet mode (-Q) will now output space separated task data.</li>
+</ul>
+
+<h2 id="version-01033">Version 0.10.33</h2>
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">filter_resources</code> plugin will now warn and skip keys that can not be replaced. This allows the use of <code class="language-plaintext highlighter-rouge">string.Template</code> in source files that go through the <code class="language-plaintext highlighter-rouge">filter_resources</code> plugin.</li>
+</ul>
+
+<h2 id="version-01032">Version 0.10.32</h2>
+<ul>
+  <li>implement using requirements files as dependencies</li>
+</ul>
+
+<h2 id="version-01031">Version 0.10.31</h2>
+<ul>
+  <li>Improved output of the jedi plugin</li>
+</ul>
+
+<h2 id="version-01030">Version 0.10.30</h2>
+<ul>
+  <li>Resolved some problems with the bundled jedi plugin</li>
+</ul>
+
+<h2 id="version-01029">Version 0.10.29</h2>
+<ul>
+  <li>Added plugin <code class="language-plaintext highlighter-rouge">jedi_linter</code> (EXPERIMENTAL)</li>
+</ul>
+
+<h2 id="version-01028">Version 0.10.28</h2>
+<ul>
+  <li>Resolved a python 3 compatibility problem with the <code class="language-plaintext highlighter-rouge">exec</code> plugin.</li>
+</ul>
+
+<h2 id="version-01027">Version 0.10.27</h2>
+<ul>
+  <li>Added another pybuilder command <code class="language-plaintext highlighter-rouge">pyb_</code>. which is a binary (<code class="language-plaintext highlighter-rouge">.exe</code>) on windows installations of PyBuilder.
+This should be used instead of the <code class="language-plaintext highlighter-rouge">pyb</code> script on windows installations.</li>
+</ul>
+
+<h2 id="version-01026">Version 0.10.26</h2>
+<ul>
+  <li>install_dependencies should now work as intended on windows.</li>
+</ul>
+
+<h2 id="version-01025">Version 0.10.25</h2>
+<ul>
+  <li>Fixed a problem when the installed pip had no <strong>version</strong> which is the case of old installations.</li>
+</ul>
+
+<h2 id="version-01024">Version 0.10.24</h2>
+<ul>
+  <li>Fixed a problem with the distutils plugin. Using slashes in <code class="language-plaintext highlighter-rouge">distutils_commands</code> resulted in problems as it was interpreted as a path. This is now resolved.</li>
+</ul>
+
+<h2 id="version-01023">Version 0.10.23</h2>
+<ul>
+  <li>It is now possible to use the <code class="language-plaintext highlighter-rouge">distutils_commands</code> property for an automated upload, since
+the distutils_plugin will now do the right thing when presented with a command with spaces,
+like [<code class="language-plaintext highlighter-rouge">sdist upload</code>]</li>
+</ul>
+
+<h2 id="version-01022">Version 0.10.22</h2>
+<ul>
+  <li>Unit tests names will now be logged to DEBUG as they run. Thanks <a href="https://github.com/aelgru">@aelgru</a>!</li>
+  <li>Introduced a new property for the <a href="/documentation/plugins.html#installing-dependencies"><code class="language-plaintext highlighter-rouge">install_dependencies</code> plugin</a>,
+<code class="language-plaintext highlighter-rouge">install_dependencies_insecure_installation</code>.</li>
+</ul>
+
+<h2 id="version-01021">Version 0.10.21</h2>
+<ul>
+  <li>Maintenance release (updated trove classifiers for PyPI)</li>
+</ul>
+
+<h2 id="version-01020">Version 0.10.20</h2>
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">--start-project</code> (to get started with a new project) now suggests the default scripts directory and creates it. Files in this folder will automatically be shipped as scripts (as in the setup.py <code class="language-plaintext highlighter-rouge">scripts</code> kwarg) which might be <code class="language-plaintext highlighter-rouge">/usr/bin</code> or <code class="language-plaintext highlighter-rouge">/usr/local/bin</code> or so, depending on your system.</li>
+</ul>
+
+<h2 id="version-01019">Version 0.10.19</h2>
+<ul>
+  <li>The frosted and flake8 linter now consider the property <code class="language-plaintext highlighter-rouge">frosted|flake8_include_scripts</code>. If this is set to True (default False) then all scripts in <code class="language-plaintext highlighter-rouge">$dir_source_main_scripts</code> will be linted too.</li>
+  <li>The integrationtest plugin may now pass arbitrary additional command line parts to the integrationtest call. The property <code class="language-plaintext highlighter-rouge">integrationtest_additional_commandline</code> can be used for that purpose.</li>
+</ul>
+
+<h2 id="version-01018">Version 0.10.18</h2>
+<ul>
+  <li>Python files in <code class="language-plaintext highlighter-rouge">$dir_source_main_python</code> (<code class="language-plaintext highlighter-rouge">src/main/python</code> by default) are now treated as standalone python modules. Previously, it was only possible to package python files by putting them in a package.</li>
+</ul>
+
+<h2 id="version-01017">Version 0.10.17</h2>
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">frosted_property</code> now works as intended.</li>
+</ul>
+
+<h2 id="version-01016">Version 0.10.16</h2>
+<ul>
+  <li>The pycharm plugin now ignores the <code class="language-plaintext highlighter-rouge">target</code> directory by default.</li>
+</ul>
+
+<h2 id="version-01015">Version 0.10.15</h2>
+<ul>
+  <li>Fixed a minor rendering issue in integrationtest_parallel</li>
+</ul>
+
+<h2 id="version-01014">Version 0.10.14</h2>
+<ul>
+  <li>External plugin support : It is now finally possible to use plugins
+published to PyPI. See <a href="/documentation/writing-plugins.html">the manual</a> for more information.</li>
+</ul>
+
+<h2 id="version-01013">Version 0.10.13</h2>
+<ul>
+  <li>Cram support : The <a href="/documentation/plugins.html#running-cram-tests"><code class="language-plaintext highlighter-rouge">python.cram</code></a> plugin can be used to run <a href="https://pypi.python.org/pypi/cram">cram</a> tests. Kudos go to <a href="https://github.com/esc">@esc</a> for the implementation.</li>
+</ul>
+
+<h2 id="version-01012">Version 0.10.12</h2>
+<ul>
+  <li><a href="/documentation/plugins.html#splitting-up-your-buildpy-with-bldsup">Bldsup support</a> : custom tasks and per-project specifics can be stored in a separate directory (default: <code class="language-plaintext highlighter-rouge">bldsup</code>). Kudos go to <a href="https://github.com/markmevans">@markmevans</a> for implementing this.</li>
+</ul>
+
+<h2 id="version-01011">Version 0.10.11</h2>
+<ul>
+  <li>New plugin : <a href="/documentation/plugins.html#frosted-plugin">python.frosted</a></li>
+  <li>New API to write plugins that wrap a console command that is run on source files</li>
+  <li>Flake8 error handling improved</li>
+</ul>
+
+<h2 id="version-01010">Version 0.10.10</h2>
+<ul>
+  <li>It should no longer occur that CI servers count unit tests twice when coverage is used.</li>
+  <li>TeamCity service messages for unit test failures are now well-formed</li>
+</ul>
+
+<h2 id="version-0108">Version 0.10.8</h2>
+<ul>
+  <li>The property “teamcity_output” can be set to True so that teamcity messages are produced by the <code class="language-plaintext highlighter-rouge">python.unittest</code> and <code class="language-plaintext highlighter-rouge">python.integrationtest</code> plugin.
+Please note that the coverage plugin also runs unit tests and might lead to teamcity counting the amount of unit tests twice.</li>
+</ul>
+
+<h2 id="version-0106">Version 0.10.6</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">pyb --start-project</code> now activates the plugin <code class="language-plaintext highlighter-rouge">python.install_dependencies</code> by default.</li>
+</ul>
+
+<h2 id="version-0105">Version 0.10.5</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">pyb --start-project</code> will now suggest a few plugins.</li>
+</ul>
+
+<h2 id="version-0104">Version 0.10.4</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">pyb --start-project</code> now always generates an initializer so that plugin can be configured more easily.</li>
+  <li>There is now a workaround for <a href="http://bugs.python.org/issue8876">a distutils bug</a> available through the distutils plugin. See <a href="https://github.com/pybuilder/pybuilder/issues/56">the GitHub issue</a> or <a href="/documentation/plugins.html#virtualbox-pitfall-with-binary-dists">the documentation</a>.</li>
+</ul>
+
+<h2 id="version-0103">Version 0.10.3</h2>
+<ul>
+  <li>The unittest, pyfix and integrationtest plugins now find modules (or files, for the integrationtest plugin) using globs.
+Kudos to <a href="https://github.com/markmevans">markmevans</a> for this feature!</li>
+</ul>
+
+<h2 id="version-0102">Version 0.10.2</h2>
+<ul>
+  <li>Fixed a bug leading to the creation of strange files when dependencies with a version greater than x (<code class="language-plaintext highlighter-rouge">foo&gt;=1.0</code>) were specified.</li>
+</ul>
+
+<h2 id="version-0101">Version 0.10.1</h2>
+<ul>
+  <li>Source and test directories are now correctly handed to the unittest’s PYTHONPATH, thus it is no longer a pain to test a package which is also locally installed.</li>
+</ul>
+
+<h2 id="version-0100">Version 0.10.0</h2>
+<ul>
+  <li>Better reporting when unittests fail. Thanks <a href="https://github.com/esc">@esc</a>!</li>
+  <li>The parallel integration test progress bar now uses backspaces instead of carriage returns. This improves the experience on small width terminals.</li>
+  <li>The deprecated module <code class="language-plaintext highlighter-rouge">pythonbuilder</code> has now been removed. Please replace <code class="language-plaintext highlighter-rouge">pythonbuilder</code> with <code class="language-plaintext highlighter-rouge">pybuilder</code> in your imports if that is not already the case.</li>
+</ul>
+</div>
+        <div class="col-lg-5 visible-md visible-lg">
+            <nav id="toc" data-spy="affix" data-toggle="toc"></nav>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <a href="https://github.com/pybuilder/pybuilder">PyBuilder on GitHub</a>
+            <a href="https://pypi.org/project/pybuilder/">PyBuilder on PyPI</a>
+        </div>
+    </div>
+    <div class="publish-date">
+        <small>site published on 2025-09-09 01:46:55 +0000</small>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<script src="/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
+<script src="/js/tabcontent.js"></script>
+<script src="/js/highlight.pack.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.5.0/lite-youtube.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+  });
+</script>
+<script type="text/javascript">
+    $(function() {
+        $(".dropdown").hover(
+            function(){ $(this).addClass('open') },
+            function(){ $(this).removeClass('open') }
+        );
+    });
+    $(function() {
+        $(".dropdown-submenu").hover(
+            function(){ $(this).addClass('open') },
+            function(){ $(this).removeClass('open') }
+        );
+    });
+</script>
+
+</body>
+</html>

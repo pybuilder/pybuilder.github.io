@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C74FKNHM7K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C74FKNHM7K');
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="description" content="PyBuilder is an easy-to-use build automation tool for Python"/>
+<meta name="author" content="PyBuilder Community"/>
+<meta name="keywords" content="python, continuous integration, build tool, automation, CI, CD, CI/CD"/>
+
+<meta name="theme-color" content="#000000"/>
+
+<link rel="canonical" href="https://pybuilder.io/documentation/tutorial"/>
+<link rel="icon" href="/img/logo.svg"/>
+<link rel="apple-touch-icon" href="/img/logo-apple-touch-icon.png">
+
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oleo+Script:700"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+      integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
+<link rel="stylesheet" type="text/css" href="/css/highlightjs.css"/>
+<link rel="stylesheet" type="text/css" href="/css/tabcontent.css"/>
+<link rel="stylesheet" type="text/css" href="/css/styles.css"/>
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Tutorial" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://pybuilder.io/documentation/tutorial" />
+<meta property="og:url" content="https://pybuilder.io/documentation/tutorial" />
+<meta property="og:image" content="https://pybuilder.io/img/logo.png" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:image" content="https://pybuilder.io/img/logo.png" />
+<meta property="twitter:title" content="Tutorial" />
+<meta name="twitter:site" content="@pybuilder_" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","dateModified":"2025-09-09T01:46:07+00:00","headline":"Tutorial","image":"https://pybuilder.io/img/logo.png","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://pybuilder.io/img/logo.png"}},"url":"https://pybuilder.io/documentation/tutorial"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <title>PyBuilder &#x2014; Tutorial</title>
+</head>
+
+<body data-spy="scroll" data-target="#toc">
+
+<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#hdr-nb-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand pybuilder-brand dropdown" href="/" title="PyBuilder">
+                <img src="/img/logo.svg" alt="PyBuilder Logo"
+                     onerror="this.onerror=null; this.src='/img/logo-brand.png'"/></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="hdr-nb-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="/" title="PyBuilder">PyBuilder</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/about" title="About">About</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/news/" title="News">News</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/documentation/" class="dropdown-toggle">Documentation <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">User Documentation <b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/documentation/installation">Installation</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/tutorial">Tutorial</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/examples">Examples</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/manual">Manual</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/plugins">Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/external-plugin-list">External plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/ide">IDE integration</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">Developer Documentation <b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/documentation/writing-plugins">Writing Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/developing-pybuilder">Developing PyBuilder</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/publishing-plugins">Publishing Your Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="#">API (Unavailable)</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Releases <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a href="/release-notes/" class="dropdown-item dropdown-toggle">Release Notes
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                
+                                
+                                <li>
+                                    <a href="/release-notes/v0.13.x">Versions 0.13.x
+                                        (Current)</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/v0.12.x">Versions 0.12.x
+                                        </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/v0.11.x">Versions 0.11.x
+                                        </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/v0.10.x">Versions 0.10.x
+                                        </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/archived">Archived Versions
+                                        </a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a href="/migration-guides/" class="dropdown-item dropdown-toggle">Migration Guides
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                
+                                
+                                <li>
+                                    <a href="/migration-guides/v0.11.x-v0.12.0">Migrating v0.11.x to v0.12.0</a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-7" id="content"><h1 id="tutorial">Tutorial</h1>
+
+<p>This tutorial shows you how to use <em>PyBuilder</em> to build a “Hello World!” program in Python.</p>
+
+<h2 id="setting-up-the-stage">Setting Up the Stage</h2>
+
+<p>First you need to install <em>PyBuilder</em>. We recommend installing <em>PyBuilder</em> in a virtual environment :</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>virtualenv venv
+<span class="nb">source </span>venv/bin/activate
+pip <span class="nb">install </span>pybuilder
+</code></pre></div></div>
+
+<p>Now create an empty directory <code class="language-plaintext highlighter-rouge">helloworld</code>. If you now run <code class="language-plaintext highlighter-rouge">pyb</code> in this directory this is what you should get:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ pyb
+PyBuilder version 0.12.0
+Build started at 2020-04-08 14:51:44
+------------------------------------------------------------
+------------------------------------------------------------
+BUILD FAILED - Project directory does not contain descriptor file: ./build.py (pybuilder/reactor.py:474)
+------------------------------------------------------------
+Build finished at 2020-04-08 14:51:44
+Build took 0 seconds (16 ms)
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">pyb</code> is the command line interface of <em>PyBuilder</em>.</p>
+
+<h2 id="creating-pybuilder-project">Creating PyBuilder Project</h2>
+
+<p>The next step is to use the <code class="language-plaintext highlighter-rouge">pyb</code> command to create a basic project scaffold:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ pyb --start-project
+Project name (default: 'helloworld') : 
+Source directory (default: 'src/main/python') : 
+Docs directory (default: 'docs') : 
+Unittest directory (default: 'src/unittest/python') : 
+Scripts directory (default: 'src/main/scripts') : 
+Use plugin python.flake8 (Y/n)? (default: 'y') : 
+Use plugin python.coverage (Y/n)? (default: 'y') : 
+Use plugin python.distutils (Y/n)? (default: 'y') : 
+
+Created 'setup.py'.
+
+Created 'pyproject.toml'.
+</code></pre></div></div>
+
+<p>PyBuilder has now created various files and directories and provided basic project configuration that you can now
+customize:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">pybuilder.core</span> <span class="kn">import</span> <span class="n">use_plugin</span><span class="p">,</span> <span class="n">init</span>
+
+<span class="nf">use_plugin</span><span class="p">(</span><span class="sh">"</span><span class="s">python.core</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">use_plugin</span><span class="p">(</span><span class="sh">"</span><span class="s">python.unittest</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">use_plugin</span><span class="p">(</span><span class="sh">"</span><span class="s">python.flake8</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">use_plugin</span><span class="p">(</span><span class="sh">"</span><span class="s">python.coverage</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">use_plugin</span><span class="p">(</span><span class="sh">"</span><span class="s">python.distutils</span><span class="sh">"</span><span class="p">)</span>
+
+
+<span class="n">name</span> <span class="o">=</span> <span class="sh">"</span><span class="s">helloworld</span><span class="sh">"</span>
+<span class="n">default_task</span> <span class="o">=</span> <span class="sh">"</span><span class="s">publish</span><span class="sh">"</span>
+
+
+<span class="nd">@init</span>
+<span class="k">def</span> <span class="nf">set_properties</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+    <span class="k">pass</span>
+</code></pre></div></div>
+
+<p>Let’s leave the defaults in place for now and continue.</p>
+
+<h2 id="adding-python-source-files">Adding Python Source Files</h2>
+
+<p>The next step is to add a Python module that contains our sources.
+PyBuilder separates source files and expects them in different directories based on their meaning. 
+The default location for main python sources is <code class="language-plaintext highlighter-rouge">src/main/python</code>.</p>
+
+<p>This is a convention borrowed from Apache Maven. You can alter this location but in this tutorial we stick to the
+defaults. Navigate to <code class="language-plaintext highlighter-rouge">src/main/python</code> and create a file <code class="language-plaintext highlighter-rouge">helloworld.py</code> with the following sample code:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">sys</span>
+
+<span class="k">def</span> <span class="nf">helloworld</span><span class="p">(</span><span class="n">out</span><span class="p">):</span>
+    <span class="n">out</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="sh">"</span><span class="s">Hello world of Python</span><span class="se">\n</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>We are now ready to build our project for the first time! If you run <code class="language-plaintext highlighter-rouge">pyb</code> again, here is what you get:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ pyb
+PyBuilder version 0.12.0
+Build started at 2020-04-08 15:07:37
+------------------------------------------------------------
+[INFO]  Building helloworld version 1.0.dev0
+[INFO]  Executing build in /home/user/projects/helloworld
+[INFO]  Going to execute task publish
+[INFO]  Processing plugin packages 'coverage~=5.0' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'flake8~=3.7' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'pypandoc~=1.4' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'setuptools&gt;=38.6.0' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'twine&gt;=1.15.0' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'unittest-xml-reporting~=2.5.2' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'wheel&gt;=0.34.0' to be installed with {'upgrade': True}
+[INFO]  Creating target 'build' VEnv in '/home/user/projects/helloworld/target/venv/build/cpython-3.8.2.final.0'
+[INFO]  Creating target 'test' VEnv in '/home/user/projects/helloworld/target/venv/test/cpython-3.8.2.final.0'
+[INFO]  Requested coverage for tasks: pybuilder.plugins.python.unittest_plugin:run_unit_tests
+[INFO]  Running unit tests
+[INFO]  Executing unit tests from Python modules in /home/user/projects/helloworld/src/unittest/python
+[WARN]  No unit tests executed.
+[INFO]  All unit tests passed.
+[INFO]  Building distribution in /home/user/projects/helloworld/target/dist/helloworld-1.0.dev0
+[INFO]  Copying scripts to /home/user/projects/helloworld/target/dist/helloworld-1.0.dev0/scripts
+[INFO]  Writing setup.py as /home/user/projects/helloworld/target/dist/helloworld-1.0.dev0/setup.py
+[INFO]  Collecting coverage information for 'pybuilder.plugins.python.unittest_plugin:run_unit_tests'
+[WARN]  ut_coverage_branch_threshold_warn is 0 and branch coverage will not be checked
+[WARN]  ut_coverage_branch_partial_threshold_warn is 0 and partial branch coverage will not be checked
+[INFO]  Running unit tests
+[INFO]  Executing unit tests from Python modules in /home/user/projects/helloworld/src/unittest/python
+Coverage.py warning: No data was collected. (no-data-collected)
+[WARN]  No unit tests executed.
+[INFO]  All unit tests passed.
+[WARN]  Test coverage below 70% for helloworld:  0%
+[WARN]  Overall pybuilder.plugins.python.unittest_plugin.run_unit_tests coverage is below 70%:  0%
+[INFO]  Overall pybuilder.plugins.python.unittest_plugin.run_unit_tests branch coverage is 100%
+[INFO]  Overall pybuilder.plugins.python.unittest_plugin.run_unit_tests partial branch coverage is 100%
+[WARN]  Test coverage below 70% for helloworld:  0%
+[WARN]  Overall helloworld coverage is below 70%:  0%
+[INFO]  Overall helloworld branch coverage is 100%
+[INFO]  Overall helloworld partial branch coverage is 100%
+------------------------------------------------------------
+BUILD FAILED - Test coverage for at least one module is below 70% (pybuilder/plugins/python/coverage_plugin.py:154)
+------------------------------------------------------------
+Build finished at 2020-04-08 15:07:51
+Build took 14 seconds (14226 ms)
+</code></pre></div></div>
+
+<p>PyBuilder seems to have done a lot of work but it appears that we still were not able to build our project. The reason,
+as the error message clearly indicates, is that our code is not tested. Since the code isn’t tested it has not 
+been executed, and no coverage information is available for it. Coverage plugin, in turn, requires at least 70% code 
+coverage by default for the project to build successfully.</p>
+
+<p>Thus, we have two options:</p>
+<ol>
+  <li>Override the coverage plugin default setting and disable failure on missing code coverage threshold.</li>
+  <li>Add a test that ensures that the code is properly tested.</li>
+</ol>
+
+<p>Being a diligent responsible developer that follows 21-st century best practices we will choose the <strong>second option</strong>
+ and add an appropriate test.</p>
+
+<h2 id="writing-unit-tests">Writing Unit Tests</h2>
+<p>As a next step, we want to add a unit test for our helloworld function.</p>
+
+<p>We add a file <code class="language-plaintext highlighter-rouge">src/unittest/python/helloworld_tests.py</code> with the following content</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">mockito</span> <span class="kn">import</span> <span class="n">mock</span><span class="p">,</span> <span class="n">verify</span>
+<span class="kn">import</span> <span class="n">unittest</span>
+
+<span class="kn">from</span> <span class="n">helloworld</span> <span class="kn">import</span> <span class="n">helloworld</span>
+
+<span class="k">class</span> <span class="nc">HelloWorldTest</span><span class="p">(</span><span class="n">unittest</span><span class="p">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">test_should_issue_hello_world_message</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="nf">mock</span><span class="p">()</span>
+
+        <span class="nf">helloworld</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+
+        <span class="nf">verify</span><span class="p">(</span><span class="n">out</span><span class="p">).</span><span class="nf">write</span><span class="p">(</span><span class="sh">"</span><span class="s">Hello world of Python</span><span class="se">\n</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Notice that there is no black magic in the test sources. It’s just a simple
+<a href="http://docs.python.org/library/unittest.html#unittest.TestCase">unittest TestCase</a> using
+<a href="https://pypi.org/project/mockito/">mockito</a> to stub the call to <code class="language-plaintext highlighter-rouge">sys.stdout.write</code>.</p>
+
+<p>Concerning the filename it is important to notice that:</p>
+<ul>
+  <li>The file must be located under <code class="language-plaintext highlighter-rouge">src/unittest/python</code>. This is the default and <a href="/documentation/plugins.html#python-unittest-properties">may be altered</a> but as with the main sources, we stick to the defaults.</li>
+  <li>The file must end with <code class="language-plaintext highlighter-rouge">_tests.py</code>. This tells <em>PyBuilder</em> to consider this file when discovering test cases. Again, <a href="/documentation/plugins.html#python-unittest-properties">this can be altered</a>, although we don’t do this.</li>
+</ul>
+
+<p>Since <code class="language-plaintext highlighter-rouge">mockito</code> is not part of the Python standard libraries, we have to tell <em>PyBuilder</em> that our build
+process for our project from now on depends on mockito. Therefore we adapt <code class="language-plaintext highlighter-rouge">build.py</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">pybuilder.core</span> <span class="kn">import</span> <span class="n">use_plugin</span><span class="p">,</span> <span class="n">init</span>
+
+<span class="nf">use_plugin</span><span class="p">(</span><span class="sh">"</span><span class="s">python.core</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">use_plugin</span><span class="p">(</span><span class="sh">"</span><span class="s">python.unittest</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">use_plugin</span><span class="p">(</span><span class="sh">"</span><span class="s">python.flake8</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">use_plugin</span><span class="p">(</span><span class="sh">"</span><span class="s">python.coverage</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">use_plugin</span><span class="p">(</span><span class="sh">"</span><span class="s">python.distutils</span><span class="sh">"</span><span class="p">)</span>
+
+
+<span class="n">name</span> <span class="o">=</span> <span class="sh">"</span><span class="s">helloworld</span><span class="sh">"</span>
+<span class="n">default_task</span> <span class="o">=</span> <span class="sh">"</span><span class="s">publish</span><span class="sh">"</span>
+
+
+<span class="nd">@init</span>
+<span class="k">def</span> <span class="nf">set_properties</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+    <span class="n">project</span><span class="p">.</span><span class="nf">build_depends_on</span><span class="p">(</span><span class="sh">"</span><span class="s">mockito</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">init</code> decorator tells <em>PyBuilder</em> that function <code class="language-plaintext highlighter-rouge">initialize</code> is used to initialize the project.</p>
+
+<p>Now let’s execute our unittest.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ pyb
+PyBuilder version 0.12.0
+Build started at 2020-04-10 08:27:37
+------------------------------------------------------------
+[INFO]  Building helloworld version 1.0.dev0
+[INFO]  Executing build in /home/user/projects/helloworld
+[INFO]  Going to execute task publish
+[INFO]  Processing plugin packages 'coverage~=5.0' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'flake8~=3.7' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'pypandoc~=1.4' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'setuptools&gt;=38.6.0' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'twine&gt;=1.15.0' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'unittest-xml-reporting~=2.5.2' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'wheel&gt;=0.34.0' to be installed with {'upgrade': True}
+[INFO]  Creating target 'build' VEnv in '/home/user/projects/helloworld/target/venv/build/cpython-3.8.2.final.0'
+[INFO]  Creating target 'test' VEnv in '/home/user/projects/helloworld/target/venv/test/cpython-3.8.2.final.0'
+[INFO]  Requested coverage for tasks: pybuilder.plugins.python.unittest_plugin:run_unit_tests
+[INFO]  Running unit tests
+[INFO]  Executing unit tests from Python modules in /home/user/projects/helloworld/src/unittest/python
+[INFO]  Executed 1 unit tests
+[INFO]  All unit tests passed.
+[INFO]  Building distribution in /home/user/projects/helloworld/target/dist/helloworld-1.0.dev0
+[INFO]  Copying scripts to /home/user/projects/helloworld/target/dist/helloworld-1.0.dev0/scripts
+[INFO]  Writing setup.py as /home/user/projects/helloworld/target/dist/helloworld-1.0.dev0/setup.py
+[INFO]  Collecting coverage information for 'pybuilder.plugins.python.unittest_plugin:run_unit_tests'
+[WARN]  ut_coverage_branch_threshold_warn is 0 and branch coverage will not be checked
+[WARN]  ut_coverage_branch_partial_threshold_warn is 0 and partial branch coverage will not be checked
+[INFO]  Running unit tests
+[INFO]  Executing unit tests from Python modules in /home/user/projects/helloworld/src/unittest/python
+[INFO]  Executed 1 unit tests
+[INFO]  All unit tests passed.
+[INFO]  Overall pybuilder.plugins.python.unittest_plugin.run_unit_tests coverage is 100%
+[INFO]  Overall pybuilder.plugins.python.unittest_plugin.run_unit_tests branch coverage is 100%
+[INFO]  Overall pybuilder.plugins.python.unittest_plugin.run_unit_tests partial branch coverage is 100%
+[INFO]  Overall helloworld coverage is 100%
+[INFO]  Overall helloworld branch coverage is 100%
+[INFO]  Overall helloworld partial branch coverage is 100%
+[INFO]  Building binary distribution in /home/user/projects/helloworld/target/dist/helloworld-1.0.dev0
+[INFO]  Running Twine check for generated artifacts
+------------------------------------------------------------
+BUILD SUCCESSFUL
+------------------------------------------------------------
+Build Summary
+             Project: helloworld
+             Version: 1.0.dev0
+      Base directory: /home/user/projects/helloworld
+        Environments: 
+               Tasks: prepare [6511 ms] compile_sources [0 ms] run_unit_tests [133 ms] package [1 ms] run_integration_tests [0 ms] verify [0 ms] coverage [229 ms] publish [603 ms]
+Build finished at 2020-04-10 08:27:48
+Build took 10 seconds (10945 ms)
+</code></pre></div></div>
+
+<p><em>PyBuilder</em> executed the test case successfully. Now let’s see what happens, when we force the test to fail.</p>
+
+<p>Modify the test case to verify the call to <code class="language-plaintext highlighter-rouge">sys.stdout</code> for a string that is never written and run <code class="language-plaintext highlighter-rouge">pyb</code> again.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ pyb
+PyBuilder version 0.12.0
+Build started at 2020-04-12 20:00:53
+------------------------------------------------------------
+[INFO]  Building helloworld version 1.0.dev0
+[INFO]  Executing build in /home/user/projects/helloworld
+[INFO]  Going to execute task publish
+[INFO]  Processing plugin packages 'coverage~=5.0' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'flake8~=3.7' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'pypandoc~=1.4' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'setuptools&gt;=38.6.0' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'twine&gt;=1.15.0' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'unittest-xml-reporting~=2.5.2' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'wheel&gt;=0.34.0' to be installed with {'upgrade': True}
+[INFO]  Creating target 'build' VEnv in '/home/user/projects/helloworld/target/venv/build/cpython-3.8.2.final.0'
+[INFO]  Creating target 'test' VEnv in '/home/user/projects/helloworld/target/venv/test/cpython-3.8.2.final.0'
+[INFO]  Requested coverage for tasks: pybuilder.plugins.python.unittest_plugin:run_unit_tests
+[INFO]  Running unit tests
+[INFO]  Executing unit tests from Python modules in /home/user/projects/helloworld/src/unittest/python
+[INFO]  Executed 1 unit tests
+[ERROR] Test failed: helloworld_tests.HelloWorldTest.test_should_issue_hello_world_message
+------------------------------------------------------------
+BUILD FAILED - There were 0 error(s) and 1 failure(s) in unit tests (pybuilder/plugins/python/unittest_plugin.py:111)
+------------------------------------------------------------
+Build finished at 2020-04-12 20:01:04
+Build took 10 seconds (10924 ms)
+</code></pre></div></div>
+
+<p>The build failed because there were test errors. How do we get to know which test failed and why?</p>
+
+<p><em>PyBuilder</em> writes reports along each build to capture all the output produced by all the tools it uses, including the
+unittest framework.</p>
+
+<p>Have a look at the file <code class="language-plaintext highlighter-rouge">target/reports/unittest</code>. It contains all the output written during the execution of the
+tests.</p>
+
+<p>Again <code class="language-plaintext highlighter-rouge">target</code> as well as <code class="language-plaintext highlighter-rouge">reports</code> are configurable but we won’t change them here.</p>
+
+<p>The command line interface <code class="language-plaintext highlighter-rouge">pyb</code> also provides a verbose option <code class="language-plaintext highlighter-rouge">-v</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ pyb -v
+PyBuilder version 0.12.0
+Build started at 2020-04-12 20:03:25
+------------------------------------------------------------
+[INFO]  Building helloworld version 1.0.dev0
+[INFO]  Executing build in /home/user/projects/helloworld
+[INFO]  Going to execute task publish
+[INFO]  Processing plugin packages 'coverage~=5.0' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'flake8~=3.7' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'pypandoc~=1.4' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'setuptools&gt;=38.6.0' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'twine&gt;=1.15.0' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'unittest-xml-reporting~=2.5.2' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'wheel&gt;=0.34.0' to be installed with {'upgrade': True}
+[INFO]  Creating target 'build' VEnv in '/home/user/projects/helloworld/target/venv/build/cpython-3.8.2.final.0'
+[INFO]  Creating target 'test' VEnv in '/home/user/projects/helloworld/target/venv/test/cpython-3.8.2.final.0'
+[INFO]  Requested coverage for tasks: pybuilder.plugins.python.unittest_plugin:run_unit_tests
+[INFO]  Running unit tests
+[INFO]  Executing unit tests from Python modules in /home/user/projects/helloworld/src/unittest/python
+[INFO]  Executed 1 unit tests
+[ERROR] Test failed: helloworld_tests.HelloWorldTest.test_should_issue_hello_world_message
+Traceback (most recent call last):
+  File "/home/user/.pyenv/versions/3.8.2/lib/python3.8/unittest/case.py", line 60, in testPartExecutor
+    yield
+  File "/home/user/.pyenv/versions/3.8.2/lib/python3.8/unittest/case.py", line 676, in run
+    self._callTestMethod(testMethod)
+  File "/home/user/.pyenv/versions/3.8.2/lib/python3.8/unittest/case.py", line 633, in _callTestMethod
+    method()
+  File "/home/user/projects/helloworld/src/unittest/python/helloworld_tests.py", line 12, in test_should_issue_hello_world_message
+    verify(out).write("Goodbye world of Python\n")
+  File "/home/user/projects/helloworld/target/venv/build/cpython-3.8.2.final.0/lib/python3.8/site-packages/mockito/invocation.py", line 242, in __call__
+    self.verification.verify(self, len(matched_invocations))
+  File "/home/user/projects/helloworld/target/venv/build/cpython-3.8.2.final.0/lib/python3.8/site-packages/mockito/verification.py", line 93, in verify
+    raise VerificationError(
+mockito.verification.VerificationError: 
+Wanted but not invoked:
+
+    write('Goodbye world of Python\n')
+
+Instead got:
+
+    write('Hello world of Python\n')
+
+
+
+------------------------------------------------------------
+BUILD FAILED - There were 0 error(s) and 1 failure(s) in unit tests (pybuilder/plugins/python/unittest_plugin.py:111)
+------------------------------------------------------------
+Build finished at 2020-04-12 20:03:35
+Build took 9 seconds (9454 ms)
+</code></pre></div></div>
+
+<h2 id="adding-a-runnable-script">Adding a runnable script</h2>
+
+<p>Adding scripts is as simple as writing them and putting them in the directory <code class="language-plaintext highlighter-rouge">src/main/scripts</code>.
+Note that this path is configurable, but let’s stick with the conventions here.</p>
+
+<p>We add a file <code class="language-plaintext highlighter-rouge">src/main/scripts/hello-pybuilder</code> with these contents :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/env python
+</span><span class="kn">import</span> <span class="n">sys</span>
+
+<span class="n">sys</span><span class="p">.</span><span class="n">stdout</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="sh">'</span><span class="s">Hello from my script!</span><span class="se">\n</span><span class="sh">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Now we can run the PyBuilder again :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ pyb
+PyBuilder version 0.12.0
+Build started at 2020-04-12 20:08:50
+------------------------------------------------------------
+[INFO]  Building helloworld version 1.0.dev0
+[INFO]  Executing build in /home/user/projects/helloworld
+[INFO]  Going to execute task publish
+[INFO]  Processing plugin packages 'coverage~=5.0' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'flake8~=3.7' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'pypandoc~=1.4' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'setuptools&gt;=38.6.0' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'twine&gt;=1.15.0' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'unittest-xml-reporting~=2.5.2' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'wheel&gt;=0.34.0' to be installed with {'upgrade': True}
+[INFO]  Creating target 'build' VEnv in '/home/user/projects/helloworld/target/venv/build/cpython-3.8.2.final.0'
+[INFO]  Creating target 'test' VEnv in '/home/user/projects/helloworld/target/venv/test/cpython-3.8.2.final.0'
+[INFO]  Requested coverage for tasks: pybuilder.plugins.python.unittest_plugin:run_unit_tests
+[INFO]  Running unit tests
+[INFO]  Executing unit tests from Python modules in /home/user/projects/helloworld/src/unittest/python
+[INFO]  Executed 1 unit tests
+[INFO]  All unit tests passed.
+[INFO]  Building distribution in /home/user/projects/helloworld/target/dist/helloworld-1.0.dev0
+[INFO]  Copying scripts to /home/user/projects/helloworld/target/dist/helloworld-1.0.dev0/scripts
+[INFO]  Writing setup.py as /home/user/projects/helloworld/target/dist/helloworld-1.0.dev0/setup.py
+[INFO]  Collecting coverage information for 'pybuilder.plugins.python.unittest_plugin:run_unit_tests'
+[WARN]  ut_coverage_branch_threshold_warn is 0 and branch coverage will not be checked
+[WARN]  ut_coverage_branch_partial_threshold_warn is 0 and partial branch coverage will not be checked
+[INFO]  Running unit tests
+[INFO]  Executing unit tests from Python modules in /home/user/projects/helloworld/src/unittest/python
+[INFO]  Executed 1 unit tests
+[INFO]  All unit tests passed.
+[INFO]  Overall pybuilder.plugins.python.unittest_plugin.run_unit_tests coverage is 100%
+[INFO]  Overall pybuilder.plugins.python.unittest_plugin.run_unit_tests branch coverage is 100%
+[INFO]  Overall pybuilder.plugins.python.unittest_plugin.run_unit_tests partial branch coverage is 100%
+[INFO]  Overall helloworld coverage is 100%
+[INFO]  Overall helloworld branch coverage is 100%
+[INFO]  Overall helloworld partial branch coverage is 100%
+[INFO]  Building binary distribution in /home/user/projects/helloworld/target/dist/helloworld-1.0.dev0
+[INFO]  Running Twine check for generated artifacts
+------------------------------------------------------------
+BUILD SUCCESSFUL
+------------------------------------------------------------
+Build Summary
+             Project: helloworld
+             Version: 1.0.dev0
+      Base directory: /home/user/projects/helloworld
+        Environments: 
+               Tasks: prepare [6088 ms] compile_sources [0 ms] run_unit_tests [137 ms] package [1 ms] run_integration_tests [0 ms] verify [0 ms] coverage [215 ms] publish [613 ms]
+Build finished at 2020-04-12 20:09:01
+Build took 10 seconds (10385 ms)
+</code></pre></div></div>
+
+<p>As you can see, the script was picked up. We didn’t need to fill a list with all the scripts,
+putting the file in the right place was enough.</p>
+
+<h2 id="measuring-test-coverage">Measuring Test Coverage</h2>
+
+<p>When writing tests, it is important to know which parts if of the code are covered by automatic tests and which aren’t.
+For Python, there exists a bunch of tools to calculate the coverage. One of these tools that is integrated with
+<em>PyBuilder</em> is <a href="https://coverage.readthedocs.io/en/latest/">coverage</a>. Python-Coverage measures the line coverage
+(as opposed to branch coverage).</p>
+
+<p>To execute python coverage during the execution of unit tests and analyze the results, all you need to do is use 
+a plugin <code class="language-plaintext highlighter-rouge">python.coverage</code>. Luckily, our default project scaffolding already enabled it for us.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">python.coverage</code> plugin uses <a href="https://twitter.com/nedbat">Ned Batchelder’s</a> <code class="language-plaintext highlighter-rouge">coverage</code> to determine the test coverage.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ pyb -v
+PyBuilder version 0.12.0
+Build started at 2020-04-12 22:45:13
+------------------------------------------------------------
+[INFO]  Building helloworld version 1.0.dev0
+[INFO]  Executing build in /home/user/projects/helloworld
+[INFO]  Going to execute task publish
+[INFO]  Processing plugin packages 'coverage~=5.0' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'flake8~=3.7' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'pypandoc~=1.4' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'setuptools&gt;=38.6.0' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'twine&gt;=1.15.0' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'unittest-xml-reporting~=2.5.2' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'wheel&gt;=0.34.0' to be installed with {'upgrade': True}
+[INFO]  Creating target 'build' VEnv in '/home/user/projects/helloworld/target/venv/build/cpython-3.8.2.final.0'
+[INFO]  Creating target 'test' VEnv in '/home/user/projects/helloworld/target/venv/test/cpython-3.8.2.final.0'
+[INFO]  Requested coverage for tasks: pybuilder.plugins.python.unittest_plugin:run_unit_tests
+[INFO]  Running unit tests
+[INFO]  Executing unit tests from Python modules in /home/user/projects/helloworld/src/unittest/python
+[INFO]  Executed 1 unit tests
+[INFO]  All unit tests passed.
+[INFO]  Building distribution in /home/user/projects/helloworld/target/dist/helloworld-1.0.dev0
+[INFO]  Copying scripts to /home/user/projects/helloworld/target/dist/helloworld-1.0.dev0/scripts
+[INFO]  Writing setup.py as /home/user/projects/helloworld/target/dist/helloworld-1.0.dev0/setup.py
+[INFO]  Collecting coverage information for 'pybuilder.plugins.python.unittest_plugin:run_unit_tests'
+[WARN]  ut_coverage_branch_threshold_warn is 0 and branch coverage will not be checked
+[WARN]  ut_coverage_branch_partial_threshold_warn is 0 and partial branch coverage will not be checked
+[INFO]  Running unit tests
+[INFO]  Executing unit tests from Python modules in /home/user/projects/helloworld/src/unittest/python
+[INFO]  Executed 1 unit tests
+[INFO]  All unit tests passed.
+[INFO]  Overall pybuilder.plugins.python.unittest_plugin.run_unit_tests coverage is 100%
+[INFO]  Overall pybuilder.plugins.python.unittest_plugin.run_unit_tests branch coverage is 100%
+[INFO]  Overall pybuilder.plugins.python.unittest_plugin.run_unit_tests partial branch coverage is 100%
+[INFO]  Overall helloworld coverage is 100%
+[INFO]  Overall helloworld branch coverage is 100%
+[INFO]  Overall helloworld partial branch coverage is 100%
+[INFO]  Building binary distribution in /home/user/projects/helloworld/target/dist/helloworld-1.0.dev0
+[INFO]  Running Twine check for generated artifacts
+------------------------------------------------------------
+BUILD SUCCESSFUL
+------------------------------------------------------------
+Build Summary
+             Project: helloworld
+             Version: 1.0.dev0
+      Base directory: /home/user/projects/helloworld
+        Environments: 
+               Tasks: prepare [6083 ms] compile_sources [0 ms] run_unit_tests [144 ms] package [1 ms] run_integration_tests [0 ms] verify [0 ms] coverage [208 ms] publish [745 ms]
+Build finished at 2020-04-12 22:45:24
+Build took 11 seconds (11305 ms)
+</code></pre></div></div>
+
+<p>Notice the last few <code class="language-plaintext highlighter-rouge">INFO</code> messages. As with the unittest, PyBuilder writes a detailed report to
+<code class="language-plaintext highlighter-rouge">target/reports</code> in text, JSON, XML and interactive HTML report formats. In case your coverage does not equal 100% 
+you can find a list of source lines not covered in this file.</p>
+
+<p>The coverage plugin is also capable of breaking the build, if the coverage drops below a given threshold
+(70% by default), as you’ve experienced when we first created the project. This allows you to make sure, 
+your code is always tested (to a given extend) before you ship it.</p>
+
+<h2 id="building-a-distribution">Building a Distribution</h2>
+
+<p>Before you make your code available to the public, you need to think about how users can install the software on
+their computers. In the Python world, one standard way to do this is using
+<a href="http://docs.python.org/3.11/distutils/index.html">distutils</a> which is shipped with the standard Python distribution.</p>
+
+<p>Using distutils basically means providing a <code class="language-plaintext highlighter-rouge">setup.py</code> or <code class="language-plaintext highlighter-rouge">pyproject.toml</code> that can be used to install the software.</p>
+
+<p><em>PyBuilder</em> comes with a plugin, that can generate the <code class="language-plaintext highlighter-rouge">setup.py</code> script so you don’t need to write it your own.
+<em>PyBuilder</em> automatically discovers your modules, packages and scripts and writes configuration for the setup script
+accordingly.</p>
+
+<p>The initial scaffolding already enabled <code class="language-plaintext highlighter-rouge">python.distutils</code> plugin for us and we were building the 
+binary distributions all along in the previous successful runs:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ pyb -v
+PyBuilder version 0.12.0
+Build started at 2020-04-12 22:45:13
+------------------------------------------------------------
+[INFO]  Building helloworld version 1.0.dev0
+[INFO]  Executing build in /home/user/projects/helloworld
+...
+[INFO]  Building binary distribution in /home/user/projects/helloworld/target/dist/helloworld-1.0.dev0
+[INFO]  Running Twine check for generated artifacts
+------------------------------------------------------------
+BUILD SUCCESSFUL
+------------------------------------------------------------
+Build Summary
+             Project: helloworld
+             Version: 1.0.dev0
+      Base directory: /home/user/projects/helloworld
+        Environments: 
+               Tasks: prepare [6083 ms] compile_sources [0 ms] run_unit_tests [144 ms] package [1 ms] run_integration_tests [0 ms] verify [0 ms] coverage [208 ms] publish [745 ms]
+Build finished at 2020-04-12 22:45:24
+Build took 11 seconds (11305 ms)
+</code></pre></div></div>
+
+<p>Let’s have a look, what pyb generated in the target directory:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ tree target/dist
+target/dist
+└── helloworld-1.0.dev0
+    ├── build
+    │   ├── bdist.linux-x86_64
+    │   ├── lib
+    │   │   └── helloworld.py
+    │   └── scripts-3.8
+    │       └── hello-pybuilder
+    ├── dist
+    │   ├── helloworld-1.0.dev0-py3-none-any.whl
+    │   └── helloworld-1.0.dev0.tar.gz
+    ├── helloworld.egg-info
+    │   ├── dependency_links.txt
+    │   ├── namespace_packages.txt
+    │   ├── PKG-INFO
+    │   ├── SOURCES.txt
+    │   ├── top_level.txt
+    │   └── zip-safe
+    ├── helloworld.py
+    ├── __pycache__
+    ├── scripts
+    │   └── hello-pybuilder
+    └── setup.py
+
+9 directories, 13 files
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">target/dist</code> directory contains the generated <code class="language-plaintext highlighter-rouge">setuptools</code>/<code class="language-plaintext highlighter-rouge">distutils</code> distribution. 
+The distribution directory contains the same sources but in a Python-typical directory layout. 
+You can also find the <code class="language-plaintext highlighter-rouge">setup.py</code> script there, as well as generated binary wheel and sdist gzip’ed tar in 
+<code class="language-plaintext highlighter-rouge">target/dist/dist</code>.</p>
+
+<h2 id="recap">Recap</h2>
+
+<p>In this tutorial we saw how PyBuilder can be used to “build” a typical Python project. Building in an interpreted
+language is more a step of packaging the sources rather than compiling them. Additionally, we saw how PyBuilder
+can help you ensuring that all the automatic tests are executed and that the test coverage matches you standards.</p>
+
+<p>We saw a few plugins in action. <em>PyBuilder</em> provides more of them.
+See the <a href="/documentation/plugins.html">documentation of plugins</a> for available plugins.</p>
+</div>
+        <div class="col-lg-5 visible-md visible-lg">
+            <nav id="toc" data-spy="affix" data-toggle="toc"></nav>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <a href="https://github.com/pybuilder/pybuilder">PyBuilder on GitHub</a>
+            <a href="https://pypi.org/project/pybuilder/">PyBuilder on PyPI</a>
+        </div>
+    </div>
+    <div class="publish-date">
+        <small>site published on 2025-09-09 01:46:55 +0000</small>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<script src="/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
+<script src="/js/tabcontent.js"></script>
+<script src="/js/highlight.pack.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.5.0/lite-youtube.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+  });
+</script>
+<script type="text/javascript">
+    $(function() {
+        $(".dropdown").hover(
+            function(){ $(this).addClass('open') },
+            function(){ $(this).removeClass('open') }
+        );
+    });
+    $(function() {
+        $(".dropdown-submenu").hover(
+            function(){ $(this).addClass('open') },
+            function(){ $(this).removeClass('open') }
+        );
+    });
+</script>
+
+</body>
+</html>
