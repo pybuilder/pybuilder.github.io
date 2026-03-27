@@ -68,6 +68,20 @@ The plugin executes all test cases found in modules ending with `_tests.py` in t
         unittest_module_glob with an appropriate glob pattern by prefixing the
         value with an asterisk (*) and removing the ".py" extension.</td>
   </tr>
+
+  <tr>
+    <td>unittest_breaks_build</td>
+    <td>boolean</td>
+    <td>True</td>
+    <td>Break the build when unit tests fail.</td>
+  </tr>
+
+  <tr>
+    <td>unittest_python_env</td>
+    <td>string</td>
+    <td>build</td>
+    <td>The Python environment to use for running unit tests.</td>
+  </tr>
 </table>
 
 ### Measuring unittest coverage
@@ -115,28 +129,28 @@ Use the ```python.coverage``` module to activate coverage.
   </tr>
   
   <tr>
-    <td>coverage_allow_non_imported_modules</td>
-    <td>bool</td>
-    <td>True</td>
-    <td>Allow modules which were not imported by the covered tests.</td>
-  </tr>  
-
-  <tr>
-    <td>coverage_reset_modules</td>
-    <td>bool</td>
-    <td>False</td>
-    <td>Reset imported modules before coverage.</td>
-  </tr>
-
-  <tr>
     <td>coverage_exceptions</td>
     <td>list of strings</td>
     <td>empty</td>
-    <td>List of package names to exclude from coverage analyzation.</td>
+    <td>List of package names to exclude from coverage analysis.</td>
+  </tr>
+
+  <tr>
+    <td>coverage_concurrency</td>
+    <td>list of strings</td>
+    <td>["thread"]</td>
+    <td>Concurrency libraries to measure. See <a href="https://coverage.readthedocs.io/en/latest/config.html#run-concurrency">coverage.py concurrency</a> for supported values.</td>
+  </tr>
+
+  <tr>
+    <td>coverage_source_path</td>
+    <td>string</td>
+    <td>$dir_source_main_python</td>
+    <td>The source path to measure coverage for.</td>
   </tr>
 </table>
 
-Please note that properties `coverage_reload_modules` and `coverage_fork` are deprecated and will not be used.
+Please note that properties `coverage_allow_non_imported_modules`, `coverage_reset_modules`, `coverage_reload_modules` and `coverage_fork` are deprecated and will not be used.
 
 ### SonarQube integration
 
@@ -169,53 +183,6 @@ Using the plugin `python.sonarqube` will add the task `run_sonar_analysis` to yo
 
 
 ### Linting python sources
-
-#### Frosted plugin
-
-Frosted is a fork of pyflakes (originally created by Phil Frost) that aims at more open contribution from the outside public, a smaller more maintainable code base, and a better Python checker for all.
-
-
-##### Frosted configuration
-
-<table class="table table-striped">
-  <tr>
-    <th>Name</th>
-    <th>Type</th>
-    <th>Default Value</th>
-    <th>Description</th>
-  </tr>
-
-  <tr>
-    <td>frosted_break_build</td>
-    <td>boolean</td>
-    <td>False</td>
-    <td>Break the build if warnings are found</td>
-  </tr>
-
-  <tr>
-    <td>frosted_include_test_sources</td>
-    <td>boolean</td>
-    <td>False</td>
-    <td>Also run frosted on integrationtest and unittest sources</td>
-  </tr>
-
-  <tr>
-    <td>frosted_include_scripts</td>
-    <td>boolean</td>
-    <td>False</td>
-    <td>Also run the frosted linter on all files in $dir_source_main_scripts</td>
-  </tr>
-
-  <tr>
-    <td>frosted_ignore</td>
-    <td>List of strings</td>
-    <td>[ ]</td>
-    <td>List of warnings to exclude<br/>
-        Example: <code>["E205", "W101"]</code>.<br/>
-        See <a href="https://github.com/timothycrosley/frosted">here</a>, section <em>Frosted error codes</em>, for reference (or use frosted --verbose to check).</td>
-  </tr>
-
-</table>
 
 #### Flake8 plugin
 
@@ -271,6 +238,14 @@ Use the ```python.flake8``` module to activate linting.
   </tr>
 
   <tr>
+    <td>flake8_include_patterns</td>
+    <td>string</td>
+    <td>None</td>
+    <td>Comma separated list of file patterns to include<br/>
+        Example: <code>"*.py"</code></td>
+  </tr>
+
+  <tr>
     <td>flake8_exclude_patterns</td>
     <td>string</td>
     <td>None, but flake8 comes with the default:<br/>
@@ -280,42 +255,27 @@ Use the ```python.flake8``` module to activate linting.
   </tr>
 
   <tr>
+    <td>flake8_max_complexity</td>
+    <td>integer</td>
+    <td>None</td>
+    <td>Maximum allowed McCabe complexity. When set, enables the flake8 complexity checker.</td>
+  </tr>
+
+  <tr>
+    <td>flake8_extend_ignore</td>
+    <td>string</td>
+    <td>None</td>
+    <td>Comma separated list of error codes to add to the ignore list (extends rather than overrides flake8_ignore)<br/>
+        Example: <code>"E303,F401"</code></td>
+  </tr>
+
+  <tr>
     <td>flake8_verbose_output</td>
     <td>boolean</td>
     <td>False</td>
     <td>Display flake8 warnings and errors in command line output.</td>
   </tr>
 
-
-</table>
-
-#### Pychecker plugin
-
-Using the plugin `python.pychecker` will let pychecker run on python source modules.
-
-##### Pychecker configuration
-
-<table class="table table-striped">
-  <tr>
-    <th>Name</th>
-    <th>Type</th>
-    <th>Default Value</th>
-    <th>Description</th>
-  </tr>
-
-  <tr>
-    <td>pychecker_break_build</td>
-    <td>boolean</td>
-    <td>True</td>
-    <td>Break the build if warnings are found.</td>
-  </tr>
-
-  <tr>
-    <td>pychecker_break_build_threshold</td>
-    <td>integer</td>
-    <td>0</td>
-    <td>Threshold to break the build. A threshold of `n` means: "break the build if more than `x` warnings are found".</td>
-  </tr>
 </table>
 
 #### Pylint plugin
@@ -337,6 +297,27 @@ Using the plugin `python.pylint` will let pylint run on python source modules.
     <td>list of strings</td>
     <td>`["--max-line-length=100", "--no-docstring-rgx=.*"]`</td>
     <td>Options to be passed to pylint</td>
+  </tr>
+
+  <tr>
+    <td>pylint_break_build</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Break the build if warnings are found.</td>
+  </tr>
+
+  <tr>
+    <td>pylint_include_test_sources</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Also run pylint on integrationtest and unittest sources.</td>
+  </tr>
+
+  <tr>
+    <td>pylint_include_scripts</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Also run pylint on all files in $dir_source_main_scripts.</td>
   </tr>
 </table>
 
@@ -442,31 +423,40 @@ the production source directory.
         integrationtest_file_glob with an appropriate glob pattern by prefixing the
         value with an asterisk (*).</td>
   </tr>
-</table>
 
-<div class="alert alert-warning alert-dismissable">
-  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-  <h4>Python 3.2 warning</h4>
-We have experienced strange problems (EOFErrors) on python 3.2. This seems to be due to a bug with pickling randomly raising EOFError. We recomment updating to python 3.3 or 3.4, where it works fine.
-</div>
+  <tr>
+    <td>integrationtest_breaks_build</td>
+    <td>boolean</td>
+    <td>True</td>
+    <td>Break the build when integration tests fail.</td>
+  </tr>
+
+  <tr>
+    <td>integrationtest_always_verbose</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Always display integration test output, not only on failures.</td>
+  </tr>
+
+  <tr>
+    <td>integrationtest_python_env</td>
+    <td>string</td>
+    <td>test</td>
+    <td>The Python environment to use for running integration tests.</td>
+  </tr>
+
+  <tr>
+    <td>integrationtest_python_env_recreate</td>
+    <td>boolean</td>
+    <td>False</td>
+    <td>Recreate the integration test Python environment before running tests.</td>
+  </tr>
+</table>
 
 ### Running Cram tests
 [Cram is a functional testing framework for command line applications based on Mercurial's unified test format.](https://pypi.python.org/pypi/cram)
 
 The plugin `python.cram` can be used to run tests written for cram. Cram tests run during `run_integration_tests` but there is also a separate task available (`run_cram_tests`).
-
-<div class="alert alert-warning alert-dismissable">
-  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-  <h4>Python 3.2.3 warning</h4>
-Cram crashes on python 3.2.3 : https://bitbucket.org/brodie/cram/issue/28/crash-on-323 (no longer available). An easy workaround is to not use the plugin on python 3.2 :
-<br/>
-<pre>
-<code>
-if not sys.version_info[0:2] == (3,2):
-    use_plugin("python.cram")
-</code>
-</pre>
-</div>
 
 #### Cram properties
 
@@ -609,6 +599,19 @@ Note that the `*_depends_on` methods accept the following arguments :
     <td>url</td>
     <td>Optional keyword argument (<code>None</code> default). Set it to an editable URL where the dependency should be downloaded from.</td>
   </tr>
+
+  <tr>
+    <td>extra</td>
+    <td>Optional keyword argument (<code>None</code> default). Only available on <code>depends_on</code>.
+        Assigns the dependency to an extras group (e.g. <code>extra="security"</code>). Users can then install it
+        via <code>pip install mypackage[security]</code>.</td>
+  </tr>
+
+  <tr>
+    <td>markers</td>
+    <td>Optional keyword argument (<code>None</code> default). PEP 508 environment markers for conditional
+        dependencies (e.g. <code>markers="sys_platform == 'win32'"</code>).</td>
+  </tr>
 </table>
 
 The logic of version goes as follows:
@@ -743,7 +746,7 @@ def initialize (project):
   <tr>
     <td>distutils_commands</td>
     <td>list of strings</td>
-    <td>sdist, bdist_dump</td>
+    <td>sdist, wheel</td>
     <td>Commands to execute using the generated <code>setup.py</code> script during <code>publish</code></td>
   </tr>
   
@@ -783,12 +786,6 @@ def initialize (project):
     <td>The identity to sign each file with, when distutils_upload_sign is True</td>
   </tr>
 
-  <tr>
-    <td>distutils_use_setuptools</td>
-    <td>boolean</td>
-    <td>True</td>
-    <td>Use setuptools instead of distutils</td>
-  </tr>
   
   <tr>
     <td>distutils_readme_description</td>

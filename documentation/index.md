@@ -21,6 +21,8 @@ title: PyBuilder Documentation
 
 ### [IDE Integration]({% link documentation/ide.md %})
 
+### [Coding Agents]({% link documentation/coding-agents.md %})
+
 ## Developer Documentation
 
 ### [Writing Plugins]({% link documentation/writing-plugins.md %})
