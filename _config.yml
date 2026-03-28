@@ -26,6 +26,8 @@ collections:
   migration-guides:
     output: true
 news_posts_max: 3
+include:
+  - .nojekyll
 exclude:
   - build.sh
   - deploy.key
