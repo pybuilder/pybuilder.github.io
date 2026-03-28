@@ -7,20 +7,19 @@ title: Installing PyBuilder
 
 ## PIP
 
-Prior to version 0.12.0 the recommendation was to install *PyBuilder* into a 
-[virtual environment](http://pypi.python.org/pypi/virtualenv) using [pip](http://pypi.python.org/pypi/pip):
+*PyBuilder* can be installed using [pip](https://pypi.python.org/pypi/pip):
 
 `pip install pybuilder`
 
-While this is still a preferred way, beginning with version 0.12.0 *PyBuilder* no longer alters the environment
-it is installed in by virtue of managing its own `venvs` and therefore can be safely installed into the 
-system-wide Python via `sudo pip install pybuilder`.
+*PyBuilder* manages its own virtual environments and does not alter the environment
+it is installed in. It can be safely installed into a
+[virtual environment](https://docs.python.org/3/library/venv.html) or system-wide.
 
 ## Installing From Source
 
-Starting with version 0.12.0 PyBuilder supports PEP-517 (`pyproject.toml`) and can be installed with PIP from source: 
+PyBuilder supports PEP-517 (`pyproject.toml`) and can be installed with pip from source:
 
-`pip install git+git://github.com/pybuilder/pybuilder`
+`pip install git+https://github.com/pybuilder/pybuilder`
 
 ## Building From Source
 
