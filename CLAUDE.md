@@ -76,6 +76,7 @@ bundle exec jekyll serve --watch
 # Browse to http://localhost:4000
 
 # Full CI-equivalent build (build + htmlproofer + prod rebuild)
+# Output goes to _site/
 ./build.sh
 ```
 

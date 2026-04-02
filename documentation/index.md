@@ -15,6 +15,8 @@ title: PyBuilder Documentation
 
 ### [Manual]({% link documentation/manual.md %})
 
+### [Project Info (JSON Dump)]({% link documentation/project-info.md %})
+
 ### [Plugins]({% link documentation/plugins.md %})
 
 ### [External Plugin List]({% link documentation/external-plugin-list.md %})

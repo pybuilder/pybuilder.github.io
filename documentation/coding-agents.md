@@ -41,6 +41,9 @@ pyb clean package
 # List available tasks
 pyb -t
 
+# Dump project configuration as JSON (no build, stdout is clean JSON)
+pyb -i 2>/dev/null | jq .
+
 # Set a property from the command line
 pyb -P property_name=value
 ```
@@ -218,6 +221,7 @@ This project uses PyBuilder. All build commands use `pyb`:
 - `pyb` — full build
 - `pyb run_unit_tests` — unit tests only
 - `pyb run_integration_tests` — integration tests only
+- `pyb -i` — dump project configuration as JSON (no build)
 - `pyb -v` — verbose output
 - `pyb -vX` — debug verbose output
 ```
@@ -268,6 +272,7 @@ This project uses PyBuilder. All build commands use `pyb`:
 - `pyb` — full build (test + analyze + package)
 - `pyb run_unit_tests` — unit tests only
 - `pyb run_integration_tests` — integration tests only
+- `pyb -i` — dump project configuration as JSON (no build)
 - `pyb -v` — verbose output
 - `pyb -vX` — debug verbose output
 
