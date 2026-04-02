@@ -580,6 +580,41 @@ The distribution directory contains the same sources but in a Python-typical dir
 You can also find the `setup.py` script there, as well as generated binary wheel and sdist gzip'ed tar in 
 `target/dist/dist`.
 
+## Inspecting Project Configuration
+
+At any point you can inspect the full project configuration as JSON without
+running a build:
+
+```
+$ pyb -i 2>/dev/null | python -m json.tool
+{
+  "pybuilder_version": "0.13.20",
+  "project": {
+    "name": "helloworld",
+    "version": "1.0.dev0",
+    ...
+  },
+  "properties": {
+    "dir_source_main_python": "src/main/python",
+    "coverage_threshold_warn": 70,
+    ...
+  },
+  "plugins": [
+    "python.core",
+    "python.unittest",
+    "python.coverage",
+    "python.distutils"
+  ],
+  "tasks": [ ... ],
+  ...
+}
+```
+
+This is useful for verifying that properties are set correctly or for feeding
+project metadata into CI/CD scripts. See the
+[project-info documentation](/documentation/project-info.html) for the full
+JSON schema and integration examples.
+
 ## Recap
 
 In this tutorial we saw how PyBuilder can be used to "build" a typical Python project. Building in an interpreted

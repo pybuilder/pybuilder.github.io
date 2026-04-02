@@ -215,6 +215,33 @@ This command sets/ overrides the property with the name ```spam``` with the valu
 
 Note that command line switches only allow properties to be set/ overridden using string values.
 
+#### Inspecting Project Configuration
+
+Use `pyb -i` (or `pyb --project-info`) to dump the full project configuration as
+pretty-printed JSON without running a build. This runs all plugin initializers to
+populate properties but does not execute any tasks or create build/test venvs.
+
+JSON is written to stdout and all log messages go to stderr, so the output is
+safe to pipe into other tools:
+
+<pre>
+$ pyb -i 2>/dev/null | python -m json.tool
+$ pyb -i 2>/dev/null | jq .project.name
+$ pyb -i -E ci -P verbose=true 2>/dev/null | jq .properties
+</pre>
+
+The JSON output includes:
+
+* **project** — name, version, basedir, summary, authors, license, URLs, etc.
+* **properties** — all build properties (built-in and plugin-defined)
+* **plugins** — list of loaded plugins
+* **dependencies** — runtime, build, plugin, and extras dependencies
+* **tasks** — available tasks with descriptions and dependency information
+* **manifest_included_files**, **package_data**, **files_to_install**
+
+This is useful for CI/CD pipelines, editor integrations, and debugging
+property values without running a full build.
+
 ## Virtual Environment Infrastructure
 
 *PyBuilder* manages isolated Python virtual environments for building and testing.
