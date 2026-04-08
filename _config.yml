@@ -30,6 +30,7 @@ include:
   - .nojekyll
 exclude:
   - build.sh
+  - ping-indexnow.sh
   - deploy.key
   - deploy.key.enc
 twitter:
