@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C74FKNHM7K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C74FKNHM7K');
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="description" content="PyBuilder is an easy-to-use build automation tool for Python"/>
+<meta name="author" content="PyBuilder Community"/>
+<meta name="keywords" content="python, continuous integration, build tool, automation, CI, CD, CI/CD"/>
+
+<meta name="theme-color" content="#000000"/>
+
+<link rel="canonical" href="https://pybuilder.io/documentation/project-info"/>
+<link rel="icon" href="/img/logo.svg"/>
+<link rel="apple-touch-icon" href="/img/logo-apple-touch-icon.png">
+
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oleo+Script:700"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+      integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
+<link rel="stylesheet" type="text/css" href="/css/highlightjs.css"/>
+<link rel="stylesheet" type="text/css" href="/css/tabcontent.css"/>
+<link rel="stylesheet" type="text/css" href="/css/styles.css"/>
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Project Info — JSON Configuration Dump" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://pybuilder.io/documentation/project-info" />
+<meta property="og:url" content="https://pybuilder.io/documentation/project-info" />
+<meta property="og:image" content="https://pybuilder.io/img/logo.png" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:image" content="https://pybuilder.io/img/logo.png" />
+<meta property="twitter:title" content="Project Info — JSON Configuration Dump" />
+<meta name="twitter:site" content="@pybuilder_" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","dateModified":"2026-04-08T17:21:13+00:00","headline":"Project Info — JSON Configuration Dump","image":"https://pybuilder.io/img/logo.png","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://pybuilder.io/img/logo.png"}},"url":"https://pybuilder.io/documentation/project-info"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <title>PyBuilder &#x2014; Project Info — JSON Configuration Dump</title>
+</head>
+
+<body data-spy="scroll" data-target="#toc">
+
+<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#hdr-nb-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand pybuilder-brand dropdown" href="/" title="PyBuilder">
+                <img src="/img/logo.svg" alt="PyBuilder Logo"
+                     onerror="this.onerror=null; this.src='/img/logo-brand.png'"/></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="hdr-nb-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="/" title="PyBuilder">PyBuilder</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/about" title="About">About</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/news/" title="News">News</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/documentation/" class="dropdown-toggle">Documentation <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">User Documentation <b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/documentation/installation">Installation</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/tutorial">Tutorial</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/examples">Examples</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/manual">Manual</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/plugins">Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/external-plugin-list">External plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/ide">IDE integration</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/coding-agents">Coding Agents</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">Developer Documentation <b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/documentation/writing-plugins">Writing Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/developing-pybuilder">Developing PyBuilder</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/publishing-plugins">Publishing Your Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="#">API (Unavailable)</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Releases <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a href="/release-notes/" class="dropdown-item dropdown-toggle">Release Notes
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                
+                                
+                                <li>
+                                    <a href="/release-notes/v0.13.x">Versions 0.13.x
+                                        (Current)</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/v0.12.x">Versions 0.12.x
+                                        </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/v0.11.x">Versions 0.11.x
+                                        </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/v0.10.x">Versions 0.10.x
+                                        </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/archived">Archived Versions
+                                        </a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a href="/migration-guides/" class="dropdown-item dropdown-toggle">Migration Guides
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                
+                                
+                                <li>
+                                    <a href="/migration-guides/v0.11.x-v0.12.0">Migrating v0.11.x to v0.12.0</a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-7" id="content"><h1 id="project-info--json-configuration-dump">Project Info — JSON Configuration Dump</h1>
+
+<p>The <code class="language-plaintext highlighter-rouge">pyb -i</code> (or <code class="language-plaintext highlighter-rouge">pyb --project-info</code>) command outputs the complete project
+configuration as pretty-printed JSON to stdout, without running a build.</p>
+
+<h2 id="quick-start">Quick Start</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Dump full project configuration</span>
+pyb <span class="nt">-i</span> 2&gt;/dev/null | python <span class="nt">-m</span> json.tool
+
+<span class="c"># Extract a single value</span>
+pyb <span class="nt">-i</span> 2&gt;/dev/null | jq <span class="nt">-r</span> .project.version
+
+<span class="c"># Apply environment and property overrides</span>
+pyb <span class="nt">-i</span> <span class="nt">-E</span> ci <span class="nt">-P</span> <span class="nv">coverage_break_build</span><span class="o">=</span><span class="nb">false </span>2&gt;/dev/null | jq .properties
+</code></pre></div></div>
+
+<h2 id="output-separation">Output Separation</h2>
+
+<p>JSON is written to <strong>stdout</strong>. All log messages (plugin loading, initializer
+execution, debug output) are written to <strong>stderr</strong>. This separation ensures
+that the stdout stream is always valid JSON, regardless of verbosity level:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># JSON only</span>
+pyb <span class="nt">-i</span> 2&gt;/dev/null
+
+<span class="c"># JSON to file, logs visible</span>
+pyb <span class="nt">-i</span> <span class="o">&gt;</span> project.json
+
+<span class="c"># JSON piped, debug logs to a file</span>
+pyb <span class="nt">-i</span> <span class="nt">-X</span> 2&gt;debug.log | jq <span class="nb">.</span>
+
+<span class="c"># Both visible (JSON to stdout, logs to stderr)</span>
+pyb <span class="nt">-i</span>
+</code></pre></div></div>
+
+<h2 id="what-runs">What Runs</h2>
+
+<p>When <code class="language-plaintext highlighter-rouge">pyb -i</code> is invoked:</p>
+
+<ol>
+  <li><strong><code class="language-plaintext highlighter-rouge">build.py</code> is loaded</strong> — plugins are imported, project attributes are set.</li>
+  <li><strong>Plugin initializers run</strong> — these populate default property values (e.g.
+<code class="language-plaintext highlighter-rouge">dir_source_main_python</code>, <code class="language-plaintext highlighter-rouge">coverage_threshold_warn</code>). Initializers only call
+<code class="language-plaintext highlighter-rouge">set_property_if_unset()</code> and bind utility functions; they do not create
+directories, install packages, or modify the filesystem.</li>
+  <li><strong>Property overrides are applied</strong> — values from <code class="language-plaintext highlighter-rouge">-P</code> flags override
+plugin defaults.</li>
+</ol>
+
+<p><strong>What does NOT run:</strong> No tasks execute. No build/test virtual environments are
+created. No dependencies are installed. No files are written to <code class="language-plaintext highlighter-rouge">target/</code>.</p>
+
+<h2 id="json-schema">JSON Schema</h2>
+
+<p>The output is a single JSON object with the following top-level keys:</p>
+
+<h3 id="pybuilder_version"><code class="language-plaintext highlighter-rouge">pybuilder_version</code></h3>
+
+<p>The PyBuilder version string.</p>
+
+<h3 id="project"><code class="language-plaintext highlighter-rouge">project</code></h3>
+
+<p>Project metadata:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">name</code></td>
+      <td>string</td>
+      <td>Project name (from <code class="language-plaintext highlighter-rouge">build.py</code> or directory name)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">version</code></td>
+      <td>string</td>
+      <td>Declared version (e.g. <code class="language-plaintext highlighter-rouge">"1.0.dev"</code>)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">dist_version</code></td>
+      <td>string</td>
+      <td>Distribution version with timestamp (e.g. <code class="language-plaintext highlighter-rouge">"1.0.dev20260401120000"</code>)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">basedir</code></td>
+      <td>string</td>
+      <td>Absolute path to project root</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">summary</code></td>
+      <td>string</td>
+      <td>One-line project summary</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">description</code></td>
+      <td>string</td>
+      <td>Full project description</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">author</code></td>
+      <td>string</td>
+      <td>Primary author (legacy field)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">authors</code></td>
+      <td>array</td>
+      <td>List of author objects with <code class="language-plaintext highlighter-rouge">name</code>, <code class="language-plaintext highlighter-rouge">email</code>, and optional <code class="language-plaintext highlighter-rouge">roles</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">maintainer</code></td>
+      <td>string</td>
+      <td>Primary maintainer (legacy field)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">maintainers</code></td>
+      <td>array</td>
+      <td>List of maintainer objects</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">license</code></td>
+      <td>string</td>
+      <td>License identifier</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">url</code></td>
+      <td>string</td>
+      <td>Primary project URL</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">urls</code></td>
+      <td>object</td>
+      <td>Named URL map (e.g. <code class="language-plaintext highlighter-rouge">{"Source Code": "https://..."}</code>)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requires_python</code></td>
+      <td>string</td>
+      <td>Python version specifier (e.g. <code class="language-plaintext highlighter-rouge">"&gt;=3.10"</code>)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">default_task</code></td>
+      <td>string or array</td>
+      <td>Default task(s) when <code class="language-plaintext highlighter-rouge">pyb</code> is run without arguments</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">obsoletes</code></td>
+      <td>array</td>
+      <td>Obsoleted package names</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">explicit_namespaces</code></td>
+      <td>array</td>
+      <td>Explicit namespace packages</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="environments"><code class="language-plaintext highlighter-rouge">environments</code></h3>
+
+<p>Array of active environment names (from <code class="language-plaintext highlighter-rouge">-E</code> flags).</p>
+
+<h3 id="properties"><code class="language-plaintext highlighter-rouge">properties</code></h3>
+
+<p>Object mapping property names to their values. Includes all built-in and
+plugin-defined properties. Values that are not JSON-serializable (e.g. function
+objects) are converted to their string representation.</p>
+
+<h3 id="plugins"><code class="language-plaintext highlighter-rouge">plugins</code></h3>
+
+<p>Array of loaded plugin names in load order.</p>
+
+<h3 id="dependencies"><code class="language-plaintext highlighter-rouge">dependencies</code></h3>
+
+<p>Object with four sub-keys:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Key</th>
+      <th>Contents</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">runtime</code></td>
+      <td>Dependencies from <code class="language-plaintext highlighter-rouge">depends_on()</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">build</code></td>
+      <td>Dependencies from <code class="language-plaintext highlighter-rouge">build_depends_on()</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">plugin</code></td>
+      <td>Dependencies from <code class="language-plaintext highlighter-rouge">plugin_depends_on()</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">extras</code></td>
+      <td>Object mapping extra name to dependency array</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Each dependency is an object:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"requests"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=2.28"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"extras"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"markers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sys_platform == 'linux'"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"declaration_only"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dependency"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Requirements files have <code class="language-plaintext highlighter-rouge">"type": "requirements_file"</code> and only <code class="language-plaintext highlighter-rouge">name</code>,
+<code class="language-plaintext highlighter-rouge">version</code> (always null), and <code class="language-plaintext highlighter-rouge">declaration_only</code> fields.</p>
+
+<h3 id="tasks"><code class="language-plaintext highlighter-rouge">tasks</code></h3>
+
+<p>Array of task objects:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"run_unit_tests"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Runs all unit tests"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compile_sources"</span><span class="p">,</span><span class="w"> </span><span class="nl">"optional"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coverage"</span><span class="p">,</span><span class="w"> </span><span class="nl">"optional"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="manifest_included_files"><code class="language-plaintext highlighter-rouge">manifest_included_files</code></h3>
+
+<p>Array of glob patterns included in the distribution manifest.</p>
+
+<h3 id="package_data"><code class="language-plaintext highlighter-rouge">package_data</code></h3>
+
+<p>Object mapping package names to arrays of included file patterns.</p>
+
+<h3 id="files_to_install"><code class="language-plaintext highlighter-rouge">files_to_install</code></h3>
+
+<p>Array of <code class="language-plaintext highlighter-rouge">[destination, [filenames]]</code> pairs for files installed outside packages.</p>
+
+<h2 id="integration-examples">Integration Examples</h2>
+
+<h3 id="cicd-extract-version-for-tagging">CI/CD: Extract Version for Tagging</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">VERSION</span><span class="o">=</span><span class="si">$(</span>pyb <span class="nt">-i</span> 2&gt;/dev/null | jq <span class="nt">-r</span> .project.dist_version<span class="si">)</span>
+docker build <span class="nt">-t</span> myapp:<span class="nv">$VERSION</span> <span class="nb">.</span>
+</code></pre></div></div>
+
+<h3 id="dependency-auditing">Dependency Auditing</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># List all runtime dependencies</span>
+pyb <span class="nt">-i</span> 2&gt;/dev/null | jq <span class="nt">-r</span> <span class="s1">'.dependencies.runtime[].name'</span>
+
+<span class="c"># Find dependencies without version constraints</span>
+pyb <span class="nt">-i</span> 2&gt;/dev/null | jq <span class="s1">'.dependencies.runtime[] | select(.version == null) | .name'</span>
+</code></pre></div></div>
+
+<h3 id="editoride-integration">Editor/IDE Integration</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Get source directory for language server configuration</span>
+<span class="nv">SRC</span><span class="o">=</span><span class="si">$(</span>pyb <span class="nt">-i</span> 2&gt;/dev/null | jq <span class="nt">-r</span> <span class="s1">'.properties.dir_source_main_python'</span><span class="si">)</span>
+
+<span class="c"># Get test directory</span>
+<span class="nv">TEST</span><span class="o">=</span><span class="si">$(</span>pyb <span class="nt">-i</span> 2&gt;/dev/null | jq <span class="nt">-r</span> <span class="s1">'.properties.dir_source_unittest_python'</span><span class="si">)</span>
+</code></pre></div></div>
+
+<h3 id="diffing-configuration-between-environments">Diffing Configuration Between Environments</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>diff &lt;<span class="o">(</span>pyb <span class="nt">-i</span> 2&gt;/dev/null | jq <span class="nt">-S</span> .properties<span class="o">)</span> <span class="se">\</span>
+     &lt;<span class="o">(</span>pyb <span class="nt">-i</span> <span class="nt">-E</span> ci 2&gt;/dev/null | jq <span class="nt">-S</span> .properties<span class="o">)</span>
+</code></pre></div></div>
+
+<h2 id="command-line-options">Command Line Options</h2>
+
+<p><code class="language-plaintext highlighter-rouge">pyb -i</code> is compatible with most project options:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Flag</th>
+      <th>Effect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-E &lt;env&gt;</code></td>
+      <td>Activate environment (repeatable)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-P &lt;key&gt;=&lt;value&gt;</code></td>
+      <td>Override property value</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-D &lt;dir&gt;</code></td>
+      <td>Set project directory</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-O</code></td>
+      <td>Offline mode</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">--no-venvs</code></td>
+      <td>Disable venv creation</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-X</code></td>
+      <td>Debug log output (to stderr)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-v</code></td>
+      <td>Verbose log output (to stderr)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-q</code> / <code class="language-plaintext highlighter-rouge">-Q</code></td>
+      <td>Suppress log output (on stderr)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">pyb -i</code> is mutually exclusive with <code class="language-plaintext highlighter-rouge">-t</code>, <code class="language-plaintext highlighter-rouge">-T</code>, <code class="language-plaintext highlighter-rouge">--start-project</code>, and
+<code class="language-plaintext highlighter-rouge">--update-project</code>.</p>
+</div>
+        <div class="col-lg-5 visible-md visible-lg">
+            <nav id="toc" data-spy="affix" data-toggle="toc"></nav>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <a href="https://github.com/pybuilder/pybuilder">PyBuilder on GitHub</a>
+            <a href="https://pypi.org/project/pybuilder/">PyBuilder on PyPI</a>
+        </div>
+    </div>
+    <div class="publish-date">
+        <small>site published on 2026-04-08 17:22:58 +0000</small>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<script src="/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
+<script src="/js/tabcontent.js"></script>
+<script src="/js/highlight.pack.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.5.0/lite-youtube.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+  });
+</script>
+<script type="text/javascript">
+    $(function() {
+        $(".dropdown").hover(
+            function(){ $(this).addClass('open') },
+            function(){ $(this).removeClass('open') }
+        );
+    });
+    $(function() {
+        $(".dropdown-submenu").hover(
+            function(){ $(this).addClass('open') },
+            function(){ $(this).removeClass('open') }
+        );
+    });
+</script>
+
+</body>
+</html>

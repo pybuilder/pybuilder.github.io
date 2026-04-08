@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C74FKNHM7K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C74FKNHM7K');
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="description" content="PyBuilder is an easy-to-use build automation tool for Python"/>
+<meta name="author" content="PyBuilder Community"/>
+<meta name="keywords" content="python, continuous integration, build tool, automation, CI, CD, CI/CD"/>
+
+<meta name="theme-color" content="#000000"/>
+
+<link rel="canonical" href="https://pybuilder.io/documentation/coding-agents"/>
+<link rel="icon" href="/img/logo.svg"/>
+<link rel="apple-touch-icon" href="/img/logo-apple-touch-icon.png">
+
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oleo+Script:700"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+      integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
+<link rel="stylesheet" type="text/css" href="/css/highlightjs.css"/>
+<link rel="stylesheet" type="text/css" href="/css/tabcontent.css"/>
+<link rel="stylesheet" type="text/css" href="/css/styles.css"/>
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Coding Agents" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://pybuilder.io/documentation/coding-agents" />
+<meta property="og:url" content="https://pybuilder.io/documentation/coding-agents" />
+<meta property="og:image" content="https://pybuilder.io/img/logo.png" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:image" content="https://pybuilder.io/img/logo.png" />
+<meta property="twitter:title" content="Coding Agents" />
+<meta name="twitter:site" content="@pybuilder_" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","dateModified":"2026-04-08T17:21:13+00:00","headline":"Coding Agents","image":"https://pybuilder.io/img/logo.png","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://pybuilder.io/img/logo.png"}},"url":"https://pybuilder.io/documentation/coding-agents"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <title>PyBuilder &#x2014; Coding Agents</title>
+</head>
+
+<body data-spy="scroll" data-target="#toc">
+
+<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#hdr-nb-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand pybuilder-brand dropdown" href="/" title="PyBuilder">
+                <img src="/img/logo.svg" alt="PyBuilder Logo"
+                     onerror="this.onerror=null; this.src='/img/logo-brand.png'"/></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="hdr-nb-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="/" title="PyBuilder">PyBuilder</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/about" title="About">About</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/news/" title="News">News</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/documentation/" class="dropdown-toggle">Documentation <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">User Documentation <b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/documentation/installation">Installation</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/tutorial">Tutorial</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/examples">Examples</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/manual">Manual</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/plugins">Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/external-plugin-list">External plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/ide">IDE integration</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/coding-agents">Coding Agents</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">Developer Documentation <b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/documentation/writing-plugins">Writing Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/developing-pybuilder">Developing PyBuilder</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/publishing-plugins">Publishing Your Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="#">API (Unavailable)</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Releases <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a href="/release-notes/" class="dropdown-item dropdown-toggle">Release Notes
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                
+                                
+                                <li>
+                                    <a href="/release-notes/v0.13.x">Versions 0.13.x
+                                        (Current)</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/v0.12.x">Versions 0.12.x
+                                        </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/v0.11.x">Versions 0.11.x
+                                        </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/v0.10.x">Versions 0.10.x
+                                        </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/archived">Archived Versions
+                                        </a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a href="/migration-guides/" class="dropdown-item dropdown-toggle">Migration Guides
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                
+                                
+                                <li>
+                                    <a href="/migration-guides/v0.11.x-v0.12.0">Migrating v0.11.x to v0.12.0</a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-7" id="content"><h1 id="using-pybuilder-with-coding-agents">Using PyBuilder with Coding Agents</h1>
+
+<p>AI coding agents such as Claude Code, GitHub Copilot, Cursor, Windsurf and others
+can work effectively with PyBuilder projects when given the right context. This page
+provides guidance for coding agents on PyBuilder’s conventions, and describes how to
+configure agent instruction files for PyBuilder projects.</p>
+
+<h2 id="quick-reference-for-agents">Quick Reference for Agents</h2>
+
+<p>This section is written for coding agents directly. If you are a coding agent working
+on a PyBuilder project, the information below tells you what you need to know.</p>
+
+<h3 id="build-commands">Build Commands</h3>
+
+<p>All build commands use <code class="language-plaintext highlighter-rouge">pyb</code> (the PyBuilder CLI):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Full build (compile, test, analyze, package, publish)</span>
+pyb
+
+<span class="c"># Verbose output</span>
+pyb <span class="nt">-v</span>
+
+<span class="c"># Debug verbose output (all debug logging)</span>
+pyb <span class="nt">-vX</span>
+
+<span class="c"># Run only unit tests</span>
+pyb run_unit_tests
+
+<span class="c"># Run only integration tests</span>
+pyb run_integration_tests
+
+<span class="c"># Clean and rebuild</span>
+pyb clean package
+
+<span class="c"># List available tasks</span>
+pyb <span class="nt">-t</span>
+
+<span class="c"># Dump project configuration as JSON (no build, stdout is clean JSON)</span>
+pyb <span class="nt">-i</span> 2&gt;/dev/null | jq <span class="nb">.</span>
+
+<span class="c"># Set a property from the command line</span>
+pyb <span class="nt">-P</span> <span class="nv">property_name</span><span class="o">=</span>value
+</code></pre></div></div>
+
+<h3 id="project-layout">Project Layout</h3>
+
+<p>PyBuilder uses a convention-based directory layout similar to Maven:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>build.py                          # Build descriptor (like pom.xml or build.gradle)
+src/main/python/                  # Main Python source code
+src/main/scripts/                 # Executable scripts
+src/unittest/python/              # Unit tests (*_tests.py)
+src/integrationtest/python/       # Integration tests (*_tests.py)
+target/                           # Build output (gitignored)
+target/dist/                      # Distribution artifacts
+target/reports/                   # Test and analysis reports
+</code></pre></div></div>
+
+<p>These paths are defaults and can be overridden in <code class="language-plaintext highlighter-rouge">build.py</code> via project properties.</p>
+
+<h3 id="the-buildpy-file">The build.py File</h3>
+
+<p><code class="language-plaintext highlighter-rouge">build.py</code> is a Python script that configures the project. It declares metadata,
+plugins, and dependencies:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">pybuilder.core</span> <span class="kn">import</span> <span class="n">use_plugin</span><span class="p">,</span> <span class="n">init</span>
+
+<span class="c1"># Plugins provide build capabilities
+</span><span class="nf">use_plugin</span><span class="p">(</span><span class="sh">"</span><span class="s">python.core</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">use_plugin</span><span class="p">(</span><span class="sh">"</span><span class="s">python.unittest</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">use_plugin</span><span class="p">(</span><span class="sh">"</span><span class="s">python.coverage</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">use_plugin</span><span class="p">(</span><span class="sh">"</span><span class="s">python.flake8</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">use_plugin</span><span class="p">(</span><span class="sh">"</span><span class="s">python.distutils</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="c1"># Project metadata (module-level variables)
+</span><span class="n">name</span> <span class="o">=</span> <span class="sh">"</span><span class="s">my-project</span><span class="sh">"</span>
+<span class="n">default_task</span> <span class="o">=</span> <span class="sh">"</span><span class="s">publish</span><span class="sh">"</span>
+
+<span class="nd">@init</span>
+<span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+    <span class="c1"># Runtime dependencies
+</span>    <span class="n">project</span><span class="p">.</span><span class="nf">depends_on</span><span class="p">(</span><span class="sh">"</span><span class="s">requests</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">&gt;=2.20</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">project</span><span class="p">.</span><span class="nf">depends_on</span><span class="p">(</span><span class="sh">"</span><span class="s">click</span><span class="sh">"</span><span class="p">)</span>
+
+    <span class="c1"># Build/test dependencies
+</span>    <span class="n">project</span><span class="p">.</span><span class="nf">build_depends_on</span><span class="p">(</span><span class="sh">"</span><span class="s">mockito</span><span class="sh">"</span><span class="p">)</span>
+
+    <span class="c1"># Plugin configuration via properties
+</span>    <span class="n">project</span><span class="p">.</span><span class="nf">set_property</span><span class="p">(</span><span class="sh">"</span><span class="s">coverage_break_build</span><span class="sh">"</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+    <span class="n">project</span><span class="p">.</span><span class="nf">set_property</span><span class="p">(</span><span class="sh">"</span><span class="s">flake8_max_line_length</span><span class="sh">"</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="dependencies">Dependencies</h3>
+
+<p>Dependencies are declared in initializer functions:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@init</span>
+<span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+    <span class="c1"># Runtime dependency with version constraint
+</span>    <span class="n">project</span><span class="p">.</span><span class="nf">depends_on</span><span class="p">(</span><span class="sh">"</span><span class="s">requests</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">&gt;=2.20</span><span class="sh">"</span><span class="p">)</span>
+
+    <span class="c1"># Build-time dependency (testing, analysis, etc.)
+</span>    <span class="n">project</span><span class="p">.</span><span class="nf">build_depends_on</span><span class="p">(</span><span class="sh">"</span><span class="s">mockito</span><span class="sh">"</span><span class="p">)</span>
+
+    <span class="c1"># Plugin dependency (installed into plugin venv)
+</span>    <span class="n">project</span><span class="p">.</span><span class="nf">plugin_depends_on</span><span class="p">(</span><span class="sh">"</span><span class="s">my-custom-plugin</span><span class="sh">"</span><span class="p">)</span>
+
+    <span class="c1"># From a requirements file
+</span>    <span class="n">project</span><span class="p">.</span><span class="nf">depends_on_requirements</span><span class="p">(</span><span class="sh">"</span><span class="s">requirements.txt</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">project</span><span class="p">.</span><span class="nf">build_depends_on_requirements</span><span class="p">(</span><span class="sh">"</span><span class="s">requirements-dev.txt</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="writing-tests">Writing Tests</h3>
+
+<p>Unit tests go in <code class="language-plaintext highlighter-rouge">src/unittest/python/</code> and must match the glob <code class="language-plaintext highlighter-rouge">*_tests.py</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># src/unittest/python/my_module_tests.py
+</span><span class="kn">import</span> <span class="n">unittest</span>
+<span class="kn">from</span> <span class="n">my_module</span> <span class="kn">import</span> <span class="n">my_function</span>
+
+<span class="k">class</span> <span class="nc">MyModuleTests</span><span class="p">(</span><span class="n">unittest</span><span class="p">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">test_my_function</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="nf">assertEqual</span><span class="p">(</span><span class="nf">my_function</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Integration tests go in <code class="language-plaintext highlighter-rouge">src/integrationtest/python/</code> with the same naming convention.</p>
+
+<h3 id="virtual-environments">Virtual Environments</h3>
+
+<p>PyBuilder manages isolated venvs automatically. Do not install dependencies manually;
+declare them in <code class="language-plaintext highlighter-rouge">build.py</code> and PyBuilder handles the rest.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">.pybuilder/plugins/{version}/</code> — plugin dependencies (PyPI plugins)</li>
+  <li><code class="language-plaintext highlighter-rouge">target/venv/build/{version}/</code> — build/test tool dependencies (<code class="language-plaintext highlighter-rouge">build_depends_on()</code> + <code class="language-plaintext highlighter-rouge">depends_on()</code>)</li>
+  <li><code class="language-plaintext highlighter-rouge">target/venv/test/{version}/</code> — integration test runtime (<code class="language-plaintext highlighter-rouge">depends_on()</code> only)</li>
+</ul>
+
+<p>Unit tests run in the <strong>build</strong> venv. Integration tests run in the <strong>test</strong> venv.</p>
+
+<h3 id="build-output-and-logs">Build Output and Logs</h3>
+
+<p>After a build, look for:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">target/reports/unittest</code> — unit test console output</li>
+  <li><code class="language-plaintext highlighter-rouge">target/reports/unittest.json</code> — structured unit test results</li>
+  <li><code class="language-plaintext highlighter-rouge">target/reports/TEST-*.xml</code> — JUnit XML test results</li>
+  <li><code class="language-plaintext highlighter-rouge">target/reports/integrationtests/{test_name}</code> — per-integration-test stdout</li>
+  <li><code class="language-plaintext highlighter-rouge">target/reports/integrationtests/{test_name}.err</code> — per-integration-test stderr</li>
+  <li><code class="language-plaintext highlighter-rouge">target/reports/{name}_coverage.json</code> — coverage data per module</li>
+  <li><code class="language-plaintext highlighter-rouge">target/reports/{name}_coverage_html/</code> — interactive HTML coverage report</li>
+  <li><code class="language-plaintext highlighter-rouge">target/dist/</code> — distribution package</li>
+  <li><code class="language-plaintext highlighter-rouge">target/logs/install_dependencies/</code> — pip install logs</li>
+</ul>
+
+<p>Use <code class="language-plaintext highlighter-rouge">pyb -v</code> to see individual test names. Use <code class="language-plaintext highlighter-rouge">pyb -vX</code> for full debug logging
+including subprocess sys.path details and remoting diagnostics.</p>
+
+<h3 id="key-differences-from-setuptoolspoetryhatch">Key Differences from setuptools/poetry/hatch</h3>
+
+<ul>
+  <li><strong>No <code class="language-plaintext highlighter-rouge">setup.py</code> or <code class="language-plaintext highlighter-rouge">pyproject.toml</code> to edit</strong> — PyBuilder generates <code class="language-plaintext highlighter-rouge">setup.py</code>
+from <code class="language-plaintext highlighter-rouge">build.py</code> configuration. The <code class="language-plaintext highlighter-rouge">pyproject.toml</code>, if present, is a PEP 517
+build backend shim, not the project configuration.</li>
+  <li><strong>Source code is not at the repo root</strong> — it is under <code class="language-plaintext highlighter-rouge">src/main/python/</code>.</li>
+  <li><strong>Tests are not in a <code class="language-plaintext highlighter-rouge">tests/</code> directory</strong> — they are under <code class="language-plaintext highlighter-rouge">src/unittest/python/</code>
+and <code class="language-plaintext highlighter-rouge">src/integrationtest/python/</code>.</li>
+  <li><strong>Dependencies are not in a requirements file by default</strong> — they are declared
+programmatically in <code class="language-plaintext highlighter-rouge">build.py</code> via <code class="language-plaintext highlighter-rouge">project.depends_on()</code>.</li>
+  <li><strong>Build output goes to <code class="language-plaintext highlighter-rouge">target/</code></strong> — not <code class="language-plaintext highlighter-rouge">dist/</code> or <code class="language-plaintext highlighter-rouge">build/</code>.</li>
+</ul>
+
+<h2 id="setting-up-agent-instructions">Setting Up Agent Instructions</h2>
+
+<p>Most coding agents support project-level instruction files that provide context
+about the project’s conventions. When working on a PyBuilder project, the agent
+instruction file should describe the build system so the agent knows how to build,
+test, and navigate the project.</p>
+
+<h3 id="supported-instruction-files">Supported Instruction Files</h3>
+
+<p>Most coding agents read a Markdown file from the project root for context.
+<code class="language-plaintext highlighter-rouge">AGENTS.md</code> is an emerging cross-tool standard supported by many agents.
+Some agents also have their own tool-specific files:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Agent</th>
+      <th>File</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://agents.md/">AGENTS.md standard</a></td>
+      <td><code class="language-plaintext highlighter-rouge">AGENTS.md</code></td>
+      <td>Cross-tool standard (OpenAI Codex, GitHub Copilot, Google Jules/Gemini CLI, Cursor, Roo Code, Aider, JetBrains Junie)</td>
+    </tr>
+    <tr>
+      <td>Claude Code</td>
+      <td><code class="language-plaintext highlighter-rouge">CLAUDE.md</code></td>
+      <td>Also supports <code class="language-plaintext highlighter-rouge">.claude/rules/*.md</code> for modular rules</td>
+    </tr>
+    <tr>
+      <td>GitHub Copilot</td>
+      <td><code class="language-plaintext highlighter-rouge">.github/copilot-instructions.md</code></td>
+      <td>Also reads <code class="language-plaintext highlighter-rouge">AGENTS.md</code></td>
+    </tr>
+    <tr>
+      <td>Cursor</td>
+      <td><code class="language-plaintext highlighter-rouge">.cursor/rules/*.mdc</code></td>
+      <td>MDC format with YAML frontmatter; also reads <code class="language-plaintext highlighter-rouge">AGENTS.md</code></td>
+    </tr>
+    <tr>
+      <td>Windsurf</td>
+      <td><code class="language-plaintext highlighter-rouge">.windsurfrules</code> or <code class="language-plaintext highlighter-rouge">.windsurf/rules/*.md</code></td>
+      <td>6000 char limit per file</td>
+    </tr>
+    <tr>
+      <td>Cline</td>
+      <td><code class="language-plaintext highlighter-rouge">.clinerules</code> or <code class="language-plaintext highlighter-rouge">.clinerules/*.md</code></td>
+      <td>Inserted into system prompt verbatim</td>
+    </tr>
+    <tr>
+      <td>Roo Code</td>
+      <td><code class="language-plaintext highlighter-rouge">.roo/rules/*.md</code></td>
+      <td>Also reads <code class="language-plaintext highlighter-rouge">AGENTS.md</code></td>
+    </tr>
+    <tr>
+      <td>Aider</td>
+      <td><code class="language-plaintext highlighter-rouge">CONVENTIONS.md</code></td>
+      <td>Loaded via <code class="language-plaintext highlighter-rouge">--read</code> flag; also reads <code class="language-plaintext highlighter-rouge">AGENTS.md</code></td>
+    </tr>
+    <tr>
+      <td>Gemini CLI</td>
+      <td><code class="language-plaintext highlighter-rouge">GEMINI.md</code></td>
+      <td>Supports <code class="language-plaintext highlighter-rouge">@file.md</code> imports</td>
+    </tr>
+    <tr>
+      <td>JetBrains Junie</td>
+      <td><code class="language-plaintext highlighter-rouge">.junie/guidelines.md</code></td>
+      <td>Configurable to read <code class="language-plaintext highlighter-rouge">AGENTS.md</code> instead</td>
+    </tr>
+    <tr>
+      <td>Amazon Q Developer</td>
+      <td><code class="language-plaintext highlighter-rouge">.amazonq/rules/*.md</code></td>
+      <td>Directory of Markdown rule files</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>All formats use plain Markdown for the instruction body. A practical approach for
+maximum coverage is to maintain an <code class="language-plaintext highlighter-rouge">AGENTS.md</code> (covers most tools) and a <code class="language-plaintext highlighter-rouge">CLAUDE.md</code>
+(covers Claude Code), with both sharing largely the same content.</p>
+
+<h3 id="recommended-content">Recommended Content</h3>
+
+<p>A good agent instruction file for a PyBuilder project should include:</p>
+
+<p><strong>Project overview</strong> — what the project does, one or two sentences.</p>
+
+<p><strong>Build commands</strong> — how to build, test, and run analysis. Always include:</p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gu">## Building &amp; Testing</span>
+
+This project uses PyBuilder. All build commands use <span class="sb">`pyb`</span>:
+<span class="p">
+-</span> <span class="sb">`pyb`</span> — full build
+<span class="p">-</span> <span class="sb">`pyb run_unit_tests`</span> — unit tests only
+<span class="p">-</span> <span class="sb">`pyb run_integration_tests`</span> — integration tests only
+<span class="p">-</span> <span class="sb">`pyb -i`</span> — dump project configuration as JSON (no build)
+<span class="p">-</span> <span class="sb">`pyb -v`</span> — verbose output
+<span class="p">-</span> <span class="sb">`pyb -vX`</span> — debug verbose output
+</code></pre></div></div>
+
+<p><strong>Project layout</strong> — if the defaults are used, a brief note is enough.
+If directories are customized, specify the actual paths:</p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gu">## Project Layout</span>
+<span class="p">
+-</span> Source: <span class="sb">`src/main/python/`</span>
+<span class="p">-</span> Unit tests: <span class="sb">`src/unittest/python/`</span> (files matching <span class="sb">`*_tests.py`</span>)
+<span class="p">-</span> Integration tests: <span class="sb">`src/integrationtest/python/`</span>
+<span class="p">-</span> Build descriptor: <span class="sb">`build.py`</span>
+</code></pre></div></div>
+
+<p><strong>Code style</strong> — any linting or formatting rules enforced by the build:</p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gu">## Code Style</span>
+<span class="p">
+-</span> flake8 is enforced by the build (max line length: 120)
+<span class="p">-</span> All source files have Apache License 2.0 headers
+</code></pre></div></div>
+
+<p><strong>Dependency management</strong> — how to add dependencies:</p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gu">## Adding Dependencies</span>
+
+Edit <span class="sb">`build.py`</span> and add to the initializer:
+<span class="p">-</span> Runtime: <span class="sb">`project.depends_on("package-name", "&gt;=1.0")`</span>
+<span class="p">-</span> Build/test: <span class="sb">`project.build_depends_on("package-name")`</span>
+</code></pre></div></div>
+
+<h3 id="example-claudemd">Example CLAUDE.md</h3>
+
+<p>Here is a complete example for a typical PyBuilder project:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh"># My Project — Project Instructions</span>
+
+<span class="gu">## Overview</span>
+
+MyProject is a REST API client library for the Acme service.
+
+<span class="gu">## Building &amp; Testing</span>
+
+This project uses PyBuilder. All build commands use <span class="sb">`pyb`</span>:
+<span class="p">
+-</span> <span class="sb">`pyb`</span> — full build (test + analyze + package)
+<span class="p">-</span> <span class="sb">`pyb run_unit_tests`</span> — unit tests only
+<span class="p">-</span> <span class="sb">`pyb run_integration_tests`</span> — integration tests only
+<span class="p">-</span> <span class="sb">`pyb -i`</span> — dump project configuration as JSON (no build)
+<span class="p">-</span> <span class="sb">`pyb -v`</span> — verbose output
+<span class="p">-</span> <span class="sb">`pyb -vX`</span> — debug verbose output
+
+<span class="gu">## Project Layout</span>
+
+Standard PyBuilder layout:
+<span class="p">-</span> <span class="sb">`build.py`</span> — build descriptor
+<span class="p">-</span> <span class="sb">`src/main/python/`</span> — source code
+<span class="p">-</span> <span class="sb">`src/unittest/python/`</span> — unit tests (<span class="sb">`*_tests.py`</span>)
+<span class="p">-</span> <span class="sb">`src/integrationtest/python/`</span> — integration tests
+
+<span class="gu">## Code Style</span>
+<span class="p">
+-</span> Max line length: 120 (flake8 enforced)
+
+<span class="gu">## Git Workflow</span>
+
+PRs to <span class="sb">`master`</span>. Always run <span class="sb">`pyb`</span> before pushing.
+</code></pre></div></div>
+</div>
+        <div class="col-lg-5 visible-md visible-lg">
+            <nav id="toc" data-spy="affix" data-toggle="toc"></nav>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <a href="https://github.com/pybuilder/pybuilder">PyBuilder on GitHub</a>
+            <a href="https://pypi.org/project/pybuilder/">PyBuilder on PyPI</a>
+        </div>
+    </div>
+    <div class="publish-date">
+        <small>site published on 2026-04-08 17:22:58 +0000</small>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<script src="/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
+<script src="/js/tabcontent.js"></script>
+<script src="/js/highlight.pack.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.5.0/lite-youtube.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+  });
+</script>
+<script type="text/javascript">
+    $(function() {
+        $(".dropdown").hover(
+            function(){ $(this).addClass('open') },
+            function(){ $(this).removeClass('open') }
+        );
+    });
+    $(function() {
+        $(".dropdown-submenu").hover(
+            function(){ $(this).addClass('open') },
+            function(){ $(this).removeClass('open') }
+        );
+    });
+</script>
+
+</body>
+</html>

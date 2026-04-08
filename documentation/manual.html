@@ -1,0 +1,894 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C74FKNHM7K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C74FKNHM7K');
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="description" content="PyBuilder is an easy-to-use build automation tool for Python"/>
+<meta name="author" content="PyBuilder Community"/>
+<meta name="keywords" content="python, continuous integration, build tool, automation, CI, CD, CI/CD"/>
+
+<meta name="theme-color" content="#000000"/>
+
+<link rel="canonical" href="https://pybuilder.io/documentation/manual"/>
+<link rel="icon" href="/img/logo.svg"/>
+<link rel="apple-touch-icon" href="/img/logo-apple-touch-icon.png">
+
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oleo+Script:700"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+      integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
+<link rel="stylesheet" type="text/css" href="/css/highlightjs.css"/>
+<link rel="stylesheet" type="text/css" href="/css/tabcontent.css"/>
+<link rel="stylesheet" type="text/css" href="/css/styles.css"/>
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Usage Documentation" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://pybuilder.io/documentation/manual" />
+<meta property="og:url" content="https://pybuilder.io/documentation/manual" />
+<meta property="og:image" content="https://pybuilder.io/img/logo.png" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:image" content="https://pybuilder.io/img/logo.png" />
+<meta property="twitter:title" content="Usage Documentation" />
+<meta name="twitter:site" content="@pybuilder_" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","dateModified":"2026-04-08T17:21:13+00:00","headline":"Usage Documentation","image":"https://pybuilder.io/img/logo.png","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://pybuilder.io/img/logo.png"}},"url":"https://pybuilder.io/documentation/manual"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <title>PyBuilder &#x2014; Usage Documentation</title>
+</head>
+
+<body data-spy="scroll" data-target="#toc">
+
+<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#hdr-nb-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand pybuilder-brand dropdown" href="/" title="PyBuilder">
+                <img src="/img/logo.svg" alt="PyBuilder Logo"
+                     onerror="this.onerror=null; this.src='/img/logo-brand.png'"/></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="hdr-nb-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="/" title="PyBuilder">PyBuilder</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/about" title="About">About</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/news/" title="News">News</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/documentation/" class="dropdown-toggle">Documentation <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">User Documentation <b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/documentation/installation">Installation</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/tutorial">Tutorial</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/examples">Examples</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/manual">Manual</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/plugins">Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/external-plugin-list">External plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/ide">IDE integration</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/coding-agents">Coding Agents</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">Developer Documentation <b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/documentation/writing-plugins">Writing Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/developing-pybuilder">Developing PyBuilder</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/publishing-plugins">Publishing Your Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="#">API (Unavailable)</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Releases <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a href="/release-notes/" class="dropdown-item dropdown-toggle">Release Notes
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                
+                                
+                                <li>
+                                    <a href="/release-notes/v0.13.x">Versions 0.13.x
+                                        (Current)</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/v0.12.x">Versions 0.12.x
+                                        </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/v0.11.x">Versions 0.11.x
+                                        </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/v0.10.x">Versions 0.10.x
+                                        </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/archived">Archived Versions
+                                        </a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a href="/migration-guides/" class="dropdown-item dropdown-toggle">Migration Guides
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                
+                                
+                                <li>
+                                    <a href="/migration-guides/v0.11.x-v0.12.0">Migrating v0.11.x to v0.12.0</a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-7" id="content"><h1 id="pybuilder-usage-documentation">PyBuilder Usage Documentation</h1>
+
+<h2 id="introduction">Introduction</h2>
+
+<p><em>PyBuilder</em> is a multi-purpose software build tool. Most
+commonly it targets the building and management of software with a strong focus on Python.</p>
+
+<h3 id="building-python-projects">Building Python Projects</h3>
+
+<p>Some of the capabilities provided by <em>PyBuilder</em> out-of-the box are:</p>
+<ul>
+  <li>Automatic execution of unit and integration tests on every build</li>
+  <li>Automatic analysis of the code coverage</li>
+  <li>Automatic execution and result interpretation of analysis tools, such as flake8</li>
+  <li>Automatic generation of distutils script <code class="language-plaintext highlighter-rouge">setup.py</code></li>
+</ul>
+
+<p>The general idea is that everything you do in your <em>continuous integration</em> chain, you also do locally
+before checking in your work.</p>
+
+<h3 id="why-another-build-tool">Why Another Build Tool</h3>
+
+<p>When working on large scale software projects based on Java and Groovy I delved into the build process using tools
+such as <em>Apache Ant</em>, <em>Apache Maven</em> or <em>Gradle</em>. Although none of these tools is perfect they all provide a powerful and
+extensible way for building and testing software.</p>
+
+<p>When focusing on Python I looked for a similar tool and got frustrated by the large number of tools that all match
+some aspect of the build and test process. Unfortunately, many of those tools were not suitable for composition and
+there was no central point of entry.</p>
+
+<p>I suddenly found myself writing “build scripts” in Python over and over again using the tools I found out to be
+useful.</p>
+
+<p><em>PyBuilder</em> was born on the attempt to create a reusable tool that should</p>
+<ul>
+  <li>Make simple things simple</li>
+  <li>Make hard things as simple as possible</li>
+  <li>Let me use whatever tool I want to integrate</li>
+  <li>Integrate these tools into a common view</li>
+  <li>Let me use Python (which is really great) to write my build files</li>
+</ul>
+
+<h2 id="concepts">Concepts</h2>
+
+<p><em>PyBuilder</em> executes build logic that is organized into tasks and actions.</p>
+
+<p>Tasks are the main building blocks of the build logic. A task is an enclosed piece of build logic to be executed as
+a single unit. Each task can name a set of other tasks that it depends on. <em>PyBuilder</em> ensures that a
+task gets executed only after all of its dependencies have been executed.</p>
+
+<p>Actions are smaller pieces of build logic than tasks. They are bound to the execution of task. Each action states
+that it needs to be executed <em>before</em> or <em>after</em> a named task. PyBuilder will execute the action if
+and only if the named task is executed, either directly or through another tasks’ dependencies.</p>
+
+<p>Actions as well as tasks are decorated plain Python functions.
+Thus, you can structure your code the way you like if you provide a single point of entry to a build step.</p>
+
+<p>Both task and action functions can request parameters known to <em>PyBuilder</em> through dependency injection
+by parameter name.</p>
+
+<h2 id="writing-tasks">Writing Tasks</h2>
+
+<p>Writing a task is easy. You just create a function and decorate with the <code class="language-plaintext highlighter-rouge">@task</code> decorator, and add it to your <code class="language-plaintext highlighter-rouge">build.py</code>:</p>
+
+<pre><code>from pybuilder.core import task
+
+@task
+def say_hello ():
+    print "Hello, PyBuilder"
+</code></pre>
+
+<p>There is now a new task named <code class="language-plaintext highlighter-rouge">say_hello</code> available to you. You can verify this by running <code class="language-plaintext highlighter-rouge">pyb -t</code>.</p>
+
+<h3 id="dependency-injection">Dependency Injection</h3>
+
+<p><em>PyBuilder</em> supports dependency injection for tasks based on parameter names. The following parameters can be used to
+receive components:</p>
+
+<dl>
+  <dt>logger</dt>
+  <dd>A logger instance which can be used to issue messages to the user.</dd>
+  <dt>project</dt>
+  <dd>An instance of the project that is currently being built.</dd>
+  <dt>reactor</dt>
+  <dd>An instance of the Reactor that manages the build lifecycle.</dd>
+</dl>
+
+<p>Thus we can rewrite the task above to use the logger:</p>
+
+<pre><code>from pybuilder.core import task
+
+@task
+def say_hello (logger):
+   logger.info("Hello, PyBuilder")
+</code></pre>
+
+<h2 id="project-specific-configuration">Project-specific configuration</h2>
+
+<h3 id="initializers">Initializers</h3>
+<p>The configuration of a project is done by mutating the <code class="language-plaintext highlighter-rouge">project</code> object. You can access this object from within <code class="language-plaintext highlighter-rouge">build.py</code> by
+writing an initializer.
+An initializer is a plain python function that is decorated to become an initializer:</p>
+
+<pre><code>
+from pybuilder.core import init
+@init
+def initialize(project):
+    pass
+</code></pre>
+
+<p>Pybuilder always collects and calls initilizers from <code class="language-plaintext highlighter-rouge">build.py</code> sorted by alphabetical order.
+This fact could be used for initilizers managing.</p>
+
+<pre><code>
+from pybuilder.core import init
+
+@init
+def initialize2(project):
+    pass
+    
+@init
+def initialize1(project):
+    pass
+</code></pre>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[DEBUG] Registering initializer 'initialize1'
+[DEBUG] Registering initializer 'initialize2'
+....
+[DEBUG] Executing initializer 'initialize1' from 'build'
+[DEBUG] Executing initializer 'initialize2' from 'build'
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">pyb</code> command apply project option <code class="language-plaintext highlighter-rouge">-E &lt;environment&gt;, --environment=&lt;environment&gt;</code>
+which could be used to define environment specific initializers.</p>
+
+<pre><code>
+from pybuilder.core import init
+@init(environments="dev")
+def initialize_dev_env(project):
+    pass
+</code></pre>
+
+<p>So initializer <code class="language-plaintext highlighter-rouge">initialize_dev_env</code> will be called only if <code class="language-plaintext highlighter-rouge">pyb</code> is called with project option <code class="language-plaintext highlighter-rouge">--environment=dev</code>.</p>
+
+<p>Project option <code class="language-plaintext highlighter-rouge">-E &lt;environment&gt;, --environment=&lt;environment&gt;</code> can be used multiple time.</p>
+
+<h3 id="project-attributes">Project Attributes</h3>
+<p>Project attributes are values that describe a project. Unlike the properties below, they are not used
+to configure plugins but rather to describe the project. Each project has several default attributes
+like <code class="language-plaintext highlighter-rouge">version</code> and <code class="language-plaintext highlighter-rouge">license</code>. These can be set in the <code class="language-plaintext highlighter-rouge">build.py</code>:</p>
+
+<pre><code>
+name = "myproject"
+version = "0.1.14"
+</code></pre>
+
+<p>Or from within an initializer:</p>
+
+<pre><code>@init
+def initialize(project):
+    project.version = "0.1.14"
+</code></pre>
+
+<p>A project’s attributes affect the build in a variety of ways. For instance the <code class="language-plaintext highlighter-rouge">license</code> attribute
+is used when generating a setuptools script to correctly fill the metadata fields.
+A notable use case for project attributes is replacing placeholder values in source files
+at build-time with the <a href="/documentation/plugins.html#filtering-files">filter_resources plugin</a>.</p>
+
+<h3 id="project-version-attribute">Project Version Attribute</h3>
+<p>The <code class="language-plaintext highlighter-rouge">version</code> has to be specified by PEP-440.
+Additionally, <em>PyBuilder</em> provides <em>Apache Maven</em> logic for versions with suffix <code class="language-plaintext highlighter-rouge">.dev</code> by adding 
+generated timestamp label after that which guarantees unique increasing version of distribution.
+For example, project with version <code class="language-plaintext highlighter-rouge">0.1.14.dev</code> will be built with version <code class="language-plaintext highlighter-rouge">0.1.14.dev20171004032551</code>.</p>
+
+<h3 id="project-properties">Project Properties</h3>
+<p>A property is identified by a key (the <em>name</em> of the property, which is a string) and has a value.
+The type of a property value can be any valid python type.</p>
+
+<p>Project properties are used to configure plugins.
+Plugins that rely on properties usually set a default value, that you can override.
+This is conform to the idea of <em>convention over configuration</em>.</p>
+
+<p>For instance the <code class="language-plaintext highlighter-rouge">unittest</code> plugin ships with a default property <code class="language-plaintext highlighter-rouge">unittest_module_glob</code> set to <code class="language-plaintext highlighter-rouge">"*_tests"</code>.
+If the default value does not suit you you can override it by setting the property to something else.</p>
+
+<p>This is done by using the <code class="language-plaintext highlighter-rouge">set_property</code> method of the 
+<a href="#"><code class="language-plaintext highlighter-rouge">project</code> object</a>. You should do this from within an initializer like so:</p>
+
+<pre><code>@init
+def initialize(project):
+     project.set_property('unittest_module_glob', '*_unittest')
+</code></pre>
+
+<p>A complete reference of the available properties is included in the <a href="/documentation/plugins.html">plugin reference</a></p>
+
+<h4 id="setting-properties-from-tasks">Setting Properties from tasks</h4>
+<p>Tasks should always bring a sane default for mandatory properties. Setting properties is done from an <em>initializer</em>, just like in <code class="language-plaintext highlighter-rouge">build.py</code>.
+Note that setting project properties from within a task function is possible but will override user-specified properties because initializers run before tasks are executed.
+Thus, as a general rule, functions decorated with <code class="language-plaintext highlighter-rouge">task</code> should only read project properties using <code>project.get_property</code>.</p>
+
+<h4 id="setting-properties-from-the-command-line">Setting Properties from the command line</h4>
+
+<p>Properties can be set or overridden using command line switches.</p>
+
+<pre>$ pyb -P spam="spam message"</pre>
+
+<p>This command sets/ overrides the property with the name <code class="language-plaintext highlighter-rouge">spam</code> with the value <code class="language-plaintext highlighter-rouge">spam message</code>.</p>
+
+<p>Note that command line switches only allow properties to be set/ overridden using string values.</p>
+
+<h4 id="inspecting-project-configuration">Inspecting Project Configuration</h4>
+
+<p>Use <code class="language-plaintext highlighter-rouge">pyb -i</code> (or <code class="language-plaintext highlighter-rouge">pyb --project-info</code>) to dump the full project configuration as
+pretty-printed JSON without running a build. This runs all plugin initializers to
+populate properties but does not execute any tasks or create build/test venvs.</p>
+
+<p>JSON is written to stdout and all log messages go to stderr, so the output is
+safe to pipe into other tools:</p>
+
+<pre>
+$ pyb -i 2&gt;/dev/null | python -m json.tool
+$ pyb -i 2&gt;/dev/null | jq .project.name
+$ pyb -i -E ci -P verbose=true 2&gt;/dev/null | jq .properties
+</pre>
+
+<p>The JSON output includes:</p>
+
+<ul>
+  <li><strong>project</strong> — name, version, basedir, summary, authors, license, URLs, etc.</li>
+  <li><strong>properties</strong> — all build properties (built-in and plugin-defined)</li>
+  <li><strong>plugins</strong> — list of loaded plugins</li>
+  <li><strong>dependencies</strong> — runtime, build, plugin, and extras dependencies</li>
+  <li><strong>tasks</strong> — available tasks with descriptions and dependency information</li>
+  <li><strong>manifest_included_files</strong>, <strong>package_data</strong>, <strong>files_to_install</strong></li>
+</ul>
+
+<p>This is useful for CI/CD pipelines, editor integrations, and debugging
+property values without running a full build.</p>
+
+<h2 id="virtual-environment-infrastructure">Virtual Environment Infrastructure</h2>
+
+<p><em>PyBuilder</em> manages isolated Python virtual environments for building and testing.
+Understanding this infrastructure is essential for troubleshooting dependency issues
+and configuring advanced build scenarios.</p>
+
+<h3 id="the-four-python-environments">The Four Python Environments</h3>
+
+<p>PyBuilder maintains up to four distinct Python environments during a build:</p>
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Location</th>
+    <th>Purpose</th>
+    <th>What Gets Installed</th>
+  </tr>
+  <tr>
+    <td><strong>system</strong></td>
+    <td>The Python running PyBuilder</td>
+    <td>Baseline environment, fallback when venvs are disabled</td>
+    <td>PyBuilder itself</td>
+  </tr>
+  <tr>
+    <td><strong>pybuilder</strong></td>
+    <td><code>.pybuilder/plugins/{version}/</code></td>
+    <td>Plugin dependencies (PyPI plugins)</td>
+    <td>Packages required by <code>use_plugin("pypi:...")</code> and <code>plugin_depends_on()</code></td>
+  </tr>
+  <tr>
+    <td><strong>build</strong></td>
+    <td><code>target/venv/build/{version}/</code></td>
+    <td>Build and test tools</td>
+    <td><code>build_depends_on()</code> + <code>depends_on()</code> dependencies</td>
+  </tr>
+  <tr>
+    <td><strong>test</strong></td>
+    <td><code>target/venv/test/{version}/</code></td>
+    <td>Integration test runtime</td>
+    <td><code>depends_on()</code> dependencies only</td>
+  </tr>
+</table>
+
+<p>The <code class="language-plaintext highlighter-rouge">{version}</code> directory name is derived from the Python implementation and version,
+for example <code class="language-plaintext highlighter-rouge">cpython-3.13.2</code> or <code class="language-plaintext highlighter-rouge">pypy-7.3.12</code>. Free-threaded builds append <code class="language-plaintext highlighter-rouge">t</code>
+(e.g. <code class="language-plaintext highlighter-rouge">cpython-3.14.0t</code>) and debug builds append <code class="language-plaintext highlighter-rouge">-debug</code>.</p>
+
+<h3 id="environment-lifecycle">Environment Lifecycle</h3>
+
+<p>The environments are created in this order during a build:</p>
+
+<ol>
+  <li><strong>system</strong> is registered at startup from the Python running <code class="language-plaintext highlighter-rouge">pyb</code>.</li>
+  <li><strong>pybuilder</strong> is created during <code class="language-plaintext highlighter-rouge">prepare_build()</code>, <em>before</em> any plugins are loaded.
+Its site-packages are added to <code class="language-plaintext highlighter-rouge">sys.path</code> so that plugin imports succeed.</li>
+  <li><strong>build</strong> and <strong>test</strong> are created during the <code class="language-plaintext highlighter-rouge">prepare</code> task, after plugins and
+initializers have run. Dependencies declared via <code class="language-plaintext highlighter-rouge">depends_on()</code> and
+<code class="language-plaintext highlighter-rouge">build_depends_on()</code> are installed via pip into the appropriate venvs.</li>
+</ol>
+
+<h3 id="directory-layout">Directory Layout</h3>
+
+<pre>
+project_root/
+├─ .pybuilder/
+│  └─ plugins/
+│     └─ cpython-3.13.2/           # pybuilder env
+│        ├─ bin/python3.13
+│        └─ lib/python3.13/site-packages/
+│
+└─ target/
+   ├─ venv/
+   │  ├─ build/
+   │  │  └─ cpython-3.13.2/        # build env
+   │  │     ├─ bin/python3.13
+   │  │     └─ lib/python3.13/site-packages/
+   │  └─ test/
+   │     └─ cpython-3.13.2/        # test env
+   │        ├─ bin/python3.13
+   │        └─ lib/python3.13/site-packages/
+   ├─ dist/                         # packaged distribution
+   ├─ reports/                      # test and analysis reports
+   └─ logs/
+      └─ install_dependencies/      # pip install logs
+</pre>
+
+<h3 id="which-environment-runs-what">Which Environment Runs What</h3>
+
+<ul>
+  <li><strong>Unit tests</strong> run in the <strong>build</strong> environment by default
+(controlled by <code class="language-plaintext highlighter-rouge">unittest_python_env</code> property).</li>
+  <li><strong>Integration tests</strong> run in the <strong>test</strong> environment by default
+(controlled by <code class="language-plaintext highlighter-rouge">integrationtest_python_env</code> property).</li>
+  <li><strong>Plugin code</strong> (flake8, coverage, pylint, etc.) runs using packages from the
+<strong>pybuilder</strong> environment.</li>
+</ul>
+
+<h3 id="controlling-venv-behavior">Controlling Venv Behavior</h3>
+
+<pre><code>@init
+def initialize(project):
+    # Force recreation of venvs on every build
+    project.set_property("refresh_venvs", True)
+
+    # Customize which venvs are created (default: ["build", "test"])
+    project.set_property("venv_names", ["build", "test"])
+
+    # Override default dependency mapping per venv
+    project.set_property("venv_dependencies", {
+        "build": [Dependency("pytest"), Dependency("coverage")],
+        "test": [Dependency("requests")]
+    })
+</code></pre>
+
+<h3 id="running-without-venvs">Running Without Venvs</h3>
+
+<p>Passing <code class="language-plaintext highlighter-rouge">--no-venvs</code> to <code class="language-plaintext highlighter-rouge">pyb</code> disables virtual environment creation. All environments
+fall back to the system Python. This is a legacy mode primarily used for debugging
+and is not recommended for normal builds, as it can lead to dependency conflicts
+and unreliable coverage results.</p>
+
+<h2 id="unit-testing-in-detail">Unit Testing in Detail</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">python.unittest</code> plugin executes unit tests using Python’s <code class="language-plaintext highlighter-rouge">unittest</code> module
+with subprocess isolation and remote object proxying.</p>
+
+<h3 id="test-discovery">Test Discovery</h3>
+
+<p>Tests are discovered by scanning <code class="language-plaintext highlighter-rouge">src/unittest/python/</code> (configurable via
+<code class="language-plaintext highlighter-rouge">dir_source_unittest_python</code>) for files matching the <code class="language-plaintext highlighter-rouge">unittest_module_glob</code> pattern
+(default: <code class="language-plaintext highlighter-rouge">*_tests</code>). File paths are converted to Python module names:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">src/unittest/python/foo_tests.py</code> becomes module <code class="language-plaintext highlighter-rouge">foo_tests</code></li>
+  <li><code class="language-plaintext highlighter-rouge">src/unittest/python/pkg/bar_tests.py</code> becomes module <code class="language-plaintext highlighter-rouge">pkg.bar_tests</code></li>
+</ul>
+
+<h3 id="subprocess-isolation-and-remoting">Subprocess Isolation and Remoting</h3>
+
+<p>Unit tests do <strong>not</strong> run in the main PyBuilder process. Instead, the plugin uses
+a remoting mechanism based on Python’s <code class="language-plaintext highlighter-rouge">multiprocessing</code> module:</p>
+
+<ol>
+  <li><strong>Spawn subprocess</strong>: A child process is started using the <strong>build</strong> venv’s
+Python interpreter. The <code class="language-plaintext highlighter-rouge">multiprocessing</code> module is patched so that:
+    <ul>
+      <li>The child uses the build venv’s <code class="language-plaintext highlighter-rouge">python</code> executable</li>
+      <li>The child’s <code class="language-plaintext highlighter-rouge">sys.path</code> is remapped to use the build venv’s site-packages
+instead of the parent process’s</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Load tests in child</strong>: The subprocess inserts <code class="language-plaintext highlighter-rouge">src/unittest/python/</code> and
+<code class="language-plaintext highlighter-rouge">src/main/python/</code> at the front of <code class="language-plaintext highlighter-rouge">sys.path</code>, then uses
+<code class="language-plaintext highlighter-rouge">unittest.defaultTestLoader.loadTestsFromNames()</code> to import and discover tests.</p>
+  </li>
+  <li>
+    <p><strong>Proxy tests to parent</strong>: The loaded test suite is exposed to the parent process
+through a <code class="language-plaintext highlighter-rouge">RemoteObjectPipe</code>. The parent receives a proxy object that can invoke
+methods on the real test objects in the child.</p>
+  </li>
+  <li>
+    <p><strong>Execute via runner</strong>: The parent’s test runner (default: <code class="language-plaintext highlighter-rouge">XMLTestRunner</code>) calls
+<code class="language-plaintext highlighter-rouge">runner.run(tests)</code>. Each test method invocation is proxied as an RPC call to the
+child process, where the actual test code executes. Results are marshaled back
+via pickle serialization.</p>
+  </li>
+  <li><strong>Collect results</strong>: After all tests complete, the pipe is closed and the
+subprocess terminates.</li>
+</ol>
+
+<p>This architecture ensures that:</p>
+<ul>
+  <li>Test imports cannot pollute the build process</li>
+  <li>Each test run starts with clean module state</li>
+  <li>Build tool dependencies (coverage, xmlrunner) are available via the build venv</li>
+  <li>Source code is imported from <code class="language-plaintext highlighter-rouge">src/main/python/</code>, not from installed packages</li>
+</ul>
+
+<h3 id="unit-test-logs-and-reports">Unit Test Logs and Reports</h3>
+
+<p>Unit test output is written to <code class="language-plaintext highlighter-rouge">target/reports/</code>:</p>
+
+<table class="table table-striped">
+  <tr>
+    <th>File</th>
+    <th>Format</th>
+    <th>Contents</th>
+  </tr>
+  <tr>
+    <td><code>target/reports/unittest</code></td>
+    <td>Text</td>
+    <td>Console output from the test run</td>
+  </tr>
+  <tr>
+    <td><code>target/reports/unittest.json</code></td>
+    <td>JSON</td>
+    <td>Structured results: test count, errors, failures with tracebacks</td>
+  </tr>
+  <tr>
+    <td><code>target/reports/TEST-*.xml</code></td>
+    <td>JUnit XML</td>
+    <td>Per-test-class XML results (generated by xmlrunner)</td>
+  </tr>
+</table>
+
+<p>Use <code class="language-plaintext highlighter-rouge">pyb -v</code> to see individual test names as they execute. Use <code class="language-plaintext highlighter-rouge">pyb -vX</code> for full
+debug logging including subprocess sys.path details and remoting diagnostics.</p>
+
+<h2 id="integration-testing-in-detail">Integration Testing in Detail</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">python.integrationtest</code> plugin runs each integration test as a standalone
+subprocess. Unlike unit tests, there is no remoting or RPC; each test file is
+executed as an independent Python script.</p>
+
+<h3 id="test-discovery-1">Test Discovery</h3>
+
+<p>Integration tests are discovered by scanning <code class="language-plaintext highlighter-rouge">src/integrationtest/python/</code>
+(configurable via <code class="language-plaintext highlighter-rouge">dir_source_integrationtest_python</code>) for files matching
+<code class="language-plaintext highlighter-rouge">integrationtest_file_glob</code> (default: <code class="language-plaintext highlighter-rouge">*_tests.py</code>).</p>
+
+<h3 id="execution-model">Execution Model</h3>
+
+<p>Each test file is executed in its own process:</p>
+
+<pre><code># Effective command for each test:
+/path/to/target/venv/test/{version}/bin/python test_file.py [additional_args]
+</code></pre>
+
+<p>The test venv’s Python executable is used (controlled by
+<code class="language-plaintext highlighter-rouge">integrationtest_python_env</code>, default: <code class="language-plaintext highlighter-rouge">"test"</code>).</p>
+
+<h3 id="classpath-and-pythonpath">Classpath and PYTHONPATH</h3>
+
+<p>Integration tests import source code from the <strong>built distribution</strong>, not from
+<code class="language-plaintext highlighter-rouge">src/main/python/</code> directly. The <code class="language-plaintext highlighter-rouge">PYTHONPATH</code> is set to:</p>
+
+<pre>
+target/dist/{project-name}-{version}/    # Packaged source code
+src/integrationtest/python/              # Test source directory
+</pre>
+
+<p>This means the <code class="language-plaintext highlighter-rouge">package</code> task must complete before integration tests run (which is
+enforced by task dependencies). The distribution in <code class="language-plaintext highlighter-rouge">target/dist/</code> contains the
+compiled/copied source code, ensuring tests run against the actual distributable
+package.</p>
+
+<h3 id="environment-variables">Environment Variables</h3>
+
+<p>The integration test environment is constructed in layers:</p>
+
+<ol>
+  <li><strong>PYTHONPATH</strong> is set to the distribution and test source directories.</li>
+  <li><strong>Additional environment</strong> variables from the <code class="language-plaintext highlighter-rouge">integrationtest_additional_environment</code>
+property (a dict) are merged in.</li>
+  <li>If <code class="language-plaintext highlighter-rouge">integrationtest_inherit_environment</code> is <code class="language-plaintext highlighter-rouge">True</code> (default: <code class="language-plaintext highlighter-rouge">False</code>), the test
+venv’s full environment (including PATH with venv bin directory) is used as the
+base. Otherwise, only the explicitly set variables are passed.</li>
+</ol>
+
+<h3 id="integration-test-logs-and-reports">Integration Test Logs and Reports</h3>
+
+<p>Each integration test produces its own output files in <code class="language-plaintext highlighter-rouge">target/reports/integrationtests/</code>:</p>
+
+<table class="table table-striped">
+  <tr>
+    <th>File</th>
+    <th>Contents</th>
+  </tr>
+  <tr>
+    <td><code>target/reports/integrationtests/{test_name}</code></td>
+    <td>Standard output from the test process</td>
+  </tr>
+  <tr>
+    <td><code>target/reports/integrationtests/{test_name}.err</code></td>
+    <td>Standard error from the test process</td>
+  </tr>
+</table>
+
+<p>Where <code class="language-plaintext highlighter-rouge">{test_name}</code> is the test filename without its <code class="language-plaintext highlighter-rouge">.py</code> extension.</p>
+
+<p>On failure (non-zero exit code), or when <code class="language-plaintext highlighter-rouge">integrationtest_always_verbose</code> is <code class="language-plaintext highlighter-rouge">True</code>,
+the content of both stdout and stderr files is printed to the console. On success,
+output is silent unless verbose mode is enabled.</p>
+
+<h2 id="coverage-in-detail">Coverage in Detail</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">python.coverage</code> plugin measures code coverage by instrumenting test execution.
+It does not re-run tests; instead, it wraps the test task so that coverage measurement
+is active during the single test execution.</p>
+
+<h3 id="how-coverage-works">How Coverage Works</h3>
+
+<p>The coverage task executes <em>after</em> the tasks it measures (e.g. <code class="language-plaintext highlighter-rouge">run_unit_tests</code>).
+However, coverage instrumentation occurs during task execution through environment
+override:</p>
+
+<ol>
+  <li>
+    <p><strong>During <code class="language-plaintext highlighter-rouge">prepare</code></strong>: The plugin checks which tasks are eligible for coverage
+measurement (tasks registered via <code class="language-plaintext highlighter-rouge">CoveredTask</code>, typically <code class="language-plaintext highlighter-rouge">run_unit_tests</code>).</p>
+  </li>
+  <li><strong>During <code class="language-plaintext highlighter-rouge">coverage</code> task execution</strong>: For each covered task:
+    <ul>
+      <li>A <code class="language-plaintext highlighter-rouge">CoverageTool</code> is registered with the reactor</li>
+      <li>The Python environment for the covered task is overridden to inject a coverage
+shim script into the subprocess</li>
+      <li>The covered task (e.g. <code class="language-plaintext highlighter-rouge">run_unit_tests</code>) is re-executed with coverage active</li>
+      <li>Coverage data is collected from the subprocess via <code class="language-plaintext highlighter-rouge">coverage.combine()</code></li>
+    </ul>
+  </li>
+  <li><strong>After execution</strong>: Coverage data from all covered tasks is aggregated, thresholds
+are checked, and reports are generated.</li>
+</ol>
+
+<h3 id="thresholds">Thresholds</h3>
+
+<p>Coverage enforces three independent threshold types:</p>
+
+<table class="table table-striped">
+  <tr>
+    <th>Property</th>
+    <th>Default</th>
+    <th>What It Measures</th>
+  </tr>
+  <tr>
+    <td><code>coverage_threshold_warn</code></td>
+    <td>70</td>
+    <td>Percentage of statements executed</td>
+  </tr>
+  <tr>
+    <td><code>coverage_branch_threshold_warn</code></td>
+    <td>0 (disabled)</td>
+    <td>Percentage of branches taken</td>
+  </tr>
+  <tr>
+    <td><code>coverage_branch_partial_threshold_warn</code></td>
+    <td>0 (disabled)</td>
+    <td>Percentage of branches not partially executed</td>
+  </tr>
+</table>
+
+<p>When <code class="language-plaintext highlighter-rouge">coverage_break_build</code> is <code class="language-plaintext highlighter-rouge">True</code> (the default) and any threshold is violated,
+the build fails with a <code class="language-plaintext highlighter-rouge">BuildFailedException</code>.</p>
+
+<h3 id="module-discovery-for-coverage">Module Discovery for Coverage</h3>
+
+<p>Coverage measures modules found in <code class="language-plaintext highlighter-rouge">coverage_source_path</code> (default:
+<code class="language-plaintext highlighter-rouge">$dir_source_main_python</code>). Modules listed in <code class="language-plaintext highlighter-rouge">coverage_exceptions</code> are excluded.
+Modules with syntax errors are automatically excluded with a warning. Each module’s
+coverage is reported individually, and an aggregate is computed across all modules.</p>
+
+<h3 id="coverage-reports">Coverage Reports</h3>
+
+<p>Coverage generates reports in <code class="language-plaintext highlighter-rouge">target/reports/</code>:</p>
+
+<table class="table table-striped">
+  <tr>
+    <th>File</th>
+    <th>Format</th>
+    <th>Contents</th>
+  </tr>
+  <tr>
+    <td><code>target/reports/{name}_coverage</code></td>
+    <td>Text</td>
+    <td>Human-readable coverage summary</td>
+  </tr>
+  <tr>
+    <td><code>target/reports/{name}_coverage.json</code></td>
+    <td>JSON</td>
+    <td>Per-module coverage data with line/branch details</td>
+  </tr>
+  <tr>
+    <td><code>target/reports/{name}_coverage.xml</code></td>
+    <td>Cobertura XML</td>
+    <td>For CI/CD integration (Jenkins, GitHub Actions, etc.)</td>
+  </tr>
+  <tr>
+    <td><code>target/reports/{name}_coverage_html/</code></td>
+    <td>HTML</td>
+    <td>Interactive coverage report with source annotation</td>
+  </tr>
+</table>
+
+<p>Where <code class="language-plaintext highlighter-rouge">{name}</code> is derived from the project name (e.g. <code class="language-plaintext highlighter-rouge">My_Project_coverage.json</code>).</p>
+
+<h3 id="reading-coverage-output">Reading Coverage Output</h3>
+
+<p>In verbose mode (<code class="language-plaintext highlighter-rouge">pyb -v</code>), coverage reports per-module statistics:</p>
+
+<pre>
+[INFO]  Overall my_project coverage is 85%
+[INFO]  Overall my_project branch coverage is 72%
+</pre>
+
+<p>In debug mode (<code class="language-plaintext highlighter-rouge">pyb -vX</code>), individual module reports are shown:</p>
+
+<pre>
+[DEBUG] Module coverage report: {'module': 'mypackage.core', 'coverage': 92.0,
+        'sum_lines': 50, 'lines_not_covered': [23, 45, 67, 89], ...}
+</pre>
+
+<p>The HTML report in <code class="language-plaintext highlighter-rouge">target/reports/{name}_coverage_html/index.html</code> provides the
+most detailed view, with source files annotated line-by-line showing which
+statements and branches were covered.</p>
+</div>
+        <div class="col-lg-5 visible-md visible-lg">
+            <nav id="toc" data-spy="affix" data-toggle="toc"></nav>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <a href="https://github.com/pybuilder/pybuilder">PyBuilder on GitHub</a>
+            <a href="https://pypi.org/project/pybuilder/">PyBuilder on PyPI</a>
+        </div>
+    </div>
+    <div class="publish-date">
+        <small>site published on 2026-04-08 17:22:58 +0000</small>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<script src="/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
+<script src="/js/tabcontent.js"></script>
+<script src="/js/highlight.pack.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.5.0/lite-youtube.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+  });
+</script>
+<script type="text/javascript">
+    $(function() {
+        $(".dropdown").hover(
+            function(){ $(this).addClass('open') },
+            function(){ $(this).removeClass('open') }
+        );
+    });
+    $(function() {
+        $(".dropdown-submenu").hover(
+            function(){ $(this).addClass('open') },
+            function(){ $(this).removeClass('open') }
+        );
+    });
+</script>
+
+</body>
+</html>
