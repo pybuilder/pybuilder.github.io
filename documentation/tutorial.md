@@ -615,6 +615,41 @@ project metadata into CI/CD scripts. See the
 [project-info documentation](/documentation/project-info.html) for the full
 JSON schema and integration examples.
 
+## Conditional and Optional Dependencies
+
+Our project so far declares one build dependency. Two further shapes are worth knowing
+about before you outgrow the basics.
+
+A dependency may carry PEP 508 environment markers, and the same distribution may be
+declared more than once as long as no two declarations apply at the same time:
+
+```python
+@init
+def set_properties(project):
+    project.depends_on("numpy", "==1.26.4", markers="python_version < '3.12'")
+    project.depends_on("numpy", "==2.1.0", markers="python_version >= '3.12'")
+```
+
+Both are published; within the build, only the one that applies is installed.
+
+A dependency may also be optional, assigned to an extras group that consumers opt into
+with `pip install helloworld[security]`:
+
+```python
+@init
+def set_properties(project):
+    project.depends_on("cryptography", ">=42", extra="security")
+
+    # Install that group into the build and test venvs as well, so the code it
+    # guards is exercised by our tests rather than merely shipped
+    project.set_property("install_dependencies_extras", ["security"])
+```
+
+Without that property the group is published but never installed, and the code path it
+guards cannot be tested. Run `pyb list_dependencies` to see the declared groups and which
+of them the current selection installs. See the
+[manual](/documentation/manual.html) for the full behavior.
+
 ## Recap
 
 In this tutorial we saw how PyBuilder can be used to "build" a typical Python project. Building in an interpreted
