@@ -143,6 +143,13 @@ Use the ```python.coverage``` module to activate coverage.
   </tr>
 
   <tr>
+    <td>coverage_subprocesses</td>
+    <td>bool</td>
+    <td>True</td>
+    <td>Measure Python subprocesses spawned by a covered task, and anything those spawn in turn. Can also be set per task, for example <code>ut_coverage_subprocesses</code> for unit tests or <code>it_coverage_subprocesses</code> for integration tests.</td>
+  </tr>
+
+  <tr>
     <td>coverage_source_path</td>
     <td>string</td>
     <td>$dir_source_main_python</td>
@@ -151,6 +158,18 @@ Use the ```python.coverage``` module to activate coverage.
 </table>
 
 Please note that properties `coverage_allow_non_imported_modules`, `coverage_reset_modules`, `coverage_reload_modules` and `coverage_fork` are deprecated and will not be used.
+
+#### Measuring subprocesses
+
+Code that only ever runs in a subprocess used to report as entirely uncovered: a program under test invoked through `subprocess`, a build backend that `pip` calls, a worker started with `os.system()`. The VEnvs *PyBuilder* builds into have no `coverage` installed and nothing running at interpreter startup to switch it on, so those processes ran unmeasured.
+
+With `coverage_subprocesses` enabled, *PyBuilder* plants a startup hook into the site directories of the VEnvs it built, and hands the active *coverage.py* configuration to the covered task through the environment. Every Python process started from one of those VEnvs then measures itself from its own startup, which also means imports and module level code are measured rather than only what runs once the test harness has control. The results are combined into the task's coverage data as usual.
+
+This applies recursively, so a nested *PyBuilder* build started by an integration test plants the hook into the VEnvs it creates as well, and the whole process tree is measured.
+
+With `--no-venvs` there are no VEnvs of *PyBuilder*'s making and nothing is planted into the Python you started the build with. Subprocesses are still measured there, by *coverage.py*'s own startup hook, which that Python has because `--no-venvs` installs `coverage` into it.
+
+Set the property to `False` to turn it off, either globally or for a single task. Note that measurement is not free: every Python process in the tree pays for it, including ones you may not care about such as `pip`.
 
 ### SonarQube integration
 

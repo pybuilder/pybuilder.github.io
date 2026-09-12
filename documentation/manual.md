@@ -529,11 +529,44 @@ override:
    - A `CoverageTool` is registered with the reactor
    - The Python environment for the covered task is overridden to inject a coverage
      shim script into the subprocess
+   - A startup hook is planted into the site directories of the VEnvs PyBuilder built,
+     and the active coverage configuration is handed to the task through the
+     environment, so that further subprocesses measure themselves
    - The covered task (e.g. `run_unit_tests`) is re-executed with coverage active
    - Coverage data is collected from the subprocess via `coverage.combine()`
 
 3. **After execution**: Coverage data from all covered tasks is aggregated, thresholds
    are checked, and reports are generated.
+
+### Subprocess Measurement
+
+Code that only ever runs in a subprocess - a build backend `pip` invokes, a program
+under test started with `subprocess`, a worker started with `os.system()` - would
+otherwise report as entirely uncovered: the VEnvs PyBuilder builds into have no
+`coverage` installed, and nothing running at interpreter startup to switch it on.
+
+The startup hook PyBuilder plants closes that gap. Any Python process started from one
+of those VEnvs picks the hook up from its own `site` processing, imports `coverage`
+from PyBuilder's plugin VEnv without leaving it on the path, and starts measuring
+before the process runs a line of its own code. That also means imports and module
+level code are measured, not just what runs once the test harness has control. The
+collected data is written alongside the covered task's own data and combined into it.
+
+The hand-off is inherited, so this applies to the whole process tree, including the
+VEnvs created by a nested PyBuilder build running inside an integration test.
+
+With `--no-venvs` there are no VEnvs of PyBuilder's making, and PyBuilder plants nothing
+into the Python you started the build with. Subprocesses are still measured there, by
+*coverage.py*'s own startup hook, which that Python has because `--no-venvs` installs
+`coverage` into it.
+
+Set `coverage_subprocesses` to `False` to turn this off, either for the whole project
+or for a single task (`ut_coverage_subprocesses`, `it_coverage_subprocesses`).
+Measuring every process in the tree is not free, and that includes processes you may
+not care about, such as `pip`.
+
+This requires *coverage.py* 7.13 or newer, which is where its own startup hook - the
+only thing that can act on the hand-off under `--no-venvs` - arrived.
 
 ### Thresholds
 
