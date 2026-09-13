@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C74FKNHM7K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C74FKNHM7K');
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="description" content="PyBuilder is an easy-to-use build automation tool for Python"/>
+<meta name="author" content="PyBuilder Community"/>
+<meta name="keywords" content="python, continuous integration, build tool, automation, CI, CD, CI/CD"/>
+
+<meta name="theme-color" content="#000000"/>
+
+<link rel="canonical" href="https://pybuilder.io/release-notes/v0.13.x"/>
+<link rel="icon" href="/img/logo.svg"/>
+<link rel="apple-touch-icon" href="/img/logo-apple-touch-icon.png">
+
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oleo+Script:700"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+      integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
+<link rel="stylesheet" type="text/css" href="/css/highlightjs.css"/>
+<link rel="stylesheet" type="text/css" href="/css/tabcontent.css"/>
+<link rel="stylesheet" type="text/css" href="/css/styles.css"/>
+
+<!-- Begin Jekyll SEO tag v2.9.0 -->
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="PyBuilder Release Notes - Versions 0.13.x" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Release Notes - Versions 0.13.x" />
+<meta name="twitter:description" property="og:description" content="Release Notes - Versions 0.13.x" />
+<link rel="canonical" href="https://pybuilder.io/release-notes/v0.13.x" />
+<meta property="og:url" content="https://pybuilder.io/release-notes/v0.13.x" />
+<meta property="og:image" content="https://pybuilder.io/img/logo.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-09-13T05:21:14+00:00" />
+<meta property="article:modified_time" content="2026-09-13T05:19:38+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:image" content="https://pybuilder.io/img/logo.png" />
+<meta name="twitter:title" content="PyBuilder Release Notes - Versions 0.13.x" />
+<meta name="twitter:site" content="@pybuilder_" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2026-09-13T05:19:38+00:00","datePublished":"2026-09-13T05:21:14+00:00","description":"Release Notes - Versions 0.13.x","headline":"PyBuilder Release Notes - Versions 0.13.x","image":"https://pybuilder.io/img/logo.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://pybuilder.io/release-notes/v0.13.x"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://pybuilder.io/img/logo.png"}},"url":"https://pybuilder.io/release-notes/v0.13.x"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <title>PyBuilder &#x2014; PyBuilder Release Notes - Versions 0.13.x</title>
+</head>
+
+<body data-spy="scroll" data-target="#toc">
+
+<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#hdr-nb-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand pybuilder-brand dropdown" href="/" title="PyBuilder">
+                <img src="/img/logo.svg" alt="PyBuilder Logo"
+                     onerror="this.onerror=null; this.src='/img/logo-brand.png'"/></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="hdr-nb-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="/" title="PyBuilder">PyBuilder</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/about" title="About">About</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/news/" title="News">News</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/documentation/" class="dropdown-toggle">Documentation <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">User Documentation <b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/documentation/installation">Installation</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/tutorial">Tutorial</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/examples">Examples</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/manual">Manual</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/plugins">Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/external-plugin-list">External plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/ide">IDE integration</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/coding-agents">Coding Agents</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">Developer Documentation <b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/documentation/writing-plugins">Writing Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/developing-pybuilder">Developing PyBuilder</a>
+                                </li>
+                                <li>
+                                    <a href="/documentation/publishing-plugins">Publishing Your Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="#">API (Unavailable)</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Releases <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a href="/release-notes/" class="dropdown-item dropdown-toggle">Release Notes
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                
+                                
+                                <li>
+                                    <a href="/release-notes/v0.13.x">Versions 0.13.x
+                                        (Current)</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/v0.12.x">Versions 0.12.x
+                                        </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/v0.11.x">Versions 0.11.x
+                                        </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/v0.10.x">Versions 0.10.x
+                                        </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/release-notes/archived">Archived Versions
+                                        </a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a href="/migration-guides/" class="dropdown-item dropdown-toggle">Migration Guides
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                
+                                
+                                <li>
+                                    <a href="/migration-guides/v0.11.x-v0.12.0">Migrating v0.11.x to v0.12.0</a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-7" id="content"><h1 id="release-notes---versions-013x">Release Notes - Versions 0.13.x</h1>
+
+<h2 id="version-01323">Version 0.13.23</h2>
+
+<h3 id="new-features">New Features</h3>
+<ul>
+  <li>The same distribution may now be declared more than once under mutually
+exclusive environment markers, so that <code class="language-plaintext highlighter-rouge">foo==1.0</code> on one interpreter and
+<code class="language-plaintext highlighter-rouge">foo==2.0</code> on another is expressible. Markers are now part of a dependency’s
+identity, and validation accepts a group of same-named declarations as long as
+no two of them apply at once. Identical conditions on one name remain an error,
+since no environment can tell them apart.</li>
+  <li>Extras groups declared with <code class="language-plaintext highlighter-rouge">depends_on(..., extra=...)</code> can now be installed
+into the VEnvs PyBuilder builds, so that the code an extra guards can actually
+be tested. The new <code class="language-plaintext highlighter-rouge">install_dependencies_extras</code> property selects them: a list
+of names, a single name, or <code class="language-plaintext highlighter-rouge">"*"</code> for every declared group. It defaults to
+<code class="language-plaintext highlighter-rouge">[]</code>, which is the previous behavior. Selecting a group the project does not
+declare fails the build and lists the ones it does.</li>
+  <li>Dependencies are now selected against the marker environment of the target
+interpreter rather than the one running the build. <code class="language-plaintext highlighter-rouge">PythonEnv.marker_env</code>
+carries the full set of PEP 508 variables, probed from that interpreter with
+PyBuilder’s vendored <em>packaging</em>, so a VEnv built from a different Python
+resolves its own conditional dependencies correctly.</li>
+  <li><code class="language-plaintext highlighter-rouge">list_dependencies</code> now prints the declared extras groups, each marked with
+whether the current selection installs it. <code class="language-plaintext highlighter-rouge">pyb -i</code> reports the group a
+dependency belongs to under the new <code class="language-plaintext highlighter-rouge">extra</code> key.</li>
+</ul>
+
+<h3 id="changed-features">Changed Features</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">project.dependencies</code> now returns the base runtime dependencies plus whatever
+<code class="language-plaintext highlighter-rouge">install_dependencies_extras</code> selects, which is what every install and
+consumption site wants. The new <code class="language-plaintext highlighter-rouge">project.base_dependencies</code> returns the base
+ones alone, and is what the generated <code class="language-plaintext highlighter-rouge">setup.py</code> uses for <code class="language-plaintext highlighter-rouge">install_requires</code>
+and <code class="language-plaintext highlighter-rouge">dependency_links</code> - a build-time decision to test an extra must never
+become a mandatory requirement of the published distribution. Plugins that
+render distribution metadata from <code class="language-plaintext highlighter-rouge">project.dependencies</code> should move to
+<code class="language-plaintext highlighter-rouge">project.base_dependencies</code>.</li>
+</ul>
+
+<h3 id="bugs-fixed">Bugs Fixed</h3>
+<ul>
+  <li>A dependency declared twice with different markers was silently discarded.
+Same name and version with different conditions collided on identity, the
+second declaration was dropped, and nothing was reported - so a Windows-only
+dependency would disappear because a Linux-only one happened to be declared
+first.</li>
+  <li>Declaring a conditional pin was a hard build failure. <code class="language-plaintext highlighter-rouge">validate_dependencies</code>
+counted by name alone, so the correct way to express a per-interpreter version
+broke the build.</li>
+  <li>Dependencies whose markers do not apply are no longer installed, and no longer
+written to the constraints file. They were queued on every build, which
+defeated the “already up-to-date, skipped” path; and where two entries on one
+name were both live, pip intersected them into a <code class="language-plaintext highlighter-rouge">ResolutionImpossible</code> that
+named neither declaration. PyBuilder now reports such a conflict itself,
+naming both.</li>
+  <li><code class="language-plaintext highlighter-rouge">depends_on("foo[security]")</code> was a silent no-op on incremental builds.
+Nothing in installed metadata records which extras were requested, so with
+plain <code class="language-plaintext highlighter-rouge">foo</code> already installed at a satisfying version the extra was skipped and
+its requirements never arrived. PyBuilder now resolves what the extra requires
+from the installed distribution’s own metadata and verifies those are present,
+falling back to handing the dependency to pip when the installed version no
+longer offers the extra at all.</li>
+  <li>A dependency carrying environment markers generated a syntactically invalid
+<code class="language-plaintext highlighter-rouge">setup.py</code>, because the rendered requirement was interpolated into single
+quotes and markers are conventionally written with single quotes of their own:
+<code class="language-plaintext highlighter-rouge">'pywin32&gt;=300; sys_platform == 'win32''</code>. Building the distribution failed
+with a <code class="language-plaintext highlighter-rouge">SyntaxError</code> from the backend. Values are now rendered as proper Python
+literals, which also fixes any other string containing a quote or a backslash.</li>
+  <li><code class="language-plaintext highlighter-rouge">install_requires</code> dropped a dependency’s own extras, so
+<code class="language-plaintext highlighter-rouge">depends_on("foo[bar]")</code> was published as plain <code class="language-plaintext highlighter-rouge">foo</code>.</li>
+  <li>Extras group names are now normalized, so that <code class="language-plaintext highlighter-rouge">extra="Security"</code> and
+<code class="language-plaintext highlighter-rouge">extra="security"</code> are one group rather than two emitted separately into
+<code class="language-plaintext highlighter-rouge">extras_require</code>.</li>
+</ul>
+
+<h2 id="version-01322">Version 0.13.22</h2>
+
+<h3 id="new-features-1">New Features</h3>
+<ul>
+  <li>Coverage is now collected from the Python subprocesses a covered task spawns,
+and from anything those spawn in turn. PyBuilder plants a startup hook into
+the site directories of the VEnvs it builds and hands the active
+<em>coverage.py</em> configuration over through the environment, so a process that
+starts from one of those VEnvs measures itself from its own startup. Code
+that only ever runs in a subprocess - a build backend invoked by <code class="language-plaintext highlighter-rouge">pip</code>, a
+program under test started with <code class="language-plaintext highlighter-rouge">subprocess</code> - is no longer reported as
+uncovered. Nested PyBuilder builds started from an integration test plant the
+hook into their own VEnvs, so the whole process tree is measured. Controlled
+by the new <code class="language-plaintext highlighter-rouge">coverage_subprocesses</code> property, on by default, and settable per
+task as <code class="language-plaintext highlighter-rouge">ut_coverage_subprocesses</code> / <code class="language-plaintext highlighter-rouge">it_coverage_subprocesses</code>. With
+<code class="language-plaintext highlighter-rouge">--no-venvs</code> nothing is planted into the Python you started the build with;
+subprocess measurement rides on <em>coverage.py</em>’s own startup hook there.</li>
+  <li>Measurement in the unit test tool process now starts at interpreter startup
+rather than once the tool has loaded, so imports and module level code are
+measured too.</li>
+</ul>
+
+<h3 id="changed-features-1">Changed Features</h3>
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">coverage</code> plugin now requires <em>coverage.py</em> 7.13 or newer. The
+configuration hand-off needs <code class="language-plaintext highlighter-rouge">COVERAGE_PROCESS_CONFIG</code> and
+<code class="language-plaintext highlighter-rouge">CoverageConfig.serialize</code>, and <code class="language-plaintext highlighter-rouge">--no-venvs</code> builds additionally need
+<em>coverage.py</em>’s own startup hook, which is what 7.13 adds.</li>
+</ul>
+
+<h2 id="version-01321">Version 0.13.21</h2>
+
+<h3 id="new-features-2">New Features</h3>
+<ul>
+  <li>Python 3.15 support</li>
+</ul>
+
+<h3 id="bugs-fixed-1">Bugs Fixed</h3>
+<ul>
+  <li>Vendored packages and <code class="language-plaintext highlighter-rouge">coverage</code> failed to import on Python 3.15, which
+removed the legacy <code class="language-plaintext highlighter-rouge">load_module()</code> fallback from the import machinery. Both
+of PyBuilder’s meta path loaders now implement the PEP 451
+<code class="language-plaintext highlighter-rouge">create_module()</code>/<code class="language-plaintext highlighter-rouge">exec_module()</code> protocol.</li>
+  <li><code class="language-plaintext highlighter-rouge">packaging</code> 26.3 gave <code class="language-plaintext highlighter-rouge">Requirement</code> a <code class="language-plaintext highlighter-rouge">__slots__</code> layout, breaking the
+<code class="language-plaintext highlighter-rouge">project_name</code> attribute PyBuilder attached to dependency requirements.
+Requirement names are now read from <code class="language-plaintext highlighter-rouge">Requirement.name</code>.</li>
+</ul>
+
+<h3 id="removed-features">Removed Features</h3>
+<ul>
+  <li>Removed compatibility workarounds for Python versions below 3.10</li>
+</ul>
+
+<h3 id="vendorized-dependency-upgrades">Vendorized Dependency Upgrades</h3>
+<ul>
+  <li>Bumped vendorized dependencies, notably:
+    <ul>
+      <li>virtualenv 20.36.1 to 21.7.4, which splits interpreter discovery into a
+separate <code class="language-plaintext highlighter-rouge">python-discovery</code> package and no longer depends on <code class="language-plaintext highlighter-rouge">click</code></li>
+      <li>importlib-metadata 8.7.1 to 9.0.0</li>
+      <li>packaging 26.0 to 26.3</li>
+      <li>importlib-resources 6.5.2 to 7.1.0</li>
+      <li>rich 14.3.2 to 15.0.0</li>
+      <li>wheel 0.46.3 to 0.48.0</li>
+      <li>setuptools to 84.0.0</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="version-01320">Version 0.13.20</h2>
+
+<h3 id="new-features-3">New Features</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">pyb -i</code> / <code class="language-plaintext highlighter-rouge">pyb --project-info</code> — outputs the full project configuration as
+pretty-printed JSON without running a build. Runs plugin initializers to
+populate all properties but does not execute any tasks or create venvs.
+JSON goes to stdout; log messages go to stderr so the output is
+machine-parseable.</li>
+</ul>
+
+<h2 id="version-01319">Version 0.13.19</h2>
+
+<h3 id="new-features-4">New Features</h3>
+<ul>
+  <li><a href="https://github.com/pybuilder/pybuilder/pull/941">#941 Full extras and markers support for dependencies</a></li>
+  <li>Python 3.14 support</li>
+</ul>
+
+<h3 id="removed-features-1">Removed Features</h3>
+<ul>
+  <li><a href="https://github.com/pybuilder/pybuilder/pull/938">#938 Dropped Python 3.9 support</a></li>
+</ul>
+
+<h3 id="bugs-fixed-2">Bugs Fixed</h3>
+<ul>
+  <li><a href="https://github.com/pybuilder/pybuilder/pull/942">#942 Fix lib64 site-packages not added to sys.path on Fedora/RHEL</a></li>
+</ul>
+
+<h2 id="version-01318">Version 0.13.18</h2>
+
+<h3 id="vendorized-dependency-upgrades-1">Vendorized Dependency Upgrades</h3>
+<ul>
+  <li>Bumped vendorized dependencies</li>
+  <li>Upgraded coveralls to ~=4.0</li>
+</ul>
+
+<h2 id="version-01317">Version 0.13.17</h2>
+
+<h3 id="new-features-5">New Features</h3>
+<ul>
+  <li><a href="https://github.com/pybuilder/pybuilder/pull/932">#932 Migrate from <code class="language-plaintext highlighter-rouge">python setup.py sdist/bdist_wheel</code> to PEP 517 <code class="language-plaintext highlighter-rouge">build</code></a></li>
+</ul>
+
+<h2 id="version-01316">Version 0.13.16</h2>
+
+<h3 id="new-features-6">New Features</h3>
+<ul>
+  <li>Free-threaded Python support (3.13t, 3.14t)</li>
+  <li><a href="https://github.com/pybuilder/pybuilder/pull/929">#929 Fix deprecated pkg_resource usage</a></li>
+</ul>
+
+<h3 id="vendorized-dependency-upgrades-2">Vendorized Dependency Upgrades</h3>
+<ul>
+  <li>Bumped vendorized dependencies</li>
+</ul>
+
+<h2 id="version-01314">Version 0.13.14</h2>
+
+<h3 id="new-features-7">New Features</h3>
+<ul>
+  <li>Python 3.13 support</li>
+  <li>Fix CVE-2024-53899 in bundled VirtualEnv</li>
+</ul>
+
+<h2 id="version-01313">Version 0.13.13</h2>
+
+<h3 id="removed-features-2">Removed Features</h3>
+<ul>
+  <li>Dropped Python 3.8 support</li>
+</ul>
+
+<h3 id="bugs-fixed-3">Bugs Fixed</h3>
+<ul>
+  <li><a href="https://github.com/pybuilder/pybuilder/pull/913">#913 Take extras into consideration for Dependency</a></li>
+</ul>
+
+<h3 id="vendorized-dependency-upgrades-3">Vendorized Dependency Upgrades</h3>
+<ul>
+  <li>Vendorize packaging directly to avoid #909</li>
+</ul>
+
+<h2 id="version-01312">Version 0.13.12</h2>
+
+<h3 id="vendorized-dependency-upgrades-4">Vendorized Dependency Upgrades</h3>
+<ul>
+  <li>Vendorize latest dependencies</li>
+</ul>
+
+<h2 id="version-01311">Version 0.13.11</h2>
+
+<h3 id="new-features-8">New Features</h3>
+<ul>
+  <li>Python 3.12 officially supported</li>
+</ul>
+
+<h2 id="version-01310">Version 0.13.10</h2>
+
+<h3 id="bugs-fixed-4">Bugs Fixed</h3>
+<ul>
+  <li><a href="https://github.com/pybuilder/pybuilder/pull/889">#889 Fixes for Python 3.12</a></li>
+</ul>
+
+<h3 id="removed-features-3">Removed Features</h3>
+<ul>
+  <li>Dropped Python 3.7 support</li>
+</ul>
+
+<h2 id="version-0139">Version 0.13.9</h2>
+
+<h3 id="new-features-9">New Features</h3>
+<ul>
+  <li><a href="https://github.com/pybuilder/pybuilder/pull/881">#881 Add <code class="language-plaintext highlighter-rouge">eager_update</code> option to dependencies</a></li>
+</ul>
+
+<h2 id="version-0138">Version 0.13.8</h2>
+
+<h3 id="new-features-10">New Features</h3>
+<ul>
+  <li><a href="https://github.com/pybuilder/pybuilder/pull/872">#872 Managed venvs distinguish between debug and release versions of Python</a></li>
+  <li><a href="https://github.com/pybuilder/pybuilder/pull/659">#659 Configurable log format command line parameter</a></li>
+</ul>
+
+<h2 id="version-0137">Version 0.13.7</h2>
+
+<h3 id="bugs-fixed-5">Bugs Fixed</h3>
+<ul>
+  <li>Coverage source_path trailing slash fix</li>
+  <li>Python 3.11b3 compatibility</li>
+</ul>
+
+<h2 id="version-0136">Version 0.13.6</h2>
+
+<h3 id="new-features-11">New Features</h3>
+<ul>
+  <li>Python 3.11 support</li>
+</ul>
+
+<h3 id="bugs-fixed-6">Bugs Fixed</h3>
+<ul>
+  <li>Fix multiprocessing spawn for Python 3.11+</li>
+  <li>Fix unittest.TestCase results API for Python 3.11+</li>
+  <li>Fix vendorization on Windows with cp1252 encoding</li>
+</ul>
+
+<h3 id="removed-features-4">Removed Features</h3>
+<ul>
+  <li>Dropped Python 3.6 support</li>
+</ul>
+
+<h2 id="version-0135">Version 0.13.5</h2>
+
+<h3 id="vendorized-dependency-upgrades-5">Vendorized Dependency Upgrades</h3>
+<ul>
+  <li>Bumped vendorized dependencies</li>
+</ul>
+
+<h2 id="version-0134">Version 0.13.4</h2>
+
+<h3 id="new-features-12">New Features</h3>
+<ul>
+  <li>PyPy 3.8 support</li>
+  <li>Flake8 upgraded to &gt;=4.0</li>
+  <li>Coverage upgraded to &gt;=6.0</li>
+  <li>Fix site-packages path for PyPy venvs</li>
+</ul>
+
+<h2 id="version-0133">Version 0.13.3</h2>
+
+<h3 id="new-features-13">New Features</h3>
+
+<ul>
+  <li><a href="https://github.com/pybuilder/pybuilder/issues/825">#825 Make environment option’s content available in tasks as a Project property</a></li>
+</ul>
+
+<h3 id="bugs-fixed-7">Bugs Fixed</h3>
+
+<ul>
+  <li><a href="https://github.com/pybuilder/pybuilder/issues/828">#828 Make sure PIP install fails fast and dump logs on failure</a></li>
+  <li><a href="https://github.com/pybuilder/pybuilder/issues/822">#822 Unittests get stuck silently if there are non-daemon threads in the test</a></li>
+  <li><a href="https://github.com/pybuilder/pybuilder/issues/818">#818 Mix packages and modules in command line parameters for Pylint</a></li>
+</ul>
+
+<h2 id="version-0132">Version 0.13.2</h2>
+
+<h3 id="new-features-14">New Features</h3>
+
+<ul>
+  <li><a href="https://github.com/pybuilder/pybuilder/issues/815">#815 Revert to 0.12 behavior for integration test venv reuse</a></li>
+</ul>
+
+<h2 id="version-0131">Version 0.13.1</h2>
+
+<h3 id="bugs-fixed-8">Bugs Fixed</h3>
+
+<ul>
+  <li><a href="https://github.com/pybuilder/pybuilder/issues/807">#807 Build failing on v0.13, but no issues on 0.12.10</a></li>
+</ul>
+
+<h2 id="version-0130">Version 0.13.0</h2>
+
+<h3 id="removed-features-5">Removed Features</h3>
+
+<ul>
+  <li>Removed support for Python 2.7 and 3.5.</li>
+  <li>Removed plugins for utilities no longer maintained:
+    <ul>
+      <li>Frosted</li>
+      <li>PyChecker</li>
+      <li>PyTDDMon</li>
+      <li>Snakefood</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="infrastructure-upgrades">Infrastructure Upgrades</h3>
+
+<ul>
+  <li>PyBuilder now builds with GitHub Actions on Linux, Windows and MacOS 10.15 and 11.</li>
+  <li>Migration to VirtualEnv 20+ provided full support for handling complex Windows and MacOS envionments.</li>
+</ul>
+
+<h3 id="component--dependency-upgrades">Component &amp; Dependency Upgrades</h3>
+<ul>
+  <li>PIP ==21.2.4 (bundled in VirtualEnv)</li>
+  <li>setuptools ==58.1.0 (bundled in VirtualEnv)</li>
+  <li>wheel ==0.37.0 (bundled in VirtualEnv)</li>
+  <li>colorama ==0.4.4</li>
+</ul>
+
+<h3 id="bugs-fixed-9">Bugs Fixed</h3>
+
+<ul>
+  <li><a href="https://github.com/pybuilder/pybuilder/issues/797">#797 Registering unpopulated VEnv</a></li>
+  <li><a href="https://github.com/pybuilder/pybuilder/issues/795">#795 PyBuilder VEnv manager corrupts plugins venv setuptools</a></li>
+  <li><a href="https://github.com/pybuilder/pybuilder/issues/793">#793 StopIteration: (virtualenv/run/plugin/discovery.py:22) with 0.13.0</a></li>
+  <li><a href="https://github.com/pybuilder/pybuilder/issues/788">#788 Integration test harness can produce a distro with illegal name due to trailing underscore</a></li>
+  <li><a href="https://github.com/pybuilder/pybuilder/issues/777">#777 PyBuilder issue while installing Crypto libs on Mac OS Big Sur</a></li>
+  <li><a href="https://github.com/pybuilder/pybuilder/issues/774">#774 pybuilder fails on osx m1</a></li>
+  <li><a href="https://github.com/pybuilder/pybuilder/issues/771">#771 OSX + homebrew python@3.9: pybuilder/_vendor/virtualenv.py change_prefix does not consider symlinks, raises invalid AssertionError</a></li>
+  <li><a href="https://github.com/pybuilder/pybuilder/issues/770">#770 PyBuilder improperly handles syntactical errors in test being loaded</a></li>
+  <li><a href="https://github.com/pybuilder/pybuilder/issues/768">#768 Dereference directory symlink in src/main/python/</a></li>
+</ul>
+</div>
+        <div class="col-lg-5 visible-md visible-lg">
+            <nav id="toc" data-spy="affix" data-toggle="toc"></nav>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <a href="https://github.com/pybuilder/pybuilder">PyBuilder on GitHub</a>
+            <a href="https://pypi.org/project/pybuilder/">PyBuilder on PyPI</a>
+        </div>
+    </div>
+    <div class="publish-date">
+        <small>site published on 2026-09-13 05:21:14 +0000</small>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<script src="/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
+<script src="/js/tabcontent.js"></script>
+<script src="/js/highlight.pack.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.5.0/lite-youtube.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+  });
+</script>
+<script type="text/javascript">
+    $(function() {
+        $(".dropdown").hover(
+            function(){ $(this).addClass('open') },
+            function(){ $(this).removeClass('open') }
+        );
+    });
+    $(function() {
+        $(".dropdown-submenu").hover(
+            function(){ $(this).addClass('open') },
+            function(){ $(this).removeClass('open') }
+        );
+    });
+</script>
+
+</body>
+</html>

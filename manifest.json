@@ -1,0 +1,11 @@
+{
+    "name": "PyBuilder",
+    "short_name": "PyBuilder",
+    "icons": [{
+        "src": "/img/logo-touch-icon.png",
+        "sizes": "512x512"
+    }],
+    "background_color": "#000000",
+    "theme_color": "#000000",
+    "display": "fullscreen"
+}
