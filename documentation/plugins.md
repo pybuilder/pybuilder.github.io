@@ -622,14 +622,18 @@ Note that the `*_depends_on` methods accept the following arguments :
   <tr>
     <td>extra</td>
     <td>Optional keyword argument (<code>None</code> default). Only available on <code>depends_on</code>.
-        Assigns the dependency to an extras group (e.g. <code>extra="security"</code>). Users can then install it
-        via <code>pip install mypackage[security]</code>.</td>
+        Assigns the dependency to an extras group (e.g. <code>extra="security"</code>), which is published in
+        <code>extras_require</code> so that users can install it via <code>pip install mypackage[security]</code>.
+        The group may additionally be installed into the VEnvs of this build - so that the code it guards can be
+        tested - by naming it in <code>install_dependencies_extras</code>. Group names are normalized, so
+        <code>"Security"</code> and <code>"security"</code> are the same group.</td>
   </tr>
 
   <tr>
     <td>markers</td>
     <td>Optional keyword argument (<code>None</code> default). PEP 508 environment markers for conditional
-        dependencies (e.g. <code>markers="sys_platform == 'win32'"</code>).</td>
+        dependencies (e.g. <code>markers="sys_platform == 'win32'"</code>). Markers are part of a dependency's
+        identity, so the same distribution may be declared several times under mutually exclusive conditions.</td>
   </tr>
 </table>
 
@@ -688,6 +692,19 @@ The logic of version goes as follows:
     <td>List of strings</td>
     <td><code>[ ]</code></td>
     <td>Tell newer versions of pip that it's OK to install those dependencies insecurely (externally hosted, potentially unverified)</td>
+  </tr>
+
+  <tr>
+    <td>install_dependencies_extras</td>
+    <td>List of strings, string, or <code>"*"</code></td>
+    <td><code>[ ]</code></td>
+    <td>Extras groups to install alongside the runtime dependencies, into the build and test VEnvs as well as
+        through the <code>install_dependencies</code> and <code>install_runtime_dependencies</code> tasks.
+        <code>[ ]</code> or <code>None</code> installs none of them, which is the default; a single name such as
+        <code>"security"</code> installs that group; a list installs those groups; <code>"*"</code> installs every
+        group the project declares. Names are normalized, and naming a group the project does not declare fails
+        the build. Extras selected here are <em>not</em> published as mandatory requirements of the distribution -
+        they remain in <code>extras_require</code> only.</td>
   </tr>
 </table>
 

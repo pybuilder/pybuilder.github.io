@@ -108,7 +108,7 @@ Object with four sub-keys:
 
 | Key | Contents |
 |-----|----------|
-| `runtime` | Dependencies from `depends_on()` |
+| `runtime` | Dependencies from `depends_on()`, plus the extras groups selected by `install_dependencies_extras` |
 | `build` | Dependencies from `build_depends_on()` |
 | `plugin` | Dependencies from `plugin_depends_on()` |
 | `extras` | Object mapping extra name to dependency array |
@@ -121,11 +121,21 @@ Each dependency is an object:
   "version": ">=2.28",
   "url": null,
   "extras": null,
+  "extra": null,
   "markers": "sys_platform == 'linux'",
   "declaration_only": false,
   "type": "dependency"
 }
 ```
+
+`extras` are the extras of the dependency itself, as in `depends_on("requests[socks]")`.
+`extra` is the extras group of *this* project that the dependency was declared under, as
+in `depends_on("requests", extra="http")`, and is `null` for a base dependency. A
+dependency belonging to a selected group appears both in `runtime` and under its group in
+`extras`.
+
+Because markers are part of a dependency's identity, one distribution may appear several
+times in `runtime` with different `markers` and versions.
 
 Requirements files have `"type": "requirements_file"` and only `name`,
 `version` (always null), and `declaration_only` fields.

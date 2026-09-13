@@ -359,6 +359,118 @@ fall back to the system Python. This is a legacy mode primarily used for debuggi
 and is not recommended for normal builds, as it can lead to dependency conflicts
 and unreliable coverage results.
 
+## Conditional Dependencies
+
+A dependency may carry PEP 508 environment markers, either as a keyword argument or
+as part of the requirement string:
+
+<pre><code>@init
+def initialize(project):
+    project.depends_on("pywin32", "&gt;=300", markers="sys_platform == 'win32'")
+    project.depends_on("tomli; python_version &lt; '3.11'")
+</code></pre>
+
+Markers are part of a dependency's identity, so the same distribution may be declared
+more than once under mutually exclusive conditions. This is how a version that differs
+per interpreter is expressed:
+
+<pre><code>@init
+def initialize(project):
+    project.depends_on("numpy", "==1.26.4", markers="python_version &lt; '3.12'")
+    project.depends_on("numpy", "==2.1.0", markers="python_version &gt;= '3.12'")
+</code></pre>
+
+Both declarations are published - `install_requires` carries each with its marker, and
+the consumer's installer picks the one that applies. Within the build, only the
+applicable one is installed, and only it reaches the constraints file.
+
+The rule PyBuilder enforces is pip's own: for any one distribution, at most one
+declaration may apply in a given environment. Two declarations that both apply, or two
+that carry identical conditions, fail validation with
+
+<pre><code>Runtime dependency 'numpy' has been defined multiple times.</code></pre>
+
+Markers are evaluated against the marker environment of the *target* interpreter, not
+the one running the build, so a VEnv created from a different Python resolves its own
+conditional dependencies. Project validation runs before any VEnv exists and therefore
+uses the interpreter running the build - which is the one every VEnv is created from.
+
+## Extras in Virtual Environments
+
+Assigning a dependency to an extras group with `extra=` publishes it under
+`extras_require`, for consumers to install with `pip install mypackage[security]`. By
+itself that group is never installed into the build, which means the code it guards
+cannot be tested.
+
+The `install_dependencies_extras` property selects groups for installation:
+
+<table class="table table-striped">
+  <tr>
+    <th>Value</th>
+    <th>Meaning</th>
+  </tr>
+  <tr>
+    <td><code>[]</code> (default) or <code>None</code></td>
+    <td>No extras are installed.</td>
+  </tr>
+  <tr>
+    <td><code>"security"</code></td>
+    <td>That one group.</td>
+  </tr>
+  <tr>
+    <td><code>["security", "speedups"]</code></td>
+    <td>Those groups.</td>
+  </tr>
+  <tr>
+    <td><code>"*"</code></td>
+    <td>Every group the project declares.</td>
+  </tr>
+</table>
+
+<pre><code>@init
+def initialize(project):
+    project.depends_on("cryptography", "&gt;=42", extra="security")
+    project.depends_on("pywin32", "&gt;=300", extra="windows",
+                       markers="sys_platform == 'win32'")
+    project.depends_on("sphinx", "&gt;=7", extra="docs")
+
+    # Install the security extra into the build and test venvs so that the code
+    # path it guards is actually exercised by the tests
+    project.set_property("install_dependencies_extras", ["security"])
+</code></pre>
+
+Naming a group the project does not declare fails the build and lists the declared
+ones. Group names are normalized, so `extra="Security"` and `extra="security"` are the
+same group.
+
+The selection applies to the build and test VEnvs and to the `install_dependencies` and
+`install_runtime_dependencies` tasks alike. Because it is an ordinary property, it can
+be scoped to an environment - for instance to exercise the heavy groups only in CI:
+
+<pre><code>@init(environments="ci")
+def initialize_ci(project):
+    project.set_property("install_dependencies_extras", "*")
+</code></pre>
+
+For a different selection per VEnv, compose `venv_dependencies` directly; an explicit
+entry always wins over the default:
+
+<pre><code>@init
+def initialize(project):
+    project.set_property("venv_dependencies", {
+        "test": project.base_dependencies + project.extras_dependencies["security"],
+    })
+</code></pre>
+
+Selecting an extra is a build-time decision and never changes what is published:
+`install_requires` carries the base dependencies only, and the selected groups remain in
+`extras_require`. `project.dependencies` returns the base dependencies plus the selected
+groups, which is what installation uses; `project.base_dependencies` returns the base
+ones alone, which is what the generated `setup.py` uses.
+
+Run `pyb list_dependencies` to see the declared groups and which of them the current
+selection installs.
+
 ## Unit Testing in Detail
 
 The `python.unittest` plugin executes unit tests using Python's `unittest` module

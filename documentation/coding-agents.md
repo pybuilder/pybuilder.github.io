@@ -117,7 +117,23 @@ def initialize(project):
     # From a requirements file
     project.depends_on_requirements("requirements.txt")
     project.build_depends_on_requirements("requirements-dev.txt")
+
+    # Conditional dependency. The same distribution may be declared more than once
+    # as long as no two declarations apply in the same environment
+    project.depends_on("numpy", "==1.26.4", markers="python_version < '3.12'")
+    project.depends_on("numpy", "==2.1.0", markers="python_version >= '3.12'")
+
+    # Optional dependency, published under extras_require
+    project.depends_on("cryptography", ">=42", extra="security")
+
+    # Install that group into the build and test venvs so its code path is tested.
+    # Accepts a name, a list of names, or "*" for every declared group
+    project.set_property("install_dependencies_extras", ["security"])
 ```
+
+Extras selected with `install_dependencies_extras` are installed into the venvs but are
+*not* published as mandatory requirements — they stay in `extras_require`. Naming a
+group the project does not declare fails the build.
 
 ### Writing Tests
 
@@ -252,6 +268,9 @@ If directories are customized, specify the actual paths:
 Edit `build.py` and add to the initializer:
 - Runtime: `project.depends_on("package-name", ">=1.0")`
 - Build/test: `project.build_depends_on("package-name")`
+- Conditional: `project.depends_on("package-name", markers="sys_platform == 'win32'")`
+- Optional: `project.depends_on("package-name", extra="group-name")`, installed into the
+  venvs only when the group is named in `install_dependencies_extras`
 ```
 
 ### Example CLAUDE.md
