@@ -12,7 +12,7 @@ This script behaves exactly as the PyBuilder program `pyb`.
 You can use the `install_dependencies` task with `./build.py install_dependencies` to pull in all the required runtime and build dependencies.
 Afterwards, running `./build.py` will do a full build including all tests, linting and packaging.
 
-PyBuilder requires Python 3.10 or later. We recommend using a
+PyBuilder requires Python 3.11 or later. We recommend using a
 [virtual environment](https://docs.python.org/3/library/venv.html) for development:
 
 ```bash
