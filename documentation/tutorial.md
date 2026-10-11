@@ -443,7 +443,7 @@ For Python, there exists a bunch of tools to calculate the coverage. One of thes
 To execute python coverage during the execution of unit tests and analyze the results, all you need to do is use 
 a plugin `python.coverage`. Luckily, our default project scaffolding already enabled it for us.
 
-The `python.coverage` plugin uses [Ned Batchelder's](https://twitter.com/nedbat) `coverage` to determine the test coverage.
+The `python.coverage` plugin uses [Ned Batchelder's](https://x.com/nedbat) `coverage` to determine the test coverage.
 
 ```
 $ pyb -v
